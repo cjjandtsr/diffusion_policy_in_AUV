@@ -1,0 +1,559 @@
+#!/usr/bin/env python3
+"""
+train_phase1a_fm.py — FM (Flow Matching) 版本训练脚本
+======================================================
+复制自 train_phase1a.py。将 Phase1aPolicy 替换为 Phase1aPolicyFM，
+使用 OT-CFM loss + Euler ODE 推理。
+
+用法:
+  python train_phase1a_fm.py \
+    --baseline_ckpt data/outputs/.../checkpoints/latest.ckpt \
+    --anchor_bank anchor_bank.pt \
+    --zarr_path /home/cjj/AUV/avoidance_dataset/merged_body_12.zarr \
+    --device cuda:0
+"""
+
+import os, sys, argparse, pathlib, time, json, copy
+import numpy as np
+import torch
+import torch.nn.functional as F
+from torch.utils.data import DataLoader
+from termcolor import cprint
+from tqdm import tqdm
+
+ROOT_DIR = str(pathlib.Path(__file__).parent)
+sys.path.insert(0, ROOT_DIR)
+
+import dill
+from diffusion_policy_3d.model.diffusion.ema_model import EMAModel
+from diffusion_policy_3d.common.pytorch_util import dict_apply
+from diffusion_policy_3d.model.common.lr_scheduler import get_scheduler
+
+
+# ───────── 简单的 JSON 日志写入器 ─────────
+class SimpleLogger:
+    def __init__(self, filepath):
+        self.filepath = filepath
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+        self.file = open(filepath, 'a')
+
+    def log(self, data_dict):
+        line = json.dumps(data_dict, ensure_ascii=False)
+        self.file.write(line + '\n')
+        self.file.flush()
+
+
+# ───────── 训练/验证逻辑 ─────────
+def train_one_epoch(policy, dataloader, optimizer, device, epoch,
+                    gradient_accumulate=1, max_grad_norm=1.0):
+    policy.train()
+    total_loss = 0; total_bc = 0; total_anchor = 0; total_acc = 0
+    # Phase ② collision loss 聚合
+    total_collision = 0
+    # collision 诊断聚合 (仅在 collision loss 生效时有值)
+    coll_diag_sum = {}
+    # Zread R7: 统计 collision loss 实际生效的 batch 数
+    #   Step 2 (anchor_only) 或 eval 时 collision 不生效, 不应污染统计
+    n_collision_active = 0
+    n_batches = 0
+
+    # 进度条
+    pbar = tqdm(dataloader, desc=f'Epoch {epoch+1}', leave=False)
+    for batch in pbar:
+        batch = dict_apply(batch, lambda x: x.to(device, non_blocking=True))
+        loss, loss_dict = policy.compute_loss(batch)
+
+        # NaN 防护: 如果 loss 为 NaN/Inf, 跳过该 batch (不反传, 不更新参数)
+        if not torch.isfinite(loss):
+            n_batches += 1
+            optimizer.zero_grad()  # 清空可能残留的梯度
+            if n_batches <= 3 or n_batches % 100 == 0:
+                cprint(f'[NaN-SKIP] epoch={epoch+1} batch={n_batches} '
+                       f'loss={loss.item()}, bc={loss_dict.get("bc_loss",float("nan")):.4f}, '
+                       f'coll={loss_dict.get("collision_loss",float("nan")):.4f}', 'red')
+            continue
+
+        loss = loss / gradient_accumulate
+        loss.backward()
+
+        if (n_batches + 1) % gradient_accumulate == 0:
+            # 梯度裁剪前再检查: 如果梯度含 NaN, 跳过该步
+            has_nan_grad = any(
+                p.grad is not None and not torch.isfinite(p.grad).all()
+                for p in policy.parameters() if p.requires_grad)
+            if has_nan_grad:
+                # 诊断: 打印哪些参数的梯度含 NaN
+                nan_params = [name for name, p in policy.named_parameters()
+                              if p.grad is not None and not torch.isfinite(p.grad).all()]
+                cprint(f'[NaN-GRAD] epoch={epoch+1} batch={n_batches} '
+                       f'affected params: {nan_params[:5]}... '
+                       f'({len(nan_params)} total)', 'red')
+                optimizer.zero_grad()
+                continue
+            torch.nn.utils.clip_grad_norm_(policy.parameters(), max_grad_norm)
+            optimizer.step()
+            optimizer.zero_grad()
+
+        total_loss += loss_dict['total_loss']
+        total_bc += loss_dict['bc_loss']
+        total_anchor += loss_dict['anchor_loss']
+        total_acc += loss_dict['anchor_acc']
+        # Phase ②: collision_loss 总是在 loss_dict 里 (gating 关闭时为 0.0)
+        cl = loss_dict.get('collision_loss', 0.0)
+        # Zread R7: 只在 collision 真正生效的 batch (有 coll_* 诊断字段) 计入统计
+        #   避免 Step 2 的全 0.0 污染曲线 / 难以判断 collision 何时开始生效
+        _has_coll_diag = any(k.startswith('coll_') for k in loss_dict)
+        if _has_coll_diag:
+            n_collision_active += 1
+            total_collision += cl
+            for k, v in loss_dict.items():
+                if k.startswith('coll_'):
+                    coll_diag_sum[k] = coll_diag_sum.get(k, 0.0) + v
+        n_batches += 1
+
+        # 更新进度条信息
+        postfix = {
+            'loss': f"{loss_dict['total_loss']:.4f}",
+            'acc': f"{loss_dict['anchor_acc']:.2%}",
+        }
+        if _has_coll_diag and cl > 0:
+            postfix['coll'] = f"{cl:.4f}"
+        pbar.set_postfix(postfix)
+
+    result = {
+        'total_loss': total_loss / n_batches,
+        'bc_loss': total_bc / n_batches,
+        'anchor_loss': total_anchor / n_batches,
+        'anchor_acc': total_acc / n_batches,
+    }
+    # Zread R7: collision 指标只在真正生效时写入 (用 active batch 数平均, 不是全 batch)
+    #   并加 coll_loss_ratio 监控 collision 是否压制主 BC loss
+    if n_collision_active > 0:
+        avg_collision = total_collision / n_collision_active
+        result['collision_loss'] = avg_collision
+        avg_total = total_loss / n_batches
+        result['coll_loss_ratio'] = avg_collision / (avg_total + 1e-8)
+        for k, v in coll_diag_sum.items():
+            result[k] = v / n_collision_active
+    # else: collision 未生效 (Step 2 / eval), result 不含 collision_loss 字段
+    #       下游 logger / log 行用 .get() 容错
+    return result
+
+
+def validate(policy, dataloader, device):
+    policy.eval()
+    total_loss = 0; n_batches = 0
+    pbar = tqdm(dataloader, desc='Validating', leave=False)
+    with torch.no_grad():
+        for batch in pbar:
+            batch = dict_apply(batch, lambda x: x.to(device, non_blocking=True))
+            _, loss_dict = policy.compute_loss(batch)
+            total_loss += loss_dict['total_loss']
+            n_batches += 1
+            pbar.set_postfix({'val_loss': f"{loss_dict['total_loss']:.4f}"})
+    return {'val_loss': total_loss / n_batches}
+
+
+# ───────── 原有辅助函数 ─────────
+def load_baseline_checkpoint(ckpt_path, device):
+    cprint(f'Loading baseline: {ckpt_path}', 'green')
+    payload = torch.load(ckpt_path, map_location=device, pickle_module=dill)
+    cfg = payload['cfg']
+    return payload, cfg
+
+
+def create_phase1a_fm_policy(cfg, anchor_bank_path, device,
+                              cfg_dropout_prob=0.15, cfg_lambda=1.5,
+                              anchor_loss_weight=0.5,
+                              num_fm_steps=4, sigma_min=0.005,
+                              fm_t_scale=50, solver='euler',
+                              fm_anchor_t_start=0.95,
+                              # Phase ② collision auxiliary loss
+                              use_collision_loss=False,
+                              collision_lambda=0.5,
+                              collision_d_safe=0.75,
+                              collision_beta=20.0,
+                              collision_tau_softmin=5.0,
+                              collision_k_nn=8,
+                              collision_horizon_decay_tau=8.0):
+    import hydra
+    import inspect
+    from diffusion_policy_3d.policy.phase1a_policy_fm import Phase1aPolicyFM
+
+    policy_cfg = cfg.policy
+    shape_meta = cfg.task.shape_meta
+    noise_scheduler = hydra.utils.instantiate(policy_cfg.noise_scheduler)
+
+    # Phase ② collision 参数
+    collision_kwargs = {
+        'use_collision_loss':          use_collision_loss,
+        'collision_lambda':            collision_lambda,
+        'collision_d_safe':            collision_d_safe,
+        'collision_beta':              collision_beta,
+        'collision_tau_softmin':       collision_tau_softmin,
+        'collision_k_nn':              collision_k_nn,
+        'collision_horizon_decay_tau': collision_horizon_decay_tau,
+    }
+    _valid_params = inspect.signature(Phase1aPolicyFM.__init__).parameters
+    for _k in collision_kwargs:
+        assert _k in _valid_params, \
+            f"[BUG] '{_k}' 不是 Phase1aPolicyFM.__init__ 的合法参数"
+
+    policy = Phase1aPolicyFM(
+        shape_meta=shape_meta,
+        noise_scheduler=noise_scheduler,
+        horizon=cfg.horizon,
+        n_action_steps=cfg.n_action_steps,
+        n_obs_steps=cfg.n_obs_steps,
+        obs_as_global_cond=policy_cfg.get('obs_as_global_cond', True),
+        diffusion_step_embed_dim=policy_cfg.get('diffusion_step_embed_dim', 256),
+        down_dims=tuple(policy_cfg.get('down_dims', [256, 512, 1024])),
+        kernel_size=policy_cfg.get('kernel_size', 5),
+        n_groups=policy_cfg.get('n_groups', 8),
+        condition_type=policy_cfg.get('condition_type', 'film'),
+        use_down_condition=policy_cfg.get('use_down_condition', True),
+        use_mid_condition=policy_cfg.get('use_mid_condition', True),
+        use_up_condition=policy_cfg.get('use_up_condition', True),
+        use_pc_color=policy_cfg.get('use_pc_color', False),
+        pointnet_type=policy_cfg.get('pointnet_type', 'pointnet'),
+        pointcloud_encoder_cfg=policy_cfg.get('pointcloud_encoder_cfg', None),
+        anchor_bank_path=anchor_bank_path,
+        anchor_loss_weight=anchor_loss_weight,
+        cfg_dropout_prob=cfg_dropout_prob,
+        cfg_lambda=cfg_lambda,
+        # ── FM 参数 ──
+        num_fm_steps=num_fm_steps,
+        sigma_min=sigma_min,
+        fm_t_scale=fm_t_scale,
+        solver=solver,
+        fm_anchor_t_start=fm_anchor_t_start,
+        # Phase ② collision auxiliary loss
+        **collision_kwargs,
+    )
+    policy.to(device)
+    return policy
+
+
+def load_baseline_weights(policy, payload, device):
+    sd_key = 'ema_model' if 'ema_model' in payload['state_dicts'] else 'model'
+    baseline_sd = payload['state_dicts'][sd_key]
+    missing, unexpected = policy.load_state_dict(baseline_sd, strict=False)
+    anchor_missing = [k for k in missing if 'anchor_head' in k]
+    other_missing = [k for k in missing if 'anchor_head' not in k]
+    if other_missing:
+        cprint(f'WARNING: unexpected missing keys: {other_missing}', 'red')
+    if anchor_missing:
+        cprint(f'AnchorHead initialized from scratch ({len(anchor_missing)} params)', 'green')
+    cprint(f'Loaded baseline weights (key={sd_key})', 'green')
+
+
+def create_dataset(cfg, zarr_path):
+    from diffusion_policy_3d.dataset.drone_dataset import DroneDataset
+    dataset = DroneDataset(
+        zarr_path=zarr_path,
+        horizon=cfg.horizon,
+        pad_before=cfg.n_obs_steps - 1,
+        pad_after=cfg.n_action_steps - 1,
+        seed=42,
+        val_ratio=0.1,
+    )
+    val_dataset = dataset.get_validation_dataset()
+    normalizer = dataset.get_normalizer(mode='gaussian')
+    return dataset, val_dataset, normalizer
+
+
+def save_checkpoint(policy, ema_model, optimizer, epoch, step, output_dir,
+                    cfg=None, name='latest'):
+    ckpt_dir = os.path.join(output_dir, 'checkpoints')
+    os.makedirs(ckpt_dir, exist_ok=True)
+    path = os.path.join(ckpt_dir, f'{name}.ckpt')
+    state_dicts = {
+        'model': policy.state_dict(),
+        'optimizer': optimizer.state_dict(),
+    }
+    if ema_model is not None:
+        state_dicts['ema_model'] = ema_model.averaged_model.state_dict()
+    payload = {'cfg': cfg, 'state_dicts': state_dicts,
+               'epoch': epoch, 'global_step': step}
+    torch.save(payload, path, pickle_module=dill)
+    return path
+
+
+# ───────── 主程序 ─────────
+def main():
+    parser = argparse.ArgumentParser(description='Phase 1a Training')
+    parser.add_argument('--baseline_ckpt', required=True)
+    parser.add_argument('--anchor_bank', default=None)
+    parser.add_argument('--zarr_path', required=True)
+    parser.add_argument('--device', default='cuda:0')
+    parser.add_argument('--batch_size', type=int, default=60)
+    parser.add_argument('--num_workers', type=int, default=4)
+    parser.add_argument('--step2_epochs', type=int, default=30)
+    parser.add_argument('--step2_lr', type=float, default=1e-3)
+    parser.add_argument('--step3_epochs', type=int, default=301)
+    parser.add_argument('--step3_lr', type=float, default=1e-4)
+    parser.add_argument('--cfg_dropout', type=float, default=0.15)
+    parser.add_argument('--cfg_lambda', type=float, default=1.5)
+    parser.add_argument('--anchor_loss_weight', type=float, default=0.5)
+    # ── FM 参数 ──
+    parser.add_argument('--num_fm_steps', type=int, default=4,
+                        help='FM ODE 积分步数')
+    parser.add_argument('--sigma_min', type=float, default=0.005,
+                        help='FM 推理终点偏移')
+    parser.add_argument('--fm_t_scale', type=float, default=50,
+                        help='FM timestep 缩放系数')
+    parser.add_argument('--solver', default='euler', choices=['euler'],
+                        help='ODE 求解器')
+    parser.add_argument('--fm_anchor_t_start', type=float, default=0.95,
+                        help='FM Anchor 初始化 t_start (越大 anchor 权重越大)')
+    parser.add_argument('--output_dir', default=None)
+    parser.add_argument('--exp_name', default='v8_phase1a')
+    parser.add_argument('--skip_step2', action='store_true')
+    parser.add_argument('--resume_step3', default=None)
+    # 日志频率: Phase 1a 默认每 50 epoch 记一次; Phase ② 扫参跑 ~20 epoch 需要更密
+    parser.add_argument('--log_every', type=int, default=50,
+                        help='Step 3 每多少 epoch 记录一次 log + 验证 (扫参时设 2-5)')
+    # ── Phase ② Constraint-Aware BC: collision auxiliary loss ──
+    # 设计依据: iDP3_UAV_Design_Action_Plan_v1.2.md §5
+    # 默认全部关闭 → 不传这些参数时, 行为与原 Phase 1a 训练完全一致
+    parser.add_argument('--use_collision_loss', action='store_true',
+                        help='开启 collision auxiliary loss (Phase ②)')
+    parser.add_argument('--collision_lambda', type=float, default=0.5,
+                        help='λ_col, collision loss 权重 (ORANGE verdict 起步 0.5)')
+    parser.add_argument('--collision_d_safe', type=float, default=0.75,
+                        help='d_safe (m), 训练侧安全距离阈值')
+    parser.add_argument('--collision_beta', type=float, default=20.0,
+                        help='softplus 锐度')
+    parser.add_argument('--collision_tau_softmin', type=float, default=5.0,
+                        help='k-NN soft-min 锐度')
+    parser.add_argument('--collision_k_nn', type=int, default=8,
+                        help='k-NN 近邻数')
+    parser.add_argument('--collision_horizon_decay_tau', type=float, default=8.0,
+                        help='横向加权 w_k=exp(-k/τ) 的 τ')
+
+    args = parser.parse_args()
+    device = torch.device(args.device)
+
+    if args.output_dir is None:
+        timestamp = time.strftime('%Y.%m.%d/%H.%M.%S')
+        args.output_dir = f'data/outputs/{timestamp}_{args.exp_name}'
+    os.makedirs(args.output_dir, exist_ok=True)
+
+    print("═" * 65)
+    print("  Phase 1a/2 Training: Anchor + CFG + Flow Matching (FM)")
+    print("═" * 65)
+    print(f"  baseline: {args.baseline_ckpt}")
+    print(f"  anchors:  {anchor_bank_path}")
+    print(f"  data:     {args.zarr_path}")
+    print(f"  output:   {args.output_dir}")
+    print(f"  Step 2: {args.step2_epochs} epochs, lr={args.step2_lr}")
+    print(f"  Step 3: {args.step3_epochs} epochs, lr={args.step3_lr}")
+    print(f"  CFG: dropout={args.cfg_dropout}, λ={args.cfg_lambda}")
+    print(f"  FM: steps={args.num_fm_steps}, sigma_min={args.sigma_min}, "
+          f"solver={args.solver}")
+    print(f"  FM: t_scale={args.fm_t_scale}, anchor_t_start={args.fm_anchor_t_start}")
+    if args.use_collision_loss:
+        print(f"  ── Phase ② collision loss: ENABLED ──")
+        print(f"     λ_col={args.collision_lambda}, d_safe={args.collision_d_safe}m, "
+              f"β={args.collision_beta}, k={args.collision_k_nn}, "
+              f"τ_softmin={args.collision_tau_softmin}")
+        print(f"     (仅在 Step 3 'joint' phase 生效; Step 2 'anchor_only' 自动跳过)")
+    else:
+        print(f"  Phase ② collision loss: disabled (Phase 1a 原始行为)")
+    print("═" * 65)
+
+    payload, cfg = load_baseline_checkpoint(args.baseline_ckpt, device)
+
+    # 处理 --anchor_bank none → 不使用 AnchorHead
+    anchor_bank_path = args.anchor_bank
+    if anchor_bank_path is not None and anchor_bank_path.lower() in ('none', ''):
+        anchor_bank_path = None
+        args.skip_step2 = True  # 无 AnchorHead 时强制跳过 Step 2
+
+    policy = create_phase1a_fm_policy(
+        cfg, anchor_bank_path, device,
+        cfg_dropout_prob=args.cfg_dropout,
+        cfg_lambda=args.cfg_lambda,
+        anchor_loss_weight=args.anchor_loss_weight,
+        # ── FM 参数 ──
+        num_fm_steps=args.num_fm_steps,
+        sigma_min=args.sigma_min,
+        fm_t_scale=args.fm_t_scale,
+        solver=args.solver,
+        fm_anchor_t_start=args.fm_anchor_t_start,
+        # Phase ② collision auxiliary loss
+        use_collision_loss=args.use_collision_loss,
+        collision_lambda=args.collision_lambda,
+        collision_d_safe=args.collision_d_safe,
+        collision_beta=args.collision_beta,
+        collision_tau_softmin=args.collision_tau_softmin,
+        collision_k_nn=args.collision_k_nn,
+        collision_horizon_decay_tau=args.collision_horizon_decay_tau)
+
+    load_baseline_weights(policy, payload, device)
+    policy.to(device)   # 确保权重在设备上
+
+    dataset, val_dataset, normalizer = create_dataset(cfg, args.zarr_path)
+    policy.set_normalizer(normalizer)
+    policy.to(device)   # 再次确保 normalizer 参数在设备上
+
+    # 末段加权采样: 用 WeightedRandomSampler 替代 shuffle=True
+    # 原因: SequenceSampler 窗口约束使 d_goal<1m 有效窗口仅 0.14%
+    # 依据: DroneDataset.sample_weights 已按 dist<2m 的窗口设 3x 权重
+    if hasattr(dataset, 'sample_weights') and dataset.sample_weights is not None:
+        from torch.utils.data import WeightedRandomSampler
+        w = torch.from_numpy(dataset.sample_weights).double()
+        w = w / w.sum() * len(dataset)  # 归一化使 epoch 大小不变
+        train_sampler = WeightedRandomSampler(w, num_samples=len(dataset),
+                                              replacement=True)
+        train_loader = DataLoader(dataset, batch_size=args.batch_size,
+                                  sampler=train_sampler, num_workers=args.num_workers,
+                                  pin_memory=True, drop_last=True)
+        cprint(f'  Using WeightedRandomSampler (end_weight={dataset.end_weight})', 'yellow')
+    else:
+        train_loader = DataLoader(dataset, batch_size=args.batch_size,
+                                  shuffle=True, num_workers=args.num_workers,
+                                  pin_memory=True, drop_last=True)
+    val_loader = DataLoader(val_dataset, batch_size=args.batch_size,
+                            shuffle=False, num_workers=args.num_workers,
+                            pin_memory=True)
+
+    # [FIX] EMAModel 必须用 deepcopy, 不能直接引用 policy。
+    # 原因: EMAModel.__init__ 中 self.averaged_model = model (引用),
+    #   ema_model.step(policy) 时 param is ema_param (同一对象),
+    #   第一次 step decay=0 → mul_(0) in-place 把 policy 的 normalizer
+    #   scale/offset 清零 → 之后 normalize() 输出全零 → val_loss = 0.5*log(17) ≈ 1.4166
+    ema_shadow = copy.deepcopy(policy)
+    ema_shadow.eval()
+    ema_shadow.requires_grad_(False)
+    # deepcopy 可能把部分参数带到 CPU, 确保设备一致
+    ema_shadow.to(device)
+    ema_model = EMAModel(model=ema_shadow, power=0.75)
+    # 验证: averaged_model 与 policy 独立
+    assert ema_model.averaged_model is not policy, \
+        "[BUG] EMAModel.averaged_model 不应是 policy 的引用"
+    cprint(f'[FIX] Created EMAModel with deep-copied policy '
+           f'(防止 first-step decay=0 把原 policy 参数清零)', 'yellow')
+    # 同步 normalizer: 确保 averaged_model 的 normalizer 与 policy 一致
+    ema_model.averaged_model.normalizer.load_state_dict(
+        policy.normalizer.state_dict())
+    ema_model.averaged_model.normalizer.to(device)
+    cprint(f'[FIX] Synchronized ema_model.averaged_model normalizer', 'yellow')
+    # 验证 normalizer action 参数非零
+    _act_norm = policy.normalizer['action']
+    _act_scale = _act_norm.params_dict['scale']
+    assert _act_scale.abs().max() > 1e-6, \
+        f"[BUG] policy normalizer action scale 全零! max={_act_scale.abs().max():.2e}"
+    cprint(f'[CHECK] ema_model.averaged_model is independent from policy ✓', 'green')
+    cprint(f'[CHECK] EMA normalizer action params verified (non-zero)', 'green')
+
+    log_path = os.path.join(args.output_dir, 'logs.json.txt')
+    logger = SimpleLogger(log_path)
+
+    global_step = 0
+
+    # ═════════════ Step 2 ═════════════
+    if not args.skip_step2:
+        print(f"\n{'─'*65}")
+        print(f"  Step 2: Train AnchorHead only ({args.step2_epochs} epochs)")
+        print(f"{'─'*65}")
+
+        policy.set_training_phase('anchor_only')
+        optimizer = torch.optim.Adam(
+            filter(lambda p: p.requires_grad, policy.parameters()),
+            lr=args.step2_lr)
+
+        for epoch in range(args.step2_epochs):
+            metrics = train_one_epoch(policy, train_loader, optimizer,
+                                      device, epoch)
+            ema_model.step(policy)
+
+            if (epoch + 1) % 5 == 0 or epoch == 0:
+                val_metrics = validate(ema_model.averaged_model, val_loader, device)
+                cprint(f'  [Step2] ep {epoch+1}/{args.step2_epochs}: '
+                       f'anchor_loss={metrics["anchor_loss"]:.4f}, '
+                       f'anchor_acc={metrics["anchor_acc"]:.2%}, '
+                       f'val={val_metrics["val_loss"]:.4f}', 'yellow')
+                logger.log({
+                    'epoch': epoch, 'phase': 'step2',
+                    'global_step': global_step, **metrics, **val_metrics})
+
+            global_step += len(train_loader)
+
+        step2_path = save_checkpoint(
+            policy, ema_model, optimizer, args.step2_epochs,
+            global_step, args.output_dir, cfg, 'step2_final')
+        cprint(f'  Step 2 saved: {step2_path}', 'green')
+
+    # ═════════════ Step 3 ═════════════
+    print(f"\n{'─'*65}")
+    print(f"  Step 3: Joint finetune ({args.step3_epochs} epochs)")
+    print(f"{'─'*65}")
+
+    policy.set_training_phase('joint')
+    param_groups = policy.get_optimizer_groups(
+        lr=args.step3_lr, anchor_lr_mult=5.0)
+    optimizer = torch.optim.AdamW(param_groups, weight_decay=1e-6)
+    scheduler = get_scheduler(
+        'cosine', optimizer=optimizer,
+        num_warmup_steps=500,
+        num_training_steps=args.step3_epochs * len(train_loader))
+
+    start_epoch = 0
+    if args.resume_step3:
+        ckpt = torch.load(args.resume_step3, map_location=device, pickle_module=dill)
+        policy.load_state_dict(ckpt['state_dicts']['model'])
+        if 'ema_model' in ckpt['state_dicts']:
+            ema_model.averaged_model.load_state_dict(ckpt['state_dicts']['ema_model'])
+        # [FIX] 确保加载后设备一致 (ckpt 中的 tensor 可能在 CPU)
+        ema_model.averaged_model.to(device)
+        start_epoch = ckpt.get('epoch', 0)
+        global_step = ckpt.get('global_step', 0)
+        cprint(f'  Resumed from epoch {start_epoch}', 'green')
+
+    best_val_loss = float('inf')
+
+    for epoch in range(start_epoch, args.step3_epochs):
+        metrics = train_one_epoch(policy, train_loader, optimizer,
+                                  device, epoch)
+        ema_model.step(policy)
+        scheduler.step()
+        global_step += len(train_loader)
+
+        if (epoch + 1) % args.log_every == 0 or epoch == 0:
+            val_metrics = validate(ema_model.averaged_model, val_loader, device)
+            # Phase ②: log 行加 collision loss + 关键诊断 (Zread R7: 含 loss_ratio)
+            coll_str = ''
+            if 'collision_loss' in metrics:
+                coll_str = (f', coll={metrics["collision_loss"]:.4f}'
+                            f' (ratio={metrics.get("coll_loss_ratio", float("nan")):.1%}'
+                            f', d_soft_p05={metrics.get("coll_d_soft_p05", float("nan")):.3f}m'
+                            f', viol={metrics.get("coll_n_violating_share", float("nan")):.1%})')
+            cprint(f'  [Step3] ep {epoch+1}/{args.step3_epochs}: '
+                   f'bc={metrics["bc_loss"]:.4f}, '
+                   f'anchor={metrics["anchor_loss"]:.4f} '
+                   f'(acc={metrics["anchor_acc"]:.2%})'
+                   f'{coll_str}, '
+                   f'val={val_metrics["val_loss"]:.4f}', 'cyan')
+            logger.log({
+                'epoch': epoch, 'phase': 'step3',
+                'global_step': global_step, **metrics, **val_metrics})
+
+            if val_metrics['val_loss'] < best_val_loss:
+                best_val_loss = val_metrics['val_loss']
+                save_checkpoint(policy, ema_model, optimizer, epoch,
+                                global_step, args.output_dir, cfg, 'best')
+
+        if (epoch + 1) % 100 == 0:
+            save_checkpoint(policy, ema_model, optimizer, epoch,
+                            global_step, args.output_dir, cfg, 'latest')
+
+    final_path = save_checkpoint(
+        policy, ema_model, optimizer, args.step3_epochs,
+        global_step, args.output_dir, cfg, 'latest')
+    cprint(f'\n  Training complete! Final: {final_path}', 'green')
+    print("═" * 65)
+
+
+if __name__ == '__main__':
+    main()

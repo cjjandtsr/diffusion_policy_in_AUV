@@ -1,0 +1,133 @@
+{
+  "task_id": "R2",
+  "title": "R2 sampler/env contracts — CLOSED (2026-08-09): SAMPLER-LIVE / SEED-RESUME / ROLE-TRANSITION / META-SOURCE-HASH / META-EPISODE-HASH / VECTOR-ORDER / NO-RAY-SEMANTICS all PASS",
+  "guide": "program/zhidao/Guide_A_OfficialCore_R2_Sampler_Env_Contracts_v1_0.md",
+  "master_plan": "program/zhidao/Guide_A_OfficialCore_Completion_MasterPlan_v1_0.md",
+  "branch": "a-official-core-rework",
+  "version_note": "v2 (2026-08-09): R2 closure manifest. v1 + changed_files audit completeness: full diff of 1a5f063..a6f9cab (7 R2 implementation commits) = 38 files; v1 listed 34, corrected to 38 by adding review_R2.md (closure commit artifact), temp/r1_2_composition_isolation.py, tests/dppo_parity/test_microbatch_equivalence.py, tests/dppo_parity/test_randperm_epoch_coverage.py (the latter three extended by dece2d9). All other content identical to v1 (five implementation commits R2.1-R2.5 + R2.6 static-contract tests + production-path G3 10k rerun 8/8 PASS + RTM rows updated to PASS; NO-RAY evidence: NO_RAY_ROOT_CAUSE_REPORT.json + NO_RAY_STRESS_EVIDENCE.json (10,000 frames, invalid=0)).",
+  "commit_binding": {
+    "base_project_commit": "c1f7dc1",
+    "base_project_commit_note": "R1 closure head (R1 = PASS final)",
+    "implementation_commits": [
+      {"commit": "5458504", "task": "R2.1", "message": "feat(dppo): unify production task and role sampling", "scope": "EpisodeTaskSampler (global attempt counter, deterministic (base_seed, attempt) episode seeds, snapshot/restore)"},
+      {"commit": "4eb696c", "task": "R2.2", "message": "fix(dppo): use persistent sampler and truthful role accounting", "scope": "run_e2e_batch injects task_sampler, role_stats_report per-role attempted/completed/voided"},
+      {"commit": "dece2d9", "task": "R2.3", "message": "fix(dppo): bind manifest and sampled episode metadata separately", "scope": "canonical_sha256 + manifest_entry_hash (source) vs episode_config_hash (runtime EpisodeConfigRecord)"},
+      {"commit": "b8e7227", "task": "R2.4", "message": "feat(dppo): implement ordered synchronous UAV vector environments", "scope": "reset_at(env_ids) selective reset, full-slot synchronous step, done-slot reset_at contract"},
+      {"commit": "3db5778", "task": "R2.5", "message": "fix(dppo): eliminate degenerate no-ray training observations", "scope": "ValidatedSynthAdapter far-endpoint encoding + RayGeometryReport + gate analytic-evidence contract"},
+      {"commit": "PENDING", "task": "R2.6", "message": "docs(dppo): close production sampler and environment contracts", "scope": "G3 CLI production defaults, test_r2_6_contracts.py (5 static), RTM rows PASS, G3_GATE_REPORT_v2.json"}
+    ],
+    "closure_commit": "filled after independent review (see review_R2.md; review findings 1-4 resolved in the R2 closure commit)"
+  },
+  "rework_commits": [],
+  "rework_items": [],
+  "changed_files": [
+    "diffusion_policy_3d/rl/dppo_uav/environment_adapter.py",
+    "diffusion_policy_3d/rl/dppo_uav/gate_audit.py",
+    "diffusion_policy_3d/rl/dppo_uav/integration.py",
+    "diffusion_policy_3d/rl/dppo_uav/metrics.py",
+    "diffusion_policy_3d/rl/dppo_uav/phase1a_actor_adapter.py",
+    "diffusion_policy_3d/rl/dppo_uav/pointcloud_gate.py",
+    "diffusion_policy_3d/rl/dppo_uav/rollout_buffer.py",
+    "diffusion_policy_3d/rl/dppo_uav/train_loop.py",
+    "diffusion_policy_3d/rl/dppo_uav/validated_synth_adapter.py",
+    "scripts/g3_10k_reset_gate_audit.py",
+    "scripts/g6_one_update_resume_probe.py",
+    "tests/dppo_parity/conftest.py",
+    "tests/dppo_parity/mock_uav_env.py",
+    "tests/dppo_parity/test_actor_rollout.py",
+    "tests/dppo_parity/test_cfg_contract.py",
+    "tests/dppo_parity/test_e2e_gpu.py",
+    "tests/dppo_parity/test_episode_task_sampler.py",
+    "tests/dppo_parity/test_g3_gate_audit.py",
+    "tests/dppo_parity/test_g6_real_one_update_gpu.py",
+    "tests/dppo_parity/test_integration_real_env.py",
+    "tests/dppo_parity/test_integration_routea_pool.py",
+    "tests/dppo_parity/test_no_ray_pose_regression.py",
+    "tests/dppo_parity/test_p5_contracts.py",
+    "tests/dppo_parity/test_p7_eval_persistence.py",
+    "tests/dppo_parity/test_pointcloud_validity.py",
+    "tests/dppo_parity/test_r2_6_contracts.py",
+    "tests/dppo_parity/test_real_adapter.py",
+    "tests/dppo_parity/test_role_sampling.py",
+    "tests/dppo_parity/test_rollout_buffer.py",
+    "tests/dppo_parity/test_train_loop.py",
+    "tests/dppo_parity/test_trainer.py",
+    "tests/dppo_parity/test_vector_env_ordering.py",
+    "tests/dppo_parity/test_microbatch_equivalence.py",
+    "tests/dppo_parity/test_randperm_epoch_coverage.py",
+    "temp/r1_2_composition_isolation.py",
+    "review_R2.md",
+    "RL_REBUILD_TRACEABILITY.md",
+    "implementation_manifest_R2.json"
+  ],
+  "changed_symbols": {
+    "environment_adapter.py": ["EpisodeTaskSampler", "next_attempt", "SampledEpisodeTask", "EpisodeConfigRecord", "canonical_sha256", "episode_config_hash", "build_episode_config_record", "UAVVectorEnvAdapter.reset_at", "UAVVectorEnvAdapter.step", "_hit_count", "_cached_validated", "_wrap_info.ray_report"],
+    "validated_synth_adapter.py": ["ValidatedSynthAdapter", "RayGeometryReport", "FAR_DOME_UNIQUE_FLOOR", "_encode_far_dome", "_grid_ray_dirs"],
+    "pointcloud_gate.py": ["PointCloudValidityGate.validate(ray_report=...)"],
+    "train_loop.py": ["run_e2e_batch(task_sampler=...)", "role_stats_report call", "episode_config_hash write"],
+    "gate_audit.py": ["run_reset_gate_audit(task_sampler injection)", "proportion_gate"]
+  },
+  "deleted_symbols": [],
+  "requirement_ids": ["SAMPLER-LIVE", "SEED-RESUME", "ROLE-TRANSITION", "META-SOURCE-HASH", "META-EPISODE-HASH", "VECTOR-ORDER", "NO-RAY-SEMANTICS"],
+  "tests": {
+    "result_cpu": "313 passed / 0 failed / 7 deselected (GPU)",
+    "run": "2026-08-09, 45.07s, log temp/r2_cpu_suite.log",
+    "command": "python -m pytest tests/dppo_parity/ -q -m 'not gpu' 2>&1 | tee temp/r2_cpu_suite.log",
+    "per_contract": {
+      "test_r2_6_contracts.py": 5,
+      "test_episode_task_sampler.py": "R2.1 (incl. fresh-process resume, non-repeat)",
+      "test_real_adapter.py": "R2.4 real synchronous adapter + R2.3 dual-hash recompute (episode_config_hash sensitivity L266, canonical_sha256 L250-263, reset-info dual hashes L311)",
+      "test_integration_routea_pool.py": "R2.3 source-entry hash determinism/sensitivity (L101, L122)",
+      "test_rollout_buffer.py": "R2.3 transition carries dual hashes (L216)",
+      "test_vector_env_ordering.py": "R2.4 n_envs ordering (two-slot, partial reset, done-slot, active mask)",
+      "test_no_ray_pose_regression.py": 9,
+      "test_pointcloud_validity.py": 21
+    }
+  },
+  "authority_run": {
+    "g3_rerun": {
+      "command": "python scripts/g3_10k_reset_gate_audit.py --n-resets 10000 --seed 0 --assert-role-proportion --out program/reports/routeA_rl_env_v1/g3_gate/G3_GATE_REPORT_v2.json",
+      "result": "EXIT=0, 8/8 gates PASS",
+      "n_resets": 10000,
+      "n_frames": 80000,
+      "counters": {"invalid_pc": 0, "unvalidated_fallback": 0, "admission_blocked": 0, "reachability_fail": 0, "clearance_fail": 0, "role_unknown": 0, "eval_leakage": 0, "hash_missing": 0},
+      "role_counts": {"anticipatory": 3055, "dense_recovery": 3003, "support_expansion": 2940, "yaw_lateral_recovery": 1002},
+      "role_proportions": {"anticipatory": 0.3055, "dense_recovery": 0.3003, "support_expansion": 0.294, "yaw_lateral_recovery": 0.1002},
+      "max_role_delta_pp": 0.6,
+      "log": "/tmp/g3_r2_6_run.log"
+    },
+    "no_ray_stress": {
+      "frames": 10000,
+      "invalid": 0,
+      "far_dome_frames": 2957,
+      "report_failures": 0,
+      "evidence": "program/reports/routeA_rl_env_v1/g3_gate/NO_RAY_STRESS_EVIDENCE.json"
+    }
+  },
+  "resolved_training_contract": {
+    "role_targets": {"anticipatory": 0.30, "dense_recovery": 0.30, "support_expansion": 0.30, "yaw_lateral_recovery": 0.10},
+    "role_tolerance_pp": 0.02,
+    "sampler": "stateful EpisodeTaskSampler, base_seed + global attempt -> deterministic unique episode seeds; snapshot/restore for resume",
+    "hashes": "canonical_sha256 (source entry) + episode_config_hash over {identity, episode_seed, start, goal, start_yaw}",
+    "vector": "real synchronous UAVVectorEnvAdapter; done slot must reset_at() before stepping",
+    "no_ray": "hit_count=0 valid ONLY with passing analytic RayGeometryReport; single-point all-far ALWAYS invalid",
+    "w4_w8_w11_w12_w18": "never in train specs (unchanged constraint)"
+  },
+  "evidence": [
+    "program/reports/routeA_rl_env_v1/g3_gate/G3_GATE_REPORT_v2.json (10k resets, 8/8 PASS)",
+    "program/reports/routeA_rl_env_v1/g3_gate/NO_RAY_ROOT_CAUSE_REPORT.json",
+    "program/reports/routeA_rl_env_v1/g3_gate/NO_RAY_STRESS_EVIDENCE.json",
+    "temp/r2_cpu_suite.log (313 passed / 0 failed / 7 deselected)",
+    "RL_REBUILD_TRACEABILITY.md (7 R2 rows -> PASS)"
+  ],
+  "known_gaps": [
+    "[informational] G3 10k audit samples admission poses (z <= z_max=5.0); the no-ray degenerate band (z > 5.211) is exercised by the dedicated stress (part A/B) and the R2.5 regression family, not by G3 itself",
+    "[informational] stress part B: 2/1000 episodes ended via altitude_exceed under the env's default disturb (p=0.2, scale 0.3) — legitimate production termination, harness resets like train_loop; documented in NO_RAY_ROOT_CAUSE_REPORT.json",
+    "[informational, review finding 2] sampler state is NOT yet persisted in the production checkpoint — checkpoint.py has no sampler field; scripts/g6_one_update_resume_probe.py:191 constructs a fresh EpisodeTaskSampler on resume. Sampler interface snapshot/restore (state_dict/load_state_dict, tested) is complete per R2.1; checkpoint persistence is R3 scope (RESUME-HASH-GATE R3.2)"
+  ],
+  "unexpected_changes": [
+    "scripts/g3_10k_reset_gate_audit.py: --manifest/--worlds-dir became optional (production defaults via DPPO_MANIFEST / DPPO_WORLDS_TRAIN) — required by guide R2.6 Step 2's no-flag command line",
+    "tests/dppo_parity/test_r2_6_contracts.py: static AST contracts (4 pins + 1 RED) added — guide Step 1 requires '静态测试必须断言两者都构造 EpisodeTaskSampler'"
+  ],
+  "rollback": "git revert newest-first: <R2.6 closure commit> 3db5778 b8e7227 dece2d9 4eb696c 5458504 (revert to c1f7dc1 state). git reset --hard is NOT listed (R1 audit decision: only the human-reviewed git revert path)."
+}

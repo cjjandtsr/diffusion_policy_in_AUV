@@ -1,0 +1,1854 @@
+{
+  "schema_version": "routea_capacity_budget_p0_v1",
+  "run_id": "p0_capacity_budget_audit_p0cb_20260713_130931",
+  "bank_version": "p0_capacity_budget_v1",
+  "per_role": {
+    "anticipatory": {
+      "count": 32,
+      "worlds": [
+        "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002"
+      ]
+    },
+    "dense_recovery": {
+      "count": 32,
+      "worlds": [
+        "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+        "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+        "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+        "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020"
+      ]
+    },
+    "support_expansion": {
+      "count": 32,
+      "worlds": [
+        "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010"
+      ]
+    }
+  },
+  "episodes": [
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -8.17713289560851,
+        -5.1069959199323804,
+        1.7718138474941811
+      ],
+      "goal_pos": [
+        7.477094447614956,
+        3.041542493572205,
+        1.7071538799173305
+      ],
+      "start_yaw": 0.18241871385205127,
+      "episode_seed": 191664964,
+      "pointcloud_rng_seed": 191664964,
+      "episode_id": "anticipatory_000",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -1.617770336388194,
+        7.665523540077292,
+        4.476275994948386
+      ],
+      "goal_pos": [
+        -3.1572015457083342,
+        -12.978565423650094,
+        4.419814675298382
+      ],
+      "start_yaw": -1.4977198189508931,
+      "episode_seed": 1662057958,
+      "pointcloud_rng_seed": 1662057958,
+      "episode_id": "anticipatory_001",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        12.552795071893815,
+        -5.124432234683249,
+        1.4177976283327054
+      ],
+      "goal_pos": [
+        3.524182315516711,
+        7.073575638389141,
+        3.8771629488021957
+      ],
+      "start_yaw": 1.9101636735572347,
+      "episode_seed": 1405681632,
+      "pointcloud_rng_seed": 1405681632,
+      "episode_id": "anticipatory_002",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -8.233647301141275,
+        2.3388848685114674,
+        2.15823821868344
+      ],
+      "goal_pos": [
+        -8.89608226884779,
+        13.51218781980041,
+        1.987025245159093
+      ],
+      "start_yaw": 1.657024468578883,
+      "episode_seed": 942484272,
+      "pointcloud_rng_seed": 942484272,
+      "episode_id": "anticipatory_003",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        2.989723625390024,
+        9.956545845165095,
+        4.695456983368729
+      ],
+      "goal_pos": [
+        -10.691605584731349,
+        7.20234452620922,
+        3.2978504652938962
+      ],
+      "start_yaw": -2.862601968862298,
+      "episode_seed": 929893138,
+      "pointcloud_rng_seed": 929893138,
+      "episode_id": "anticipatory_004",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        7.038640267278804,
+        2.0663916262284303,
+        3.006986260965401
+      ],
+      "goal_pos": [
+        -11.605206004391595,
+        -7.578334909780992,
+        4.125568012628072
+      ],
+      "start_yaw": -2.7002740557200604,
+      "episode_seed": 1843824993,
+      "pointcloud_rng_seed": 1843824993,
+      "episode_id": "anticipatory_005",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        5.574200652762229,
+        13.915641877202958,
+        1.5779396026373298
+      ],
+      "goal_pos": [
+        10.341965655988567,
+        0.17390278460311137,
+        4.343123215959078
+      ],
+      "start_yaw": -1.4436233866289039,
+      "episode_seed": 184566854,
+      "pointcloud_rng_seed": 184566854,
+      "episode_id": "anticipatory_006",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        10.70054588144058,
+        -10.308988127117118,
+        2.860349387592641
+      ],
+      "goal_pos": [
+        4.166296892925814,
+        11.93093384643748,
+        3.072074620787296
+      ],
+      "start_yaw": 2.0232695917494286,
+      "episode_seed": 1497586439,
+      "pointcloud_rng_seed": 1497586439,
+      "episode_id": "anticipatory_007",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -4.157483529586688,
+        9.68688002442541,
+        2.589577164630831
+      ],
+      "goal_pos": [
+        7.313154479795838,
+        -10.819297694192624,
+        3.2151989141551365
+      ],
+      "start_yaw": -0.9738011888247597,
+      "episode_seed": 432652533,
+      "pointcloud_rng_seed": 432652533,
+      "episode_id": "anticipatory_008",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -4.8990930034067155,
+        -0.5443992760852456,
+        2.7789930424127416
+      ],
+      "goal_pos": [
+        5.715753593371655,
+        4.277553850199109,
+        3.595673724534406
+      ],
+      "start_yaw": 0.27364862397998824,
+      "episode_seed": 202244314,
+      "pointcloud_rng_seed": 202244314,
+      "episode_id": "anticipatory_009",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -3.621429321871851,
+        7.694786408926252,
+        3.390013742101944
+      ],
+      "goal_pos": [
+        -8.932065398495077,
+        -8.732701564100786,
+        2.7352530767505643
+      ],
+      "start_yaw": -1.6298971113843406,
+      "episode_seed": 1130604998,
+      "pointcloud_rng_seed": 1130604998,
+      "episode_id": "anticipatory_010",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        4.320280715951473,
+        -4.251398992809092,
+        2.53222173948617
+      ],
+      "goal_pos": [
+        11.748022919803827,
+        5.792740138756699,
+        1.883908765162642
+      ],
+      "start_yaw": 0.8968125602303388,
+      "episode_seed": 2095133046,
+      "pointcloud_rng_seed": 2095133046,
+      "episode_id": "anticipatory_011",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        3.932725851635592,
+        -6.98125256248318,
+        3.0592988769798595
+      ],
+      "goal_pos": [
+        -3.572184625494124,
+        10.636665505848303,
+        2.555316729513501
+      ],
+      "start_yaw": 1.6871683629660295,
+      "episode_seed": 1580016184,
+      "pointcloud_rng_seed": 1580016184,
+      "episode_id": "anticipatory_012",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -0.5931823025125311,
+        0.09949308440795868,
+        3.2241878844048584
+      ],
+      "goal_pos": [
+        -10.918518947707582,
+        -12.045571505285329,
+        4.263292686724148
+      ],
+      "start_yaw": -1.9975362900761648,
+      "episode_seed": 1634535063,
+      "pointcloud_rng_seed": 1634535063,
+      "episode_id": "anticipatory_013",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        2.317710486278287,
+        13.451924404046121,
+        3.0017351843369147
+      ],
+      "goal_pos": [
+        9.950064023031459,
+        -3.598308546443647,
+        2.675844914515524
+      ],
+      "start_yaw": -1.3186562670093738,
+      "episode_seed": 1540770720,
+      "pointcloud_rng_seed": 1540770720,
+      "episode_id": "anticipatory_014",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -9.217696464964945,
+        1.1478798992508263,
+        3.6723292321972885
+      ],
+      "goal_pos": [
+        4.649519361786069,
+        -8.923677506305436,
+        4.068473567115099
+      ],
+      "start_yaw": -0.613812034049839,
+      "episode_seed": 1688060241,
+      "pointcloud_rng_seed": 1688060241,
+      "episode_id": "anticipatory_015",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -7.362919480418594,
+        1.323113266970175,
+        3.6068364467112026
+      ],
+      "goal_pos": [
+        5.917917613172673,
+        -10.58099419684594,
+        3.6915599850972027
+      ],
+      "start_yaw": -0.5866822059503717,
+      "episode_seed": 1102145673,
+      "pointcloud_rng_seed": 1102145673,
+      "episode_id": "anticipatory_016",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -2.105684140989304,
+        -8.14963053797023,
+        1.9371306998900901
+      ],
+      "goal_pos": [
+        -12.34279740886658,
+        12.943958040125871,
+        2.194631677405832
+      ],
+      "start_yaw": 1.9757179887688376,
+      "episode_seed": 275121931,
+      "pointcloud_rng_seed": 275121931,
+      "episode_id": "anticipatory_017",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -8.824429350276066,
+        -12.03028426421005,
+        3.0957753179783998
+      ],
+      "goal_pos": [
+        -7.11185401988269,
+        0.8660123599047065,
+        3.16221393988389
+      ],
+      "start_yaw": 1.171842609742382,
+      "episode_seed": 1803345591,
+      "pointcloud_rng_seed": 1803345591,
+      "episode_id": "anticipatory_018",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -1.474939340364509,
+        5.9652466024039725,
+        4.618399652312318
+      ],
+      "goal_pos": [
+        -7.564597711747905,
+        -6.708230919639664,
+        3.1213923576465095
+      ],
+      "start_yaw": -1.849045070596598,
+      "episode_seed": 967196436,
+      "pointcloud_rng_seed": 967196436,
+      "episode_id": "anticipatory_019",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -1.2354689527643679,
+        1.3468954403812106,
+        2.0804276116528193
+      ],
+      "goal_pos": [
+        12.623348465229881,
+        -8.736351590859577,
+        1.7883617360262765
+      ],
+      "start_yaw": -0.6278122796539265,
+      "episode_seed": 1074497556,
+      "pointcloud_rng_seed": 1074497556,
+      "episode_id": "anticipatory_020",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        8.753452898877086,
+        -3.47344897452426,
+        2.018600302598701
+      ],
+      "goal_pos": [
+        -1.2869117393838092,
+        8.547742333107887,
+        3.889096160246396
+      ],
+      "start_yaw": 2.529000898218773,
+      "episode_seed": 796282693,
+      "pointcloud_rng_seed": 796282693,
+      "episode_id": "anticipatory_021",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -2.1385525964338736,
+        9.504974522119987,
+        2.567733238481262
+      ],
+      "goal_pos": [
+        12.115184229755638,
+        7.492913432701325,
+        2.6355285227174123
+      ],
+      "start_yaw": 0.009399977979712898,
+      "episode_seed": 392022359,
+      "pointcloud_rng_seed": 392022359,
+      "episode_id": "anticipatory_022",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        6.327046548481132,
+        -8.810875672108056,
+        4.371787904406143
+      ],
+      "goal_pos": [
+        -1.0455804480455768,
+        11.495775235544947,
+        2.7628466056769803
+      ],
+      "start_yaw": 1.8868043042948175,
+      "episode_seed": 1990212659,
+      "pointcloud_rng_seed": 1990212659,
+      "episode_id": "anticipatory_023",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        1.8177473666265271,
+        4.955993390234575,
+        3.1098524402393077
+      ],
+      "goal_pos": [
+        11.084249859800732,
+        9.611972106310212,
+        3.821117259905679
+      ],
+      "start_yaw": 0.6710746304311306,
+      "episode_seed": 1678403331,
+      "pointcloud_rng_seed": 1678403331,
+      "episode_id": "anticipatory_024",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        7.02588937544169,
+        10.039945426576239,
+        4.076901636158146
+      ],
+      "goal_pos": [
+        3.379361335170195,
+        -13.594049647072728,
+        1.7090672069659956
+      ],
+      "start_yaw": -1.4675228941237288,
+      "episode_seed": 1382689816,
+      "pointcloud_rng_seed": 1382689816,
+      "episode_id": "anticipatory_025",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -11.618722290944065,
+        -9.461433116837439,
+        4.4283729909026075
+      ],
+      "goal_pos": [
+        7.959091127796153,
+        -9.755631305154315,
+        3.0854534372609366
+      ],
+      "start_yaw": 0.051156569987873324,
+      "episode_seed": 864178267,
+      "pointcloud_rng_seed": 864178267,
+      "episode_id": "anticipatory_026",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        -11.084005924163236,
+        -3.687815568707883,
+        4.105816415232267
+      ],
+      "goal_pos": [
+        3.8948868698083956,
+        13.554202396480967,
+        4.123898724140524
+      ],
+      "start_yaw": 0.8393262819500679,
+      "episode_seed": 1766867110,
+      "pointcloud_rng_seed": 1766867110,
+      "episode_id": "anticipatory_027",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        5.933144810654294,
+        -10.739228710580466,
+        3.1678487860917772
+      ],
+      "goal_pos": [
+        -1.1338300915756516,
+        10.176185434152,
+        2.267013017268155
+      ],
+      "start_yaw": 1.9710045702755021,
+      "episode_seed": 1171300113,
+      "pointcloud_rng_seed": 1171300113,
+      "episode_id": "anticipatory_028",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        5.081357572651591,
+        -11.83218802966525,
+        4.594438924180724
+      ],
+      "goal_pos": [
+        9.70536291454183,
+        -1.1973975206869039,
+        4.374052769085631
+      ],
+      "start_yaw": 1.2057154989967263,
+      "episode_seed": 952224741,
+      "pointcloud_rng_seed": 952224741,
+      "episode_id": "anticipatory_029",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        13.633922148472578,
+        -7.826073671874433,
+        4.461136502239759
+      ],
+      "goal_pos": [
+        -6.862199128479769,
+        -2.533489217798083,
+        3.088001159570902
+      ],
+      "start_yaw": 2.705127348557442,
+      "episode_seed": 967354525,
+      "pointcloud_rng_seed": 967354525,
+      "episode_id": "anticipatory_030",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002",
+      "start_pos": [
+        5.325532003847776,
+        7.023168069188117,
+        3.1183343748551122
+      ],
+      "goal_pos": [
+        13.586892392140296,
+        -4.794517632726599,
+        2.4856720838097983
+      ],
+      "start_yaw": -0.7193325729136424,
+      "episode_seed": 487991439,
+      "pointcloud_rng_seed": 487991439,
+      "episode_id": "anticipatory_031",
+      "role": "anticipatory",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        1.2368978684667997,
+        -6.1267344835776925,
+        3.2916650412107904
+      ],
+      "goal_pos": [
+        -12.116887255793078,
+        2.0495292632160975,
+        2.7551001939448794
+      ],
+      "start_yaw": 2.857490039855024,
+      "episode_seed": 197860369,
+      "pointcloud_rng_seed": 197860369,
+      "episode_id": "dense_recovery_000",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        0.22738031200572983,
+        7.157437948990644,
+        2.7847797157716894
+      ],
+      "goal_pos": [
+        -11.214993023371608,
+        -2.314695621621876,
+        2.0042074547970867
+      ],
+      "start_yaw": -2.577629731896876,
+      "episode_seed": 1190961761,
+      "pointcloud_rng_seed": 1190961761,
+      "episode_id": "dense_recovery_001",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        5.69450086006421,
+        -7.145479171470622,
+        4.665959079408928
+      ],
+      "goal_pos": [
+        -6.491226421536542,
+        -10.772799258344378,
+        2.4500465496811232
+      ],
+      "start_yaw": -2.773399067121871,
+      "episode_seed": 1906728919,
+      "pointcloud_rng_seed": 1906728919,
+      "episode_id": "dense_recovery_002",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        3.6800203747336617,
+        -1.5657669583293838,
+        1.5631507460629326
+      ],
+      "goal_pos": [
+        -4.2806734191462255,
+        -9.059204528153467,
+        3.4683362632722163
+      ],
+      "start_yaw": -2.1068074963153425,
+      "episode_seed": 137046513,
+      "pointcloud_rng_seed": 137046513,
+      "episode_id": "dense_recovery_003",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        3.894775506861187,
+        -1.8550441911687372,
+        4.349556798483213
+      ],
+      "goal_pos": [
+        -0.30308409545171777,
+        13.837241284439873,
+        3.1632325017574416
+      ],
+      "start_yaw": 1.5576866304532717,
+      "episode_seed": 1843166519,
+      "pointcloud_rng_seed": 1843166519,
+      "episode_id": "dense_recovery_004",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        0.7014654982861863,
+        -4.65142971761146,
+        2.7164163554709333
+      ],
+      "goal_pos": [
+        -9.816445849230671,
+        6.18464355017646,
+        3.9917610563689663
+      ],
+      "start_yaw": 2.4717989803416316,
+      "episode_seed": 1777324408,
+      "pointcloud_rng_seed": 1777324408,
+      "episode_id": "dense_recovery_005",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        -5.100390044900285,
+        4.897782117297449,
+        1.7278019444170547
+      ],
+      "goal_pos": [
+        11.295638111540814,
+        10.849239477291452,
+        2.2011351099917498
+      ],
+      "start_yaw": 0.27962092594514093,
+      "episode_seed": 594336918,
+      "pointcloud_rng_seed": 594336918,
+      "episode_id": "dense_recovery_006",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+      "start_pos": [
+        -10.952509668381012,
+        2.452955460540192,
+        4.123104387754017
+      ],
+      "goal_pos": [
+        6.719777279030836,
+        3.16775850285482,
+        3.657493257630196
+      ],
+      "start_yaw": 0.2238775751141876,
+      "episode_seed": 1356488968,
+      "pointcloud_rng_seed": 1356488968,
+      "episode_id": "dense_recovery_007",
+      "role": "dense_recovery",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        -1.05566048793359,
+        -10.267333220060431,
+        4.301899175546796
+      ],
+      "goal_pos": [
+        -7.709623579074972,
+        2.430097783104113,
+        3.0431355381044494
+      ],
+      "start_yaw": 2.3255013106923395,
+      "episode_seed": 354826746,
+      "pointcloud_rng_seed": 354826746,
+      "episode_id": "dense_recovery_008",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        -0.7040056108119614,
+        -0.06520924772791048,
+        2.9130207328598985
+      ],
+      "goal_pos": [
+        2.8228305955654918,
+        -10.70652089592533,
+        4.143132586249168
+      ],
+      "start_yaw": -1.3030987178074567,
+      "episode_seed": 1627981025,
+      "pointcloud_rng_seed": 1627981025,
+      "episode_id": "dense_recovery_009",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        7.6398952010530365,
+        -6.749880936133522,
+        3.452420413362063
+      ],
+      "goal_pos": [
+        0.9227068936286713,
+        -9.941946293775993,
+        2.1534272618602994
+      ],
+      "start_yaw": -2.702210060537318,
+      "episode_seed": 1504361615,
+      "pointcloud_rng_seed": 1504361615,
+      "episode_id": "dense_recovery_010",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        3.0745125716933437,
+        -3.476902549357005,
+        3.697070527605078
+      ],
+      "goal_pos": [
+        9.091127778884662,
+        -3.2146759984579862,
+        1.8229218818319017
+      ],
+      "start_yaw": -0.24728052376216475,
+      "episode_seed": 761338719,
+      "pointcloud_rng_seed": 761338719,
+      "episode_id": "dense_recovery_011",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        4.342909286175665,
+        -8.05594456608902,
+        1.835014904766435
+      ],
+      "goal_pos": [
+        -11.330642013147958,
+        -4.948324162059631,
+        3.18728799874848
+      ],
+      "start_yaw": 3.075383951939943,
+      "episode_seed": 145857092,
+      "pointcloud_rng_seed": 145857092,
+      "episode_id": "dense_recovery_012",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        -5.088974141154742,
+        -3.234825830482812,
+        1.66789394645172
+      ],
+      "goal_pos": [
+        -2.6867870121691535,
+        11.599085511507973,
+        1.618060026505462
+      ],
+      "start_yaw": 1.6122581321788498,
+      "episode_seed": 2084558134,
+      "pointcloud_rng_seed": 2084558134,
+      "episode_id": "dense_recovery_013",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        -1.9993511415501803,
+        10.83847372482548,
+        1.6028905376872462
+      ],
+      "goal_pos": [
+        13.014838772564104,
+        5.282655754137892,
+        4.338615527331031
+      ],
+      "start_yaw": -0.43174607020233324,
+      "episode_seed": 957106590,
+      "pointcloud_rng_seed": 957106590,
+      "episode_id": "dense_recovery_014",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+      "start_pos": [
+        2.5370813706474173,
+        11.922993667004338,
+        3.6197806843481874
+      ],
+      "goal_pos": [
+        -1.2339900556459895,
+        3.767277124326455,
+        4.285430274419499
+      ],
+      "start_yaw": -1.883359648066239,
+      "episode_seed": 1917963003,
+      "pointcloud_rng_seed": 1917963003,
+      "episode_id": "dense_recovery_015",
+      "role": "dense_recovery",
+      "val_pool_index": 1
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        -7.419550424369568,
+        3.664029753037063,
+        3.8074237275667464
+      ],
+      "goal_pos": [
+        -4.860338592102108,
+        13.83293639392506,
+        2.4870070649588505
+      ],
+      "start_yaw": 1.059713963863269,
+      "episode_seed": 1455819992,
+      "pointcloud_rng_seed": 1455819992,
+      "episode_id": "dense_recovery_016",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        10.946353035911038,
+        0.37362331069727084,
+        3.163139599864663
+      ],
+      "goal_pos": [
+        3.992620345207822,
+        5.4874398525061565,
+        1.670025271174511
+      ],
+      "start_yaw": 2.7305618763919313,
+      "episode_seed": 1671565831,
+      "pointcloud_rng_seed": 1671565831,
+      "episode_id": "dense_recovery_017",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        -7.5691731126132025,
+        -1.7469859487466106,
+        2.8226813311979795
+      ],
+      "goal_pos": [
+        -0.8347619581992731,
+        -10.142590199737159,
+        2.3466287704367486
+      ],
+      "start_yaw": -1.0805622817186649,
+      "episode_seed": 1631871624,
+      "pointcloud_rng_seed": 1631871624,
+      "episode_id": "dense_recovery_018",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        7.089094931604368,
+        7.510965721715991,
+        3.2082678653906873
+      ],
+      "goal_pos": [
+        -8.73557949416719,
+        4.5146297253811305,
+        2.1743090014160913
+      ],
+      "start_yaw": -2.6846016155623507,
+      "episode_seed": 417983442,
+      "pointcloud_rng_seed": 417983442,
+      "episode_id": "dense_recovery_019",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        -1.6188692962940117,
+        4.980002256629426,
+        3.4398986345788716
+      ],
+      "goal_pos": [
+        -8.155014222805391,
+        -0.4740825322100939,
+        2.1763382174716672
+      ],
+      "start_yaw": -2.6944468140159215,
+      "episode_seed": 781482251,
+      "pointcloud_rng_seed": 781482251,
+      "episode_id": "dense_recovery_020",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        -0.7823591358366446,
+        3.165813009855839,
+        1.4399771345637349
+      ],
+      "goal_pos": [
+        0.6054012371045836,
+        -6.907064937484776,
+        3.182389580588307
+      ],
+      "start_yaw": -1.543266565142382,
+      "episode_seed": 1002275723,
+      "pointcloud_rng_seed": 1002275723,
+      "episode_id": "dense_recovery_021",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        -11.858847140081044,
+        0.9475295126268133,
+        1.4965063704532449
+      ],
+      "goal_pos": [
+        -1.4776977124254547,
+        -8.70500151756449,
+        2.8600978349041712
+      ],
+      "start_yaw": -0.7590979591425429,
+      "episode_seed": 1068999196,
+      "pointcloud_rng_seed": 1068999196,
+      "episode_id": "dense_recovery_022",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+      "start_pos": [
+        7.89617320447897,
+        -13.273685204115223,
+        2.489580448468299
+      ],
+      "goal_pos": [
+        -4.892674126948625,
+        -10.775058931369012,
+        3.0965497183067057
+      ],
+      "start_yaw": 3.0414217460892217,
+      "episode_seed": 94067870,
+      "pointcloud_rng_seed": 94067870,
+      "episode_id": "dense_recovery_023",
+      "role": "dense_recovery",
+      "val_pool_index": 2
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        -3.0837687194858674,
+        8.073662085318439,
+        2.4836386575655163
+      ],
+      "goal_pos": [
+        -3.926970483300842,
+        -8.894120009060135,
+        3.4868248873328307
+      ],
+      "start_yaw": -1.6400036895083867,
+      "episode_seed": 1173749072,
+      "pointcloud_rng_seed": 1173749072,
+      "episode_id": "dense_recovery_024",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        2.9475071833969757,
+        -11.011182363134465,
+        1.7282207808432248
+      ],
+      "goal_pos": [
+        7.044287743472559,
+        -1.7019722157716668,
+        1.605786645520772
+      ],
+      "start_yaw": 1.43264705285341,
+      "episode_seed": 331334161,
+      "pointcloud_rng_seed": 331334161,
+      "episode_id": "dense_recovery_025",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        2.786168887135833,
+        -5.837513558355637,
+        4.45421437398826
+      ],
+      "goal_pos": [
+        -10.206777902677848,
+        6.596674708022533,
+        1.5712681762962943
+      ],
+      "start_yaw": 2.100878400952749,
+      "episode_seed": 1596387605,
+      "pointcloud_rng_seed": 1596387605,
+      "episode_id": "dense_recovery_026",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        -1.1008154754592567,
+        -10.084586990648837,
+        1.9057164582958621
+      ],
+      "goal_pos": [
+        11.302385544679314,
+        -9.426687773125236,
+        2.1473718297946465
+      ],
+      "start_yaw": -0.01249706750200287,
+      "episode_seed": 1466836457,
+      "pointcloud_rng_seed": 1466836457,
+      "episode_id": "dense_recovery_027",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        -5.230489224780886,
+        4.926028763419115,
+        4.499940687702599
+      ],
+      "goal_pos": [
+        -6.19817262859995,
+        11.684602228072102,
+        3.0170995085701464
+      ],
+      "start_yaw": 1.4576085814403323,
+      "episode_seed": 1981113450,
+      "pointcloud_rng_seed": 1981113450,
+      "episode_id": "dense_recovery_028",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        13.44382601932707,
+        3.165800746053595,
+        3.6216211419551136
+      ],
+      "goal_pos": [
+        8.453224975403618,
+        -0.43345956385184614,
+        1.7679150336196623
+      ],
+      "start_yaw": -2.2310414244262256,
+      "episode_seed": 1599364551,
+      "pointcloud_rng_seed": 1599364551,
+      "episode_id": "dense_recovery_029",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        -0.44611118172293907,
+        -5.54837779762779,
+        3.8210425589857993
+      ],
+      "goal_pos": [
+        7.6007111460886065,
+        -4.216058928093091,
+        4.207912287396116
+      ],
+      "start_yaw": 0.014561698751394181,
+      "episode_seed": 787359109,
+      "pointcloud_rng_seed": 787359109,
+      "episode_id": "dense_recovery_030",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+      "start_pos": [
+        13.101187943831121,
+        2.27819968390299,
+        2.2251530025171617
+      ],
+      "goal_pos": [
+        3.6403325859350097,
+        8.842842681964175,
+        4.2560351270536465
+      ],
+      "start_yaw": 2.439389796861078,
+      "episode_seed": 2077711329,
+      "pointcloud_rng_seed": 2077711329,
+      "episode_id": "dense_recovery_031",
+      "role": "dense_recovery",
+      "val_pool_index": 3
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -7.876200204997625,
+        2.739765801450453,
+        2.2778644291317063
+      ],
+      "goal_pos": [
+        -7.67827048105965,
+        11.867795638270252,
+        3.395496514341011
+      ],
+      "start_yaw": 1.400732672147647,
+      "episode_seed": 882294417,
+      "pointcloud_rng_seed": 882294417,
+      "episode_id": "support_expansion_000",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -9.746481253385308,
+        6.151982659625727,
+        4.340920276846553
+      ],
+      "goal_pos": [
+        3.141314787009307,
+        6.331916719117739,
+        2.2957293336692297
+      ],
+      "start_yaw": 0.18486104544665682,
+      "episode_seed": 699704628,
+      "pointcloud_rng_seed": 699704628,
+      "episode_id": "support_expansion_001",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        2.559646524286073,
+        -6.667599044185012,
+        1.760401625482036
+      ],
+      "goal_pos": [
+        11.389057583709814,
+        5.657102356005577,
+        3.886498463193786
+      ],
+      "start_yaw": 1.0066090455394232,
+      "episode_seed": 1944623249,
+      "pointcloud_rng_seed": 1944623249,
+      "episode_id": "support_expansion_002",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -13.784744196715586,
+        10.499647288271447,
+        1.9238254238411021
+      ],
+      "goal_pos": [
+        -12.050577345135958,
+        -12.314921977155599,
+        1.6099472328118616
+      ],
+      "start_yaw": -1.3943898099538583,
+      "episode_seed": 795556160,
+      "pointcloud_rng_seed": 795556160,
+      "episode_id": "support_expansion_003",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        9.534211697148312,
+        -12.450233756468958,
+        3.9269506114062773
+      ],
+      "goal_pos": [
+        -8.140453652337731,
+        -4.635143072103805,
+        3.2598593991713933
+      ],
+      "start_yaw": 2.4687783133346315,
+      "episode_seed": 163945743,
+      "pointcloud_rng_seed": 163945743,
+      "episode_id": "support_expansion_004",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        3.1420659980431864,
+        -11.78368431879427,
+        4.493148960554485
+      ],
+      "goal_pos": [
+        5.52736992433795,
+        3.6047926788829727,
+        3.5073080626268043
+      ],
+      "start_yaw": 1.716693580323933,
+      "episode_seed": 1008363426,
+      "pointcloud_rng_seed": 1008363426,
+      "episode_id": "support_expansion_005",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -0.6473253797474783,
+        -0.13969715909707858,
+        2.752554094887029
+      ],
+      "goal_pos": [
+        -12.290016981574432,
+        -11.620606511944093,
+        1.6214676271788082
+      ],
+      "start_yaw": -2.362504518094833,
+      "episode_seed": 1708709736,
+      "pointcloud_rng_seed": 1708709736,
+      "episode_id": "support_expansion_006",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -7.614994347927713,
+        0.8015388494165236,
+        4.168022042067491
+      ],
+      "goal_pos": [
+        2.1746883844078404,
+        -13.679595856990163,
+        3.2425788556927615
+      ],
+      "start_yaw": -0.9830624467008927,
+      "episode_seed": 406886645,
+      "pointcloud_rng_seed": 406886645,
+      "episode_id": "support_expansion_007",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -10.137803446856278,
+        -1.9827153281599745,
+        3.922913903971189
+      ],
+      "goal_pos": [
+        -3.9830850093647285,
+        -11.195262157062727,
+        4.034261608372875
+      ],
+      "start_yaw": -0.8207182011488283,
+      "episode_seed": 994157307,
+      "pointcloud_rng_seed": 994157307,
+      "episode_id": "support_expansion_008",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -12.546459505590956,
+        -3.6365211435074123,
+        3.4641385442319885
+      ],
+      "goal_pos": [
+        -7.437776067385398,
+        -12.49530966516206,
+        1.9113761217997882
+      ],
+      "start_yaw": -1.0119266296793878,
+      "episode_seed": 279004308,
+      "pointcloud_rng_seed": 279004308,
+      "episode_id": "support_expansion_009",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -6.725710621862174,
+        -2.472290084611572,
+        3.1169554540796884
+      ],
+      "goal_pos": [
+        4.712087398961703,
+        -9.149325219830642,
+        2.04371733272518
+      ],
+      "start_yaw": -0.6507309075205999,
+      "episode_seed": 1474200732,
+      "pointcloud_rng_seed": 1474200732,
+      "episode_id": "support_expansion_010",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        5.676620820806633,
+        6.328170887201573,
+        1.94902519685955
+      ],
+      "goal_pos": [
+        -0.586234802474646,
+        -8.651565677667577,
+        1.9317808456638375
+      ],
+      "start_yaw": -1.6909310420445232,
+      "episode_seed": 1021568550,
+      "pointcloud_rng_seed": 1021568550,
+      "episode_id": "support_expansion_011",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -13.076220934228456,
+        13.410257318552503,
+        3.119596386335081
+      ],
+      "goal_pos": [
+        8.53518015655699,
+        9.987882107464642,
+        2.7755846237557003
+      ],
+      "start_yaw": 0.11931149147530429,
+      "episode_seed": 709091226,
+      "pointcloud_rng_seed": 709091226,
+      "episode_id": "support_expansion_012",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        0.5153850376902689,
+        5.3776491711659276,
+        3.540615956241047
+      ],
+      "goal_pos": [
+        -10.783946751516543,
+        7.5650097856774785,
+        1.9386145731291253
+      ],
+      "start_yaw": 2.9183723360507585,
+      "episode_seed": 487284116,
+      "pointcloud_rng_seed": 487284116,
+      "episode_id": "support_expansion_013",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -6.796415945961329,
+        -10.256258829891975,
+        4.445644033398967
+      ],
+      "goal_pos": [
+        -7.834405632118014,
+        11.486587436635702,
+        3.1508496872815934
+      ],
+      "start_yaw": 1.8876471469697644,
+      "episode_seed": 1212254291,
+      "pointcloud_rng_seed": 1212254291,
+      "episode_id": "support_expansion_014",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        2.3135490967550325,
+        -13.158812139881293,
+        3.426868831274464
+      ],
+      "goal_pos": [
+        -7.907819161032401,
+        -5.587047769489427,
+        2.477259854826576
+      ],
+      "start_yaw": 2.767477513298319,
+      "episode_seed": 1438414600,
+      "pointcloud_rng_seed": 1438414600,
+      "episode_id": "support_expansion_015",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -4.628727057054926,
+        10.160695871017857,
+        4.532162515446883
+      ],
+      "goal_pos": [
+        9.354792086061934,
+        8.90555376708031,
+        4.275148371306278
+      ],
+      "start_yaw": -0.2544755780975358,
+      "episode_seed": 2019291965,
+      "pointcloud_rng_seed": 2019291965,
+      "episode_id": "support_expansion_016",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        6.067170642231929,
+        7.01064553985676,
+        3.1958412079895635
+      ],
+      "goal_pos": [
+        2.0050697567877656,
+        -6.796288896618861,
+        3.630775856332444
+      ],
+      "start_yaw": -1.830776203773325,
+      "episode_seed": 938776597,
+      "pointcloud_rng_seed": 938776597,
+      "episode_id": "support_expansion_017",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -2.6143045218884655,
+        11.327619850023158,
+        3.0551354120427803
+      ],
+      "goal_pos": [
+        11.70264417882855,
+        -9.376538212640144,
+        4.304306988209857
+      ],
+      "start_yaw": -0.8561291584154406,
+      "episode_seed": 345075200,
+      "pointcloud_rng_seed": 345075200,
+      "episode_id": "support_expansion_018",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        4.158935801735346,
+        -8.430398222059855,
+        1.6942127360889798
+      ],
+      "goal_pos": [
+        13.266178421603637,
+        -4.090668382984408,
+        3.600408612338147
+      ],
+      "start_yaw": 0.4282932139662549,
+      "episode_seed": 1788162810,
+      "pointcloud_rng_seed": 1788162810,
+      "episode_id": "support_expansion_019",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        3.261110552218504,
+        6.863775530900533,
+        3.7664441760369183
+      ],
+      "goal_pos": [
+        -13.033333645497079,
+        -7.746281222889069,
+        4.169342263874076
+      ],
+      "start_yaw": -2.5100616963043154,
+      "episode_seed": 1352408539,
+      "pointcloud_rng_seed": 1352408539,
+      "episode_id": "support_expansion_020",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        13.532984564851507,
+        -1.0759053854116853,
+        3.23843771772972
+      ],
+      "goal_pos": [
+        -1.1908100891630422,
+        3.2978375762291137,
+        3.208911324188595
+      ],
+      "start_yaw": 2.5964055706495732,
+      "episode_seed": 1503807855,
+      "pointcloud_rng_seed": 1503807855,
+      "episode_id": "support_expansion_021",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -12.112961237902624,
+        9.798318203460287,
+        1.926792377765273
+      ],
+      "goal_pos": [
+        0.9067930102776351,
+        -5.121400787227737,
+        3.7581092415072344
+      ],
+      "start_yaw": -1.1010398608509016,
+      "episode_seed": 208792607,
+      "pointcloud_rng_seed": 208792607,
+      "episode_id": "support_expansion_022",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -7.213477593856533,
+        -10.902269202809535,
+        4.6218934187905525
+      ],
+      "goal_pos": [
+        0.01733399187873985,
+        10.640323352511615,
+        2.960174216230117
+      ],
+      "start_yaw": 1.0567701508673746,
+      "episode_seed": 670802254,
+      "pointcloud_rng_seed": 670802254,
+      "episode_id": "support_expansion_023",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        2.1189550463246114,
+        -3.699282482262765,
+        3.6458364812631014
+      ],
+      "goal_pos": [
+        -10.186146795211014,
+        11.880820950885003,
+        2.1835112856892653
+      ],
+      "start_yaw": 2.449692227671415,
+      "episode_seed": 1648932250,
+      "pointcloud_rng_seed": 1648932250,
+      "episode_id": "support_expansion_024",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -1.8336102494324962,
+        -10.030285853935396,
+        3.714424787825263
+      ],
+      "goal_pos": [
+        4.78058895376077,
+        5.855667954485796,
+        4.392513755784906
+      ],
+      "start_yaw": 1.064448387594726,
+      "episode_seed": 1787264314,
+      "pointcloud_rng_seed": 1787264314,
+      "episode_id": "support_expansion_025",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        6.80144007495603,
+        -8.096998755980382,
+        2.597354439755307
+      ],
+      "goal_pos": [
+        -6.413377895529479,
+        9.292183357745145,
+        4.2629494484515185
+      ],
+      "start_yaw": 2.18737503147462,
+      "episode_seed": 934620677,
+      "pointcloud_rng_seed": 934620677,
+      "episode_id": "support_expansion_026",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -8.520693952804884,
+        10.85188993724024,
+        4.403873237278583
+      ],
+      "goal_pos": [
+        -1.6904436501632052,
+        3.1778314383861783,
+        3.4115594544598054
+      ],
+      "start_yaw": -0.7721566433730884,
+      "episode_seed": 1728218298,
+      "pointcloud_rng_seed": 1728218298,
+      "episode_id": "support_expansion_027",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        7.370634153472672,
+        5.068902665142055,
+        3.205718519335785
+      ],
+      "goal_pos": [
+        6.114951621024115,
+        -8.794592616616969,
+        2.9553071440014667
+      ],
+      "start_yaw": -1.7624048651116584,
+      "episode_seed": 1807519525,
+      "pointcloud_rng_seed": 1807519525,
+      "episode_id": "support_expansion_028",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        3.6568279408365783,
+        -13.347208699085288,
+        2.5562431404423633
+      ],
+      "goal_pos": [
+        -13.80478076944598,
+        -0.9954659869578979,
+        3.894047172918352
+      ],
+      "start_yaw": 2.465765612669005,
+      "episode_seed": 832103482,
+      "pointcloud_rng_seed": 832103482,
+      "episode_id": "support_expansion_029",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        0.9074154543430915,
+        -6.238762406169903,
+        2.1730228028056207
+      ],
+      "goal_pos": [
+        5.752521229521623,
+        10.249291056835126,
+        1.5894281028992971
+      ],
+      "start_yaw": 1.4983932878367143,
+      "episode_seed": 1928628491,
+      "pointcloud_rng_seed": 1928628491,
+      "episode_id": "support_expansion_030",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    },
+    {
+      "world_name": "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010",
+      "start_pos": [
+        -0.81998598523694,
+        3.530057576989151,
+        1.844902615536821
+      ],
+      "goal_pos": [
+        5.455194689152645,
+        11.95673484035133,
+        4.147181376905245
+      ],
+      "start_yaw": 1.0103407000289413,
+      "episode_seed": 619179888,
+      "pointcloud_rng_seed": 619179888,
+      "episode_id": "support_expansion_031",
+      "role": "support_expansion",
+      "val_pool_index": 0
+    }
+  ]
+}

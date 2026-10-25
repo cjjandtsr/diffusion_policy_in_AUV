@@ -1,0 +1,93 @@
+diff --git a/model/diffusion/diffusion_vpg.py b/model/diffusion/diffusion_vpg.py
+--- a/model/diffusion/diffusion_vpg.py
++++ b/model/diffusion/diffusion_vpg.py
+@@ -162,17 +162,38 @@ class VPGDiffusion(DiffusionModel):
+             noise_ft = actor(x[ft_indices], t[ft_indices], cond=cond_ft)
+             noise[ft_indices] = noise_ft
+ 
++        # DDIM coefficients are required by both prediction branches below:
++        # epsilon prediction reconstructs x_0, while direct x_0 prediction
++        # still needs alpha_prev to construct the transition mean.
++        native_cpu_scalar = bool(
++            self.use_ddim
++            and deterministic
++            and getattr(self, "native_ddim_cpu_scalar_compat", False)
++            and index is not None
++            and index.numel() > 0
++            and torch.all(index == index.reshape(-1)[0])
++        )
++        if self.use_ddim:
++            if native_cpu_scalar:
++                scalar_index = int(index.reshape(-1)[0].item())
++                alpha = self.native_ddim_alphas_cpu[scalar_index]
++                alpha_prev = self.native_ddim_alphas_prev_cpu[scalar_index]
++                sqrt_one_minus_alpha = (
++                    self.native_ddim_sqrt_one_minus_alphas_cpu[scalar_index]
++                )
++            else:
++                alpha = extract(self.ddim_alphas, index, x.shape)
++                alpha_prev = extract(self.ddim_alphas_prev, index, x.shape)
++                sqrt_one_minus_alpha = extract(
++                    self.ddim_sqrt_one_minus_alphas, index, x.shape
++                )
++
+         # Predict x_0
+         if self.predict_epsilon:
+             if self.use_ddim:
+                 """
+                 x₀ = (xₜ - √ (1-αₜ) ε )/ √ αₜ
+                 """
+-                alpha = extract(self.ddim_alphas, index, x.shape)
+-                alpha_prev = extract(self.ddim_alphas_prev, index, x.shape)
+-                sqrt_one_minus_alpha = extract(
+-                    self.ddim_sqrt_one_minus_alphas, index, x.shape
+-                )
+                 x_recon = (x - sqrt_one_minus_alpha * noise) / (alpha**0.5)
+             else:
+                 """
+@@ -184,9 +205,18 @@ class VPGDiffusion(DiffusionModel):
+                 )
+         else:  # directly predicting x₀
+             x_recon = noise
++            if self.use_ddim:
++                # The DDIM direction term still requires epsilon.  Keep the
++                # actor output as x_0, matching diffusers prediction_type
++                # "sample", and derive epsilon once from the unclipped x_0.
++                noise = (
++                    x - alpha ** (0.5) * x_recon
++                ) / sqrt_one_minus_alpha
+         if self.denoised_clip_value is not None:
+             x_recon.clamp_(-self.denoised_clip_value, self.denoised_clip_value)
+-            if self.use_ddim:
++            if self.use_ddim and getattr(
++                self, "recalculate_epsilon_after_clip", True
++            ):
+                 # re-calculate noise based on clamped x_recon - default to false in HF, but let's use it here
+                 noise = (x - alpha ** (0.5) * x_recon) / sqrt_one_minus_alpha
+ 
+@@ -200,14 +230,23 @@ class VPGDiffusion(DiffusionModel):
+             μ = √ αₜ₋₁ x₀ + √(1-αₜ₋₁ - σₜ²) ε
+             """
+             if deterministic:
+-                etas = torch.zeros((x.shape[0], 1, 1)).to(x.device)
++                if native_cpu_scalar:
++                    etas = torch.zeros((), dtype=alpha.dtype)
++                else:
++                    etas = torch.zeros((x.shape[0], 1, 1)).to(x.device)
+             else:
+                 etas = self.eta(cond).unsqueeze(1)  # B x 1 x (Da or 1)
+             sigma = (
+                 etas
+                 * ((1 - alpha_prev) / (1 - alpha) * (1 - alpha / alpha_prev)) ** 0.5
+             ).clamp_(min=1e-10)
+-            dir_xt_coef = (1.0 - alpha_prev - sigma**2).clamp_(min=0).sqrt()
++            dir_xt_base = (1.0 - alpha_prev - sigma**2).clamp_(min=0)
++            if getattr(self, "native_ddim_pow_compat", False):
++                # Match diffusers.DDIMScheduler.step operator ordering when an
++                # adapter explicitly requests bit-level native parity.
++                dir_xt_coef = dir_xt_base ** 0.5
++            else:
++                dir_xt_coef = dir_xt_base.sqrt()
+             mu = (alpha_prev**0.5) * x_recon + dir_xt_coef * noise
+             var = sigma**2
+             logvar = torch.log(var)

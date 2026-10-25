@@ -1,0 +1,43 @@
+__pycache__/
+*.h5
+*.pt
+*.egg-info/
+ckpts/
+
+raw_data/
+timm/
+.vscode/
+
+deploy_dir/
+deploy_vis_dir/
+ablation_data/
+
+training_data_example/
+
+# --- AUV project additions (2026-10-25) ---
+# Weights / checkpoints
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.engine
+anchor_bank.pt
+
+# Logs / caches
+*.log
+.pytest_cache/
+.ruff_cache/
+
+# Windows junk (WSL shared files)
+*Zone.Identifier
+
+# Scratch / experiment outputs
+temp/
+yaw_diag/
+Improved-3D-Diffusion-Policy/0
+
+# Personal Claude session logs
+.claude/
+
+# IDE
+.idea/

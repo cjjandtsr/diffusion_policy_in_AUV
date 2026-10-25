@@ -1,0 +1,46 @@
+checkpoint: data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt
+vendor_root: third_party/dppo_official_cc7234a
+admission_manifest: /home/cjj/AUV/program/reports/routeA_rl_env_v1/calibration/admission_manifest.json
+worlds_train: /home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/train
+output_dir: data/outputs/dppo_uav_rebuild/e5_dppo_v1
+device: cuda:0
+
+run:
+  seed: 20260827
+  updates: 1
+  rollout_transitions: 128
+  update_epochs: 1
+
+lora:
+  rank: 8
+  alpha: 8.0
+
+critic:
+  hidden_dim: 256
+
+optimizer:
+  actor_lr: 0.0003
+  critic_lr: 0.001
+  weight_decay: 0.01
+
+dppo:
+  gamma_environment: 0.99
+  gae_lambda: 0.95
+  gamma_denoising: 0.8
+  clip_ploss_coef: 0.2
+  min_sampling_std: 0.1
+  min_logprob_std: 0.1
+  value_loss_coefficient: 0.5
+  entropy_loss_coefficient: 0.0
+
+gates:
+  max_approx_kl: 0.2
+  ratio_mean_min: 0.2
+  ratio_mean_max: 5.0
+  max_grad_norm: 0.0
+
+environment:
+  max_episode_steps: 60
+  disturb_enable: true
+
+reward: {}

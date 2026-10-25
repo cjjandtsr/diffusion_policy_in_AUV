@@ -1,0 +1,60 @@
+{
+  "manifest_version": "1.0",
+  "purpose": "A-Official-Core design G0 gate: freeze the pre-implementation baseline so E040-era evidence stays auditable and the code root becomes a git repo",
+  "created_at": "2026-08-06",
+  "baseline_commit": "85ac9f0",
+  "vendor_commit": "f833ee7",
+  "branch": "a-official-core",
+  "environment": {
+    "python": "3.8.20",
+    "torch": "2.4.1+cu121",
+    "cuda": "12.1",
+    "cudnn": "90100",
+    "numpy": "1.23.5",
+    "conda_env": "idp3",
+    "interpreter": "/home/cjj/miniconda3/envs/idp3/bin/python"
+  },
+  "e040_evidence_frozen_copy": {
+    "source_dir": "/mnt/c/Users/cjj/Desktop/IDP3/.rl_audit_20260806",
+    "file_count": 11,
+    "files": {
+      "DPPO_Structural_Refactoring_v2_0.md": "0f437aaa2cab76e428a1be6ba749a65ea440d38a010b0a0282d4111242ff10c6",
+      "STATUS.md": "1b317c0962e7a9c5a7d635ee4584b664be078729e92db421ebacc1589b05a6ef",
+      "TODO.md": "7585b7a81376e99a8ad27e3bb30c0c87276ef8ee7ed50b77d3df6ccd4f66e500",
+      "dp_sampler.py": "7dcd5cbaec76f1cb3bf1b231adccdd58f1c69f704e4cde273c29bb65bc663d8f",
+      "eval_ddpm_paired.py": "a706c75553d061c91804762c536629f9a0b6f0026002cd2c5d2a2261fac4f41a",
+      "kinematic_uav_env_v2.py": "d1168142401ff26714cd20ebe6d72d868275ffe8841ca21e7054493d008384b3",
+      "lora_adapters.py": "e72b238fff90505742db79160e6e01333dd5fc726aae71c2d40a99af86949587",
+      "ppo_trainer.py": "7cce3e33aa2142afef135c414c936cd5963cbe24242ca0b06270fe5c71ffebfe",
+      "reward_v16.py": "187b4491390800b16f64d2f64a7e602b2861064ac5cb7351a9d59b19b9b30550",
+      "train_ddpm_ppo_meanlogp.py": "f2fec7e8744251118690ede2cddbdb07bd8ee4aad9c00edabf3f1417376c5f9a",
+      "train_ddpm_ppo_meanlogp_3_e040.py": "7868d1be8ec9a957b3f9e352bd0185dc3634875bf06a1dbeab04f6e44f1768cf"
+    }
+  },
+  "e040_runtime_artifacts": {
+    "calib_dir": "outputs/ddpm_ppo_e040_calib",
+    "calib_dir_size_bytes": 2684354560,
+    "final_checkpoint": {
+      "path": "outputs/ddpm_ppo_e040_calib/ddpm_ppo_final.pt",
+      "size_bytes": 297119050,
+      "mtime": "2026-08-05T12:25:00"
+    },
+    "logs": {
+      "logs/e040_local_3000.log": {"size_bytes": 246070022, "mtime": "2026-08-05T12:25:00"},
+      "logs/eval_e040_layerA.log": {"size_bytes": 7605, "mtime": "2026-08-05T13:45:00"},
+      "logs/eval_e040_rl_test.log": {"size_bytes": 6517, "mtime": "2026-08-05T14:01:00"}
+    }
+  },
+  "vendor_freeze": {
+    "path": "third_party/dppo_official_cc7234a",
+    "upstream": "https://github.com/irom-princeton/dppo",
+    "commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+    "license": "MIT",
+    "files": 399,
+    "checksum_file": "third_party/dppo_official_cc7234a/SHA256SUMS"
+  },
+  "known_open_items": [
+    "P0-1: Gazebo-kinematic equivalence freeze fixture path NOT located (explorer subagent running); exec_steps authority pending -> DoD-A BLOCKED until resolved",
+    "P0-2: Zread review of design v1.0 not yet performed"
+  ]
+}

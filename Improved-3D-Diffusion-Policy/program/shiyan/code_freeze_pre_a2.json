@@ -1,0 +1,849 @@
+{
+  "timestamp_utc": 1782800871,
+  "hostname": "autodl-container-86454da935-718a6793",
+  "working_dir": "/root/autodl-tmp/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+  "is_git_repo": false,
+  "files": [
+    {
+      "md5": "85ce73bc0743d545211f851d988df422",
+      "timestamp": 1782450070,
+      "size_bytes": 8452,
+      "path": "./acceptance_kinematic.py\r"
+    },
+    {
+      "md5": "0e25b37a0782405fb3036727d5ed0c98",
+      "timestamp": 1778811909,
+      "size_bytes": 19012,
+      "path": "./analyze_honest_baseline.py\r"
+    },
+    {
+      "md5": "44a062660792016eedce9f889ee7356d",
+      "timestamp": 1780990841,
+      "size_bytes": 15778,
+      "path": "./bench_inference.py\r"
+    },
+    {
+      "md5": "35f7400b8ab066a585f3692881346427",
+      "timestamp": 1776834371,
+      "size_bytes": 3621,
+      "path": "./data/outputs/2026.04.22/13.06.10_train_diffusion_unet_hybrid_drone_trajectory/.hydra/config.yaml\r"
+    },
+    {
+      "md5": "c2e9619ef7d33dc351b02d8be5858e43",
+      "timestamp": 1776834371,
+      "size_bytes": 3988,
+      "path": "./data/outputs/2026.04.22/13.06.10_train_diffusion_unet_hybrid_drone_trajectory/.hydra/hydra.yaml\r"
+    },
+    {
+      "md5": "070b54596fa89ba05fcb91ec3fc8eb88",
+      "timestamp": 1776834371,
+      "size_bytes": 201,
+      "path": "./data/outputs/2026.04.22/13.06.10_train_diffusion_unet_hybrid_drone_trajectory/.hydra/overrides.yaml\r"
+    },
+    {
+      "md5": "2414b0b0b71d5164419c098857feb7ac",
+      "timestamp": 1778926184,
+      "size_bytes": 9621,
+      "path": "./deploy.py\r"
+    },
+    {
+      "md5": "c530ee716eeb18dcf16d9e0e60a179d3",
+      "timestamp": 1778987359,
+      "size_bytes": 5214,
+      "path": "./diag_val_dataset.py\r"
+    },
+    {
+      "md5": "e63c8efb0d32cbefe893720d3ec476d1",
+      "timestamp": 1782736715,
+      "size_bytes": 1739,
+      "path": "./diffusion_policy_3d/common/checkpoint_util.py\r"
+    },
+    {
+      "md5": "6513b78c98fe238d8405779c039b20c2",
+      "timestamp": 1782736714,
+      "size_bytes": 2273,
+      "path": "./diffusion_policy_3d/common/gr1_action_util.py\r"
+    },
+    {
+      "md5": "699b5b5af3c08c5034a06da8341f8bb0",
+      "timestamp": 1782736716,
+      "size_bytes": 3733,
+      "path": "./diffusion_policy_3d/common/json_logger.py\r"
+    },
+    {
+      "md5": "5b0fcd289b08183fcc36c5e98f590719",
+      "timestamp": 1782736715,
+      "size_bytes": 1374,
+      "path": "./diffusion_policy_3d/common/logger_util.py\r"
+    },
+    {
+      "md5": "87b96b1005e4abd0dbf7de493eaf46d4",
+      "timestamp": 1782736716,
+      "size_bytes": 1261,
+      "path": "./diffusion_policy_3d/common/model_util.py\r"
+    },
+    {
+      "md5": "b6825f8fd0f977fb3c11c92d54e34832",
+      "timestamp": 1782736715,
+      "size_bytes": 12137,
+      "path": "./diffusion_policy_3d/common/multi_realsense.py\r"
+    },
+    {
+      "md5": "9da787539992d552c4c34d2642e445d5",
+      "timestamp": 1782736716,
+      "size_bytes": 2713,
+      "path": "./diffusion_policy_3d/common/pytorch_util.py\r"
+    },
+    {
+      "md5": "29378e07e65802738868f52092de2cc7",
+      "timestamp": 1782736716,
+      "size_bytes": 20946,
+      "path": "./diffusion_policy_3d/common/replay_buffer.py\r"
+    },
+    {
+      "md5": "50345e5a86114be84e637f1355a214dd",
+      "timestamp": 1782736715,
+      "size_bytes": 8932,
+      "path": "./diffusion_policy_3d/common/rotation_util.py\r"
+    },
+    {
+      "md5": "45821d9f37049f8dbfa47da9fe94a078",
+      "timestamp": 1782736715,
+      "size_bytes": 5894,
+      "path": "./diffusion_policy_3d/common/sampler.py\r"
+    },
+    {
+      "md5": "266b72c99728974240161af8b2a1fcb1",
+      "timestamp": 1782736703,
+      "size_bytes": 3520,
+      "path": "./diffusion_policy_3d/config/dp_224x224_r3m.yaml\r"
+    },
+    {
+      "md5": "9f2e4e72cf7d1afc42010c83b7a4b715",
+      "timestamp": 1782736705,
+      "size_bytes": 3374,
+      "path": "./diffusion_policy_3d/config/drone_idp3.yaml\r"
+    },
+    {
+      "md5": "eae6997dc360c15cd3ef7679872ce188",
+      "timestamp": 1782736703,
+      "size_bytes": 3339,
+      "path": "./diffusion_policy_3d/config/idp3_1.yaml\r"
+    },
+    {
+      "md5": "cc12b1dd8c94e191eb397bf7d0400655",
+      "timestamp": 1782736703,
+      "size_bytes": 3561,
+      "path": "./diffusion_policy_3d/config/idp3_V4.yaml\r"
+    },
+    {
+      "md5": "14501711dd17925f5b2966c1688d3f35",
+      "timestamp": 1782736703,
+      "size_bytes": 3492,
+      "path": "./diffusion_policy_3d/config/idp3_v5v6.yaml\r"
+    },
+    {
+      "md5": "9a83dea05ed48827ac19bf79e0a5a470",
+      "timestamp": 1782736703,
+      "size_bytes": 3492,
+      "path": "./diffusion_policy_3d/config/idp3_v7.yaml\r"
+    },
+    {
+      "md5": "f5b10f66c849496cb506ca8f0210eafb",
+      "timestamp": 1782736703,
+      "size_bytes": 3496,
+      "path": "./diffusion_policy_3d/config/idp3.yaml\r"
+    },
+    {
+      "md5": "5a217bcbf85b5647943422c19eb6bb42",
+      "timestamp": 1782736704,
+      "size_bytes": 567,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_1_1.yaml\r"
+    },
+    {
+      "md5": "07cb8061ca1db6340742c98d42d9475c",
+      "timestamp": 1782736704,
+      "size_bytes": 674,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_1.yaml\r"
+    },
+    {
+      "md5": "c615c9767b298bd9263db94bfe071a11",
+      "timestamp": 1782736704,
+      "size_bytes": 3702,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_fm_v9_2.yaml\r"
+    },
+    {
+      "md5": "3a694692383eb2b45a88676b726d9110",
+      "timestamp": 1782736704,
+      "size_bytes": 3736,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_fm.yaml\r"
+    },
+    {
+      "md5": "f9bac8827b03e91fcb057c70f4f0ad49",
+      "timestamp": 1782736704,
+      "size_bytes": 621,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_v4.yaml\r"
+    },
+    {
+      "md5": "3ec75ac540a688d4b44b92cfbde7fd93",
+      "timestamp": 1782736704,
+      "size_bytes": 621,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_v5.yaml\r"
+    },
+    {
+      "md5": "53721f4709d7ced8659e2376cb87b013",
+      "timestamp": 1782736704,
+      "size_bytes": 620,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_v6.yaml\r"
+    },
+    {
+      "md5": "07cb8061ca1db6340742c98d42d9475c",
+      "timestamp": 1782736704,
+      "size_bytes": 674,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory_v7.yaml\r"
+    },
+    {
+      "md5": "f5b10f66c849496cb506ca8f0210eafb",
+      "timestamp": 1782736704,
+      "size_bytes": 3496,
+      "path": "./diffusion_policy_3d/config/task/drone_trajectory.yaml\r"
+    },
+    {
+      "md5": "fe3b34bea21c4cfb15d690e33669e550",
+      "timestamp": 1782736704,
+      "size_bytes": 593,
+      "path": "./diffusion_policy_3d/config/task/gr1_dex-3d.yaml\r"
+    },
+    {
+      "md5": "419d90e63a81f8680c6623be30c4ad29",
+      "timestamp": 1782736703,
+      "size_bytes": 573,
+      "path": "./diffusion_policy_3d/config/task/gr1_dex-image.yaml\r"
+    },
+    {
+      "md5": "17c8340bb597080f772b4cf14766c504",
+      "timestamp": 1782736702,
+      "size_bytes": 3494,
+      "path": "./diffusion_policy_3d/dataset/base_dataset.py\r"
+    },
+    {
+      "md5": "20788cd8aadd13f753a100c817e6208f",
+      "timestamp": 1782736702,
+      "size_bytes": 11510,
+      "path": "./diffusion_policy_3d/dataset/drone_dataset.py\r"
+    },
+    {
+      "md5": "f7a5d4c889d9d62720144e07cc29dde3",
+      "timestamp": 1782736702,
+      "size_bytes": 22344,
+      "path": "./diffusion_policy_3d/dataset/drone_dataset_v9_2.py\r"
+    },
+    {
+      "md5": "4e9add7ea1bc08166d3147c1202ec1fb",
+      "timestamp": 1782736702,
+      "size_bytes": 12900,
+      "path": "./diffusion_policy_3d/dataset/drone_dataset_v9.py\r"
+    },
+    {
+      "md5": "786af4fe8cdde412bd75c8d9a381cd75",
+      "timestamp": 1782736702,
+      "size_bytes": 209,
+      "path": "./diffusion_policy_3d/dataset/__init__.py\r"
+    },
+    {
+      "md5": "689a9b326d447ece3e2647c16b0984b5",
+      "timestamp": 1782736719,
+      "size_bytes": 6896,
+      "path": "./diffusion_policy_3d/env/collision_geom.py\r"
+    },
+    {
+      "md5": "04f934faafb5bd6737486090d3bcc8a9",
+      "timestamp": 1782736718,
+      "size_bytes": 7916,
+      "path": "./diffusion_policy_3d/env/dsrl_wrapper.py\r"
+    },
+    {
+      "md5": "00e0367a8bf0ef2185751d8772958709",
+      "timestamp": 1782800446,
+      "size_bytes": 21364,
+      "path": "./diffusion_policy_3d/env/gazebo_uav_env.py\r"
+    },
+    {
+      "md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "timestamp": 1782736719,
+      "size_bytes": 0,
+      "path": "./diffusion_policy_3d/env/__init__.py\r"
+    },
+    {
+      "md5": "f9ff81444030f964aa89215f8365afed",
+      "timestamp": 1782800442,
+      "size_bytes": 33184,
+      "path": "./diffusion_policy_3d/env/kinematic_uav_env.py\r"
+    },
+    {
+      "md5": "1d75f91f9aff410c1df246b2b25d73c5",
+      "timestamp": 1782800443,
+      "size_bytes": 31204,
+      "path": "./diffusion_policy_3d/env/kinematic_uav_env_v2.py\r"
+    },
+    {
+      "md5": "02053e3b07f7bae6b7f79149a3445056",
+      "timestamp": 1782800445,
+      "size_bytes": 46623,
+      "path": "./diffusion_policy_3d/env/reward_v13.py\r"
+    },
+    {
+      "md5": "b7a58a36957230b2b7db543bfa490641",
+      "timestamp": 1782736719,
+      "size_bytes": 3350,
+      "path": "./diffusion_policy_3d/env/test_collision_fix.py\r"
+    },
+    {
+      "md5": "079b15b408fc1abeca43b3ac9d3f1e49",
+      "timestamp": 1782736719,
+      "size_bytes": 25927,
+      "path": "./diffusion_policy_3d/env/test_kinematic.py\r"
+    },
+    {
+      "md5": "3b8807b5536b87bf4d81d058c7930ff1",
+      "timestamp": 1782736716,
+      "size_bytes": 6696,
+      "path": "./diffusion_policy_3d/env/traj_utils.py\r"
+    },
+    {
+      "md5": "329baab7f45058c0df4d03929c07a237",
+      "timestamp": 1782736709,
+      "size_bytes": 19830,
+      "path": "./diffusion_policy_3d/model/common/collision_loss.py\r"
+    },
+    {
+      "md5": "1daeeb60565ec0fe80910a10bbda82fc",
+      "timestamp": 1782736708,
+      "size_bytes": 20798,
+      "path": "./diffusion_policy_3d/model/common/collision_loss_v9_1.py\r"
+    },
+    {
+      "md5": "a1c5eaad13d7244871c046d02012503b",
+      "timestamp": 1782736710,
+      "size_bytes": 17319,
+      "path": "./diffusion_policy_3d/model/common/collision_loss_v9_graded.py\r"
+    },
+    {
+      "md5": "abcb548f2be000dfbf2fa871b95f7fb5",
+      "timestamp": 1782736708,
+      "size_bytes": 22364,
+      "path": "./diffusion_policy_3d/model/common/collision_loss_v9.py\r"
+    },
+    {
+      "md5": "29094e7a4d2a47e6b4aa84539ad1b122",
+      "timestamp": 1782736709,
+      "size_bytes": 1369,
+      "path": "./diffusion_policy_3d/model/common/dict_of_tensor_mixin.py\r"
+    },
+    {
+      "md5": "f1cc96c81e5ef312122967385cc76d55",
+      "timestamp": 1782736710,
+      "size_bytes": 1968,
+      "path": "./diffusion_policy_3d/model/common/lr_scheduler.py\r"
+    },
+    {
+      "md5": "6dc7d705f83542c44372766c119cb9b4",
+      "timestamp": 1782736710,
+      "size_bytes": 11683,
+      "path": "./diffusion_policy_3d/model/common/m1_verify_synthetic.py\r"
+    },
+    {
+      "md5": "d93665e8dc2e8a99e0418d4df29285f9",
+      "timestamp": 1782736710,
+      "size_bytes": 334,
+      "path": "./diffusion_policy_3d/model/common/module_attr_mixin.py\r"
+    },
+    {
+      "md5": "a26d1f4f79bcbe62668449aec615114b",
+      "timestamp": 1782736708,
+      "size_bytes": 14468,
+      "path": "./diffusion_policy_3d/model/common/normalizer.py\r"
+    },
+    {
+      "md5": "60c51678538f6c6f7e07d7e8b59dcade",
+      "timestamp": 1782736709,
+      "size_bytes": 1717,
+      "path": "./diffusion_policy_3d/model/common/prev_traj_encoder.py\r"
+    },
+    {
+      "md5": "29c59ac0a538c2eb1bf01af4bfa780fc",
+      "timestamp": 1782736708,
+      "size_bytes": 657,
+      "path": "./diffusion_policy_3d/model/common/shape_util.py\r"
+    },
+    {
+      "md5": "0c4958c10d6ae84aca1037879c332a7d",
+      "timestamp": 1782737023,
+      "size_bytes": 24636,
+      "path": "./diffusion_policy_3d/model/common/synth_pointcloud.py\r"
+    },
+    {
+      "md5": "41a2df81ec28112df550d5a3c4d2a06e",
+      "timestamp": 1782736709,
+      "size_bytes": 30262,
+      "path": "./diffusion_policy_3d/model/common/tensor_util.py\r"
+    },
+    {
+      "md5": "c27473beb722d96cf2f7917380dbf791",
+      "timestamp": 1782736707,
+      "size_bytes": 13110,
+      "path": "./diffusion_policy_3d/model/diffusion/conditional_unet1d.py\r"
+    },
+    {
+      "md5": "7c88dba8362b207dc1bfe022e015e790",
+      "timestamp": 1782736706,
+      "size_bytes": 1223,
+      "path": "./diffusion_policy_3d/model/diffusion/conv1d_components.py\r"
+    },
+    {
+      "md5": "f3f038a789330747847cdb21f874307b",
+      "timestamp": 1782736707,
+      "size_bytes": 3304,
+      "path": "./diffusion_policy_3d/model/diffusion/ema_model.py\r"
+    },
+    {
+      "md5": "ab35210679983b579887c6ae9b7a8d94",
+      "timestamp": 1782736706,
+      "size_bytes": 7979,
+      "path": "./diffusion_policy_3d/model/diffusion/mask_generator.py\r"
+    },
+    {
+      "md5": "ce0c44a51bd95c2122f7c7a5c8d7f050",
+      "timestamp": 1782736706,
+      "size_bytes": 480,
+      "path": "./diffusion_policy_3d/model/diffusion/positional_embedding.py\r"
+    },
+    {
+      "md5": "e1eb0121b52f9e6ce812ce87cbf95074",
+      "timestamp": 1782736707,
+      "size_bytes": 23146,
+      "path": "./diffusion_policy_3d/model/rl/chunk_critic.py\r"
+    },
+    {
+      "md5": "ddf87baee422f18d5cb72d172c43160f",
+      "timestamp": 1782736711,
+      "size_bytes": 1657,
+      "path": "./diffusion_policy_3d/model/vision_3d/multi_stage_pointnet.py\r"
+    },
+    {
+      "md5": "fc91dd3ce4a27072e9cba9412f4423ef",
+      "timestamp": 1782736711,
+      "size_bytes": 5839,
+      "path": "./diffusion_policy_3d/model/vision_3d/pointnet_extractor.py\r"
+    },
+    {
+      "md5": "4447aecfd13b80b31d5199119f435c6d",
+      "timestamp": 1782736711,
+      "size_bytes": 10880,
+      "path": "./diffusion_policy_3d/model/vision_3d/pointnet_plus_plus_encoder.py\r"
+    },
+    {
+      "md5": "cee2967ec052fbd0eb9b0eb0470e67f8",
+      "timestamp": 1782736711,
+      "size_bytes": 1946,
+      "path": "./diffusion_policy_3d/model/vision_3d/point_process.py\r"
+    },
+    {
+      "md5": "6c1fb3c637a3ea779ab6411b2d977542",
+      "timestamp": 1782736706,
+      "size_bytes": 13002,
+      "path": "./diffusion_policy_3d/model/vision/crop_randomizer.py\r"
+    },
+    {
+      "md5": "b109881634b8aafd1ce1d9b3d5dd49dd",
+      "timestamp": 1782736705,
+      "size_bytes": 717,
+      "path": "./diffusion_policy_3d/model/vision/model_getter.py\r"
+    },
+    {
+      "md5": "0893ce7bf27724de16c489800df3a20a",
+      "timestamp": 1782736706,
+      "size_bytes": 13851,
+      "path": "./diffusion_policy_3d/model/vision/timm_obs_encoder.py\r"
+    },
+    {
+      "md5": "369e7558331be3da596f761c97fff88f",
+      "timestamp": 1782736713,
+      "size_bytes": 1272,
+      "path": "./diffusion_policy_3d/policy/anchor_head.py\r"
+    },
+    {
+      "md5": "52e015e240b68cdd3bee32a2d1938929",
+      "timestamp": 1782736713,
+      "size_bytes": 816,
+      "path": "./diffusion_policy_3d/policy/base_policy.py\r"
+    },
+    {
+      "md5": "e4e5e1ec274e531965c13cb552197160",
+      "timestamp": 1782736714,
+      "size_bytes": 10016,
+      "path": "./diffusion_policy_3d/policy/critic_network.py\r"
+    },
+    {
+      "md5": "86e6383509495f2653b0894a517aed18",
+      "timestamp": 1782736711,
+      "size_bytes": 13625,
+      "path": "./diffusion_policy_3d/policy/diffusion_image_policy.py\r"
+    },
+    {
+      "md5": "a29f5d0f5b862d78519c45b0f8125974",
+      "timestamp": 1782736712,
+      "size_bytes": 15263,
+      "path": "./diffusion_policy_3d/policy/diffusion_pointcloud_policy.py\r"
+    },
+    {
+      "md5": "61d9874af403fd0cd5395310a5b21760",
+      "timestamp": 1782736713,
+      "size_bytes": 5581,
+      "path": "./diffusion_policy_3d/policy/fm_base_policy.py\r"
+    },
+    {
+      "md5": "67adfa19b34e0fdcc99a864b9e540634",
+      "timestamp": 1782736713,
+      "size_bytes": 35054,
+      "path": "./diffusion_policy_3d/policy/phase1a_policy_fm.py\r"
+    },
+    {
+      "md5": "cf1ef859465f68d269a10ccaa4a88292",
+      "timestamp": 1782736713,
+      "size_bytes": 36208,
+      "path": "./diffusion_policy_3d/policy/phase1a_policy_fm_rl.py\r"
+    },
+    {
+      "md5": "ac9a78cb1bca8dbf5d04455da3e028d7",
+      "timestamp": 1782736714,
+      "size_bytes": 34108,
+      "path": "./diffusion_policy_3d/policy/phase1a_policy_fm_v9_1.py\r"
+    },
+    {
+      "md5": "2349d7f478a55a96170b26c9a7fe0f33",
+      "timestamp": 1782736714,
+      "size_bytes": 35756,
+      "path": "./diffusion_policy_3d/policy/phase1a_policy_fm_v9_2.py\r"
+    },
+    {
+      "md5": "e950dd5d89237cabd002479692e5f4ca",
+      "timestamp": 1782736713,
+      "size_bytes": 33289,
+      "path": "./diffusion_policy_3d/policy/phase1a_policy_fm_v9.py\r"
+    },
+    {
+      "md5": "6453036838fd61c2d77542cf0e8779f1",
+      "timestamp": 1782736713,
+      "size_bytes": 19969,
+      "path": "./diffusion_policy_3d/policy/phase1a_policy_prevcond.py\r"
+    },
+    {
+      "md5": "3802c25a5dae46ebbae1ce12e1a405ff",
+      "timestamp": 1782736711,
+      "size_bytes": 31928,
+      "path": "./diffusion_policy_3d/policy/phase1a_policy.py\r"
+    },
+    {
+      "md5": "531d13d7b7ba763ad3e8c03b715e7cee",
+      "timestamp": 1782736712,
+      "size_bytes": 4592,
+      "path": "./diffusion_policy_3d/policy/reinflow_noise_module.py\r"
+    },
+    {
+      "md5": "eda423ebe51f072596310be41dd1634c",
+      "timestamp": 1782736712,
+      "size_bytes": 39541,
+      "path": "./diffusion_policy_3d/policy/routea_reinflow_fm_policy.py\r"
+    },
+    {
+      "md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "timestamp": 1782736705,
+      "size_bytes": 0,
+      "path": "./diffusion_policy_3d/rl/__init__.py\r"
+    },
+    {
+      "md5": "1260f08e3c4417f79f3dab3628644cb7",
+      "timestamp": 1782800154,
+      "size_bytes": 14121,
+      "path": "./diffusion_policy_3d/rl/routea_replay_buffer.py\r"
+    },
+    {
+      "md5": "d8ced836a9f847edf5c026405f4a8649",
+      "timestamp": 1782736703,
+      "size_bytes": 12079,
+      "path": "./diffusion_policy_3d/training/p0_4_instrumentation.py\r"
+    },
+    {
+      "md5": "062e70284b5f21c71e9b2bf0111f8f1a",
+      "timestamp": 1782736720,
+      "size_bytes": 5911,
+      "path": "./diffusion_policy_3d/workspace/base_workspace.py\r"
+    },
+    {
+      "md5": "c1e49e82cdb2cd10ee58ece4ae31def5",
+      "timestamp": 1782736719,
+      "size_bytes": 15971,
+      "path": "./diffusion_policy_3d/workspace/dp_workspace.py\r"
+    },
+    {
+      "md5": "3bff8198814c5e4d4bb6e97a2896a714",
+      "timestamp": 1782736720,
+      "size_bytes": 13677,
+      "path": "./diffusion_policy_3d/workspace/idp3_workspace.py\r"
+    },
+    {
+      "md5": "2898d7f9394bbf7568c934355576d7c4",
+      "timestamp": 1780317297,
+      "size_bytes": 21844,
+      "path": "./eval_chunk_coherence.py\r"
+    },
+    {
+      "md5": "64182c33a2759ba62644f9ce3f1cb5f7",
+      "timestamp": 1780463442,
+      "size_bytes": 27523,
+      "path": "./eval_chunk_coherence_v2.py\r"
+    },
+    {
+      "md5": "1baa0880e338a90f402d204637c03535",
+      "timestamp": 1782370067,
+      "size_bytes": 8749,
+      "path": "./eval_dsrl_ood.py\r"
+    },
+    {
+      "md5": "5a7b565bfd1ea966428d91660ee521e7",
+      "timestamp": 1782625116,
+      "size_bytes": 18032,
+      "path": "./eval_paired.py\r"
+    },
+    {
+      "md5": "799006c400d8d2de5e2c6a8d609669a9",
+      "timestamp": 1782697161,
+      "size_bytes": 20669,
+      "path": "./eval_reward_v13_oldreward_baseline.py\r"
+    },
+    {
+      "md5": "f37ae9181456b25e31d9f64ce88fa715",
+      "timestamp": 1782652094,
+      "size_bytes": 11296,
+      "path": "./eval_reward_v13.py\r"
+    },
+    {
+      "md5": "9a121d176433177ff64741f79a5dc000",
+      "timestamp": 1782695894,
+      "size_bytes": 33858,
+      "path": "./eval_reward_v13_short.py\r"
+    },
+    {
+      "md5": "763134819fcfad1265154bafc9676821",
+      "timestamp": 1782628335,
+      "size_bytes": 6054,
+      "path": "./generate_seed_bank.py\r"
+    },
+    {
+      "md5": "49bcad245f45408e579b55c51a4c4de5",
+      "timestamp": 1780280217,
+      "size_bytes": 22796,
+      "path": "./layer1_jerk_stab_patch.py\r"
+    },
+    {
+      "md5": "ba0dbc01165bebdcc98d4480d1840346",
+      "timestamp": 1769396444,
+      "size_bytes": 2696,
+      "path": "./monitor_loss.py\r"
+    },
+    {
+      "md5": "e3a45bc388b4467ff38f48ccebb04fef",
+      "timestamp": 1779532749,
+      "size_bytes": 12333,
+      "path": "./open_loop_eval_fm.py\r"
+    },
+    {
+      "md5": "3d89fc8cb1567acfcf2a6759c6343794",
+      "timestamp": 1779532748,
+      "size_bytes": 12773,
+      "path": "./open_loop_eval.py\r"
+    },
+    {
+      "md5": "8c50696cf475c153907fa04d52ad5056",
+      "timestamp": 1778926184,
+      "size_bytes": 12152,
+      "path": "./phase2_analyze_sweep.py\r"
+    },
+    {
+      "md5": "652a58df5af443e6cc152e9691bcaf91",
+      "timestamp": 1780317297,
+      "size_bytes": 15152,
+      "path": "./plot_loss.py\r"
+    },
+    {
+      "md5": "5d770503e7ec1ac508fad5866766b009",
+      "timestamp": 1776933274,
+      "size_bytes": 2967,
+      "path": "./run_eval.py\r"
+    },
+    {
+      "md5": "3a4f0026472836a6336a72cfd8b8cafd",
+      "timestamp": 1778811909,
+      "size_bytes": 18296,
+      "path": "./scan_ego_obstacle_margin.py\r"
+    },
+    {
+      "md5": "2a7552fd1a40863a13f4c1da88b54a1d",
+      "timestamp": 1782736722,
+      "size_bytes": 1299,
+      "path": "./scripts/sync_kinematic.sh\r"
+    },
+    {
+      "md5": "fedd4ca490ec2484abd33665071d8860",
+      "timestamp": 1782736721,
+      "size_bytes": 44205,
+      "path": "./scripts/train_a0_critic_warmup.py\r"
+    },
+    {
+      "md5": "892ea595403be5679bfde7d629ad43a6",
+      "timestamp": 1782737022,
+      "size_bytes": 66977,
+      "path": "./scripts/train_a1_1k_stability.py\r"
+    },
+    {
+      "md5": "d7629d330adaeb5dcc76d1132feca44a",
+      "timestamp": 1782800153,
+      "size_bytes": 120032,
+      "path": "./scripts/train_a2_10k_capability.py\r"
+    },
+    {
+      "md5": "c41e3ed6a9301c30922a2e26d0d19a59",
+      "timestamp": 1750002768,
+      "size_bytes": 116,
+      "path": "./setup.py\r"
+    },
+    {
+      "md5": "fcc12904b9bf33711175d706ff15db30",
+      "timestamp": 1780990375,
+      "size_bytes": 8153,
+      "path": "./test_coord_fix.py\r"
+    },
+    {
+      "md5": "09bbaa0001fc80fabc0d1a675bc7c2ea",
+      "timestamp": 1777195844,
+      "size_bytes": 7392,
+      "path": "./test_dataset.py\r"
+    },
+    {
+      "md5": "8cfebcd893f2a92fc6f6b1a855c1b84b",
+      "timestamp": 1782800843,
+      "size_bytes": 30811,
+      "path": "./test_reward_v13.py\r"
+    },
+    {
+      "md5": "d539fc6f8af32df1013139c9a9e6cccb",
+      "timestamp": 1782716564,
+      "size_bytes": 24490,
+      "path": "./test_routea_actor_wrapper.py\r"
+    },
+    {
+      "md5": "bc7d81c271d38ebd04430d661d0ea2ad",
+      "timestamp": 1781442936,
+      "size_bytes": 9624,
+      "path": "./test_synth_pointcloud.py\r"
+    },
+    {
+      "md5": "7456876bbd710fe7fe798bf9bb5b63f8",
+      "timestamp": 1782800796,
+      "size_bytes": 5187,
+      "path": "./tools/build_offline_density.py\r"
+    },
+    {
+      "md5": "a58f293e94dbba5159cb09bb39404284",
+      "timestamp": 1782800798,
+      "size_bytes": 24847,
+      "path": "./tools/p0_3_guard_loop_audit.py\r"
+    },
+    {
+      "md5": "8bb32b4da94820c2d04145731ea7eef6",
+      "timestamp": 1782800799,
+      "size_bytes": 17571,
+      "path": "./tools/p0_5_stochastic_path_toy_test.py\r"
+    },
+    {
+      "md5": "432d0968e1c4ee8e33746b0945e42aa4",
+      "timestamp": 1782800801,
+      "size_bytes": 12370,
+      "path": "./tools/p0_6_bc_variance_calibration.py\r"
+    },
+    {
+      "md5": "9f4138c881bf686358706f5be39465b7",
+      "timestamp": 1782800802,
+      "size_bytes": 11219,
+      "path": "./tools/p0_7_preflight_summary.py\r"
+    },
+    {
+      "md5": "2fb8cf2440a6c1e95f1eaae3094d8b27",
+      "timestamp": 1782370069,
+      "size_bytes": 13139,
+      "path": "./train_dsrl_uav.py\r"
+    },
+    {
+      "md5": "7b2e33598e35cc8576b769e7677a766c",
+      "timestamp": 1781186815,
+      "size_bytes": 32687,
+      "path": "./train_finetune_v9_1.py\r"
+    },
+    {
+      "md5": "249e45c1b8df4754b59494096c1be8ff",
+      "timestamp": 1781260614,
+      "size_bytes": 35399,
+      "path": "./train_finetune_v9_2.py\r"
+    },
+    {
+      "md5": "a3e4efea43c1c3845166c54094521cda",
+      "timestamp": 1780398146,
+      "size_bytes": 30978,
+      "path": "./train_phase1a_fm.py\r"
+    },
+    {
+      "md5": "64fabdd41587375f31385b4c153c5c7f",
+      "timestamp": 1781000090,
+      "size_bytes": 31955,
+      "path": "./train_phase1a_fm_v9.py\r"
+    },
+    {
+      "md5": "c238655ef5002e6a48e9f9d5794c12c8",
+      "timestamp": 1779592047,
+      "size_bytes": 25165,
+      "path": "./train_phase1a.py\r"
+    },
+    {
+      "md5": "23457f3c213c8e54ff9f2e4b9ce60685",
+      "timestamp": 1778811909,
+      "size_bytes": 1157,
+      "path": "./train.py\r"
+    },
+    {
+      "md5": "d41d8cd98f00b204e9800998ecf8427e",
+      "timestamp": 1779532728,
+      "size_bytes": 0,
+      "path": "./untitled.py\r"
+    },
+    {
+      "md5": "7076e8f34de0dcc93be89c8435507207",
+      "timestamp": 1781442938,
+      "size_bytes": 8908,
+      "path": "./verify_synth_geometry.py\r"
+    },
+    {
+      "md5": "ec169109562a3dcf734565c86b79806a",
+      "timestamp": 1781442936,
+      "size_bytes": 26966,
+      "path": "./verify_synth_local.py\r"
+    },
+    {
+      "md5": "431819b23c9ac7c1c12b7dba85754fe7",
+      "timestamp": 1769846320,
+      "size_bytes": 3188,
+      "path": "./vis_dataset.py\r"
+    }
+  ],
+  "total_files": 140
+}

@@ -1,0 +1,483 @@
+{
+  "task_id": "R2",
+  "title": "R2 sampler/env contracts — CLOSED (2026-08-09, R2 rework): 10 requirements all PASS (PC-VALID / ROLE-PROP / ADMISSION closed)",
+  "guide": "program/zhidao/Guide_A_OfficialCore_R2_Sampler_Env_Contracts_v1_0.md",
+  "master_plan": "program/zhidao/Guide_A_OfficialCore_Completion_MasterPlan_v1_0.md",
+  "branch": "a-official-core-rework",
+  "version_note": "v3 (2026-08-09): R2 closure rework #2 manifest. 审核裁决 3 findings: P1 role-metrics probe n_envs wiring bug (claimed 4 envs, ran 1 slot; max_episode_steps hard-coded 30) — fixed f83c19d + 0fa888e; P2 G3 report lacked self-binding provenance (tree_hash/command/exit_code/manifest_sha256/world_inputs_hash + honest frame accounting) — fixed 6d6a805; P2 changed_files was 49 vs 52 actual (baseline inconsistency: v2 used 1a5f063, declared c1f7dc1) — v3 takes changed_files automatically from the unified c1f7dc1 baseline. Evidence suite re-run at HEAD 0fa888e, tree 7502dfaf: G3 v4 11/11 PASS + ROLE_METRICS_EVIDENCE_v2 (real 4-slot, completed=120==n_episodes, attempted=123, in_flight=3) + regression 335/0/7. Old ROLE_METRICS_EVIDENCE.json VOIDED (n_envs wiring bug). v2 remains as history (its evidence v3 claims superseded by rework #2). Post-review (2026-08-09, review_R2_rework2.md): fresh independent review PASS 7/7, 4 minor observations all disposed (2 fixed in this commit, 2 skipped with recorded rationale). changed_files regenerated at the review-record commit: literal diff c1f7dc1..HEAD = 55, changed_files = 54 = 55 - 1 self-exclusion (the manifest cannot list itself — declared per fresh-review minor #1). Rollback now includes da17bfc + the review-record commit, with the manifest's own carrying commit declared as placeholder (v2 '<closure docs commit>' pattern); the final closure backfill commit resolves the placeholder.",
+  "commit_binding": {
+    "base_project_commit": "c1f7dc1",
+    "base_project_commit_note": "R1 closure head (R1 = PASS final)",
+    "implementation_commits": [
+      {
+        "commit": "9190c15",
+        "task": "R1.7-docs",
+        "message": "docs(dppo): R1 rework #2 task plan phases 5-8 complete"
+      },
+      {
+        "commit": "1a5f063",
+        "task": "R2-plan",
+        "message": "docs(dppo): R2 sampler/env contracts task plan (guide v1.0 execution)"
+      },
+      {
+        "commit": "5458504",
+        "task": "R2.1",
+        "message": "feat(dppo): unify production task and role sampling",
+        "scope": "EpisodeTaskSampler (global attempt counter, deterministic (base_seed, attempt) episode seeds, snapshot/restore)"
+      },
+      {
+        "commit": "4eb696c",
+        "task": "R2.2",
+        "message": "fix(dppo): use persistent sampler and truthful role accounting",
+        "scope": "run_e2e_batch injects task_sampler, role_stats_report per-role attempted/completed/voided"
+      },
+      {
+        "commit": "dece2d9",
+        "task": "R2.3",
+        "message": "fix(dppo): bind manifest and sampled episode metadata separately",
+        "scope": "canonical_sha256 + manifest_entry_hash (source) vs episode_config_hash (runtime EpisodeConfigRecord)"
+      },
+      {
+        "commit": "b8e7227",
+        "task": "R2.4",
+        "message": "feat(dppo): implement ordered synchronous UAV vector environments",
+        "scope": "reset_at(env_ids) selective reset, full-slot synchronous step, done-slot reset_at contract"
+      },
+      {
+        "commit": "3db5778",
+        "task": "R2.5",
+        "message": "fix(dppo): eliminate degenerate no-ray training observations",
+        "scope": "ValidatedSynthAdapter far-endpoint encoding + RayGeometryReport + gate analytic-evidence contract"
+      },
+      {
+        "commit": "1759805",
+        "task": "R2.6",
+        "message": "docs(dppo): close production sampler and environment contracts",
+        "scope": "G3 CLI production defaults, test_r2_6_contracts.py (5 static), RTM rows PASS, G3_GATE_REPORT_v2.json"
+      },
+      {
+        "commit": "608c9a6",
+        "task": "R2.6 (closure fix)",
+        "message": "docs(dppo): R2 closure manifest — changed_files audit completeness (+4)",
+        "scope": "v1 manifest changed_files 34 -> 38 (full diff 1a5f063..a6f9cab)"
+      },
+      {
+        "commit": "a6f9cab",
+        "task": "R2-closure-ORIGINAL-VOIDED",
+        "message": "docs(dppo): R2 closure a6f9cab — VOIDED by independent audit (10 findings); kept in rollback chain"
+      },
+      {
+        "commit": "af70e2d",
+        "finding": "P1-1",
+        "message": "fix(dppo): gate admission_blocked/hash-mismatch/dense-stretch in G3 audit",
+        "scope": "G3 gates -> 11 (admission_blocked/manifest_hash_mismatch/dense_path_stretch_fail added), gates_ok() consults all, total-block negative tests, non-zero exit",
+        "task": "R2-rework-P1-1"
+      },
+      {
+        "commit": "533e497",
+        "finding": "P1-6",
+        "message": "fix(dppo): cover all spec-input fields in source-entry hash",
+        "scope": "canonical payload = ALL spec-input fields (admission_id/generator_version/obstacle_json/resolved role etc.) + per-field sensitivity tests",
+        "task": "R2-rework-P1-6"
+      },
+      {
+        "commit": "7d99f08",
+        "finding": "P2-7/8/9",
+        "message": "fix(dppo): atomic step preflight, episode budget hard-fail, unique episode id",
+        "scope": "step() unified preflight (no partial advance); n_episodes % n_envs != 0 startup hard-fail; reset info episode_id = unique EpisodeConfigRecord id",
+        "task": "R2-rework-P2-7/8/9"
+      },
+      {
+        "commit": "6e5dd93",
+        "finding": "P1-3",
+        "message": "feat(dppo): persist sampler state in checkpoint + two-process continuation",
+        "scope": "sampler_state in CheckpointData, forced restore, true two-process continuation JSON (RED measured run2 seed reuse [1000,1001])",
+        "task": "R2-rework-P1-3"
+      },
+      {
+        "commit": "c4545b6",
+        "finding": "P1-4",
+        "message": "feat(dppo): versioned no-ray stress harness — 10k frames all on adapter path",
+        "scope": "scripts/no_ray_stress.py committed; 10,000 frames all adapter/rollout path (was 9k wrapper + 1k adapter)",
+        "task": "R2-rework-P1-4"
+      },
+      {
+        "commit": "b967036",
+        "finding": "P1-2",
+        "message": "feat(dppo): production role-metrics probe — truthful per-role episode/transition JSON",
+        "scope": "scripts/role_metrics_probe.py + 3 tests; production path role_stats persisted (audit P2-10 gap)",
+        "task": "R2-rework-P1-2"
+      },
+      {
+        "commit": "ae98c50",
+        "task": "R2-closure-docs",
+        "message": "docs(dppo): R2 rework closure — RTM 3 rows, manifest v2, production role metrics"
+      },
+      {
+        "commit": "1545193",
+        "task": "R2-closure-docs",
+        "message": "docs(dppo): fresh review PASS 8/8 + P2 fixes"
+      },
+      {
+        "commit": "bc2e18f",
+        "task": "R2-closure-docs",
+        "message": "docs(dppo): closure_commit backfill after review"
+      },
+      {
+        "commit": "f83c19d",
+        "task": "R2RW2-P1",
+        "message": "fix(dppo): wire n_envs/max_ep_len through role-metrics probe (审核裁决 P1)"
+      },
+      {
+        "commit": "6d6a805",
+        "task": "R2RW2-P2",
+        "message": "fix(dppo): self-bind G3 report provenance (审核裁决 P2)"
+      },
+      {
+        "commit": "0fa888e",
+        "task": "R2RW2-P1b",
+        "message": "fix(role_metrics_probe): truthful multi-slot completeness semantics"
+      },
+      {
+        "commit": "bfd7e11",
+        "task": "R2RW2-docs",
+        "message": "docs(dppo): RTM R2 rows -> evidence v4/_v2 + rework #2 ledger"
+      }
+    ],
+    "rework_commits": [
+      {
+        "commit": "af70e2d",
+        "finding": "P1-1",
+        "message": "fix(dppo): gate admission_blocked/hash-mismatch/dense-stretch in G3 audit",
+        "scope": "G3 gates -> 11 (admission_blocked/manifest_hash_mismatch/dense_path_stretch_fail added), gates_ok() consults all, total-block negative tests, non-zero exit"
+      },
+      {
+        "commit": "533e497",
+        "finding": "P1-6",
+        "message": "fix(dppo): cover all spec-input fields in source-entry hash",
+        "scope": "canonical payload = ALL spec-input fields (admission_id/generator_version/obstacle_json/resolved role etc.) + per-field sensitivity tests"
+      },
+      {
+        "commit": "7d99f08",
+        "finding": "P2-7/8/9",
+        "message": "fix(dppo): atomic step preflight, episode budget hard-fail, unique episode id",
+        "scope": "step() unified preflight (no partial advance); n_episodes % n_envs != 0 startup hard-fail; reset info episode_id = unique EpisodeConfigRecord id"
+      },
+      {
+        "commit": "6e5dd93",
+        "finding": "P1-3",
+        "message": "feat(dppo): persist sampler state in checkpoint + two-process continuation",
+        "scope": "sampler_state in CheckpointData, forced restore, true two-process continuation JSON (RED measured run2 seed reuse [1000,1001])"
+      },
+      {
+        "commit": "c4545b6",
+        "finding": "P1-4",
+        "message": "feat(dppo): versioned no-ray stress harness — 10k frames all on adapter path",
+        "scope": "scripts/no_ray_stress.py committed; 10,000 frames all adapter/rollout path (was 9k wrapper + 1k adapter)"
+      },
+      {
+        "commit": "b967036",
+        "finding": "P1-2",
+        "message": "feat(dppo): production role-metrics probe — truthful per-role episode/transition JSON",
+        "scope": "scripts/role_metrics_probe.py + 3 tests; production path role_stats persisted (audit P2-10 gap)"
+      }
+    ],
+    "rework_head": "0fa888e",
+    "rework_tree_hash": "7502dfafe1303909df924a2db8e4ae88b51c8d08",
+    "closure_commit": "212cb3c (fresh independent review PASS 7/7 — review_R2_rework2.md, 2026-08-09; supersedes the pre-review closure da17bfc as the final closure head; same pattern as v2 bc2e18f -> 1545193)"
+  },
+  "rework_items": [
+    {
+      "id": "P1-1",
+      "finding": "G3 gate dead counters: admission_blocked never in gates, fallback==0 constant, hash mismatch masked by AdmissionExhausted (PASS under total block)",
+      "fix": "four-gate expansion + gates_ok() full consultation + negative tests + non-zero exit",
+      "commit": "af70e2d",
+      "verification": "test_g3_gate_audit.py negative pins (total-block never passes, exit 1); G3 10k v3 11/11 gates"
+    },
+    {
+      "id": "P1-2",
+      "finding": "RTM PC-VALID/ROLE-PROP/ADMISSION still OPEN; manifest requirement_ids lists 7 of 10",
+      "fix": "three rows closed with production evidence + requirement_ids -> 10 + production role-metrics JSON",
+      "commit": "b967036",
+      "verification": "G3_GATE_REPORT_v3.json (11/11), ROLE_METRICS_EVIDENCE.json (120 eps PASS), RTM rows PASS"
+    },
+    {
+      "id": "P1-3",
+      "finding": "SEED-RESUME lacks production resume: checkpoint.py has no sampler_state; resume probe builds fresh sampler",
+      "fix": "sampler_state persisted in checkpoint + forced restore + true two-process continuation",
+      "commit": "6e5dd93",
+      "verification": "RED measured run2 seed reuse [1000,1001]; GREEN after fix; test_continuation_probe.py + test_checkpoint.py"
+    },
+    {
+      "id": "P1-4",
+      "finding": "no-ray stress = 9k wrapper-level + 1k adapter frames, not 10k rollout frames; harness uncommitted",
+      "fix": "versioned harness scripts/no_ray_stress.py; all 10,000 frames on adapter/rollout path",
+      "commit": "c4545b6",
+      "verification": "NO_RAY_STRESS_EVIDENCE_v2.json (10,000 frames, invalid=0, far-dome=1,970, tree c77d355)"
+    },
+    {
+      "id": "P1-5",
+      "finding": "no-ray implementation lacked design-layer adjudication (design v1.0 §4.7 requires hit_count > 0)",
+      "fix": "design v1.1 §4.7 contract ruling: hit_count>0 OR (hit_count==0 AND analytic_ray_geometry_passes); far-dome legitimate; single-point all-far ALWAYS invalid",
+      "commit": "n/a (documents: program/sheji/RouteA_RL_Training_System_A_OfficialCore_Design_v1_1.md + review PASS)",
+      "verification": "review report PASS no P0/P1; registered in sheji/README"
+    },
+    {
+      "id": "P1-6",
+      "finding": "entry_metadata_hash covers only 7 fields (admission_id/generator_version/obstacle_json/resolved-role changes invisible)",
+      "fix": "source-entry canonical payload = ALL spec-input fields + per-field sensitivity tests",
+      "commit": "533e497",
+      "verification": "test_integration_routea_pool.py per-field sensitivity (hash changes when any spec input changes)"
+    },
+    {
+      "id": "P2-7",
+      "finding": "step() non-atomic: slot0 advances before a later slot errors",
+      "fix": "unified preflight validation before any slot advances",
+      "commit": "7d99f08",
+      "verification": "test_real_adapter.py negative pins (error before any state change)"
+    },
+    {
+      "id": "P2-8",
+      "finding": "episode collection over-fill: inactive slots filled ignoring remaining budget",
+      "fix": "n_episodes % n_envs != 0 startup hard-fail (exit 1, before writing evidence)",
+      "commit": "7d99f08",
+      "verification": "test_role_metrics_probe.py test_probe_episode_multiple_hard_fail; probe main() negative test"
+    },
+    {
+      "id": "P2-9",
+      "finding": "reset info episode_id = spec.admission_id non-unique",
+      "fix": "episode_id unified to unique EpisodeConfigRecord per-episode id",
+      "commit": "7d99f08",
+      "verification": "test_real_adapter.py reset info episode_id uniqueness"
+    },
+    {
+      "id": "P2-10",
+      "finding": "closure evidence unbounded: R2.6 PENDING, no SHAs, harness uncommitted, worktree not clean; ROLE-TRANSITION cites reset-count-only report with no production role-metrics JSON",
+      "fix": "manifest v2 rebuilt (real SHAs, no PENDING) + clean worktree + production role-metrics JSON + per-file evidence sha256 + tree-bound evidence",
+      "commit": "b967036 + closure docs commit",
+      "verification": "this manifest; RTM evidence ledger (R2 rework additions); ROLE_METRICS_EVIDENCE.json"
+    },
+    {
+      "id": "R2RW2-P1",
+      "finding": "role-metrics probe claimed n_envs=4 but build_adapter never passed n_envs (UAVVectorEnvAdapter default 1) — the sealed ROLE_METRICS_EVIDENCE.json ran a single-slot adapter; max_episode_steps=30 hard-coded ignoring max_ep_len; tests checked JSON fields only, never the real env.n_envs",
+      "fix": "build_adapter(n_envs=n_envs, max_episode_steps=max_ep_len) + hard-fail on resolved != requested + evidence requested_n_envs/resolved_n_envs + completeness invariants (completed==n_episodes; attempted>=completed+voided) + in_flight_at_collection_stop recorded (f83c19d, 0fa888e; TDD RED->GREEN)"
+    },
+    {
+      "id": "R2RW2-P2",
+      "finding": "G3 report not self-bound — no tree_hash/command/exit_code/manifest_sha256/world_inputs_hash; n_frames=80000 reads as 80k independently validated frames (it is an 8-row obs window per validated reset)",
+      "fix": "report['provenance'] self-binds run origin + validated_reset_frames=n_resets / observation_window_rows=n_frames; provenance failures hard-fail, no report written (6d6a805; TDD RED->GREEN)"
+    },
+    {
+      "id": "R2RW2-P3",
+      "finding": "manifest changed_files 49 vs actual git diff --name-only c1f7dc1..HEAD = 52 (missing review_R2_rework.md, task_plan_r1_rework2.md, task_plan_r2.md); fresh review compared 1a5f063 while the manifest declared c1f7dc1 — evidence chain for 'full R2 scope reviewed' not closed",
+      "fix": "v3 changed_files auto-generated from the unified c1f7dc1 baseline = 53; fresh review must check real construction arguments, not just statistics"
+    }
+  ],
+  "changed_files": [
+    "RL_REBUILD_TRACEABILITY.md",
+    "diffusion_policy_3d/rl/dppo_uav/checkpoint.py",
+    "diffusion_policy_3d/rl/dppo_uav/environment_adapter.py",
+    "diffusion_policy_3d/rl/dppo_uav/gate_audit.py",
+    "diffusion_policy_3d/rl/dppo_uav/integration.py",
+    "diffusion_policy_3d/rl/dppo_uav/metrics.py",
+    "diffusion_policy_3d/rl/dppo_uav/phase1a_actor_adapter.py",
+    "diffusion_policy_3d/rl/dppo_uav/pointcloud_gate.py",
+    "diffusion_policy_3d/rl/dppo_uav/rollout_buffer.py",
+    "diffusion_policy_3d/rl/dppo_uav/train_loop.py",
+    "diffusion_policy_3d/rl/dppo_uav/validated_synth_adapter.py",
+    "implementation_manifest_R2.json",
+    "implementation_manifest_R2_v2.json",
+    "review_R2.md",
+    "review_R2_rework.md",
+    "review_R2_rework2.md",
+    "scripts/g3_10k_reset_gate_audit.py",
+    "scripts/g6_one_update_resume_probe.py",
+    "scripts/no_ray_stress.py",
+    "scripts/role_metrics_probe.py",
+    "task_plan_r1_rework2.md",
+    "task_plan_r2.md",
+    "task_plan_r2_rework.md",
+    "task_plan_r2_rework2.md",
+    "temp/r1_2_composition_isolation.py",
+    "tests/dppo_parity/conftest.py",
+    "tests/dppo_parity/continuation_probe.py",
+    "tests/dppo_parity/fake_policy.py",
+    "tests/dppo_parity/mock_uav_env.py",
+    "tests/dppo_parity/test_actor_rollout.py",
+    "tests/dppo_parity/test_cfg_contract.py",
+    "tests/dppo_parity/test_checkpoint.py",
+    "tests/dppo_parity/test_continuation_probe.py",
+    "tests/dppo_parity/test_e2e_gpu.py",
+    "tests/dppo_parity/test_episode_task_sampler.py",
+    "tests/dppo_parity/test_g3_gate_audit.py",
+    "tests/dppo_parity/test_g6_real_one_update_gpu.py",
+    "tests/dppo_parity/test_integration_real_env.py",
+    "tests/dppo_parity/test_integration_routea_pool.py",
+    "tests/dppo_parity/test_microbatch_equivalence.py",
+    "tests/dppo_parity/test_no_ray_pose_regression.py",
+    "tests/dppo_parity/test_no_ray_stress_harness.py",
+    "tests/dppo_parity/test_p5_contracts.py",
+    "tests/dppo_parity/test_p7_eval_persistence.py",
+    "tests/dppo_parity/test_pointcloud_validity.py",
+    "tests/dppo_parity/test_r2_6_contracts.py",
+    "tests/dppo_parity/test_randperm_epoch_coverage.py",
+    "tests/dppo_parity/test_real_adapter.py",
+    "tests/dppo_parity/test_role_metrics_probe.py",
+    "tests/dppo_parity/test_role_sampling.py",
+    "tests/dppo_parity/test_rollout_buffer.py",
+    "tests/dppo_parity/test_train_loop.py",
+    "tests/dppo_parity/test_trainer.py",
+    "tests/dppo_parity/test_vector_env_ordering.py"
+  ],
+  "changed_symbols": {
+    "environment_adapter.py": [
+      "EpisodeTaskSampler",
+      "next_attempt",
+      "SampledEpisodeTask",
+      "EpisodeConfigRecord",
+      "canonical_sha256",
+      "episode_config_hash",
+      "build_episode_config_record",
+      "UAVVectorEnvAdapter.reset_at",
+      "UAVVectorEnvAdapter.step",
+      "preflight",
+      "episode_id"
+    ],
+    "checkpoint.py": [
+      "CheckpointData",
+      "sampler_state",
+      "restore_sampler_state"
+    ],
+    "gate_audit.py": [
+      "run_reset_gate_audit(task_sampler injection)",
+      "admission_blocked gate",
+      "manifest_hash_mismatch gate",
+      "dense_path_stretch_fail gate"
+    ],
+    "integration.py": [
+      "entry_metadata_hash",
+      "canonical source-entry payload"
+    ],
+    "validated_synth_adapter.py": [
+      "ValidatedSynthAdapter",
+      "RayGeometryReport",
+      "FAR_DOME_UNIQUE_FLOOR",
+      "_encode_far_dome",
+      "_grid_ray_dirs"
+    ],
+    "pointcloud_gate.py": [
+      "PointCloudValidityGate.validate(ray_report=...)"
+    ],
+    "train_loop.py": [
+      "run_e2e_batch(task_sampler=...)",
+      "role_stats_report call",
+      "episode_config_hash write"
+    ],
+    "scripts/no_ray_stress.py": [
+      "versioned stress harness (all frames adapter path)"
+    ],
+    "scripts/role_metrics_probe.py": [
+      "production role-metrics probe",
+      "run_probe"
+    ]
+  },
+  "deleted_symbols": [],
+  "requirement_ids": [
+    "SAMPLER-LIVE",
+    "SEED-RESUME",
+    "ROLE-TRANSITION",
+    "META-SOURCE-HASH",
+    "META-EPISODE-HASH",
+    "VECTOR-ORDER",
+    "NO-RAY-SEMANTICS",
+    "PC-VALID",
+    "ROLE-PROP",
+    "ADMISSION"
+  ],
+  "tests": {
+    "result_cpu": "335 passed / 0 failed / 7 deselected (GPU)",
+    "run": "2026-08-09, 89.68s, log temp/r2_rework2_cpu_suite.log (sha256 f68cd090fbabb738716a0170fafb57663ea24bef4a6d2393c1fae60e0572b6fd)",
+    "targeted": "tests/dppo_parity/test_role_metrics_probe.py + test_g3_gate_audit.py: 18 passed (5 new RED-first)",
+    "gpu": "not run (rework #2 touches no GPU/PPO core; 审核裁决: GPU only if affected)"
+  },
+  "authority_run": {
+    "g3_rerun_v4": {
+      "command": "python scripts/g3_10k_reset_gate_audit.py --n-resets 10000 --seed 0 --assert-role-proportion --out program/reports/routeA_rl_env_v1/g3_gate/G3_GATE_REPORT_v4.json",
+      "result": "EXIT=0, 11/11 gates PASS, 10 counters 0, role 0.3055/0.3003/0.2940/0.1002 max delta 0.6pp, validated_reset_frames=10000, observation_window_rows=80000, provenance self-bound (tree 7502dfaf)",
+      "sha256": "fba26bcbd7453d5dd0e8c3b80eccddb2f9e7810e9441fe22bf03c7ef31db711a"
+    },
+    "role_metrics_v2": {
+      "command": "python scripts/role_metrics_probe.py --episodes 120 --n-envs 4 --max-ep-len 30 --seed 0 --output program/reports/routeA_rl_env_v1/g3_gate/ROLE_METRICS_EVIDENCE_v2.json",
+      "result": "EXIT=0 PASS: resolved_n_envs=4==requested, completed=120==n_episodes, attempted=123, in_flight_at_collection_stop=3, voided=0, transitions=3532==env_steps, gate_invalid=0",
+      "sha256": "be244ce03e6361d1359f777d71ae1c05f39cb4c095d8aa00e423e1ae3a00d6e8"
+    },
+    "g3_rerun_v3_historical": {
+      "command": "python scripts/g3_10k_reset_gate_audit.py --n-resets 10000 --seed 0 --assert-role-proportion --out program/reports/routeA_rl_env_v1/g3_gate/G3_GATE_REPORT_v3.json",
+      "result": "EXIT=0, 11/11 gates PASS",
+      "n_resets": 10000,
+      "n_frames": 80000,
+      "counters": {
+        "invalid_pc": 0,
+        "unvalidated_fallback": 0,
+        "admission_blocked": 0,
+        "reachability_fail": 0,
+        "clearance_fail": 0,
+        "dense_path_stretch_fail": 0,
+        "role_unknown": 0,
+        "eval_leakage": 0,
+        "hash_missing": 0,
+        "manifest_hash_mismatch": 0
+      },
+      "role_counts": {
+        "anticipatory": 3055,
+        "dense_recovery": 3003,
+        "support_expansion": 2940,
+        "yaw_lateral_recovery": 1002
+      },
+      "role_proportions": {
+        "anticipatory": 0.3055,
+        "dense_recovery": 0.3003,
+        "support_expansion": 0.294,
+        "yaw_lateral_recovery": 0.1002
+      },
+      "max_role_delta_pp": 0.6,
+      "tree_hash": "c77d355f1e14ab8fb4eab1480965d2ba35b834a9",
+      "evidence": "program/reports/routeA_rl_env_v1/g3_gate/G3_GATE_REPORT_v3.json (sha256 561c2ed3cb1b0bb3d0e1b4e2da241adc1b35071981d985e779d41b0a744f6922)"
+    },
+    "role_metrics_v1_voided": "ROLE_METRICS_EVIDENCE.json VOIDED — n_envs wiring bug: ran single-slot adapter while claiming n_envs=4 (its attempted=completed=120 was an artifact of single-slot sequential semantics)"
+  },
+  "resolved_training_contract": {
+    "role_targets": {
+      "anticipatory": 0.3,
+      "dense_recovery": 0.3,
+      "support_expansion": 0.3,
+      "yaw_lateral_recovery": 0.1
+    },
+    "role_tolerance_pp": 0.02,
+    "sampler": "stateful EpisodeTaskSampler, base_seed + global attempt -> deterministic unique episode seeds; snapshot/restore for resume; sampler_state persisted in checkpoint (P1-3)",
+    "hashes": "canonical_sha256 (source entry, ALL spec-input fields) + episode_config_hash over {identity, episode_seed, start, goal, start_yaw}",
+    "vector": "real synchronous UAVVectorEnvAdapter; done slot must reset_at() before stepping; step() atomic preflight (P2-7); unique EpisodeConfigRecord episode ids (P2-9)",
+    "no_ray": "hit_count=0 valid ONLY with passing analytic RayGeometryReport (design v1.1 §4.7 ruling); single-point all-far ALWAYS invalid",
+    "episode_budget": "n_episodes % n_envs != 0 -> startup hard-fail, exit 1 (P2-8)",
+    "w4_w8_w11_w12_w18": "never in train specs (unchanged constraint)"
+  },
+  "evidence": [
+    "program/reports/routeA_rl_env_v1/g3_gate/G3_GATE_REPORT_v4.json (10k validated resets / 80k obs-window rows, 11/11 PASS, self-bound provenance tree 7502dfaf, sha256 fba26bcbd7453d5dd0e8c3b80eccddb2f9e7810e9441fe22bf03c7ef31db711a)",
+    "program/reports/routeA_rl_env_v1/g3_gate/ROLE_METRICS_EVIDENCE_v2.json (120 eps, real 4-slot adapter, completed=120==n_episodes, attempted=123, in_flight=3, transitions=3532==env_steps, sha256 be244ce03e6361d1359f777d71ae1c05f39cb4c095d8aa00e423e1ae3a00d6e8)",
+    "program/reports/routeA_rl_env_v1/g3_gate/NO_RAY_STRESS_EVIDENCE_v2.json (10k frames all adapter path, invalid=0, far-dome=1,970; unchanged, tree c77d355, sha256 2367d72ae5ec304ae929489bb4e8e8e2f1f0113bf77294a07bb60a87fe0fab3a)",
+    "temp/r2_rework2_cpu_suite.log (335 passed/0 failed/7 deselected, 89.68s, sha256 f68cd090fbabb738716a0170fafb57663ea24bef4a6d2393c1fae60e0572b6fd)",
+    "VOIDED: program/reports/routeA_rl_env_v1/g3_gate/ROLE_METRICS_EVIDENCE.json (n_envs wiring bug, kept as history)"
+  ],
+  "known_gaps": [
+    "[informational] G3 10k audit samples admission poses (z <= z_max=5.0); the no-ray degenerate band (z > 5.211) is exercised by the dedicated stress (10k frames, all adapter path) and the R2.5 regression family, not by G3 itself",
+    "[informational] stress run: 67/466 early terminations under the env's default disturb — legitimate production terminations, harness resets like train_loop; documented in NO_RAY_ROOT_CAUSE_REPORT.json",
+    "[informational] ROLE_METRICS_EVIDENCE.json action generator is the CPU FakePolicy fixture (tests/dppo_parity, the accepted real-env integration pattern: 'the mock env is not involved') — stated in the evidence itself (rollout_path). Sampler, adapter, gate, manifest, and role accounting are all the production path",
+    "[informational] role metrics 120-episode proportions (0.3167/0.2833/0.3083/0.0917, max delta 1.7pp) are within ±2pp tolerance; finite-sample fluctuation vs the 10k G3 proportions (max delta 0.6pp) is expected at n=120"
+  ],
+  "unexpected_changes": [
+    "scripts/g3_10k_reset_gate_audit.py: --manifest/--worlds-dir became optional (production defaults via DPPO_MANIFEST / DPPO_WORLDS_TRAIN) — required by guide R2.6 Step 2's no-flag command line (recorded in v1)",
+    "tests/dppo_parity/test_r2_6_contracts.py: static AST contracts (4 pins + 1 RED) added — guide Step 1 requires '静态测试必须断言两者都构造 EpisodeTaskSampler' (recorded in v1)",
+    "tests/dppo_parity/fake_policy.py: FakePolicy extended with state_dict/load_state_dict/.to (delegating to self.model) — required by P1-3 checkpoint persistence; mirrors _policy_state_dict fallback symmetry; action_scale=0.0002 (integration-test-probed)"
+  ],
+  "rollback": "git revert newest-first, back to R1 closure c1f7dc1: <this carrying commit (closure_commit backfill)> 212cb3c da17bfc bfd7e11 0fa888e 6d6a805 f83c19d bc2e18f 1545193 ae98c50 b967036 c4545b6 6e5dd93 7d99f08 533e497 af70e2d 608c9a6 a6f9cab 1759805 3db5778 b8e7227 dece2d9 4eb696c 5458504 1a5f063 9190c15 — revert the manifest's own carrying commit first, then this sequence (the carrying commit cannot list itself; placeholder pattern from v2 '<closure docs commit>'). Only reviewed git revert; git reset --hard forbidden. Note: 1a5f063/9190c15 are R1-closure-era docs that also live after c1f7dc1."
+}
