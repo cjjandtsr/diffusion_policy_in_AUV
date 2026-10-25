@@ -1,0 +1,1218 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <world name='routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035'>
+    <!-- Sun light -->
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Ground plane -->
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional><ode/></torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <n>Gazebo/Grey</n>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Environment -->
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <gravity>0 0 -9.8</gravity>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+
+    <!-- ============ OBSTACLES (29) ============ -->
+    <model name='trap_side_l'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>3.0000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Orange</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.5 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>3.0000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>1.5000 -2.0000 2.0000 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_side_r'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>3.0000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/DarkGrey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>3.0000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>1.5000 2.0000 2.0000 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_back'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>0.5000 3.5000 4.0000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.5000 3.5000 4.0000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>3.0000 0.0000 2.0000 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_funnel_l'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1.5000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1.5000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.7500 -2.4500 2.0000 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_funnel_r'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1.5000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1.5000 0.5000 4.0000</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.7500 2.4500 2.0000 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_0'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2419</radius>
+              <length>3.8888</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2419</radius>
+              <length>3.8888</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>1.0242 5.4147 1.9444 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_1'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.3171</radius>
+              <length>3.3295</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Orange</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.5 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.3171</radius>
+              <length>3.3295</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.1936 -6.5398 1.6647 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_2'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.3630</radius>
+              <length>3.5282</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.3630</radius>
+              <length>3.5282</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-3.7858 1.7828 1.7641 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_3'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2759</radius>
+              <length>4.4942</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Orange</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.5 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2759</radius>
+              <length>4.4942</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>0.0906 -3.2009 2.2471 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_4'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5318</radius>
+              <length>4.8562</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5318</radius>
+              <length>4.8562</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>2.3197 -4.2687 2.4281 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_5'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2892</radius>
+              <length>4.9316</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2892</radius>
+              <length>4.9316</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-1.6786 -8.1320 2.4658 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_6'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.3080</radius>
+              <length>4.5846</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.3080</radius>
+              <length>4.5846</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-3.3160 -0.7744 2.2923 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_7'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4226</radius>
+              <length>4.3386</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Grey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.5 0.5 0.5 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4226</radius>
+              <length>4.3386</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>3.8293 -3.4850 2.1693 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_8'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2954</radius>
+              <length>4.4601</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Grey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.5 0.5 0.5 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2954</radius>
+              <length>4.4601</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-1.6339 5.9256 2.2301 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_9'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.3653</radius>
+              <length>4.7331</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Orange</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.5 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.3653</radius>
+              <length>4.7331</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-3.8827 -3.4439 2.3666 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_10'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.3462</radius>
+              <length>4.5172</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.3462</radius>
+              <length>4.5172</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>0.4982 8.1501 2.2586 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_11'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4648</radius>
+              <length>4.2395</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4648</radius>
+              <length>4.2395</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-2.0403 4.5721 2.1197 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_13'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4099</radius>
+              <length>4.0232</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4099</radius>
+              <length>4.0232</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.4356 -8.4667 2.0116 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_14'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2852</radius>
+              <length>3.0141</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Orange</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.5 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2852</radius>
+              <length>3.0141</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.6222 1.4708 1.5071 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_15'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4393</radius>
+              <length>4.8132</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4393</radius>
+              <length>4.8132</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>3.8429 -6.2671 2.4066 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_16'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2741</radius>
+              <length>4.5985</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2741</radius>
+              <length>4.5985</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.9172 -2.7087 2.2993 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_17'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2010</radius>
+              <length>4.1803</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/DarkGrey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2010</radius>
+              <length>4.1803</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>1.3663 6.6995 2.0901 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_18'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.3163</radius>
+              <length>3.4556</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Grey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.5 0.5 0.5 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.3163</radius>
+              <length>3.4556</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>4.3705 7.4104 1.7278 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_19'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4017</radius>
+              <length>4.3502</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4017</radius>
+              <length>4.3502</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.5802 -6.5292 2.1751 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_20'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.2672</radius>
+              <length>4.5648</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.2672</radius>
+              <length>4.5648</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-2.1232 -4.7929 2.2824 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_21'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5515</radius>
+              <length>3.9996</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Grey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.5 0.5 0.5 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5515</radius>
+              <length>3.9996</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.6393 -7.4521 1.9998 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_22'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4096</radius>
+              <length>3.6592</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4096</radius>
+              <length>3.6592</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>4.6626 -2.6247 1.8296 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_23'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.3504</radius>
+              <length>4.8429</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/DarkGrey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.3504</radius>
+              <length>4.8429</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-1.3951 1.7374 2.4214 0 0 0.0000</pose>
+    </model>
+
+    <model name='trap_scatter_24'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5556</radius>
+              <length>4.1894</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5556</radius>
+              <length>4.1894</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>2.8827 4.4487 2.0947 0 0 0.0000</pose>
+    </model>
+
+    <!-- GUI camera -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-15 0 18 0 0.85 0.15</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

@@ -1,0 +1,446 @@
+{
+  "version": "v8.3",
+  "seed": 42,
+  "total_worlds": 60,
+  "spawn_world": [
+    -12.0,
+    0.0
+  ],
+  "spawn_clearance": 5.0,
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "min_dist": 2.0,
+  "tier_distribution": {
+    "medium_A": 15,
+    "empty": 8,
+    "dense": 9,
+    "sparse": 12,
+    "medium_B": 13,
+    "special": 1,
+    "super_dense": 2
+  },
+  "worlds": [
+    {
+      "world_id": 0,
+      "tier": "medium_A",
+      "n_obstacles": 9,
+      "filename": "env_000_obs9.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 1,
+      "tier": "medium_A",
+      "n_obstacles": 11,
+      "filename": "env_001_obs11.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 2,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_002_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 3,
+      "tier": "dense",
+      "n_obstacles": 26,
+      "filename": "env_003_obs26.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 4,
+      "tier": "dense",
+      "n_obstacles": 22,
+      "filename": "env_004_obs22.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 5,
+      "tier": "sparse",
+      "n_obstacles": 1,
+      "filename": "env_005_obs1.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 6,
+      "tier": "dense",
+      "n_obstacles": 22,
+      "filename": "env_006_obs22.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 7,
+      "tier": "medium_B",
+      "n_obstacles": 16,
+      "filename": "env_007_obs16.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 8,
+      "tier": "sparse",
+      "n_obstacles": 1,
+      "filename": "env_008_obs1.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 9,
+      "tier": "special",
+      "n_obstacles": 20,
+      "filename": "env_009_obs20.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 10,
+      "tier": "medium_A",
+      "n_obstacles": 11,
+      "filename": "env_010_obs11.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 11,
+      "tier": "sparse",
+      "n_obstacles": 2,
+      "filename": "env_011_obs2.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 12,
+      "tier": "sparse",
+      "n_obstacles": 1,
+      "filename": "env_012_obs1.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 13,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_013_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 14,
+      "tier": "medium_B",
+      "n_obstacles": 14,
+      "filename": "env_014_obs14.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 15,
+      "tier": "medium_A",
+      "n_obstacles": 10,
+      "filename": "env_015_obs10.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 16,
+      "tier": "medium_A",
+      "n_obstacles": 7,
+      "filename": "env_016_obs7.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 17,
+      "tier": "medium_A",
+      "n_obstacles": 10,
+      "filename": "env_017_obs10.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 18,
+      "tier": "medium_A",
+      "n_obstacles": 6,
+      "filename": "env_018_obs6.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 19,
+      "tier": "medium_B",
+      "n_obstacles": 13,
+      "filename": "env_019_obs13.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 20,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_020_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 21,
+      "tier": "medium_A",
+      "n_obstacles": 10,
+      "filename": "env_021_obs10.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 22,
+      "tier": "medium_A",
+      "n_obstacles": 6,
+      "filename": "env_022_obs6.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 23,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_023_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 24,
+      "tier": "medium_A",
+      "n_obstacles": 7,
+      "filename": "env_024_obs7.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 25,
+      "tier": "super_dense",
+      "n_obstacles": 37,
+      "filename": "env_025_obs37.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 26,
+      "tier": "medium_A",
+      "n_obstacles": 6,
+      "filename": "env_026_obs6.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 27,
+      "tier": "sparse",
+      "n_obstacles": 1,
+      "filename": "env_027_obs1.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 28,
+      "tier": "dense",
+      "n_obstacles": 25,
+      "filename": "env_028_obs25.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 29,
+      "tier": "medium_B",
+      "n_obstacles": 18,
+      "filename": "env_029_obs18.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 30,
+      "tier": "dense",
+      "n_obstacles": 30,
+      "filename": "env_030_obs30.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 31,
+      "tier": "sparse",
+      "n_obstacles": 5,
+      "filename": "env_031_obs5.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 32,
+      "tier": "medium_B",
+      "n_obstacles": 15,
+      "filename": "env_032_obs15.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 33,
+      "tier": "dense",
+      "n_obstacles": 26,
+      "filename": "env_033_obs26.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 34,
+      "tier": "medium_B",
+      "n_obstacles": 17,
+      "filename": "env_034_obs17.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 35,
+      "tier": "sparse",
+      "n_obstacles": 2,
+      "filename": "env_035_obs2.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 36,
+      "tier": "medium_A",
+      "n_obstacles": 7,
+      "filename": "env_036_obs7.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 37,
+      "tier": "dense",
+      "n_obstacles": 29,
+      "filename": "env_037_obs29.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 38,
+      "tier": "sparse",
+      "n_obstacles": 3,
+      "filename": "env_038_obs3.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 39,
+      "tier": "dense",
+      "n_obstacles": 28,
+      "filename": "env_039_obs28.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 40,
+      "tier": "medium_A",
+      "n_obstacles": 11,
+      "filename": "env_040_obs11.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 41,
+      "tier": "sparse",
+      "n_obstacles": 5,
+      "filename": "env_041_obs5.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 42,
+      "tier": "medium_A",
+      "n_obstacles": 10,
+      "filename": "env_042_obs10.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 43,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_043_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 44,
+      "tier": "medium_B",
+      "n_obstacles": 19,
+      "filename": "env_044_obs19.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 45,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_045_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 46,
+      "tier": "super_dense",
+      "n_obstacles": 32,
+      "filename": "env_046_obs32.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 47,
+      "tier": "sparse",
+      "n_obstacles": 1,
+      "filename": "env_047_obs1.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 48,
+      "tier": "medium_B",
+      "n_obstacles": 15,
+      "filename": "env_048_obs15.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 49,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_049_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 50,
+      "tier": "empty",
+      "n_obstacles": 0,
+      "filename": "env_050_obs0.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 51,
+      "tier": "medium_B",
+      "n_obstacles": 14,
+      "filename": "env_051_obs14.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 52,
+      "tier": "sparse",
+      "n_obstacles": 2,
+      "filename": "env_052_obs2.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 53,
+      "tier": "medium_B",
+      "n_obstacles": 17,
+      "filename": "env_053_obs17.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 54,
+      "tier": "medium_A",
+      "n_obstacles": 7,
+      "filename": "env_054_obs7.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 55,
+      "tier": "medium_B",
+      "n_obstacles": 19,
+      "filename": "env_055_obs19.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 56,
+      "tier": "medium_B",
+      "n_obstacles": 18,
+      "filename": "env_056_obs18.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 57,
+      "tier": "dense",
+      "n_obstacles": 21,
+      "filename": "env_057_obs21.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 58,
+      "tier": "sparse",
+      "n_obstacles": 4,
+      "filename": "env_058_obs4.world",
+      "n_issues": 0
+    },
+    {
+      "world_id": 59,
+      "tier": "medium_B",
+      "n_obstacles": 20,
+      "filename": "env_059_obs20.world",
+      "n_issues": 0
+    }
+  ]
+}

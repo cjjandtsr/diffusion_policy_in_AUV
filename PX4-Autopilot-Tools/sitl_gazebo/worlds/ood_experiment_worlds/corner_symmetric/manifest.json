@@ -1,0 +1,98 @@
+{
+  "version": "ood_v1",
+  "seed": 7002,
+  "total_worlds": 5,
+  "spawn_world": [
+    -12.0,
+    0.0
+  ],
+  "spawn_clearance": 5.0,
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "generator_params": {
+    "density_range": [
+      0,
+      0
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      8.0
+    ],
+    "min_dist": 2.0,
+    "shape_ratio": 0.667,
+    "corner_type": "symmetric"
+  },
+  "worlds": [
+    {
+      "world_id": 0,
+      "tier": "symmetric_w1.0",
+      "n_obstacles": 1,
+      "filename": "env_000_obs1.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0,
+        "VO": 0.0,
+        "AOL": 0.0025,
+        "n_obstacles": 1
+      }
+    },
+    {
+      "world_id": 1,
+      "tier": "symmetric_w2.0",
+      "n_obstacles": 1,
+      "filename": "env_001_obs1.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0,
+        "VO": 0.0,
+        "AOL": 0.0025,
+        "n_obstacles": 1
+      }
+    },
+    {
+      "world_id": 2,
+      "tier": "symmetric_w3.0",
+      "n_obstacles": 1,
+      "filename": "env_002_obs1.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0,
+        "VO": 0.0,
+        "AOL": 0.0025,
+        "n_obstacles": 1
+      }
+    },
+    {
+      "world_id": 3,
+      "tier": "symmetric_w5.0",
+      "n_obstacles": 1,
+      "filename": "env_003_obs1.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0,
+        "VO": 0.0,
+        "AOL": 0.0025,
+        "n_obstacles": 1
+      }
+    },
+    {
+      "world_id": 4,
+      "tier": "symmetric_w8.0",
+      "n_obstacles": 1,
+      "filename": "env_004_obs1.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0,
+        "VO": 0.0,
+        "AOL": 0.0025,
+        "n_obstacles": 1
+      }
+    }
+  ]
+}

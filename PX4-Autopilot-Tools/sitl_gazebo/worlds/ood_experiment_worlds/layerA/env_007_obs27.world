@@ -1,0 +1,1150 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <world name='default'>
+    <!-- Sun light -->
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Ground plane -->
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional><ode/></torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <n>Gazebo/Grey</n>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Environment -->
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <gravity>0 0 -9.8</gravity>
+      <max_step_size>0.004</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>250</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+
+    <!-- ============ OBSTACLES (27) ============ -->
+    <model name='obs_00'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.1622</radius>
+              <length>4.1610</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.1622</radius>
+              <length>4.1610</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-8.8361 -7.0498 2.0805 0 0 0.1633</pose>
+    </model>
+
+    <model name='obs_01'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.9268</radius>
+              <length>7.5732</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.9268</radius>
+              <length>7.5732</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-8.8731 7.4381 3.7866 0 0 2.9056</pose>
+    </model>
+
+    <model name='obs_02'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4037</radius>
+              <length>7.3585</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4037</radius>
+              <length>7.3585</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-8.3619 9.7495 3.6792 0 0 0.0985</pose>
+    </model>
+
+    <model name='obs_03'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.6805</radius>
+              <length>3.9717</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Orange</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.5 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.6805</radius>
+              <length>3.9717</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.3446 -8.4930 1.9858 0 0 0.4116</pose>
+    </model>
+
+    <model name='obs_04'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.8776</radius>
+              <length>5.8826</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.8776</radius>
+              <length>5.8826</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>2.3837 -9.2832 2.9413 0 0 0.2246</pose>
+    </model>
+
+    <model name='obs_05'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.2147</radius>
+              <length>7.0610</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.2147</radius>
+              <length>7.0610</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>4.6297 -1.2914 3.5305 0 0 1.2790</pose>
+    </model>
+
+    <model name='obs_06'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.9695</radius>
+              <length>2.2417</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.9695</radius>
+              <length>2.2417</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-0.0881 6.0907 1.1209 0 0 2.9997</pose>
+    </model>
+
+    <model name='obs_07'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.4868</radius>
+              <length>3.8204</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.4868</radius>
+              <length>3.8204</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-4.4724 9.2910 1.9102 0 0 0.1124</pose>
+    </model>
+
+    <model name='obs_08'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.6035</radius>
+              <length>7.5135</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.6035</radius>
+              <length>7.5135</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>6.5717 -4.0223 3.7568 0 0 0.3085</pose>
+    </model>
+
+    <model name='obs_09'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.7901</radius>
+              <length>5.0259</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.7901</radius>
+              <length>5.0259</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>2.2372 -2.9737 2.5130 0 0 1.8555</pose>
+    </model>
+
+    <model name='obs_10'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.9934</radius>
+              <length>7.6337</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/DarkGrey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.9934</radius>
+              <length>7.6337</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>2.4937 6.3740 3.8169 0 0 0.2226</pose>
+    </model>
+
+    <model name='obs_11'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.4860</radius>
+              <length>5.4716</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.4860</radius>
+              <length>5.4716</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-4.6639 -3.9509 2.7358 0 0 0.9143</pose>
+    </model>
+
+    <model name='obs_12'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.8170</radius>
+              <length>4.6298</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.8170</radius>
+              <length>4.6298</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-6.4031 -5.4839 2.3149 0 0 3.1313</pose>
+    </model>
+
+    <model name='obs_13'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.1578</radius>
+              <length>7.5357</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.1578</radius>
+              <length>7.5357</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>3.2815 9.1041 3.7678 0 0 2.4889</pose>
+    </model>
+
+    <model name='obs_14'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.1616</radius>
+              <length>5.8450</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/DarkGrey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.3 0.3 0.3 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.1616</radius>
+              <length>5.8450</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>4.7597 6.0664 2.9225 0 0 3.0337</pose>
+    </model>
+
+    <model name='obs_15'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.1003</radius>
+              <length>3.1207</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.1003</radius>
+              <length>3.1207</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>6.3114 3.4666 1.5604 0 0 2.1550</pose>
+    </model>
+
+    <model name='obs_16'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.6388</radius>
+              <length>1.1241</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Red</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.8 0.2 0.2 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.6388</radius>
+              <length>1.1241</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>9.2533 -8.1325 0.5620 0 0 1.8437</pose>
+    </model>
+
+    <model name='obs_17'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.2722</radius>
+              <length>5.4721</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.2722</radius>
+              <length>5.4721</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-3.9222 4.3627 2.7361 0 0 1.4334</pose>
+    </model>
+
+    <model name='obs_18'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.5789</radius>
+              <length>5.5890</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Orange</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.5 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.5789</radius>
+              <length>5.5890</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>8.6798 7.2303 2.7945 0 0 2.0031</pose>
+    </model>
+
+    <model name='obs_19'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.2479</radius>
+              <length>6.1776</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.2479</radius>
+              <length>6.1776</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-1.2444 8.7780 3.0888 0 0 1.5469</pose>
+    </model>
+
+    <model name='obs_20'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.5574</radius>
+              <length>1.5011</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.5574</radius>
+              <length>1.5011</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>9.1518 -3.4539 0.7505 0 0 0.2023</pose>
+    </model>
+
+    <model name='obs_21'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.7682</radius>
+              <length>3.1230</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/White</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.9 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.7682</radius>
+              <length>3.1230</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>3.8962 -5.6198 1.5615 0 0 2.2455</pose>
+    </model>
+
+    <model name='obs_22'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.6178</radius>
+              <length>3.2859</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.6178</radius>
+              <length>3.2859</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-1.1161 0.6936 1.6430 0 0 1.1399</pose>
+    </model>
+
+    <model name='obs_23'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.8305</radius>
+              <length>2.8784</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Yellow</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.9 0.9 0.1 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.8305</radius>
+              <length>2.8784</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>-3.6577 -8.7345 1.4392 0 0 1.8700</pose>
+    </model>
+
+    <model name='obs_24'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.5092</radius>
+              <length>3.0473</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Grey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.5 0.5 0.5 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.5092</radius>
+              <length>3.0473</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>2.9655 2.9590 1.5236 0 0 0.3359</pose>
+    </model>
+
+    <model name='obs_25'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>1.6806</radius>
+              <length>2.0134</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Grey</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.5 0.5 0.5 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>1.6806</radius>
+              <length>2.0134</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>3.8975 0.7829 1.0067 0 0 2.4482</pose>
+    </model>
+
+    <model name='obs_26'>
+      <static>1</static>
+      <link name='link'>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.8874</radius>
+              <length>3.9965</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <n>Gazebo/Blue</n>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+            <ambient>0.447 0.624 0.812 1</ambient>
+          </material>
+        </visual>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.8874</radius>
+              <length>3.9965</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact><ode/></contact>
+            <bounce/>
+            <friction>
+              <ode><mu>1</mu><mu2>1</mu2></ode>
+              <torsional><ode/></torsional>
+            </friction>
+          </surface>
+        </collision>
+      </link>
+      <pose>0.1326 -4.5852 1.9982 0 0 0.9143</pose>
+    </model>
+
+    <!-- GUI camera -->
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>-15 0 18 0 0.85 0.15</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

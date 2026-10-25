@@ -1,0 +1,44 @@
+{
+  "world_id": 38,
+  "tier": "sparse",
+  "n_obstacles": 3,
+  "spawn_world": [
+    -12.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "obs_00",
+      "shape": "box",
+      "x": -2.5512,
+      "y": -3.2427,
+      "yaw": 0.3086,
+      "size_x": 3.5412,
+      "size_y": 0.9703,
+      "size_z": 5.8711
+    },
+    {
+      "name": "obs_01",
+      "shape": "cylinder",
+      "x": 5.873,
+      "y": -3.781,
+      "yaw": 2.4317,
+      "radius": 0.7436,
+      "height": 6.1016
+    },
+    {
+      "name": "obs_02",
+      "shape": "box",
+      "x": 6.8569,
+      "y": 7.1647,
+      "yaw": 2.0281,
+      "size_x": 1.1578,
+      "size_y": 1.2399,
+      "size_z": 5.1198
+    }
+  ]
+}

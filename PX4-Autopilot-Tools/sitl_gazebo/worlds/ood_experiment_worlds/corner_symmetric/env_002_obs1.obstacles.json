@@ -1,0 +1,58 @@
+{
+  "world_id": 2,
+  "tier": "symmetric_w3.0",
+  "n_obstacles": 1,
+  "spawn_world": [
+    -12.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "center_block",
+      "shape": "box",
+      "x": 0.0,
+      "y": 0.0,
+      "yaw": 0.0,
+      "size_x": 3.0,
+      "size_y": 3.0,
+      "size_z": 5.0
+    }
+  ],
+  "difficulty": {
+    "TO": 0.0,
+    "VO": 0.0,
+    "AOL": 0.0025,
+    "n_obstacles": 1
+  },
+  "generator_params": {
+    "density_range": [
+      0,
+      0
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      8.0
+    ],
+    "min_dist": 2.0,
+    "shape_ratio": 0.667,
+    "corner_type": "symmetric"
+  },
+  "start_world": [
+    -8.0,
+    0.0,
+    2.0
+  ],
+  "goal_world": [
+    8.0,
+    0.0,
+    2.0
+  ]
+}

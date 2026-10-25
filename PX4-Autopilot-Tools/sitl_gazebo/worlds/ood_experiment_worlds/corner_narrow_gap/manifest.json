@@ -1,0 +1,98 @@
+{
+  "version": "ood_v1",
+  "seed": 7001,
+  "total_worlds": 5,
+  "spawn_world": [
+    -12.0,
+    0.0
+  ],
+  "spawn_clearance": 5.0,
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "generator_params": {
+    "density_range": [
+      0,
+      0
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      8.0
+    ],
+    "min_dist": 0.5,
+    "shape_ratio": 0.667,
+    "corner_type": "narrow_gap"
+  },
+  "worlds": [
+    {
+      "world_id": 0,
+      "tier": "narrow_gap_rgs2.00",
+      "n_obstacles": 2,
+      "filename": "env_000_obs2.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.1182,
+        "VO": 0.0,
+        "AOL": 0.005,
+        "n_obstacles": 2
+      }
+    },
+    {
+      "world_id": 1,
+      "tier": "narrow_gap_rgs1.50",
+      "n_obstacles": 2,
+      "filename": "env_001_obs2.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0966,
+        "VO": 0.0,
+        "AOL": 0.005,
+        "n_obstacles": 2
+      }
+    },
+    {
+      "world_id": 2,
+      "tier": "narrow_gap_rgs1.20",
+      "n_obstacles": 2,
+      "filename": "env_002_obs2.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0836,
+        "VO": 0.0,
+        "AOL": 0.005,
+        "n_obstacles": 2
+      }
+    },
+    {
+      "world_id": 3,
+      "tier": "narrow_gap_rgs1.05",
+      "n_obstacles": 2,
+      "filename": "env_003_obs2.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.077,
+        "VO": 0.0,
+        "AOL": 0.005,
+        "n_obstacles": 2
+      }
+    },
+    {
+      "world_id": 4,
+      "tier": "narrow_gap_rgs1.00",
+      "n_obstacles": 2,
+      "filename": "env_004_obs2.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.0749,
+        "VO": 0.0,
+        "AOL": 0.005,
+        "n_obstacles": 2
+      }
+    }
+  ]
+}

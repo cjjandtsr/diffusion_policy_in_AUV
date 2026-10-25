@@ -1,0 +1,28 @@
+{
+  "sha256": "a953a9a8f86f89760e62984af3f24ebc5d3736f8c617108256019ff2cd37ec93",
+  "summary": {
+    "bank_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+    "decisions": 60,
+    "done_reason": "time_limit",
+    "initial_hash": "a522493ddc10b6cb414a669b8efad58617c514bb9e298b871c77611498cce435",
+    "physical_time_s": 72.00000000000009,
+    "policy": "rl_391a6656a0f7_u256",
+    "repeat": 5,
+    "role": "dense_recovery",
+    "safe_arrival": false,
+    "status": "valid",
+    "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02",
+    "terminate_at_space_limits": false,
+    "trajectory_metrics": {
+      "backtrack_m": 5.083429173345235,
+      "final_goal_distance_m": 2.470396204775441,
+      "max_cross_track_m": 4.5164286419462,
+      "min_goal_distance_m": 0.6918070986869578,
+      "path_length_m": 38.32293736190756,
+      "z_span_m": 1.5398651361465454
+    },
+    "type": "episode_end",
+    "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+  },
+  "trace": "traces/ea101ded804a788c77f158cd.attempt001.jsonl"
+}

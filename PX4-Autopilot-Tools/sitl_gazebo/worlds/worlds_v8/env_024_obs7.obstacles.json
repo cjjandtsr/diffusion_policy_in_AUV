@@ -1,0 +1,80 @@
+{
+  "world_id": 24,
+  "tier": "medium_A",
+  "n_obstacles": 7,
+  "spawn_world": [
+    -12.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "obs_00",
+      "shape": "cylinder",
+      "x": 5.2617,
+      "y": 1.4784,
+      "yaw": 0.4264,
+      "radius": 0.287,
+      "height": 2.2086
+    },
+    {
+      "name": "obs_01",
+      "shape": "box",
+      "x": 0.5892,
+      "y": -2.0393,
+      "yaw": 1.3984,
+      "size_x": 0.8073,
+      "size_y": 2.8868,
+      "size_z": 5.2276
+    },
+    {
+      "name": "obs_02",
+      "shape": "cylinder",
+      "x": 2.9912,
+      "y": -5.0078,
+      "yaw": 2.0981,
+      "radius": 1.4626,
+      "height": 4.85
+    },
+    {
+      "name": "obs_03",
+      "shape": "cylinder",
+      "x": -7.731,
+      "y": 4.7135,
+      "yaw": 2.8002,
+      "radius": 1.725,
+      "height": 5.9827
+    },
+    {
+      "name": "obs_04",
+      "shape": "box",
+      "x": -4.7942,
+      "y": -1.0745,
+      "yaw": 2.0034,
+      "size_x": 3.2779,
+      "size_y": 2.2806,
+      "size_z": 1.6068
+    },
+    {
+      "name": "obs_05",
+      "shape": "cylinder",
+      "x": 9.9273,
+      "y": -4.2885,
+      "yaw": 2.4883,
+      "radius": 0.588,
+      "height": 4.4582
+    },
+    {
+      "name": "obs_06",
+      "shape": "cylinder",
+      "x": 8.3296,
+      "y": -0.176,
+      "yaw": 1.7405,
+      "radius": 0.8325,
+      "height": 6.6256
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "world_id": 10,
+  "tier": "ood",
+  "n_obstacles": 2,
+  "spawn_world": [
+    -8.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "obs_00",
+      "shape": "cylinder",
+      "x": 7.3384,
+      "y": -5.1452,
+      "yaw": 1.4716,
+      "radius": 1.0659,
+      "height": 1.9202
+    },
+    {
+      "name": "obs_01",
+      "shape": "cylinder",
+      "x": -0.0641,
+      "y": 9.7588,
+      "yaw": 2.0943,
+      "radius": 1.5621,
+      "height": 4.0753
+    }
+  ],
+  "difficulty": {
+    "TO": 0.6059,
+    "VO": 1.0,
+    "AOL": 0.005,
+    "n_obstacles": 2
+  },
+  "generator_params": {
+    "density_range": [
+      1,
+      28
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      4.0
+    ],
+    "min_dist": 2.0,
+    "shape_ratio": 2.0,
+    "corner_type": null
+  }
+}

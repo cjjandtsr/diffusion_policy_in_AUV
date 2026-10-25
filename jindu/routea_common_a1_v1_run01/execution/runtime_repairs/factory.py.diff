@@ -1,0 +1,9 @@
+161a162,163
+>         terminate_at_space_limits=True,
+>         space_cost_budget=None,
+176a179,180
+>         self.terminate_at_space_limits = bool(terminate_at_space_limits)
+>         self.space_cost_budget = space_cost_budget
+222a227,228
+>                 terminate_at_space_limits=self.terminate_at_space_limits,
+>                 space_cost_budget=self.space_cost_budget,

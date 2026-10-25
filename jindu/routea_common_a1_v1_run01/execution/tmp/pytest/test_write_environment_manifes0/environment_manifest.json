@@ -1,0 +1,47 @@
+{
+  "cuda": {
+    "available": true,
+    "cudnn_version": 90100,
+    "device_count": 1,
+    "runtime_version": "12.1",
+    "selected": null
+  },
+  "environment": {
+    "LANG": "C.UTF-8",
+    "MASTER_ADDR_present": false,
+    "OMP_NUM_THREADS": "3"
+  },
+  "locale": {
+    "preferred_encoding": "UTF-8",
+    "timezone_names": [
+      "CST",
+      "CST"
+    ]
+  },
+  "numpy": {
+    "version": "1.23.5"
+  },
+  "platform": {
+    "machine": "x86_64",
+    "release": "6.6.87.2-microsoft-standard-WSL2",
+    "system": "Linux"
+  },
+  "python": {
+    "executable_name": "python",
+    "implementation": "CPython",
+    "version": "3.8.20"
+  },
+  "requested_device": "cpu",
+  "requested_dtype": "float32",
+  "schema_version": 1,
+  "torch": {
+    "cudnn_allow_tf32": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "deterministic_algorithms": false,
+    "matmul_allow_tf32": false,
+    "num_interop_threads": 10,
+    "num_threads": 10,
+    "version": "2.4.1+cu121"
+  }
+}

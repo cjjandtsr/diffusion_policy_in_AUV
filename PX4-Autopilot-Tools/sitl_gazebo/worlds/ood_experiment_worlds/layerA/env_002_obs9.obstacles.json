@@ -1,0 +1,119 @@
+{
+  "world_id": 2,
+  "tier": "ood",
+  "n_obstacles": 9,
+  "spawn_world": [
+    -8.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "obs_00",
+      "shape": "cylinder",
+      "x": -3.3069,
+      "y": -5.35,
+      "yaw": 2.6881,
+      "radius": 1.9772,
+      "height": 4.5484
+    },
+    {
+      "name": "obs_01",
+      "shape": "cylinder",
+      "x": -5.2088,
+      "y": 4.2128,
+      "yaw": 1.9785,
+      "radius": 0.4808,
+      "height": 1.1866
+    },
+    {
+      "name": "obs_02",
+      "shape": "cylinder",
+      "x": -0.0157,
+      "y": 4.2432,
+      "yaw": 0.7079,
+      "radius": 1.0051,
+      "height": 6.2158
+    },
+    {
+      "name": "obs_03",
+      "shape": "cylinder",
+      "x": 4.5204,
+      "y": 0.9486,
+      "yaw": 0.3964,
+      "radius": 1.2988,
+      "height": 3.4328
+    },
+    {
+      "name": "obs_04",
+      "shape": "cylinder",
+      "x": 0.5888,
+      "y": -6.0454,
+      "yaw": 2.802,
+      "radius": 0.8988,
+      "height": 4.0741
+    },
+    {
+      "name": "obs_05",
+      "shape": "cylinder",
+      "x": 9.7169,
+      "y": 7.4492,
+      "yaw": 1.7639,
+      "radius": 1.4668,
+      "height": 4.3
+    },
+    {
+      "name": "obs_06",
+      "shape": "cylinder",
+      "x": -4.8886,
+      "y": -7.2772,
+      "yaw": 0.0402,
+      "radius": 1.8033,
+      "height": 7.7759
+    },
+    {
+      "name": "obs_07",
+      "shape": "cylinder",
+      "x": 2.9411,
+      "y": -0.454,
+      "yaw": 0.5479,
+      "radius": 0.686,
+      "height": 2.8769
+    },
+    {
+      "name": "obs_08",
+      "shape": "cylinder",
+      "x": -1.6395,
+      "y": -4.0696,
+      "yaw": 1.5268,
+      "radius": 1.182,
+      "height": 6.8561
+    }
+  ],
+  "difficulty": {
+    "TO": 0.5766,
+    "VO": 0.0,
+    "AOL": 0.0225,
+    "n_obstacles": 9
+  },
+  "generator_params": {
+    "density_range": [
+      1,
+      28
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      4.0
+    ],
+    "min_dist": 2.0,
+    "shape_ratio": 2.0,
+    "corner_type": null
+  }
+}

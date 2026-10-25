@@ -1,0 +1,298 @@
+{
+  "world_id": "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000107",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 28,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "s_turn_obs_0",
+      "shape": "cylinder",
+      "x": -6.0,
+      "y": -0.0356,
+      "z": 2.5232,
+      "yaw": 0.0,
+      "radius": 0.4469,
+      "height": 5.0465
+    },
+    {
+      "name": "s_turn_obs_1",
+      "shape": "cylinder",
+      "x": -5.2,
+      "y": 1.8386,
+      "z": 2.4913,
+      "yaw": 0.0,
+      "radius": 0.3403,
+      "height": 4.9825
+    },
+    {
+      "name": "s_turn_obs_2",
+      "shape": "cylinder",
+      "x": -4.4,
+      "y": 2.4367,
+      "z": 2.2791,
+      "yaw": 0.0,
+      "radius": 0.321,
+      "height": 4.5582
+    },
+    {
+      "name": "s_turn_obs_3",
+      "shape": "cylinder",
+      "x": -3.6,
+      "y": 2.1001,
+      "z": 2.7226,
+      "yaw": 0.0,
+      "radius": 0.5931,
+      "height": 5.4453
+    },
+    {
+      "name": "s_turn_obs_4",
+      "shape": "cylinder",
+      "x": -2.8,
+      "y": 1.5617,
+      "z": 1.8015,
+      "yaw": 0.0,
+      "radius": 0.4971,
+      "height": 3.603
+    },
+    {
+      "name": "s_turn_obs_5",
+      "shape": "cylinder",
+      "x": -2.0,
+      "y": -0.3514,
+      "z": 2.1319,
+      "yaw": 0.0,
+      "radius": 0.5615,
+      "height": 4.2639
+    },
+    {
+      "name": "s_turn_obs_6",
+      "shape": "cylinder",
+      "x": -1.2,
+      "y": -1.5242,
+      "z": 2.6848,
+      "yaw": 0.0,
+      "radius": 0.421,
+      "height": 5.3696
+    },
+    {
+      "name": "s_turn_obs_7",
+      "shape": "cylinder",
+      "x": -0.4,
+      "y": -2.7024,
+      "z": 2.6541,
+      "yaw": 0.0,
+      "radius": 0.4675,
+      "height": 5.3081
+    },
+    {
+      "name": "s_turn_obs_8",
+      "shape": "cylinder",
+      "x": 0.4,
+      "y": -2.7636,
+      "z": 1.9431,
+      "yaw": 0.0,
+      "radius": 0.3368,
+      "height": 3.8863
+    },
+    {
+      "name": "s_turn_obs_9",
+      "shape": "cylinder",
+      "x": 1.2,
+      "y": -1.4485,
+      "z": 2.994,
+      "yaw": 0.0,
+      "radius": 0.6771,
+      "height": 5.988
+    },
+    {
+      "name": "s_turn_obs_10",
+      "shape": "cylinder",
+      "x": 2.0,
+      "y": -0.3023,
+      "z": 2.0422,
+      "yaw": 0.0,
+      "radius": 0.323,
+      "height": 4.0844
+    },
+    {
+      "name": "s_turn_obs_11",
+      "shape": "cylinder",
+      "x": 2.8,
+      "y": 1.6031,
+      "z": 2.186,
+      "yaw": 0.0,
+      "radius": 0.6627,
+      "height": 4.3719
+    },
+    {
+      "name": "s_turn_obs_12",
+      "shape": "cylinder",
+      "x": 3.6,
+      "y": 2.2793,
+      "z": 2.9649,
+      "yaw": 0.0,
+      "radius": 0.3499,
+      "height": 5.9297
+    },
+    {
+      "name": "s_turn_obs_13",
+      "shape": "cylinder",
+      "x": 4.4,
+      "y": 2.6711,
+      "z": 2.7328,
+      "yaw": 0.0,
+      "radius": 0.5209,
+      "height": 5.4656
+    },
+    {
+      "name": "s_turn_obs_14",
+      "shape": "cylinder",
+      "x": 5.2,
+      "y": 1.4424,
+      "z": 2.2893,
+      "yaw": 0.0,
+      "radius": 0.3387,
+      "height": 4.5786
+    },
+    {
+      "name": "s_turn_obs_15",
+      "shape": "cylinder",
+      "x": 6.0,
+      "y": 0.1538,
+      "z": 1.873,
+      "yaw": 0.0,
+      "radius": 0.4529,
+      "height": 3.746
+    },
+    {
+      "name": "s_turn_obs2_0",
+      "shape": "cylinder",
+      "x": -5.0,
+      "y": 1.5897,
+      "z": 1.943,
+      "yaw": 0.0,
+      "radius": 0.2952,
+      "height": 3.886
+    },
+    {
+      "name": "s_turn_obs2_1",
+      "shape": "cylinder",
+      "x": -4.0909,
+      "y": 1.3688,
+      "z": 1.9315,
+      "yaw": 0.0,
+      "radius": 0.3609,
+      "height": 3.863
+    },
+    {
+      "name": "s_turn_obs2_2",
+      "shape": "cylinder",
+      "x": -3.1818,
+      "y": 1.0915,
+      "z": 2.3337,
+      "yaw": 0.0,
+      "radius": 0.2644,
+      "height": 4.6674
+    },
+    {
+      "name": "s_turn_obs2_3",
+      "shape": "cylinder",
+      "x": -2.2727,
+      "y": -0.3423,
+      "z": 2.3885,
+      "yaw": 0.0,
+      "radius": 0.4437,
+      "height": 4.777
+    },
+    {
+      "name": "s_turn_obs2_4",
+      "shape": "cylinder",
+      "x": -1.3636,
+      "y": -1.2831,
+      "z": 2.2028,
+      "yaw": 0.0,
+      "radius": 0.3968,
+      "height": 4.4055
+    },
+    {
+      "name": "s_turn_obs2_5",
+      "shape": "cylinder",
+      "x": -0.4545,
+      "y": -1.3369,
+      "z": 1.9733,
+      "yaw": 0.0,
+      "radius": 0.3727,
+      "height": 3.9466
+    },
+    {
+      "name": "s_turn_obs2_6",
+      "shape": "cylinder",
+      "x": 0.4545,
+      "y": -1.4929,
+      "z": 2.3463,
+      "yaw": 0.0,
+      "radius": 0.4449,
+      "height": 4.6925
+    },
+    {
+      "name": "s_turn_obs2_7",
+      "shape": "cylinder",
+      "x": 1.3636,
+      "y": -0.346,
+      "z": 1.6338,
+      "yaw": 0.0,
+      "radius": 0.4521,
+      "height": 3.2677
+    },
+    {
+      "name": "s_turn_obs2_8",
+      "shape": "cylinder",
+      "x": 2.2727,
+      "y": 0.5967,
+      "z": 1.9739,
+      "yaw": 0.0,
+      "radius": 0.272,
+      "height": 3.9478
+    },
+    {
+      "name": "s_turn_obs2_9",
+      "shape": "cylinder",
+      "x": 3.1818,
+      "y": 1.4862,
+      "z": 2.2902,
+      "yaw": 0.0,
+      "radius": 0.4789,
+      "height": 4.5805
+    },
+    {
+      "name": "s_turn_obs2_10",
+      "shape": "cylinder",
+      "x": 4.0909,
+      "y": 1.3359,
+      "z": 1.9324,
+      "yaw": 0.0,
+      "radius": 0.4969,
+      "height": 3.8648
+    },
+    {
+      "name": "s_turn_obs2_11",
+      "shape": "cylinder",
+      "x": 5.0,
+      "y": 0.6156,
+      "z": 2.4328,
+      "yaw": 0.0,
+      "radius": 0.4467,
+      "height": 4.8655
+    }
+  ]
+}
