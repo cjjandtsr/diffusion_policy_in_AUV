@@ -1,0 +1,418 @@
+{
+  "world_id": "routeA_rl_v1__dense_recovery__rl_test__bottleneck_corridor__000018",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 40,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "funnel_l_0",
+      "shape": "cylinder",
+      "x": -4.0,
+      "y": -3.8,
+      "z": 2.5783,
+      "yaw": 0.0,
+      "radius": 0.2794,
+      "height": 5.1567
+    },
+    {
+      "name": "funnel_r_0",
+      "shape": "cylinder",
+      "x": -4.0,
+      "y": 3.8,
+      "z": 2.7433,
+      "yaw": 0.0,
+      "radius": 0.2776,
+      "height": 5.4865
+    },
+    {
+      "name": "funnel_l_1",
+      "shape": "cylinder",
+      "x": -3.4857,
+      "y": -3.3714,
+      "z": 2.7498,
+      "yaw": 0.0,
+      "radius": 0.2926,
+      "height": 5.4997
+    },
+    {
+      "name": "funnel_r_1",
+      "shape": "cylinder",
+      "x": -3.4857,
+      "y": 3.3714,
+      "z": 2.5317,
+      "yaw": 0.0,
+      "radius": 0.3191,
+      "height": 5.0633
+    },
+    {
+      "name": "funnel_l_2",
+      "shape": "cylinder",
+      "x": -2.9714,
+      "y": -2.9429,
+      "z": 2.7969,
+      "yaw": 0.0,
+      "radius": 0.3028,
+      "height": 5.5939
+    },
+    {
+      "name": "funnel_r_2",
+      "shape": "cylinder",
+      "x": -2.9714,
+      "y": 2.9429,
+      "z": 2.8767,
+      "yaw": 0.0,
+      "radius": 0.351,
+      "height": 5.7535
+    },
+    {
+      "name": "funnel_l_3",
+      "shape": "cylinder",
+      "x": -2.4571,
+      "y": -2.5143,
+      "z": 2.5205,
+      "yaw": 0.0,
+      "radius": 0.3493,
+      "height": 5.041
+    },
+    {
+      "name": "funnel_r_3",
+      "shape": "cylinder",
+      "x": -2.4571,
+      "y": 2.5143,
+      "z": 2.7569,
+      "yaw": 0.0,
+      "radius": 0.3969,
+      "height": 5.5139
+    },
+    {
+      "name": "funnel_l_4",
+      "shape": "cylinder",
+      "x": -1.9429,
+      "y": -2.0857,
+      "z": 2.1074,
+      "yaw": 0.0,
+      "radius": 0.3925,
+      "height": 4.2149
+    },
+    {
+      "name": "funnel_r_4",
+      "shape": "cylinder",
+      "x": -1.9429,
+      "y": 2.0857,
+      "z": 2.2028,
+      "yaw": 0.0,
+      "radius": 0.3689,
+      "height": 4.4056
+    },
+    {
+      "name": "funnel_l_5",
+      "shape": "cylinder",
+      "x": -1.4286,
+      "y": -1.6571,
+      "z": 2.8509,
+      "yaw": 0.0,
+      "radius": 0.2713,
+      "height": 5.7019
+    },
+    {
+      "name": "funnel_r_5",
+      "shape": "cylinder",
+      "x": -1.4286,
+      "y": 1.6571,
+      "z": 2.603,
+      "yaw": 0.0,
+      "radius": 0.319,
+      "height": 5.206
+    },
+    {
+      "name": "funnel_l_6",
+      "shape": "cylinder",
+      "x": -0.9143,
+      "y": -1.2286,
+      "z": 2.406,
+      "yaw": 0.0,
+      "radius": 0.389,
+      "height": 4.812
+    },
+    {
+      "name": "funnel_r_6",
+      "shape": "cylinder",
+      "x": -0.9143,
+      "y": 1.2286,
+      "z": 2.68,
+      "yaw": 0.0,
+      "radius": 0.3374,
+      "height": 5.36
+    },
+    {
+      "name": "funnel_l_7",
+      "shape": "cylinder",
+      "x": -0.4,
+      "y": -0.8,
+      "z": 2.0484,
+      "yaw": 0.0,
+      "radius": 0.3194,
+      "height": 4.0968
+    },
+    {
+      "name": "funnel_r_7",
+      "shape": "cylinder",
+      "x": -0.4,
+      "y": 0.8,
+      "z": 2.6415,
+      "yaw": 0.0,
+      "radius": 0.3954,
+      "height": 5.2831
+    },
+    {
+      "name": "funnel_out_l_0",
+      "shape": "cylinder",
+      "x": 0.4,
+      "y": -0.8,
+      "z": 2.8359,
+      "yaw": 0.0,
+      "radius": 0.2914,
+      "height": 5.6717
+    },
+    {
+      "name": "funnel_out_r_0",
+      "shape": "cylinder",
+      "x": 0.4,
+      "y": 0.8,
+      "z": 2.7946,
+      "yaw": 0.0,
+      "radius": 0.3345,
+      "height": 5.5892
+    },
+    {
+      "name": "funnel_out_l_1",
+      "shape": "cylinder",
+      "x": 0.9143,
+      "y": -1.2286,
+      "z": 2.6008,
+      "yaw": 0.0,
+      "radius": 0.353,
+      "height": 5.2015
+    },
+    {
+      "name": "funnel_out_r_1",
+      "shape": "cylinder",
+      "x": 0.9143,
+      "y": 1.2286,
+      "z": 2.2052,
+      "yaw": 0.0,
+      "radius": 0.3157,
+      "height": 4.4105
+    },
+    {
+      "name": "funnel_out_l_2",
+      "shape": "cylinder",
+      "x": 1.4286,
+      "y": -1.6571,
+      "z": 2.4138,
+      "yaw": 0.0,
+      "radius": 0.2907,
+      "height": 4.8277
+    },
+    {
+      "name": "funnel_out_r_2",
+      "shape": "cylinder",
+      "x": 1.4286,
+      "y": 1.6571,
+      "z": 2.8562,
+      "yaw": 0.0,
+      "radius": 0.3628,
+      "height": 5.7124
+    },
+    {
+      "name": "funnel_out_l_3",
+      "shape": "cylinder",
+      "x": 1.9429,
+      "y": -2.0857,
+      "z": 2.9593,
+      "yaw": 0.0,
+      "radius": 0.3658,
+      "height": 5.9187
+    },
+    {
+      "name": "funnel_out_r_3",
+      "shape": "cylinder",
+      "x": 1.9429,
+      "y": 2.0857,
+      "z": 2.0324,
+      "yaw": 0.0,
+      "radius": 0.2646,
+      "height": 4.0647
+    },
+    {
+      "name": "funnel_out_l_4",
+      "shape": "cylinder",
+      "x": 2.4571,
+      "y": -2.5143,
+      "z": 2.5898,
+      "yaw": 0.0,
+      "radius": 0.3992,
+      "height": 5.1797
+    },
+    {
+      "name": "funnel_out_r_4",
+      "shape": "cylinder",
+      "x": 2.4571,
+      "y": 2.5143,
+      "z": 2.4751,
+      "yaw": 0.0,
+      "radius": 0.2883,
+      "height": 4.9503
+    },
+    {
+      "name": "funnel_out_l_5",
+      "shape": "cylinder",
+      "x": 2.9714,
+      "y": -2.9429,
+      "z": 2.8927,
+      "yaw": 0.0,
+      "radius": 0.294,
+      "height": 5.7854
+    },
+    {
+      "name": "funnel_out_r_5",
+      "shape": "cylinder",
+      "x": 2.9714,
+      "y": 2.9429,
+      "z": 2.6886,
+      "yaw": 0.0,
+      "radius": 0.3699,
+      "height": 5.3772
+    },
+    {
+      "name": "funnel_out_l_6",
+      "shape": "cylinder",
+      "x": 3.4857,
+      "y": -3.3714,
+      "z": 2.4963,
+      "yaw": 0.0,
+      "radius": 0.3415,
+      "height": 4.9927
+    },
+    {
+      "name": "funnel_out_r_6",
+      "shape": "cylinder",
+      "x": 3.4857,
+      "y": 3.3714,
+      "z": 2.3679,
+      "yaw": 0.0,
+      "radius": 0.3531,
+      "height": 4.7357
+    },
+    {
+      "name": "funnel_out_l_7",
+      "shape": "cylinder",
+      "x": 4.0,
+      "y": -3.8,
+      "z": 2.4328,
+      "yaw": 0.0,
+      "radius": 0.3,
+      "height": 4.8656
+    },
+    {
+      "name": "funnel_out_r_7",
+      "shape": "cylinder",
+      "x": 4.0,
+      "y": 3.8,
+      "z": 2.8921,
+      "yaw": 0.0,
+      "radius": 0.3975,
+      "height": 5.7843
+    },
+    {
+      "name": "bn_scatter_0",
+      "shape": "cylinder",
+      "x": -2.4607,
+      "y": 0.7092,
+      "z": 2.8909,
+      "yaw": 0.0,
+      "radius": 0.4829,
+      "height": 5.7818
+    },
+    {
+      "name": "bn_scatter_1",
+      "shape": "cylinder",
+      "x": -5.9276,
+      "y": -4.6203,
+      "z": 2.5646,
+      "yaw": 0.0,
+      "radius": 0.2801,
+      "height": 5.1293
+    },
+    {
+      "name": "bn_scatter_2",
+      "shape": "cylinder",
+      "x": -2.9168,
+      "y": 1.1685,
+      "z": 1.6101,
+      "yaw": 0.0,
+      "radius": 0.4454,
+      "height": 3.2202
+    },
+    {
+      "name": "bn_scatter_3",
+      "shape": "cylinder",
+      "x": 2.7351,
+      "y": -0.1527,
+      "z": 2.0381,
+      "yaw": 0.0,
+      "radius": 0.311,
+      "height": 4.0763
+    },
+    {
+      "name": "bn_scatter_4",
+      "shape": "cylinder",
+      "x": 5.7318,
+      "y": 0.6107,
+      "z": 2.4147,
+      "yaw": 0.0,
+      "radius": 0.3822,
+      "height": 4.8294
+    },
+    {
+      "name": "bn_scatter_5",
+      "shape": "cylinder",
+      "x": -5.0574,
+      "y": -2.3303,
+      "z": 2.2664,
+      "yaw": 0.0,
+      "radius": 0.4038,
+      "height": 4.5327
+    },
+    {
+      "name": "bn_scatter_6",
+      "shape": "cylinder",
+      "x": -5.1233,
+      "y": -0.7838,
+      "z": 2.5577,
+      "yaw": 0.0,
+      "radius": 0.3738,
+      "height": 5.1153
+    },
+    {
+      "name": "bn_scatter_7",
+      "shape": "cylinder",
+      "x": -3.3586,
+      "y": 3.8491,
+      "z": 2.6958,
+      "yaw": 0.0,
+      "radius": 0.5366,
+      "height": 5.3916
+    }
+  ]
+}

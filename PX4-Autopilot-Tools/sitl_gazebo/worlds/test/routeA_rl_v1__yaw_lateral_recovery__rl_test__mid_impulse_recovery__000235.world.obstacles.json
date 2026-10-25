@@ -1,0 +1,60 @@
+{
+  "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_test__mid_impulse_recovery__000235",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 4,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "guide_wall_l",
+      "shape": "box",
+      "x": -3.0,
+      "y": -3.25,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 6.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "guide_wall_r",
+      "shape": "box",
+      "x": -3.0,
+      "y": 3.25,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 6.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "impulse_obs",
+      "shape": "cylinder",
+      "x": 1.0,
+      "y": 1.5,
+      "z": 2.1645,
+      "yaw": 0.0,
+      "radius": 0.5181,
+      "height": 4.3289
+    },
+    {
+      "name": "recovery_obs",
+      "shape": "cylinder",
+      "x": 4.0,
+      "y": -0.75,
+      "z": 1.8533,
+      "yaw": 0.0,
+      "radius": 0.7218,
+      "height": 3.7065
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "world_id": 4,
+  "tier": "trap_d6.0_o1.5",
+  "n_obstacles": 5,
+  "spawn_world": [
+    -12.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "trap_left",
+      "shape": "box",
+      "x": 3.0,
+      "y": -0.75,
+      "yaw": 0.0,
+      "size_x": 6.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_right",
+      "shape": "box",
+      "x": 3.0,
+      "y": 0.75,
+      "yaw": 0.0,
+      "size_x": 6.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_back",
+      "shape": "box",
+      "x": 6.0,
+      "y": 0.0,
+      "yaw": 0.0,
+      "size_x": 0.5,
+      "size_y": 1.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_funnel_l",
+      "shape": "box",
+      "x": -2.4,
+      "y": -1.125,
+      "yaw": 0.0,
+      "size_x": 4.8,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_funnel_r",
+      "shape": "box",
+      "x": -2.4,
+      "y": 1.125,
+      "yaw": 0.0,
+      "size_x": 4.8,
+      "size_y": 0.5,
+      "size_z": 4.0
+    }
+  ],
+  "difficulty": {
+    "TO": 0.0818,
+    "VO": 0.0,
+    "AOL": 0.0125,
+    "n_obstacles": 5
+  },
+  "generator_params": {
+    "density_range": [
+      0,
+      0
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      8.0
+    ],
+    "min_dist": 0.5,
+    "shape_ratio": 0.667,
+    "corner_type": "trap"
+  },
+  "start_world": [
+    -10.0,
+    0.0,
+    2.0
+  ],
+  "goal_world": [
+    8.0,
+    0.0,
+    2.0
+  ]
+}

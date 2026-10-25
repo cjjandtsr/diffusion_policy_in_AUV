@@ -1,0 +1,273 @@
+{
+  "world_id": "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000105",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 25,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "trap_side_l",
+      "shape": "box",
+      "x": 2.5,
+      "y": -1.5,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 5.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_side_r",
+      "shape": "box",
+      "x": 2.5,
+      "y": 1.5,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 5.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_back",
+      "shape": "box",
+      "x": 5.0,
+      "y": 0.0,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 0.5,
+      "size_y": 2.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_funnel_l",
+      "shape": "box",
+      "x": -1.25,
+      "y": -1.75,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 2.5,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_funnel_r",
+      "shape": "box",
+      "x": -1.25,
+      "y": 1.75,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 2.5,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_scatter_0",
+      "shape": "cylinder",
+      "x": 6.0343,
+      "y": 7.2273,
+      "z": 2.2085,
+      "yaw": 0.0,
+      "radius": 0.2274,
+      "height": 4.4171
+    },
+    {
+      "name": "trap_scatter_1",
+      "shape": "cylinder",
+      "x": -3.9107,
+      "y": -5.1439,
+      "z": 2.2095,
+      "yaw": 0.0,
+      "radius": 0.3998,
+      "height": 4.419
+    },
+    {
+      "name": "trap_scatter_2",
+      "shape": "cylinder",
+      "x": -0.6782,
+      "y": 2.5787,
+      "z": 2.2141,
+      "yaw": 0.0,
+      "radius": 0.2564,
+      "height": 4.4281
+    },
+    {
+      "name": "trap_scatter_3",
+      "shape": "cylinder",
+      "x": 0.8698,
+      "y": 5.908,
+      "z": 2.1527,
+      "yaw": 0.0,
+      "radius": 0.5699,
+      "height": 4.3054
+    },
+    {
+      "name": "trap_scatter_5",
+      "shape": "cylinder",
+      "x": 1.7169,
+      "y": -5.5528,
+      "z": 2.4532,
+      "yaw": 0.0,
+      "radius": 0.2108,
+      "height": 4.9063
+    },
+    {
+      "name": "trap_scatter_6",
+      "shape": "cylinder",
+      "x": 5.6079,
+      "y": -1.5673,
+      "z": 2.3287,
+      "yaw": 0.0,
+      "radius": 0.3734,
+      "height": 4.6574
+    },
+    {
+      "name": "trap_scatter_7",
+      "shape": "cylinder",
+      "x": -3.2209,
+      "y": -0.521,
+      "z": 1.7823,
+      "yaw": 0.0,
+      "radius": 0.4994,
+      "height": 3.5645
+    },
+    {
+      "name": "trap_scatter_10",
+      "shape": "cylinder",
+      "x": -2.2923,
+      "y": 5.2637,
+      "z": 2.4078,
+      "yaw": 0.0,
+      "radius": 0.574,
+      "height": 4.8155
+    },
+    {
+      "name": "trap_scatter_11",
+      "shape": "cylinder",
+      "x": 6.0272,
+      "y": 4.1903,
+      "z": 1.8244,
+      "yaw": 0.0,
+      "radius": 0.3076,
+      "height": 3.6488
+    },
+    {
+      "name": "trap_scatter_12",
+      "shape": "cylinder",
+      "x": 3.4568,
+      "y": -4.169,
+      "z": 2.4252,
+      "yaw": 0.0,
+      "radius": 0.3643,
+      "height": 4.8505
+    },
+    {
+      "name": "trap_scatter_13",
+      "shape": "cylinder",
+      "x": -3.1753,
+      "y": -6.3074,
+      "z": 1.6444,
+      "yaw": 0.0,
+      "radius": 0.3983,
+      "height": 3.2888
+    },
+    {
+      "name": "trap_scatter_14",
+      "shape": "cylinder",
+      "x": 5.2077,
+      "y": 1.5624,
+      "z": 2.1371,
+      "yaw": 0.0,
+      "radius": 0.2385,
+      "height": 4.2741
+    },
+    {
+      "name": "trap_scatter_16",
+      "shape": "cylinder",
+      "x": 4.2209,
+      "y": 3.1647,
+      "z": 1.9924,
+      "yaw": 0.0,
+      "radius": 0.4711,
+      "height": 3.9848
+    },
+    {
+      "name": "trap_scatter_17",
+      "shape": "cylinder",
+      "x": 6.6863,
+      "y": 1.5953,
+      "z": 2.0281,
+      "yaw": 0.0,
+      "radius": 0.2004,
+      "height": 4.0562
+    },
+    {
+      "name": "trap_scatter_18",
+      "shape": "cylinder",
+      "x": -3.8167,
+      "y": -1.5903,
+      "z": 1.9291,
+      "yaw": 0.0,
+      "radius": 0.5967,
+      "height": 3.8582
+    },
+    {
+      "name": "trap_scatter_19",
+      "shape": "cylinder",
+      "x": 4.3693,
+      "y": -5.1556,
+      "z": 2.1935,
+      "yaw": 0.0,
+      "radius": 0.3329,
+      "height": 4.3871
+    },
+    {
+      "name": "trap_scatter_20",
+      "shape": "cylinder",
+      "x": -2.4668,
+      "y": 4.5444,
+      "z": 1.8733,
+      "yaw": 0.0,
+      "radius": 0.4015,
+      "height": 3.7465
+    },
+    {
+      "name": "trap_scatter_22",
+      "shape": "cylinder",
+      "x": 0.8598,
+      "y": 6.605,
+      "z": 2.1699,
+      "yaw": 0.0,
+      "radius": 0.4224,
+      "height": 4.3398
+    },
+    {
+      "name": "trap_scatter_23",
+      "shape": "cylinder",
+      "x": -0.3688,
+      "y": -2.0874,
+      "z": 1.8614,
+      "yaw": 0.0,
+      "radius": 0.4539,
+      "height": 3.7228
+    },
+    {
+      "name": "trap_scatter_24",
+      "shape": "cylinder",
+      "x": -1.0558,
+      "y": 3.2256,
+      "z": 2.0737,
+      "yaw": 0.0,
+      "radius": 0.5388,
+      "height": 4.1475
+    }
+  ]
+}

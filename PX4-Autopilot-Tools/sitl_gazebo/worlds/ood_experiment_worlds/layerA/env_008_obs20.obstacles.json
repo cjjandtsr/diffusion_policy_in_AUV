@@ -1,0 +1,218 @@
+{
+  "world_id": 8,
+  "tier": "ood",
+  "n_obstacles": 20,
+  "spawn_world": [
+    -8.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "obs_00",
+      "shape": "cylinder",
+      "x": 3.148,
+      "y": 9.6454,
+      "yaw": 2.2706,
+      "radius": 1.4665,
+      "height": 4.2686
+    },
+    {
+      "name": "obs_01",
+      "shape": "cylinder",
+      "x": 5.2934,
+      "y": -8.7655,
+      "yaw": 0.2028,
+      "radius": 0.2384,
+      "height": 6.0127
+    },
+    {
+      "name": "obs_02",
+      "shape": "cylinder",
+      "x": -7.9803,
+      "y": -8.0873,
+      "yaw": 2.3853,
+      "radius": 1.9353,
+      "height": 4.3491
+    },
+    {
+      "name": "obs_03",
+      "shape": "cylinder",
+      "x": -4.5018,
+      "y": -7.2305,
+      "yaw": 0.2623,
+      "radius": 1.6211,
+      "height": 6.2496
+    },
+    {
+      "name": "obs_04",
+      "shape": "cylinder",
+      "x": -4.9744,
+      "y": 7.5682,
+      "yaw": 2.3519,
+      "radius": 0.3028,
+      "height": 6.8274
+    },
+    {
+      "name": "obs_05",
+      "shape": "cylinder",
+      "x": 4.609,
+      "y": 1.8801,
+      "yaw": 2.6779,
+      "radius": 0.2663,
+      "height": 6.4791
+    },
+    {
+      "name": "obs_06",
+      "shape": "cylinder",
+      "x": -2.8436,
+      "y": -0.4727,
+      "yaw": 1.477,
+      "radius": 0.8192,
+      "height": 7.0376
+    },
+    {
+      "name": "obs_07",
+      "shape": "cylinder",
+      "x": -9.4388,
+      "y": 8.4722,
+      "yaw": 1.9717,
+      "radius": 0.4618,
+      "height": 6.6281
+    },
+    {
+      "name": "obs_08",
+      "shape": "cylinder",
+      "x": -1.659,
+      "y": 8.2858,
+      "yaw": 1.5554,
+      "radius": 0.9372,
+      "height": 4.2469
+    },
+    {
+      "name": "obs_09",
+      "shape": "cylinder",
+      "x": 6.5332,
+      "y": 5.4906,
+      "yaw": 1.7645,
+      "radius": 0.7326,
+      "height": 3.3677
+    },
+    {
+      "name": "obs_10",
+      "shape": "cylinder",
+      "x": 9.8634,
+      "y": 5.9422,
+      "yaw": 2.1143,
+      "radius": 1.5843,
+      "height": 4.9027
+    },
+    {
+      "name": "obs_11",
+      "shape": "cylinder",
+      "x": -3.7352,
+      "y": 5.781,
+      "yaw": 1.229,
+      "radius": 1.1203,
+      "height": 1.8468
+    },
+    {
+      "name": "obs_12",
+      "shape": "cylinder",
+      "x": 0.3352,
+      "y": -2.1039,
+      "yaw": 2.5236,
+      "radius": 1.1518,
+      "height": 5.6792
+    },
+    {
+      "name": "obs_13",
+      "shape": "cylinder",
+      "x": 7.5423,
+      "y": 8.0989,
+      "yaw": 2.6076,
+      "radius": 1.0013,
+      "height": 5.356
+    },
+    {
+      "name": "obs_14",
+      "shape": "cylinder",
+      "x": 0.0909,
+      "y": 0.9114,
+      "yaw": 2.1377,
+      "radius": 1.243,
+      "height": 5.1614
+    },
+    {
+      "name": "obs_15",
+      "shape": "cylinder",
+      "x": 6.7731,
+      "y": -7.2261,
+      "yaw": 1.3598,
+      "radius": 0.1779,
+      "height": 7.8295
+    },
+    {
+      "name": "obs_16",
+      "shape": "cylinder",
+      "x": 4.4118,
+      "y": -1.434,
+      "yaw": 0.7882,
+      "radius": 0.2046,
+      "height": 7.9106
+    },
+    {
+      "name": "obs_17",
+      "shape": "cylinder",
+      "x": 2.6562,
+      "y": -4.1528,
+      "yaw": 1.895,
+      "radius": 1.3258,
+      "height": 3.0745
+    },
+    {
+      "name": "obs_18",
+      "shape": "cylinder",
+      "x": 8.0913,
+      "y": 3.1183,
+      "yaw": 2.8686,
+      "radius": 0.5867,
+      "height": 5.3562
+    },
+    {
+      "name": "obs_19",
+      "shape": "cylinder",
+      "x": -5.551,
+      "y": -9.8002,
+      "yaw": 2.3743,
+      "radius": 1.754,
+      "height": 2.2143
+    }
+  ],
+  "difficulty": {
+    "TO": 0.6494,
+    "VO": 0.0,
+    "AOL": 0.05,
+    "n_obstacles": 20
+  },
+  "generator_params": {
+    "density_range": [
+      1,
+      28
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      4.0
+    ],
+    "min_dist": 2.0,
+    "shape_ratio": 2.0,
+    "corner_type": null
+  }
+}

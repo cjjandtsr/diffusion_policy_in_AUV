@@ -1,0 +1,62 @@
+{
+  "world_id": "routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000048",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 4,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "gate1_l",
+      "shape": "box",
+      "x": -3.0,
+      "y": -2.0,
+      "z": 2.5,
+      "yaw": 0.0,
+      "size_x": 0.5,
+      "size_y": 0.5,
+      "size_z": 5.0
+    },
+    {
+      "name": "gate1_r",
+      "shape": "box",
+      "x": -3.0,
+      "y": 2.0,
+      "z": 2.5,
+      "yaw": 0.0,
+      "size_x": 0.5,
+      "size_y": 0.5,
+      "size_z": 5.0
+    },
+    {
+      "name": "gate2_l",
+      "shape": "box",
+      "x": 3.0,
+      "y": -1.7375,
+      "z": 2.5,
+      "yaw": 0.0,
+      "size_x": 0.5,
+      "size_y": 0.5,
+      "size_z": 5.0
+    },
+    {
+      "name": "gate2_r",
+      "shape": "box",
+      "x": 3.0,
+      "y": 1.7375,
+      "z": 2.5,
+      "yaw": 0.0,
+      "size_x": 0.5,
+      "size_y": 0.5,
+      "size_z": 5.0
+    }
+  ]
+}

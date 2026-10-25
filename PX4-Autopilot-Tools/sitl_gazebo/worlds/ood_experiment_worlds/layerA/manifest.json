@@ -1,0 +1,293 @@
+{
+  "version": "ood_v1",
+  "seed": 9001,
+  "total_worlds": 20,
+  "spawn_world": [
+    -8.0,
+    0.0
+  ],
+  "spawn_clearance": 5.0,
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "generator_params": {
+    "density_range": [
+      1,
+      28
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      4.0
+    ],
+    "min_dist": 2.0,
+    "shape_ratio": 2.0,
+    "corner_type": null
+  },
+  "worlds": [
+    {
+      "world_id": 0,
+      "tier": "ood",
+      "n_obstacles": 2,
+      "filename": "env_000_obs2.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.4747,
+        "VO": 1.0,
+        "AOL": 0.005,
+        "n_obstacles": 2
+      }
+    },
+    {
+      "world_id": 1,
+      "tier": "ood",
+      "n_obstacles": 10,
+      "filename": "env_001_obs10.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.7394,
+        "VO": 1.0,
+        "AOL": 0.025,
+        "n_obstacles": 10
+      }
+    },
+    {
+      "world_id": 2,
+      "tier": "ood",
+      "n_obstacles": 9,
+      "filename": "env_002_obs9.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.5766,
+        "VO": 0.0,
+        "AOL": 0.0225,
+        "n_obstacles": 9
+      }
+    },
+    {
+      "world_id": 3,
+      "tier": "ood",
+      "n_obstacles": 3,
+      "filename": "env_003_obs3.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.8638,
+        "VO": 1.0,
+        "AOL": 0.0075,
+        "n_obstacles": 3
+      }
+    },
+    {
+      "world_id": 4,
+      "tier": "ood",
+      "n_obstacles": 19,
+      "filename": "env_004_obs19.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6476,
+        "VO": 0.0,
+        "AOL": 0.0475,
+        "n_obstacles": 19
+      }
+    },
+    {
+      "world_id": 5,
+      "tier": "ood",
+      "n_obstacles": 9,
+      "filename": "env_005_obs9.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6867,
+        "VO": 1.0,
+        "AOL": 0.0225,
+        "n_obstacles": 9
+      }
+    },
+    {
+      "world_id": 6,
+      "tier": "ood",
+      "n_obstacles": 19,
+      "filename": "env_006_obs19.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.691,
+        "VO": 1.0,
+        "AOL": 0.0475,
+        "n_obstacles": 19
+      }
+    },
+    {
+      "world_id": 7,
+      "tier": "ood",
+      "n_obstacles": 27,
+      "filename": "env_007_obs27.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6818,
+        "VO": 0.0,
+        "AOL": 0.0675,
+        "n_obstacles": 27
+      }
+    },
+    {
+      "world_id": 8,
+      "tier": "ood",
+      "n_obstacles": 20,
+      "filename": "env_008_obs20.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6494,
+        "VO": 0.0,
+        "AOL": 0.05,
+        "n_obstacles": 20
+      }
+    },
+    {
+      "world_id": 9,
+      "tier": "ood",
+      "n_obstacles": 17,
+      "filename": "env_009_obs17.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.7432,
+        "VO": 0.0,
+        "AOL": 0.0425,
+        "n_obstacles": 17
+      }
+    },
+    {
+      "world_id": 10,
+      "tier": "ood",
+      "n_obstacles": 2,
+      "filename": "env_010_obs2.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6059,
+        "VO": 1.0,
+        "AOL": 0.005,
+        "n_obstacles": 2
+      }
+    },
+    {
+      "world_id": 11,
+      "tier": "ood",
+      "n_obstacles": 23,
+      "filename": "env_011_obs23.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6582,
+        "VO": 0.0,
+        "AOL": 0.0575,
+        "n_obstacles": 23
+      }
+    },
+    {
+      "world_id": 12,
+      "tier": "ood",
+      "n_obstacles": 22,
+      "filename": "env_012_obs22.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.5279,
+        "VO": 0.0,
+        "AOL": 0.055,
+        "n_obstacles": 22
+      }
+    },
+    {
+      "world_id": 13,
+      "tier": "ood",
+      "n_obstacles": 9,
+      "filename": "env_013_obs9.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.7161,
+        "VO": 0.0,
+        "AOL": 0.0225,
+        "n_obstacles": 9
+      }
+    },
+    {
+      "world_id": 14,
+      "tier": "ood",
+      "n_obstacles": 20,
+      "filename": "env_014_obs20.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.5585,
+        "VO": 0.0,
+        "AOL": 0.05,
+        "n_obstacles": 20
+      }
+    },
+    {
+      "world_id": 15,
+      "tier": "ood",
+      "n_obstacles": 21,
+      "filename": "env_015_obs21.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6409,
+        "VO": 0.0,
+        "AOL": 0.0525,
+        "n_obstacles": 21
+      }
+    },
+    {
+      "world_id": 16,
+      "tier": "ood",
+      "n_obstacles": 18,
+      "filename": "env_016_obs18.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.8075,
+        "VO": 0.0,
+        "AOL": 0.045,
+        "n_obstacles": 18
+      }
+    },
+    {
+      "world_id": 17,
+      "tier": "ood",
+      "n_obstacles": 21,
+      "filename": "env_017_obs21.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6237,
+        "VO": 0.0,
+        "AOL": 0.0525,
+        "n_obstacles": 21
+      }
+    },
+    {
+      "world_id": 18,
+      "tier": "ood",
+      "n_obstacles": 25,
+      "filename": "env_018_obs25.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6879,
+        "VO": 0.0,
+        "AOL": 0.0625,
+        "n_obstacles": 25
+      }
+    },
+    {
+      "world_id": 19,
+      "tier": "ood",
+      "n_obstacles": 25,
+      "filename": "env_019_obs25.world",
+      "n_issues": 0,
+      "difficulty": {
+        "TO": 0.6728,
+        "VO": 1.0,
+        "AOL": 0.0625,
+        "n_obstacles": 25
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000188",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 2,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "corridor_wall_l",
+      "shape": "box",
+      "x": 0.0,
+      "y": -2.7,
+      "z": 2.5,
+      "yaw": 0.0,
+      "size_x": 14.0,
+      "size_y": 0.5,
+      "size_z": 5.0
+    },
+    {
+      "name": "corridor_wall_r",
+      "shape": "box",
+      "x": 0.0,
+      "y": 2.7,
+      "z": 2.5,
+      "yaw": 0.0,
+      "size_x": 14.0,
+      "size_y": 0.5,
+      "size_z": 5.0
+    }
+  ]
+}

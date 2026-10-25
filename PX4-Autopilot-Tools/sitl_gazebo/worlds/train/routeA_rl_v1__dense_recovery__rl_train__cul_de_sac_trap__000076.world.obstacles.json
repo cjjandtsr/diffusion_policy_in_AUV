@@ -1,0 +1,313 @@
+{
+  "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000076",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 29,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "trap_side_l",
+      "shape": "box",
+      "x": 1.5,
+      "y": -2.0,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 3.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_side_r",
+      "shape": "box",
+      "x": 1.5,
+      "y": 2.0,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 3.0,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_back",
+      "shape": "box",
+      "x": 3.0,
+      "y": 0.0,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 0.5,
+      "size_y": 3.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_funnel_l",
+      "shape": "box",
+      "x": -0.75,
+      "y": -2.45,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 1.5,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_funnel_r",
+      "shape": "box",
+      "x": -0.75,
+      "y": 2.45,
+      "z": 2.0,
+      "yaw": 0.0,
+      "size_x": 1.5,
+      "size_y": 0.5,
+      "size_z": 4.0
+    },
+    {
+      "name": "trap_scatter_0",
+      "shape": "cylinder",
+      "x": -0.6889,
+      "y": 0.2276,
+      "z": 1.8823,
+      "yaw": 0.0,
+      "radius": 0.5382,
+      "height": 3.7646
+    },
+    {
+      "name": "trap_scatter_1",
+      "shape": "cylinder",
+      "x": 2.2836,
+      "y": 6.3545,
+      "z": 2.4837,
+      "yaw": 0.0,
+      "radius": 0.2114,
+      "height": 4.9675
+    },
+    {
+      "name": "trap_scatter_2",
+      "shape": "cylinder",
+      "x": 4.0518,
+      "y": -0.2404,
+      "z": 2.4277,
+      "yaw": 0.0,
+      "radius": 0.5692,
+      "height": 4.8555
+    },
+    {
+      "name": "trap_scatter_3",
+      "shape": "cylinder",
+      "x": -0.4668,
+      "y": 7.0229,
+      "z": 2.3551,
+      "yaw": 0.0,
+      "radius": 0.572,
+      "height": 4.7101
+    },
+    {
+      "name": "trap_scatter_4",
+      "shape": "cylinder",
+      "x": 3.2792,
+      "y": 3.041,
+      "z": 1.6721,
+      "yaw": 0.0,
+      "radius": 0.2543,
+      "height": 3.3442
+    },
+    {
+      "name": "trap_scatter_5",
+      "shape": "cylinder",
+      "x": 4.5467,
+      "y": 1.6544,
+      "z": 2.3902,
+      "yaw": 0.0,
+      "radius": 0.5584,
+      "height": 4.7804
+    },
+    {
+      "name": "trap_scatter_6",
+      "shape": "cylinder",
+      "x": 0.5504,
+      "y": -3.3923,
+      "z": 2.15,
+      "yaw": 0.0,
+      "radius": 0.5631,
+      "height": 4.3001
+    },
+    {
+      "name": "trap_scatter_7",
+      "shape": "cylinder",
+      "x": -1.2248,
+      "y": 5.0807,
+      "z": 2.2628,
+      "yaw": 0.0,
+      "radius": 0.2598,
+      "height": 4.5256
+    },
+    {
+      "name": "trap_scatter_8",
+      "shape": "cylinder",
+      "x": 4.7809,
+      "y": 3.9759,
+      "z": 2.2703,
+      "yaw": 0.0,
+      "radius": 0.4858,
+      "height": 4.5405
+    },
+    {
+      "name": "trap_scatter_9",
+      "shape": "cylinder",
+      "x": -3.4046,
+      "y": 3.513,
+      "z": 2.3335,
+      "yaw": 0.0,
+      "radius": 0.4626,
+      "height": 4.667
+    },
+    {
+      "name": "trap_scatter_10",
+      "shape": "cylinder",
+      "x": 3.8783,
+      "y": -1.7366,
+      "z": 2.051,
+      "yaw": 0.0,
+      "radius": 0.489,
+      "height": 4.1019
+    },
+    {
+      "name": "trap_scatter_11",
+      "shape": "cylinder",
+      "x": 4.9575,
+      "y": -0.0125,
+      "z": 2.0745,
+      "yaw": 0.0,
+      "radius": 0.2703,
+      "height": 4.149
+    },
+    {
+      "name": "trap_scatter_12",
+      "shape": "cylinder",
+      "x": -3.0692,
+      "y": -6.5692,
+      "z": 1.9856,
+      "yaw": 0.0,
+      "radius": 0.482,
+      "height": 3.9712
+    },
+    {
+      "name": "trap_scatter_13",
+      "shape": "cylinder",
+      "x": -3.5605,
+      "y": 5.1647,
+      "z": 1.9045,
+      "yaw": 0.0,
+      "radius": 0.2487,
+      "height": 3.8089
+    },
+    {
+      "name": "trap_scatter_14",
+      "shape": "cylinder",
+      "x": 2.6062,
+      "y": -4.427,
+      "z": 2.1994,
+      "yaw": 0.0,
+      "radius": 0.2592,
+      "height": 4.3988
+    },
+    {
+      "name": "trap_scatter_15",
+      "shape": "cylinder",
+      "x": 4.4797,
+      "y": 2.4847,
+      "z": 2.082,
+      "yaw": 0.0,
+      "radius": 0.5014,
+      "height": 4.1639
+    },
+    {
+      "name": "trap_scatter_16",
+      "shape": "cylinder",
+      "x": 3.0033,
+      "y": -4.481,
+      "z": 2.0384,
+      "yaw": 0.0,
+      "radius": 0.5402,
+      "height": 4.0767
+    },
+    {
+      "name": "trap_scatter_18",
+      "shape": "cylinder",
+      "x": -1.3609,
+      "y": 5.9303,
+      "z": 2.4327,
+      "yaw": 0.0,
+      "radius": 0.2544,
+      "height": 4.8653
+    },
+    {
+      "name": "trap_scatter_19",
+      "shape": "cylinder",
+      "x": 4.2222,
+      "y": -1.3014,
+      "z": 1.8839,
+      "yaw": 0.0,
+      "radius": 0.2332,
+      "height": 3.7677
+    },
+    {
+      "name": "trap_scatter_20",
+      "shape": "cylinder",
+      "x": 2.238,
+      "y": 8.1411,
+      "z": 1.7353,
+      "yaw": 0.0,
+      "radius": 0.3278,
+      "height": 3.4706
+    },
+    {
+      "name": "trap_scatter_21",
+      "shape": "cylinder",
+      "x": -3.0996,
+      "y": -7.3447,
+      "z": 1.7728,
+      "yaw": 0.0,
+      "radius": 0.2456,
+      "height": 3.5457
+    },
+    {
+      "name": "trap_scatter_22",
+      "shape": "cylinder",
+      "x": 3.0483,
+      "y": 5.3665,
+      "z": 1.7207,
+      "yaw": 0.0,
+      "radius": 0.4743,
+      "height": 3.4414
+    },
+    {
+      "name": "trap_scatter_23",
+      "shape": "cylinder",
+      "x": -0.8312,
+      "y": 5.4771,
+      "z": 1.6802,
+      "yaw": 0.0,
+      "radius": 0.5339,
+      "height": 3.3603
+    },
+    {
+      "name": "trap_scatter_24",
+      "shape": "cylinder",
+      "x": 2.1273,
+      "y": 7.668,
+      "z": 1.9664,
+      "yaw": 0.0,
+      "radius": 0.293,
+      "height": 3.9328
+    }
+  ]
+}

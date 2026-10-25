@@ -1,0 +1,227 @@
+"""Reuse the admitted Route A manifest, kinematic env, and SynthPointCloud."""
+
+import hashlib
+import json
+import math
+from pathlib import Path
+
+from diffusion_policy_3d.env.kinematic_uav_env import KinematicUAVEnv
+from diffusion_policy_3d.model.common.synth_pointcloud import SynthPointCloud
+
+from .kinematic_adapter import KinematicAdapter
+from .task_spec import (
+    EpisodeTaskSpec,
+    canonical_task_identity,
+    derive_task_seed,
+)
+
+
+_SAMPLING_CONTROL_NAMES = (
+    "max_episode_steps",
+    "disturb_enable",
+    "disturb_prob",
+    "disturb_pos_scale",
+    "exec_noise_scale",
+    "mid_state_init_ratio",
+    "mid_state_pos_scale",
+    "max_reset_attempts",
+)
+
+
+def _unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("duplicate JSON key: {}".format(key))
+        result[key] = value
+    return result
+
+
+def _reject_constant(value):
+    raise ValueError("non-finite JSON constant: {}".format(value))
+
+
+def canonical_environment_sampling_spec(controls):
+    """Return every runtime control that can change task/experience sampling."""
+
+    values = dict(controls or {})
+    missing = sorted(set(_SAMPLING_CONTROL_NAMES) - set(values))
+    if missing:
+        raise ValueError("environment sampling controls missing: {}".format(missing))
+    if not isinstance(values["disturb_enable"], bool):
+        raise TypeError("disturb_enable must be boolean")
+    result = {"disturb_enable": values["disturb_enable"]}
+    for name in ("disturb_prob", "mid_state_init_ratio"):
+        value = float(values[name])
+        if not math.isfinite(value) or not 0.0 <= value <= 1.0:
+            raise ValueError("{} must be finite and in [0,1]".format(name))
+        result[name] = value
+    for name in ("disturb_pos_scale", "exec_noise_scale", "mid_state_pos_scale"):
+        value = float(values[name])
+        if not math.isfinite(value) or value < 0.0:
+            raise ValueError("{} must be finite and non-negative".format(name))
+        result[name] = value
+    for name in ("max_episode_steps", "max_reset_attempts"):
+        value = values[name]
+        if isinstance(value, bool) or int(value) != value or int(value) < 1:
+            raise ValueError("{} must be a positive integer".format(name))
+        result[name] = int(value)
+    result.update({
+        "schema": "routea_role_sampling_v3",
+        "curriculum_stage": "C2",
+        "xy_range": [-14.0, 14.0, -14.0, 14.0],
+        "z_range": [1.0, 5.0],
+        "start_z_margin": 0.3,
+        "goal_z_margin": 0.5,
+        "yaw_noise_rad": [-0.3, 0.3],
+        "rl_action_steps": 8,
+        "n_exec_steps": 4,
+        "goal_tolerance_3d_m": 0.5,
+        "astar_is_diagnostic_only": True,
+        "role_parameters": {
+            role: {
+                "d_xy": list(parameters["d_xy"]),
+                "start_cl": float(parameters["start_cl"]),
+                "goal_cl": float(parameters["goal_cl"]),
+            }
+            for role, parameters in sorted(KinematicUAVEnv._ROLE_SAMPLING_PARAMS.items())
+        },
+    })
+    return result
+
+
+def build_episode_tasks(manifest_path, worlds_train_dir, base_seed, environment_sampling):
+    """Build the single canonical task set consumed by training and audits."""
+
+    from diffusion_policy_3d.rl.dppo_uav.integration import manifest_train_entries
+
+    manifest_path = Path(manifest_path).resolve()
+    worlds_train_dir = Path(worlds_train_dir).resolve()
+    if manifest_path.stat().st_size > 64 * 1024 * 1024:
+        raise ValueError("admission manifest exceeds 64 MiB")
+    manifest_payload = json.loads(
+        manifest_path.read_text(encoding="utf-8"),
+        object_pairs_hook=_unique_object,
+        parse_constant=_reject_constant,
+    )
+    admission_schema_version = manifest_payload.get("schema_version")
+    if not admission_schema_version:
+        raise ValueError("admission manifest schema_version is required")
+    runtime_sampling = canonical_environment_sampling_spec(environment_sampling)
+    tasks = []
+    for entry in manifest_train_entries(str(manifest_path)):
+        uid = str(entry["world_uid"])
+        role = str(entry.get("role") or entry.get("role_active"))
+        obstacle = worlds_train_dir / (uid + ".world.obstacles.json")
+        if not obstacle.is_file() or obstacle.resolve().parent != worlds_train_dir:
+            raise FileNotFoundError("admitted obstacle file missing or outside root: {}".format(obstacle))
+        task_id = str(entry.get("admission_id") or "{}__{}__rl_train".format(uid, role))
+        obstacle_sha256 = hashlib.sha256(obstacle.read_bytes()).hexdigest()
+        identity_entry = {
+            "task_id": task_id, "world_id": uid, "split": str(entry.get("split")),
+            "role": role,
+            "start_goal_spec": {
+                "manifest_declared": entry.get("start_goal_spec"),
+                "runtime_sampling": runtime_sampling,
+                "active_role_parameters": runtime_sampling["role_parameters"][role],
+            },
+            "admission_schema_version": str(admission_schema_version),
+        }
+        identity_hash = canonical_task_identity(identity_entry, obstacle_sha256)
+        preimage = str(int(base_seed)).encode("ascii") + b"\x00" + bytes.fromhex(identity_hash)
+        tasks.append(EpisodeTaskSpec(
+            task_id=task_id, world_id=uid, obstacle_json=str(obstacle), role=role,
+            seed=derive_task_seed(base_seed, identity_hash), training_eligible=True,
+            historical_eval_only=False, identity_hash=identity_hash,
+            seed_preimage="hex:" + preimage.hex(),
+            seed_digest=hashlib.sha256(preimage).hexdigest(),
+        ))
+    if not tasks:
+        raise RuntimeError("admission manifest produced no rl_train tasks")
+    return tuple(tasks)
+
+
+class RouteAEnvironmentFactory:
+    def __init__(
+        self,
+        *,
+        manifest_path,
+        worlds_train_dir,
+        reward,
+        device,
+        base_seed,
+        max_episode_steps=60,
+        disturb_enable=True,
+        disturb_prob=0.2,
+        disturb_pos_scale=0.3,
+        exec_noise_scale=0.0,
+        mid_state_init_ratio=0.3,
+        mid_state_pos_scale=0.5,
+        max_reset_attempts=50,
+        reward_config=None,
+    ):
+        self.manifest_path = Path(manifest_path).resolve()
+        self.worlds_train_dir = Path(worlds_train_dir).resolve()
+        self.reward = reward
+        self.device = device
+        self.base_seed = int(base_seed)
+        self.max_episode_steps = int(max_episode_steps)
+        self.disturb_enable = bool(disturb_enable)
+        self.disturb_prob = float(disturb_prob)
+        self.disturb_pos_scale = float(disturb_pos_scale)
+        self.exec_noise_scale = float(exec_noise_scale)
+        self.mid_state_init_ratio = float(mid_state_init_ratio)
+        self.mid_state_pos_scale = float(mid_state_pos_scale)
+        self.max_reset_attempts = int(max_reset_attempts)
+        self.reward_config = reward_config or {}
+        self.tasks = self._build_tasks()
+        self._environments = {}
+
+    def _build_tasks(self):
+        return build_episode_tasks(
+            self.manifest_path,
+            self.worlds_train_dir,
+            self.base_seed,
+            {
+                "max_episode_steps": self.max_episode_steps,
+                "disturb_enable": self.disturb_enable,
+                "disturb_prob": self.disturb_prob,
+                "disturb_pos_scale": self.disturb_pos_scale,
+                "exec_noise_scale": self.exec_noise_scale,
+                "mid_state_init_ratio": self.mid_state_init_ratio,
+                "mid_state_pos_scale": self.mid_state_pos_scale,
+                "max_reset_attempts": self.max_reset_attempts,
+            },
+        )
+
+    def make(self, task: EpisodeTaskSpec):
+        if task not in self.tasks:
+            raise ValueError("task does not belong to this training factory")
+        if task.task_id not in self._environments:
+            environment = KinematicUAVEnv(
+                world_id=4,
+                world_pool=[(task.world_id, task.obstacle_json)],
+                synth_pc_factory=lambda path: SynthPointCloud(path, device=self.device),
+                rl_action_steps=8,
+                n_exec_steps=4,
+                max_episode_steps=self.max_episode_steps,
+                disturb_enable=self.disturb_enable,
+                disturb_prob=self.disturb_prob,
+                disturb_pos_scale=self.disturb_pos_scale,
+                exec_noise_scale=self.exec_noise_scale,
+                mid_state_init_ratio=self.mid_state_init_ratio,
+                mid_state_pos_scale=self.mid_state_pos_scale,
+                max_reset_attempts=self.max_reset_attempts,
+                curriculum_stage="C2",
+                episode_role=task.role,
+                reward_version=getattr(self.reward, "version", "v13"),
+                reward_v13_cfg=self.reward_config,
+                reward_v17_cfg=self.reward_config if getattr(self.reward, "version", "v13") == "v17" else None,
+                offline_density=getattr(self.reward, "offline_density", None),
+                gamma=self.reward_config.get("gamma_pbrs", .99),
+                seed=task.seed,
+            )
+            self._environments[task.task_id] = environment
+        environment = self._environments[task.task_id]
+        state = self.reward.initial_state(self.reward_config)
+        return KinematicAdapter(environment, self.reward, state, self.reward_config)

@@ -1,0 +1,1453 @@
+{
+  "counts": {
+    "continuations": 360,
+    "max_continuation_decisions": 4320,
+    "open_loop_samples": 3600,
+    "policies": 3,
+    "states": 24
+  },
+  "elapsed_seconds": 1542.8936332460144,
+  "records": [
+    {
+      "group": "mechanism/delayed_after_near_goal",
+      "mean_h4_progress": 0.34523969650268554,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        1.7895803451538086,
+        1.8167057037353516,
+        1.8724565505981445,
+        1.7902297973632812,
+        1.7753095626831055
+      ],
+      "state_id": "b7da81109841efaf"
+    },
+    {
+      "group": "mechanism/delayed_lost_early_ability",
+      "mean_h4_progress": 0.4532308006286621,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        3.920774459838867,
+        3.9202113151550293,
+        4.321358680725098,
+        4.1102824211120605,
+        4.031608581542969
+      ],
+      "state_id": "4b26c3526db43903"
+    },
+    {
+      "group": "mechanism/delayed_ground",
+      "mean_h4_progress": 0.43895540237426756,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        5.305344581604004,
+        5.246426582336426,
+        5.248589038848877,
+        5.368366241455078,
+        5.186229228973389
+      ],
+      "state_id": "d35eee463c5a8d86"
+    },
+    {
+      "group": "mechanism/safe_tail_arrival_cancelled",
+      "mean_h4_progress": 0.6747746896743775,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        1.294793963432312,
+        1.2947938442230225,
+        1.294793725013733,
+        1.2947937846183777,
+        1.294793725013733
+      ],
+      "state_id": "da566faaa44b6acf"
+    },
+    {
+      "group": "mechanism/whole_plan_failure",
+      "mean_h4_progress": -0.13343780517578124,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.3297786712646484,
+        -1.2977581024169922,
+        -1.2471446990966797,
+        -1.2703542709350586,
+        -1.2762842178344727
+      ],
+      "state_id": "31a279a77008d8c7"
+    },
+    {
+      "group": "mechanism/successful_bypass_control",
+      "mean_h4_progress": 0.5325653553009033,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        6.864344537258148,
+        6.86434480547905,
+        6.864344537258148,
+        6.864344537258148,
+        6.864344596862793
+      ],
+      "state_id": "d618c2b0ad079964"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.7782668685913086,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "window_end"
+      ],
+      "short_window_progress": [
+        7.888722449541092,
+        7.888722449541092,
+        7.88872218132019,
+        7.8887225687503815,
+        7.635011255741119
+      ],
+      "state_id": "fd518a9f480ec772"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.8577519416809082,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        10.067660808563232,
+        10.065011739730835,
+        10.074522495269775,
+        10.06503415107727,
+        10.09971022605896
+      ],
+      "state_id": "af66deb66e0a93b1"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.4165034770965576,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        6.634183496236801,
+        6.634183347225189,
+        6.634183436632156,
+        6.634183347225189,
+        6.634183466434479
+      ],
+      "state_id": "3f6792cd427a08e7"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.638104362487793,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        4.968914270401001,
+        4.801053762435913,
+        5.084043979644775,
+        5.022537708282471,
+        4.716808319091797
+      ],
+      "state_id": "f4b0cfee3517898a"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.8074513626098633,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        8.479313373565674,
+        8.478939533233643,
+        8.441164493560791,
+        8.475187301635742,
+        8.460506439208984
+      ],
+      "state_id": "a9af069194ed0ef6"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.17662181854248046,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        1.9261837005615234,
+        1.936635971069336,
+        1.950387954711914,
+        1.9336071014404297,
+        1.928201675415039
+      ],
+      "state_id": "925a65bd1e5a83fe"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": 0.7742454242706299,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        4.626979500055313,
+        4.626979410648346,
+        4.626979410648346,
+        4.6269795298576355,
+        4.626979559659958
+      ],
+      "state_id": "d86ae61882dd3d65"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": -0.20984889030456544,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.118544578552246,
+        -1.2583012580871582,
+        -1.1256599426269531,
+        -1.0029630661010742,
+        -1.1390647888183594
+      ],
+      "state_id": "b9d4971a4c53f989"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": -0.1739925718307495,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -2.0688915252685547,
+        -2.069735527038574,
+        -2.0722455978393555,
+        -2.069673538208008,
+        -2.0699214935302734
+      ],
+      "state_id": "c216783315e3df93"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": 0.14246272087097167,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        1.4924607276916504,
+        1.5215868949890137,
+        1.6978473663330078,
+        1.7026004791259766,
+        1.4864983558654785
+      ],
+      "state_id": "f9979a35dc852fb2"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": -0.11493462562561035,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.277635097503662,
+        -1.2348542213439941,
+        -1.50636625289917,
+        -1.1405024528503418,
+        -1.2259459495544434
+      ],
+      "state_id": "e90cc62e31cd2c27"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": -0.19766449928283691,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.2402925491333008,
+        -1.2158985137939453,
+        -1.2199811935424805,
+        -1.1929931640625,
+        -1.2838869094848633
+      ],
+      "state_id": "83c4de62cff19c71"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": 0.7963725280761719,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        9.524538040161133,
+        9.511295318603516,
+        9.505316734313965,
+        9.498863220214844,
+        9.524243354797363
+      ],
+      "state_id": "3c64006b188e82ea"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": -0.14585183143615724,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.5315148830413818,
+        -1.5376055240631104,
+        -1.5335657596588135,
+        -1.5358779430389404,
+        -1.5339200496673584
+      ],
+      "state_id": "c6180527873de062"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": 0.7339909267425537,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        4.7576784491539,
+        4.757678538560867,
+        4.757678598165512,
+        4.757678598165512,
+        4.7576784491539
+      ],
+      "state_id": "da97c35906e9ffd5"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": 0.8555739402770997,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        6.285258054733276,
+        6.148687839508057,
+        6.02273416519165,
+        6.145618915557861,
+        6.087517738342285
+      ],
+      "state_id": "520e4c7ecef46c51"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": -0.7229961919784545,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -2.162048578262329,
+        -2.0350210666656494,
+        -2.059194326400757,
+        -1.887589693069458,
+        -1.940833330154419
+      ],
+      "state_id": "dde3e48215b8ff45"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": 0.7934980392456055,
+      "policy": "bc",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        9.688347816467285,
+        9.70220947265625,
+        9.684403419494629,
+        9.68839168548584,
+        9.696914672851562
+      ],
+      "state_id": "55ceb27af0cf4ac3"
+    },
+    {
+      "group": "mechanism/delayed_after_near_goal",
+      "mean_h4_progress": 0.8806812858581543,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        1.9399852752685547,
+        2.0424280166625977,
+        2.3622446060180664,
+        2.176403045654297,
+        1.9177179336547852
+      ],
+      "state_id": "b7da81109841efaf"
+    },
+    {
+      "group": "mechanism/delayed_lost_early_ability",
+      "mean_h4_progress": 1.1515769577026367,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        5.010817527770996,
+        5.222321510314941,
+        5.145064830780029,
+        5.132148265838623,
+        5.1670989990234375
+      ],
+      "state_id": "4b26c3526db43903"
+    },
+    {
+      "group": "mechanism/delayed_ground",
+      "mean_h4_progress": 0.7751271438598633,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        6.632153511047363,
+        6.5117621421813965,
+        6.640862941741943,
+        6.5768818855285645,
+        6.620697498321533
+      ],
+      "state_id": "d35eee463c5a8d86"
+    },
+    {
+      "group": "mechanism/safe_tail_arrival_cancelled",
+      "mean_h4_progress": 0.6935853028297424,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "collision",
+        "collision",
+        "window_end",
+        "collision",
+        "collision"
+      ],
+      "short_window_progress": [
+        -2.7666256427764893,
+        -2.6041524410247803,
+        -3.2970192432403564,
+        -2.545766592025757,
+        -2.70526385307312
+      ],
+      "state_id": "da566faaa44b6acf"
+    },
+    {
+      "group": "mechanism/whole_plan_failure",
+      "mean_h4_progress": 1.1534183502197266,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        9.504001140594482,
+        9.376540660858154,
+        9.468670845031738,
+        9.229331016540527,
+        9.632117986679077
+      ],
+      "state_id": "31a279a77008d8c7"
+    },
+    {
+      "group": "mechanism/successful_bypass_control",
+      "mean_h4_progress": 0.35904510498046877,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "reached",
+        "window_end",
+        "window_end",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        6.864344477653503,
+        6.804404854774475,
+        6.830104231834412,
+        6.864344775676727,
+        6.86434468626976
+      ],
+      "state_id": "d618c2b0ad079964"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.8956920242309571,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        7.888722360134125,
+        7.888722360134125,
+        7.888722598552704,
+        7.888722777366638,
+        7.888722062110901
+      ],
+      "state_id": "fd518a9f480ec772"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.9304857444763184,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        11.511471688747406,
+        10.577635765075684,
+        10.571829319000244,
+        10.467125058174133,
+        10.447949290275574
+      ],
+      "state_id": "af66deb66e0a93b1"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.26880794525146484,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        6.634183168411255,
+        6.63418310880661,
+        6.634183704853058,
+        6.634183436632156,
+        6.634183585643768
+      ],
+      "state_id": "3f6792cd427a08e7"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.824866132736206,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        4.319793462753296,
+        4.1331627368927,
+        4.192723751068115,
+        4.061290264129639,
+        4.136444568634033
+      ],
+      "state_id": "f4b0cfee3517898a"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.8441321754455566,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        9.509059429168701,
+        9.508828163146973,
+        9.50855302810669,
+        9.499906063079834,
+        9.509743213653564
+      ],
+      "state_id": "a9af069194ed0ef6"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.8200387954711914,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        10.450730800628662,
+        10.454749584197998,
+        10.434084415435791,
+        10.445353031158447,
+        10.446986675262451
+      ],
+      "state_id": "925a65bd1e5a83fe"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": 0.770800552368164,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        3.095452308654785,
+        3.164520502090454,
+        3.214377999305725,
+        3.176292061805725,
+        3.200134754180908
+      ],
+      "state_id": "d86ae61882dd3d65"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": -0.4890711784362793,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -5.024403095245361,
+        -5.243802547454834,
+        -4.901123523712158,
+        -5.103220462799072,
+        -5.079813480377197
+      ],
+      "state_id": "b9d4971a4c53f989"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": 0.6609349346160889,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "reached",
+        "reached",
+        "reached",
+        "window_end"
+      ],
+      "short_window_progress": [
+        0.6942198276519775,
+        2.720665007829666,
+        2.7206650972366333,
+        2.7206649780273438,
+        0.6646320819854736
+      ],
+      "state_id": "c216783315e3df93"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": 0.816340217590332,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        2.567500352859497,
+        2.9861371517181396,
+        2.7962965965270996,
+        2.9445416927337646,
+        2.923335552215576
+      ],
+      "state_id": "f9979a35dc852fb2"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": -0.28933722496032716,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        2.6130309104919434,
+        2.6221866607666016,
+        2.487636089324951,
+        2.580789089202881,
+        2.58249568939209
+      ],
+      "state_id": "e90cc62e31cd2c27"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": 0.8525898551940918,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        1.0155048370361328,
+        1.3060073852539062,
+        1.213881492614746,
+        0.04219865798950195,
+        -0.13270092010498047
+      ],
+      "state_id": "83c4de62cff19c71"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": 0.808016471862793,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision"
+      ],
+      "short_window_progress": [
+        8.951366424560547,
+        8.893918991088867,
+        8.902200698852539,
+        9.063261985778809,
+        8.871115684509277
+      ],
+      "state_id": "3c64006b188e82ea"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": -0.5097600507736206,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        0.7028006315231323,
+        0.2947254180908203,
+        0.5854164361953735,
+        0.46092891693115234,
+        0.5011942386627197
+      ],
+      "state_id": "c6180527873de062"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": 0.7503148460388184,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        2.806532621383667,
+        2.7982845306396484,
+        2.8694674968719482,
+        2.8188395500183105,
+        2.7867023944854736
+      ],
+      "state_id": "da97c35906e9ffd5"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": 1.0178252601623534,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        4.2858099937438965,
+        4.10337495803833,
+        4.2992143630981445,
+        4.104780673980713,
+        3.4721803665161133
+      ],
+      "state_id": "520e4c7ecef46c51"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": -0.5764273118972778,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        1.3855711221694946,
+        1.4071601629257202,
+        1.4086625576019287,
+        1.2428873777389526,
+        1.415507435798645
+      ],
+      "state_id": "dde3e48215b8ff45"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": 0.8234980392456055,
+      "policy": "rl_2f3f9914db78_u32",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        9.956352233886719,
+        9.963014602661133,
+        9.956796646118164,
+        9.959280014038086,
+        9.969568252563477
+      ],
+      "state_id": "55ceb27af0cf4ac3"
+    },
+    {
+      "group": "mechanism/delayed_after_near_goal",
+      "mean_h4_progress": -0.22526500701904298,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.7609920501708984,
+        -1.8076858520507812,
+        -1.7114677429199219,
+        -1.7791566848754883,
+        -1.8402166366577148
+      ],
+      "state_id": "b7da81109841efaf"
+    },
+    {
+      "group": "mechanism/delayed_lost_early_ability",
+      "mean_h4_progress": -0.13290306091308593,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -0.9816446304321289,
+        -0.9829311370849609,
+        -1.0153121948242188,
+        -0.984553337097168,
+        -0.9856119155883789
+      ],
+      "state_id": "4b26c3526db43903"
+    },
+    {
+      "group": "mechanism/delayed_ground",
+      "mean_h4_progress": -0.19021865844726563,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -4.789272308349609,
+        -4.794172286987305,
+        -4.764392852783203,
+        -4.768667221069336,
+        -4.789693832397461
+      ],
+      "state_id": "d35eee463c5a8d86"
+    },
+    {
+      "group": "mechanism/safe_tail_arrival_cancelled",
+      "mean_h4_progress": 0.7158597540855408,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        0.17598986625671387,
+        0.1453925371170044,
+        0.18136298656463623,
+        0.20192992687225342,
+        0.15183663368225098
+      ],
+      "state_id": "da566faaa44b6acf"
+    },
+    {
+      "group": "mechanism/whole_plan_failure",
+      "mean_h4_progress": -0.039483985900878905,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        0.02001476287841797,
+        -0.0023431777954101562,
+        0.02698516845703125,
+        0.024336814880371094,
+        0.0010223388671875
+      ],
+      "state_id": "31a279a77008d8c7"
+    },
+    {
+      "group": "mechanism/successful_bypass_control",
+      "mean_h4_progress": 0.29043039321899417,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "collision",
+        "window_end",
+        "collision",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        2.370321273803711,
+        1.5306849479675293,
+        2.4185004234313965,
+        1.8320813179016113,
+        1.480170726776123
+      ],
+      "state_id": "d618c2b0ad079964"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.7980359935760498,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        7.061920404434204,
+        7.074176549911499,
+        7.080091714859009,
+        7.1210410594940186,
+        7.082624554634094
+      ],
+      "state_id": "fd518a9f480ec772"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.573982162475586,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        6.289490699768066,
+        6.2054667472839355,
+        6.6488800048828125,
+        7.291446685791016,
+        6.709692001342773
+      ],
+      "state_id": "af66deb66e0a93b1"
+    },
+    {
+      "group": "post_bypass/success",
+      "mean_h4_progress": 0.2865634632110596,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision"
+      ],
+      "short_window_progress": [
+        1.196739673614502,
+        1.1858248710632324,
+        1.197791576385498,
+        1.1886215209960938,
+        1.189835548400879
+      ],
+      "state_id": "3f6792cd427a08e7"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": -0.7429277992248535,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision"
+      ],
+      "short_window_progress": [
+        -1.7710285186767578,
+        -1.7728443145751953,
+        -1.7791938781738281,
+        -1.7628650665283203,
+        -1.771718978881836
+      ],
+      "state_id": "f4b0cfee3517898a"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.8300226974487305,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision"
+      ],
+      "short_window_progress": [
+        1.518641471862793,
+        1.517690658569336,
+        1.5241117477416992,
+        1.512190818786621,
+        1.5113162994384766
+      ],
+      "state_id": "a9af069194ed0ef6"
+    },
+    {
+      "group": "post_bypass/failure",
+      "mean_h4_progress": 0.5438531112670898,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        6.383733749389648,
+        6.375412940979004,
+        6.4051923751831055,
+        6.4094133377075195,
+        6.417451858520508
+      ],
+      "state_id": "925a65bd1e5a83fe"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": 0.9187413978576661,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.8768396377563477,
+        -1.8239221572875977,
+        -1.6774201393127441,
+        -1.547804832458496,
+        -1.7117724418640137
+      ],
+      "state_id": "d86ae61882dd3d65"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": 0.8441472339630127,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "collision",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        0.0673823356628418,
+        0.7957401275634766,
+        -0.00803995132446289,
+        0.3639707565307617,
+        0.12285232543945312
+      ],
+      "state_id": "b9d4971a4c53f989"
+    },
+    {
+      "group": "ground_direct/success",
+      "mean_h4_progress": 0.6834167051315307,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        2.7206649780273438,
+        2.7206650972366333,
+        2.720664858818054,
+        2.720664858818054,
+        2.720665156841278
+      ],
+      "state_id": "c216783315e3df93"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": -0.0895033073425293,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -0.5061078071594238,
+        -0.4599924087524414,
+        -0.5149378776550293,
+        -0.6043834686279297,
+        -0.5214385986328125
+      ],
+      "state_id": "f9979a35dc852fb2"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": 0.5311340236663818,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -2.0150904655456543,
+        -2.0293917655944824,
+        -2.0251574516296387,
+        -2.015861988067627,
+        -2.0178112983703613
+      ],
+      "state_id": "e90cc62e31cd2c27"
+    },
+    {
+      "group": "ground_direct/failure",
+      "mean_h4_progress": -0.9835872650146484,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -4.702784538269043,
+        -4.783639907836914,
+        -4.706009864807129,
+        -4.900446891784668,
+        -4.759306907653809
+      ],
+      "state_id": "83c4de62cff19c71"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": 1.0356467056274414,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        12.28193712234497,
+        12.281941890716553,
+        12.252364158630371,
+        12.265727519989014,
+        12.286813259124756
+      ],
+      "state_id": "3c64006b188e82ea"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": -0.3294360065460205,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -1.1257805824279785,
+        -1.420778512954712,
+        -1.530277967453003,
+        -2.0374910831451416,
+        -1.7725694179534912
+      ],
+      "state_id": "c6180527873de062"
+    },
+    {
+      "group": "visible_clear/success",
+      "mean_h4_progress": 1.0263811111450196,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "reached",
+        "reached",
+        "reached",
+        "reached",
+        "reached"
+      ],
+      "short_window_progress": [
+        4.7576784491539,
+        4.757678598165512,
+        4.757678329944611,
+        4.75767856836319,
+        4.757678389549255
+      ],
+      "state_id": "da97c35906e9ffd5"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": 0.7227526664733886,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        4.032829284667969,
+        4.624693393707275,
+        4.233823776245117,
+        4.517890930175781,
+        4.037892818450928
+      ],
+      "state_id": "520e4c7ecef46c51"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": -0.9699551391601563,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        -4.981664419174194,
+        -5.007098913192749,
+        -4.871167421340942,
+        -5.272422552108765,
+        -4.9663941860198975
+      ],
+      "state_id": "dde3e48215b8ff45"
+    },
+    {
+      "group": "visible_clear/failure",
+      "mean_h4_progress": 0.9521267700195313,
+      "policy": "rl_2f3f9914db78_u384",
+      "short_window_outcomes": [
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end",
+        "window_end"
+      ],
+      "short_window_progress": [
+        12.19050645828247,
+        12.194324493408203,
+        12.184546947479248,
+        12.210834980010986,
+        12.18106460571289
+      ],
+      "state_id": "55ceb27af0cf4ac3"
+    }
+  ],
+  "status": "complete"
+}

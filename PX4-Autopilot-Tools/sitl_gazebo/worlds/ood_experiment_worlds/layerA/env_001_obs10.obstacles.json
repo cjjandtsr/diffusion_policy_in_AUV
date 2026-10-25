@@ -1,0 +1,128 @@
+{
+  "world_id": 1,
+  "tier": "ood",
+  "n_obstacles": 10,
+  "spawn_world": [
+    -8.0,
+    0.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "obs_00",
+      "shape": "cylinder",
+      "x": -3.8875,
+      "y": -6.736,
+      "yaw": 1.3817,
+      "radius": 1.844,
+      "height": 2.3417
+    },
+    {
+      "name": "obs_01",
+      "shape": "cylinder",
+      "x": 2.6999,
+      "y": 0.538,
+      "yaw": 2.0223,
+      "radius": 0.2003,
+      "height": 4.665
+    },
+    {
+      "name": "obs_02",
+      "shape": "cylinder",
+      "x": 0.3992,
+      "y": -6.5465,
+      "yaw": 3.0494,
+      "radius": 0.8074,
+      "height": 3.6486
+    },
+    {
+      "name": "obs_03",
+      "shape": "cylinder",
+      "x": -2.0753,
+      "y": 2.7049,
+      "yaw": 2.5867,
+      "radius": 1.9346,
+      "height": 6.2044
+    },
+    {
+      "name": "obs_04",
+      "shape": "cylinder",
+      "x": 0.2821,
+      "y": -9.9468,
+      "yaw": 1.2955,
+      "radius": 1.0964,
+      "height": 3.9706
+    },
+    {
+      "name": "obs_05",
+      "shape": "cylinder",
+      "x": 4.4594,
+      "y": -4.4256,
+      "yaw": 2.3064,
+      "radius": 0.4638,
+      "height": 7.8154
+    },
+    {
+      "name": "obs_06",
+      "shape": "cylinder",
+      "x": -1.471,
+      "y": -3.0175,
+      "yaw": 3.0656,
+      "radius": 0.4529,
+      "height": 1.0681
+    },
+    {
+      "name": "obs_07",
+      "shape": "cylinder",
+      "x": 1.401,
+      "y": 8.1617,
+      "yaw": 1.1587,
+      "radius": 0.5832,
+      "height": 5.9819
+    },
+    {
+      "name": "obs_08",
+      "shape": "cylinder",
+      "x": -4.2118,
+      "y": 8.536,
+      "yaw": 2.085,
+      "radius": 0.3384,
+      "height": 1.7734
+    },
+    {
+      "name": "obs_09",
+      "shape": "cylinder",
+      "x": -8.8117,
+      "y": 5.696,
+      "yaw": 0.5186,
+      "radius": 1.0341,
+      "height": 6.9524
+    }
+  ],
+  "difficulty": {
+    "TO": 0.7394,
+    "VO": 1.0,
+    "AOL": 0.025,
+    "n_obstacles": 10
+  },
+  "generator_params": {
+    "density_range": [
+      1,
+      28
+    ],
+    "radius_range": [
+      0.15,
+      2.0
+    ],
+    "box_range": [
+      0.5,
+      4.0
+    ],
+    "min_dist": 2.0,
+    "shape_ratio": 2.0,
+    "corner_type": null
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "world_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000124",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 8,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "low_obs_0",
+      "shape": "cylinder",
+      "x": -4.0,
+      "y": -1.5,
+      "z": 0.647,
+      "yaw": 0.0,
+      "radius": 0.3511,
+      "height": 1.294
+    },
+    {
+      "name": "low_obs_1",
+      "shape": "cylinder",
+      "x": 0.0,
+      "y": 2.5,
+      "z": 0.7371,
+      "yaw": 0.0,
+      "radius": 0.5103,
+      "height": 1.4742
+    },
+    {
+      "name": "low_obs_2",
+      "shape": "cylinder",
+      "x": 5.0,
+      "y": 1.0,
+      "z": 0.5754,
+      "yaw": 0.0,
+      "radius": 0.4805,
+      "height": 1.1509
+    },
+    {
+      "name": "tall_obs_0",
+      "shape": "cylinder",
+      "x": -2.0,
+      "y": -2.5,
+      "z": 3.1103,
+      "yaw": 0.0,
+      "radius": 1.2438,
+      "height": 6.2205
+    },
+    {
+      "name": "tall_obs_1",
+      "shape": "cylinder",
+      "x": 2.0,
+      "y": 2.0,
+      "z": 2.5216,
+      "yaw": 0.0,
+      "radius": 1.0101,
+      "height": 5.0433
+    },
+    {
+      "name": "tall_obs_2",
+      "shape": "cylinder",
+      "x": 6.0,
+      "y": -2.0,
+      "z": 2.8171,
+      "yaw": 0.0,
+      "radius": 1.4655,
+      "height": 5.6342
+    },
+    {
+      "name": "med_obs_0",
+      "shape": "box",
+      "x": -5.0,
+      "y": 2.5,
+      "z": 1.543,
+      "yaw": 0.0,
+      "size_x": 1.0967,
+      "size_y": 0.8983,
+      "size_z": 3.0861
+    },
+    {
+      "name": "med_obs_1",
+      "shape": "box",
+      "x": 1.0,
+      "y": -1.5,
+      "z": 1.4405,
+      "yaw": 0.0,
+      "size_x": 1.4028,
+      "size_y": 1.1086,
+      "size_z": 2.881
+    }
+  ]
+}
