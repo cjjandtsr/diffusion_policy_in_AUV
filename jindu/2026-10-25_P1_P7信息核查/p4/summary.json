@@ -1,0 +1,538 @@
+{
+  "audit": {
+    "committed_traces_hash_verified": 1260,
+    "first_events_verified": 440
+  },
+  "definitions": {
+    "initial_blocked": "Scene.clear(start,goal)==False; physical segment collision threshold 0.10m, cylinder/box geometry plus sphere handling; task role independent",
+    "phase": "first_H4 = decision 0; else near_goal_event_le2m = collision event position distance <=2m; else other_enroute_event_gt2m. Descriptive analyst-defined classification, not proven detour. 1m sensitivity provided.",
+    "ground": "actual earliest first-event kind ground_crash; obstacle collision is kind collision; verified candidate_h4_path event_segment/fraction, exact header geometry",
+    "startup6s": "Additional descriptive startup rule: first five H4 decisions, or elapsed physical time <=6s. Events all before timeout; same actual count here. Startup first, then collision event distance <=2m, else other enroute. Not a pre-registered or causal detour label."
+  },
+  "outcomes": {
+    "BC": {
+      "time_limit": 173,
+      "collision": 131,
+      "reached": 116
+    },
+    "B2560_u128": {
+      "reached": 160,
+      "collision": 150,
+      "time_limit": 110
+    },
+    "B2560_u256": {
+      "time_limit": 132,
+      "collision": 159,
+      "reached": 129
+    }
+  },
+  "strata": {
+    "BC": {
+      "dense_initial_blocked": {
+        "n": 125,
+        "outcomes": {
+          "collision": 90,
+          "time_limit": 27,
+          "reached": 8
+        }
+      },
+      "dense_initial_clear": {
+        "n": 175,
+        "outcomes": {
+          "time_limit": 89,
+          "reached": 55,
+          "collision": 31
+        }
+      },
+      "other_initial_blocked": {
+        "n": 20,
+        "outcomes": {
+          "collision": 10,
+          "reached": 10
+        }
+      },
+      "other_initial_clear": {
+        "n": 100,
+        "outcomes": {
+          "reached": 43,
+          "time_limit": 57
+        }
+      }
+    },
+    "B2560_u128": {
+      "dense_initial_blocked": {
+        "n": 125,
+        "outcomes": {
+          "collision": 109,
+          "reached": 10,
+          "time_limit": 6
+        }
+      },
+      "dense_initial_clear": {
+        "n": 175,
+        "outcomes": {
+          "reached": 89,
+          "collision": 23,
+          "time_limit": 63
+        }
+      },
+      "other_initial_blocked": {
+        "n": 20,
+        "outcomes": {
+          "collision": 10,
+          "reached": 10
+        }
+      },
+      "other_initial_clear": {
+        "n": 100,
+        "outcomes": {
+          "reached": 51,
+          "time_limit": 41,
+          "collision": 8
+        }
+      }
+    },
+    "B2560_u256": {
+      "dense_initial_blocked": {
+        "n": 125,
+        "outcomes": {
+          "collision": 105,
+          "reached": 14,
+          "time_limit": 6
+        }
+      },
+      "dense_initial_clear": {
+        "n": 175,
+        "outcomes": {
+          "time_limit": 89,
+          "collision": 27,
+          "reached": 59
+        }
+      },
+      "other_initial_blocked": {
+        "n": 20,
+        "outcomes": {
+          "collision": 10,
+          "reached": 10
+        }
+      },
+      "other_initial_clear": {
+        "n": 100,
+        "outcomes": {
+          "collision": 17,
+          "time_limit": 37,
+          "reached": 46
+        }
+      }
+    }
+  },
+  "collision_phase": {
+    "BC": {
+      "phase2m": {
+        "other_enroute_event_gt2m": 130,
+        "near_goal_event_le2m": 1
+      },
+      "phase1m": {
+        "other_enroute_event_gt1m": 131
+      },
+      "by_group": {
+        "dense_initial_blocked": {
+          "other_enroute_event_gt2m": 90
+        },
+        "dense_initial_clear": {
+          "other_enroute_event_gt2m": 30,
+          "near_goal_event_le2m": 1
+        },
+        "other_initial_blocked": {
+          "other_enroute_event_gt2m": 10
+        },
+        "other_initial_clear": {}
+      },
+      "had_near1_before": 8,
+      "had_blocked_before": 114,
+      "event_pre_direct_clear": 30,
+      "obstacle_shape": {
+        "cylinder": 99,
+        "box": 32
+      },
+      "decision_ranges": {
+        "0to0": 0,
+        "1to4": 8,
+        "5to9": 18,
+        "10to19": 67,
+        "20to39": 22,
+        "40to59": 16
+      },
+      "elapsed_time_bands_s": {
+        "le6": 8,
+        "6to12": 18,
+        "12to24": 67,
+        "24to48": 22,
+        "48to72": 16
+      },
+      "min_decision": 3,
+      "earliest_collision_time_s": 4.348713183403015,
+      "startup6s_phase": {
+        "other_enroute": 122,
+        "startup_le6s": 8,
+        "near_goal_event_le2m": 1
+      },
+      "startup6s_phase_by_group": {
+        "dense_initial_blocked": {
+          "other_enroute": 87,
+          "startup_le6s": 3
+        },
+        "dense_initial_clear": {
+          "startup_le6s": 5,
+          "other_enroute": 25,
+          "near_goal_event_le2m": 1
+        },
+        "other_initial_blocked": {
+          "other_enroute": 10
+        },
+        "other_initial_clear": {}
+      }
+    },
+    "B2560_u128": {
+      "phase2m": {
+        "other_enroute_event_gt2m": 150
+      },
+      "phase1m": {
+        "other_enroute_event_gt1m": 150
+      },
+      "by_group": {
+        "dense_initial_blocked": {
+          "other_enroute_event_gt2m": 109
+        },
+        "dense_initial_clear": {
+          "other_enroute_event_gt2m": 23
+        },
+        "other_initial_blocked": {
+          "other_enroute_event_gt2m": 10
+        },
+        "other_initial_clear": {
+          "other_enroute_event_gt2m": 8
+        }
+      },
+      "had_near1_before": 4,
+      "had_blocked_before": 142,
+      "event_pre_direct_clear": 12,
+      "obstacle_shape": {
+        "cylinder": 124,
+        "box": 26
+      },
+      "decision_ranges": {
+        "0to0": 0,
+        "1to4": 33,
+        "5to9": 36,
+        "10to19": 60,
+        "20to39": 15,
+        "40to59": 6
+      },
+      "elapsed_time_bands_s": {
+        "le6": 33,
+        "6to12": 36,
+        "12to24": 60,
+        "24to48": 15,
+        "48to72": 6
+      },
+      "min_decision": 2,
+      "earliest_collision_time_s": 3.3861832916736603,
+      "startup6s_phase": {
+        "other_enroute": 117,
+        "startup_le6s": 33
+      },
+      "startup6s_phase_by_group": {
+        "dense_initial_blocked": {
+          "other_enroute": 81,
+          "startup_le6s": 28
+        },
+        "dense_initial_clear": {
+          "other_enroute": 18,
+          "startup_le6s": 5
+        },
+        "other_initial_blocked": {
+          "other_enroute": 10
+        },
+        "other_initial_clear": {
+          "other_enroute": 8
+        }
+      }
+    },
+    "B2560_u256": {
+      "phase2m": {
+        "other_enroute_event_gt2m": 159
+      },
+      "phase1m": {
+        "other_enroute_event_gt1m": 159
+      },
+      "by_group": {
+        "dense_initial_blocked": {
+          "other_enroute_event_gt2m": 105
+        },
+        "dense_initial_clear": {
+          "other_enroute_event_gt2m": 27
+        },
+        "other_initial_blocked": {
+          "other_enroute_event_gt2m": 10
+        },
+        "other_initial_clear": {
+          "other_enroute_event_gt2m": 17
+        }
+      },
+      "had_near1_before": 3,
+      "had_blocked_before": 151,
+      "event_pre_direct_clear": 17,
+      "obstacle_shape": {
+        "cylinder": 125,
+        "box": 34
+      },
+      "decision_ranges": {
+        "0to0": 0,
+        "1to4": 13,
+        "5to9": 31,
+        "10to19": 61,
+        "20to39": 48,
+        "40to59": 6
+      },
+      "elapsed_time_bands_s": {
+        "le6": 13,
+        "6to12": 31,
+        "12to24": 61,
+        "24to48": 48,
+        "48to72": 6
+      },
+      "min_decision": 2,
+      "earliest_collision_time_s": 3.513313508033752,
+      "startup6s_phase": {
+        "other_enroute": 146,
+        "startup_le6s": 13
+      },
+      "startup6s_phase_by_group": {
+        "dense_initial_blocked": {
+          "other_enroute": 95,
+          "startup_le6s": 10
+        },
+        "dense_initial_clear": {
+          "other_enroute": 24,
+          "startup_le6s": 3
+        },
+        "other_initial_blocked": {
+          "other_enroute": 10
+        },
+        "other_initial_clear": {
+          "other_enroute": 17
+        }
+      }
+    }
+  },
+  "collision_distance": {
+    "BC": {
+      "2to5m": 21,
+      "gt5m": 109,
+      "1to2m": 1
+    },
+    "B2560_u128": {
+      "2to5m": 10,
+      "gt5m": 140
+    },
+    "B2560_u256": {
+      "2to5m": 11,
+      "gt5m": 148
+    }
+  },
+  "paired": {
+    "BC->B2560_u128": {
+      "transition": {
+        "collision->collision": 104,
+        "collision->reached": 9,
+        "collision->time_limit": 18,
+        "reached->collision": 6,
+        "reached->reached": 102,
+        "reached->time_limit": 8,
+        "time_limit->collision": 40,
+        "time_limit->reached": 49,
+        "time_limit->time_limit": 84
+      },
+      "added": {
+        "n": 46,
+        "groups": {
+          "dense_initial_clear": 13,
+          "dense_initial_blocked": 25,
+          "other_initial_clear": 8
+        },
+        "roles": {
+          "dense_recovery": 38,
+          "support_expansion": 5,
+          "anticipatory": 3
+        },
+        "phase": {
+          "other_enroute_event_gt2m": 46
+        },
+        "distance": {
+          "gt5m": 43,
+          "2to5m": 3
+        },
+        "unique_tasks": 16,
+        "unique_worlds": 12,
+        "startup6s_phase": {
+          "other_enroute": 36,
+          "startup_le6s": 10
+        }
+      },
+      "removed": {
+        "n": 27,
+        "groups": {
+          "dense_initial_blocked": 6,
+          "dense_initial_clear": 21
+        },
+        "roles": {
+          "dense_recovery": 27
+        },
+        "phase": {
+          "other_enroute_event_gt2m": 26,
+          "near_goal_event_le2m": 1
+        },
+        "distance": {
+          "gt5m": 14,
+          "2to5m": 12,
+          "1to2m": 1
+        },
+        "unique_tasks": 11,
+        "unique_worlds": 9,
+        "startup6s_phase": {
+          "other_enroute": 26,
+          "near_goal_event_le2m": 1
+        }
+      }
+    },
+    "B2560_u128->B2560_u256": {
+      "transition": {
+        "collision->collision": 132,
+        "collision->reached": 6,
+        "collision->time_limit": 12,
+        "reached->collision": 14,
+        "reached->reached": 109,
+        "reached->time_limit": 37,
+        "time_limit->collision": 13,
+        "time_limit->reached": 14,
+        "time_limit->time_limit": 83
+      },
+      "added": {
+        "n": 27,
+        "groups": {
+          "dense_initial_clear": 12,
+          "other_initial_clear": 13,
+          "dense_initial_blocked": 2
+        },
+        "roles": {
+          "dense_recovery": 14,
+          "anticipatory": 7,
+          "support_expansion": 6
+        },
+        "phase": {
+          "other_enroute_event_gt2m": 27
+        },
+        "distance": {
+          "2to5m": 4,
+          "gt5m": 23
+        },
+        "unique_tasks": 10,
+        "unique_worlds": 8,
+        "startup6s_phase": {
+          "other_enroute": 27
+        }
+      },
+      "removed": {
+        "n": 18,
+        "groups": {
+          "dense_initial_clear": 8,
+          "other_initial_clear": 4,
+          "dense_initial_blocked": 6
+        },
+        "roles": {
+          "dense_recovery": 14,
+          "anticipatory": 3,
+          "support_expansion": 1
+        },
+        "phase": {
+          "other_enroute_event_gt2m": 18
+        },
+        "distance": {
+          "2to5m": 5,
+          "gt5m": 13
+        },
+        "unique_tasks": 10,
+        "unique_worlds": 10,
+        "startup6s_phase": {
+          "other_enroute": 17,
+          "startup_le6s": 1
+        }
+      }
+    },
+    "BC->B2560_u256": {
+      "transition": {
+        "collision->collision": 108,
+        "collision->reached": 9,
+        "collision->time_limit": 14,
+        "reached->collision": 18,
+        "reached->reached": 88,
+        "reached->time_limit": 10,
+        "time_limit->collision": 33,
+        "time_limit->reached": 32,
+        "time_limit->time_limit": 108
+      },
+      "added": {
+        "n": 51,
+        "groups": {
+          "dense_initial_clear": 9,
+          "other_initial_clear": 17,
+          "dense_initial_blocked": 25
+        },
+        "roles": {
+          "dense_recovery": 34,
+          "anticipatory": 7,
+          "support_expansion": 10
+        },
+        "phase": {
+          "other_enroute_event_gt2m": 51
+        },
+        "distance": {
+          "gt5m": 50,
+          "2to5m": 1
+        },
+        "unique_tasks": 16,
+        "unique_worlds": 13,
+        "startup6s_phase": {
+          "other_enroute": 50,
+          "startup_le6s": 1
+        }
+      },
+      "removed": {
+        "n": 23,
+        "groups": {
+          "dense_initial_blocked": 10,
+          "dense_initial_clear": 13
+        },
+        "roles": {
+          "dense_recovery": 23
+        },
+        "phase": {
+          "other_enroute_event_gt2m": 22,
+          "near_goal_event_le2m": 1
+        },
+        "distance": {
+          "gt5m": 11,
+          "2to5m": 11,
+          "1to2m": 1
+        },
+        "unique_tasks": 12,
+        "unique_worlds": 10,
+        "startup6s_phase": {
+          "other_enroute": 22,
+          "near_goal_event_le2m": 1
+        }
+      }
+    }
+  }
+}

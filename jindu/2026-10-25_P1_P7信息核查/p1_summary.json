@@ -1,0 +1,280 @@
+{
+  "b1280": {
+    "files": 256,
+    "bytes": 2506794497,
+    "blocks": {
+      "1-32": {
+        "completed": 736,
+        "reached": 107,
+        "collision": 237,
+        "time_limit": 392,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.1453804347826087,
+        "ev_mean": 0.4190564237431946
+      },
+      "33-64": {
+        "completed": 703,
+        "reached": 11,
+        "collision": 271,
+        "time_limit": 421,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.015647226173541962,
+        "ev_mean": 0.3854263409915616
+      },
+      "65-96": {
+        "completed": 696,
+        "reached": 29,
+        "collision": 213,
+        "time_limit": 454,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.041666666666666664,
+        "ev_mean": 0.36404509891343384
+      },
+      "97-128": {
+        "completed": 620,
+        "reached": 3,
+        "collision": 123,
+        "time_limit": 494,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.004838709677419355,
+        "ev_mean": 0.32352907947112464
+      },
+      "129-160": {
+        "completed": 628,
+        "reached": 4,
+        "collision": 141,
+        "time_limit": 483,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.006369426751592357,
+        "ev_mean": 0.3071911853029081
+      },
+      "161-192": {
+        "completed": 645,
+        "reached": 4,
+        "collision": 218,
+        "time_limit": 423,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.006201550387596899,
+        "ev_mean": 0.40065160103563824
+      },
+      "193-224": {
+        "completed": 628,
+        "reached": 3,
+        "collision": 165,
+        "time_limit": 460,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.004777070063694267,
+        "ev_mean": 0.325767659142697
+      },
+      "225-256": {
+        "completed": 640,
+        "reached": 3,
+        "collision": 162,
+        "time_limit": 475,
+        "commits": 1280,
+        "rejected": 0,
+        "success_rate": 0.0046875,
+        "ev_mean": 0.44123378409729697
+      },
+      "1-128": {
+        "completed": 2755,
+        "reached": 150,
+        "collision": 844,
+        "time_limit": 1761,
+        "commits": 5120,
+        "rejected": 0,
+        "success_rate": 0.0544464609800363,
+        "ev_mean": 0.3730142357798286
+      },
+      "129-256": {
+        "completed": 2541,
+        "reached": 14,
+        "collision": 686,
+        "time_limit": 1841,
+        "commits": 5120,
+        "rejected": 0,
+        "success_rate": 0.005509641873278237,
+        "ev_mean": 0.36871105739463506
+      }
+    },
+    "ev": {
+      "min": -1.0567732880045617,
+      "max": 0.8151299507597194,
+      "mean": 0.37086264658723184,
+      "below_point2": 50
+    },
+    "rollout_hours": 22.41410305488811,
+    "update_hours": 2.345185982803507,
+    "total_hours": 24.848295197740775,
+    "clip_fraction_mean": 0.03917198251391483,
+    "approx_kl_mean": 0.0009465469263777296
+  },
+  "b2560": {
+    "files": 256,
+    "bytes": 2504312568,
+    "blocks": {
+      "1-32": {
+        "completed": 770,
+        "reached": 190,
+        "collision": 200,
+        "time_limit": 380,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.24675324675324675,
+        "ev_mean": 0.47524529225001416
+      },
+      "33-64": {
+        "completed": 953,
+        "reached": 369,
+        "collision": 287,
+        "time_limit": 297,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.38719832109129065,
+        "ev_mean": 0.5674931817971551
+      },
+      "65-96": {
+        "completed": 985,
+        "reached": 350,
+        "collision": 334,
+        "time_limit": 301,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.3553299492385787,
+        "ev_mean": 0.43998051738471844
+      },
+      "97-128": {
+        "completed": 964,
+        "reached": 373,
+        "collision": 293,
+        "time_limit": 298,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.3869294605809129,
+        "ev_mean": 0.5308306808591524
+      },
+      "129-160": {
+        "completed": 904,
+        "reached": 366,
+        "collision": 232,
+        "time_limit": 306,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.40486725663716816,
+        "ev_mean": 0.5573248307589587
+      },
+      "161-192": {
+        "completed": 854,
+        "reached": 259,
+        "collision": 266,
+        "time_limit": 329,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.30327868852459017,
+        "ev_mean": 0.5922526873164935
+      },
+      "193-224": {
+        "completed": 853,
+        "reached": 256,
+        "collision": 264,
+        "time_limit": 333,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.30011723329425555,
+        "ev_mean": 0.556292764748104
+      },
+      "225-256": {
+        "completed": 839,
+        "reached": 238,
+        "collision": 259,
+        "time_limit": 342,
+        "commits": 640,
+        "rejected": 0,
+        "success_rate": 0.2836710369487485,
+        "ev_mean": 0.5141004294570429
+      },
+      "1-128": {
+        "completed": 3672,
+        "reached": 1282,
+        "collision": 1114,
+        "time_limit": 1276,
+        "commits": 2560,
+        "rejected": 0,
+        "success_rate": 0.3491285403050109,
+        "ev_mean": 0.50338741807276
+      },
+      "129-256": {
+        "completed": 3450,
+        "reached": 1119,
+        "collision": 1021,
+        "time_limit": 1310,
+        "commits": 2560,
+        "rejected": 0,
+        "success_rate": 0.3243478260869565,
+        "ev_mean": 0.5549926780701497
+      }
+    },
+    "ev": {
+      "min": -0.14619591993016923,
+      "max": 0.7868174502868313,
+      "mean": 0.5291900480714549,
+      "below_point2": 6
+    },
+    "rollout_hours": 22.639361192591426,
+    "update_hours": 2.309300256265156,
+    "total_hours": 25.038088186772203,
+    "clip_fraction_mean": 0.0008156585840822572,
+    "approx_kl_mean": 7.915933908455176e-06
+  },
+  "config_evidence": {
+    "b1280": {
+      "config_hash": "87387dad37a1d2490f045bca6dbb0a0476e8bc9d21585410c54fc7d627b415c0",
+      "source_set_hash": "3ffd04078319303b59d7b0d04d2cad63ecf605c429652fb8f63050cbc83c3f2d",
+      "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+      "current_config_hash": "87387dad37a1d2490f045bca6dbb0a0476e8bc9d21585410c54fc7d627b415c0",
+      "matches_actual_transition": true,
+      "environment": {
+        "max_episode_steps": 60,
+        "disturb_enable": true,
+        "disturb_prob": 0.2,
+        "disturb_pos_scale": 0.3,
+        "exec_noise_scale": 0.0,
+        "mid_state_init_ratio": 0.3,
+        "mid_state_pos_scale": 0.5,
+        "max_reset_attempts": 50,
+        "goal_tolerance_3d": 0.5,
+        "reject_all_no_ray_hit": false,
+        "max_no_ray_hit_fraction": 0.9999869791666667,
+        "pointcloud_calibration_sha256": "824b756e938af55be617ed7a211bfda204f1034b7fe13811febbeebf2bef8244"
+      }
+    },
+    "b2560": {
+      "config_hash": "28119712ebd1500d7d83701056b3758070a96425d5649ae6b230e0c2fe55e82d",
+      "source_set_hash": "53cfa8ea5d96b36c15a1427ceb50a629782fd18d6f06c0bf2c6f3e30bb620f1a",
+      "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+      "current_config_hash": "28119712ebd1500d7d83701056b3758070a96425d5649ae6b230e0c2fe55e82d",
+      "matches_actual_transition": true,
+      "environment": {
+        "max_episode_steps": 60,
+        "disturb_enable": true,
+        "disturb_prob": 0.2,
+        "disturb_pos_scale": 0.3,
+        "exec_noise_scale": 0.0,
+        "mid_state_init_ratio": 0.3,
+        "mid_state_pos_scale": 0.5,
+        "max_reset_attempts": 50,
+        "goal_tolerance_3d": 0.5,
+        "reject_all_no_ray_hit": false,
+        "max_no_ray_hit_fraction": 0.9999869791666667,
+        "pointcloud_calibration_sha256": "824b756e938af55be617ed7a211bfda204f1034b7fe13811febbeebf2bef8244"
+      }
+    }
+  }
+}
