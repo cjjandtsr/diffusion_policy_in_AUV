@@ -1,127 +1,161 @@
-# [Generalizable Humanoid Manipulation with 3D Diffusion Policies](https://humanoid-manipulation.github.io/)
+# Diffusion Policy in AUV
 
-Our project is **fully open-sourced**. We separate them into two repos: [Learning & Deployment of iDP3](https://github.com/YanjieZe/Improved-3D-Diffusion-Policy) and [Humanoid Teleoperation](https://github.com/YanjieZe/Humanoid-Teleoperation). This repo is for training and deployment of iDP3.
+End-to-end autonomous obstacle-avoidance trajectory planning for UAVs, built on
+[Improved 3D Diffusion Policy (iDP3)](https://github.com/YanjieZe/Improved-3D-Diffusion-Policy).
+The policy observes point-cloud measurements and UAV state, and outputs 11-dim trajectory chunks
+(position + velocity + acceleration) directly — no global planner or external map in the loop.
 
+The repo name keeps the project codename "AUV"; the target vehicle in the code and experiments is a UAV.
 
-https://github.com/user-attachments/assets/97f6ff8c-45b3-497a-bb66-dd8b24e973b4
+## What is inside
 
-**Applications and extensions of iDP3 from the community**:
+- **3D diffusion / flow-matching policies** over point-cloud observations
+  (`diffusion_policy_3d/policy/`): DDPM point-cloud policy, flow-matching (FM) policy family
+  (`fm_base_policy.py`, `phase1a_policy_fm*.py`), SDE/ODE samplers, LoRA adapters for RL fine-tuning.
+- **DPPO reinforcement learning** on top of the diffusion policy
+  (`diffusion_policy_3d/rl/`): training loop, replay buffer, environment adapter, and
+  `dppo_uav_rebuild/` — the canonical RL branch that delegates sampling, denoising likelihood, and
+  PPO mathematics to a vendored official DPPO implementation (snapshot `cc7234a`, MIT).
+  See `diffusion_policy_3d/rl/dppo_uav_rebuild/README.md` for fixed contracts and gates.
+- **Kinematic UAV environment** (`diffusion_policy_3d/env/`): fast closed-loop simulator with
+  synthetic point-cloud sensing, collision geometry, and shaped rewards
+  (`reward_v13` … `reward_v17`: progress, collision, arrival). A Gazebo / PX4 SITL interface
+  (`gazebo_uav_env.py`, `dppo_uav_rebuild/deployment/`) targets real-flight-style rollout.
+- **Formal evaluation endpoint** (`scripts/evaluate_dppo_uav_formal_endpoint.py`): audited benchmark
+  splits (`fixed32`, `routea-val-test`), paired comparison against the BC baseline, and
+  checkpoint-identity checks.
+- **Safety guidance module** (`policy/safety_guide.py`): in-denoiser safety guidance during sampling.
+- **Tests**: parity gates, checkpoint resume, environment and reward contracts under `tests/`.
 
-- [arXiv 2025.03](https://arxiv.org/abs/2503.07511), *PointVLA: Injecting the 3D World into Vision-Language-Action Models*, where iDP3 Encoder is used in training a powerful 3D VLA.
+Several research paths coexist in this codebase (DDPM BC, FM BC, DPPO variants, ReinFlow
+experiments). The current main line is the FM policy + official-semantics DPPO rebuild.
 
-# News
-- **2025-06-16** iDP3 is accepted to *IROS 2025*.
-- **2024-11-04** Full data and checkpoints (all 3 tasks) are released in [Google Drive](https://drive.google.com/drive/folders/1f5Ln_d14OQ5eSjPDGnD7T4KQpacMhgCB?usp=sharing).
-- **2024-10-13** Release the full code for learning/teleoperation. Have a try!
+## Repository layout
 
+```
+.
+├── Improved-3D-Diffusion-Policy/          # main project
+│   ├── diffusion_policy_3d/               # core package
+│   │   ├── policy/                        # diffusion/FM policies, DPPO kernel, safety guide
+│   │   ├── rl/                            # DPPO trainers, official rebuild, ReinFlow, replay buffer
+│   │   ├── env/                           # kinematic UAV env, Gazebo env, rewards
+│   │   ├── model/                         # point-cloud/vision encoders, diffusion nets
+│   │   ├── config/                        # Hydra configs
+│   │   └── dataset/ data/ training/ workspace/ common/
+│   ├── scripts/                           # training / evaluation entry points and diagnostics
+│   ├── tests/                             # pytest suites (parity, gates, contracts)
+│   ├── third_party/                       # vendored official DPPO reference (MIT)
+│   ├── program/  zhidao/                  # internal reports and execution guides (Chinese)
+│   └── RL_REBUILD_TRACEABILITY.md         # RL rebuild traceability notes
+├── scripts/                               # upstream iDP3 wrappers (kept for reference)
+└── third_party/                           # upstream iDP3 third-party components
+```
 
-# Training & Deployment of iDP3
-
-This repo is for training and deployment of iDP3. We provide the training data example in this [Google Drive](https://drive.google.com/file/d/1c-rDOe1CcJM8iUuT1ecXKjDYAn-afy2e/view?usp=sharing), so that you could try to train the model without collecting data. The full data and the checkpoints are available in this [Google Drive](https://drive.google.com/drive/folders/1f5Ln_d14OQ5eSjPDGnD7T4KQpacMhgCB?usp=sharing).
-
-More info:
-- For the training machine, we use a local computer with an Nvidia RTX 4090 (24G memory). 
-- For the deployment machine, we use the cpu of the onboard computer in Fourier GR1.
-- We use [RealSense L515](https://www.intelrealsense.com/lidar-camera-l515/) for the depth camera. *Note that RealSense D435 provides very imprecise depth data and is not recommended for training the 3D policy.*
-
-
-
-iDP3 is a general 3D visuomotor policy for any robot. You could use iDP3 without camera calibration and point cloud segmentation. Please check our RealSense wrapper for the proposed egocentric 3D visual representation.
-
-
-
+The scripts under the repo-root `scripts/` are upstream iDP3 wrappers; all AUV-specific entry
+points live under `Improved-3D-Diffusion-Policy/scripts/`.
 
 ## Installation
 
-Install conda env and packages for both learning and deployment machines:
+The code is developed and tested in a conda environment with the following versions
+(recorded in `Improved-3D-Diffusion-Policy/BASELINE_MANIFEST.json`):
 
-    conda remove -n idp3 --all
-    conda create -n idp3 python=3.8
-    conda activate idp3
-    
-    # for cuda >= 12.1
-    pip3 install torch==2.1.0 torchvision --index-url https://download.pytorch.org/whl/cu121
-    # else, 
-    # just install the torch version that matches your cuda version
-    
-    
+- Python 3.8.20
+- PyTorch 2.4.1 + CUDA 12.1
+- NumPy 1.23.5
+- conda env name: `idp3`
 
-    # install my visualizer
-    cd third_party
-    cd visualizer && pip install -e . && cd ..
-    pip install kaleido plotly open3d tyro termcolor h5py
-    cd ..
+```bash
+# 1. create the environment (example)
+conda create -n idp3 python=3.8
+conda activate idp3
+pip install torch==2.4.1 --index-url https://download.pytorch.org/whl/cu121
 
-
-    # install 3d diffusion policy
-    pip install --no-cache-dir wandb ipdb gpustat visdom notebook mediapy torch_geometric natsort scikit-video easydict pandas moviepy imageio imageio-ffmpeg termcolor av open3d dm_control dill==0.3.5.1 hydra-core==1.2.0 einops==0.4.1 diffusers==0.11.1 zarr==2.12.0 numba==0.56.4 pygame==2.1.2 shapely==1.8.4 tensorboard==2.10.1 tensorboardx==2.5.1 absl-py==0.13.0 pyparsing==2.4.7 jupyterlab==3.0.14 scikit-image yapf==0.31.0 opencv-python==4.5.3.56 psutil av matplotlib setuptools==59.5.0
-
-    cd Improved-3D-Diffusion-Policy
-    pip install -e .
-    cd ..
-
-    # install for diffusion policy if you want to use image-based policy
-    pip install timm==0.9.7
-
-    # install for r3m if you want to use image-based policy
-    cd third_party/r3m
-    pip install -e .
-    cd ../..
-
-
-[Install on Deployment Machine] Install realsense package for deploy:
-
-    # first, install realsense driver
-    # check this version for RealSenseL515: https://github.com/IntelRealSense/librealsense/releases/tag/v2.54.2
-
-    # also install python api
-    pip install pyrealsense2==2.54.2.5684
-
-## Usage
-
-We provide the training data example in [Google Drive](https://drive.google.com/file/d/1c-rDOe1CcJM8iUuT1ecXKjDYAn-afy2e/view?usp=sharing), so that you could try to train the model without collecting data. Download it and unzip it. Then specify the dataset path in `scripts/train_policy.sh`.
-
-For example,  I put the dataset in `/home/ze/projects/Improved-3D-Diffusion-Policy/training_data_example`, and I set `dataset_path=/home/ze/projects/Improved-3D-Diffusion-Policy/training_data_example` in `scripts/train_policy.sh`.
-
-Then you could train the policy and deploy it.
-
-**Train.** The script to train policy:
-
-    # 3d policy
-    bash scripts/train_policy.sh idp3 gr1_dex-3d 0913_example
-
-    # 2d policy
-    bash scripts/train_policy.sh dp_224x224_r3m gr1_dex-image 0913_example
-
-**Deploy.** After you have trained the policy, deploy the policy with the following command. For missing packages such as `communication.py`, see another [our repo](https://github.com/YanjieZe/Humanoid-Teleoperation/tree/main/humanoid_teleoperation/teleop-zenoh)
-
-    # 3d policy
-    bash scripts/deploy_policy.sh idp3 gr1_dex-3d 0913_example
-
-    # 2d policy
-    bash scripts/deploy_policy.sh dp_224x224_r3m gr1_dex-image 0913_example
-
-Note that you may not run the deployment code without a robot (different robots have different API). The code we provide is more like an example to show how to deploy the policy. You could modify the code to fit your own robot (any robot with a camera is OK).
-
-**Visualize.** You can visualize our training data example by running (remember to set the dataset path):
-
-    bash scripts/vis_dataset.sh
-
-You can specify `vis_cloud=1` to render the point cloud as in the paper.
-
-
-## BibTeX
-
-Please consider citing our paper if you find this repo useful:
-```
-@article{ze2024humanoid_manipulation,
-  title   = {Generalizable Humanoid Manipulation with 3D Diffusion Policies},
-  author  = {Yanjie Ze and Zixuan Chen and Wenhao Wang and Tianyi Chen and Xialin He and Ying Yuan and Xue Bin Peng and Jiajun Wu},
-  year    = {2024},
-  journal = {arXiv preprint arXiv:2410.10803}
-}
+# 2. install the package in editable mode
+cd Improved-3D-Diffusion-Policy
+pip install -e .
 ```
 
-## Acknowledgement
+Datasets and checkpoints live under `data/` and are excluded from this repository
+(see `.gitignore`). The RL trainer loads BC checkpoints from `data/outputs/...` —
+see `diffusion_policy_3d/rl/dppo_uav_rebuild/README.md` for the fixed checkpoint contracts.
 
-We thank the authors of the following repos for their great work: [3D Diffusion Policy](https://github.com/YanjieZe/3D-Diffusion-Policy), [Diffusion Policy](https://github.com/columbia-ai-robotics/diffusion_policy), [VisionProTeleop](https://github.com/Improbable-AI/VisionProTeleop), [Open-TeleVision](https://github.com/OpenTeleVision/TeleVision). 
+## Quick start
+
+All commands are run from `Improved-3D-Diffusion-Policy/`.
+
+**BC baseline evaluation**
+
+```bash
+python scripts/eval_bc_baseline.py   # loads the FM BC checkpoint, runs rl_val worlds
+```
+
+**RL training (official-semantics DPPO, one-update smoke gate)**
+
+```bash
+python scripts/train_dppo_uav_rebuild.py \
+  --config diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_v1.yaml
+```
+
+Increase `run.updates` only after the one-update gate passes. The trainer never silently
+reduces learning rate, exploration, advantages, or reward signal after a rejected update —
+it rolls back the whole update.
+
+**Offline verification of the rebuild**
+
+```bash
+python scripts/verify_dppo_uav_rebuild.py \
+  --checkpoint data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt \
+  --device cuda:0 \
+  --rl-config diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_v1.yaml \
+  --rl-checkpoint data/outputs/dppo_uav_rebuild/e5_dppo_v1/checkpoint_update_000001
+```
+
+**Formal evaluation**
+
+```bash
+python scripts/evaluate_dppo_uav_formal_endpoint.py \
+  --config <policy.yaml> \
+  --rl-checkpoint <path-to-rl-checkpoint> \
+  --eval-config-dir <eval-configs> \
+  --benchmark fixed32 \
+  --worlds-test <worlds-dir> \
+  --worlds-layera <layera-dir> \
+  --output-dir <results-dir> \
+  [--expected-update 256]
+```
+
+Other training entry points in `scripts/` (DDPM PPO, FM-SDE PPO / ARFM, ReinFlow):
+
+- `train_dppo_uav_official.py`
+- `train_fm_sde_ppo.py`, `train_fm_sde_arfm.py`, `train_reinflow_fm.py`
+- `train_a2_10k_capability.py`
+
+## Testing
+
+```bash
+pytest tests/
+```
+
+The suites cover DPPO parity with the vendored official implementation, checkpoint resume,
+environment/reward contracts, and gate instrumentation.
+
+## Documentation
+
+Internal documentation (Chinese) is kept in the repository:
+
+- `Improved-3D-Diffusion-Policy/RL_REBUILD_TRACEABILITY.md` — RL rebuild traceability
+- `Improved-3D-Diffusion-Policy/ENTRYPOINT_CLOSURE_REPORT.md` — entry-point closure report
+- `Improved-3D-Diffusion-Policy/diffusion_policy_3d/rl/dppo_uav_rebuild/README.md` — rebuild contracts and gates
+- `Improved-3D-Diffusion-Policy/program/` — experiment reports and analysis
+- `Improved-3D-Diffusion-Policy/zhidao/` — execution guides for training/evaluation runs
+
+## License
+
+MIT. Based on [Improved 3D Diffusion Policy](https://github.com/YanjieZe/Improved-3D-Diffusion-Policy)
+(© 2024 Yanjie Ze, MIT). The vendored official DPPO reference (`third_party/dppo_official_cc7234a`)
+is © 2024 Intelligent Robot Motion Lab, MIT — see `Improved-3D-Diffusion-Policy/LICENSE_dppo_cc7234a_MIT.txt`.
+
+## Acknowledgments
+
+- [iDP3: Generalizable Humanoid Manipulation with 3D Diffusion Policies](https://github.com/YanjieZe/Improved-3D-Diffusion-Policy)
+- Official DPPO implementation (vendored snapshot `cc7234a`)
