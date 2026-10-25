@@ -1,0 +1,115 @@
+{
+  "schema_version": "routea_capacity_budget_p0_v1",
+  "run_id": "p0_capacity_budget_audit_p0cb_20260713_130931",
+  "gate_pass": false,
+  "bank_version": "p0_capacity_budget_v1",
+  "per_role_coverage": {
+    "anticipatory": {
+      "n_worlds": 1,
+      "required_worlds": 3,
+      "per_world_counts": {
+        "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002": 32
+      },
+      "max_single_world_share": 1.0,
+      "count": 32,
+      "pass": false
+    },
+    "dense_recovery": {
+      "n_worlds": 4,
+      "required_worlds": 3,
+      "per_world_counts": {
+        "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017": 8,
+        "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020": 8,
+        "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023": 8,
+        "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029": 8
+      },
+      "max_single_world_share": 0.25,
+      "count": 32,
+      "pass": true
+    },
+    "support_expansion": {
+      "n_worlds": 1,
+      "required_worlds": 3,
+      "per_world_counts": {
+        "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010": 32
+      },
+      "max_single_world_share": 1.0,
+      "count": 32,
+      "pass": false
+    }
+  },
+  "admission": {
+    "pass_rate": 1.0,
+    "rejection_histogram": {
+      "distance": 0,
+      "clearance_start": 0,
+      "clearance_goal": 0,
+      "astar_unreachable": 0,
+      "path_stretch": 0,
+      "success": 96
+    },
+    "fallback_invalid": 0,
+    "non_finite": 0,
+    "dup_missing_keys": 0
+  },
+  "replay_identity": {
+    "subset_size": 0,
+    "consistent": false,
+    "device": "cpu",
+    "episodes_checked": [],
+    "error": "No BC checkpoint provided — replay-identity skipped"
+  },
+  "world_inventory": {
+    "anticipatory": {
+      "val_worlds": 1,
+      "val_world_names": [
+        "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002"
+      ]
+    },
+    "dense_recovery": {
+      "val_worlds": 9,
+      "val_world_names": [
+        "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017",
+        "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020",
+        "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023",
+        "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029",
+        "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030",
+        "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037",
+        "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038",
+        "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045",
+        "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046"
+      ]
+    },
+    "support_expansion": {
+      "val_worlds": 1,
+      "val_world_names": [
+        "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010"
+      ]
+    }
+  },
+  "next_action": "GENERATE_ADMIT_ADDITIONAL_EVAL_WORLDS_ANTIC_SUPPORT",
+  "bank_buildable_to_spec": false,
+  "notes": [
+    "anticipatory: only 1 worlds available (need ≥3). Cannot satisfy world-coverage requirement.",
+    "support_expansion: only 1 worlds available (need ≥3). Cannot satisfy world-coverage requirement.",
+    "anticiptory & support_expansion have ≤2 eval worlds in the admission manifest.",
+    "This is an ENVIRONMENT-level limitation: more eval worlds per role must be generated/admitted.",
+    "Do NOT relabel rl_train worlds as eval (violates train/eval separation).",
+    "Do NOT reuse one world 3x to fake coverage.",
+    "Replay-identity: subset_size=0, consistent=False"
+  ],
+  "generation_stats": {
+    "anticipatory": {
+      "n_worlds": 1,
+      "episodes_generated": 32
+    },
+    "dense_recovery": {
+      "n_worlds": 4,
+      "episodes_generated": 32
+    },
+    "support_expansion": {
+      "n_worlds": 1,
+      "episodes_generated": 32
+    }
+  }
+}

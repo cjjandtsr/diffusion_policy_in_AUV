@@ -1,0 +1,171 @@
+{
+  "task_id": "R3",
+  "title": "R3 checkpoint/entrypoint/evaluation audit — rework #4 (external-review #4, 2026-08-13): live LoRA param-tensor count three-way equality + evidence-governance closure (manifests v3, ENTRYPOINT_CLOSURE_REPORT rework #3/#4 blocks)",
+  "guide": "program/zhidao/Guide_A_OfficialCore_R3_Checkpoint_Entrypoint_Eval_v1_0.md",
+  "master_plan": "program/zhidao/Guide_A_OfficialCore_Completion_MasterPlan_v1_0.md",
+  "branch": "a-official-core-rework",
+  "version_note": "v3 (2026-08-13): R3 rework #4 manifest. Chain: v1 closure (d88ed73) -> external-review REWORK REQUIRED -> rework #1 (manifest v2, 120b130) -> external-review #2 FAIL -> rework #2 (a1d8e96+36e30c1+67fa369) -> external-review #3 (RULING-7) -> rework #3 (6f2028d..3054eee + a85bc8e, PASS declared) -> external-review #4 (2026-08-13) ruled NO-GO on a new P1: only two legs of the RULING-7 three-way equality were implemented — len(lora_state)==declared was checked but len(live lora_params)==declared was NOT; adversarial probe saved=4/live=2 accepted by the validator and the full restore loaded policy_state before restore_lora_state failed (STATE_LOAD_CALLS_BEFORE_FAILURE=['policy'], partial mutation); saved=2/live=4 raised KeyError. Rework #4 closes it: live-count check before the shape walk and before any state load + 4 negative tests (both directions, spy zero-load proof) + full rerun (CPU 536/9/171.04s, GPU 2 passed 4380.17s) + fresh independent review_R3_rework4.md PASS-WITH-CONDITIONS with all conditions disposed (6bd3e91). This manifest supersedes implementation_manifest_R3.json (v1-era) and implementation_manifest_R3_v2.json (rework #1-era, stale known gaps). external-review #5 (2026-08-13): R3 程序 PASS / 证据 CONDITIONAL PASS -> closed by evidence patch dc3c239 (terminal R3_AUDIT_REPORT_v3.json + fresh review_R3_rework4_evidence.md PASS).",
+  "commit_binding": {
+    "base_project_commit": "42d652d",
+    "base_project_commit_note": "R2 closure HEAD (R2 = PASS final after rework #6)",
+    "implementation_commits": [
+      {
+        "commit": "6f2028d",
+        "task": "R3-rework3",
+        "message": "schema v4 + env RNG blake2b/PYTHONHASHSEED preflight/restorable semantics (RULING-7 P0-1/P0-2)"
+      },
+      {
+        "commit": "e2b4cd4",
+        "task": "R3-rework3",
+        "message": "TDD RED matrix + real-chain roundtrip + cross-process env RNG tests"
+      },
+      {
+        "commit": "d415c21",
+        "task": "R3-rework3",
+        "message": "docs: record RULING-7 (NO-GO) + supersede RULING-6 closure"
+      },
+      {
+        "commit": "5a44d4b",
+        "task": "R3-rework3",
+        "message": "GPU gates: fresh-process resume chain + canonical paired eval tests"
+      },
+      {
+        "commit": "c74dea8",
+        "task": "R3-rework3",
+        "message": "test: pin UTF-8 decode in GPU gate subprocess capture"
+      },
+      {
+        "commit": "3a367d7",
+        "task": "R3-rework3",
+        "message": "test: canonicalize metric keys in gate-1 comparison + second-resume chain"
+      },
+      {
+        "commit": "3054eee",
+        "task": "R3-rework3",
+        "message": "fix: move unnormalized eval action to host before np.asarray (GPU run1 RED fix)"
+      },
+      {
+        "commit": "a85bc8e",
+        "task": "R3-rework3",
+        "message": "docs: close RULING-7 — fresh review PASS, RTM rows + evidence ledger, comment fixes (verdict later superseded by external-review #4)"
+      },
+      {
+        "commit": "4b947a0",
+        "task": "R3-rework4",
+        "message": "test(dppo): R3 rework #4 RED — live LoRA param-tensor count mismatch negatives (4 tests: direct validator + full-restore spy, both directions)"
+      },
+      {
+        "commit": "1f0e5bb",
+        "task": "R3-rework4",
+        "message": "fix(dppo): checkpoint — reject live LoRA param-tensor count mismatch before any load (checkpoint.py +22/-1)"
+      },
+      {
+        "commit": "8cfee02",
+        "task": "R3-rework4",
+        "message": "docs(dppo): external-review #4 interim status — RTM CKPT-AUDIT/RESUME-HASH-GATE FAIL, review_R3_rework3 SUPERSEDED banner"
+      },
+      {
+        "commit": "6bd3e91",
+        "task": "R3-rework4",
+        "message": "docs(dppo): review_R3_rework4.md conditions — freeze-lift accounting (env_v2 pre d1168142... -> post 5b7b1651...), stale claim reconciliation, banner path fix, ENTRYPOINT_CLOSURE_REPORT rework #3/#4 evidence blocks"
+      }
+    ]
+  },
+  "rework_items": [
+    {
+      "id": "REV-1",
+      "finding": "external-review #4 P1: validate_checkpoint_lora_usable enforced only len(lora_state)==declared n_lora_param_tensors; len(live lora_params)==declared was never compared, so saved=4/live=2 passed the shape walk (it iterates only live params) and failed later in restore_lora_state after policy.load_state_dict (partial mutation); saved=2/live=4 raised KeyError.",
+      "fix": "1f0e5bb: live parameter-tensor count checked against declared BEFORE the per-tensor shape walk (three-way equality len(lora_state)==declared==len(live lora_params)); 2n documented as current production fact only, never a restore formula. 4b947a0: 4 RED-then-GREEN tests (direct validator + full-restore state-load spy asserting calls==[], both directions)."
+    },
+    {
+      "id": "REV-2",
+      "finding": "external-review #4 P1/P2: implementation manifests stale — implementation_manifest_R3.json described the v1/schema-v2 era and implementation_manifest_R3_v2.json stopped at rework #1/schema-v3 with a stale known gap (GPU gates 're-verified at G6/R4' and env RNG 'hash(str(world_id)) OPEN').",
+      "fix": "this manifest (v3) binds schema-v4 + the full rework #3/#4 commit chain + real GPU runs + latest archived logs; known_gaps rewritten."
+    },
+    {
+      "id": "REV-3",
+      "finding": "external-review #4 P2: ENTRYPOINT_CLOSURE_REPORT.md stopped at the R3.6/462-test closure with no schema-v4 / GPU / rework #3 terminal section.",
+      "fix": "6bd3e91: appended 'R3 rework #3 evidence' and 'R3 rework #4 evidence' blocks (all numbers + sha256)."
+    },
+    {
+      "id": "REV-4",
+      "finding": "review_R3_rework4.md P1-1 (documentation-only): kinematic_uav_env_v2.py freeze-lift (RULING-7 P0-2, 6f2028d) had no hash accounting; the closure report's 'git diff 85ac9f0 is empty for each' claim was stale; the rework #3 plan listed env_v2 in both allowed and forbidden lists.",
+      "fix": "6bd3e91 + plan file resolution note: pre/post sha256 recorded (d1168142... -> 5b7b1651...), stale claim superseded by the Freeze-lift accounting block, plan contradiction resolved (RULING-7 P0-2 mandate takes precedence), the other 3 frozen blobs re-verified byte-identical to 85ac9f0."
+    }
+  ],
+  "changed_files": [
+    "diffusion_policy_3d/rl/dppo_uav/checkpoint.py (live-count check, +22/-1)",
+    "tests/dppo_parity/test_r3_rework4_negative.py (new, 87 insertions)",
+    "RL_REBUILD_TRACEABILITY.md (CKPT-AUDIT/RESUME-HASH-GATE rows: interim FAIL -> rework #4 closed; Evidence ledger (R3 rework #4 additions))",
+    "review_R3_rework3.md (SUPERSEDED banner only, body untouched)",
+    "ENTRYPOINT_CLOSURE_REPORT.md (Freeze-lift accounting block + rework #3/#4 evidence blocks)",
+    "implementation_manifest_R3_v3.json (new, this file)"
+  ],
+  "changed_symbols": [
+    "checkpoint.validate_checkpoint_lora_usable: added live parameter-tensor count vs declared n_lora_param_tensors hard-fail before the shape walk"
+  ],
+  "deleted_symbols": [],
+  "requirement_ids": [
+    "CRITIC-STATE-ONLY",
+    "CKPT-AUDIT",
+    "RESUME-HASH-GATE",
+    "LEGACY-FORMAL-GUARD",
+    "EVAL-STD",
+    "EVAL-AUDIT",
+    "CAPABILITY-AUDIT"
+  ],
+  "requirement_verdicts_rework": {
+    "note": "external-review #4 (2026-08-13) verdicts -> post-rework-#4 verdicts. The ruling failed CKPT-AUDIT and RESUME-HASH-GATE on the live-count gap; the other 5 rows were not challenged and remain as of rework #3.",
+    "CRITIC-STATE-ONLY": "PASS (rework #3; retained, unaffected)",
+    "CKPT-AUDIT": "FAIL (external-review #4) -> PASS (rework #4: three-way equality closed; fresh review_R3_rework4.md PASS-WITH-CONDITIONS, conditions disposed)",
+    "RESUME-HASH-GATE": "FAIL (external-review #4) -> PASS (rework #4: live-count mismatch now hard-fails before any state load, spy zero-load proof)",
+    "LEGACY-FORMAL-GUARD": "PASS (rework #3; retained, unaffected)",
+    "EVAL-STD": "PASS (rework #3; retained, unaffected)",
+    "EVAL-AUDIT": "PASS (rework #3; retained, unaffected)",
+    "CAPABILITY-AUDIT": "PASS (rework #3; retained, unaffected)"
+  },
+  "tests": {
+    "new_negatives": "4 passed — test_r3_rework4_negative.py: direct validator + full-restore state-load spy, both directions (4,2)/(2,4); RED first: 4 failed in 3.45s with exactly the ruling's failure modes",
+    "targeted_checkpoint_battery": "98 passed in 11.08s PYTEST_EXIT=0 (targeted_r3_rework4_20260813.log sha256 d64e6c453a6a8350cdf57e95bed52fc767e3bb51cf172b6abb8c95a341785276, HEAD 6bd3e91) — new negatives + rework #2/#3 checkpoint tests + test_checkpoint.py",
+    "result_cpu": "536 passed / 9 deselected in 171.04s PYTEST_EXIT=0 (cpu_regression_r3_rework4_20260813.log sha256 6a57a1fe04a445af89bba8616d32ee02904f8e46db3cda1d003a0d445e060207, HEAD 8cfee02, clean tree)",
+    "gpu_gate": "2 passed in 4380.17s (1:13:00) PYTEST_EXIT=0 (gpu_gate_rework4_20260813.log sha256 515f7bbe9346418892d44830dc0935865b0d8e0415e9d59a3753c00d9fc98a64, HEAD 8cfee02) — checkpoint core modified so both gates rerun by ruling mandate",
+    "probe": "temp/r3_rework4_probe.py (session-local, deleted after closure): A/B both directions CheckpointError; C CheckpointError with STATE_LOAD_CALLS_BEFORE_FAILURE=[]; independently re-run and recorded in review_R3_rework4.md"
+  },
+  "authority_run": {
+    "cpu_suite_rework4": {
+      "command": "python3 -m pytest -m 'not gpu' tests/ -q 2>&1 | tee temp/cpu_regression_r3_rework4_20260813.log",
+      "result": "536 passed / 9 deselected in 171.04s, PYTEST_EXIT=0",
+      "log": "program/reports/routeA_rl_env_v1/official_core_r3/regression/cpu_regression_r3_rework4_20260813.log (sha256 6a57a1fe...)"
+    },
+    "gpu_gate_rework4": {
+      "command": "python3 -m pytest tests/dppo_parity/test_r3_rework3_gpu_gate.py -v 2>&1 | tee temp/gpu_gate_rework4_20260813.log",
+      "result": "2 passed in 4380.17s, PYTEST_EXIT=0",
+      "log": "program/reports/routeA_rl_env_v1/official_core_r3/regression/gpu_gate_rework4_20260813.log (sha256 515f7bbe...)"
+    }
+  },
+  "resolved_training_contract": {
+    "note": "R3 rework #4 touches no training contract (policy/PPO loss/reward/env unchanged in scope). Contract-relevant resolved values used at eval time come from the checkpoint's own exact_resolved_config / config_layer: max_ep_len / reward_version / gate_phase / min_sampling_denoising_std / min_logprob_denoising_std. The restore path changes are validation-only: a live-count mismatch now hard-fails before any state load instead of partially restoring."
+  },
+  "evidence": [
+    "program/reports/routeA_rl_env_v1/official_core_r3/regression/cpu_regression_r3_rework4_20260813.log — 536 passed / 9 deselected / 171.04s PYTEST_EXIT=0 (2026-08-13, clean-tree, HEAD 8cfee02, sha256 6a57a1fe...)",
+    "program/reports/routeA_rl_env_v1/official_core_r3/regression/gpu_gate_rework4_20260813.log — 2 passed / 4380.17s PYTEST_EXIT=0 (2026-08-13, HEAD 8cfee02, sha256 515f7bbe...)",
+    "program/reports/routeA_rl_env_v1/official_core_r3/regression/targeted_r3_rework4_20260813.log — 98 passed / 11.08s (2026-08-13, sha256 d64e6c45...)",
+    "review_R3_rework4.md — fresh zero-context independent review, PASS-WITH-CONDITIONS (0 P0 / 1 P1 documentation-only / 3 P2), all conditions disposed in 6bd3e91",
+    "review_R3_rework3.md — prior review, SUPERSEDED banner only (body untouched)",
+    "ENTRYPOINT_CLOSURE_REPORT.md — Freeze-lift accounting block + 'R3 rework #3 evidence' + 'R3 rework #4 evidence' blocks (appended 2026-08-13)",
+    "RL_REBUILD_TRACEABILITY.md — CKPT-AUDIT / RESUME-HASH-GATE rows + 'Evidence ledger (R3 rework #4 additions)'",
+    "historical (rework #3, retained): gpu_gate_rework3_20260813_run2.log sha256 fdff7d9e... (2 passed 4405.12s); gpu_gate_rework3_20260813.log sha256 6638a77c... (run1 RED); cpu_regression_r3_rework3_20260813_final.log sha256 515329a2... (532/9/175.96s)",
+    "program/reports/routeA_rl_env_v1/official_core_r3/R3_AUDIT_REPORT_v3.json — terminal R3 audit JSON (external-review #5 P1 closure; 7/7 verdicts, three-tier results with full SHA256s)",
+    "review_R3_rework4_evidence.md — fresh doc/evidence review PASS (0 P0 / 0 P1 / 3 P2 observations), covering evidence patch dc3c239"
+  ],
+  "known_gaps": [
+    "[informational] clean-tree positive preflight paths are covered by live tests post-commit; during a dirty docs tree they skip (documented test boundary; rework #4 CPU run was on a clean tree, 536 passed / 0 skipped)",
+    "[informational] the voided/mark_voided eval branch and capability edge cases (all-NaN window, start==goal) are covered by unit tests, not by production evidence (structurally absent on those paths)",
+    "[informational] config_hash axis at eval: the eval side recomputes from erc.config_layer (the checkpoint's own saved config is a saved fact, not independently reconstructible at eval time) — self-comparison tautology eliminated (rework P1-2)",
+    "[deferred to R4] EQUIV-REG fixture (G4/T9 re-freeze), G5/G6 full gate rerun (G6 watch-item comments per microbatch=1 semantics first), G7-G10, T6 micro-train (batch 128, never 512)"
+  ],
+  "unexpected_changes": [
+    "None in rework #4 scope: only checkpoint.py + new test file + docs touched. The kinematic_uav_env_v2.py and E040-script freeze-lifts predate rework #4 (RULING-7 P0-2 / R3.3 amendment) and are now hash-accounted in ENTRYPOINT_CLOSURE_REPORT.md 'Freeze-lift accounting' (6bd3e91)."
+  ],
+  "rollback": "git revert newest-first back to rework #3 closure a85bc8e: <this manifest's own carrying commit> 6bd3e91 8cfee02 1f0e5bb 4b947a0 — revert the manifest's own carrying commit first, then this sequence. Only rework #4 commits are involved; rework #3 chain stays."
+}

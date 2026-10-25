@@ -1,0 +1,337 @@
+{
+ "task_id": "R3",
+ "title": "R3 checkpoint/entrypoint/evaluation audit — 7 requirements PASS after external-review REWORK REQUIRED (CRITIC-STATE-ONLY / CKPT-AUDIT / RESUME-HASH-GATE / LEGACY-FORMAL-GUARD / EVAL-STD / EVAL-AUDIT / CAPABILITY-AUDIT)",
+ "guide": "program/zhidao/Guide_A_OfficialCore_R3_Checkpoint_Entrypoint_Eval_v1_0.md",
+ "master_plan": "program/zhidao/Guide_A_OfficialCore_Completion_MasterPlan_v1_0.md",
+ "branch": "a-official-core-rework",
+ "version_note": "v2 (2026-08-11): R3 rework manifest. v1 closure (d88ed73) declared all 7 rows PASS; the same-day external review ruled REWORK REQUIRED (4 FAIL: CKPT-AUDIT / RESUME-HASH-GATE / EVAL-AUDIT / CAPABILITY-AUDIT; 3 PASS retained: CRITIC-STATE-ONLY / LEGACY-FORMAL-GUARD / EVAL-STD; 2 P0 + 3 P1 + C1/C2; F1-F3 claims verified). Rework fix commit 120b130 (tree a0c4e460, 21 files +1872/-210, TDD RED-first: test_r3_rework_negative.py 39 collected tests over 25 functions / 8 negative paths): checkpoint schema v3 (30 fields + lora_identity + environment_rng_state + config_layer; v2 audit-only), training_identity 8-axis config layer (base_seed/n_envs/lora_rank/lora_alpha/lr_actor/lr_value/actor_optimizer/value_optimizer), restore order identity->lora->policy-non-empty->lora-usable->sampler->structured->rng->loads (sampler validated before ANY state load, state-load spies 0 on mismatch), structured-state consistency validation (C2), environment_rng_state three keys (C1), bank v3 (bank_id binds full content; paired_bank_from_dict schema gates FIRST, binding LAST as catch-all), empty-LoRA hard-fail (P0-1), eval pool rl_train ∪ rl_eval (P1-1), eval config hash recomputed from config_layer (P1-2), bank/density provenance in artifact (P1-3), NaN/Inf trace hard-fail (P1-4). Authority evidence (all re-run on tree a0c4e460): full CPU suite 499 passed / 2 skipped / 7 deselected in 167.08s EXIT=0; fresh-process 63 passed in 4.71s (checkpoint 24 + negative 39); targeted 147 passed / 2 skipped in 86.01s; AST+import 21 files clean. R3 completion gate: all 7 requirement rows PASS (reworked); RTM OPEN only EQUIV-REG (BLOCKED, ASSUMPTION-4 semantics) / GATE-ORDER (R4) and training gates (G5/G6/G7/G8).",
+ "commit_binding": {
+  "base_project_commit": "42d652d",
+  "base_project_commit_note": "R2 closure HEAD (R2 = PASS final after rework #6)",
+  "implementation_commits": [
+   {
+    "commit": "5a5748d",
+    "task": "R3.1",
+    "message": "fix(dppo): isolate critic value-head checkpoint state",
+    "scope": "PolicyObsEncoder holds policy by non-registered strong reference (object.__setattr__; weakref GC expiry fixed); ValueCritic.value_state_dict()/load_value_state_dict() (mlp.* only, strict=True, non-mlp key rejected); _build_checkpoint_data/restore_training_state switch to the value-only API — value checkpoint no longer embeds policy keys"
+   },
+   {
+    "commit": "c681a1b",
+    "task": "R3.0c",
+    "message": "chore(dppo): remove staged phase comments",
+    "scope": "staged/phase comment cleanup across rl/dppo_uav (20 source files, 114 sites) + tests (27 files, ~72 sites); comments only, code prefix zero-change; R3.1 baseline GPU e2e pre-existing failure fixed (fresh-load normalizer on cuda:0 -> unnormalize CUDA tensor -> train_loop numpy consumers: L1049 .detach().cpu().numpy() + mock env is_tensor mirror)"
+   },
+   {
+    "commit": "3ea3bba",
+    "task": "R3.2",
+    "message": "feat(dppo): validate complete training identity on resume",
+    "scope": "checkpoint schema v2 + pre-load identity validation: 8 hash-field groups + independent source_file_hashes, all mismatch classes hard-fail before ANY policy state load (spy proof: 0 load_state_dict calls); schema v1 rejected; empty policy_state rejected"
+   },
+   {
+    "commit": "c05d131",
+    "task": "R3.3",
+    "message": "feat(dppo): enforce unique formal train and evaluation entrypoints",
+    "scope": "entrypoint_guard.validate_official_environment() (git clean/commit/tree + vendor SHA256SUMS 401/401 + BC/manifest hash + projection=False + train/eval split + numerical mode) + official_source_file_hashes(); scripts/train_dppo_uav_official.py + scripts/eval_dppo_uav_official.py (7 code/asset axes identity; config_hash axis = checkpoint's own saved value [JUDGMENT]); E040 minimal guard (pre-hash 7868d1be... -> guarded c548efc2..., hash accounting in ENTRYPOINT_CLOSURE_REPORT.md §1)"
+   },
+   {
+    "commit": "5e7c442",
+    "task": "R3.3-tests",
+    "message": "test(dppo): bind canonical entry scripts in the source-hash axis",
+    "scope": "canonical entry scripts join the source_file_hashes axis; subprocess proof parametrized over all 7 legacy scripts (RED: E040 exited 0 -> GREEN 8/8)"
+   },
+   {
+    "commit": "e30d835",
+    "task": "R3.4",
+    "message": "feat(dppo): persist immutable paired evaluation traces",
+    "scope": "frozen paired bank v2 (PairedBankEntry 14 fields, (spec,seed) deterministic episode_config_hash, read_paired_bank_file single schema source); _eval_episode dual std floors from LoopConfig (SpyPolicy RED -> GREEN, test_eval_std_passthrough); episode traces (13 keys per step per TRACE_STEP_REQUIRED_KEYS, both sides non-empty + full-key validation); unique artifact name paired_eval_envstep_<9d>_ppoupd_<6d>_<ckpt12>.json + tmp/os.replace atomic write (different hash -> RuntimeError no overwrite)"
+   },
+   {
+    "commit": "77e2fa2",
+    "task": "R3.5",
+    "message": "feat(dppo): compute audited Route A capability metrics",
+    "scope": "capability_metrics.py (d_soft^H H=8/beta=8.0/omega decay, onset, trap, side_flip, support-cell + OfflineDensity frozen dataclass); compute_capability_metrics replaces _CAPABILITY_PLACEHOLDER; offline density missing -> hard-fail (eval preflight RuntimeError / CLI exit 2); validator upgrade (required keys per group, finite non-bool, n_episodes role alignment, sr/cr in [0,1])"
+   },
+   {
+    "commit": "7c9a9af",
+    "task": "R3.5-fix",
+    "message": "fix(dppo): harden capability metrics against NaN poisoning and false onsets",
+    "scope": "code-reviewer final round 2W+6L: W1 NaN-clearance onset steps skipped (never NaN onset_distance); W2 yaw onset via per-step |yaw_rate| vs pre-shell baseline (constant yaw rate no longer an onset); L1 eval-script artifact build/persist inside eval FAIL handler; L2 OfflineDensity bool/int validation; L3 dead constant removed + threshold citation; L4 docstring adjudication note; L5 all-NaN window -> no trap, no RuntimeWarning (finite-min); L6 NaN pos excluded from support stats + start==goal degenerate fallback; 8 new RED tests first"
+   }
+  ],
+  "rework_commits": [
+   {
+    "commit": "120b130",
+    "task": "R3-REWORK",
+    "message": "fix(dppo): close R3 rework negative gates (schema v3, restore order, bank v3, eval pool, NaN hard-fail)",
+    "scope": "external-review REWORK REQUIRED execution (see version_note for the full fix list); TDD RED-first test_r3_rework_negative.py 25 functions / 39 collected tests across 8 negative paths; 11 full-suite regressions fixed (sampler base_seed None-safety x2, int(None), plain-dict lora_info test doubles x2, p5 build_eval_artifact provenance x2, canonical entrypoint bank v3 upgrade + re-sign + expected-message updates)"
+   }
+  ],
+  "rework_head": "120b130",
+  "rework_tree_hash": "a0c4e4601ced3a4be45da389a795184c039d64e6",
+  "closure_commit": "d88ed73 — the R3.6 docs commit carrying the v1 manifest and review_R3.md (2026-08-11, message 'docs(dppo): close checkpoint entrypoint and evaluation audit'); follow-up RTM backfill 9b9e332 (closure hash + env-RNG handoff note). Rework closure docs commit carries this v2 manifest + RTM rework ledger + review_R3.md VOID annotation (review_R3_rework.md committed separately after the fresh review)."
+ },
+ "rework_items": [
+  {
+   "id": "REV-1",
+   "finding": "R3.1 weakref.ref policy GC expiry (PolicyObsEncoder) — the weakref could be collected, leaving a dead encoder",
+   "fix": "object.__setattr__ non-registered strong reference (registered submodule was the CRITIC-STATE-ONLY defect)",
+   "commit": "5a5748d",
+   "verification": "key-set test RED (value checkpoint contained policy keys) -> GREEN; test_critic + test_checkpoint suites green"
+  },
+  {
+   "id": "REV-2",
+   "finding": "R3.2 code-reviewer BLOCK: C1 g6_fix_verify numerical-mode asymmetry (hash inequality empirically), W3 empty policy_state accepted, L1 non-dict payload accepted; W1 env RNG informational; W2 device-in-hash-layer intentional",
+   "fix": "single-variable numerical-mode symmetry; empty policy_state hard-fail + RED test; non-dict payload -> CheckpointError + RED test",
+   "commit": "3ea3bba",
+   "verification": "test_checkpoint 24 passed; CPU 382 passed; GPU g6 resume 1 passed (32:42)"
+  },
+  {
+   "id": "REV-3",
+   "finding": "R3.3 code-reviewer Block 2H+3W+3L: H1 eval bank manifest_entry_hash vs-itself tautology; H2 bank world outside production pool tracebacks deep in env; W1 per-batch train timestamps + independent eval timestamp; W2 role/split enum validation + state/erc access wrapping; W3 repo-root-relative path resolution; L1 unique per-PID dirty-tree marker + atexit; L2 exact exit codes; L3 new coverage",
+   "fix": "H1 manifest hash recomputed from the manifest at CLI level; H2 pool reachability gated at CLI level + AdmissionExhausted/ValueError wrap; W1-W3 implemented; L1-L3 implemented",
+   "commit": "c05d131 (with 5e7c442 test hardening)",
+   "verification": "post-commit clean tree: two clean-tree tests (identity mismatch + positive preflight) flipped skip -> live; the '47 passed' closure count is NOT reproducible at R3.6 (fresh review measured collect-only 28 at HEAD, 15 test functions at 5e7c442) and is kept as historical record only; CPU suite 406 passed / 2 skipped / 7 deselected"
+  },
+  {
+   "id": "REV-4",
+   "finding": "R3.4 code-reviewer 7M+5L: negative tests for frozen-bank violation; mock s9 layout mirrored the real frozen geometry only in zero values (real geometry untested); assert-as-validation sites (python -O); 28 staged comment labels; unused import; NaN clearance trace step; expected_contract_hash self-referential tautology",
+   "fix": "test_run_paired_eval_hard_fails_on_frozen_bank_violation; mock s9 mirror + test_paired_eval_trace_reads_frozen_geometry; ValueError conversions; comment labels stripped; import removed; NaN-safe trace; expected_contract_hash = real runtime contract hash at both call sites",
+   "commit": "e30d835",
+   "verification": "CPU suite 431 passed / 0 failed / 7 deselected"
+  },
+  {
+   "id": "REV-5",
+   "finding": "R3.5 code-reviewer final round 2W+6L (NaN poisoning + false onset paths)",
+   "fix": "see implementation_commits 7c9a9af scope (W1/W2/L1-L6)",
+   "commit": "7c9a9af",
+   "verification": "8 new tests RED first (6 fail / 1 pass -> fixed green); targeted 75 passed; CPU suite 460 passed / 2 skipped / 7 deselected"
+  },
+  {
+   "id": "REV-6",
+   "finding": "external-review REWORK REQUIRED (2026-08-11): 4 FAIL rows (CKPT-AUDIT / RESUME-HASH-GATE / EVAL-AUDIT / CAPABILITY-AUDIT) + 2 P0 + 3 P1 + C1/C2. v1 evidence chain (review_R3.md self-review) never ran negative-path tests; validator non-empty checks passed sha256(b'') for empty LoRA; config_hash lacked 8 identity axes; sampler identity validated AFTER all state loads; bank v2 had no binding; eval excluded eval-only worlds; config_hash self-compared at eval; NaN masked into valid metrics; no environment_rng_state; 4 structured-state fields saved-not-validated",
+   "fix": "fix commit 120b130 (tree a0c4e460): schema v3 (30 fields + lora_identity + environment_rng_state + config_layer; v2 audit-only); training_identity 8-axis config layer (base_seed/n_envs/lora_rank/lora_alpha/lr_actor/lr_value/actor_optimizer/value_optimizer, shared _config_dict save/restore, base_seed None-safe); restore order identity->lora->policy-non-empty->lora-usable->sampler->structured->rng->loads with sampler validated before ANY state load (spy 0 calls); structured-state consistency (lr_scheduler/sampling_std/reward_norm/numerical_mode); environment_rng_state three keys; bank v3 (bank_id binds full content via canonical_sha256 sort_keys; paired_bank_from_dict schema gates FIRST, binding LAST catch-all); empty-LoRA hard-fail (EMPTY_LORA_CHECKSUM=sha256(b'')); eval pool rl_train ∪ rl_eval (build_routea_eval_pool, eval-only worlds reachable, train sampler still rejects eval-only specs); eval config hash recomputed from erc.config_layer; artifact bank_id + offline_density_sha256 provenance; NaN/Inf trace fields hard-fail in capability_metrics + evaluator validator",
+   "commit": "120b130",
+   "verification": "TDD RED-first 39 collected negative tests; full CPU suite 499 passed / 2 skipped / 7 deselected in 167.08s EXIT=0; fresh-process 63 passed in 4.71s; targeted 147 passed / 2 skipped in 86.01s; AST+import 21 files clean; all 8 mandatory negative requirements from the ruling verified by the negative tests (see R3-REWORK-RULING-1 in RTM)"
+  }
+ ],
+ "changed_files": [
+  "ENTRYPOINT_CLOSURE_REPORT.md",
+  "RL_REBUILD_TRACEABILITY.md",
+  "diffusion_policy_3d/rl/dppo_uav/capability_metrics.py",
+  "diffusion_policy_3d/rl/dppo_uav/chain_logprobs.py",
+  "diffusion_policy_3d/rl/dppo_uav/checkpoint.py",
+  "diffusion_policy_3d/rl/dppo_uav/contracts.py",
+  "diffusion_policy_3d/rl/dppo_uav/critic.py",
+  "diffusion_policy_3d/rl/dppo_uav/entrypoint_guard.py",
+  "diffusion_policy_3d/rl/dppo_uav/environment_adapter.py",
+  "diffusion_policy_3d/rl/dppo_uav/evaluator.py",
+  "diffusion_policy_3d/rl/dppo_uav/gae.py",
+  "diffusion_policy_3d/rl/dppo_uav/gate_audit.py",
+  "diffusion_policy_3d/rl/dppo_uav/integration.py",
+  "diffusion_policy_3d/rl/dppo_uav/metrics.py",
+  "diffusion_policy_3d/rl/dppo_uav/numerics.py",
+  "diffusion_policy_3d/rl/dppo_uav/observation_adapter.py",
+  "diffusion_policy_3d/rl/dppo_uav/phase1a_actor_adapter.py",
+  "diffusion_policy_3d/rl/dppo_uav/planner.py",
+  "diffusion_policy_3d/rl/dppo_uav/pointcloud_gate.py",
+  "diffusion_policy_3d/rl/dppo_uav/policy_loader.py",
+  "diffusion_policy_3d/rl/dppo_uav/reward_norm.py",
+  "diffusion_policy_3d/rl/dppo_uav/rollout_buffer.py",
+  "diffusion_policy_3d/rl/dppo_uav/train_loop.py",
+  "diffusion_policy_3d/rl/dppo_uav/trainer.py",
+  "diffusion_policy_3d/rl/dppo_uav/validated_synth_adapter.py",
+  "implementation_manifest_R3.json",
+  "implementation_manifest_R3_v2.json",
+  "review_R3.md",
+  "review_R3_rework.md",
+  "scripts/eval_dppo_uav_official.py",
+  "scripts/g6_fix_verify.py",
+  "scripts/train_ddpm_ppo_meanlogp_3_e040.py",
+  "scripts/train_dppo_uav_official.py",
+  "task_plan_t5_rework.md",
+  "tests/dppo_parity/conftest.py",
+  "tests/dppo_parity/fake_policy.py",
+  "tests/dppo_parity/mock_uav_env.py",
+  "tests/dppo_parity/multi_slot_mock.py",
+  "tests/dppo_parity/test_action_region.py",
+  "tests/dppo_parity/test_actual_batch_logprob_identity.py",
+  "tests/dppo_parity/test_canonical_entrypoints.py",
+  "tests/dppo_parity/test_capability_metrics.py",
+  "tests/dppo_parity/test_cfg_contract.py",
+  "tests/dppo_parity/test_checkpoint.py",
+  "tests/dppo_parity/test_contract.py",
+  "tests/dppo_parity/test_critic.py",
+  "tests/dppo_parity/test_e2e_gpu.py",
+  "tests/dppo_parity/test_eval_artifact.py",
+  "tests/dppo_parity/test_eval_std_passthrough.py",
+  "tests/dppo_parity/test_g3_gate_audit.py",
+  "tests/dppo_parity/test_g5_real_no_update_gpu.py",
+  "tests/dppo_parity/test_g6_real_one_update_gpu.py",
+  "tests/dppo_parity/test_integration_real_env.py",
+  "tests/dppo_parity/test_integration_routea_pool.py",
+  "tests/dppo_parity/test_no_ray_pose_regression.py",
+  "tests/dppo_parity/test_p5_contracts.py",
+  "tests/dppo_parity/test_p7_eval_persistence.py",
+  "tests/dppo_parity/test_paired_bank.py",
+  "tests/dppo_parity/test_pointcloud_validity.py",
+  "tests/dppo_parity/test_r3_rework_negative.py",
+  "tests/dppo_parity/test_real_adapter.py",
+  "tests/dppo_parity/test_role_metrics_probe.py",
+  "tests/dppo_parity/test_role_sampling.py",
+  "tests/dppo_parity/test_rollout_buffer.py",
+  "tests/dppo_parity/test_terminated_truncated_gae.py",
+  "tests/dppo_parity/test_train_loop.py",
+  "tests/dppo_parity/test_vector_env_ordering.py"
+ ],
+ "changed_symbols": {
+  "critic.py": [
+   "PolicyObsEncoder holds policy by non-registered strong reference (object.__setattr__) — no policy submodule registration",
+   "ValueCritic.value_state_dict() / load_value_state_dict() — mlp.* keys only, strict=True, non-mlp key -> ValueError"
+  ],
+  "checkpoint.py": [
+   "schema_version v3; pre-load identity validation (validate_resume_identity): 8 hash-field groups + source_file_hashes + lora_identity + environment_rng_state + config_layer; v2 checkpoints explicit audit-only; restore order identity->lora->sampler->structured->rng->loads; empty policy_state rejected"
+  ],
+  "entrypoint_guard.py": [
+   "validate_official_environment() — git clean/commit/tree, vendor SHA256SUMS 401/401, BC/manifest hashes, contract projection=False, train/eval split, numerical mode",
+   "official_source_file_hashes() — git ls-files full sha256"
+  ],
+  "capability_metrics.py": [
+   "NEW: OfflineDensity (frozen dataclass: counts/bin_size/tau_D p20, p20=0->p50, empty/all-zero -> ValueError)",
+   "compute_capability_metrics(records, offline_density) — d_soft^H/onset/trap/side_flip/support-cell; empty records / density None / missing capability role -> ValueError",
+   "NaN/Inf trace fields -> ValueError (no finite-masking into valid metrics); CAPABILITY_METRIC_KEYS + ROLE_OF_CAPABILITY mapping"
+  ],
+  "evaluator.py": [
+   "frozen paired bank v3: PairedBankEntry (frozen, 14 fields + bank_id + bank_version), freeze_paired_bank, paired_bank_to_dict/from_dict, read_paired_bank_file (single schema source)",
+   "bank_id binds full content (canonical_sha256 sort_keys; _bank_content excludes only bank_id, bank_version inside); paired_bank_from_dict schema gates FIRST, bank_id binding LAST (catch-all for schema-valid tampering)",
+   "EpisodePairedRecord.trace = {bc, rl} 13 keys per step (TRACE_STEP_REQUIRED_KEYS), non-empty + full-key validation",
+   "build_routea_eval_pool = rl_train ∪ rl_eval buckets; eval pool admission messages at CLI level",
+   "build_eval_artifact(..., bank_id, offline_density) — bank_id + offline_density_sha256 provenance in artifact; missing provenance hard-fails; empty-LoRA checksum rejected",
+   "paired_eval_artifact_name (envstep_<9d>_ppoupd_<6d>_<ckpt12>) + write_paired_eval_json (tmp + os.replace atomic; existing different hash -> RuntimeError)",
+   "build_runtime_eval_artifact(..., offline_density) — capability metrics computed from traces (placeholder deleted)",
+   "validator upgrade: per-group required keys, finite non-bool numbers, n_episodes role alignment, sr/cr in [0,1], any NaN/Inf required trace field rejects the artifact"
+  ],
+  "train_loop.py": [
+   "_eval_episode dual std floors from LoopConfig (min_sampling/min_logprob)",
+   "run_e2e_batch(..., offline_density=None, paired_bank=None) — eval>0 preflight: density None -> RuntimeError; paired_bank None or len mismatch -> RuntimeError before any rollout/write",
+   "run_paired_eval consumes bank_entries (each exactly once, entry.seed); frozen-bank violation (hash/world/role drift) -> RuntimeError",
+   "training_identity 8-axis config layer: _config_dict shared by _build_checkpoint_data (save) and resume_identity_for (restore); base_seed = getattr(task_sampler, 'base_seed', None) with None-safe int coercion",
+   "restore order: validate_resume_identity -> validate_lora_identity -> policy-non-empty -> validate_checkpoint_lora_usable -> _validate_sampler_identity -> _validate_structured_state -> validate_environment_rng_state -> THEN loads -> task_sampler.load_state_dict -> device anchor",
+   "structured-state consistency: lr_scheduler/sampling_std/reward_norm/numerical_mode validated before load",
+   "environment_rng_state three keys (torch/cuda/numpy) persisted and restored",
+   "_live_lora_state(): empty lora_params -> {}; lora_checksum = lora_checksum_of(state)",
+   "L1049 .detach().cpu().numpy() (CUDA unnormalize -> numpy consumer)"
+  ],
+  "scripts/eval_dppo_uav_official.py": [
+   "canonical eval entry: bank/pool/hash checks at CLI level (exit 2) — eval pool = rl_train ∪ rl_eval admission messages; preflight before any policy/env construction, 7-axis identity (config_hash recomputed from checkpoint config_layer, no self-comparison), FP32/device assertions after restore, offline density required (exit 2), artifact atomic write with bank_id + offline_density_sha256 provenance"
+  ],
+  "scripts/train_dppo_uav_official.py": [
+   "canonical train entry: --stage enum, multi-batch resume chain, single sampler instance, eval>0 requires mode=one_update + paired_bank, offline density required when eval>0"
+  ],
+  "scripts/train_ddpm_ppo_meanlogp_3_e040.py": [
+   "minimal guard_formal_mode call after parse_args (pre-hash 7868d1be... -> guarded c548efc2..., hash accounting in ENTRYPOINT_CLOSURE_REPORT.md §1)"
+  ],
+  "tests/dppo_parity/test_r3_rework_negative.py": [
+   "NEW (rework): 25 functions / 39 collected tests over 8 negative paths — empty-LoRA train/eval hard-fail; LoRA alpha/rank mismatch hard-fail; sampler mismatch -> all state-load spies 0; config hash sensitive to each identity axis; eval-only worlds admitted to eval pool but rejected by train sampler; bank/density byte-level binding; NaN/Inf trace fields rejected; structured-state + env-RNG mismatch hard-fail; schema v2 rejected for formal resume"
+  ],
+  "tests/dppo_parity/test_canonical_entrypoints.py": [
+   "NEW: subprocess formal rejection over all 7 legacy scripts; canonical entry negative paths (dirty-tree preflight, missing bank/density, bad stage); _real_bank_payload upgraded to bank v3 (bank_id injected, re-sign after mutation); clean-tree tests live post-commit"
+  ],
+  "tests/dppo_parity/test_capability_metrics.py": [
+   "14+2 hand-computed tests (onset lead/lag, low-density cell coverage, trap escape, d_soft constant, tau_D p20/p20=0->p50, hard-fails) + NaN/Inf rejection tests"
+  ],
+  "tests/dppo_parity/test_checkpoint.py": [
+   "8 hash-field groups + source_file_hashes negative tests; spy proof (0 load_state_dict on mismatch); matching restore; schema v1 rejection; empty policy_state rejection; schema v3 round-trip with new identity fields"
+  ],
+  "tests/dppo_parity/test_eval_std_passthrough.py": [
+   "NEW: SpyPolicy records sigma_clip_min; eval sampling calls receive LoopConfig floors exactly"
+  ],
+  "tests/dppo_parity/test_paired_bank.py": [
+   "freeze determinism, probe slot closure, multi-slot rejection, bank JSON round-trip, rejection classes, filename format, atomic write + no-overwrite + no-op; _artifact() carries bank_id + offline_density provenance"
+  ]
+ },
+ "deleted_symbols": [
+  "_CAPABILITY_PLACEHOLDER (train_loop.py) — replaced by real compute_capability_metrics"
+ ],
+ "requirement_ids": [
+  "CRITIC-STATE-ONLY",
+  "CKPT-AUDIT",
+  "RESUME-HASH-GATE",
+  "LEGACY-FORMAL-GUARD",
+  "EVAL-STD",
+  "EVAL-AUDIT",
+  "CAPABILITY-AUDIT"
+ ],
+ "requirement_verdicts_rework": {
+  "note": "external-review verdicts (2026-08-11) -> post-rework verdicts. 4 FAIL rows fixed and re-verified; 3 PASS rows retained unchanged.",
+  "CRITIC-STATE-ONLY": "PASS (external review PASS; retained)",
+  "CKPT-AUDIT": "FAIL (external) -> PASS (rework 120b130: schema v3, lora_identity, environment_rng_state, structured-state validation, config_layer 8 axes)",
+  "RESUME-HASH-GATE": "FAIL (external: sampler validated after loads; config_hash 7 params missing) -> PASS (rework 120b130: config_hash 8 axes, sampler before any state load, spy 0 calls)",
+  "LEGACY-FORMAL-GUARD": "PASS (external review PASS; retained)",
+  "EVAL-STD": "PASS (external review PASS; retained)",
+  "EVAL-AUDIT": "FAIL (external: empty LoRA, eval-only worlds, bank binding, self-compare) -> PASS (rework 120b130: empty-LoRA hard-fail, eval pool rl_train ∪ rl_eval, bank v3 binding, config_hash recomputed)",
+  "CAPABILITY-AUDIT": "FAIL (external: NaN masked) -> PASS (rework 120b130: NaN/Inf trace hard-fail)"
+ },
+ "tests": {
+  "result_cpu": "499 passed / 2 skipped / 7 deselected (GPU) in 167.08s EXIT=0",
+  "run": "2026-08-11, log program/reports/routeA_rl_env_v1/official_core_r3/regression/cpu_regression_r3_rework_20260811.log (python -m pytest -q tests/dppo_parity/ -m 'not gpu' -p no:cacheprovider; tree a0c4e460 = 120b130^{tree}, run started pre-commit on identical content and committed during the run; 2 skipped = clean-tree tests on the dirty docs tree, R3.6 same semantics)",
+  "targeted": "test_checkpoint.py + test_r3_rework_negative.py + test_paired_bank.py + test_p5_contracts.py + test_train_loop.py + test_p7_eval_persistence.py + test_canonical_entrypoints.py: 147 passed / 2 skipped in 86.01s (log targeted_r3_rework_20260811.log); fresh-process (test_checkpoint + test_r3_rework_negative, -p no:cacheprovider): 63 passed in 4.71s (log fresh_process_r3_rework_20260811.log)",
+  "gpu": "R3.2 GPU g6 resume 1 passed (32:42, test_g6_real_one_update_gpu); R3.1 baseline GPU e2e pre-existing failure fixed and re-verified (test_e2e_gpu); rework touches CPU-only paths (checkpoint/eval/identity) — GPU gates unchanged, re-verified at G6/R4"
+ },
+ "authority_run": {
+  "cpu_suite_rework": {
+   "command": "python -m pytest -q tests/dppo_parity/ -m 'not gpu' -p no:cacheprovider 2>&1 | tee program/reports/routeA_rl_env_v1/official_core_r3/regression/cpu_regression_r3_rework_20260811.log",
+   "result": "499 passed / 2 skipped / 7 deselected in 167.08s (0:02:47), EXIT=0",
+   "log_sha256": "e7bd3414e78491526487b7e9da13c72e47e2de5d87884076a6859b75bd3b0ee1",
+   "note": "repository-wide rework closure run on tree a0c4e460 (120b130); includes all 7 requirement rows' test families + 39 collected negative tests"
+  },
+  "fresh_process_rework": {
+   "command": "python -m pytest -q tests/dppo_parity/test_checkpoint.py tests/dppo_parity/test_r3_rework_negative.py -p no:cacheprovider",
+   "result": "63 passed in 4.71s, EXIT=0",
+   "log_sha256": "b88d16c12621205890448fca09ea45e6efbbc4b812fd8aa082ef12ffd2333c09",
+   "note": "fresh-process: 8 negative paths (empty LoRA, LoRA alpha/rank mismatch, sampler mismatch spy 0, config hash 8 axes, structured-state, env RNG, NaN/Inf, bank binding) + checkpoint schema v3 round-trip"
+  },
+  "targeted_rework": {
+   "command": "python -m pytest -q tests/dppo_parity/test_checkpoint.py tests/dppo_parity/test_r3_rework_negative.py tests/dppo_parity/test_paired_bank.py tests/dppo_parity/test_p5_contracts.py tests/dppo_parity/test_train_loop.py tests/dppo_parity/test_p7_eval_persistence.py tests/dppo_parity/test_canonical_entrypoints.py -m 'not gpu' -p no:cacheprovider",
+   "result": "147 passed / 2 skipped in 86.01s, EXIT=0",
+   "log_sha256": "4100485db4a5a6503bfe3adceb66e2d02ea774e591c9f7065537347fa7d5622d",
+   "note": "targeted rework files; 2 skipped = clean-tree tests (dirty docs tree, same semantics as R3.5/R3.6)"
+  },
+  "g6_resume_gpu": {
+   "command": "pytest -m gpu tests/dppo_parity/test_g6_real_one_update_gpu.py",
+   "result": "1 passed in 32:42 (R3.2, resume identity on the production checkpoint path)",
+   "note": "schema v2 + identity validation live on the real GPU resume path (unchanged by rework; GPU gates re-verified at G6/R4)"
+  }
+ },
+ "resolved_training_contract": {
+  "note": "R3 touches no training contract (policy/PPO loss/reward/env unchanged in scope). Contract-relevant resolved values used at eval time come from the checkpoint's own exact_resolved_config / config_layer: max_ep_len / reward_version / gate_phase / min_sampling_denoising_std / min_logprob_denoising_std. Eval std = LoopConfig floors (EVAL-STD); offline density file drives capability metrics (CAPABILITY-AUDIT).",
+  "eval_std": "min_sampling_denoising_std / min_logprob_denoising_std passed explicitly from LoopConfig to every eval sampling call (never policy default)",
+  "paired_bank": "bank_version=3; every entry replays the frozen (seed, start, goal, start_yaw, disturbance, admission); runtime episode_config_hash must equal the frozen one; bank_id binds the full content (canonical_sha256 sort_keys)",
+  "artifact_name": "paired_eval_envstep_<9d>_ppoupd_<6d>_<ckpt12>.json (cumulative counters, atomic write, bank_id + offline_density_sha256 provenance)"
+ },
+ "evidence": [
+  "program/reports/routeA_rl_env_v1/official_core_r3/regression/cpu_regression_r3_rework_20260811.log — 499 passed / 2 skipped / 7 deselected / 167.08s (2026-08-11, rework closure run, sha256 e7bd3414)",
+  "program/reports/routeA_rl_env_v1/official_core_r3/regression/fresh_process_r3_rework_20260811.log — 63 passed / 4.71s (2026-08-11, sha256 b88d16c1)",
+  "program/reports/routeA_rl_env_v1/official_core_r3/regression/targeted_r3_rework_20260811.log — 147 passed / 2 skipped / 86.01s (2026-08-11, sha256 4100485d)",
+  "program/reports/routeA_rl_env_v1/official_core_r3/R3_AUDIT_REPORT_v2.json — requirement-by-requirement audit with rework verdicts",
+  "review_R3_rework.md — fresh zero-context independent review (supersedes review_R3.md, which is VOID-annotated)",
+  "ENTRYPOINT_CLOSURE_REPORT.md R3.3/R3.4/R3.5/R3.6 evidence blocks (appended 2026-08-10/2026-08-11)",
+  "RL_REBUILD_TRACEABILITY.md R3 rows + 'Evidence ledger (R3 additions)' + 'Evidence ledger (R3 rework additions)'",
+  "historical: R3.6 CPU 462 passed / 7 deselected / 174.08s; R3.5 CPU 460 passed / 2 skipped / 7 deselected; R3.2 GPU g6 resume 1 passed (32:42); R3.3 closure '47 passed / 0 skipped' (not reproducible at R3.6, kept as historical record)"
+ ],
+ "known_gaps": [
+  "[informational] clean-tree positive preflight paths are covered by live tests post-commit; during a dirty docs tree they skip (documented test boundary; both R3.6 and the rework runs exhibit the same 2-skip semantics)",
+  "[informational] GPU e2e (test_e2e_gpu/test_g6_real_one_update_gpu) was re-verified on the R3.1 baseline fix; the rework touches CPU-only checkpoint/eval/identity paths — GPU gates unchanged and re-verified at G6/R4",
+  "[informational] the voided/mark_voided eval branch and capability edge cases (all-NaN window, start==goal) are covered by unit tests, not by production evidence (structurally absent on those paths)",
+  "[informational] config_hash axis at eval: the eval side recomputes from erc.config_layer (the checkpoint's own saved config is a saved fact, not independently reconstructible at eval time) — self-comparison tautology eliminated (P1-2)",
+  "[informational] environment RNG three-key state covers torch/cuda/numpy; PYTHONHASHSEED process-randomization of kinematic_uav_env_v2 payload (hash(str(world_id))) remains OPEN per R2 rework #3 handoff — outside R3 scope, frozen env untouched (does not overturn SEED-RESUME)"
+ ],
+ "unexpected_changes": [
+  "scripts/g6_fix_verify.py updated for schema v2 + runtime_identity (pre-existing tooling; KeyError without next_value_batch_size and missing restore identity — fixed in R3.2)",
+  "test_train_loop.py:553 stale schema_version '1.1' assertion updated to SCHEMA_VERSION (pre-existing assertion predating schema v2)",
+  "R3.1 baseline GPU e2e pre-existing failure (CUDA normalizer -> numpy consumers) fixed as a preflight to R3.1 — the failure was not introduced by R3 and blocked GPU verification",
+  "tests/dppo_parity/test_e2e_gpu.py eval_n 1->3 with 3-role capability schema (R3.5 wiring, eval bank must cover the three capability roles)",
+  "rework: mock/test-double lora_info switched to plain-dict axes form (checkpoint._live_lora_axes documents plain-dict as the test-double form; insert_lora TARGET_PATTERNS match only UNet layer names so FakeModel-based tests cannot use real insertion)",
+  "rework: test_canonical_entrypoints._real_bank_payload upgraded v2 -> v3 (bank_id injected; bank_version inside content) — expected CLI messages updated to the rl_train ∪ rl_eval eval-pool semantics"
+ ],
+ "rollback": "git revert newest-first back to R1 closure 42d652d: <rework closure docs commit> <review_R3_rework.md commit> 120b130 7c9a9af 77e2fa2 e30d835 5e7c442 c05d131 3ea3bba c681a1b 5a5748d — revert the manifest's own carrying commit first, then this sequence. Only reviewed git revert; git reset --hard forbidden."
+}
