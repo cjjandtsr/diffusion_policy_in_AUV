@@ -1,0 +1,14 @@
+{
+  "bank": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/a1_mechanism_bank_v1.json",
+  "bank_hash": "6776b29e6cd3ca1f265a2768d26e30ccb23600aeeb70c7282108bda65016e461",
+  "checkpoints": [
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000256"
+  ],
+  "modes": {
+    "deterministic": true,
+    "random": false
+  },
+  "paired_noise": "paired_seed(state_id, draw) identical across policies and modes",
+  "reference": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/diagnostics/routea_bc_a0_r1_paired_dev_20261010_py38fix_run02"
+}

@@ -1,0 +1,775 @@
+{
+  "bank_hash": "6776b29e6cd3ca1f265a2768d26e30ccb23600aeeb70c7282108bda65016e461",
+  "cross_mode_paired_noise_keys": 360,
+  "draws": 20,
+  "modes": [
+    "deterministic",
+    "random"
+  ],
+  "n_states": 18,
+  "policies": [
+    "bc",
+    "rl_391a6656a0f7_u128",
+    "rl_391a6656a0f7_u256"
+  ],
+  "seconds": 167.8,
+  "status": "complete",
+  "summary_rows": [
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "e61aa6d1d60d9b94"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "7aa3744579131472"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "1ce95b279a9b03a8"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "71fe893519b37b4b"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "654ded934d874b9d"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "74199532f71d09b5"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "ba76387bb6dc5d06"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "3d2b038d3dfb09a9"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "0ed74985cc7a019b"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "8abb03ff67e77efd"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "421d10a6e09ac017"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "3bb0743abcbc7e2a"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "b5b3f8e1680a5519"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "060265b3fcab7426"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "f6ddfb23fc9e4730"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "67ce89bbc7252036"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "e7064163764dd137"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "f82a3649141a7e22"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "e61aa6d1d60d9b94"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "7aa3744579131472"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "1ce95b279a9b03a8"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "71fe893519b37b4b"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "654ded934d874b9d"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "74199532f71d09b5"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "ba76387bb6dc5d06"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "3d2b038d3dfb09a9"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "0ed74985cc7a019b"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "8abb03ff67e77efd"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "421d10a6e09ac017"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "3bb0743abcbc7e2a"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "b5b3f8e1680a5519"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "060265b3fcab7426"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "f6ddfb23fc9e4730"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "67ce89bbc7252036"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "e7064163764dd137"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "f82a3649141a7e22"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "e61aa6d1d60d9b94"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "7aa3744579131472"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "1ce95b279a9b03a8"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "71fe893519b37b4b"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "654ded934d874b9d"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "74199532f71d09b5"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "ba76387bb6dc5d06"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "3d2b038d3dfb09a9"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "0ed74985cc7a019b"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "8abb03ff67e77efd"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "421d10a6e09ac017"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "3bb0743abcbc7e2a"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "b5b3f8e1680a5519"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "060265b3fcab7426"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "f6ddfb23fc9e4730"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "67ce89bbc7252036"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "e7064163764dd137"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "deterministic",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "f82a3649141a7e22"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "e61aa6d1d60d9b94"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "7aa3744579131472"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "1ce95b279a9b03a8"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "71fe893519b37b4b"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "654ded934d874b9d"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "74199532f71d09b5"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "ba76387bb6dc5d06"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "3d2b038d3dfb09a9"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "0ed74985cc7a019b"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "8abb03ff67e77efd"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "421d10a6e09ac017"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "3bb0743abcbc7e2a"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "b5b3f8e1680a5519"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "060265b3fcab7426"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "f6ddfb23fc9e4730"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "67ce89bbc7252036"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "e7064163764dd137"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "bc",
+      "state_id": "f82a3649141a7e22"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "e61aa6d1d60d9b94"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "7aa3744579131472"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "1ce95b279a9b03a8"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "71fe893519b37b4b"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "654ded934d874b9d"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "74199532f71d09b5"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "ba76387bb6dc5d06"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "3d2b038d3dfb09a9"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "0ed74985cc7a019b"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "8abb03ff67e77efd"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "421d10a6e09ac017"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "3bb0743abcbc7e2a"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "b5b3f8e1680a5519"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "060265b3fcab7426"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "f6ddfb23fc9e4730"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "67ce89bbc7252036"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "e7064163764dd137"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u128",
+      "state_id": "f82a3649141a7e22"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "e61aa6d1d60d9b94"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "7aa3744579131472"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "1ce95b279a9b03a8"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "71fe893519b37b4b"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "654ded934d874b9d"
+    },
+    {
+      "group": "u256_near_goal_timeout",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "74199532f71d09b5"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "ba76387bb6dc5d06"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "3d2b038d3dfb09a9"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "0ed74985cc7a019b"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "8abb03ff67e77efd"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "421d10a6e09ac017"
+    },
+    {
+      "group": "u128_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "3bb0743abcbc7e2a"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "b5b3f8e1680a5519"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "060265b3fcab7426"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "f6ddfb23fc9e4730"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "67ce89bbc7252036"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "e7064163764dd137"
+    },
+    {
+      "group": "bc_success_control",
+      "mode": "random",
+      "n_draws": 20,
+      "policy": "rl_391a6656a0f7_u256",
+      "state_id": "f82a3649141a7e22"
+    }
+  ]
+}
