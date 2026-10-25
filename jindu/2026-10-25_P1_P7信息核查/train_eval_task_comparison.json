@@ -1,0 +1,22 @@
+{
+  "b1280": {
+    "segments": 5551,
+    "unique_recorded_start_goal_pairs": 5551,
+    "unique_worlds": 21,
+    "unique_admission_task_ids": 21,
+    "goal_matching_any_eval_task_within_1e_4m": 0,
+    "start_and_goal_matching_any_eval_task_within_1e_4m": 0
+  },
+  "b2560": {
+    "segments": 7370,
+    "unique_recorded_start_goal_pairs": 7370,
+    "unique_worlds": 21,
+    "unique_admission_task_ids": 21,
+    "goal_matching_any_eval_task_within_1e_4m": 0,
+    "start_and_goal_matching_any_eval_task_within_1e_4m": 0
+  },
+  "eval_worlds": 21,
+  "eval_fixed_tasks": 84,
+  "eval_conditions": 420,
+  "note": "matches use recorded first transition position/goal; no yaw in transition records; initial observation warmup can precede first action"
+}

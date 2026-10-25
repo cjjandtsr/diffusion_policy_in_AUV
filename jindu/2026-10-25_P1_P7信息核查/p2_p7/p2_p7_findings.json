@@ -1,0 +1,74 @@
+{
+  "P2": {
+    "source": {
+      "archive": "C:\\Users\\cjj\\Desktop\\IDP3\\wsl_snapshot\\20261009_185302_routea_r1_resetfix_s2_3seed256_run01_pack\\source_archives\\a0_source_before_merge.tar.gz",
+      "member": "./artifacts/dppo_uav_rebuild/logs/P3_native_load.log",
+      "member_sha256": "04f004291da362df48de6a921628565b302e1f529685dd8e5a25f1629d09f281",
+      "log_date": "2026-08-26",
+      "evidence_kind": "historical original log re-read on 2026-10-25; no checkpoint loaded in this audit"
+    },
+    "normalization": "n = raw * scale + offset; raw = (n-offset)/scale",
+    "channels": {
+      "0": {
+        "meaning": "world delta x",
+        "scale": 4.2736897468566895,
+        "offset": -0.11843769997358322,
+        "normalized_increment_0p1_to_raw_m": 0.023398984466186455
+      },
+      "1": {
+        "meaning": "world delta y",
+        "scale": 4.796350955963135,
+        "offset": -0.012171325273811817,
+        "normalized_increment_0p1_to_raw_m": 0.020849183247458887
+      },
+      "2": {
+        "meaning": "world delta z",
+        "scale": 27.20646095275879,
+        "offset": -0.014700567349791527,
+        "normalized_increment_0p1_to_raw_m": 0.0036755975050793885
+      }
+    },
+    "yaw_channel_9": {
+      "offset": 0.00027647707611322403,
+      "scale": null,
+      "raw_noise_0p1_radians": null,
+      "reason": "original log truncates scale/std/mean at first five channels; no production checkpoint found in local source data/outputs or selected two source archives"
+    },
+    "limits": [
+      "Per-channel raw increment conversion is algebraic only, not the final policy H4 noise or path perturbation after multiple denoising steps.",
+      "For four direct independent equal channel noise additions at final output, sum std would be sqrt(4)*0.1/scale; shared noise could sum coherently. Actual denoising covariance and nonlinear response must not be assumed.",
+      "Position channels are world-frame delta, not body-frame."
+    ]
+  },
+  "P7": {
+    "status": "not computable from currently located local evidence",
+    "historical_frozen_dataset": {
+      "path": "/home/cjj/AUV/avoidance_dataset/merged_body_12.zarr",
+      "episodes": 988,
+      "source_frames": 60151,
+      "historical_state_sha256": "5580869724797e110126db9423eb69c5cc56a342b9ec15f00ad256e9e9f8283b"
+    },
+    "available_position_export": {
+      "episodes": 988,
+      "frames": 60116,
+      "missing": [
+        "state goal_body",
+        "state sin(yaw),cos(yaw)",
+        "action11",
+        "timestamps"
+      ],
+      "dropped_stale_goal_frames": 35,
+      "not_training_denominator": true
+    },
+    "required_definition": {
+      "behind_yaw_frame": "abs(atan2(state[4],state[3])) > pi/2, equivalently state[3]<0 for nondegenerate horizontal goal vector; no subtraction of yaw again because goal_body is already yaw-relative",
+      "action_h4": "At E5 conditioning frame index2 in a sampled 16-step window, emitted H4 uses action[2:6]; do not apply index2:6 to four future raw frames without matching the dataset window anchor. Sum action[2:6,0:3] gives planned endpoint world delta; norm of sum is net displacement, sum of norms is path length. Distinguish demonstration label actions vs recorded future positions.",
+      "denominators": "Report raw 60151 source frames and eligible complete future windows separately; episode boundaries may not be crossed; stale goal prefix needs separate report rather than silently mutating original set."
+    },
+    "needed_arrays": [
+      "data/state (60151,9)",
+      "data/action (60151,11) or confirmed actual stored shape",
+      "meta/episode_ends (988)"
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+2026-08-26 14:21:17
+=== P3: normalizer content hash ===
+normalizer content sha256 (all normalizer.params_dict keys): 1edbc81f78c66a0f67270266cf333c06071307768e1273d2369aa945320ae1ca
+normalizer keys: 18
+action offset: [-0.11843769997358322, -0.012171325273811817, -0.014700567349791527, 0.005098615773022175, 0.0005289477994665504, 0.0009131067781709135, 0.004662176128476858, 0.0006898290594108403, -0.0014079088578000665, 0.00027647707611322403, 0.002132777124643326]
+action scale[:5]: [4.2736897468566895, 4.796350955963135, 27.20646095275879, 9.731785774230957, 10.268287658691406] ...
+action std[:5]: [0.23398984968662262, 0.20849183201789856, 0.03675597533583641, 0.1027560606598854, 0.09738721698522568] ...
+action mean[:5]: [0.027713218703866005, 0.002537621883675456, 0.0005403336836025119, -0.0005239137099124491, -5.1512753998395056e-05] ...
+
+=== P3: native construction via hydra.utils.instantiate(cfg.policy) ===
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+CONSTRUCTION_OK
+policy class: diffusion_policy_3d.policy.diffusion_pointcloud_policy.DiffusionPointcloudPolicy
+scheduler class: diffusers.schedulers.scheduling_ddim.DDIMScheduler
+scheduler num_train_timesteps: 50
+scheduler prediction_type: sample
+num_inference_steps: 10
+self.kwargs keys: ['use_image', 'use_point_crop']
+n_obs_steps=3 n_action_steps=8 horizon=16 action_dim=11
+obs_feature_dim=192 obs_as_global_cond=True
+normalizer keys after construction: []
+
+=== P3: load state_dicts['model'] strict=False ===
+missing: 0 -> []
+unexpected: 0 -> []
+
+=== P3: load state_dicts['ema_model'] strict=False (for contrast) ===
+missing: 0 -> []
+unexpected: 0 -> []
+EXIT=0
