@@ -1,0 +1,28 @@
+{
+  "sha256": "2779c2cd96b3efd7aeab0e8a548566b9600537c39c93b449c1add99ea774d514",
+  "summary": {
+    "bank_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+    "decisions": 29,
+    "done_reason": "reached",
+    "initial_hash": "9cd6284d7fb01ef7f7c410a76974ba1d20b8b563a2ddc2d6467d5cc04f3ddf02",
+    "physical_time_s": 34.05284590786574,
+    "policy": "rl_391a6656a0f7_u128",
+    "repeat": 2,
+    "role": "yaw_lateral_recovery",
+    "safe_arrival": true,
+    "status": "valid",
+    "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00",
+    "terminate_at_space_limits": false,
+    "trajectory_metrics": {
+      "backtrack_m": 0.0,
+      "final_goal_distance_m": 0.5000000674207382,
+      "max_cross_track_m": 0.30794350550242633,
+      "min_goal_distance_m": 0.5000000674207382,
+      "path_length_m": 23.032925625827325,
+      "z_span_m": 0.4222242832183838
+    },
+    "type": "episode_end",
+    "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+  },
+  "trace": "traces/400d9483a28792515a737487.attempt001.jsonl"
+}
