@@ -1,0 +1,1672 @@
+{
+ "dev420": {
+  "totals": {
+   "P0": {
+    "time_limit": 173,
+    "collision": 131,
+    "reached": 116
+   },
+   "P2": {
+    "reached": 160,
+    "collision": 150,
+    "time_limit": 110
+   },
+   "P3": {
+    "time_limit": 132,
+    "collision": 159,
+    "reached": 129
+   },
+   "P4": {
+    "time_limit": 81,
+    "collision": 157,
+    "reached": 182
+   },
+   "P5": {
+    "reached": 149,
+    "collision": 162,
+    "time_limit": 109
+   },
+   "P6": {
+    "time_limit": 103,
+    "collision": 145,
+    "reached": 172
+   },
+   "P7": {
+    "time_limit": 106,
+    "collision": 189,
+    "reached": 125
+   }
+  },
+  "dims": {
+   "density_1": {
+    "低": {
+     "tasks": 20,
+     "conditions": 100,
+     "worlds": 14,
+     "policies": {
+      "P0": {
+       "reached": 31,
+       "collision": 37,
+       "time_limit": 32
+      },
+      "P2": {
+       "reached": 31,
+       "collision": 56,
+       "time_limit": 13,
+       "gain_vs_P0": 4,
+       "loss_vs_P0": 4,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -9.565217391304348,
+        9.523809523809524
+       ]
+      },
+      "P3": {
+       "reached": 21,
+       "collision": 69,
+       "time_limit": 10,
+       "gain_vs_P0": 6,
+       "loss_vs_P0": 16,
+       "delta_pp_vs_P0": -10.0,
+       "ci95_pp": [
+        -33.63636363636363,
+        11.11111111111111
+       ]
+      },
+      "P4": {
+       "reached": 45,
+       "collision": 54,
+       "time_limit": 1,
+       "gain_vs_P0": 24,
+       "loss_vs_P0": 10,
+       "delta_pp_vs_P0": 14.0,
+       "ci95_pp": [
+        -9.23076923076923,
+        38.8235294117647
+       ]
+      },
+      "P5": {
+       "reached": 24,
+       "collision": 64,
+       "time_limit": 12,
+       "gain_vs_P0": 3,
+       "loss_vs_P0": 10,
+       "delta_pp_vs_P0": -7.0,
+       "ci95_pp": [
+        -23.636363636363637,
+        4.705882352941177
+       ]
+      },
+      "P6": {
+       "reached": 33,
+       "collision": 54,
+       "time_limit": 13,
+       "gain_vs_P0": 7,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 2.0,
+       "ci95_pp": [
+        -10.833333333333334,
+        14.736842105263158
+       ]
+      },
+      "P7": {
+       "reached": 42,
+       "collision": 52,
+       "time_limit": 6,
+       "gain_vs_P0": 16,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 11.0,
+       "ci95_pp": [
+        -8.0,
+        29.0
+       ]
+      }
+     }
+    },
+    "无障碍": {
+     "tasks": 44,
+     "conditions": 220,
+     "worlds": 21,
+     "policies": {
+      "P0": {
+       "reached": 74,
+       "collision": 17,
+       "time_limit": 129
+      },
+      "P2": {
+       "reached": 118,
+       "collision": 10,
+       "time_limit": 92,
+       "gain_vs_P0": 53,
+       "loss_vs_P0": 9,
+       "delta_pp_vs_P0": 20.0,
+       "ci95_pp": [
+        9.0,
+        30.952380952380953
+       ]
+      },
+      "P3": {
+       "reached": 97,
+       "collision": 7,
+       "time_limit": 116,
+       "gain_vs_P0": 32,
+       "loss_vs_P0": 9,
+       "delta_pp_vs_P0": 10.454545454545455,
+       "ci95_pp": [
+        2.857142857142857,
+        19.0
+       ]
+      },
+      "P4": {
+       "reached": 119,
+       "collision": 22,
+       "time_limit": 79,
+       "gain_vs_P0": 59,
+       "loss_vs_P0": 14,
+       "delta_pp_vs_P0": 20.454545454545453,
+       "ci95_pp": [
+        7.2727272727272725,
+        32.83018867924528
+       ]
+      },
+      "P5": {
+       "reached": 115,
+       "collision": 8,
+       "time_limit": 97,
+       "gain_vs_P0": 55,
+       "loss_vs_P0": 14,
+       "delta_pp_vs_P0": 18.636363636363637,
+       "ci95_pp": [
+        5.6521739130434785,
+        31.363636363636363
+       ]
+      },
+      "P6": {
+       "reached": 129,
+       "collision": 4,
+       "time_limit": 87,
+       "gain_vs_P0": 57,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 25.0,
+       "ci95_pp": [
+        14.666666666666666,
+        35.744680851063826
+       ]
+      },
+      "P7": {
+       "reached": 78,
+       "collision": 42,
+       "time_limit": 100,
+       "gain_vs_P0": 32,
+       "loss_vs_P0": 28,
+       "delta_pp_vs_P0": 1.8181818181818181,
+       "ci95_pp": [
+        -14.594594594594595,
+        18.571428571428573
+       ]
+      }
+     }
+    },
+    "高": {
+     "tasks": 20,
+     "conditions": 100,
+     "worlds": 13,
+     "policies": {
+      "P0": {
+       "reached": 11,
+       "collision": 77,
+       "time_limit": 12
+      },
+      "P2": {
+       "reached": 11,
+       "collision": 84,
+       "time_limit": 5,
+       "gain_vs_P0": 1,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -3.0,
+        3.0
+       ]
+      },
+      "P3": {
+       "reached": 11,
+       "collision": 83,
+       "time_limit": 6,
+       "gain_vs_P0": 3,
+       "loss_vs_P0": 3,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -6.315789473684211,
+        5.454545454545454
+       ]
+      },
+      "P4": {
+       "reached": 18,
+       "collision": 81,
+       "time_limit": 1,
+       "gain_vs_P0": 9,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 7.0,
+       "ci95_pp": [
+        0.0,
+        20.0
+       ]
+      },
+      "P5": {
+       "reached": 10,
+       "collision": 90,
+       "time_limit": 0,
+       "gain_vs_P0": 1,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": -1.0,
+       "ci95_pp": [
+        -6.315789473684211,
+        2.857142857142857
+       ]
+      },
+      "P6": {
+       "reached": 10,
+       "collision": 87,
+       "time_limit": 3,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 3,
+       "delta_pp_vs_P0": -1.0,
+       "ci95_pp": [
+        -6.315789473684211,
+        3.0
+       ]
+      },
+      "P7": {
+       "reached": 5,
+       "collision": 95,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 6,
+       "delta_pp_vs_P0": -6.0,
+       "ci95_pp": [
+        -17.5,
+        0.0
+       ]
+      }
+     }
+    }
+   },
+   "density_2": {
+    "低": {
+     "tasks": 20,
+     "conditions": 100,
+     "worlds": 15,
+     "policies": {
+      "P0": {
+       "reached": 41,
+       "collision": 30,
+       "time_limit": 29
+      },
+      "P2": {
+       "reached": 44,
+       "collision": 36,
+       "time_limit": 20,
+       "gain_vs_P0": 7,
+       "loss_vs_P0": 4,
+       "delta_pp_vs_P0": 3.0,
+       "ci95_pp": [
+        -8.421052631578947,
+        15.238095238095237
+       ]
+      },
+      "P3": {
+       "reached": 36,
+       "collision": 44,
+       "time_limit": 20,
+       "gain_vs_P0": 6,
+       "loss_vs_P0": 11,
+       "delta_pp_vs_P0": -5.0,
+       "ci95_pp": [
+        -23.0,
+        12.0
+       ]
+      },
+      "P4": {
+       "reached": 51,
+       "collision": 42,
+       "time_limit": 7,
+       "gain_vs_P0": 23,
+       "loss_vs_P0": 13,
+       "delta_pp_vs_P0": 10.0,
+       "ci95_pp": [
+        -14.0,
+        34.285714285714285
+       ]
+      },
+      "P5": {
+       "reached": 37,
+       "collision": 41,
+       "time_limit": 22,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 6,
+       "delta_pp_vs_P0": -4.0,
+       "ci95_pp": [
+        -14.285714285714286,
+        3.0
+       ]
+      },
+      "P6": {
+       "reached": 46,
+       "collision": 35,
+       "time_limit": 19,
+       "gain_vs_P0": 10,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 5.0,
+       "ci95_pp": [
+        -10.0,
+        21.05263157894737
+       ]
+      },
+      "P7": {
+       "reached": 47,
+       "collision": 37,
+       "time_limit": 16,
+       "gain_vs_P0": 16,
+       "loss_vs_P0": 10,
+       "delta_pp_vs_P0": 6.0,
+       "ci95_pp": [
+        -16.666666666666668,
+        26.666666666666668
+       ]
+      }
+     }
+    },
+    "无障碍": {
+     "tasks": 39,
+     "conditions": 195,
+     "worlds": 21,
+     "policies": {
+      "P0": {
+       "reached": 59,
+       "collision": 17,
+       "time_limit": 119
+      },
+      "P2": {
+       "reached": 100,
+       "collision": 10,
+       "time_limit": 85,
+       "gain_vs_P0": 50,
+       "loss_vs_P0": 9,
+       "delta_pp_vs_P0": 21.025641025641026,
+       "ci95_pp": [
+        8.5,
+        34.21052631578947
+       ]
+      },
+      "P3": {
+       "reached": 82,
+       "collision": 7,
+       "time_limit": 106,
+       "gain_vs_P0": 32,
+       "loss_vs_P0": 9,
+       "delta_pp_vs_P0": 11.794871794871796,
+       "ci95_pp": [
+        3.1578947368421053,
+        21.57894736842105
+       ]
+      },
+      "P4": {
+       "reached": 107,
+       "collision": 15,
+       "time_limit": 73,
+       "gain_vs_P0": 59,
+       "loss_vs_P0": 11,
+       "delta_pp_vs_P0": 24.615384615384617,
+       "ci95_pp": [
+        10.0,
+        38.666666666666664
+       ]
+      },
+      "P5": {
+       "reached": 100,
+       "collision": 8,
+       "time_limit": 87,
+       "gain_vs_P0": 55,
+       "loss_vs_P0": 14,
+       "delta_pp_vs_P0": 21.025641025641026,
+       "ci95_pp": [
+        6.285714285714286,
+        36.41025641025641
+       ]
+      },
+      "P6": {
+       "reached": 110,
+       "collision": 4,
+       "time_limit": 81,
+       "gain_vs_P0": 53,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 26.153846153846153,
+       "ci95_pp": [
+        13.953488372093023,
+        40.0
+       ]
+      },
+      "P7": {
+       "reached": 68,
+       "collision": 37,
+       "time_limit": 90,
+       "gain_vs_P0": 32,
+       "loss_vs_P0": 23,
+       "delta_pp_vs_P0": 4.615384615384615,
+       "ci95_pp": [
+        -12.444444444444445,
+        23.11111111111111
+       ]
+      }
+     }
+    },
+    "高": {
+     "tasks": 25,
+     "conditions": 125,
+     "worlds": 16,
+     "policies": {
+      "P0": {
+       "reached": 16,
+       "collision": 84,
+       "time_limit": 25
+      },
+      "P2": {
+       "reached": 16,
+       "collision": 104,
+       "time_limit": 5,
+       "gain_vs_P0": 1,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -2.4,
+        2.4
+       ]
+      },
+      "P3": {
+       "reached": 11,
+       "collision": 108,
+       "time_limit": 6,
+       "gain_vs_P0": 3,
+       "loss_vs_P0": 8,
+       "delta_pp_vs_P0": -4.0,
+       "ci95_pp": [
+        -15.0,
+        3.2
+       ]
+      },
+      "P4": {
+       "reached": 24,
+       "collision": 100,
+       "time_limit": 1,
+       "gain_vs_P0": 10,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 6.4,
+       "ci95_pp": [
+        0.7407407407407407,
+        15.172413793103448
+       ]
+      },
+      "P5": {
+       "reached": 12,
+       "collision": 113,
+       "time_limit": 0,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 6,
+       "delta_pp_vs_P0": -3.2,
+       "ci95_pp": [
+        -12.0,
+        2.857142857142857
+       ]
+      },
+      "P6": {
+       "reached": 16,
+       "collision": 106,
+       "time_limit": 3,
+       "gain_vs_P0": 3,
+       "loss_vs_P0": 3,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -4.3478260869565215,
+        3.4782608695652173
+       ]
+      },
+      "P7": {
+       "reached": 10,
+       "collision": 115,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 6,
+       "delta_pp_vs_P0": -4.8,
+       "ci95_pp": [
+        -13.333333333333334,
+        0.0
+       ]
+      }
+     }
+    }
+   },
+   "bottleneck": {
+    "中": {
+     "tasks": 21,
+     "conditions": 105,
+     "worlds": 16,
+     "policies": {
+      "P0": {
+       "reached": 53,
+       "collision": 4,
+       "time_limit": 48
+      },
+      "P2": {
+       "reached": 56,
+       "collision": 13,
+       "time_limit": 36,
+       "gain_vs_P0": 11,
+       "loss_vs_P0": 8,
+       "delta_pp_vs_P0": 2.857142857142857,
+       "ci95_pp": [
+        -11.25,
+        18.94736842105263
+       ]
+      },
+      "P3": {
+       "reached": 56,
+       "collision": 13,
+       "time_limit": 36,
+       "gain_vs_P0": 12,
+       "loss_vs_P0": 9,
+       "delta_pp_vs_P0": 2.857142857142857,
+       "ci95_pp": [
+        -12.222222222222221,
+        15.238095238095237
+       ]
+      },
+      "P4": {
+       "reached": 61,
+       "collision": 16,
+       "time_limit": 28,
+       "gain_vs_P0": 22,
+       "loss_vs_P0": 14,
+       "delta_pp_vs_P0": 7.619047619047619,
+       "ci95_pp": [
+        -12.0,
+        26.363636363636363
+       ]
+      },
+      "P5": {
+       "reached": 58,
+       "collision": 14,
+       "time_limit": 33,
+       "gain_vs_P0": 14,
+       "loss_vs_P0": 9,
+       "delta_pp_vs_P0": 4.761904761904762,
+       "ci95_pp": [
+        -11.0,
+        18.75
+       ]
+      },
+      "P6": {
+       "reached": 62,
+       "collision": 12,
+       "time_limit": 31,
+       "gain_vs_P0": 17,
+       "loss_vs_P0": 8,
+       "delta_pp_vs_P0": 8.571428571428571,
+       "ci95_pp": [
+        -9.0,
+        28.181818181818183
+       ]
+      },
+      "P7": {
+       "reached": 46,
+       "collision": 29,
+       "time_limit": 30,
+       "gain_vs_P0": 15,
+       "loss_vs_P0": 22,
+       "delta_pp_vs_P0": -6.666666666666667,
+       "ci95_pp": [
+        -33.63636363636363,
+        19.0
+       ]
+      }
+     }
+    },
+    "宽": {
+     "tasks": 28,
+     "conditions": 140,
+     "worlds": 19,
+     "policies": {
+      "P0": {
+       "reached": 35,
+       "collision": 14,
+       "time_limit": 91
+      },
+      "P2": {
+       "reached": 73,
+       "collision": 6,
+       "time_limit": 61,
+       "gain_vs_P0": 43,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 27.142857142857142,
+       "ci95_pp": [
+        12.727272727272727,
+        44.285714285714285
+       ]
+      },
+      "P3": {
+       "reached": 45,
+       "collision": 10,
+       "time_limit": 85,
+       "gain_vs_P0": 21,
+       "loss_vs_P0": 11,
+       "delta_pp_vs_P0": 7.142857142857143,
+       "ci95_pp": [
+        -6.0,
+        22.962962962962962
+       ]
+      },
+      "P4": {
+       "reached": 73,
+       "collision": 16,
+       "time_limit": 51,
+       "gain_vs_P0": 48,
+       "loss_vs_P0": 10,
+       "delta_pp_vs_P0": 27.142857142857142,
+       "ci95_pp": [
+        9.090909090909092,
+        46.08695652173913
+       ]
+      },
+      "P5": {
+       "reached": 67,
+       "collision": 4,
+       "time_limit": 69,
+       "gain_vs_P0": 42,
+       "loss_vs_P0": 10,
+       "delta_pp_vs_P0": 22.857142857142858,
+       "ci95_pp": [
+        5.161290322580645,
+        42.5
+       ]
+      },
+      "P6": {
+       "reached": 76,
+       "collision": 3,
+       "time_limit": 61,
+       "gain_vs_P0": 41,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 29.285714285714285,
+       "ci95_pp": [
+        16.296296296296298,
+        44.0
+       ]
+      },
+      "P7": {
+       "reached": 44,
+       "collision": 23,
+       "time_limit": 73,
+       "gain_vs_P0": 24,
+       "loss_vs_P0": 15,
+       "delta_pp_vs_P0": 6.428571428571429,
+       "ci95_pp": [
+        -11.724137931034482,
+        26.666666666666668
+       ]
+      }
+     }
+    },
+    "窄": {
+     "tasks": 35,
+     "conditions": 175,
+     "worlds": 18,
+     "policies": {
+      "P0": {
+       "reached": 28,
+       "collision": 113,
+       "time_limit": 34
+      },
+      "P2": {
+       "reached": 31,
+       "collision": 131,
+       "time_limit": 13,
+       "gain_vs_P0": 4,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": 1.7142857142857142,
+       "ci95_pp": [
+        0.0,
+        5.142857142857143
+       ]
+      },
+      "P3": {
+       "reached": 28,
+       "collision": 136,
+       "time_limit": 11,
+       "gain_vs_P0": 8,
+       "loss_vs_P0": 8,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -10.0,
+        8.235294117647058
+       ]
+      },
+      "P4": {
+       "reached": 48,
+       "collision": 125,
+       "time_limit": 2,
+       "gain_vs_P0": 22,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 11.428571428571429,
+       "ci95_pp": [
+        2.5,
+        21.666666666666668
+       ]
+      },
+      "P5": {
+       "reached": 24,
+       "collision": 144,
+       "time_limit": 7,
+       "gain_vs_P0": 3,
+       "loss_vs_P0": 7,
+       "delta_pp_vs_P0": -2.2857142857142856,
+       "ci95_pp": [
+        -8.108108108108109,
+        2.0
+       ]
+      },
+      "P6": {
+       "reached": 34,
+       "collision": 130,
+       "time_limit": 11,
+       "gain_vs_P0": 8,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 3.4285714285714284,
+       "ci95_pp": [
+        0.0,
+        9.444444444444445
+       ]
+      },
+      "P7": {
+       "reached": 35,
+       "collision": 137,
+       "time_limit": 3,
+       "gain_vs_P0": 9,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 4.0,
+       "ci95_pp": [
+        0.0,
+        9.142857142857142
+       ]
+      }
+     }
+    }
+   },
+   "detour": {
+    "大绕行": {
+     "tasks": 14,
+     "conditions": 70,
+     "worlds": 10,
+     "policies": {
+      "P0": {
+       "reached": 2,
+       "collision": 53,
+       "time_limit": 15
+      },
+      "P2": {
+       "reached": 1,
+       "collision": 64,
+       "time_limit": 5,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": -1.4285714285714286,
+       "ci95_pp": [
+        -5.0,
+        0.0
+       ]
+      },
+      "P3": {
+       "reached": 2,
+       "collision": 63,
+       "time_limit": 5,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -9.23076923076923,
+        7.5
+       ]
+      },
+      "P4": {
+       "reached": 9,
+       "collision": 60,
+       "time_limit": 1,
+       "gain_vs_P0": 9,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 10.0,
+       "ci95_pp": [
+        0.0,
+        24.0
+       ]
+      },
+      "P5": {
+       "reached": 1,
+       "collision": 69,
+       "time_limit": 0,
+       "gain_vs_P0": 1,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": -1.4285714285714286,
+       "ci95_pp": [
+        -9.23076923076923,
+        4.0
+       ]
+      },
+      "P6": {
+       "reached": 2,
+       "collision": 65,
+       "time_limit": 3,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": [
+        -8.333333333333334,
+        6.153846153846154
+       ]
+      },
+      "P7": {
+       "reached": 0,
+       "collision": 67,
+       "time_limit": 3,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": -2.857142857142857,
+       "ci95_pp": [
+        -10.0,
+        0.0
+       ]
+      }
+     }
+    },
+    "小绕行": {
+     "tasks": 15,
+     "conditions": 75,
+     "worlds": 12,
+     "policies": {
+      "P0": {
+       "reached": 16,
+       "collision": 47,
+       "time_limit": 12
+      },
+      "P2": {
+       "reached": 19,
+       "collision": 55,
+       "time_limit": 1,
+       "gain_vs_P0": 3,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 4.0,
+       "ci95_pp": [
+        0.0,
+        13.846153846153847
+       ]
+      },
+      "P3": {
+       "reached": 22,
+       "collision": 52,
+       "time_limit": 1,
+       "gain_vs_P0": 6,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 8.0,
+       "ci95_pp": [
+        0.0,
+        20.0
+       ]
+      },
+      "P4": {
+       "reached": 24,
+       "collision": 50,
+       "time_limit": 1,
+       "gain_vs_P0": 8,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 10.666666666666666,
+       "ci95_pp": [
+        0.0,
+        24.705882352941178
+       ]
+      },
+      "P5": {
+       "reached": 17,
+       "collision": 58,
+       "time_limit": 0,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": 1.3333333333333333,
+       "ci95_pp": [
+        0.0,
+        4.615384615384615
+       ]
+      },
+      "P6": {
+       "reached": 20,
+       "collision": 55,
+       "time_limit": 0,
+       "gain_vs_P0": 4,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 5.333333333333333,
+       "ci95_pp": [
+        0.0,
+        18.46153846153846
+       ]
+      },
+      "P7": {
+       "reached": 20,
+       "collision": 55,
+       "time_limit": 0,
+       "gain_vs_P0": 4,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 5.333333333333333,
+       "ci95_pp": [
+        0.0,
+        18.46153846153846
+       ]
+      }
+     }
+    },
+    "无需绕行": {
+     "tasks": 55,
+     "conditions": 275,
+     "worlds": 21,
+     "policies": {
+      "P0": {
+       "reached": 98,
+       "collision": 31,
+       "time_limit": 146
+      },
+      "P2": {
+       "reached": 140,
+       "collision": 31,
+       "time_limit": 104,
+       "gain_vs_P0": 55,
+       "loss_vs_P0": 13,
+       "delta_pp_vs_P0": 15.272727272727273,
+       "ci95_pp": [
+        5.172413793103448,
+        25.925925925925927
+       ]
+      },
+      "P3": {
+       "reached": 105,
+       "collision": 44,
+       "time_limit": 126,
+       "gain_vs_P0": 33,
+       "loss_vs_P0": 26,
+       "delta_pp_vs_P0": 2.5454545454545454,
+       "ci95_pp": [
+        -9.25925925925926,
+        13.333333333333334
+       ]
+      },
+      "P4": {
+       "reached": 149,
+       "collision": 47,
+       "time_limit": 79,
+       "gain_vs_P0": 75,
+       "loss_vs_P0": 24,
+       "delta_pp_vs_P0": 18.545454545454547,
+       "ci95_pp": [
+        5.660377358490566,
+        31.57894736842105
+       ]
+      },
+      "P5": {
+       "reached": 131,
+       "collision": 35,
+       "time_limit": 109,
+       "gain_vs_P0": 56,
+       "loss_vs_P0": 23,
+       "delta_pp_vs_P0": 12.0,
+       "ci95_pp": [
+        -1.3333333333333333,
+        25.333333333333332
+       ]
+      },
+      "P6": {
+       "reached": 150,
+       "collision": 25,
+       "time_limit": 100,
+       "gain_vs_P0": 60,
+       "loss_vs_P0": 8,
+       "delta_pp_vs_P0": 18.90909090909091,
+       "ci95_pp": [
+        8.474576271186441,
+        30.0
+       ]
+      },
+      "P7": {
+       "reached": 105,
+       "collision": 67,
+       "time_limit": 103,
+       "gain_vs_P0": 44,
+       "loss_vs_P0": 37,
+       "delta_pp_vs_P0": 2.5454545454545454,
+       "ci95_pp": [
+        -14.137931034482758,
+        19.130434782608695
+       ]
+      }
+     }
+    }
+   }
+  }
+ },
+ "test12": {
+  "totals": {
+   "P0": {
+    "collision": 55,
+    "reached": 80,
+    "time_limit": 105
+   },
+   "P2": {
+    "reached": 114,
+    "collision": 60,
+    "time_limit": 66
+   },
+   "P4": {
+    "reached": 121,
+    "collision": 55,
+    "time_limit": 64
+   },
+   "P6": {
+    "reached": 136,
+    "time_limit": 50,
+    "collision": 54
+   }
+  },
+  "dims": {
+   "density_1": {
+    "低": {
+     "tasks": 5,
+     "conditions": 25,
+     "worlds": 5,
+     "policies": {
+      "P0": {
+       "reached": 6,
+       "collision": 11,
+       "time_limit": 8
+      },
+      "P2": {
+       "reached": 5,
+       "collision": 15,
+       "time_limit": 5,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": -4.0,
+       "ci95_pp": [
+        -12.0,
+        0.0
+       ]
+      },
+      "P4": {
+       "reached": 15,
+       "collision": 10,
+       "time_limit": 0,
+       "gain_vs_P0": 9,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 36.0,
+       "ci95_pp": [
+        0.0,
+        76.0
+       ]
+      },
+      "P6": {
+       "reached": 5,
+       "collision": 15,
+       "time_limit": 5,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": -4.0,
+       "ci95_pp": [
+        -12.0,
+        0.0
+       ]
+      }
+     }
+    },
+    "无障碍": {
+     "tasks": 39,
+     "conditions": 195,
+     "worlds": 12,
+     "policies": {
+      "P0": {
+       "reached": 74,
+       "collision": 29,
+       "time_limit": 92
+      },
+      "P2": {
+       "reached": 109,
+       "collision": 28,
+       "time_limit": 58,
+       "gain_vs_P0": 45,
+       "loss_vs_P0": 10,
+       "delta_pp_vs_P0": 17.94871794871795,
+       "ci95_pp": [
+        2.0,
+        36.57142857142857
+       ]
+      },
+      "P4": {
+       "reached": 104,
+       "collision": 27,
+       "time_limit": 64,
+       "gain_vs_P0": 44,
+       "loss_vs_P0": 14,
+       "delta_pp_vs_P0": 15.384615384615385,
+       "ci95_pp": [
+        -0.975609756097561,
+        32.63157894736842
+       ]
+      },
+      "P6": {
+       "reached": 131,
+       "collision": 19,
+       "time_limit": 45,
+       "gain_vs_P0": 62,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 29.23076923076923,
+       "ci95_pp": [
+        13.68421052631579,
+        45.4054054054054
+       ]
+      }
+     }
+    },
+    "高": {
+     "tasks": 4,
+     "conditions": 20,
+     "worlds": 3,
+     "policies": {
+      "P0": {
+       "reached": 0,
+       "collision": 15,
+       "time_limit": 5
+      },
+      "P2": {
+       "reached": 0,
+       "collision": 17,
+       "time_limit": 3,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      },
+      "P4": {
+       "reached": 2,
+       "collision": 18,
+       "time_limit": 0,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 10.0,
+       "ci95_pp": null
+      },
+      "P6": {
+       "reached": 0,
+       "collision": 20,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      }
+     }
+    }
+   },
+   "density_2": {
+    "低": {
+     "tasks": 10,
+     "conditions": 50,
+     "worlds": 6,
+     "policies": {
+      "P0": {
+       "reached": 17,
+       "collision": 6,
+       "time_limit": 27
+      },
+      "P2": {
+       "reached": 20,
+       "collision": 15,
+       "time_limit": 15,
+       "gain_vs_P0": 9,
+       "loss_vs_P0": 6,
+       "delta_pp_vs_P0": 6.0,
+       "ci95_pp": [
+        -20.0,
+        45.0
+       ]
+      },
+      "P4": {
+       "reached": 22,
+       "collision": 15,
+       "time_limit": 13,
+       "gain_vs_P0": 10,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 10.0,
+       "ci95_pp": [
+        -4.444444444444445,
+        24.0
+       ]
+      },
+      "P6": {
+       "reached": 25,
+       "collision": 15,
+       "time_limit": 10,
+       "gain_vs_P0": 9,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": 16.0,
+       "ci95_pp": [
+        -4.0,
+        45.0
+       ]
+      }
+     }
+    },
+    "无障碍": {
+     "tasks": 33,
+     "conditions": 165,
+     "worlds": 12,
+     "policies": {
+      "P0": {
+       "reached": 63,
+       "collision": 29,
+       "time_limit": 73
+      },
+      "P2": {
+       "reached": 94,
+       "collision": 23,
+       "time_limit": 48,
+       "gain_vs_P0": 36,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 18.78787878787879,
+       "ci95_pp": [
+        4.444444444444445,
+        35.15151515151515
+       ]
+      },
+      "P4": {
+       "reached": 97,
+       "collision": 17,
+       "time_limit": 51,
+       "gain_vs_P0": 43,
+       "loss_vs_P0": 9,
+       "delta_pp_vs_P0": 20.606060606060606,
+       "ci95_pp": [
+        2.5641025641025643,
+        40.645161290322584
+       ]
+      },
+      "P6": {
+       "reached": 111,
+       "collision": 14,
+       "time_limit": 40,
+       "gain_vs_P0": 53,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 29.09090909090909,
+       "ci95_pp": [
+        14.074074074074074,
+        44.11764705882353
+       ]
+      }
+     }
+    },
+    "高": {
+     "tasks": 5,
+     "conditions": 25,
+     "worlds": 4,
+     "policies": {
+      "P0": {
+       "reached": 0,
+       "collision": 20,
+       "time_limit": 5
+      },
+      "P2": {
+       "reached": 0,
+       "collision": 22,
+       "time_limit": 3,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      },
+      "P4": {
+       "reached": 2,
+       "collision": 23,
+       "time_limit": 0,
+       "gain_vs_P0": 2,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 8.0,
+       "ci95_pp": null
+      },
+      "P6": {
+       "reached": 0,
+       "collision": 25,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      }
+     }
+    }
+   },
+   "bottleneck": {
+    "中": {
+     "tasks": 22,
+     "conditions": 110,
+     "worlds": 11,
+     "policies": {
+      "P0": {
+       "reached": 51,
+       "collision": 17,
+       "time_limit": 42
+      },
+      "P2": {
+       "reached": 82,
+       "collision": 15,
+       "time_limit": 13,
+       "gain_vs_P0": 34,
+       "loss_vs_P0": 3,
+       "delta_pp_vs_P0": 28.181818181818183,
+       "ci95_pp": [
+        6.25,
+        47.69230769230769
+       ]
+      },
+      "P4": {
+       "reached": 79,
+       "collision": 17,
+       "time_limit": 14,
+       "gain_vs_P0": 36,
+       "loss_vs_P0": 8,
+       "delta_pp_vs_P0": 25.454545454545453,
+       "ci95_pp": [
+        0.8333333333333334,
+        53.0
+       ]
+      },
+      "P6": {
+       "reached": 91,
+       "collision": 5,
+       "time_limit": 14,
+       "gain_vs_P0": 43,
+       "loss_vs_P0": 3,
+       "delta_pp_vs_P0": 36.36363636363637,
+       "ci95_pp": [
+        12.631578947368421,
+        56.8421052631579
+       ]
+      }
+     }
+    },
+    "宽": {
+     "tasks": 15,
+     "conditions": 75,
+     "worlds": 9,
+     "policies": {
+      "P0": {
+       "reached": 21,
+       "collision": 10,
+       "time_limit": 44
+      },
+      "P2": {
+       "reached": 27,
+       "collision": 8,
+       "time_limit": 40,
+       "gain_vs_P0": 11,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 8.0,
+       "ci95_pp": [
+        -11.764705882352942,
+        30.76923076923077
+       ]
+      },
+      "P4": {
+       "reached": 30,
+       "collision": 5,
+       "time_limit": 40,
+       "gain_vs_P0": 13,
+       "loss_vs_P0": 4,
+       "delta_pp_vs_P0": 12.0,
+       "ci95_pp": [
+        -7.2727272727272725,
+        41.81818181818182
+       ]
+      },
+      "P6": {
+       "reached": 40,
+       "collision": 14,
+       "time_limit": 21,
+       "gain_vs_P0": 19,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 25.333333333333332,
+       "ci95_pp": [
+        4.761904761904762,
+        49.333333333333336
+       ]
+      }
+     }
+    },
+    "带内不可达": {
+     "tasks": 2,
+     "conditions": 10,
+     "worlds": 1,
+     "policies": {
+      "P0": {
+       "reached": 0,
+       "collision": 10,
+       "time_limit": 0
+      },
+      "P2": {
+       "reached": 0,
+       "collision": 10,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      },
+      "P4": {
+       "reached": 0,
+       "collision": 10,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      },
+      "P6": {
+       "reached": 0,
+       "collision": 10,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      }
+     }
+    },
+    "窄": {
+     "tasks": 9,
+     "conditions": 45,
+     "worlds": 6,
+     "policies": {
+      "P0": {
+       "reached": 8,
+       "collision": 18,
+       "time_limit": 19
+      },
+      "P2": {
+       "reached": 5,
+       "collision": 27,
+       "time_limit": 13,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 3,
+       "delta_pp_vs_P0": -6.666666666666667,
+       "ci95_pp": [
+        -13.333333333333334,
+        0.0
+       ]
+      },
+      "P4": {
+       "reached": 12,
+       "collision": 23,
+       "time_limit": 10,
+       "gain_vs_P0": 6,
+       "loss_vs_P0": 2,
+       "delta_pp_vs_P0": 8.88888888888889,
+       "ci95_pp": [
+        -10.0,
+        26.666666666666668
+       ]
+      },
+      "P6": {
+       "reached": 5,
+       "collision": 25,
+       "time_limit": 15,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 3,
+       "delta_pp_vs_P0": -6.666666666666667,
+       "ci95_pp": [
+        -13.333333333333334,
+        0.0
+       ]
+      }
+     }
+    }
+   },
+   "detour": {
+    "大绕行": {
+     "tasks": 4,
+     "conditions": 20,
+     "worlds": 3,
+     "policies": {
+      "P0": {
+       "reached": 0,
+       "collision": 15,
+       "time_limit": 5
+      },
+      "P2": {
+       "reached": 0,
+       "collision": 20,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      },
+      "P4": {
+       "reached": 0,
+       "collision": 20,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      },
+      "P6": {
+       "reached": 0,
+       "collision": 20,
+       "time_limit": 0,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 0.0,
+       "ci95_pp": null
+      }
+     }
+    },
+    "小绕行": {
+     "tasks": 3,
+     "conditions": 15,
+     "worlds": 3,
+     "policies": {
+      "P0": {
+       "reached": 1,
+       "collision": 8,
+       "time_limit": 6
+      },
+      "P2": {
+       "reached": 0,
+       "collision": 7,
+       "time_limit": 8,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": -6.666666666666667,
+       "ci95_pp": null
+      },
+      "P4": {
+       "reached": 7,
+       "collision": 8,
+       "time_limit": 0,
+       "gain_vs_P0": 6,
+       "loss_vs_P0": 0,
+       "delta_pp_vs_P0": 40.0,
+       "ci95_pp": null
+      },
+      "P6": {
+       "reached": 0,
+       "collision": 10,
+       "time_limit": 5,
+       "gain_vs_P0": 0,
+       "loss_vs_P0": 1,
+       "delta_pp_vs_P0": -6.666666666666667,
+       "ci95_pp": null
+      }
+     }
+    },
+    "无需绕行": {
+     "tasks": 41,
+     "conditions": 205,
+     "worlds": 12,
+     "policies": {
+      "P0": {
+       "reached": 79,
+       "collision": 32,
+       "time_limit": 94
+      },
+      "P2": {
+       "reached": 114,
+       "collision": 33,
+       "time_limit": 58,
+       "gain_vs_P0": 45,
+       "loss_vs_P0": 10,
+       "delta_pp_vs_P0": 17.073170731707318,
+       "ci95_pp": [
+        1.8604651162790697,
+        34.5945945945946
+       ]
+      },
+      "P4": {
+       "reached": 114,
+       "collision": 27,
+       "time_limit": 64,
+       "gain_vs_P0": 49,
+       "loss_vs_P0": 14,
+       "delta_pp_vs_P0": 17.073170731707318,
+       "ci95_pp": [
+        2.7906976744186047,
+        33.333333333333336
+       ]
+      },
+      "P6": {
+       "reached": 136,
+       "collision": 24,
+       "time_limit": 45,
+       "gain_vs_P0": 62,
+       "loss_vs_P0": 5,
+       "delta_pp_vs_P0": 27.804878048780488,
+       "ci95_pp": [
+        13.0,
+        43.5
+       ]
+      }
+     }
+    }
+   }
+  }
+ }
+}
