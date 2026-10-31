@@ -1,0 +1,26 @@
+{
+  "strategy": "P6@u256 #E2",
+  "dataset": "dev420",
+  "episodes": 420,
+  "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256",
+  "native_source": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2",
+  "bank_source": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/diagnostics/routea_bc_a0_r1_paired_dev_20261010_py38fix_run02/bank/bank.json",
+  "bank_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+  "checkpoint_state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+  "runtime_identity_hash": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+  "clip": 2.0,
+  "min_std_vector": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "scope": "lightweight_kinematic_development_evaluation"
+}
