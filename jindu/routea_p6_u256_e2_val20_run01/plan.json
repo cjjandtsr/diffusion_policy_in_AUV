@@ -1,0 +1,27 @@
+{
+  "strategy": "P6@u256 #E2",
+  "dataset": "val20",
+  "episodes": 80,
+  "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256",
+  "native_source": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2",
+  "bank_source": "/home/cjj/AUV/program/results/routea_xk_run01/val_bank/bank.json",
+  "bank_hash": "a2b28e0cf2ca32ee8a987d0f1a03f94d2783dea57fee1bd096fdb8e5ca542017",
+  "checkpoint_state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+  "runtime_identity_hash": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+  "clip": 2.0,
+  "min_std_vector": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "scope": "lightweight_kinematic_development_evaluation",
+  "note": "user-requested ad-hoc val20 run; protocol inherited from #E2 dev420 run01; repeats=1 frozen val bank"
+}
