@@ -1,0 +1,118 @@
+admission_manifest: /home/cjj/AUV/program/reports/routeA_rl_env_v1/calibration/admission_manifest.json
+checkpoint: data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt
+critic:
+  hidden_dim: 256
+device: cuda:0
+dppo:
+  clip_ploss_coef: 0.1
+  denoising_schedule: full_joint_accum
+  entropy_loss_coefficient: 0.0
+  gae_lambda: 0.95
+  gamma_denoising: 0.8
+  gamma_environment: 0.99
+  logical_batch_pairs: 2560
+  microbatch_pairs: 128
+  min_logprob_std: 0.1
+  min_sampling_std: 0.1
+  pair_passes: 5
+  value_loss_coefficient: 0.5
+environment:
+  disturb_enable: true
+  disturb_pos_scale: 0.3
+  disturb_prob: 0.2
+  exec_noise_scale: 0.0
+  goal_tolerance_3d: 0.5
+  max_episode_steps: 60
+  max_no_ray_hit_fraction: 0.9999869791666667
+  max_reset_attempts: 50
+  mid_state_init_ratio: 0.3
+  mid_state_pos_scale: 0.5
+  pointcloud_calibration_sha256: 824b756e938af55be617ed7a211bfda204f1034b7fe13811febbeebf2bef8244
+  reject_all_no_ray_hit: false
+gates:
+  max_approx_kl: 0.2
+  max_grad_norm: 5.0
+  ratio_mean_max: 5.0
+  ratio_mean_min: 0.2
+lora:
+  alpha: 8.0
+  rank: 8
+optimizer:
+  actor_lr: 2.0e-05
+  actor_lr_end: 1.0e-05
+  critic_lr: 0.001
+  weight_decay: 0.01
+output_dir: /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C
+result_dir: /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/arms/C
+reward:
+  H_e: 4
+  collision_margin_xy: 0.1
+  d_safe: 0.45
+  gamma_pbrs: 0.99
+  ground_contact: 0.2
+  ground_safe: 1.0
+  max_episode_steps: 60
+  newbest_budget: 10.0
+  r_failure: 50.0
+  r_reach: 100.0
+  risk_weight: 0.5
+  time_cost: 0.05
+reward_version: v2
+run:
+  checkpoint_every_updates: 8
+  checkpoint_updates:
+  - 0
+  - 1
+  - 8
+  - 16
+  - 24
+  - 32
+  - 40
+  - 48
+  - 56
+  - 64
+  - 72
+  - 80
+  - 88
+  - 96
+  - 104
+  - 112
+  - 120
+  - 128
+  - 129
+  - 136
+  - 144
+  - 152
+  - 160
+  - 168
+  - 176
+  - 184
+  - 192
+  - 200
+  - 208
+  - 216
+  - 224
+  - 232
+  - 240
+  - 248
+  - 256
+  expected_optimizer_commits_per_outer_update: 20
+  phase: formal
+  rollout_transitions: 1024
+  schedule_label: S2_common
+  seed: 202609203
+  updates: 256
+task_protocol:
+  name: open_space_finite_v1
+  space_cost_budget: 1.0
+vendor_root: third_party/dppo_official_cc7234a
+worlds_train: /home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/train
+a2:
+  arm: C
+  parent_checkpoint: /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128
+  parent_receipt: /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/parent/receipt.json
+  parent_receipt_sha256: a9cd8e3f93eccad71ffdef09ab9162461d7f21d38bdc153c995db2e727073c2b
+  parent_source_root: /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/parent/source
+  reference_bank: /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/reference/reference.pt
+  reference_sha256: 8759fc40c20a20c3bd08a5568965f5562c508f3577d8c82fa4c646d6a080ce95
+  keep_seed: 2026102301
