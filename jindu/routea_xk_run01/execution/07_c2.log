@@ -1,0 +1,21 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+C2_VARIANT baseline 754.5440770330024 selection_draw_prefix 5
+C2_VARIANT z03 757.9665319609994 selection_draw_prefix 5
+C2_VARIANT z06 739.6389457869955 selection_draw_prefix 5
+C2_VARIANT clip2 694.2779583760057 selection_draw_prefix 5
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.97610945 8.190569   3.42275   ], yaw=-2.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.957067  8.350023  3.4194393], yaw=-2.69); using max-range censoring
+  warnings.warn(

@@ -1,0 +1,58 @@
+{
+  "T4_enabled": false,
+  "T5_enabled_X": true,
+  "actor_lr_scale": 1.0,
+  "c1_sha256": "db1f26d510ab5f4e903dec7864c181199705779cebf23637d0b2c0d6fe235e00",
+  "c2_sha256": "5a1f4b92562b38982a3532918138d631dd5030f64bf76383634429f880cd3536",
+  "configs": {
+    "K": "86999349d4561646ecdb3d7dd5246edc7def10dd02b4da7fd99e2cc39dee681d",
+    "X": "bd079953f4408db4c90d1690406d06d98dedbe9d863bff11d90a441acf1c0f1a"
+  },
+  "endpoint": 256,
+  "ppo_clip": 0.1,
+  "sampling": {
+    "denoised_clip_value": 2.0,
+    "min_std_vector": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ]
+  },
+  "short_pair_gate": {
+    "K": {
+      "metrics": {
+        "metrics_update_000129.json": "7baba5a312e25be02cf084b2d97ed9e9c46d72389a7329839734b10a6a506ffa",
+        "metrics_update_000130.json": "43ff6f3d5cfe4901b079d1656fbde2835db519ff5d72c925740cedb8ef7d3898",
+        "metrics_update_000131.json": "1b48a23d3443617b3ef9329d907b6518f01857d70dd7a7f48d91d01c02f25cf7",
+        "metrics_update_000132.json": "b80f6d7bc2c4eb958279282d42b76be9114cd3b03738d0e9816d1ce990f87dfc",
+        "metrics_update_000133.json": "c4c2db6875f7b8c09d86a16bbabebfadfae21dfd4bccd10273b31644e63773f4",
+        "metrics_update_000134.json": "d8e590764cfa20906354fb25886861fd63fdaf263e11fb5256ceced69773e181",
+        "metrics_update_000135.json": "ff73d06d07569973e5c8980afac61d0c3185c32fd73c3d2d4d55048594b3dcb4",
+        "metrics_update_000136.json": "4a32d23953dac037f1b61ffeb89e1d20ed2403e4523d44949d42d4adbf8066f1"
+      },
+      "state_sha256": "d3a9af79593229ba5be443630592d2e711c1ca70bbcef72a9def477db86cc083"
+    },
+    "X": {
+      "metrics": {
+        "metrics_update_000129.json": "dfd26981cc7fb8568f2a41dcbfeb81c26f5fd84a0354c66efbf3b3e3d7a5ca01",
+        "metrics_update_000130.json": "27369d02e17a412396493e8ccdc5848fa5dfdf91ed87a42bd1bdb2241221764d",
+        "metrics_update_000131.json": "c381c08085553b4fea8c1d9bebe7d98d37d0c7711894ea2a46340af98404ddd0",
+        "metrics_update_000132.json": "2d01393c931ef859196794617472b0f383e350ad9218c53c3c5d2a22bbeb9b89",
+        "metrics_update_000133.json": "b5dfa22be348463c4a019fed2c1b6554c1d51ff161c25af15a8dacda25e6fc17",
+        "metrics_update_000134.json": "524a9b3be3399d27e3dc49e4f3371e4714c35dfcc4a7c67e34d7dbb47418ccdb",
+        "metrics_update_000135.json": "67c069798036cec08a3ee9453359e29dbbbaf95d43bfb672eaa302b0d2ef690f",
+        "metrics_update_000136.json": "483c61cc99281cb74b0b707fa7984a66167835322863ed4c42fa5f461b10e6f5"
+      },
+      "state_sha256": "22056b75264aad903c613d76aead49e7ee5699bc3fe935b40de4515eafc48355"
+    }
+  },
+  "stage": "main"
+}

@@ -1,0 +1,169 @@
+{
+  "continuations": 1200,
+  "counts": {
+    "baseline": {
+      "P": {
+        "arrival_rate": 0.28,
+        "collision": 4,
+        "collision_rate": 0.04,
+        "n": 100,
+        "reached": 28,
+        "window_end": 68
+      },
+      "V": {
+        "arrival_rate": 0.045,
+        "collision": 1,
+        "collision_rate": 0.005,
+        "n": 200,
+        "reached": 9,
+        "time_limit": 55,
+        "window_end": 135
+      },
+      "executed_z": {
+        "abs_gt1_rate": 0.0012983851334902215,
+        "n": 12323,
+        "quantiles": [
+          -1.1054617166519165,
+          -0.4567077386379242,
+          0.038897596299648285,
+          0.6504949581623082,
+          1.1526145935058594
+        ]
+      }
+    },
+    "clip2": {
+      "P": {
+        "arrival_rate": 0.49,
+        "collision": 2,
+        "collision_rate": 0.02,
+        "n": 100,
+        "reached": 49,
+        "window_end": 49
+      },
+      "V": {
+        "arrival_rate": 0.125,
+        "collision": 3,
+        "collision_rate": 0.015,
+        "n": 200,
+        "reached": 25,
+        "time_limit": 53,
+        "window_end": 119
+      },
+      "executed_z": {
+        "abs_gt1_rate": 0.003160944771270524,
+        "n": 11389,
+        "quantiles": [
+          -1.512685775756836,
+          -0.5382252383232117,
+          0.05286308377981186,
+          0.7309817051887532,
+          1.5849156379699707
+        ]
+      }
+    },
+    "z03": {
+      "P": {
+        "arrival_rate": 0.25,
+        "collision": 2,
+        "collision_rate": 0.02,
+        "n": 100,
+        "reached": 25,
+        "window_end": 73
+      },
+      "V": {
+        "arrival_rate": 0.06,
+        "collision": 1,
+        "collision_rate": 0.005,
+        "n": 200,
+        "reached": 12,
+        "time_limit": 56,
+        "window_end": 131
+      },
+      "executed_z": {
+        "abs_gt1_rate": 0.0091478093403948,
+        "n": 12462,
+        "quantiles": [
+          -1.5140739679336548,
+          -0.8108421021699905,
+          0.04459276422858238,
+          0.9352705532312392,
+          1.6908795833587646
+        ]
+      }
+    },
+    "z06": {
+      "P": {
+        "arrival_rate": 0.26,
+        "collision": 2,
+        "collision_rate": 0.02,
+        "n": 100,
+        "reached": 26,
+        "window_end": 72
+      },
+      "V": {
+        "arrival_rate": 0.08,
+        "collision": 2,
+        "collision_rate": 0.01,
+        "n": 200,
+        "reached": 16,
+        "time_limit": 56,
+        "window_end": 126
+      },
+      "executed_z": {
+        "abs_gt1_rate": 0.1234991423670669,
+        "n": 12243,
+        "quantiles": [
+          -2.7839605808258057,
+          -1.4534214043617248,
+          0.04655817896127701,
+          1.5682714676856992,
+          2.43898344039917
+        ]
+      }
+    }
+  },
+  "denominator": "all fixed continuations, including window_end",
+  "draws": 5,
+  "raw_continuations": 1200,
+  "scope": "conditioned development diagnostic, not population SR or factor causality",
+  "selected": "clip2",
+  "selected_protocol": {
+    "denoised_clip_value": 2.0,
+    "min_std_vector": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ]
+  },
+  "timing": [
+    {
+      "draws": 5,
+      "seconds": 754.5440770330024,
+      "variant": "baseline"
+    },
+    {
+      "draws": 5,
+      "seconds": 757.9665319609994,
+      "variant": "z03"
+    },
+    {
+      "draws": 5,
+      "seconds": 739.6389457869955,
+      "variant": "z06"
+    },
+    {
+      "draws": 5,
+      "seconds": 694.2779583760057,
+      "variant": "clip2"
+    }
+  ],
+  "timing_rule": "baseline full5 projected total >7200s => all variants selection uses draw prefix0:3"
+}

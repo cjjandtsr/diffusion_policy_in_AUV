@@ -1,0 +1,30 @@
+{
+  "models": [
+    {
+      "policy": "K",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_xk_run01/main/K/checkpoint_update_000192",
+      "update": 192,
+      "source_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy"
+    },
+    {
+      "policy": "X",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_xk_run01/main/X/checkpoint_update_000192",
+      "update": 192,
+      "source_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy"
+    }
+  ],
+  "denoised_clip_value": 1.0,
+  "min_std_vector": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ]
+}

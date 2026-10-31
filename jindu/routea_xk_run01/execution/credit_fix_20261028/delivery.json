@@ -1,0 +1,17 @@
+{
+  "version": "routea_xk_credit_fix_v1.0",
+  "date": "2026-10-28",
+  "scope": "two-file delta over deployed X/K; no training configuration change",
+  "windows_root": "C:\\Users\\cjj\\Desktop\\IDP3\\chengxu\\Improved-3D-Diffusion-Policy",
+  "wsl_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+  "files": [
+    {
+      "relative_path": "scripts/dppo_credit_support/credit_probe.py",
+      "sha256": "9e812f643e6f6be69b1e75af501b6a87d2cbf5a366ebffc6d10100e7ecf8744e"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/checkpointing/a2_fork.py",
+      "sha256": "ed062ecc58396982d7d91285a686ae3d16632fd310a1b703f92f8b23e74ed5ca"
+    }
+  ]
+}

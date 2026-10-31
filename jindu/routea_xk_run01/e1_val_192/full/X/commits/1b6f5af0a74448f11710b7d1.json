@@ -1,0 +1,28 @@
+{
+  "sha256": "c1728214c055af0d4de498ad67e56aa74fbff935d9ef2616001e56ef923733b8",
+  "summary": {
+    "bank_hash": "a2b28e0cf2ca32ee8a987d0f1a03f94d2783dea57fee1bd096fdb8e5ca542017",
+    "decisions": 60,
+    "done_reason": "time_limit",
+    "initial_hash": "18c3653842a77e5073195d0eb7bc8ab92707690071bf1014a8fe03a90afbd1a7",
+    "physical_time_s": 72.00000000000009,
+    "policy": "X",
+    "repeat": 1,
+    "role": "dense_recovery",
+    "safe_arrival": false,
+    "status": "valid",
+    "task_id": "f9a1de31520326973fb41aeb229038b1996bd7a61c4542a14efa32537e892cbf",
+    "terminate_at_space_limits": false,
+    "trajectory_metrics": {
+      "backtrack_m": 9.019775647762474,
+      "final_goal_distance_m": 1.4596282979886652,
+      "max_cross_track_m": 4.126862977744144,
+      "min_goal_distance_m": 0.5051760906311304,
+      "path_length_m": 36.8595165681604,
+      "z_span_m": 0.5571390390396118
+    },
+    "type": "episode_end",
+    "world_id": "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029"
+  },
+  "trace": "traces/1b6f5af0a74448f11710b7d1.attempt001.jsonl"
+}

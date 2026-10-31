@@ -1,0 +1,42 @@
+{
+  "bank_hash": "815a9af478d912a61bea0af9175ea35b3753292d6f760ff551f387f2f3508655",
+  "checkpoint_state_sha256": "13e593be108e7fe38b56a47cd281f35bcad7cf3df9b8f0adc67002d41ac8b938",
+  "draw_prefix": 5,
+  "evaluation_sampling_protocol": {
+    "clip_protocol": {
+      "native": 1.0,
+      "override": 1.0
+    },
+    "min_logprob_denoising_std": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "min_sampling_denoising_std": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "sampling_mode": "random"
+  },
+  "max_cycles": 12,
+  "original_remaining_deadline": true,
+  "paired_seed_rule": "recovery-v1/state/draw/cycle",
+  "training_identity": "910559bb5de2387cab843234f713cc6858122aaa2e2d57d8ab42cd50d0bdf9bd"
+}

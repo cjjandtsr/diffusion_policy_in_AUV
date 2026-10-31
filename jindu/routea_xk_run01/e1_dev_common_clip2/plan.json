@@ -1,0 +1,40 @@
+{
+  "evaluation_wrapper_sha256": "15bca3863d426f881236c2dcca76bcab7cc5fa6ed3d9011e27ebf8f05d3d39e7",
+  "plan": {
+    "denoised_clip_value": 2.0,
+    "min_std_vector": [
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1,
+      0.1
+    ],
+    "models": [
+      {
+        "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C/checkpoint_update_000256",
+        "policy": "bc",
+        "source_root": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2",
+        "update": 256
+      },
+      {
+        "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_xk_run01/main/K/checkpoint_update_000256",
+        "policy": "K",
+        "source_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+        "update": 256
+      },
+      {
+        "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_xk_run01/main/X/checkpoint_update_000256",
+        "policy": "X",
+        "source_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+        "update": 256
+      }
+    ]
+  },
+  "plan_sha256": "0fc80d7794718fd59bb2677dec81879c9416dc9adec89997eaed8dfefd3b373c"
+}

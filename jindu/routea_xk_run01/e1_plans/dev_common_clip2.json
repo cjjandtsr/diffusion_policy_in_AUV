@@ -1,0 +1,36 @@
+{
+  "models": [
+    {
+      "policy": "bc",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C/checkpoint_update_000256",
+      "update": 256,
+      "source_root": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2"
+    },
+    {
+      "policy": "K",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_xk_run01/main/K/checkpoint_update_000256",
+      "update": 256,
+      "source_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy"
+    },
+    {
+      "policy": "X",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_xk_run01/main/X/checkpoint_update_000256",
+      "update": 256,
+      "source_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy"
+    }
+  ],
+  "denoised_clip_value": 2.0,
+  "min_std_vector": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ]
+}

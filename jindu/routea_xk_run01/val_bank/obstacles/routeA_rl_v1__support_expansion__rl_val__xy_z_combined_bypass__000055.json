@@ -1,0 +1,81 @@
+{
+  "world_id": "routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055",
+  "tier": "routeA_rl_v1",
+  "n_obstacles": 6,
+  "spawn_world": [
+    0.0,
+    0.0,
+    2.0
+  ],
+  "obstacle_region": [
+    -10.0,
+    -10.0,
+    10.0,
+    10.0
+  ],
+  "obstacles": [
+    {
+      "name": "wall_upper",
+      "shape": "box",
+      "x": 0.0,
+      "y": 2.5,
+      "z": 1.5,
+      "yaw": 0.0,
+      "size_x": 8.0,
+      "size_y": 0.5,
+      "size_z": 3.0
+    },
+    {
+      "name": "wall_lower",
+      "shape": "box",
+      "x": 1.0,
+      "y": -2.5,
+      "z": 2.5,
+      "yaw": 0.0,
+      "size_x": 8.0,
+      "size_y": 0.5,
+      "size_z": 5.0
+    },
+    {
+      "name": "overhang",
+      "shape": "box",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 4.0,
+      "yaw": 0.0,
+      "size_x": 2.0,
+      "size_y": 3.0,
+      "size_z": 0.5
+    },
+    {
+      "name": "bypass_cyl_0",
+      "shape": "cylinder",
+      "x": -3.0,
+      "y": 0.0,
+      "z": 1.1537,
+      "yaw": 0.0,
+      "radius": 0.6542,
+      "height": 2.3074
+    },
+    {
+      "name": "bypass_cyl_1",
+      "shape": "cylinder",
+      "x": 3.0,
+      "y": 0.0,
+      "z": 1.865,
+      "yaw": 0.0,
+      "radius": 0.6279,
+      "height": 3.7299
+    },
+    {
+      "name": "bypass_cyl_2",
+      "shape": "cylinder",
+      "x": 1.5,
+      "y": 1.0,
+      "z": 1.278,
+      "yaw": 0.0,
+      "radius": 0.3395,
+      "height": 2.556
+    }
+  ]
+}
