@@ -1,0 +1,213 @@
+{
+  "schema": "routea_paired_catalog_v1",
+  "evidence_date": "2026-10-09",
+  "common": {
+    "bc_checkpoint_path": "data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt",
+    "bc_file_sha256": "c1fca4ac2735928b18fa7a9c069f90ad181eb84092acee379b073dc6a61bfc9a",
+    "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+    "lora_identity_hash": "4f91a995cff7da0e7bc9a35d9654f3307f373ecea874f04afb9faad7af9b504f",
+    "shared_runtime_fields": {
+      "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+      "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+      "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+      "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+      "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91",
+      "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4"
+    }
+  },
+  "policies": {
+    "bc": {
+      "family": "bc",
+      "training_seed": null,
+      "use_base_policy": true,
+      "config_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_r1_s2_seed202609201_resetfix_v1.yaml",
+      "config_sha256": "b524f6569ab0c74c06d04b5bed8230329f223a7a3ab30e1b349a3bf8d69f3109"
+    },
+    "a0_seed202609201": {
+      "family": "a0",
+      "training_seed": 202609201,
+      "use_base_policy": false,
+      "update": 256,
+      "checkpoint_path": "data/outputs/dppo_uav_rebuild/routea_v17_a0_s2_seed202609201_v2/checkpoint_update_000256",
+      "config_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_v17_a0_s2_seed202609201_v2.yaml",
+      "config_sha256": "faf4e9f87ee6624b8300055eade294d41ebaa3782797916f4313e611ca8984da",
+      "header_sha256": "3ad6942fe32225312d46a8621916e5ad84e9495c6475548a71a2694ec8b9ddfa",
+      "state_sha256": "ebaeb942f607b1e09bdcba81dbe6e3bcd714be27bd6c48a79277e6cf72bdd536",
+      "runtime_identity_hash": "ddc24fe4bf56d725c14d0aee051f99ea013559402f8a8315c4c7442ac0115836",
+      "runtime_identity": {
+        "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+        "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+        "caveats": [
+          "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+        ],
+        "config_hash": "b0b1ce213ab3932a7e6f24a77f0d4f571702ed40dd0d410a1db245eae229edff",
+        "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+        "reward_identity_hash": "6a53da86ae7b89e058c0e4efe3fe80576148a5d43f1f53aeda92bd9b371faf34",
+        "source_set_hash": "72b18abf29bc5321bde084a4ad3f0ee2cbadcce072afb1960ed1beedab404d4b",
+        "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+        "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+        "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91"
+      }
+    },
+    "a0_seed202609202": {
+      "family": "a0",
+      "training_seed": 202609202,
+      "use_base_policy": false,
+      "update": 256,
+      "checkpoint_path": "data/outputs/dppo_uav_rebuild/routea_v17_a0_s2_seed202609202_v2/checkpoint_update_000256",
+      "config_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_v17_a0_s2_seed202609202_v2.yaml",
+      "config_sha256": "53d5e91fc6948a8f2faac5c4c922c3fe8b3a744ff4a6d0b090245658d88413f7",
+      "header_sha256": "10f05d0fb27e39eb6bb7b7e975a8f01c4a72558484735a066e5d365a98aa7e36",
+      "state_sha256": "c32676644fb61fd275a34b180ba1ee24963531e14e5cfae6e82d4385ff6d5543",
+      "runtime_identity_hash": "91693c8bb4543e08c906c19693a6ae99794eb4b585aa95a05b3be3ef7cd10fbf",
+      "runtime_identity": {
+        "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+        "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+        "caveats": [
+          "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+        ],
+        "config_hash": "ad47c9661b5347f727c7ae4e9f6daeaf06d182314c524f7c5d857d0b81c646e5",
+        "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+        "reward_identity_hash": "6a53da86ae7b89e058c0e4efe3fe80576148a5d43f1f53aeda92bd9b371faf34",
+        "source_set_hash": "1e551ca5d9efa595e060b229d321c1a828e4034d949cf8c512982d66eea2ba3c",
+        "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+        "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+        "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91"
+      }
+    },
+    "a0_seed202609203": {
+      "family": "a0",
+      "training_seed": 202609203,
+      "use_base_policy": false,
+      "update": 256,
+      "checkpoint_path": "data/outputs/dppo_uav_rebuild/routea_v17_a0_s2_seed202609203_v2/checkpoint_update_000256",
+      "config_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_v17_a0_s2_seed202609203_v2.yaml",
+      "config_sha256": "4f626a3eb941c4223cddc70dfbc725001c6ac53207c6b2a194334ea848e22449",
+      "header_sha256": "eaefc751e5b2f67ef9803178de477aef43c64fb60efcd6486e1aa3936c10c4a4",
+      "state_sha256": "cbfff8c22760bfd6235361e0ef2531ae24482ae41a4977cb37def7b85b167202",
+      "runtime_identity_hash": "ec9d7cdacf9be5537982929646338ac4960da09e0e0ec174453f8813dc28424b",
+      "runtime_identity": {
+        "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+        "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+        "caveats": [
+          "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+        ],
+        "config_hash": "6c66a3741f275e41181093475860e8ba75b6171b3a169c86bed396bc59a96375",
+        "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+        "reward_identity_hash": "6a53da86ae7b89e058c0e4efe3fe80576148a5d43f1f53aeda92bd9b371faf34",
+        "source_set_hash": "3f1362223ae34467262cb51436ec6c4f198f7d50e6a1f412caff0d26e7fa0371",
+        "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+        "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+        "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91"
+      }
+    },
+    "r1_seed202609201": {
+      "family": "r1",
+      "training_seed": 202609201,
+      "use_base_policy": false,
+      "update": 256,
+      "checkpoint_path": "data/outputs/dppo_uav_rebuild/routea_r1_resetfix_s2_seed202609201_v1/checkpoint_update_000256",
+      "config_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_r1_s2_seed202609201_resetfix_v1.yaml",
+      "config_sha256": "b524f6569ab0c74c06d04b5bed8230329f223a7a3ab30e1b349a3bf8d69f3109",
+      "header_sha256": "69ee066bc72bf1dd28075553f502785fee8ed6bf64a6200374ee399a6cbdbdcc",
+      "state_sha256": "1ab1226566179ea497f43dfa36d81ee414aefc263cf9c05900393aac12cfbca2",
+      "runtime_identity_hash": "6bdef29928c3b196eddb60cc328af1ce2af4004483e1293ca07a60f1de995201",
+      "runtime_identity": {
+        "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+        "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+        "caveats": [
+          "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+        ],
+        "config_hash": "75b9d609db5af833e571c42e8ed0b4b459afc17fd8a950998346def07b320af6",
+        "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+        "reward_identity_hash": "53a0828054680697de0fc26399d6a3e4d5756581c57d4af27e53197b0e35b207",
+        "source_set_hash": "6ede8163afc841d5e489f8945bbd41eda480302b3ff69568e7f0230814a41669",
+        "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+        "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+        "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91"
+      }
+    },
+    "r1_seed202609202": {
+      "family": "r1",
+      "training_seed": 202609202,
+      "use_base_policy": false,
+      "update": 256,
+      "checkpoint_path": "data/outputs/dppo_uav_rebuild/routea_r1_resetfix_s2_seed202609202_v1/checkpoint_update_000256",
+      "config_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_r1_s2_seed202609202_resetfix_v1.yaml",
+      "config_sha256": "e22ceca97eaf16b27ec7b6d258f45f47368d33a5dab5d04248dcdbbbd062412d",
+      "header_sha256": "ebcfb4d66454eb9aecc2ad645f1ac0b897f1e2c3b7d72e7cb4b7f38e87b79d57",
+      "state_sha256": "36dc8e0d4eff2b8c1ec21f2e5940f2e070d4d30cca4d59889bf81d16e1958179",
+      "runtime_identity_hash": "821e3ce235c3fa7d06fa97705e39c3d2cf93b1561f94328ef897673ad71d3f0c",
+      "runtime_identity": {
+        "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+        "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+        "caveats": [
+          "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+        ],
+        "config_hash": "6c095556c5fa087f8c1783194f4aa541c5ea48f0c0eb2fc62098fcf904515f3a",
+        "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+        "reward_identity_hash": "53a0828054680697de0fc26399d6a3e4d5756581c57d4af27e53197b0e35b207",
+        "source_set_hash": "d9cf30998fe94e54d35cf45d19b4522be66174bf2ee0cdf231a83a0dcb9e555d",
+        "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+        "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+        "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91"
+      }
+    },
+    "r1_seed202609203": {
+      "family": "r1",
+      "training_seed": 202609203,
+      "use_base_policy": false,
+      "update": 256,
+      "checkpoint_path": "data/outputs/dppo_uav_rebuild/routea_r1_resetfix_s2_seed202609203_v1/checkpoint_update_000256",
+      "config_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/config/train_e5_dppo_r1_s2_seed202609203_resetfix_v1.yaml",
+      "config_sha256": "5da89b3df4fb52363d974796ef2f1760d0b528c9992f44e949241b9d276b2204",
+      "header_sha256": "9464a65eab572dd8f82505cf3631e1f89affd6e40ba3bd54463e2cbb804c303a",
+      "state_sha256": "2a06049e84cbccfa5e8bc3078ac40dc51ff523c5ed0b07e4de8019fa3193c4b2",
+      "runtime_identity_hash": "c08d3e6cfcce354c225e202c14e702e4c0c218f6bf3be86e30f33e2dd9c58753",
+      "runtime_identity": {
+        "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+        "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+        "caveats": [
+          "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+        ],
+        "config_hash": "06f95bd5c5fa55cec5101a478e08e7400b3292878d65bc5065ec9f13f25c52a8",
+        "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+        "reward_identity_hash": "53a0828054680697de0fc26399d6a3e4d5756581c57d4af27e53197b0e35b207",
+        "source_set_hash": "1c07a2ca4c03af43f7d38970dff23a330dd3b7c3f5031ee1b57047c331a55f8f",
+        "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+        "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+        "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91"
+      }
+    }
+  },
+  "actor_compatibility_paths": [
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/actor_ddpm/__init__.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/actor_ddpm/conditioning.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/actor_ddpm/lora.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/actor_ddpm/rollout_sampler.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/bc_runtime/__init__.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/bc_runtime/behavior_fingerprint.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/bc_runtime/checkpoint_contract.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/bc_runtime/inference.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/bc_runtime/native_loader.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/contracts.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/environments/observation_adapter.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/environments/observation_provenance.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/official_core/__init__.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/official_core/symbols.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/official_core/vendor_identity.py",
+    "third_party/dppo_official_cc7234a/uav_idp3/__init__.py",
+    "third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py"
+  ],
+  "source_archives": [
+    {
+      "path": "data/outputs/diagnostics/routea_r1_merge_resetfix_20261005_run01/a0_source_before_merge.tar.gz",
+      "sha256": "634f4aefbda608607751075e599982ffc2fe422ba2b9d34014afd1e602de9dba"
+    },
+    {
+      "path": "data/outputs/diagnostics/routea_r1_merge_resetfix_20261005_run01/r1_source_before_merge.tar.gz",
+      "sha256": "eb1f7c746a9592a884c49b2b3228c6bf18a2b2afea2fd46687a3da2738beec39"
+    }
+  ],
+  "content_hash": "5a3d2c540251e02cfd64f92b651c833da2fade63c03c7258140e0c36aefe2e5e"
+}

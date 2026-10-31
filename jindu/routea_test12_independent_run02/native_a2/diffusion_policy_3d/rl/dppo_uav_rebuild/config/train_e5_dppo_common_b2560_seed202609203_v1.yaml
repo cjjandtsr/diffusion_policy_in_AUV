@@ -1,0 +1,86 @@
+checkpoint: data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt
+vendor_root: third_party/dppo_official_cc7234a
+admission_manifest: /home/cjj/AUV/program/reports/routeA_rl_env_v1/calibration/admission_manifest.json
+worlds_train: /home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/train
+output_dir: data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1
+result_dir: /home/cjj/AUV/program/results/routea_training/routea_common_b2560_seed202609203_v1
+device: cuda:0
+
+run:
+  phase: formal
+  seed: 202609203
+  updates: 256
+  rollout_transitions: 1024
+  schedule_label: S2_common
+  checkpoint_updates: [0, 1, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256]
+  expected_optimizer_commits_per_outer_update: 20
+  checkpoint_every_updates: 8
+
+lora:
+  rank: 8
+  alpha: 8.0
+
+critic:
+  hidden_dim: 256
+
+optimizer:
+  actor_lr: 0.00002
+  actor_lr_end: 0.00001
+  critic_lr: 0.001
+  weight_decay: 0.01
+
+dppo:
+  gamma_environment: 0.99
+  gae_lambda: 0.95
+  gamma_denoising: 0.8
+  clip_ploss_coef: 0.1
+  min_sampling_std: 0.1
+  min_logprob_std: 0.1
+  value_loss_coefficient: 0.5
+  entropy_loss_coefficient: 0.0
+  denoising_schedule: full_joint_accum
+  pair_passes: 5
+  logical_batch_pairs: 2560
+  microbatch_pairs: 128
+
+gates:
+  max_approx_kl: 0.2
+  ratio_mean_min: 0.2
+  ratio_mean_max: 5.0
+  max_grad_norm: 5.0
+
+environment:
+  max_episode_steps: 60
+  disturb_enable: true
+  disturb_prob: 0.2
+  disturb_pos_scale: 0.3
+  exec_noise_scale: 0.0
+  mid_state_init_ratio: 0.3
+  mid_state_pos_scale: 0.5
+  max_reset_attempts: 50
+  goal_tolerance_3d: 0.5
+  reject_all_no_ray_hit: false
+  max_no_ray_hit_fraction: 0.9999869791666667
+  pointcloud_calibration_sha256: 824b756e938af55be617ed7a211bfda204f1034b7fe13811febbeebf2bef8244
+
+reward:
+  H_e: 4
+  max_episode_steps: 60
+  gamma_pbrs: 0.99
+  r_reach: 100.0
+  r_failure: 50.0
+  newbest_budget: 10.0
+  risk_weight: 0.5
+  time_cost: 0.05
+  d_safe: 0.45
+  collision_margin_xy: 0.10
+  ground_safe: 1.0
+  ground_contact: 0.20
+
+reward_version: v2
+
+# New common protocol; zero space budget is for a separate ablation only.
+task_protocol:
+  name: open_space_finite_v1
+  space_cost_budget: 1.0
+

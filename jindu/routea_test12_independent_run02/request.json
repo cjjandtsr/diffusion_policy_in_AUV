@@ -1,0 +1,29 @@
+{
+  "checkpoints": {
+    "C": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C/checkpoint_update_000256",
+    "T": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256",
+    "u128": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128"
+  },
+  "contract": {
+    "episodes": 960,
+    "policies": [
+      "bc",
+      "u128",
+      "C",
+      "T"
+    ],
+    "repeats": 5,
+    "tasks": 48,
+    "worlds": 12
+  },
+  "order": [
+    "bc",
+    "u128",
+    "C",
+    "T"
+  ],
+  "parent_receipt_sha256": "a9cd8e3f93eccad71ffdef09ab9162461d7f21d38bdc153c995db2e727073c2b",
+  "scope": "independent fixed rl_test geometry verification; lightweight kinematic",
+  "test12_results_must_not_change_X": true,
+  "wrapper_sha256": "15bca3863d426f881236c2dcca76bcab7cc5fa6ed3d9011e27ebf8f05d3d39e7"
+}
