@@ -1,0 +1,17 @@
+{
+  "changed_sources": [
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/checkpointing/a2_fork.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/selective_keep.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/trainer.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/a2_support.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/config_schema_v2.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/pipeline.py"
+  ],
+  "child_runtime_identity_hash": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+  "consumed_buffer_disposition": "u128 already optimized; u129 collects fresh on-policy data, as A1 resume does",
+  "initialization": "explicit_A1_u128_fork",
+  "parent_checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128",
+  "parent_receipt_sha256": "a9cd8e3f93eccad71ffdef09ab9162461d7f21d38bdc153c995db2e727073c2b",
+  "parent_runtime_identity_hash": "391a6656a0f77731456e5d816727960dc6b1075c83616727c4f823b1b812ea54",
+  "restored_consumed_buffer_size": 1024
+}
