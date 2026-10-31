@@ -1,0 +1,117 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+[1/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051__cfg00 BC=time_limit RL=collision dR=-51.938
+[2/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051__cfg01 BC=time_limit RL=time_limit dR=-0.070
+[3/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051__cfg02 BC=time_limit RL=reached dR=+101.680
+[4/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051__cfg03 BC=time_limit RL=reached dR=+107.180
+[5/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000052__cfg00 BC=collision RL=time_limit dR=+53.175
+[6/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000052__cfg01 BC=collision RL=time_limit dR=+52.145
+[7/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000052__cfg02 BC=time_limit RL=reached dR=+104.356
+[8/80] routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000052__cfg03 BC=reached RL=reached dR=+1.513
+[9/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002__cfg00 BC=time_limit RL=reached dR=+101.838
+[10/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002__cfg01 BC=time_limit RL=time_limit dR=+3.635
+[11/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002__cfg02 BC=reached RL=reached dR=-0.000
+[12/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002__cfg03 BC=time_limit RL=reached dR=+101.545
+[13/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000049__cfg00 BC=reached RL=reached dR=+0.098
+[14/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000049__cfg01 BC=time_limit RL=time_limit dR=-0.319
+[15/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000049__cfg02 BC=collision RL=collision dR=-2.013
+[16/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000049__cfg03 BC=time_limit RL=time_limit dR=+4.917
+[17/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000050__cfg00 BC=reached RL=reached dR=-0.002
+[18/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000050__cfg01 BC=reached RL=reached dR=+0.092
+[19/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000050__cfg02 BC=time_limit RL=reached dR=+102.715
+[20/80] routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000050__cfg03 BC=reached RL=reached dR=-0.013
+[21/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017__cfg00 BC=collision RL=collision dR=-0.338
+[22/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017__cfg01 BC=reached RL=reached dR=-1.232
+[23/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017__cfg02 BC=reached RL=reached dR=+0.141
+[24/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017__cfg03 BC=reached RL=reached dR=-0.003
+[25/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029__cfg00 BC=time_limit RL=collision dR=-48.922
+[26/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029__cfg01 BC=time_limit RL=reached dR=+102.208
+[27/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029__cfg02 BC=reached RL=reached dR=-0.558
+[28/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029__cfg03 BC=collision RL=collision dR=+0.212
+[29/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030__cfg00 BC=time_limit RL=time_limit dR=-0.024
+[30/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030__cfg01 BC=time_limit RL=time_limit dR=+10.143
+[31/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030__cfg02 BC=collision RL=collision dR=+0.305
+[32/80] routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030__cfg03 BC=collision RL=collision dR=+0.271
+[33/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020__cfg00 BC=collision RL=reached dR=+163.410
+[34/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020__cfg01 BC=collision RL=time_limit dR=+52.883
+[35/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020__cfg02 BC=reached RL=reached dR=-0.002
+[36/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020__cfg03 BC=time_limit RL=reached dR=+102.367
+[37/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037__cfg00 BC=time_limit RL=collision dR=-51.180
+[38/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037__cfg01 BC=collision RL=reached dR=+155.985
+[39/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037__cfg02 BC=time_limit RL=time_limit dR=+0.953
+[40/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037__cfg03 BC=reached RL=reached dR=+0.046
+[41/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038__cfg00 BC=time_limit RL=time_limit dR=-1.875
+[42/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038__cfg01 BC=time_limit RL=reached dR=+101.453
+[43/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038__cfg02 BC=reached RL=reached dR=+0.150
+[44/80] routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038__cfg03 BC=time_limit RL=time_limit dR=-0.010
+[45/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023__cfg00 BC=reached RL=reached dR=-1.107
+[46/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023__cfg01 BC=collision RL=collision dR=+1.599
+[47/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023__cfg02 BC=collision RL=collision dR=+0.501
+[48/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023__cfg03 BC=reached RL=collision dR=-151.785
+[49/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045__cfg00 BC=collision RL=time_limit dR=+56.312
+[50/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045__cfg01 BC=collision RL=collision dR=+0.156
+[51/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045__cfg02 BC=collision RL=collision dR=+3.760
+[52/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045__cfg03 BC=reached RL=reached dR=+1.401
+[53/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046__cfg00 BC=time_limit RL=reached dR=+111.961
+[54/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046__cfg01 BC=time_limit RL=time_limit dR=-2.421
+[55/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046__cfg02 BC=time_limit RL=reached dR=+101.556
+[56/80] routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046__cfg03 BC=time_limit RL=collision dR=-49.326
+[57/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010__cfg00 BC=reached RL=collision dR=-150.008
+[58/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010__cfg01 BC=collision RL=reached dR=+155.104
+[59/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010__cfg02 BC=collision RL=collision dR=+2.674
+[60/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010__cfg03 BC=time_limit RL=time_limit dR=+3.513
+[61/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000053__cfg00 BC=time_limit RL=reached dR=+101.563
+[62/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000053__cfg01 BC=reached RL=reached dR=-0.800
+[63/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000053__cfg02 BC=time_limit RL=collision dR=-51.689
+[64/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000053__cfg03 BC=collision RL=collision dR=+3.337
+[65/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000054__cfg00 BC=time_limit RL=collision dR=-53.304
+[66/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000054__cfg01 BC=reached RL=reached dR=+0.956
+[67/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000054__cfg02 BC=collision RL=reached dR=+156.320
+[68/80] routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000054__cfg03 BC=reached RL=reached dR=-0.537
+[69/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055__cfg00 BC=reached RL=reached dR=-1.229
+[70/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055__cfg01 BC=collision RL=collision dR=+0.478
+[71/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055__cfg02 BC=time_limit RL=time_limit dR=+0.832
+[72/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055__cfg03 BC=reached RL=reached dR=-0.030
+[73/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000056__cfg00 BC=time_limit RL=time_limit dR=+0.616
+[74/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000056__cfg01 BC=time_limit RL=time_limit dR=+1.495
+[75/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000056__cfg02 BC=time_limit RL=collision dR=-49.205
+[76/80] routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000056__cfg03 BC=time_limit RL=reached dR=+110.489
+[77/80] routeA_rl_v1__yaw_lateral_recovery__rl_val__initial_yaw_offset_corridor__000014__cfg00 BC=collision RL=collision dR=+1.187
+[78/80] routeA_rl_v1__yaw_lateral_recovery__rl_val__initial_yaw_offset_corridor__000014__cfg01 BC=collision RL=collision dR=+0.326
+[79/80] routeA_rl_v1__yaw_lateral_recovery__rl_val__initial_yaw_offset_corridor__000014__cfg02 BC=reached RL=reached dR=+1.347
+[80/80] routeA_rl_v1__yaw_lateral_recovery__rl_val__initial_yaw_offset_corridor__000014__cfg03 BC=reached RL=reached dR=+1.090
+endpoint report: /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/val_C/endpoint_report.json
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.295461   0.67434806 2.2932289 ], yaw=2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.43175    2.4842923  2.8337297], yaw=2.44); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.1385684 -1.5887426  3.72676  ], yaw=-2.50); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.1517034 -1.5949932  3.7258048], yaw=-2.49); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.8844272  1.1152744  1.9715686], yaw=1.58); using max-range censoring
+  warnings.warn(

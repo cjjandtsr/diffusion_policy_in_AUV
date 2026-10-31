@@ -1,0 +1,51 @@
+schema_version: 1
+role: expected_identity_only
+authority: checkpoint_embedded_resolved_config
+
+checkpoint:
+  relpath: data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt
+  sha256: c1fca4ac2735928b18fa7a9c069f90ad181eb84092acee379b073dc6a61bfc9a
+  weight_source: model
+  normalizer_sha256: 1edbc81f78c66a0f67270266cf333c06071307768e1273d2369aa945320ae1ca
+
+targets:
+  workspace: diffusion_policy_3d.workspace.idp3_workspace.iDP3Workspace
+  policy: diffusion_policy_3d.policy.diffusion_pointcloud_policy.DiffusionPointcloudPolicy
+  scheduler: diffusers.schedulers.scheduling_ddim.DDIMScheduler
+
+diffusion:
+  prediction_type: sample
+  num_train_timesteps: 50
+  num_inference_steps: 10
+  scheduler_step_accepts_arbitrary_kwargs: false
+
+observation:
+  environment_history: 8
+  policy_history: 3
+  history_order: chronological_oldest_to_latest
+  point_count: 4096
+  checkpoint_point_dim: 6
+  policy_point_dim: 3
+  state_dim: 9
+  feature_dim_per_frame: 192
+  policy_condition_dim: 576
+  legacy_environment_condition_dim: 1536
+
+action:
+  full_horizon: 16
+  action_start: 2
+  policy_horizon: 8
+  deployment_exec_horizon: 2
+  rollout_exec_horizon: 4
+  action_dim: 11
+  traj_dt: 0.3
+
+runtime_requirements:
+  native_hydra_instantiate: true
+  exact_state_dict_keys: true
+  move_policy_to_device: true
+  move_normalizer_to_device: true
+  freeze_base_parameters: true
+
+evidence_caveats:
+  - Historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model'].

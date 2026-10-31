@@ -1,0 +1,1 @@
+/home/cjj/miniconda3/envs/idp3/bin/python scripts/run_routea_a2.py continue-training --repo /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy --gate /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/first_update_gate.json --arm T --config /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/arms/T.yaml 

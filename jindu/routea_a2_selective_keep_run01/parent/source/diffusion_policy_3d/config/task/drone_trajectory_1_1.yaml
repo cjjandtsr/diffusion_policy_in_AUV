@@ -1,0 +1,23 @@
+name: drone_trajectory_1
+ 
+shape_meta: &shape_meta
+  obs:
+    point_cloud:
+      shape: [4096, 3]
+      type: point_cloud
+    agent_pos:
+      shape: [11]
+      type: low_dim
+  action:
+    shape: [11]
+ 
+dataset:
+  _target_: diffusion_policy_3d.dataset.drone_dataset.DroneDataset
+  zarr_path: /root/autodl-tmp/AUV/avoidance_dataset/merged_body_3.zarr
+  horizon: ${horizon}
+  pad_before: ${eval:'${n_obs_steps}-1'}
+  pad_after: ${eval:'${n_action_steps}-1'}
+  seed: 42
+  val_ratio: 0.02
+  max_train_episodes: 92
+  num_points: ${policy.pointcloud_encoder_cfg.num_points}

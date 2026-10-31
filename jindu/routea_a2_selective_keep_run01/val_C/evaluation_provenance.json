@@ -1,0 +1,158 @@
+{
+  "action_protocol": "full16 -> policy[2:10] -> executed[2:6] (4x11)",
+  "bank_content_hash": "849b81961af86abde21025dabf4a084fcf84f7d5891c5627cd62edc135411d8b",
+  "bc_use_base_policy": true,
+  "benchmark": "routea-val",
+  "checkpoint_dir": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C/checkpoint_update_000256",
+  "checkpoint_header": {
+    "lora_identity_hash": "4f91a995cff7da0e7bc9a35d9654f3307f373ecea874f04afb9faad7af9b504f",
+    "runtime_identity": {
+      "action_contract_hash": "451db6eb5c055902d66dc72bbacb7242b1342b9e5714827ba26755a684ec32af",
+      "bc_identity_hash": "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151",
+      "caveats": [
+        "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+      ],
+      "config_hash": "8139d0948c6ee209a36b59236d5b832717979c9be375cbceebd6d716f1617fa5",
+      "observation_contract_hash": "a9d400240cb7405bf64baa8dc45858c69b49f8f859671c3d1eef7eef3bc67169",
+      "reward_identity_hash": "b28413afed9187eec4304f647616444bf15a08fe1cda8cf99f348bab0651d0f9",
+      "source_set_hash": "7a5948e1d127bd056d1b882a42b1639ccacdc52979b302f360f4f3e453f29220",
+      "task_manifest_hash": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+      "vendor_commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+      "vendor_manifest_hash": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91"
+    },
+    "runtime_identity_hash": "910559bb5de2387cab843234f713cc6858122aaa2e2d57d8ab42cd50d0bdf9bd",
+    "schema_version": 2,
+    "update_index": 256
+  },
+  "config_path": "/home/cjj/AUV/program/results/routea_a2_selective_keep_run01/arms/C.yaml",
+  "config_sha256": "0c15d0f04120fc3f0d8de7349573565908dad5a040dbe7ea00a3f21db1140485",
+  "derived_episode_seed_rule": "uint32(sha256(canonical_episode_config)[:8])",
+  "episode_pairs_per_world": 4,
+  "episodes_per_policy": 80,
+  "evaluation_source_sha256": {
+    "scripts/evaluate_dppo_uav_formal_endpoint.py": "13455ae9d910d8426a91e5c5a55da16790430aa2f0f7fd0470c2dbfd672b5f38",
+    "scripts/formal_endpoint_eval_core.py": "ca3ab6c6e6fdfefff8293f9371b4df801eb18df54e9c9221f87663b0c4a57b82"
+  },
+  "evidence_scope": "lightweight_kinematic",
+  "fixed_config_files": {
+    "rl_val": {
+      "episodes": 80,
+      "path": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/eval_configs/episode_configs_rl_val.json",
+      "sha256": "afe22c05fa88978e8eacdaa635e8e7c8542e6a9e62e7559b8c405c62aec0c16b",
+      "worlds": 20
+    }
+  },
+  "gazebo_px4_evidence": false,
+  "obstacle_sources": {
+    "routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051.world.obstacles.json",
+      "sha256": "7a70dc30ae56aa4e850d46cc501bc8ce215c9428709461bc1efc074ed7f5324b",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000052": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000052.world.obstacles.json",
+      "sha256": "69a4c07df6aa366478c135a89ada84ddc1754ba4816dc2671fc9d8bf40163077",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002.world.obstacles.json",
+      "sha256": "643f14a06d6414a9ebbe5fe6de36a648e591a29d673f9375be1842b0e0b4eace",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000049": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000049.world.obstacles.json",
+      "sha256": "952e3aba76e861193f0f9facf6c3185158e7398a5f38b36d0104fe42e6559ae9",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000050": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000050.world.obstacles.json",
+      "sha256": "60a1f296d5c58da5d1d252c795711e9f59d81e91462f655dcbb607054941d608",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017.world.obstacles.json",
+      "sha256": "0502cc9d5c17a02b8b74ccdb5b47bb79cac07ddefbe2785c3e8ee28cf8444f30",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029.world.obstacles.json",
+      "sha256": "89f4851e4d6578fc992523438308ce4c2b70a1ea310995fdf1d895c9fcac7d93",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030.world.obstacles.json",
+      "sha256": "4769f9a2fad88c52f55f23cb01c1ef28206e6eca0555c213ef85c6aadea480a7",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020.world.obstacles.json",
+      "sha256": "840f8dc4048d79a6805f8c3e44e2c581fe5b22aef4be8da07ee909554b7027a0",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037.world.obstacles.json",
+      "sha256": "c08bb706887cb8629776f09eff8b5099f533679ce6d696ab676c492521cb465b",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038.world.obstacles.json",
+      "sha256": "88de77209edec86d8ce9e7ae09d05eaeac1b8eb806e4f01d79edd80753d30f21",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023.world.obstacles.json",
+      "sha256": "ac5281dc2f01d29539a36c1beed70e1298ff5d6515d326dc2712c60b83584743",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045.world.obstacles.json",
+      "sha256": "cf7b23f063475ab3355b1a8987d372529a6fe80a517bb86b56dadf412da1f16a",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046.world.obstacles.json",
+      "sha256": "22c3fcf3c98afd12baabd73629d793a92d8e061c2113fae7d405e2073fc83879",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010.world.obstacles.json",
+      "sha256": "846966f92a792da68fa7b09ed5d2821cf45adcc290ba6e7e2d7c6fa8fe52f27b",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000053": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000053.world.obstacles.json",
+      "sha256": "ce3356fcef7f3e8e0f97dececad0739eff7d1ea78b10b11dd21737d51bd51c2e",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000054": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000054.world.obstacles.json",
+      "sha256": "f5dfd65824afde2f17546d956d44dfc93ef0df3da9a4afe9c53f7eddecad716d",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055.world.obstacles.json",
+      "sha256": "f92265baf11a972197333a435f84c50e5a599622d711c252186bbed94ecb7b8e",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000056": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000056.world.obstacles.json",
+      "sha256": "f2958df3a63f83ed268e3cf39c9514f8ba58531389e8d7ad4648387fed0907a2",
+      "split": "rl_val"
+    },
+    "routeA_rl_v1__yaw_lateral_recovery__rl_val__initial_yaw_offset_corridor__000014": {
+      "path": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val/routeA_rl_v1__yaw_lateral_recovery__rl_val__initial_yaw_offset_corridor__000014.world.obstacles.json",
+      "sha256": "a56e0935b3a87f1d43e95b66272fc4e8504adbecbb6c4cf185e4e0e321224d2d",
+      "split": "rl_val"
+    }
+  },
+  "paired_action_noise_rule": "uint32(sha256(config_hash:decision_step)[:8])",
+  "rl_use_base_policy": false,
+  "schema_version": 2,
+  "seed_note": "No RNG seeds are stored in these episode files; retain the prior content-bound pairing rule, not an unverified reconstruction of master seed 42.",
+  "source_binding_by_split": {
+    "rl_val": "routea_admission_manifest"
+  },
+  "source_manifest_path": "/home/cjj/AUV/program/reports/routeA_rl_env_v1/calibration/admission_manifest.json",
+  "source_manifest_sha256": "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4",
+  "world_count": 20
+}

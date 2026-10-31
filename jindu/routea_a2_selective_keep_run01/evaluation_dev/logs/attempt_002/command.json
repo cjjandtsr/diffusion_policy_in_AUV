@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "scripts/run_routea_paired_comparison.py",
+    "--resume",
+    "--reference",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/diagnostics/routea_bc_a0_r1_paired_dev_20261010_py38fix_run02",
+    "--checkpoint",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128",
+    "--checkpoint",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C/checkpoint_update_000256",
+    "--checkpoint",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256",
+    "--out",
+    "/home/cjj/AUV/program/results/routea_a2_selective_keep_run01/evaluation_dev"
+  ],
+  "python": "/home/cjj/miniconda3/envs/idp3/bin/python"
+}

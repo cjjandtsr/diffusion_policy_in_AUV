@@ -1,0 +1,288 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+RAW_EPISODE full rl_d987235a0cbb_u256 37 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 38 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 39 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 40 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 41 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 42 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 43 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 44 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 45 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 46 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 47 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 48 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 49 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 50 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 51 420 time_limit
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.6707873 2.5454357 2.206814 ], yaw=-2.80); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 52 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 53 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 54 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 55 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 56 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 57 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 58 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 59 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 60 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 61 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 62 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 63 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 64 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 65 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 66 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 67 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 68 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 69 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 70 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 71 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.28436917  1.4515842   3.3220162 ], yaw=-1.28); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 72 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 73 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 74 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 75 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 76 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 77 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 78 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 79 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 80 420 reached
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.9549766 3.3775196 2.587148 ], yaw=-1.43); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 81 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 82 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 83 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 84 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.0786886 3.3114774 2.583949 ], yaw=-1.34); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 85 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 86 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 87 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 88 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 89 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 90 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 91 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 92 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 93 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 94 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 95 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 96 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 97 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 98 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 99 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 100 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 101 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 102 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 103 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 104 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 105 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 106 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 107 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 108 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 109 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 110 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 111 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 112 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 113 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 114 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 115 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 116 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 117 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 118 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 119 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 120 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 121 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 122 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 123 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 124 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.5212059 -0.6641406  2.5863924], yaw=-2.41); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 125 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 126 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 127 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 128 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 129 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 130 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 131 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 132 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 133 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 134 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 135 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 136 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 137 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 138 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 139 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 140 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 141 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 142 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 143 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 144 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 145 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 146 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 147 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 148 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 149 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 150 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 151 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 152 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 153 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 154 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 155 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 156 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 157 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 158 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 159 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 160 420 reached
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1174612  2.0412395  3.7868302], yaw=-0.34); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 161 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 162 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 163 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1396239  1.9970453  3.7928085], yaw=-0.32); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 164 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1290648  1.9869283  3.789878 ], yaw=-0.33); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 165 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 166 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 167 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 168 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 169 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 170 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 171 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 172 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 173 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 174 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 175 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 176 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 177 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 178 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 179 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 180 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 181 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 182 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 183 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 184 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 185 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 186 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.358971  -1.2308948  3.008336 ], yaw=2.64); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 187 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 188 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 189 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 190 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 191 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 192 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 193 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[6.9243083 2.456982  2.9177804], yaw=-2.35); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 194 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[6.928506  2.443186  2.9181643], yaw=-2.40); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 195 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 196 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.6008118 -4.0510592  3.3391182], yaw=2.48); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 197 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 198 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 199 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 200 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 201 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 202 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 203 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 204 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.05354674 8.11298    3.499524  ], yaw=0.64); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 205 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 206 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 207 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 208 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 209 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 210 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 211 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 212 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 213 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 214 420 time_limit
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.73147213 8.591242   3.1882815 ], yaw=-2.09); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 215 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.5264914 4.671668  2.0868876], yaw=-2.44); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 216 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.4674637 4.8331413 2.0996323], yaw=-2.43); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 217 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 218 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 219 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 220 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 221 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 222 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 223 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 224 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 225 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 226 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 227 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 228 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 229 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 230 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 231 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 232 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 233 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 234 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 235 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 236 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.889266  -2.337742   2.7817032], yaw=0.78); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 237 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 238 420 collision
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 4.158738  -2.7452116  2.783548 ], yaw=1.16); using max-range censoring
+  warnings.warn(
+RAW_EPISODE full rl_d987235a0cbb_u256 239 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 240 420 collision
+RAW_EPISODE full rl_d987235a0cbb_u256 241 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 242 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 243 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 244 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 245 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 246 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 247 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 248 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 249 420 time_limit
+Traceback (most recent call last):
+  File "scripts/run_routea_paired_comparison.py", line 88, in stage
+    result = function()
+  File "scripts/run_routea_paired_comparison.py", line 125, in <lambda>
+    stage('%02d_%s' % (number, mode), lambda mode=mode: run(
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/workflow.py", line 140, in run
+    s = record_episode(job, name, policy, adapters[t['world_id']], t, e, world, bank['content_hash'])
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/episodes.py", line 162, in record_episode
+    bundle = policy.predict(observation, context, action_seed=seed)
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/evaluate_dppo_uav_formal_endpoint.py", line 389, in predict
+    samples = self.system.official_runtime(
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py", line 310, in forward
+    mean, logvar, _ = self.p_mean_var(
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py", line 168, in p_mean_var
+    native_cpu_scalar = bool(
+RuntimeError: CUDA error: unknown error
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

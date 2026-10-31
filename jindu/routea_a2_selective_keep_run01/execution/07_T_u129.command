@@ -1,0 +1,1 @@
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/train_dppo_uav_rebuild.py --config /home/cjj/AUV/program/results/routea_a2_selective_keep_run01/arms/T.yaml --stop-after-update 129 
