@@ -1,0 +1,28 @@
+{
+  "sha256": "8bc899ef3874f88bdfd8c2760a10a1533b7d79880f53624355820c097d78f808",
+  "summary": {
+    "bank_hash": "b3a872bbe9683ea952d6767a8da9a20cb12a1ce11d5d24ef2953c7861ec80474",
+    "decisions": 19,
+    "done_reason": "reached",
+    "initial_hash": "fa02c84d08d139ad909576315b48f49b6059f43bacd7957611a015b8ea3bedbb",
+    "physical_time_s": 21.71911440386391,
+    "policy": "u128",
+    "repeat": 3,
+    "role": "dense_recovery",
+    "safe_arrival": true,
+    "status": "valid",
+    "task_id": "765ca9a8e8279e99aaf3dbb6e5c6f274c1f1f5a201886089379677b880580964",
+    "terminate_at_space_limits": false,
+    "trajectory_metrics": {
+      "backtrack_m": 0.0,
+      "final_goal_distance_m": 0.49999980570648495,
+      "max_cross_track_m": 1.514311638342618,
+      "min_goal_distance_m": 0.49999980570648495,
+      "path_length_m": 17.45999759752581,
+      "z_span_m": 0.06783270835876465
+    },
+    "type": "episode_end",
+    "world_id": "routeA_rl_v1__dense_recovery__rl_test__cul_de_sac_trap__000021"
+  },
+  "trace": "traces/9e17e4b428847db322d98cf6.attempt001.jsonl"
+}

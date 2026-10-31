@@ -1,0 +1,275 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED u128 1 240
+FIXED u128 2 240
+FIXED u128 3 240
+FIXED u128 4 240
+FIXED u128 5 240
+FIXED u128 6 240
+FIXED u128 7 240
+FIXED u128 8 240
+FIXED u128 9 240
+FIXED u128 10 240
+FIXED u128 11 240
+FIXED u128 12 240
+FIXED u128 13 240
+FIXED u128 14 240
+FIXED u128 15 240
+FIXED u128 16 240
+FIXED u128 17 240
+FIXED u128 18 240
+FIXED u128 19 240
+FIXED u128 20 240
+FIXED u128 21 240
+FIXED u128 22 240
+FIXED u128 23 240
+FIXED u128 24 240
+FIXED u128 25 240
+FIXED u128 26 240
+FIXED u128 27 240
+FIXED u128 28 240
+FIXED u128 29 240
+FIXED u128 30 240
+FIXED u128 31 240
+FIXED u128 32 240
+FIXED u128 33 240
+FIXED u128 34 240
+FIXED u128 35 240
+FIXED u128 36 240
+FIXED u128 37 240
+FIXED u128 38 240
+FIXED u128 39 240
+FIXED u128 40 240
+FIXED u128 41 240
+FIXED u128 42 240
+FIXED u128 43 240
+FIXED u128 44 240
+FIXED u128 45 240
+FIXED u128 46 240
+FIXED u128 47 240
+FIXED u128 48 240
+FIXED u128 49 240
+FIXED u128 50 240
+FIXED u128 51 240
+FIXED u128 52 240
+FIXED u128 53 240
+FIXED u128 54 240
+FIXED u128 55 240
+FIXED u128 56 240
+FIXED u128 57 240
+FIXED u128 58 240
+FIXED u128 59 240
+FIXED u128 60 240
+FIXED u128 61 240
+FIXED u128 62 240
+FIXED u128 63 240
+FIXED u128 64 240
+FIXED u128 65 240
+FIXED u128 66 240
+FIXED u128 67 240
+FIXED u128 68 240
+FIXED u128 69 240
+FIXED u128 70 240
+FIXED u128 71 240
+FIXED u128 72 240
+FIXED u128 73 240
+FIXED u128 74 240
+FIXED u128 75 240
+FIXED u128 76 240
+FIXED u128 77 240
+FIXED u128 78 240
+FIXED u128 79 240
+FIXED u128 80 240
+FIXED u128 81 240
+FIXED u128 82 240
+FIXED u128 83 240
+FIXED u128 84 240
+FIXED u128 85 240
+FIXED u128 86 240
+FIXED u128 87 240
+FIXED u128 88 240
+FIXED u128 89 240
+FIXED u128 90 240
+FIXED u128 91 240
+FIXED u128 92 240
+FIXED u128 93 240
+FIXED u128 94 240
+FIXED u128 95 240
+FIXED u128 96 240
+FIXED u128 97 240
+FIXED u128 98 240
+FIXED u128 99 240
+FIXED u128 100 240
+FIXED u128 101 240
+FIXED u128 102 240
+FIXED u128 103 240
+FIXED u128 104 240
+FIXED u128 105 240
+FIXED u128 106 240
+FIXED u128 107 240
+FIXED u128 108 240
+FIXED u128 109 240
+FIXED u128 110 240
+FIXED u128 111 240
+FIXED u128 112 240
+FIXED u128 113 240
+FIXED u128 114 240
+FIXED u128 115 240
+FIXED u128 116 240
+FIXED u128 117 240
+FIXED u128 118 240
+FIXED u128 119 240
+FIXED u128 120 240
+FIXED u128 121 240
+FIXED u128 122 240
+FIXED u128 123 240
+FIXED u128 124 240
+FIXED u128 125 240
+FIXED u128 126 240
+FIXED u128 127 240
+FIXED u128 128 240
+FIXED u128 129 240
+FIXED u128 130 240
+FIXED u128 131 240
+FIXED u128 132 240
+FIXED u128 133 240
+FIXED u128 134 240
+FIXED u128 135 240
+FIXED u128 136 240
+FIXED u128 137 240
+FIXED u128 138 240
+FIXED u128 139 240
+FIXED u128 140 240
+FIXED u128 141 240
+FIXED u128 142 240
+FIXED u128 143 240
+FIXED u128 144 240
+FIXED u128 145 240
+FIXED u128 146 240
+FIXED u128 147 240
+FIXED u128 148 240
+FIXED u128 149 240
+FIXED u128 150 240
+FIXED u128 151 240
+FIXED u128 152 240
+FIXED u128 153 240
+FIXED u128 154 240
+FIXED u128 155 240
+FIXED u128 156 240
+FIXED u128 157 240
+FIXED u128 158 240
+FIXED u128 159 240
+FIXED u128 160 240
+FIXED u128 161 240
+FIXED u128 162 240
+FIXED u128 163 240
+FIXED u128 164 240
+FIXED u128 165 240
+FIXED u128 166 240
+FIXED u128 167 240
+FIXED u128 168 240
+FIXED u128 169 240
+FIXED u128 170 240
+FIXED u128 171 240
+FIXED u128 172 240
+FIXED u128 173 240
+FIXED u128 174 240
+FIXED u128 175 240
+FIXED u128 176 240
+FIXED u128 177 240
+FIXED u128 178 240
+FIXED u128 179 240
+FIXED u128 180 240
+FIXED u128 181 240
+FIXED u128 182 240
+FIXED u128 183 240
+FIXED u128 184 240
+FIXED u128 185 240
+FIXED u128 186 240
+FIXED u128 187 240
+FIXED u128 188 240
+FIXED u128 189 240
+FIXED u128 190 240
+FIXED u128 191 240
+FIXED u128 192 240
+FIXED u128 193 240
+FIXED u128 194 240
+FIXED u128 195 240
+FIXED u128 196 240
+FIXED u128 197 240
+FIXED u128 198 240
+FIXED u128 199 240
+FIXED u128 200 240
+FIXED u128 201 240
+FIXED u128 202 240
+FIXED u128 203 240
+FIXED u128 204 240
+FIXED u128 205 240
+FIXED u128 206 240
+FIXED u128 207 240
+FIXED u128 208 240
+FIXED u128 209 240
+FIXED u128 210 240
+FIXED u128 211 240
+FIXED u128 212 240
+FIXED u128 213 240
+FIXED u128 214 240
+FIXED u128 215 240
+FIXED u128 216 240
+FIXED u128 217 240
+FIXED u128 218 240
+FIXED u128 219 240
+FIXED u128 220 240
+FIXED u128 221 240
+FIXED u128 222 240
+FIXED u128 223 240
+FIXED u128 224 240
+FIXED u128 225 240
+FIXED u128 226 240
+FIXED u128 227 240
+FIXED u128 228 240
+FIXED u128 229 240
+FIXED u128 230 240
+FIXED u128 231 240
+FIXED u128 232 240
+FIXED u128 233 240
+FIXED u128 234 240
+FIXED u128 235 240
+FIXED u128 236 240
+FIXED u128 237 240
+FIXED u128 238 240
+FIXED u128 239 240
+FIXED u128 240 240
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.1881871 1.9291016 3.046231 ], yaw=2.53); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.2067027 1.9336413 3.0448132], yaw=2.45); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.366486  -3.730624   2.7657855], yaw=-2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.7875795  2.0489786  2.6815803], yaw=-2.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1927848 -2.1174674  2.5279658], yaw=1.80); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.5991955  -0.43316737  3.0202043 ], yaw=-3.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.42697   1.5076052 2.5927587], yaw=2.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.8694317 -2.4690208  3.0204613], yaw=0.11); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.4512414 1.8615545 3.3861046], yaw=-1.15); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.3261409 1.8627822 3.3844836], yaw=-1.20); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.3783712 1.8748608 3.3720975], yaw=-1.18); using max-range censoring
+  warnings.warn(

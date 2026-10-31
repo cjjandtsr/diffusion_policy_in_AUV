@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "/home/cjj/miniconda3/envs/idp3/bin/python",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/run_routea_xk_evaluation.py",
+    "worker",
+    "--source-root",
+    "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1",
+    "--repo",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+    "--checkpoint",
+    "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128",
+    "--expected-update",
+    "128",
+    "--policy",
+    "u128",
+    "--bank",
+    "/home/cjj/AUV/program/results/routea_test12_independent_run02/bank/bank.json",
+    "--split",
+    "rl_test",
+    "--worlds",
+    "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/test",
+    "--output",
+    "/home/cjj/AUV/program/results/routea_test12_independent_run02/full/u128"
+  ]
+}
