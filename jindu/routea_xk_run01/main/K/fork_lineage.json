@@ -1,0 +1,30 @@
+{
+  "changed_sources": [
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/audit/training_audit.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/checkpointing/a2_fork.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/drift_monitor.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/inert_anchor.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/official_loss_components.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/rollout_buffer.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/selective_keep.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/self_imitation.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/trainer.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/a2_support.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/build_system.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/config_schema_v2.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/pipeline.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/xk_diagnostics.py",
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/official_core/vendor_identity.py",
+    "scripts/dppo_credit_support/credit_probe.py",
+    "third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py"
+  ],
+  "child_runtime_identity_hash": "932dbefefd3bfa634a866418c6be71da8131e3fdcc21c419226c0c0c3eac015e",
+  "child_seed": 202610261,
+  "consumed_buffer_disposition": "u128 already optimized; u129 collects fresh on-policy data, as A1 resume does",
+  "initialization": "explicit_A1_u128_fork",
+  "parent_checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128",
+  "parent_receipt_sha256": "a9cd8e3f93eccad71ffdef09ab9162461d7f21d38bdc153c995db2e727073c2b",
+  "parent_runtime_identity_hash": "391a6656a0f77731456e5d816727960dc6b1075c83616727c4f823b1b812ea54",
+  "restored_consumed_buffer_size": 1024,
+  "rng_policy": "new_seed_preserve_parent_optimizer_and_counters"
+}
