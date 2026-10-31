@@ -1,0 +1,28 @@
+{
+  "sha256": "9a1ca2895a6271b811c80a61dd26888e5deff7fba5282f75f1ad7f05e90e19e3",
+  "summary": {
+    "bank_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+    "decisions": 59,
+    "done_reason": "collision",
+    "initial_hash": "21fbfd3aa2961e95fb5d166d4e4d4cb33599cff13ee940b5b349f59ec03a4430",
+    "physical_time_s": 70.35777568817147,
+    "policy": "rl_d987235a0cbb_u256",
+    "repeat": 1,
+    "role": "dense_recovery",
+    "safe_arrival": false,
+    "status": "valid",
+    "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01",
+    "terminate_at_space_limits": false,
+    "trajectory_metrics": {
+      "backtrack_m": 9.836381467045484,
+      "final_goal_distance_m": 7.784542845580534,
+      "max_cross_track_m": 3.9544601541626037,
+      "min_goal_distance_m": 0.7688544827046618,
+      "path_length_m": 40.11349535546967,
+      "z_span_m": 0.36000943183898926
+    },
+    "type": "episode_end",
+    "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+  },
+  "trace": "traces/e20efa177f38c8a797c20064.attempt001.jsonl"
+}

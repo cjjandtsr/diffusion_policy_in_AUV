@@ -1,0 +1,17 @@
+STAGE_START 01_bank
+STAGE_PASS 01_bank
+STAGE_START 02_weights
+STAGE_PASS 02_weights
+STAGE_START 03_preflight
+STAGE_PASS 03_preflight
+STAGE_START 04_smoke
+STAGE_PASS 04_smoke
+STAGE_START 05_full
+Traceback (most recent call last):
+  File "scripts/run_routea_paired_comparison.py", line 150, in <module>
+    raise SystemExit(main())
+  File "scripts/run_routea_paired_comparison.py", line 125, in main
+    stage('%02d_%s' % (number, mode), lambda mode=mode: run(
+  File "scripts/run_routea_paired_comparison.py", line 95, in stage
+    raise RuntimeError('stage failed: ' + name + '; preserve log and return evidence')
+RuntimeError: stage failed: 05_full; preserve log and return evidence

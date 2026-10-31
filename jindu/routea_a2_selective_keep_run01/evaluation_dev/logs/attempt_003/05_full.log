@@ -1,0 +1,68 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+RAW_EPISODE full rl_d987235a0cbb_u256 22 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 23 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 24 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 25 420 time_limit
+RAW_EPISODE full rl_d987235a0cbb_u256 26 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 27 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 28 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 29 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 30 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 31 420 reached
+RAW_EPISODE full rl_d987235a0cbb_u256 32 420 reached
+Traceback (most recent call last):
+  File "scripts/run_routea_paired_comparison.py", line 88, in stage
+    result = function()
+  File "scripts/run_routea_paired_comparison.py", line 125, in <lambda>
+    stage('%02d_%s' % (number, mode), lambda mode=mode: run(
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/workflow.py", line 140, in run
+    s = record_episode(job, name, policy, adapters[t['world_id']], t, e, world, bank['content_hash'])
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/episodes.py", line 162, in record_episode
+    bundle = policy.predict(observation, context, action_seed=seed)
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/evaluate_dppo_uav_formal_endpoint.py", line 389, in predict
+    samples = self.system.official_runtime(
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py", line 310, in forward
+    mean, logvar, _ = self.p_mean_var(
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py", line 162, in p_mean_var
+    noise_ft = actor(x[ft_indices], t[ft_indices], cond=cond_ft)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py", line 101, in forward
+    model_output = self._model()(
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/diffusion/conditional_unet1d.py", line 330, in forward
+    x = resnet(x, global_feature)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1553, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/cjj/.local/lib/python3.8/site-packages/torch/nn/modules/module.py", line 1562, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/diffusion/conditional_unet1d.py", line 121, in forward
+    out = scale * out + bias
+RuntimeError: CUDA error: unknown error
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+

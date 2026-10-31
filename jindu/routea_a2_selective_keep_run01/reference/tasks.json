@@ -1,0 +1,3536 @@
+{
+  "exclude_bank_sha256": "1a6388136ea329f680c7055227f915a25ee25417df752a2cb7d85e30e57c3783",
+  "parent_receipt_sha256": "a9cd8e3f93eccad71ffdef09ab9162461d7f21d38bdc153c995db2e727073c2b",
+  "schema": "a2_training_tasks_v1",
+  "seed": 20261023,
+  "tasks": [
+    {
+      "obstacle_sha256": "445526546c2a384200d1d1a0562762dc89f10e25961168e902e90730fd34caff",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          13.214218139648438,
+          -10.274711608886719,
+          3.655970811843872
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          12.370928764343262,
+          -7.93798828125,
+          2.972721815109253
+        ],
+        "start_yaw": -1.3120321611913908,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1174629444,
+      "task_id": "aa7546f90ec9275a63b82ee85c35b3ad23917d3dfb340b9c983d620c581bc96c",
+      "training_task_identity": "bfcaa0d35d28d82104fde6e0aa30c0ea80753f162e4499bd93cb85ba43681647",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "obstacle_sha256": "445526546c2a384200d1d1a0562762dc89f10e25961168e902e90730fd34caff",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -2.0384891033172607,
+          -11.943506240844727,
+          4.430795669555664
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          6.678206443786621,
+          8.708425521850586,
+          3.774815559387207
+        ],
+        "start_yaw": -2.1085725088449285,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1175629447,
+      "task_id": "c1bb47a2ae82c4c6086f5035eaf35435065adc5de98cf5dc87213887e7929c44",
+      "training_task_identity": "bfcaa0d35d28d82104fde6e0aa30c0ea80753f162e4499bd93cb85ba43681647",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "obstacle_sha256": "445526546c2a384200d1d1a0562762dc89f10e25961168e902e90730fd34caff",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          11.20612907409668,
+          -13.51105785369873,
+          4.289798736572266
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          9.2489013671875,
+          11.794718742370605,
+          4.202784538269043
+        ],
+        "start_yaw": -1.5764770251718105,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1176629450,
+      "task_id": "22819a87a691d57b9656a13c1d1237e8444c807f1d2990f17427cbc41e61a515",
+      "training_task_identity": "bfcaa0d35d28d82104fde6e0aa30c0ea80753f162e4499bd93cb85ba43681647",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "obstacle_sha256": "445526546c2a384200d1d1a0562762dc89f10e25961168e902e90730fd34caff",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          0.795703649520874,
+          13.023141860961914,
+          3.261786460876465
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          0.30966827273368835,
+          12.908729553222656,
+          4.677556991577148
+        ],
+        "start_yaw": 0.11175765449174335,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1177629453,
+      "task_id": "953300f60ff41c1e9c94318f32df5e7c7569e6ee63743f93560e202ef30503cb",
+      "training_task_identity": "bfcaa0d35d28d82104fde6e0aa30c0ea80753f162e4499bd93cb85ba43681647",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "obstacle_sha256": "445526546c2a384200d1d1a0562762dc89f10e25961168e902e90730fd34caff",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -5.3750410079956055,
+          10.26853084564209,
+          2.679443836212158
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          4.44282865524292,
+          6.322351932525635,
+          3.314450740814209
+        ],
+        "start_yaw": 2.8516731421444472,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1178629456,
+      "task_id": "9a9749013e7de18e0c463546559e2b7fa76d8220d7ec94da2da74f79b2bbaad5",
+      "training_task_identity": "bfcaa0d35d28d82104fde6e0aa30c0ea80753f162e4499bd93cb85ba43681647",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "obstacle_sha256": "445526546c2a384200d1d1a0562762dc89f10e25961168e902e90730fd34caff",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -7.297492027282715,
+          -10.32733154296875,
+          4.087619304656982
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          2.410520553588867,
+          -12.885480880737305,
+          1.9042004346847534
+        ],
+        "start_yaw": -3.137117901333406,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1179629459,
+      "task_id": "29333233c700ea33e2bda6f91234692ace0ce9fb2979c149f6b1a33937cab902",
+      "training_task_identity": "bfcaa0d35d28d82104fde6e0aa30c0ea80753f162e4499bd93cb85ba43681647",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "obstacle_sha256": "2d6514c4f1f086713917b67c01619f2461faa245d4cf614145300413e50b0e49",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -4.514022350311279,
+          -7.028465270996094,
+          2.3968093395233154
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          9.048051834106445,
+          -11.723703384399414,
+          3.2072598934173584
+        ],
+        "start_yaw": 2.741429458448339,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1912570948,
+      "task_id": "4dd0c74a8d130315b0956d6adb749ec2f1a7f83a603825a19aaa431d07421594",
+      "training_task_identity": "3ceea405d31131ab72a975d8974b3e4bcd8d2a5ac466c46f5bfd9ca590afa004",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "obstacle_sha256": "2d6514c4f1f086713917b67c01619f2461faa245d4cf614145300413e50b0e49",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -0.5290756821632385,
+          -11.77135181427002,
+          4.224071025848389
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          -0.7814050912857056,
+          -0.11245362460613251,
+          1.3158636093139648
+        ],
+        "start_yaw": -1.8201519018402397,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1913570951,
+      "task_id": "13ddc03061c9e225047c92eb94ff74af08fa6766e14f7b451e51f685c0e46454",
+      "training_task_identity": "3ceea405d31131ab72a975d8974b3e4bcd8d2a5ac466c46f5bfd9ca590afa004",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "obstacle_sha256": "2d6514c4f1f086713917b67c01619f2461faa245d4cf614145300413e50b0e49",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -9.557903289794922,
+          -8.709259033203125,
+          2.67688250541687
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          7.300502300262451,
+          9.688939094543457,
+          2.5480449199676514
+        ],
+        "start_yaw": -2.1280268168851477,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1914570954,
+      "task_id": "5c77bd8e9fa9a320d8c3ec0daa30cc87d9d7cd9a37f565715ba9895a515a2cea",
+      "training_task_identity": "3ceea405d31131ab72a975d8974b3e4bcd8d2a5ac466c46f5bfd9ca590afa004",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "obstacle_sha256": "2d6514c4f1f086713917b67c01619f2461faa245d4cf614145300413e50b0e49",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          0.11894232034683228,
+          -3.2242870330810547,
+          4.048103332519531
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          8.718180656433105,
+          -0.3471607267856598,
+          2.341885805130005
+        ],
+        "start_yaw": -2.852650364263208,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1915570957,
+      "task_id": "708f4648acf4b778d3ff98bc73edaeaa9872215fd5509c7c4e459a7d44398c17",
+      "training_task_identity": "3ceea405d31131ab72a975d8974b3e4bcd8d2a5ac466c46f5bfd9ca590afa004",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "obstacle_sha256": "2d6514c4f1f086713917b67c01619f2461faa245d4cf614145300413e50b0e49",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          7.278003215789795,
+          11.981715202331543,
+          2.549741506576538
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          -7.728939056396484,
+          -5.804906368255615,
+          2.3011035919189453
+        ],
+        "start_yaw": 1.004100643376157,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1916570960,
+      "task_id": "23e2bcf574df30223da70bcecba7a8b688e56b61f9dd51456199dc8064ab92b5",
+      "training_task_identity": "3ceea405d31131ab72a975d8974b3e4bcd8d2a5ac466c46f5bfd9ca590afa004",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "obstacle_sha256": "2d6514c4f1f086713917b67c01619f2461faa245d4cf614145300413e50b0e49",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          2.713719129562378,
+          6.981545448303223,
+          4.0339179039001465
+        ],
+        "role": "anticipatory",
+        "start_pos": [
+          -12.779301643371582,
+          -11.187331199645996,
+          1.5632437467575073
+        ],
+        "start_yaw": 1.1132208520910432,
+        "world_name": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1917570963,
+      "task_id": "2b63cb57493076f2c048c380f7cb8b080b09ddbbd3e90c75dda443a869191793",
+      "training_task_identity": "3ceea405d31131ab72a975d8974b3e4bcd8d2a5ac466c46f5bfd9ca590afa004",
+      "world_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "obstacle_sha256": "8186c959b18dcfa970a449dd08b23bae6a336dc8eec9220154992687106f2b1f",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          5.654263496398926,
+          5.722822666168213,
+          2.950230121612549
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -4.94035530090332,
+          9.921006202697754,
+          2.0895345211029053
+        ],
+        "start_yaw": -0.4164154281407937,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3740042894,
+      "task_id": "4db9d0c70a579125ed04a7246f8ce5769902660237cb643690107e8d13887d8e",
+      "training_task_identity": "f09952b2f1e0ec132556abc65461044a2299b6afc2adc922fc93769f21bab379",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "obstacle_sha256": "8186c959b18dcfa970a449dd08b23bae6a336dc8eec9220154992687106f2b1f",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -7.884815216064453,
+          10.384001731872559,
+          2.588873863220215
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          6.564789295196533,
+          2.4352219104766846,
+          2.1433815956115723
+        ],
+        "start_yaw": 2.7236915593385334,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3741042897,
+      "task_id": "fdaae3b4314cfa37b9d3d19acabca76399f30c16390f7e6785ef9b2e1973720c",
+      "training_task_identity": "f09952b2f1e0ec132556abc65461044a2299b6afc2adc922fc93769f21bab379",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "obstacle_sha256": "8186c959b18dcfa970a449dd08b23bae6a336dc8eec9220154992687106f2b1f",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          6.818387985229492,
+          -1.4806323051452637,
+          4.202768325805664
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -7.614150047302246,
+          8.374905586242676,
+          4.2901611328125
+        ],
+        "start_yaw": -0.4608344964978661,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3742042900,
+      "task_id": "4df76d3e6b32e9d6eb18ba5d5a277bc5f6dc2b6bb0002c85700af68ef44edd10",
+      "training_task_identity": "f09952b2f1e0ec132556abc65461044a2299b6afc2adc922fc93769f21bab379",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "obstacle_sha256": "8186c959b18dcfa970a449dd08b23bae6a336dc8eec9220154992687106f2b1f",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          12.740316390991211,
+          -12.7452974319458,
+          1.5209882259368896
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          4.562618255615234,
+          -9.657322883605957,
+          1.738579273223877
+        ],
+        "start_yaw": -0.32814357387487814,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3743042903,
+      "task_id": "48ba89c03e88c02039f80dbb4144db5d6247e1f023c2fa4d6d8e92ea299a8c7a",
+      "training_task_identity": "f09952b2f1e0ec132556abc65461044a2299b6afc2adc922fc93769f21bab379",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "obstacle_sha256": "8186c959b18dcfa970a449dd08b23bae6a336dc8eec9220154992687106f2b1f",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          8.268299102783203,
+          5.175640106201172,
+          2.5536677837371826
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -11.396312713623047,
+          -3.236940383911133,
+          2.5676543712615967
+        ],
+        "start_yaw": 0.32536643778182484,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3744042906,
+      "task_id": "33035e11676b7fbb1e307f7e58879ebacc4bf6b4c2000d0e65a6777da09d2617",
+      "training_task_identity": "f09952b2f1e0ec132556abc65461044a2299b6afc2adc922fc93769f21bab379",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "obstacle_sha256": "8186c959b18dcfa970a449dd08b23bae6a336dc8eec9220154992687106f2b1f",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          0.19737555086612701,
+          -13.248363494873047,
+          2.7416326999664307
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          9.708922386169434,
+          -0.2869068384170532,
+          1.7595165967941284
+        ],
+        "start_yaw": -2.159630745542749,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3745042909,
+      "task_id": "59758d0d28df1d6282253d4a1d417eee6dcfb6c723de9d42b9e59481fd6b4ffc",
+      "training_task_identity": "f09952b2f1e0ec132556abc65461044a2299b6afc2adc922fc93769f21bab379",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "obstacle_sha256": "8d3a08bd25903a634969f2510d39c6fe9228a1398dd5b94829e82cc9a66be638",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -13.02737045288086,
+          -7.326103687286377,
+          4.0944647789001465
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -6.0703277587890625,
+          -6.113370895385742,
+          1.9956841468811035
+        ],
+        "start_yaw": -2.7341387356004283,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1499118534,
+      "task_id": "189f0ba56584cbcc5e030942024fe975ba07feb9ab69dd468adcb1dd1d2698a6",
+      "training_task_identity": "d4a406fb266b7de23a4281dc03779243f82e22c5eefc38e5e94f52cb041784f7",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "obstacle_sha256": "8d3a08bd25903a634969f2510d39c6fe9228a1398dd5b94829e82cc9a66be638",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -10.32033920288086,
+          2.6828041076660156,
+          1.5379828214645386
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          9.793232917785645,
+          -4.910861968994141,
+          2.9576728343963623
+        ],
+        "start_yaw": 2.9041466839685697,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1500118537,
+      "task_id": "17acdeff71e48d05727645382e3206351c6b34bc6fa42e506228fb606e90baa6",
+      "training_task_identity": "d4a406fb266b7de23a4281dc03779243f82e22c5eefc38e5e94f52cb041784f7",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "obstacle_sha256": "8d3a08bd25903a634969f2510d39c6fe9228a1398dd5b94829e82cc9a66be638",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -10.43539810180664,
+          13.682914733886719,
+          1.676626205444336
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -8.694671630859375,
+          -3.573725700378418,
+          3.365748882293701
+        ],
+        "start_yaw": 1.79749079163639,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1501118540,
+      "task_id": "3f498a90c052f9d8789792f6ddde4f8ac166e45064878f613bb270cec3a84ecd",
+      "training_task_identity": "d4a406fb266b7de23a4281dc03779243f82e22c5eefc38e5e94f52cb041784f7",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "obstacle_sha256": "8d3a08bd25903a634969f2510d39c6fe9228a1398dd5b94829e82cc9a66be638",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          -0.871785044670105,
+          -5.346312999725342,
+          3.5986454486846924
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -10.721209526062012,
+          -1.544403314590454,
+          1.3246355056762695
+        ],
+        "start_yaw": -0.34840276416822746,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1502118543,
+      "task_id": "85529b4b29eaf534d5bb8532712fc3465f2240e3f7fc2a35039336e379b8d32d",
+      "training_task_identity": "d4a406fb266b7de23a4281dc03779243f82e22c5eefc38e5e94f52cb041784f7",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "obstacle_sha256": "8d3a08bd25903a634969f2510d39c6fe9228a1398dd5b94829e82cc9a66be638",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -8.121548652648926,
+          -2.390977382659912,
+          1.5337119102478027
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.2050015926361084,
+          -5.197328567504883,
+          2.9725241661071777
+        ],
+        "start_yaw": 2.690626955074248,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1503118546,
+      "task_id": "f1ea60c981617ff8b47632139a5d2bf6e646f69f38acc8b93c3dcfce6d5b0b3b",
+      "training_task_identity": "d4a406fb266b7de23a4281dc03779243f82e22c5eefc38e5e94f52cb041784f7",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "obstacle_sha256": "8d3a08bd25903a634969f2510d39c6fe9228a1398dd5b94829e82cc9a66be638",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          5.342981815338135,
+          6.200152397155762,
+          1.6547229290008545
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -5.65138578414917,
+          -11.246011734008789,
+          3.3724539279937744
+        ],
+        "start_yaw": 0.8622331693490475,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1504118549,
+      "task_id": "8f07ab3a718d523d0e331964fb2cf69b43baaad79a888b02218dbb4479fa35f7",
+      "training_task_identity": "d4a406fb266b7de23a4281dc03779243f82e22c5eefc38e5e94f52cb041784f7",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "obstacle_sha256": "06b03f46b9120c73f475abfe94ecaee0da406d79728ac2b2b51fd16533033019",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          3.6504197120666504,
+          -8.796967506408691,
+          3.583853244781494
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.065222978591919,
+          -8.84402847290039,
+          3.3523001670837402
+        ],
+        "start_yaw": -0.05571362896195131,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2518431793,
+      "task_id": "578c678ff6fae7a5c5d5fed8a722f9b73b88835bbc232c374eaf0c5aaaa73efb",
+      "training_task_identity": "902500761766d2f55342ba3bb862d930453c08685cdb39299c0bfb1e01a150e6",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "obstacle_sha256": "06b03f46b9120c73f475abfe94ecaee0da406d79728ac2b2b51fd16533033019",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -3.916984796524048,
+          9.674757957458496,
+          1.6730684041976929
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          7.022037506103516,
+          3.2006735801696777,
+          3.522939682006836
+        ],
+        "start_yaw": 2.4632750816798232,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2519431796,
+      "task_id": "3607f1be89abacaf10158301a29aed8f344e968efbd35120f550294a8270433c",
+      "training_task_identity": "902500761766d2f55342ba3bb862d930453c08685cdb39299c0bfb1e01a150e6",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "obstacle_sha256": "06b03f46b9120c73f475abfe94ecaee0da406d79728ac2b2b51fd16533033019",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          10.299954414367676,
+          -12.024913787841797,
+          3.7754933834075928
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          10.258437156677246,
+          2.7278330326080322,
+          1.3788702487945557
+        ],
+        "start_yaw": -1.6419465484669025,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2520431799,
+      "task_id": "70d52042e267aab6146610b20199612a598b964933aac798aa29642b6262f696",
+      "training_task_identity": "902500761766d2f55342ba3bb862d930453c08685cdb39299c0bfb1e01a150e6",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "obstacle_sha256": "06b03f46b9120c73f475abfe94ecaee0da406d79728ac2b2b51fd16533033019",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          -5.050993919372559,
+          -6.017618179321289,
+          2.237370491027832
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -6.444772243499756,
+          -7.475844383239746,
+          1.5680840015411377
+        ],
+        "start_yaw": 0.9301213672728581,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2521431802,
+      "task_id": "a577cb46630d1805cf1f69748a708d62d86bc20b02a677b8d5a971b34a002679",
+      "training_task_identity": "902500761766d2f55342ba3bb862d930453c08685cdb39299c0bfb1e01a150e6",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "obstacle_sha256": "06b03f46b9120c73f475abfe94ecaee0da406d79728ac2b2b51fd16533033019",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          0.48727670311927795,
+          8.681136131286621,
+          3.5747478008270264
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          5.8881330490112305,
+          -1.4188086986541748,
+          4.488292694091797
+        ],
+        "start_yaw": 1.8433586774947672,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2522431805,
+      "task_id": "7425aa43242013a65839e87610b3a2a3cc8c1474725f66c7ef155a7904d542ba",
+      "training_task_identity": "902500761766d2f55342ba3bb862d930453c08685cdb39299c0bfb1e01a150e6",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "obstacle_sha256": "06b03f46b9120c73f475abfe94ecaee0da406d79728ac2b2b51fd16533033019",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -6.650961875915527,
+          8.965216636657715,
+          1.8886431455612183
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          11.059958457946777,
+          2.856174945831299,
+          2.3567569255828857
+        ],
+        "start_yaw": 2.6263569755512686,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2523431808,
+      "task_id": "241a1ba87c998f2c443d4f8ada8036267daaf7674232f835cab79275cd932773",
+      "training_task_identity": "902500761766d2f55342ba3bb862d930453c08685cdb39299c0bfb1e01a150e6",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "obstacle_sha256": "affd965226d7f1f6287d9fbea8acc5b8f029f312f39d0af11cab0a0e15807984",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          11.765822410583496,
+          4.963034152984619,
+          1.716366171836853
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -6.261332988739014,
+          1.1360639333724976,
+          1.726683259010315
+        ],
+        "start_yaw": 0.2485258451992003,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3511031323,
+      "task_id": "ff29647f1812f5317c4a0b2ebb7a79b607d7e7363f78277bce994e91091b1790",
+      "training_task_identity": "4da29b5125265002636c8c84cd2c5ac7a5ef2174791e0bce4029f3048fd0e783",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "obstacle_sha256": "affd965226d7f1f6287d9fbea8acc5b8f029f312f39d0af11cab0a0e15807984",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          5.729442119598389,
+          -5.389817237854004,
+          2.8755619525909424
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          8.685790061950684,
+          6.54506254196167,
+          3.896348714828491
+        ],
+        "start_yaw": -2.070157131439036,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3512031326,
+      "task_id": "0b10c176496ca7eac8ec1effc6dbbc00c683efbb5ef759779d8f25a093217976",
+      "training_task_identity": "4da29b5125265002636c8c84cd2c5ac7a5ef2174791e0bce4029f3048fd0e783",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "obstacle_sha256": "affd965226d7f1f6287d9fbea8acc5b8f029f312f39d0af11cab0a0e15807984",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          6.06026029586792,
+          -8.427237510681152,
+          3.443608045578003
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          10.348368644714355,
+          8.637795448303223,
+          4.122505187988281
+        ],
+        "start_yaw": -1.5938216831423249,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3513031329,
+      "task_id": "f0a7eef53dc8aa3fe0b8f6b404d86049eb746a87dd05aa550c4c377c9ec7f88d",
+      "training_task_identity": "4da29b5125265002636c8c84cd2c5ac7a5ef2174791e0bce4029f3048fd0e783",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "obstacle_sha256": "affd965226d7f1f6287d9fbea8acc5b8f029f312f39d0af11cab0a0e15807984",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          11.210667610168457,
+          12.175582885742188,
+          3.2071635723114014
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -1.7516449689865112,
+          -4.364924907684326,
+          4.0712480545043945
+        ],
+        "start_yaw": 1.1745051507672901,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3514031332,
+      "task_id": "d4f9dfd1e7dd7b39cbcd0ab40cc822a7bb205894fe5300e3488737f83c04b181",
+      "training_task_identity": "4da29b5125265002636c8c84cd2c5ac7a5ef2174791e0bce4029f3048fd0e783",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "obstacle_sha256": "affd965226d7f1f6287d9fbea8acc5b8f029f312f39d0af11cab0a0e15807984",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          9.539019584655762,
+          -11.581928253173828,
+          3.402463674545288
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -11.147804260253906,
+          7.1809797286987305,
+          2.7452430725097656
+        ],
+        "start_yaw": -0.5890891294318208,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3515031335,
+      "task_id": "89dbc24acce68799d2eb78c59a5ccd784a209d4fd6f74b91cd08672605c0b678",
+      "training_task_identity": "4da29b5125265002636c8c84cd2c5ac7a5ef2174791e0bce4029f3048fd0e783",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "obstacle_sha256": "affd965226d7f1f6287d9fbea8acc5b8f029f312f39d0af11cab0a0e15807984",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          8.094917297363281,
+          -6.565465927124023,
+          3.4858264923095703
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -5.841302871704102,
+          -5.576026916503906,
+          2.851731538772583
+        ],
+        "start_yaw": 0.22055338339872943,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3516031338,
+      "task_id": "274af8c6445dfc622114c82e0e5e4ca2d1ededd0f6c272fd4e3c89385af517c4",
+      "training_task_identity": "4da29b5125265002636c8c84cd2c5ac7a5ef2174791e0bce4029f3048fd0e783",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "obstacle_sha256": "58bc978b31fb4d1cf15cb7e5d951acef992ff3fb33b4181e7b9cd650780d90e5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          10.710624694824219,
+          1.565747857093811,
+          2.1981613636016846
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          2.543149709701538,
+          13.589906692504883,
+          3.2094779014587402
+        ],
+        "start_yaw": -0.6918952149194251,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3781530712,
+      "task_id": "341fe3444819a85c67eec90348ae1481822d7ccaf7ad3a20a0d6baf0dcd71658",
+      "training_task_identity": "7b9da32ee5c280c1c0b482df95700b06d458e37ae7658472d00d9b661764ec27",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "obstacle_sha256": "58bc978b31fb4d1cf15cb7e5d951acef992ff3fb33b4181e7b9cd650780d90e5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          8.195403099060059,
+          -3.8569297790527344,
+          2.396817684173584
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -10.142937660217285,
+          6.520174503326416,
+          2.9775662422180176
+        ],
+        "start_yaw": -0.6324989339775469,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3782530715,
+      "task_id": "973f213966eac1128e4446198267231ae0ce95b4433dc9dfff8cdc077636b96f",
+      "training_task_identity": "7b9da32ee5c280c1c0b482df95700b06d458e37ae7658472d00d9b661764ec27",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "obstacle_sha256": "58bc978b31fb4d1cf15cb7e5d951acef992ff3fb33b4181e7b9cd650780d90e5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          10.994511604309082,
+          -2.191847801208496,
+          4.0146284103393555
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -12.385802268981934,
+          4.090171813964844,
+          3.7937638759613037
+        ],
+        "start_yaw": -0.06730406691394686,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3783530718,
+      "task_id": "13995ae21c43bdd61545a755e11adf39d83f2746306efcb4d6f67c42b6486063",
+      "training_task_identity": "7b9da32ee5c280c1c0b482df95700b06d458e37ae7658472d00d9b661764ec27",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "obstacle_sha256": "58bc978b31fb4d1cf15cb7e5d951acef992ff3fb33b4181e7b9cd650780d90e5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          7.654870510101318,
+          -12.669196128845215,
+          3.0969507694244385
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.2731926441192627,
+          -11.414629936218262,
+          3.995790958404541
+        ],
+        "start_yaw": -0.19850338510065857,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3784530721,
+      "task_id": "27f9ad5e8c117010c07855f3166a5ba3f18a6f96f83d91fa7ab4a4a8e696b388",
+      "training_task_identity": "7b9da32ee5c280c1c0b482df95700b06d458e37ae7658472d00d9b661764ec27",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "obstacle_sha256": "58bc978b31fb4d1cf15cb7e5d951acef992ff3fb33b4181e7b9cd650780d90e5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -2.2363216876983643,
+          -12.673493385314941,
+          1.9565790891647339
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -7.624505043029785,
+          -5.223368167877197,
+          3.005183219909668
+        ],
+        "start_yaw": -0.7113788674194685,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3785530724,
+      "task_id": "85524c75e8c90b6a4b8efe1f91278b123a301c9ebfb2dd01f6bef5df6ea81997",
+      "training_task_identity": "7b9da32ee5c280c1c0b482df95700b06d458e37ae7658472d00d9b661764ec27",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "obstacle_sha256": "58bc978b31fb4d1cf15cb7e5d951acef992ff3fb33b4181e7b9cd650780d90e5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -9.539445877075195,
+          13.4547700881958,
+          3.3314104080200195
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          0.002509218640625477,
+          -5.892455101013184,
+          3.527714729309082
+        ],
+        "start_yaw": 2.105435517800222,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3786530727,
+      "task_id": "b38a4f727167f76c1df0d68cb2d1d25146877e4e92c173763486a4580dcef6e6",
+      "training_task_identity": "7b9da32ee5c280c1c0b482df95700b06d458e37ae7658472d00d9b661764ec27",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "obstacle_sha256": "aff9a310c3803b8a6b382cc77e84551ce6b15767432e2a82ac32bf50213c41d7",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -7.650956630706787,
+          12.367342948913574,
+          3.029622793197632
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          2.3564653396606445,
+          -4.335559368133545,
+          3.0418453216552734
+        ],
+        "start_yaw": 1.894143312646019,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2623919601,
+      "task_id": "d00af0453a48d2ef88e0891f4af20abca8e066201bb258c853be0719a7dc5d40",
+      "training_task_identity": "ab8ce2c1e92428adfaa2f12aa0a4bf4c49da6da1531696bf11824546a30ab7a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "obstacle_sha256": "aff9a310c3803b8a6b382cc77e84551ce6b15767432e2a82ac32bf50213c41d7",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -9.77727222442627,
+          -4.135668754577637,
+          1.8441532850265503
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          12.420931816101074,
+          9.86904525756836,
+          1.9416835308074951
+        ],
+        "start_yaw": -2.471210241652335,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2624919604,
+      "task_id": "8abf1014d5b0c367ce058eed94fec08d1aa38276ee4b590741cc4f1d7ea8b686",
+      "training_task_identity": "ab8ce2c1e92428adfaa2f12aa0a4bf4c49da6da1531696bf11824546a30ab7a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "obstacle_sha256": "aff9a310c3803b8a6b382cc77e84551ce6b15767432e2a82ac32bf50213c41d7",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -6.5755791664123535,
+          -13.2151517868042,
+          1.9725453853607178
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -2.563323497772217,
+          13.653868675231934,
+          3.584216833114624
+        ],
+        "start_yaw": -1.8878774469078545,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2625919607,
+      "task_id": "dc80166e8f0067c1e7ffce01bb530d234abce46c4716405cb5a5517921051e4b",
+      "training_task_identity": "ab8ce2c1e92428adfaa2f12aa0a4bf4c49da6da1531696bf11824546a30ab7a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "obstacle_sha256": "aff9a310c3803b8a6b382cc77e84551ce6b15767432e2a82ac32bf50213c41d7",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          -2.1600847244262695,
+          -12.111201286315918,
+          3.6745100021362305
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -2.9027297496795654,
+          -8.60507869720459,
+          3.421091079711914
+        ],
+        "start_yaw": -1.292535060576336,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2626919610,
+      "task_id": "61b87bbaa786340af7557037b32474821a84146af25ff7276296fc8a35e6cf9e",
+      "training_task_identity": "ab8ce2c1e92428adfaa2f12aa0a4bf4c49da6da1531696bf11824546a30ab7a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "obstacle_sha256": "aff9a310c3803b8a6b382cc77e84551ce6b15767432e2a82ac32bf50213c41d7",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -5.494579792022705,
+          7.692600727081299,
+          3.1922738552093506
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          8.431310653686523,
+          -6.748117446899414,
+          2.4558870792388916
+        ],
+        "start_yaw": 2.4483298459783667,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2627919613,
+      "task_id": "e97aabe65c74768099bd7641099660cb251140ccb86bb7ae3f28965919eeca33",
+      "training_task_identity": "ab8ce2c1e92428adfaa2f12aa0a4bf4c49da6da1531696bf11824546a30ab7a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "obstacle_sha256": "aff9a310c3803b8a6b382cc77e84551ce6b15767432e2a82ac32bf50213c41d7",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          11.736719131469727,
+          -2.8911542892456055,
+          3.969683885574341
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          5.18966817855835,
+          -5.219236373901367,
+          2.7015435695648193
+        ],
+        "start_yaw": 0.10593117702863175,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2628919616,
+      "task_id": "0e869cb8fac79dc9b1cf0b7fa9ffaf8d5f2a3dab10eecf5f16175b0601169bd2",
+      "training_task_identity": "ab8ce2c1e92428adfaa2f12aa0a4bf4c49da6da1531696bf11824546a30ab7a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "obstacle_sha256": "a35455911680918caf278d1dda18615ad68f1e2eb79f8cc5593a8d205fb7bc48",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -12.584036827087402,
+          -6.994455814361572,
+          3.53346586227417
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.7660374641418457,
+          -5.371792316436768,
+          2.7248382568359375
+        ],
+        "start_yaw": -2.907612000478289,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4284429851,
+      "task_id": "49f7eb58601017c0df99a759857228485f5567476a9b962952e5e498b06c7ca2",
+      "training_task_identity": "1f7a4bd59b5379dac801428197013a5f685a1f52f2d365e90e47dc0b4fc0a76f",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "obstacle_sha256": "a35455911680918caf278d1dda18615ad68f1e2eb79f8cc5593a8d205fb7bc48",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -5.83987283706665,
+          10.983122825622559,
+          1.6351046562194824
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          6.892430782318115,
+          8.37385082244873,
+          1.9067485332489014
+        ],
+        "start_yaw": 3.105721197563362,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4285429854,
+      "task_id": "ce4377c44ae35b481a4a417f22a75e4fca86dfd23b6246fe0bc29687abd204a9",
+      "training_task_identity": "1f7a4bd59b5379dac801428197013a5f685a1f52f2d365e90e47dc0b4fc0a76f",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "obstacle_sha256": "a35455911680918caf278d1dda18615ad68f1e2eb79f8cc5593a8d205fb7bc48",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -8.317737579345703,
+          9.809514999389648,
+          4.255972862243652
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          1.6794642210006714,
+          -3.635732650756836,
+          4.216663360595703
+        ],
+        "start_yaw": 1.9587198179151004,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4286429857,
+      "task_id": "3a12ffba66efc20c58980e91cfcf59f6f85e2186b79cc8ff72cb59481ecd1c1d",
+      "training_task_identity": "1f7a4bd59b5379dac801428197013a5f685a1f52f2d365e90e47dc0b4fc0a76f",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "obstacle_sha256": "a35455911680918caf278d1dda18615ad68f1e2eb79f8cc5593a8d205fb7bc48",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          4.494081974029541,
+          10.609366416931152,
+          4.02423095703125
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -5.713372707366943,
+          -8.678764343261719,
+          2.2651829719543457
+        ],
+        "start_yaw": 1.285700420438669,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4287429860,
+      "task_id": "40f64615e85467c5b4468ffd7c4af5ffb217f1a9e2d4ce2e3da2d85a0b528a9d",
+      "training_task_identity": "1f7a4bd59b5379dac801428197013a5f685a1f52f2d365e90e47dc0b4fc0a76f",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "obstacle_sha256": "a35455911680918caf278d1dda18615ad68f1e2eb79f8cc5593a8d205fb7bc48",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          6.90073823928833,
+          -12.695172309875488,
+          1.8013553619384766
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          12.79128646850586,
+          5.863956451416016,
+          3.0821828842163086
+        ],
+        "start_yaw": -1.9919040430516954,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4288429863,
+      "task_id": "7890391fd0f17751ca81c8f7f5029482b3185d75d112d556bb150c374033a95c",
+      "training_task_identity": "1f7a4bd59b5379dac801428197013a5f685a1f52f2d365e90e47dc0b4fc0a76f",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "obstacle_sha256": "a35455911680918caf278d1dda18615ad68f1e2eb79f8cc5593a8d205fb7bc48",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -11.248960494995117,
+          2.901869058609009,
+          3.7705180644989014
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -5.424757480621338,
+          -7.0777692794799805,
+          2.9597465991973877
+        ],
+        "start_yaw": 2.0616181832320297,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4289429866,
+      "task_id": "cc85b765807076ac4abdc6d28d654a78be5d10e7d051c26ed9c94129a4ca9802",
+      "training_task_identity": "1f7a4bd59b5379dac801428197013a5f685a1f52f2d365e90e47dc0b4fc0a76f",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "obstacle_sha256": "a7a1655902cecaf984e80764a45c5cbb082cadcfd6a6e1e56990b7e950e2c6c6",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -5.934234142303467,
+          -10.357404708862305,
+          2.314443588256836
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          8.099839210510254,
+          -7.299558162689209,
+          1.7812445163726807
+        ],
+        "start_yaw": -2.98130197108752,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1423127231,
+      "task_id": "57b5bbf8383fae4a16c5a948c964a7c266f7646f8d716908da9d1586cff2af4a",
+      "training_task_identity": "7a1214a527c886b701277f14160858ad5e40b7fec16532a0d807196312a9e46c",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "obstacle_sha256": "a7a1655902cecaf984e80764a45c5cbb082cadcfd6a6e1e56990b7e950e2c6c6",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          11.508228302001953,
+          -5.692461967468262,
+          3.814013957977295
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          12.11744213104248,
+          -11.165870666503906,
+          1.631837010383606
+        ],
+        "start_yaw": 1.551434388549679,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1424127234,
+      "task_id": "8fc164b677dc77971f4de851425388cbac5d100b51094f0d3f176e1c85a577f4",
+      "training_task_identity": "7a1214a527c886b701277f14160858ad5e40b7fec16532a0d807196312a9e46c",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "obstacle_sha256": "a7a1655902cecaf984e80764a45c5cbb082cadcfd6a6e1e56990b7e950e2c6c6",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -13.443257331848145,
+          -7.335143089294434,
+          2.396878719329834
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -7.448522090911865,
+          -11.669963836669922,
+          3.7275803089141846
+        ],
+        "start_yaw": 2.5403582201186863,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1425127237,
+      "task_id": "2ca031d92a5160c3d93787403fe75901b18ba3ca11d0946044a0d810877c35d9",
+      "training_task_identity": "7a1214a527c886b701277f14160858ad5e40b7fec16532a0d807196312a9e46c",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "obstacle_sha256": "a7a1655902cecaf984e80764a45c5cbb082cadcfd6a6e1e56990b7e950e2c6c6",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          3.3824939727783203,
+          13.606106758117676,
+          2.5856850147247314
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          5.504537105560303,
+          -10.925650596618652,
+          3.994898796081543
+        ],
+        "start_yaw": 1.7132262914933305,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1426127240,
+      "task_id": "9d24420a8aa8948ab8ebff2507a268fb5c1973b1baee63f296c960abf856db6d",
+      "training_task_identity": "7a1214a527c886b701277f14160858ad5e40b7fec16532a0d807196312a9e46c",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "obstacle_sha256": "a7a1655902cecaf984e80764a45c5cbb082cadcfd6a6e1e56990b7e950e2c6c6",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -5.376298427581787,
+          -2.148771047592163,
+          4.095791339874268
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.2734782695770264,
+          -1.908707857131958,
+          2.575997829437256
+        ],
+        "start_yaw": -2.7937243125356757,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1427127243,
+      "task_id": "70c0e79e4e7a70eeb4d24f8a9e3512e870d30891eed130b6b6e70380a0446c01",
+      "training_task_identity": "7a1214a527c886b701277f14160858ad5e40b7fec16532a0d807196312a9e46c",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "obstacle_sha256": "a7a1655902cecaf984e80764a45c5cbb082cadcfd6a6e1e56990b7e950e2c6c6",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          8.332365036010742,
+          9.376522064208984,
+          1.720788836479187
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.2136213779449463,
+          -12.801064491271973,
+          1.5606634616851807
+        ],
+        "start_yaw": 1.2129983257117827,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1428127246,
+      "task_id": "f63d443b6efc51b2956bb0d0dd99602973842d67db17203e8c860956f2895991",
+      "training_task_identity": "7a1214a527c886b701277f14160858ad5e40b7fec16532a0d807196312a9e46c",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "obstacle_sha256": "cf3683d42fe7a3e7196aae4da13d6652ff8d038cc090abb2a4deb3fa8a3f6229",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -10.129058837890625,
+          1.8729379177093506,
+          4.151197910308838
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -9.797856330871582,
+          2.081468105316162,
+          2.07879900932312
+        ],
+        "start_yaw": -2.7994827245417344,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3606154355,
+      "task_id": "7540bffed8998f95e168b07fc38e367e693b10df4ee22e717220130b5846fcde",
+      "training_task_identity": "565ed8dd4608e17d55a4d8756a25f234b0f5bf93e50e344b4a700c3f91d56681",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "obstacle_sha256": "cf3683d42fe7a3e7196aae4da13d6652ff8d038cc090abb2a4deb3fa8a3f6229",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          5.397732734680176,
+          2.609288454055786,
+          3.4456489086151123
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          11.874479293823242,
+          6.899286270141602,
+          2.983150005340576
+        ],
+        "start_yaw": -2.368634791660635,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3607154358,
+      "task_id": "6311edd1c3a05efd3e2f8aeabd1918f02671a1178e63da38000bb388b5e5545a",
+      "training_task_identity": "565ed8dd4608e17d55a4d8756a25f234b0f5bf93e50e344b4a700c3f91d56681",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "obstacle_sha256": "cf3683d42fe7a3e7196aae4da13d6652ff8d038cc090abb2a4deb3fa8a3f6229",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -7.1841206550598145,
+          6.2182416915893555,
+          3.2091331481933594
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -13.495014190673828,
+          -12.038012504577637,
+          3.343367099761963
+        ],
+        "start_yaw": 1.3656538736350194,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3608154361,
+      "task_id": "c5d04ec3f8eb7393ff6eb35f1c964ea6df2ff95e1d02621ec3cff6cfb92ae9cf",
+      "training_task_identity": "565ed8dd4608e17d55a4d8756a25f234b0f5bf93e50e344b4a700c3f91d56681",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "obstacle_sha256": "cf3683d42fe7a3e7196aae4da13d6652ff8d038cc090abb2a4deb3fa8a3f6229",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          9.486553192138672,
+          -8.742741584777832,
+          1.6334173679351807
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -10.648651123046875,
+          2.8836538791656494,
+          2.513467788696289
+        ],
+        "start_yaw": -0.45619542340317754,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3609154364,
+      "task_id": "062376a7d3c2b78ee42914631e3d4241f07288862b011b7403f814e5bd240360",
+      "training_task_identity": "565ed8dd4608e17d55a4d8756a25f234b0f5bf93e50e344b4a700c3f91d56681",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "obstacle_sha256": "cf3683d42fe7a3e7196aae4da13d6652ff8d038cc090abb2a4deb3fa8a3f6229",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          13.27768325805664,
+          -3.702817678451538,
+          3.5676302909851074
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -6.1251044273376465,
+          -4.919611930847168,
+          1.805611491203308
+        ],
+        "start_yaw": 0.07357549003029629,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3610154367,
+      "task_id": "bd48ca75b37709c6751e8d70a2acb24d6f457c217c4f9d6ff2180eb2e5440b6d",
+      "training_task_identity": "565ed8dd4608e17d55a4d8756a25f234b0f5bf93e50e344b4a700c3f91d56681",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "obstacle_sha256": "cf3683d42fe7a3e7196aae4da13d6652ff8d038cc090abb2a4deb3fa8a3f6229",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -7.303915977478027,
+          10.758520126342773,
+          3.7706565856933594
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -5.134598255157471,
+          -10.677774429321289,
+          3.6637825965881348
+        ],
+        "start_yaw": 1.484826335369421,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3611154370,
+      "task_id": "cd076f78d703bf5da0c26b5a494b46ef91705a0cbd3cbb53233bf8a920e64e28",
+      "training_task_identity": "565ed8dd4608e17d55a4d8756a25f234b0f5bf93e50e344b4a700c3f91d56681",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "obstacle_sha256": "9601a901d4c54120683a5cc8fa6cb7d33011cae9777bceee5e9ccf75d853f4f8",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -4.99385404586792,
+          -6.266715049743652,
+          3.0598549842834473
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          11.415517807006836,
+          -6.82332181930542,
+          3.8615407943725586
+        ],
+        "start_yaw": -3.0605216082847235,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4045281984,
+      "task_id": "9a7bba17147b4ab9bbccb5c793d90c0f9c56cb6fa15cb67d35e92d3b5a148dbd",
+      "training_task_identity": "ff5e8ab4c9b46da47db763e67d6cace7f990aa345faa209d92e95a5ed22c02a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "obstacle_sha256": "9601a901d4c54120683a5cc8fa6cb7d33011cae9777bceee5e9ccf75d853f4f8",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -12.463741302490234,
+          -13.644744873046875,
+          2.9548254013061523
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -9.01382827758789,
+          -9.48714542388916,
+          2.0975100994110107
+        ],
+        "start_yaw": -2.0248946350911035,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4046281987,
+      "task_id": "6affb147e7574beeb018e210d14f12f9d7ec46c6a3160bacb98c6be889b09b85",
+      "training_task_identity": "ff5e8ab4c9b46da47db763e67d6cace7f990aa345faa209d92e95a5ed22c02a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "obstacle_sha256": "9601a901d4c54120683a5cc8fa6cb7d33011cae9777bceee5e9ccf75d853f4f8",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          6.926486492156982,
+          -7.572608470916748,
+          2.4335713386535645
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          13.7745361328125,
+          13.502476692199707,
+          3.414421319961548
+        ],
+        "start_yaw": -2.0129558385349364,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4047281990,
+      "task_id": "c586ca113215ce08ff3cd4253a92436297031865faa5f2832a5436967d715b79",
+      "training_task_identity": "ff5e8ab4c9b46da47db763e67d6cace7f990aa345faa209d92e95a5ed22c02a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "obstacle_sha256": "9601a901d4c54120683a5cc8fa6cb7d33011cae9777bceee5e9ccf75d853f4f8",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          3.4680941104888916,
+          -13.347134590148926,
+          1.769625186920166
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -11.069936752319336,
+          -7.207437515258789,
+          2.7403035163879395
+        ],
+        "start_yaw": -0.17385773632679014,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4048281993,
+      "task_id": "4853c74d71002c3d2161925ec0ea352fa759722bf6a265d8db39eff099978806",
+      "training_task_identity": "ff5e8ab4c9b46da47db763e67d6cace7f990aa345faa209d92e95a5ed22c02a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "obstacle_sha256": "9601a901d4c54120683a5cc8fa6cb7d33011cae9777bceee5e9ccf75d853f4f8",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -6.166591167449951,
+          9.782504081726074,
+          3.3459086418151855
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -9.18937873840332,
+          1.343219518661499,
+          3.8579413890838623
+        ],
+        "start_yaw": 1.1005662106336551,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4049281996,
+      "task_id": "e56804012127df4fcd337b8dbb35b50b5cfa529a7bf6a0fc72409265ec5779ef",
+      "training_task_identity": "ff5e8ab4c9b46da47db763e67d6cace7f990aa345faa209d92e95a5ed22c02a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "obstacle_sha256": "9601a901d4c54120683a5cc8fa6cb7d33011cae9777bceee5e9ccf75d853f4f8",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -4.261606693267822,
+          5.386519432067871,
+          4.224443435668945
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -5.484716415405273,
+          -3.756868362426758,
+          2.058243989944458
+        ],
+        "start_yaw": 1.5763264179138403,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4050281999,
+      "task_id": "0c7c9c713dc68b4e23c5a9513a7c3292286db8c604f02dc0ec7593ee02ff00dc",
+      "training_task_identity": "ff5e8ab4c9b46da47db763e67d6cace7f990aa345faa209d92e95a5ed22c02a5",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "obstacle_sha256": "0f649fbdd2c9727e9a5f5eebe8ec2572890cf1483e767cc8c63ae5d8037a4775",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -11.908865928649902,
+          -2.5134425163269043,
+          1.5022386312484741
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -6.3438801765441895,
+          -6.403992652893066,
+          2.8029251098632812
+        ],
+        "start_yaw": 2.3070829543249056,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2601551142,
+      "task_id": "a23039b8cf569621788dab3b4d374feeffd04d1a0d902c0a29437151e42cc7f4",
+      "training_task_identity": "a9a20670aad419e37c6f43638d08c6592f19d51823401811cbb2a4ed51a7ab25",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "obstacle_sha256": "0f649fbdd2c9727e9a5f5eebe8ec2572890cf1483e767cc8c63ae5d8037a4775",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -3.775831699371338,
+          -6.9803786277771,
+          2.7347519397735596
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          8.435111045837402,
+          -13.494757652282715,
+          3.4416513442993164
+        ],
+        "start_yaw": 2.399304869836648,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2602551145,
+      "task_id": "71f6cc3ceaf6b9988725aa1d5e0d91e5818918cb3176871b45158de3ed56c367",
+      "training_task_identity": "a9a20670aad419e37c6f43638d08c6592f19d51823401811cbb2a4ed51a7ab25",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "obstacle_sha256": "0f649fbdd2c9727e9a5f5eebe8ec2572890cf1483e767cc8c63ae5d8037a4775",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          0.9335632920265198,
+          11.387770652770996,
+          3.4561734199523926
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          12.910635948181152,
+          -4.106293201446533,
+          1.9714133739471436
+        ],
+        "start_yaw": 1.9712597757542065,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2603551148,
+      "task_id": "fc0294be0a2bbe5012c705c17a40d57c3e0ff87a412cdde0fc2237ffbeae34f0",
+      "training_task_identity": "a9a20670aad419e37c6f43638d08c6592f19d51823401811cbb2a4ed51a7ab25",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "obstacle_sha256": "0f649fbdd2c9727e9a5f5eebe8ec2572890cf1483e767cc8c63ae5d8037a4775",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          2.7582147121429443,
+          -7.467990875244141,
+          2.89312744140625
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          5.270735263824463,
+          4.748681545257568,
+          3.993467092514038
+        ],
+        "start_yaw": -1.724708371866626,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2604551151,
+      "task_id": "774d665a0dd7c1ab26e252ea9b4c256c7cf141d12bf100b27fc7b2aff57087b6",
+      "training_task_identity": "a9a20670aad419e37c6f43638d08c6592f19d51823401811cbb2a4ed51a7ab25",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "obstacle_sha256": "0f649fbdd2c9727e9a5f5eebe8ec2572890cf1483e767cc8c63ae5d8037a4775",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -2.164470672607422,
+          6.569467544555664,
+          2.2189178466796875
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          1.7859725952148438,
+          -5.201277732849121,
+          2.1261088848114014
+        ],
+        "start_yaw": 1.94603939219608,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2605551154,
+      "task_id": "587668919faabf541351b36001d34cb498fe744c6611820fb6135c800d387105",
+      "training_task_identity": "a9a20670aad419e37c6f43638d08c6592f19d51823401811cbb2a4ed51a7ab25",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "obstacle_sha256": "0f649fbdd2c9727e9a5f5eebe8ec2572890cf1483e767cc8c63ae5d8037a4775",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -6.361319065093994,
+          13.527381896972656,
+          2.6218209266662598
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          9.176217079162598,
+          4.021394729614258,
+          1.812312126159668
+        ],
+        "start_yaw": 2.871259008637919,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2606551157,
+      "task_id": "2ef1db13eddea50e9d8131deb37dfdaf6cf1330868ca98b60fa07f6234c66ed6",
+      "training_task_identity": "a9a20670aad419e37c6f43638d08c6592f19d51823401811cbb2a4ed51a7ab25",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "obstacle_sha256": "a99f57e7cbc91986a848d613bc5f8d6e0482786a7d0fa73c40c402e43841a814",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          7.023246765136719,
+          -10.576451301574707,
+          4.2421674728393555
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -4.939162731170654,
+          -7.367056846618652,
+          3.6328022480010986
+        ],
+        "start_yaw": -0.11059866692407683,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4269325307,
+      "task_id": "27f013b558984c00d818f268c1615e7d836acd07d65af33f8fc05133b00def83",
+      "training_task_identity": "1180a57bd9558ca28959aa4d8ce5554bd13a26868e49d2f71e42bff94054b0dc",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "obstacle_sha256": "a99f57e7cbc91986a848d613bc5f8d6e0482786a7d0fa73c40c402e43841a814",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -2.42042875289917,
+          7.986828327178955,
+          3.2162821292877197
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          8.5635986328125,
+          1.5032191276550293,
+          1.554575800895691
+        ],
+        "start_yaw": 2.4667011887317782,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4270325310,
+      "task_id": "a9f929a67831379b548f6e1f2fa3ced8b73ec53c9af098d5e5c2f888a2e8a8db",
+      "training_task_identity": "1180a57bd9558ca28959aa4d8ce5554bd13a26868e49d2f71e42bff94054b0dc",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "obstacle_sha256": "a99f57e7cbc91986a848d613bc5f8d6e0482786a7d0fa73c40c402e43841a814",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          4.553531646728516,
+          -6.3793044090271,
+          4.488944053649902
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          0.3947839140892029,
+          10.466361045837402,
+          4.223588943481445
+        ],
+        "start_yaw": -1.0291225421462533,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4271325313,
+      "task_id": "8513a3426738af4706b4e68b3b5a1f7507599e6289f4181a94e85c848105b06a",
+      "training_task_identity": "1180a57bd9558ca28959aa4d8ce5554bd13a26868e49d2f71e42bff94054b0dc",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "obstacle_sha256": "a99f57e7cbc91986a848d613bc5f8d6e0482786a7d0fa73c40c402e43841a814",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          -3.6993191242218018,
+          -5.500903129577637,
+          1.8694939613342285
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -8.883508682250977,
+          -4.721733093261719,
+          2.5484142303466797
+        ],
+        "start_yaw": -0.1184605800043248,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4272325316,
+      "task_id": "14a50bcee6da8ac1cfe35ca15add11abe12ab5995bd81d74dba1d6316acf52a5",
+      "training_task_identity": "1180a57bd9558ca28959aa4d8ce5554bd13a26868e49d2f71e42bff94054b0dc",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "obstacle_sha256": "a99f57e7cbc91986a848d613bc5f8d6e0482786a7d0fa73c40c402e43841a814",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          8.724660873413086,
+          11.568249702453613,
+          1.8965177536010742
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.4257237911224365,
+          -1.3003829717636108,
+          3.939396619796753
+        ],
+        "start_yaw": 0.9250719838778512,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4273325319,
+      "task_id": "7d90e64624a129dd1680fb98ca16463a4b25c865c4956204b88fb658db6511f4",
+      "training_task_identity": "1180a57bd9558ca28959aa4d8ce5554bd13a26868e49d2f71e42bff94054b0dc",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "obstacle_sha256": "a99f57e7cbc91986a848d613bc5f8d6e0482786a7d0fa73c40c402e43841a814",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          8.583464622497559,
+          -8.466008186340332,
+          2.1808743476867676
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -2.9134669303894043,
+          -0.8685827255249023,
+          2.677408218383789
+        ],
+        "start_yaw": -0.6943543408259223,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 4274325322,
+      "task_id": "e41bedecf89c4808da66fbe4c2f14d536edc64527b4f0eccccd20dca0e0d4334",
+      "training_task_identity": "1180a57bd9558ca28959aa4d8ce5554bd13a26868e49d2f71e42bff94054b0dc",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "obstacle_sha256": "d9d292d0fa86199e999f0bd7052ef2df11af8db657e8c2ede3a396b8f64a1e06",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          3.8846435546875,
+          -6.276498794555664,
+          1.926727056503296
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          11.216052055358887,
+          1.4707139730453491,
+          4.016078948974609
+        ],
+        "start_yaw": -2.1478956443357435,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2586861168,
+      "task_id": "8810ab72cb0be6f281ca5a714faa921209bbd90f2d21ed42751c187dbb153983",
+      "training_task_identity": "5da8ddef2af9cceb2ce2971d6b8d5558b3872bf930807c4f2f1451b6de57b0f1",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "obstacle_sha256": "d9d292d0fa86199e999f0bd7052ef2df11af8db657e8c2ede3a396b8f64a1e06",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          9.907620429992676,
+          2.748445510864258,
+          3.4832162857055664
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          11.623943328857422,
+          -3.488494396209717,
+          4.1049981117248535
+        ],
+        "start_yaw": 1.5701977818800579,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2587861171,
+      "task_id": "48443f85209e206508910e6cb7a05f388d66d6afc861b53e91bbc04a1d02f290",
+      "training_task_identity": "5da8ddef2af9cceb2ce2971d6b8d5558b3872bf930807c4f2f1451b6de57b0f1",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "obstacle_sha256": "d9d292d0fa86199e999f0bd7052ef2df11af8db657e8c2ede3a396b8f64a1e06",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          4.229040622711182,
+          -8.029644012451172,
+          4.032725811004639
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          12.274809837341309,
+          -7.91847562789917,
+          4.339022159576416
+        ],
+        "start_yaw": -2.9220963425609923,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2588861174,
+      "task_id": "df57109db838ffafd04ad8ab514a94763d142eda7d0b953a482f6e5ff645fb24",
+      "training_task_identity": "5da8ddef2af9cceb2ce2971d6b8d5558b3872bf930807c4f2f1451b6de57b0f1",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "obstacle_sha256": "d9d292d0fa86199e999f0bd7052ef2df11af8db657e8c2ede3a396b8f64a1e06",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          -10.713909149169922,
+          -13.561768531799316,
+          3.1234800815582275
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          11.706816673278809,
+          -7.600884437561035,
+          1.734511137008667
+        ],
+        "start_yaw": -3.122463320830094,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2589861177,
+      "task_id": "9b2fecb7c9e57baf09ee66755b3a02f59b951ff625e6928f9fbb6291787fde56",
+      "training_task_identity": "5da8ddef2af9cceb2ce2971d6b8d5558b3872bf930807c4f2f1451b6de57b0f1",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "obstacle_sha256": "d9d292d0fa86199e999f0bd7052ef2df11af8db657e8c2ede3a396b8f64a1e06",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          13.989030838012695,
+          -0.9912592768669128,
+          3.325406551361084
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          4.6378865242004395,
+          -4.240261077880859,
+          2.188208818435669
+        ],
+        "start_yaw": 0.25270824014836757,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2590861180,
+      "task_id": "fa1a5f58ae4337d04c6bd91b97fb07730252f6aa81979bd1c36b4437b122b0b9",
+      "training_task_identity": "5da8ddef2af9cceb2ce2971d6b8d5558b3872bf930807c4f2f1451b6de57b0f1",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "obstacle_sha256": "d9d292d0fa86199e999f0bd7052ef2df11af8db657e8c2ede3a396b8f64a1e06",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -3.2605109214782715,
+          13.585296630859375,
+          3.137547492980957
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -0.7865806221961975,
+          -5.116220951080322,
+          3.082550287246704
+        ],
+        "start_yaw": 1.5844428342979624,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 2591861183,
+      "task_id": "85a8960a4429fade567c49ad04b6fa75eff7df9c515d0cc4393a9a6eb130c846",
+      "training_task_identity": "5da8ddef2af9cceb2ce2971d6b8d5558b3872bf930807c4f2f1451b6de57b0f1",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "obstacle_sha256": "5aba6e62a3cca77401d566539f6843f24f9b8193d53b57517a14d8304dfc292e",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -10.272052764892578,
+          1.417508602142334,
+          1.5803641080856323
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          0.9198859333992004,
+          -5.369816780090332,
+          2.2561163902282715
+        ],
+        "start_yaw": 2.642572110071482,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1137707154,
+      "task_id": "994782d8d5d0e12a828fdd1415b02cfddd764ba4e7c407e92b04372243c8a61b",
+      "training_task_identity": "2a1b77ee7d86d7bdc40bdcf41992010507554f529098b422ffc350143264909b",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "obstacle_sha256": "5aba6e62a3cca77401d566539f6843f24f9b8193d53b57517a14d8304dfc292e",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          10.451492309570312,
+          -13.81238842010498,
+          3.4854447841644287
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -9.474863052368164,
+          3.738823890686035,
+          2.586914539337158
+        ],
+        "start_yaw": -0.8026075892879847,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1138707157,
+      "task_id": "899a8c3d7fdb37650e5558145769fe87b02111dcaf9f89c5dd7fb873e9587039",
+      "training_task_identity": "2a1b77ee7d86d7bdc40bdcf41992010507554f529098b422ffc350143264909b",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "obstacle_sha256": "5aba6e62a3cca77401d566539f6843f24f9b8193d53b57517a14d8304dfc292e",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          12.008047103881836,
+          -5.2203569412231445,
+          1.5544816255569458
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -6.654486179351807,
+          -4.055291652679443,
+          3.146329164505005
+        ],
+        "start_yaw": -0.2630856634972667,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1139707160,
+      "task_id": "837f0ba8d01425e4a9023b054161149c1dcd4de126c086a7a34ae819352c7241",
+      "training_task_identity": "2a1b77ee7d86d7bdc40bdcf41992010507554f529098b422ffc350143264909b",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "obstacle_sha256": "5aba6e62a3cca77401d566539f6843f24f9b8193d53b57517a14d8304dfc292e",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          -11.77519702911377,
+          8.031006813049316,
+          4.31904935836792
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -12.874388694763184,
+          8.242510795593262,
+          3.174931049346924
+        ],
+        "start_yaw": -0.057953927652877546,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1140707163,
+      "task_id": "11c4f6ec8c1fe2423feb688632452e82ffd19516608e29404fd94439b501311d",
+      "training_task_identity": "2a1b77ee7d86d7bdc40bdcf41992010507554f529098b422ffc350143264909b",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "obstacle_sha256": "5aba6e62a3cca77401d566539f6843f24f9b8193d53b57517a14d8304dfc292e",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          7.839481353759766,
+          9.383809089660645,
+          4.463043689727783
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -10.794938087463379,
+          7.6412248611450195,
+          2.841695785522461
+        ],
+        "start_yaw": 0.30080009630800886,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1141707166,
+      "task_id": "a75f9b81109dcd798acf3b959fae8c98eb9529ce5b6356d7323828ac307bc0e1",
+      "training_task_identity": "2a1b77ee7d86d7bdc40bdcf41992010507554f529098b422ffc350143264909b",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "obstacle_sha256": "5aba6e62a3cca77401d566539f6843f24f9b8193d53b57517a14d8304dfc292e",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          8.930876731872559,
+          -9.66218090057373,
+          4.414106369018555
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -8.124091148376465,
+          3.629997491836548,
+          1.3224961757659912
+        ],
+        "start_yaw": -0.44201215775995006,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1142707169,
+      "task_id": "940a0f0dbc23605b83d53ec06315aa25e2a61b00270336c5725dcf3405cfdfa0",
+      "training_task_identity": "2a1b77ee7d86d7bdc40bdcf41992010507554f529098b422ffc350143264909b",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "obstacle_sha256": "e1d3050ae4a5117a5939f895addc2936d02b7f990bf9b5b7c05792c9eec8bd8a",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -13.62436294555664,
+          2.281747817993164,
+          3.250210762023926
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -9.474616050720215,
+          11.458783149719238,
+          3.074293851852417
+        ],
+        "start_yaw": -1.9047712740086304,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1345028307,
+      "task_id": "4c823080819df6a6e8191a4e3d9f0235c952812718365dc1cdcf4ce397bd8fc3",
+      "training_task_identity": "237cd585498989f27dba81797559bb8d802e97df80d9753607ad8f33114af3d3",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "obstacle_sha256": "e1d3050ae4a5117a5939f895addc2936d02b7f990bf9b5b7c05792c9eec8bd8a",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -4.900830268859863,
+          10.691681861877441,
+          2.293537139892578
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          8.61661148071289,
+          -10.778738975524902,
+          2.5897862911224365
+        ],
+        "start_yaw": 2.3410779228916523,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1346028310,
+      "task_id": "b0e69593bedad9cad7f237b7ae1df17cce7d53f95fc1e75d120a1519c0549d9f",
+      "training_task_identity": "237cd585498989f27dba81797559bb8d802e97df80d9753607ad8f33114af3d3",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "obstacle_sha256": "e1d3050ae4a5117a5939f895addc2936d02b7f990bf9b5b7c05792c9eec8bd8a",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          4.662332057952881,
+          -12.115670204162598,
+          2.1641623973846436
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -12.92498779296875,
+          6.138225078582764,
+          1.8465756177902222
+        ],
+        "start_yaw": -0.8511609880630076,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1347028313,
+      "task_id": "cd41cb900096ac7fddcc55f6544f55285fddb699812756dd0a11fa643e575d19",
+      "training_task_identity": "237cd585498989f27dba81797559bb8d802e97df80d9753607ad8f33114af3d3",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "obstacle_sha256": "e1d3050ae4a5117a5939f895addc2936d02b7f990bf9b5b7c05792c9eec8bd8a",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          -11.344614028930664,
+          -4.27625846862793,
+          2.642247438430786
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -7.872263431549072,
+          -6.8500494956970215,
+          2.7809317111968994
+        ],
+        "start_yaw": 2.7098235223390006,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1348028316,
+      "task_id": "ddaa6519d7ed3c9682291da437db7c1a3930cfddfbe81188a80a97664b782f78",
+      "training_task_identity": "237cd585498989f27dba81797559bb8d802e97df80d9753607ad8f33114af3d3",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "obstacle_sha256": "e1d3050ae4a5117a5939f895addc2936d02b7f990bf9b5b7c05792c9eec8bd8a",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          10.017993927001953,
+          3.6925172805786133,
+          1.840327501296997
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -3.622185468673706,
+          5.1554155349731445,
+          4.560053825378418
+        ],
+        "start_yaw": 0.033763725297311975,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1349028319,
+      "task_id": "5c915921767ef2cc8e0b5c50e0e4e265ac241ca2c1f07ef2192c6fd6cd936de6",
+      "training_task_identity": "237cd585498989f27dba81797559bb8d802e97df80d9753607ad8f33114af3d3",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "obstacle_sha256": "e1d3050ae4a5117a5939f895addc2936d02b7f990bf9b5b7c05792c9eec8bd8a",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          13.90164566040039,
+          -1.289150595664978,
+          3.23323917388916
+        ],
+        "role": "dense_recovery",
+        "start_pos": [
+          -1.2439810037612915,
+          7.961643218994141,
+          1.5138591527938843
+        ],
+        "start_yaw": -0.649129769175901,
+        "world_name": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1350028322,
+      "task_id": "99a6295fbfd4781c6b5c8896d200ef187b7b4aa0470836e094cdecc743a95816",
+      "training_task_identity": "237cd585498989f27dba81797559bb8d802e97df80d9753607ad8f33114af3d3",
+      "world_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "obstacle_sha256": "1c8f4bff0d8a9a2897c8b9abad9e5d0544dbf38f72b0abe797976fae5e2d1203",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -5.081339359283447,
+          -13.458250045776367,
+          1.6082141399383545
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          -2.2419869899749756,
+          13.549317359924316,
+          1.8362376689910889
+        ],
+        "start_yaw": -1.3812684873268348,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 584932288,
+      "task_id": "6d77f2be5739b2e9e39dc16b7ca96326340e2cf3240f464227cf82fe1535896e",
+      "training_task_identity": "610d012423e471b94ac212f579ec64b4034c419c880be7737b1a66feae07673d",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "obstacle_sha256": "1c8f4bff0d8a9a2897c8b9abad9e5d0544dbf38f72b0abe797976fae5e2d1203",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -2.385762929916382,
+          1.838802456855774,
+          4.163799285888672
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          -2.4928104877471924,
+          1.2610524892807007,
+          2.088529348373413
+        ],
+        "start_yaw": 1.568883776132501,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 585932291,
+      "task_id": "81d292bf9b621d90bd8953bbfaf6f2827c52768313ddb12bb944464365e24fd8",
+      "training_task_identity": "610d012423e471b94ac212f579ec64b4034c419c880be7737b1a66feae07673d",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "obstacle_sha256": "1c8f4bff0d8a9a2897c8b9abad9e5d0544dbf38f72b0abe797976fae5e2d1203",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          4.599139213562012,
+          12.785528182983398,
+          1.7114629745483398
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          -0.6336544752120972,
+          -9.152024269104004,
+          2.7539546489715576
+        ],
+        "start_yaw": 1.5932551888468804,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 586932294,
+      "task_id": "5f853bf80fdf95fc25f229acbdbce55ffcf3a413a460734370e5ae13661906ea",
+      "training_task_identity": "610d012423e471b94ac212f579ec64b4034c419c880be7737b1a66feae07673d",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "obstacle_sha256": "1c8f4bff0d8a9a2897c8b9abad9e5d0544dbf38f72b0abe797976fae5e2d1203",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          0.1785575896501541,
+          -10.209114074707031,
+          3.2046151161193848
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          -1.7073839902877808,
+          2.4086852073669434,
+          1.831325888633728
+        ],
+        "start_yaw": -1.4465104311236725,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 587932297,
+      "task_id": "8adace0e6443dafc2bc54a8bf93e52a330e449afd26b6f0d8e4c34901db5e450",
+      "training_task_identity": "610d012423e471b94ac212f579ec64b4034c419c880be7737b1a66feae07673d",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "obstacle_sha256": "1c8f4bff0d8a9a2897c8b9abad9e5d0544dbf38f72b0abe797976fae5e2d1203",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          -7.921549320220947,
+          12.996848106384277,
+          3.9470856189727783
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          3.7516605854034424,
+          -8.007868766784668,
+          1.983195424079895
+        ],
+        "start_yaw": 2.0508877337784934,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 588932300,
+      "task_id": "3d3b57c723b7ad549ee1d376b1356e57cdf91ec31d219ad305da6b670368cce6",
+      "training_task_identity": "610d012423e471b94ac212f579ec64b4034c419c880be7737b1a66feae07673d",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "obstacle_sha256": "1c8f4bff0d8a9a2897c8b9abad9e5d0544dbf38f72b0abe797976fae5e2d1203",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          12.223470687866211,
+          -10.069950103759766,
+          3.7848892211914062
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          12.177067756652832,
+          -0.9288666844367981,
+          3.221096992492676
+        ],
+        "start_yaw": -1.7230560124669219,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 589932303,
+      "task_id": "17b34f76d1afc1cf2aa07ca2e086bf0819084d53323b174b22a93fb6c3f21c2f",
+      "training_task_identity": "610d012423e471b94ac212f579ec64b4034c419c880be7737b1a66feae07673d",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "obstacle_sha256": "ea9e1115bc9a8c1d045a2f9cd3c15c5ab922833891c8e2040c6aad30149a4d44",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -4.462513446807861,
+          -10.055305480957031,
+          3.629295587539673
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          -8.605609893798828,
+          -13.250447273254395,
+          3.8220858573913574
+        ],
+        "start_yaw": 0.5081693325653598,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3480107483,
+      "task_id": "b88d71baf7636f65176b02735997a3836e5e873b8063450f90b8e86ce4f1aea4",
+      "training_task_identity": "4cee0bd9933dd88b3029753ca3823e86db5bd348cd1a78fa1f82f593ff74f959",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "obstacle_sha256": "ea9e1115bc9a8c1d045a2f9cd3c15c5ab922833891c8e2040c6aad30149a4d44",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          -2.0874204635620117,
+          -9.94970703125,
+          2.8211193084716797
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          -3.48675274848938,
+          -12.640238761901855,
+          3.8449299335479736
+        ],
+        "start_yaw": 0.8747479121789059,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3481107486,
+      "task_id": "a9ff82f529fb1f5f334bc1865f5f8f74e1889327e6844e61fc7da9c208b7f246",
+      "training_task_identity": "4cee0bd9933dd88b3029753ca3823e86db5bd348cd1a78fa1f82f593ff74f959",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "obstacle_sha256": "ea9e1115bc9a8c1d045a2f9cd3c15c5ab922833891c8e2040c6aad30149a4d44",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -5.197597980499268,
+          -8.986917495727539,
+          4.1259355545043945
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          6.7462921142578125,
+          -6.402988910675049,
+          2.4748196601867676
+        ],
+        "start_yaw": 3.097529387339641,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3482107489,
+      "task_id": "3d98e93c94bccb77d42d8855e7f0941e00652b9840395f5014eed248cbe089cd",
+      "training_task_identity": "4cee0bd9933dd88b3029753ca3823e86db5bd348cd1a78fa1f82f593ff74f959",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "obstacle_sha256": "ea9e1115bc9a8c1d045a2f9cd3c15c5ab922833891c8e2040c6aad30149a4d44",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          10.568793296813965,
+          0.9043642282485962,
+          3.059438467025757
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          -5.594109058380127,
+          -8.469182968139648,
+          2.561028242111206
+        ],
+        "start_yaw": 0.47687000525778567,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3483107492,
+      "task_id": "4cf325cec67d2a9ab3a2790208da9bd43ecc7f844300adb2623feb8edcff7dc8",
+      "training_task_identity": "4cee0bd9933dd88b3029753ca3823e86db5bd348cd1a78fa1f82f593ff74f959",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "obstacle_sha256": "ea9e1115bc9a8c1d045a2f9cd3c15c5ab922833891c8e2040c6aad30149a4d44",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          8.414081573486328,
+          -3.688133955001831,
+          2.010340452194214
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          7.925756931304932,
+          8.780740737915039,
+          4.006195068359375
+        ],
+        "start_yaw": -1.7198746965887215,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3484107495,
+      "task_id": "d4bab7056044fc0e3e316d2a6b55390931fa2d960a9dc55c87e35a547cad1c0f",
+      "training_task_identity": "4cee0bd9933dd88b3029753ca3823e86db5bd348cd1a78fa1f82f593ff74f959",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "obstacle_sha256": "ea9e1115bc9a8c1d045a2f9cd3c15c5ab922833891c8e2040c6aad30149a4d44",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          -4.65138578414917,
+          10.008354187011719,
+          3.758824110031128
+        ],
+        "role": "support_expansion",
+        "start_pos": [
+          12.342691421508789,
+          -4.53999137878418,
+          2.4951953887939453
+        ],
+        "start_yaw": 2.5494868524117678,
+        "world_name": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3485107498,
+      "task_id": "e768480e0b846ea41359caf7bdd30810edcb91b594ae1f63451b6147572137d8",
+      "training_task_identity": "4cee0bd9933dd88b3029753ca3823e86db5bd348cd1a78fa1f82f593ff74f959",
+      "world_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "obstacle_sha256": "514e31fbc25dde80ef3744ece2a7187b5ffd11e1bba610abc23b26c014e6bbc5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          8.752248764038086,
+          13.929498672485352,
+          3.9032413959503174
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          -12.148694038391113,
+          -13.028349876403809,
+          3.6998891830444336
+        ],
+        "start_yaw": 0.829838610911442,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1834051630,
+      "task_id": "aeb3c56229ceeedb1cfe9592a53ab1ec352b0144847c46f3f808f1cfbd4b4122",
+      "training_task_identity": "73a946fc4c956e3930b2bf52b1bc1a971858250e203bca781c19398ef345ad7e",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "obstacle_sha256": "514e31fbc25dde80ef3744ece2a7187b5ffd11e1bba610abc23b26c014e6bbc5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          12.269383430480957,
+          4.156691074371338,
+          2.569892406463623
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          -13.321685791015625,
+          0.13375034928321838,
+          2.2483229637145996
+        ],
+        "start_yaw": -0.08082622606999212,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1835051633,
+      "task_id": "e7e90ef6c31391cd5c001d62837af7357b450e293736d68e7437a27c59e8a084",
+      "training_task_identity": "73a946fc4c956e3930b2bf52b1bc1a971858250e203bca781c19398ef345ad7e",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "obstacle_sha256": "514e31fbc25dde80ef3744ece2a7187b5ffd11e1bba610abc23b26c014e6bbc5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -12.437495231628418,
+          -5.162818431854248,
+          2.7469329833984375
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          -12.268977165222168,
+          -7.201828956604004,
+          1.4697381258010864
+        ],
+        "start_yaw": 1.7022762158573368,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1836051636,
+      "task_id": "9bfa3752dc4770e8fb31cc8debb011de5a040c09b381d9d9d954a73c3590a7d4",
+      "training_task_identity": "73a946fc4c956e3930b2bf52b1bc1a971858250e203bca781c19398ef345ad7e",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "obstacle_sha256": "514e31fbc25dde80ef3744ece2a7187b5ffd11e1bba610abc23b26c014e6bbc5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          13.686308860778809,
+          12.982236862182617,
+          4.111710548400879
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          8.504332542419434,
+          13.840703010559082,
+          4.180569171905518
+        ],
+        "start_yaw": -0.19626940980772067,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1837051639,
+      "task_id": "a423ef14650c69ece05986855e4748763e5c4b6caddf7aa4c350eeb9e31cf3e7",
+      "training_task_identity": "73a946fc4c956e3930b2bf52b1bc1a971858250e203bca781c19398ef345ad7e",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "obstacle_sha256": "514e31fbc25dde80ef3744ece2a7187b5ffd11e1bba610abc23b26c014e6bbc5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          11.382549285888672,
+          7.579866409301758,
+          3.93438982963562
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          -12.134157180786133,
+          4.793179035186768,
+          4.272955417633057
+        ],
+        "start_yaw": -0.00431775228715825,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1838051642,
+      "task_id": "3ac7dd316e987a5e66aa9466aeb0af2df97bce946afccdcb78c4959b41b35d37",
+      "training_task_identity": "73a946fc4c956e3930b2bf52b1bc1a971858250e203bca781c19398ef345ad7e",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "obstacle_sha256": "514e31fbc25dde80ef3744ece2a7187b5ffd11e1bba610abc23b26c014e6bbc5",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          10.307798385620117,
+          -1.0547959804534912,
+          4.15464973449707
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          -9.651934623718262,
+          -13.0189847946167,
+          2.5533573627471924
+        ],
+        "start_yaw": 0.6971398212415201,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 1839051645,
+      "task_id": "592bfaea5bd7249425260b9f1aed9008029bfd31a98650fdf26ae671acd47016",
+      "training_task_identity": "73a946fc4c956e3930b2bf52b1bc1a971858250e203bca781c19398ef345ad7e",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "obstacle_sha256": "bc2f1a1fe79cd38413a4becb7967a99293d4879318737f8529443fca6164cdfb",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 0,
+        "goal_pos": [
+          -9.424781799316406,
+          -6.000263690948486,
+          1.6821404695510864
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          7.79141092300415,
+          -8.932047843933105,
+          3.615039110183716
+        ],
+        "start_yaw": 3.1036147570997645,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3473833743,
+      "task_id": "cb78a9e0ed6a9309dcb3c56086a58bbdd5457d9c5abae6a529997c44d4ac6763",
+      "training_task_identity": "47c7789c496c44e2bc5ba1fe9d83c33c739cb8f7a986cdfd952ee3fc7f825dbc",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "obstacle_sha256": "bc2f1a1fe79cd38413a4becb7967a99293d4879318737f8529443fca6164cdfb",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 1,
+        "goal_pos": [
+          1.5188170671463013,
+          8.0000638961792,
+          2.427682399749756
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          13.026633262634277,
+          -7.202674865722656,
+          4.5386643409729
+        ],
+        "start_yaw": 2.390379660004789,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3474833746,
+      "task_id": "db59b69de4ce2cb56fd11ca48a4d10b033275085ae3804c7a4a14fb6ce74bf31",
+      "training_task_identity": "47c7789c496c44e2bc5ba1fe9d83c33c739cb8f7a986cdfd952ee3fc7f825dbc",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "obstacle_sha256": "bc2f1a1fe79cd38413a4becb7967a99293d4879318737f8529443fca6164cdfb",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 2,
+        "goal_pos": [
+          -13.440800666809082,
+          -1.6725249290466309,
+          1.7242188453674316
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          -6.425531387329102,
+          4.415042400360107,
+          2.381040573120117
+        ],
+        "start_yaw": -2.574153952460092,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3475833749,
+      "task_id": "e186943d3769a5bc09d2994a482dd8235885ccddbebbb8316280bfd92f98f1c6",
+      "training_task_identity": "47c7789c496c44e2bc5ba1fe9d83c33c739cb8f7a986cdfd952ee3fc7f825dbc",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "obstacle_sha256": "bc2f1a1fe79cd38413a4becb7967a99293d4879318737f8529443fca6164cdfb",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 3,
+        "goal_pos": [
+          3.7227978706359863,
+          -11.536883354187012,
+          4.095376014709473
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          3.4149844646453857,
+          8.14952564239502,
+          3.772080659866333
+        ],
+        "start_yaw": -1.445505480359879,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3476833752,
+      "task_id": "08ed1c733562d73ed8ce39f79aeb0ff5b3edee7a13c5d7b770a7aaa428957fe5",
+      "training_task_identity": "47c7789c496c44e2bc5ba1fe9d83c33c739cb8f7a986cdfd952ee3fc7f825dbc",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "obstacle_sha256": "bc2f1a1fe79cd38413a4becb7967a99293d4879318737f8529443fca6164cdfb",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 4,
+        "goal_pos": [
+          7.168385982513428,
+          -1.702250361442566,
+          3.9223544597625732
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          7.485640048980713,
+          -1.4110416173934937,
+          1.7405056953430176
+        ],
+        "start_yaw": -2.6778691284050864,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3477833755,
+      "task_id": "9cbaa600bf39e22483db45a25910d3604229d2771482df65d62bada3275aa874",
+      "training_task_identity": "47c7789c496c44e2bc5ba1fe9d83c33c739cb8f7a986cdfd952ee3fc7f825dbc",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "obstacle_sha256": "bc2f1a1fe79cd38413a4becb7967a99293d4879318737f8529443fca6164cdfb",
+      "payload": {
+        "disturb_enable": false,
+        "episode_id": 5,
+        "goal_pos": [
+          1.9855860471725464,
+          -12.058060646057129,
+          2.7895619869232178
+        ],
+        "role": "yaw_lateral_recovery",
+        "start_pos": [
+          -6.812000751495361,
+          12.530960083007812,
+          1.4257322549819946
+        ],
+        "start_yaw": -1.2638319858719218,
+        "world_name": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013",
+        "z_range": [
+          1.0,
+          5.0
+        ]
+      },
+      "reset_seed": 3478833758,
+      "task_id": "666f5cc4b90dbbd66ad2c5b03e96ec94ca805312c0155c5a2918b53432c886b8",
+      "training_task_identity": "47c7789c496c44e2bc5ba1fe9d83c33c739cb8f7a986cdfd952ee3fc7f825dbc",
+      "world_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    }
+  ]
+}

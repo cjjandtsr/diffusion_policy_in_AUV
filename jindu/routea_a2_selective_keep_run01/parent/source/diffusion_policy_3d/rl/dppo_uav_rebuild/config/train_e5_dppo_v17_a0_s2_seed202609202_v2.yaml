@@ -1,0 +1,150 @@
+checkpoint: data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt
+vendor_root: third_party/dppo_official_cc7234a
+admission_manifest: /home/cjj/AUV/program/reports/routeA_rl_env_v1/calibration/admission_manifest.json
+worlds_train: /home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/train
+output_dir: data/outputs/dppo_uav_rebuild/routea_v17_a0_s2_seed202609202_v2
+device: cuda:0
+
+run:
+  phase: formal
+  seed: 202609202
+  updates: 256
+  rollout_transitions: 1024
+  schedule_label: S2
+  checkpoint_updates: [0, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 136, 144, 152, 160, 168, 176, 184, 192, 200, 208, 216, 224, 232, 240, 248, 256]
+  expected_optimizer_commits_per_outer_update: 40
+  checkpoint_every_updates: 8
+
+lora:
+  rank: 8
+  alpha: 8.0
+
+critic:
+  hidden_dim: 256
+
+optimizer:
+  actor_lr: 0.00002
+  actor_lr_end: 0.00001
+  critic_lr: 0.001
+  weight_decay: 0.01
+
+dppo:
+  gamma_environment: 0.99
+  gae_lambda: 0.95
+  gamma_denoising: 0.8
+  clip_ploss_coef: 0.1
+  min_sampling_std: 0.1
+  min_logprob_std: 0.1
+  value_loss_coefficient: 0.5
+  entropy_loss_coefficient: 0.0
+  denoising_schedule: full_joint_accum_batch1280
+  pair_passes: 5
+  logical_batch_pairs: 1280
+  microbatch_pairs: 128
+
+gates:
+  max_approx_kl: 0.2
+  ratio_mean_min: 0.2
+  ratio_mean_max: 5.0
+  max_grad_norm: 5.0
+
+environment:
+  max_episode_steps: 60
+  disturb_enable: true
+  disturb_prob: 0.2
+  disturb_pos_scale: 0.3
+  exec_noise_scale: 0.0
+  mid_state_init_ratio: 0.3
+  mid_state_pos_scale: 0.5
+  max_reset_attempts: 50
+  goal_tolerance_3d: 0.5
+  reject_all_no_ray_hit: false
+  max_no_ray_hit_fraction: 0.9999869791666667
+  pointcloud_calibration_sha256: 824b756e938af55be617ed7a211bfda204f1034b7fe13811febbeebf2bef8244
+
+reward:
+  H_e: 4
+  traj_dt: 0.3
+  max_episode_steps: 60
+  w_goal: 2.0
+  r_reach: 100.0
+  r_collision: 50.0
+  r_invalid: 50.0
+  d_safe: 0.45
+  w_c: 2.5
+  w_ground: 20.0
+  ground_contact: 0.2
+  ground_safe: 1.0
+  collision_margin_xy: 0.1
+  c_min: 0.1
+  sigma_z: 0.3
+  w_smooth: 0.01
+  d_risk: 0.9
+  s_d: 0.15
+  risk_active_threshold: 0.35
+  softmin_beta: 8.0
+  time_decay: 0.15
+  lambda_f: 0.4
+  C_f: 2.0
+  free_cone_angle: 30.0
+  free_ray_step: 0.1
+  free_ray_range: 10.0
+  free_ray_clearance: 0.2
+  n_base: 10
+  low_risk_threshold: 0.2
+  kappa: 0.3
+  eta_o: 0.03
+  onset_step_cap: 0.35
+  onset_episode_cap: 8.0
+  w_f: 0.35
+  epsilon_back: 0.05
+  fc_step_cap: 0.35
+  fc_episode_cap: 10.0
+  trap_window: 6
+  epsilon_p: 0.25
+  d_trap: 0.65
+  epsilon_rec: 0.5
+  epsilon_d: 0.15
+  N_enter: 2
+  N_exit: 2
+  w_stall: 0.1
+  w_escape: 3.0
+  escape_episode_cap: 6.0
+  w_flip: 0.35
+  flip_episode_floor: -5.0
+  epsilon_m: 0.1
+  clearance_recovered: 0.9
+  d_sup_safe: 0.75
+  epsilon_sup_prog: 0.2
+  w_sup_ep: 0.5
+  K_max: 8
+  rho: 0.2
+  d_guard: 1.0
+  w_eff: 0.02
+  eta_eff: 0.04
+  w_loop: 1.0
+  guard_step_cap: 2.0
+  loop_window: 8
+  loop_sign_changes: 4
+  loop_progress: 0.2
+  loop_sign_epsilon: 0.0001
+  gamma_pbrs: 0.99
+  d_ref: 0.18759552418427508
+  s_f: 1.7618994090937725
+  w_low: 2.5
+  w_high: 2.8888888888888884
+  w_climb: 0.5128951700572804
+  s_c: 0.35
+  s_low: 0.1
+  h_free: 0.6
+  d_improve_cap: 0.45
+  c_opt: 0.7
+  s_high: 0.6
+  w_o: 0.5555555555555556
+reward_version: v17
+reward_density:
+  path: data/reward_v17/frozen_density_v1.json
+  sha256: ceedeb04b3904b02baa66f4a76c0de3a49b1cbf53b9bd5b99fba658739ae1769
+reward_calibration:
+  path: data/reward_v17/calibration_report_v2.json
+  sha256: d8d5f26365959830a5f9404ff40d6690c30a8e75b71d4cd78e0965fdb013d88c

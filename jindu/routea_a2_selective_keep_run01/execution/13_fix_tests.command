@@ -1,0 +1,1 @@
+/home/cjj/miniconda3/envs/idp3/bin/python -m pytest tests/dppo_uav_rebuild/engine tests/dppo_uav_rebuild/checkpointing tests/dppo_uav_rebuild/entrypoints tests/dppo_uav_rebuild/official_core --basetemp=/home/cjj/AUV/program/results/routea_a2_selective_keep_run01/test_tmp_ddim_fix -q 

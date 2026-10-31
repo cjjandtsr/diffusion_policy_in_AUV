@@ -1,0 +1,577 @@
+{
+  "altitude_termination_enabled": null,
+  "audit_schema_version": 1,
+  "bank_content_hash": "849b81961af86abde21025dabf4a084fcf84f7d5891c5627cd62edc135411d8b",
+  "episode_pairs_per_world": {
+    "rl_val": {
+      "routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051": 4,
+      "routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000052": 4,
+      "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002": 4,
+      "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000049": 4,
+      "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000050": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000017": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000029": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__bottleneck_corridor__000030": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000020": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000037": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__cul_de_sac_trap__000038": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000023": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000045": 4,
+      "routeA_rl_v1__dense_recovery__rl_val__s_turn_multi_obstacle__000046": 4,
+      "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000010": 4,
+      "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000053": 4,
+      "routeA_rl_v1__support_expansion__rl_val__mixed_3d_low_density_route__000054": 4,
+      "routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000055": 4,
+      "routeA_rl_v1__support_expansion__rl_val__xy_z_combined_bypass__000056": 4,
+      "routeA_rl_v1__yaw_lateral_recovery__rl_val__initial_yaw_offset_corridor__000014": 4
+    }
+  },
+  "evidence_scope": "lightweight_kinematic",
+  "gazebo_px4_evidence": false,
+  "interpretation_notes": {
+    "early_death": "evaluation aggregate includes ground, bounds, legacy altitude and invalid; training canonical early_death excludes ground collisions. Invalid always remains in the safe-arrival denominator",
+    "layerA_roles": "config role labels are retained but excluded from pooled Route A capability role metrics",
+    "legacy_judgment": "retained for compatibility, descriptive only; it does not authorize or block training, new seeds, or deployment",
+    "onset": "reward onset is a proxy; conditional earliness only includes pairs with both triggers, not a general avoidance capability verdict",
+    "primary_outcome": "safe goal arrival (reached); report obstacle/ground/bounds/invalid failures separately; altitude termination is deprecated in v17",
+    "support": "v17 XYZ span includes the complete executed polyline; legacy records use decision endpoints. Span/support cells are descriptive, not proof of safe low-support navigation",
+    "uncertainty": "existing paired bootstrap resamples episode pairs, not independent worlds or training seeds; 4 configurations in one world are not 4 independent worlds"
+  },
+  "invalid_statistics": {
+    "bc": {
+      "count": 0,
+      "denominator": 80,
+      "trajectory_complete_episodes": 80
+    },
+    "rl": {
+      "count": 0,
+      "denominator": 80,
+      "trajectory_complete_episodes": 80
+    }
+  },
+  "judgment": {
+    "reason": "endpoint evidence is mixed or does not establish net capability benefit",
+    "start_additional_seed": false,
+    "start_gazebo_px4": false,
+    "status": "mixed_or_no_benefit"
+  },
+  "judgment_is_execution_gate": false,
+  "metrics": {
+    "action_dz_mean": {
+      "lower": -0.0006757384702290487,
+      "mean": 0.0008908384811071068,
+      "pairs": 80,
+      "upper": 0.002344590625236152
+    },
+    "altitude_exceed": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "anticipatory_success": {
+      "lower": 0.1,
+      "mean": 0.3,
+      "pairs": 20,
+      "upper": 0.5
+    },
+    "collision": {
+      "lower": -0.0875,
+      "mean": 0.0125,
+      "pairs": 80,
+      "upper": 0.1125
+    },
+    "combined_failure": {
+      "lower": -0.0875,
+      "mean": 0.0125,
+      "pairs": 80,
+      "upper": 0.1125
+    },
+    "crash_ground": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "dense_recovery_success": {
+      "lower": 0.027777777777777776,
+      "mean": 0.16666666666666666,
+      "pairs": 36,
+      "upper": 0.3055555555555556
+    },
+    "early_death": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "final_distance_3d": {
+      "lower": -2.701634009861321,
+      "mean": -1.669485475707847,
+      "pairs": 80,
+      "upper": -0.6742606581709517
+    },
+    "final_error_xy": {
+      "lower": -2.6766399525255773,
+      "mean": -1.6420593750823493,
+      "pairs": 80,
+      "upper": -0.6450399693037124
+    },
+    "final_error_z": {
+      "lower": -0.2679230374842882,
+      "mean": -0.19505803138017655,
+      "pairs": 80,
+      "upper": -0.12349554236978294
+    },
+    "future_clearance_reward": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "invalid_state": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "loop_count": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "onset_triggered": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "out_of_bounds": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "return": {
+      "lower": 6.758326280434131,
+      "mean": 19.67561823053138,
+      "pairs": 80,
+      "upper": 32.966523409709694
+    },
+    "side_flip_count_max": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "success": {
+      "lower": 0.0875,
+      "mean": 0.1875,
+      "pairs": 80,
+      "upper": 0.2875
+    },
+    "support_cells": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "support_expansion_success": {
+      "lower": -0.05,
+      "mean": 0.15,
+      "pairs": 20,
+      "upper": 0.35
+    },
+    "time_limit": {
+      "lower": -0.3125,
+      "mean": -0.2,
+      "pairs": 80,
+      "upper": -0.0875
+    },
+    "trap_recovery_count": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 80,
+      "upper": 0.0
+    },
+    "x_span": {
+      "lower": 0.6534105895506218,
+      "mean": 1.525739341462031,
+      "pairs": 80,
+      "upper": 2.418675960585242
+    },
+    "y_span": {
+      "lower": 0.1678535711299628,
+      "mean": 1.1559247583150865,
+      "pairs": 80,
+      "upper": 2.1339006027113636
+    },
+    "yaw_lateral_recovery_success": {
+      "lower": 0.0,
+      "mean": 0.0,
+      "pairs": 4,
+      "upper": 0.0
+    },
+    "z_span": {
+      "lower": 0.06127282675355673,
+      "mean": 0.13914846032857894,
+      "pairs": 80,
+      "upper": 0.21886057924479246
+    }
+  },
+  "pair_count": 80,
+  "policy_aggregate": {
+    "bc": {
+      "done_reason_counts": {
+        "collision": 22,
+        "reached": 24,
+        "time_limit": 34
+      },
+      "episodes": 80,
+      "rates": {
+        "altitude_exceed": 0.0,
+        "collision": 0.275,
+        "crash_ground": 0.0,
+        "early_death": 0.0,
+        "invalid_state": 0.0,
+        "out_of_bounds": 0.0,
+        "reached": 0.3,
+        "time_limit": 0.425
+      },
+      "raw_done_reason_counts": {
+        "collide(corridor_wall_r)": 2,
+        "collide(front_offset_cyl)": 1,
+        "collide(funnel_l_0)": 1,
+        "collide(funnel_l_7)": 1,
+        "collide(funnel_r_0)": 1,
+        "collide(funnel_r_5)": 1,
+        "collide(gate1_l)": 1,
+        "collide(gate1_r)": 1,
+        "collide(s_turn_obs_1)": 1,
+        "collide(s_turn_obs_15)": 1,
+        "collide(s_turn_obs_4)": 2,
+        "collide(s_turn_obs_7)": 1,
+        "collide(tall_obs_0)": 2,
+        "collide(tall_obs_1)": 1,
+        "collide(tall_obs_2)": 1,
+        "collide(trap_scatter_17)": 1,
+        "collide(trap_scatter_18)": 1,
+        "collide(trap_scatter_20)": 1,
+        "collide(wall_upper)": 1,
+        "none": 34,
+        "reached": 24
+      },
+      "return_mean": 20.73264619385166,
+      "steps_mean": 38.2
+    },
+    "rl": {
+      "done_reason_counts": {
+        "collision": 23,
+        "reached": 39,
+        "time_limit": 18
+      },
+      "episodes": 80,
+      "rates": {
+        "altitude_exceed": 0.0,
+        "collision": 0.2875,
+        "crash_ground": 0.0,
+        "early_death": 0.0,
+        "invalid_state": 0.0,
+        "out_of_bounds": 0.0,
+        "reached": 0.4875,
+        "time_limit": 0.225
+      },
+      "raw_done_reason_counts": {
+        "collide(bn_scatter_3)": 1,
+        "collide(corridor_wall_l)": 1,
+        "collide(corridor_wall_r)": 1,
+        "collide(front_offset_cyl)": 1,
+        "collide(funnel_l_1)": 1,
+        "collide(funnel_out_l_2)": 1,
+        "collide(funnel_r_0)": 1,
+        "collide(funnel_r_5)": 1,
+        "collide(gate1_l)": 1,
+        "collide(med_obs_0)": 1,
+        "collide(s_turn_obs2_2)": 1,
+        "collide(s_turn_obs2_6)": 1,
+        "collide(s_turn_obs2_8)": 1,
+        "collide(s_turn_obs_3)": 1,
+        "collide(s_turn_obs_7)": 1,
+        "collide(s_turn_obs_8)": 1,
+        "collide(tall_obs_0)": 2,
+        "collide(tall_obs_2)": 2,
+        "collide(trap_scatter_14)": 1,
+        "collide(wall_lower)": 1,
+        "collide(wall_upper)": 1,
+        "none": 18,
+        "reached": 39
+      },
+      "return_mean": 40.40826442438302,
+      "steps_mean": 30.175
+    }
+  },
+  "policy_identity_hashes": {
+    "bc": [
+      "040a337820f10745d158192c4b80737dd028adbf2dd559c037f3112c2bc8b151"
+    ],
+    "rl": [
+      "753d3193b3c5ec1793c1a8715c5e229419826b666d363255d84b3e3fe8749439"
+    ]
+  },
+  "record_count": 160,
+  "reward_schema_versions": [
+    "legacy_unknown"
+  ],
+  "role_aggregate": {
+    "anticipatory": {
+      "bc": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.15,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 20,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 27.93317071312065,
+        "success_rate": 0.3,
+        "time_limit_rate": 0.55
+      },
+      "rl": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.1,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 20,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 61.95982439303668,
+        "success_rate": 0.6,
+        "time_limit_rate": 0.3
+      }
+    },
+    "dense_recovery": {
+      "bc": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.3333333333333333,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 36,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 14.86806864596307,
+        "success_rate": 0.2777777777777778,
+        "time_limit_rate": 0.3888888888888889
+      },
+      "rl": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.3333333333333333,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 36,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 33.17340087455065,
+        "success_rate": 0.4444444444444444,
+        "time_limit_rate": 0.2222222222222222
+      }
+    },
+    "support_expansion": {
+      "bc": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.25,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 20,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 22.379045713064777,
+        "success_rate": 0.3,
+        "time_limit_rate": 0.45
+      },
+      "rl": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.35,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 20,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 33.90777132595655,
+        "success_rate": 0.45,
+        "time_limit_rate": 0.2
+      }
+    },
+    "yaw_lateral_recovery": {
+      "bc": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.5,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 4,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 29.279223932438285,
+        "success_rate": 0.5,
+        "time_limit_rate": 0.0
+      },
+      "rl": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.5,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 4,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 30.26670202173855,
+        "success_rate": 0.5,
+        "time_limit_rate": 0.0
+      }
+    }
+  },
+  "role_aggregate_by_split": {
+    "rl_val": {
+      "anticipatory": {
+        "bc": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.15,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 20,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 27.93317071312065,
+          "success_rate": 0.3,
+          "time_limit_rate": 0.55
+        },
+        "rl": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.1,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 20,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 61.95982439303668,
+          "success_rate": 0.6,
+          "time_limit_rate": 0.3
+        }
+      },
+      "dense_recovery": {
+        "bc": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.3333333333333333,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 36,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 14.86806864596307,
+          "success_rate": 0.2777777777777778,
+          "time_limit_rate": 0.3888888888888889
+        },
+        "rl": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.3333333333333333,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 36,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 33.17340087455065,
+          "success_rate": 0.4444444444444444,
+          "time_limit_rate": 0.2222222222222222
+        }
+      },
+      "support_expansion": {
+        "bc": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.25,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 20,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 22.379045713064777,
+          "success_rate": 0.3,
+          "time_limit_rate": 0.45
+        },
+        "rl": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.35,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 20,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 33.90777132595655,
+          "success_rate": 0.45,
+          "time_limit_rate": 0.2
+        }
+      },
+      "yaw_lateral_recovery": {
+        "bc": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.5,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 4,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 29.279223932438285,
+          "success_rate": 0.5,
+          "time_limit_rate": 0.0
+        },
+        "rl": {
+          "altitude_exceed_rate": 0.0,
+          "collision_rate": 0.5,
+          "crash_ground_rate": 0.0,
+          "early_death_rate": 0.0,
+          "episodes": 4,
+          "invalid_state_rate": 0.0,
+          "out_of_bounds_rate": 0.0,
+          "return_mean": 30.26670202173855,
+          "success_rate": 0.5,
+          "time_limit_rate": 0.0
+        }
+      }
+    }
+  },
+  "role_aggregate_scope": "non_layerA_config_roles",
+  "source_manifest_hashes": [
+    "25dbfb9fcab1f5e6c25f76e98373e1d1f67233e9d999b121f3ff462b3e2d2cd4"
+  ],
+  "split_aggregate": {
+    "rl_val": {
+      "bc": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.275,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 80,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 20.73264619385166,
+        "success_rate": 0.3,
+        "time_limit_rate": 0.425
+      },
+      "rl": {
+        "altitude_exceed_rate": 0.0,
+        "collision_rate": 0.2875,
+        "crash_ground_rate": 0.0,
+        "early_death_rate": 0.0,
+        "episodes": 80,
+        "invalid_state_rate": 0.0,
+        "out_of_bounds_rate": 0.0,
+        "return_mean": 40.40826442438302,
+        "success_rate": 0.4875,
+        "time_limit_rate": 0.225
+      }
+    }
+  },
+  "splits": [
+    "rl_val"
+  ],
+  "v17_behavior": null,
+  "world_count": 20
+}

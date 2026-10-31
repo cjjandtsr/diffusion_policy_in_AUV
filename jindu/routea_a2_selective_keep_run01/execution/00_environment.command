@@ -1,0 +1,1 @@
+/home/cjj/miniconda3/envs/idp3/bin/python -c import\ torch\,sys\;\ print\(sys.version\)\;\ print\(torch.__version__\)\;\ print\(torch.cuda.get_device_name\(\)\)\;\ assert\ torch.cuda.is_available\(\) 

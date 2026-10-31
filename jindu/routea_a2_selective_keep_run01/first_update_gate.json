@@ -1,0 +1,27 @@
+{
+  "checkpoints": {
+    "C": {
+      "config_sha256": "0c15d0f04120fc3f0d8de7349573565908dad5a040dbe7ea00a3f21db1140485",
+      "path": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C/checkpoint_update_000129",
+      "sha256": "1ad002bc95616a3530f8e4648cb7b788dcfccfbb0259d7418e71981741df8f99"
+    },
+    "T": {
+      "config_sha256": "4dddd1fc5f776423c8e51607e45cc340d319d0f68f209e56338b924b5cbd4fa5",
+      "path": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000129",
+      "sha256": "4af67890c36c1198c4180940be02dd31530b0cf47ef158734528241e5d9b2b72"
+    },
+    "old": {
+      "config_sha256": null,
+      "path": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/old_replay/checkpoint_update_000129",
+      "sha256": "ced5a847e27093c10c760836fed475f1f465b3a96b6166e96e9558f586ac6fde"
+    }
+  },
+  "coefficient": 0.01061006086489362,
+  "coverage_warnings": [
+    "bc_only has fewer than five independent available tasks"
+  ],
+  "inventory_sha256": "2c4319ddd642d8e0eafd908f24c6e4ac6e3cb4e123261e19028e16b80d3b997d",
+  "scope": "A1->A2 first outer update exact continuity and paired rollout",
+  "status": "PASS",
+  "warning": "single-seed bounded intervention, coverage counts are not proof of generalization"
+}
