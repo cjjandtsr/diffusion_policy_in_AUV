@@ -1,0 +1,95 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED K 1 80
+FIXED K 2 80
+FIXED K 3 80
+FIXED K 4 80
+FIXED K 5 80
+FIXED K 6 80
+FIXED K 7 80
+FIXED K 8 80
+FIXED K 9 80
+FIXED K 10 80
+FIXED K 11 80
+FIXED K 12 80
+FIXED K 13 80
+FIXED K 14 80
+FIXED K 15 80
+FIXED K 16 80
+FIXED K 17 80
+FIXED K 18 80
+FIXED K 19 80
+FIXED K 20 80
+FIXED K 21 80
+FIXED K 22 80
+FIXED K 23 80
+FIXED K 24 80
+FIXED K 25 80
+FIXED K 26 80
+FIXED K 27 80
+FIXED K 28 80
+FIXED K 29 80
+FIXED K 30 80
+FIXED K 31 80
+FIXED K 32 80
+FIXED K 33 80
+FIXED K 34 80
+FIXED K 35 80
+FIXED K 36 80
+FIXED K 37 80
+FIXED K 38 80
+FIXED K 39 80
+FIXED K 40 80
+FIXED K 41 80
+FIXED K 42 80
+FIXED K 43 80
+FIXED K 44 80
+FIXED K 45 80
+FIXED K 46 80
+FIXED K 47 80
+FIXED K 48 80
+FIXED K 49 80
+FIXED K 50 80
+FIXED K 51 80
+FIXED K 52 80
+FIXED K 53 80
+FIXED K 54 80
+FIXED K 55 80
+FIXED K 56 80
+FIXED K 57 80
+FIXED K 58 80
+FIXED K 59 80
+FIXED K 60 80
+FIXED K 61 80
+FIXED K 62 80
+FIXED K 63 80
+FIXED K 64 80
+FIXED K 65 80
+FIXED K 66 80
+FIXED K 67 80
+FIXED K 68 80
+FIXED K 69 80
+FIXED K 70 80
+FIXED K 71 80
+FIXED K 72 80
+FIXED K 73 80
+FIXED K 74 80
+FIXED K 75 80
+FIXED K 76 80
+FIXED K 77 80
+FIXED K 78 80
+FIXED K 79 80
+FIXED K 80 80
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.7580422  1.1052083  1.9670125], yaw=1.75); using max-range censoring
+  warnings.warn(

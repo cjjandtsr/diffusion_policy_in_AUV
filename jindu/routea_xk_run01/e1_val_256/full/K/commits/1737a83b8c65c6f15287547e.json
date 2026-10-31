@@ -1,0 +1,28 @@
+{
+  "sha256": "228258f57649c76c077528f798c47af8e7f4a32fa72164cac05c7c7be4cbe991",
+  "summary": {
+    "bank_hash": "a2b28e0cf2ca32ee8a987d0f1a03f94d2783dea57fee1bd096fdb8e5ca542017",
+    "decisions": 60,
+    "done_reason": "time_limit",
+    "initial_hash": "a5495db68abe9a0f802976fcd778e3d1c7bc590fd25d79f64ff56a0f661c15e8",
+    "physical_time_s": 72.00000000000009,
+    "policy": "K",
+    "repeat": 1,
+    "role": "anticipatory",
+    "safe_arrival": false,
+    "status": "valid",
+    "task_id": "183f4e584320c86e0fab33c716871818e214baa7094a3f2a2107203327be289e",
+    "terminate_at_space_limits": false,
+    "trajectory_metrics": {
+      "backtrack_m": 6.282223878079685,
+      "final_goal_distance_m": 1.5385163463701832,
+      "max_cross_track_m": 5.210587498441318,
+      "min_goal_distance_m": 0.556916706917826,
+      "path_length_m": 43.21752275098996,
+      "z_span_m": 1.1694869995117188
+    },
+    "type": "episode_end",
+    "world_id": "routeA_rl_v1__anticipatory__rl_val__front_offset_obstacle__000002"
+  },
+  "trace": "traces/1737a83b8c65c6f15287547e.attempt001.jsonl"
+}
