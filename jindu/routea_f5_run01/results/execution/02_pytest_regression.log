@@ -1,0 +1,101 @@
+........................................................................ [ 10%]
+.............F......s.F................................................. [ 20%]
+....................F................................................... [ 30%]
+........................................................................ [ 40%]
+........................................................................ [ 50%]
+........................................................................ [ 60%]
+........................................................................ [ 70%]
+..................................................s.sssssss............. [ 80%]
+........................................................................ [ 90%]
+.......s..............................................................   [100%]
+=================================== FAILURES ===================================
+________ test_cli_self_check_exercises_source_identity_and_s2_contract _________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x7e30862e0760>
+
+    def test_cli_self_check_exercises_source_identity_and_s2_contract(capsys):
+        assert main(["--self-check"]) == 0
+        payload = json.loads(capsys.readouterr().out)
+        assert payload["status"] == "SELF_CHECK_PASS"
+>       assert payload["training_source_set_hash"] == (
+            "5aed4fb675591750ac97ad4165ac11b8d3fedf5a15dfa2bf0bc84266c373f637"
+        )
+E       AssertionError: assert 'e5f9c80a154e...095a0d5f0324b' == '5aed4fb67559...84266c373f637'
+E         
+E         - 5aed4fb675591750ac97ad4165ac11b8d3fedf5a15dfa2bf0bc84266c373f637
+E         + e5f9c80a154e1615853efde45cc4c00d2058041d37b0c933358095a0d5f0324b
+
+tests/dppo_uav_rebuild/audit/test_d05b_cli.py:229: AssertionError
+____________ test_self_check_preserves_frozen_training_source_hash _____________
+
+capsys = <_pytest.capture.CaptureFixture object at 0x7e308627cb50>
+
+    def test_self_check_preserves_frozen_training_source_hash(capsys):
+>       assert main(["--self-check"]) == 0
+
+tests/dppo_uav_rebuild/audit/test_d2c_cli.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/analyze_routea_credit_counterfactual.py:1082: in main
+    print(json.dumps(_self_check(), indent=2, sort_keys=True, allow_nan=False))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    def _self_check():
+        from scripts.audit_checkpoint_source_identity import build_inventory
+    
+        _, source_hash = build_inventory(REPO_ROOT)
+        rows = [
+            {
+                "transition_id": "self:t0",
+                "reward": 1.0,
+                "value": 0.0,
+                "next_value": 0.0,
+                "terminated": True,
+                "truncated": False,
+                "collection_boundary": False,
+                "terminal_facts": {"done_reason": "reached"},
+                "role": "self",
+                "episode_identity_hash": "self-episode",
+                "decision_index": 0,
+                "goal_distance_before_3d": 1.0,
+                "goal_distance_after_3d": 0.0,
+                "entered_goal_sphere_safe": True,
+                "pair_class": "stable_success",
+                "outcome": "reached",
+            }
+        ]
+        variants = build_credit_variants(
+            rows,
+            gamma=0.99,
+            gae_lambda=0.95,
+            official_advantages=torch.tensor([1.0], dtype=torch.float32),
+        )
+        references = build_reference_weights(rows)
+        if tuple(variants) != VARIANT_NAMES or tuple(references) != REFERENCE_NAMES:
+            raise RuntimeError("D2-C self-check variant registry mismatch")
+        if source_hash != TRAINING_SOURCE_SET_HASH:
+>           raise RuntimeError(
+                "training source-set hash changed: expected {}, got {}".format(
+                    TRAINING_SOURCE_SET_HASH, source_hash
+                )
+            )
+E           RuntimeError: training source-set hash changed: expected 5aed4fb675591750ac97ad4165ac11b8d3fedf5a15dfa2bf0bc84266c373f637, got e5f9c80a154e1615853efde45cc4c00d2058041d37b0c933358095a0d5f0324b
+
+scripts/analyze_routea_credit_counterfactual.py:272: RuntimeError
+____ test_diagnostic_overlay_is_hashed_without_changing_training_source_set ____
+
+    def test_diagnostic_overlay_is_hashed_without_changing_training_source_set():
+        training_rows, before = build_inventory(REPO_ROOT)
+        manifest = build_diagnostic_source_manifest(REPO_ROOT)
+        after = build_inventory(REPO_ROOT)[1]
+>       assert before == BASELINE_SOURCE_HASH
+E       AssertionError: assert 'e5f9c80a154e...095a0d5f0324b' == '5aed4fb67559...84266c373f637'
+E         
+E         - 5aed4fb675591750ac97ad4165ac11b8d3fedf5a15dfa2bf0bc84266c373f637
+E         + e5f9c80a154e1615853efde45cc4c00d2058041d37b0c933358095a0d5f0324b
+
+tests/dppo_uav_rebuild/audit/test_routea_causal_contracts.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED tests/dppo_uav_rebuild/audit/test_d05b_cli.py::test_cli_self_check_exercises_source_identity_and_s2_contract
+FAILED tests/dppo_uav_rebuild/audit/test_d2c_cli.py::test_self_check_preserves_frozen_training_source_hash
+FAILED tests/dppo_uav_rebuild/audit/test_routea_causal_contracts.py::test_diagnostic_overlay_is_hashed_without_changing_training_source_set
+3 failed, 705 passed, 10 skipped in 43.86s

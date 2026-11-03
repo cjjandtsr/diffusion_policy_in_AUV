@@ -1,0 +1,3788 @@
+{
+  "bank_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+  "content_hash": "ecd485be4d3c3356a66865a11c487d90e0b49613cd43eee041625a1aee549b06",
+  "schema": "routea_f5_strata_v1",
+  "split": "dev420",
+  "tasks": [
+    {
+      "b_band_m": 2.3311527050781247,
+      "b_m": 2.3303228603515618,
+      "band_rho": 0.0020833333333333333,
+      "blocked": false,
+      "chord_m": 4.817149978978643,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.1706555615733703,
+      "flags": [],
+      "goal": [
+        -3.1634063720703125,
+        7.689336776733398,
+        2.3785085678100586
+      ],
+      "grid_shape": [
+        133,
+        158,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 4,
+      "path_zmax_m": 2.900758743286133,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "anticipatory",
+      "seconds": 1.2,
+      "split": "dev420",
+      "start": [
+        -3.935157537460327,
+        2.963176727294922,
+        2.900758743286133
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "b_band_m": 3.9406251874999993,
+      "b_m": 3.947510079101561,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 9.98982179317001,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.9499999999999993,
+      "flags": [],
+      "goal": [
+        -0.7707058191299438,
+        11.137320518493652,
+        3.107520818710327
+      ],
+      "grid_shape": [
+        201,
+        197,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 4,
+      "path_zmax_m": 4.101288795471191,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "anticipatory",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -10.698204040527344,
+        11.641050338745117,
+        4.101288795471191
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "b_band_m": 2.9471683964843742,
+      "b_m": 2.9479985341796864,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 13.05556309371703,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.8499999999999999,
+      "flags": [],
+      "goal": [
+        11.98360824584961,
+        -11.525369644165039,
+        2.0845441818237305
+      ],
+      "grid_shape": [
+        213,
+        196,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 4,
+      "path_zmax_m": 4.404209613800049,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "anticipatory",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -0.8296105265617371,
+        -10.582870483398438,
+        4.404209613800049
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "b_band_m": 2.4456058496093744,
+      "b_m": 2.4482427617187494,
+      "band_rho": 0.0029655990510083037,
+      "blocked": true,
+      "chord_m": 24.16003934821069,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.3499999999999999,
+      "flags": [],
+      "goal": [
+        1.8005133867263794,
+        10.851506233215332,
+        1.5870071649551392
+      ],
+      "grid_shape": [
+        147,
+        298,
+        58
+      ],
+      "kappa": 1.0083076314775217,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "small",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 2,
+      "n_2.0": 2,
+      "n_obstacles": 4,
+      "path_zmax_m": 3.222465753555298,
+      "rho_1.0": 0.010269709543568465,
+      "rho_2.0": 0.005134854771784232,
+      "role": "anticipatory",
+      "seconds": 1.8,
+      "split": "dev420",
+      "start": [
+        5.362699508666992,
+        -12.988451957702637,
+        3.222465753555298
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg03",
+      "theta_rad": 0.8087144502743383,
+      "world": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001"
+    },
+    {
+      "b_band_m": 4.843652365234373,
+      "b_m": 4.845947422851561,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 19.12443580559637,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.749999999999999,
+      "flags": [],
+      "goal": [
+        6.545435428619385,
+        0.7161621451377869,
+        4.237233638763428
+      ],
+      "grid_shape": [
+        236,
+        169,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 1,
+      "path_zmax_m": 4.237233638763428,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "anticipatory",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -11.077404022216797,
+        -6.707835674285889,
+        3.984585762023926
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "b_band_m": 2.747558947265624,
+      "b_m": 2.745850131835937,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 5.698049623823681,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.6499999999999997,
+      "flags": [],
+      "goal": [
+        6.5528974533081055,
+        7.5035624504089355,
+        1.8744302988052368
+      ],
+      "grid_shape": [
+        137,
+        126,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 1,
+      "path_zmax_m": 3.5009806156158447,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "anticipatory",
+      "seconds": 0.2,
+      "split": "dev420",
+      "start": [
+        1.1779159307479858,
+        8.468796730041504,
+        3.5009806156158447
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "b_band_m": 3.443261775390624,
+      "b_m": 3.4477543066406238,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 14.858796048098938,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.349999999999999,
+      "flags": [],
+      "goal": [
+        4.846342086791992,
+        -13.839686393737793,
+        2.596693754196167
+      ],
+      "grid_shape": [
+        206,
+        240,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 1,
+      "path_zmax_m": 2.87941312789917,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "anticipatory",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        -9.752131462097168,
+        -11.084970474243164,
+        2.87941312789917
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "b_band_m": 3.444824388671874,
+      "b_m": 3.4477543066406238,
+      "band_rho": 0.03526936026936027,
+      "blocked": false,
+      "chord_m": 15.866806295485837,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.349999999999999,
+      "flags": [],
+      "goal": [
+        6.173707008361816,
+        -6.475963592529297,
+        2.5944409370422363
+      ],
+      "grid_shape": [
+        168,
+        176,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "high",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 1,
+      "n_2.0": 1,
+      "n_obstacles": 1,
+      "path_zmax_m": 3.4239277839660645,
+      "rho_1.0": 0.005914826498422713,
+      "rho_2.0": 0.03505520504731861,
+      "role": "anticipatory",
+      "seconds": 0.4,
+      "split": "dev420",
+      "start": [
+        -4.644240379333496,
+        5.101579666137695,
+        3.4239277839660645
+      ],
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000"
+    },
+    {
+      "b_band_m": 5.149999999999999,
+      "b_m": 5.749999999999998,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 1.744440743527408,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.549999999999999,
+      "flags": [],
+      "goal": [
+        -6.541528224945068,
+        8.858023643493652,
+        4.371258735656738
+      ],
+      "grid_shape": [
+        187,
+        200,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.371258735656738,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.2,
+      "split": "dev420",
+      "start": [
+        -7.428465843200684,
+        7.470943927764893,
+        3.7946956157684326
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "b_band_m": 3.744726589843749,
+      "b_m": 3.7453616767578115,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 25.47779685115382,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.749999999999999,
+      "flags": [],
+      "goal": [
+        -10.234792709350586,
+        -11.524736404418945,
+        2.9124231338500977
+      ],
+      "grid_shape": [
+        215,
+        314,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.0936410427093506,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 1.0,
+      "split": "dev420",
+      "start": [
+        -8.56424617767334,
+        13.897587776184082,
+        3.0936410427093506
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "b_band_m": 0.36816494921874987,
+      "b_m": 2.644775930664062,
+      "band_rho": 0.05725971370143149,
+      "blocked": true,
+      "chord_m": 28.57028745586749,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.5499999999999996,
+      "flags": [],
+      "goal": [
+        -13.309441566467285,
+        -4.011168003082275,
+        1.7817832231521606
+      ],
+      "grid_shape": [
+        330,
+        165,
+        58
+      ],
+      "kappa": 1.0710515546716506,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 10,
+      "n_2.0": 24,
+      "n_obstacles": 40,
+      "path_zmax_m": 2.4634246826171875,
+      "rho_1.0": 0.054859894921190894,
+      "rho_2.0": 0.06571803852889667,
+      "role": "dense_recovery",
+      "seconds": 2.5,
+      "split": "dev420",
+      "start": [
+        13.64786148071289,
+        5.428138256072998,
+        2.4634246826171875
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg02",
+      "theta_rad": 0.74912495477142,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "b_band_m": 0.4152841240234374,
+      "b_m": 2.251709592773437,
+      "band_rho": 0.05362616310892173,
+      "blocked": true,
+      "chord_m": 19.325658991248808,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.1706555615733703,
+      "flags": [],
+      "goal": [
+        -5.879530906677246,
+        11.969632148742676,
+        2.3369457721710205
+      ],
+      "grid_shape": [
+        172,
+        240,
+        58
+      ],
+      "kappa": 1.0920931647224978,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 13,
+      "n_2.0": 21,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.549999999999999,
+      "rho_1.0": 0.061938864087301586,
+      "rho_2.0": 0.06833883618551587,
+      "role": "dense_recovery",
+      "seconds": 1.7,
+      "split": "dev420",
+      "start": [
+        0.8833763599395752,
+        -6.0025529861450195,
+        4.515188694000244
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03",
+      "theta_rad": 1.5851714182506003,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016"
+    },
+    {
+      "b_band_m": 0.17109470312499994,
+      "b_m": 2.5493169628906243,
+      "band_rho": 0.031243501767519236,
+      "blocked": true,
+      "chord_m": 18.939044528133397,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.7304493814764856,
+      "flags": [],
+      "goal": [
+        -6.087098121643066,
+        0.9702843427658081,
+        2.0886337757110596
+      ],
+      "grid_shape": [
+        182,
+        238,
+        58
+      ],
+      "kappa": 1.0319019016269195,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 5,
+      "n_2.0": 8,
+      "n_obstacles": 40,
+      "path_zmax_m": 2.893472194671631,
+      "rho_1.0": 0.030291005291005292,
+      "rho_2.0": 0.03326365268329554,
+      "role": "dense_recovery",
+      "seconds": 1.8,
+      "split": "dev420",
+      "start": [
+        6.125257968902588,
+        -13.483019828796387,
+        2.893472194671631
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg00",
+      "theta_rad": 0.9581640853712772,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "b_band_m": 2.7492189531249993,
+      "b_m": 2.745850131835937,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 8.711613486382678,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.6499999999999997,
+      "flags": [],
+      "goal": [
+        8.38589096069336,
+        0.43404942750930786,
+        2.7364556789398193
+      ],
+      "grid_shape": [
+        240,
+        194,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 2.7364556789398193,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        12.239047050476074,
+        8.20222282409668,
+        1.8992700576782227
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "b_band_m": 0.6487313261718749,
+      "b_m": 3.6667484091796867,
+      "band_rho": 0.058382200758882376,
+      "blocked": true,
+      "chord_m": 18.280984779417803,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.7517851452243804,
+      "flags": [],
+      "goal": [
+        5.8633222579956055,
+        -1.2149395942687988,
+        3.203042507171631
+      ],
+      "grid_shape": [
+        219,
+        189,
+        58
+      ],
+      "kappa": 1.0239880030505601,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 13,
+      "n_2.0": 15,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.849999999999999,
+      "rho_1.0": 0.091390937829294,
+      "rho_2.0": 0.06687104847207587,
+      "role": "dense_recovery",
+      "seconds": 1.8,
+      "split": "dev420",
+      "start": [
+        -10.073641777038574,
+        7.720505714416504,
+        3.8075249195098877
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg02",
+      "theta_rad": 0.9472274373256911,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "b_band_m": 3.543750124999999,
+      "b_m": 3.548828507812499,
+      "band_rho": 0.0052011179973265285,
+      "blocked": false,
+      "chord_m": 17.133820185554686,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.5499999999999994,
+      "flags": [],
+      "goal": [
+        11.801589012145996,
+        -9.44694709777832,
+        2.75081729888916
+      ],
+      "grid_shape": [
+        235,
+        220,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.3342888355255127,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        5.676359176635742,
+        6.543953895568848,
+        3.3342888355255127
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025"
+    },
+    {
+      "b_band_m": 0.7091317216796873,
+      "b_m": 2.2460943593749993,
+      "band_rho": 0.04661224972643658,
+      "blocked": true,
+      "chord_m": 18.308502209631293,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.1499999999999997,
+      "flags": [],
+      "goal": [
+        7.663520812988281,
+        -6.307407855987549,
+        4.424298286437988
+      ],
+      "grid_shape": [
+        198,
+        210,
+        58
+      ],
+      "kappa": 1.058046645896703,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "low",
+        "w2": "high"
+      },
+      "n_1.0": 6,
+      "n_2.0": 17,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.549999999999999,
+      "rho_1.0": 0.037878143770055675,
+      "rho_2.0": 0.04723265955404405,
+      "role": "dense_recovery",
+      "seconds": 1.8,
+      "split": "dev420",
+      "start": [
+        -2.399057149887085,
+        8.678688049316406,
+        1.3644441366195679
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg00",
+      "theta_rad": 1.3614985373598059,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "b_band_m": 1.1188483222656251,
+      "b_m": 2.2460943593749993,
+      "band_rho": 0.012815850815850816,
+      "blocked": true,
+      "chord_m": 28.525886408185706,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.1499999999999997,
+      "flags": [],
+      "goal": [
+        -8.183381080627441,
+        -13.34044361114502,
+        2.6177115440368652
+      ],
+      "grid_shape": [
+        274,
+        249,
+        58
+      ],
+      "kappa": 1.008924410540972,
+      "labels": {
+        "band": "low",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 5,
+      "n_2.0": 7,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.249999999999999,
+      "rho_1.0": 0.018039136302294197,
+      "rho_2.0": 0.01736875843454791,
+      "role": "dense_recovery",
+      "seconds": 3.1,
+      "split": "dev420",
+      "start": [
+        13.1832275390625,
+        5.5167059898376465,
+        1.351954698562622
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg01",
+      "theta_rad": 0.2669592490383168,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "b_band_m": 3.1458987460937493,
+      "b_m": 3.144531703124999,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 16.20331499458624,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.1499999999999995,
+      "flags": [],
+      "goal": [
+        -6.559394836425781,
+        7.315518856048584,
+        2.3445591926574707
+      ],
+      "grid_shape": [
+        213,
+        230,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.844733476638794,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        8.7880220413208,
+        12.290826797485352,
+        3.844733476638794
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "b_band_m": 0.7541024101562499,
+      "b_m": 3.6499027089843743,
+      "band_rho": 0.04124537307617378,
+      "blocked": true,
+      "chord_m": 19.600006998081827,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.6425824035672525,
+      "flags": [],
+      "goal": [
+        7.862367630004883,
+        -0.18497569859027863,
+        3.265244245529175
+      ],
+      "grid_shape": [
+        244,
+        171,
+        58
+      ],
+      "kappa": 1.0282061183207996,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 12,
+      "n_2.0": 19,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.198548793792725,
+      "rho_1.0": 0.07162097890003459,
+      "rho_2.0": 0.06734585783465928,
+      "role": "dense_recovery",
+      "seconds": 1.7,
+      "split": "dev420",
+      "start": [
+        -10.559222221374512,
+        6.443315505981445,
+        4.198548793792725
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg03",
+      "theta_rad": 0.7732385937980817,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026"
+    },
+    {
+      "b_band_m": 0.6165047910156247,
+      "b_m": 2.9648442343749988,
+      "band_rho": 0.04626322751322751,
+      "blocked": true,
+      "chord_m": 24.87328876027679,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.249999999999999,
+      "flags": [],
+      "goal": [
+        3.539787530899048,
+        -11.351615905761719,
+        2.4361836910247803
+      ],
+      "grid_shape": [
+        157,
+        299,
+        58
+      ],
+      "kappa": 1.0147182813010913,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "low",
+        "w2": "high"
+      },
+      "n_1.0": 14,
+      "n_2.0": 25,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.649999999999999,
+      "rho_1.0": 0.04476430976430976,
+      "rho_2.0": 0.05999518999519,
+      "role": "dense_recovery",
+      "seconds": 1.9,
+      "split": "dev420",
+      "start": [
+        -3.156700849533081,
+        12.500925064086914,
+        4.648383140563965
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg00",
+      "theta_rad": 0.34404441655985935,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "b_band_m": 4.442675865234374,
+      "b_m": 4.447265851562498,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 6.266840946190133,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.4499999999999993,
+      "flags": [],
+      "goal": [
+        7.692732334136963,
+        -11.51022720336914,
+        4.096573352813721
+      ],
+      "grid_shape": [
+        214,
+        222,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.096573352813721,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        11.100621223449707,
+        -6.271642208099365,
+        3.6309382915496826
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "b_band_m": 2.7233401542968743,
+      "b_m": 2.7290044316406243,
+      "band_rho": 0.0069579288025889965,
+      "blocked": false,
+      "chord_m": 6.297541910412796,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.5901219466856726,
+      "flags": [],
+      "goal": [
+        -0.8752205967903137,
+        10.402383804321289,
+        3.2462515830993652
+      ],
+      "grid_shape": [
+        157,
+        206,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.2462515830993652,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.4,
+      "split": "dev420",
+      "start": [
+        2.9144680500030518,
+        5.375375747680664,
+        3.083512306213379
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "b_band_m": 3.148437531249999,
+      "b_m": 3.144531703124999,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 15.338030885330868,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.0499999999999994,
+      "flags": [],
+      "goal": [
+        9.502732276916504,
+        12.071002006530762,
+        2.264796495437622
+      ],
+      "grid_shape": [
+        207,
+        222,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 2.4637320041656494,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -5.151833534240723,
+        7.547804355621338,
+        2.4637320041656494
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027"
+    },
+    {
+      "b_band_m": 0.045801767578124986,
+      "b_m": 3.245605904296874,
+      "band_rho": 0.05662643027788256,
+      "blocked": true,
+      "chord_m": 20.097194116263463,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.249999999999999,
+      "flags": [],
+      "goal": [
+        -4.462141513824463,
+        -10.12145709991455,
+        2.421003818511963
+      ],
+      "grid_shape": [
+        185,
+        217,
+        58
+      ],
+      "kappa": 1.029741046780047,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 5,
+      "n_2.0": 12,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.249999999999999,
+      "rho_1.0": 0.05267412935323383,
+      "rho_2.0": 0.05176108095884215,
+      "role": "dense_recovery",
+      "seconds": 1.7,
+      "split": "dev420",
+      "start": [
+        8.05150318145752,
+        5.603379726409912,
+        2.609191417694092
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg00",
+      "theta_rad": 1.3135327232295155,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "b_band_m": 0.307129833984375,
+      "b_m": 4.048584280273436,
+      "band_rho": 0.05778340603161203,
+      "blocked": true,
+      "chord_m": 26.859505111146674,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.049999999999999,
+      "flags": [],
+      "goal": [
+        -5.484055042266846,
+        -13.092392921447754,
+        3.4820969104766846
+      ],
+      "grid_shape": [
+        184,
+        298,
+        58
+      ],
+      "kappa": 1.0209483123490832,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 15,
+      "n_2.0": 23,
+      "n_obstacles": 40,
+      "path_zmax_m": 4.249999999999999,
+      "rho_1.0": 0.08330746948065383,
+      "rho_2.0": 0.06769604800331057,
+      "role": "dense_recovery",
+      "seconds": 2.4,
+      "split": "dev420",
+      "start": [
+        6.93448543548584,
+        10.72239875793457,
+        3.2202486991882324
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg01",
+      "theta_rad": 1.6431737588983708,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "b_band_m": 3.146289355468749,
+      "b_m": 3.144531703124999,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 19.436853789757304,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.0499999999999994,
+      "flags": [],
+      "goal": [
+        12.837020874023438,
+        6.445377349853516,
+        3.713355302810669
+      ],
+      "grid_shape": [
+        232,
+        240,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.713355302810669,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.9,
+      "split": "dev420",
+      "start": [
+        5.572917938232422,
+        -11.523956298828125,
+        2.2548828125
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "b_band_m": 2.554980837890624,
+      "b_m": 2.554932196289062,
+      "band_rho": 0.020493827160493826,
+      "blocked": false,
+      "chord_m": 9.636427022981207,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.4500000000000002,
+      "flags": [],
+      "goal": [
+        -11.79245662689209,
+        -6.783261299133301,
+        1.7940078973770142
+      ],
+      "grid_shape": [
+        222,
+        179,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "low"
+      },
+      "n_1.0": 0,
+      "n_2.0": 3,
+      "n_obstacles": 40,
+      "path_zmax_m": 3.2637906074523926,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.026447368421052633,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -2.452486991882324,
+        -4.921694278717041,
+        3.2637906074523926
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028"
+    },
+    {
+      "b_band_m": 0.9291022851562498,
+      "b_m": 2.644775930664062,
+      "band_rho": 0.026398971566848155,
+      "blocked": true,
+      "chord_m": 26.37312469044674,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.5499999999999996,
+      "flags": [],
+      "goal": [
+        12.230728149414062,
+        -3.8777148723602295,
+        1.7761056423187256
+      ],
+      "grid_shape": [
+        321,
+        219,
+        58
+      ],
+      "kappa": 1.0141047551486566,
+      "labels": {
+        "band": "low",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 5,
+      "n_2.0": 7,
+      "n_obstacles": 29,
+      "path_zmax_m": 2.6499999999999995,
+      "rho_1.0": 0.04939412097606445,
+      "rho_2.0": 0.0402568327840474,
+      "role": "dense_recovery",
+      "seconds": 3.2,
+      "split": "dev420",
+      "start": [
+        -13.86795711517334,
+        -7.573885440826416,
+        2.635556936264038
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg00",
+      "theta_rad": 1.1845282204080716,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "b_band_m": 2.6499025527343747,
+      "b_m": 2.644775930664062,
+      "band_rho": 0.018253968253968255,
+      "blocked": false,
+      "chord_m": 2.3864158221281153,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.8499999999999999,
+      "flags": [],
+      "goal": [
+        7.4095258712768555,
+        7.313326835632324,
+        2.0120348930358887
+      ],
+      "grid_shape": [
+        174,
+        219,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "low"
+      },
+      "n_1.0": 0,
+      "n_2.0": 1,
+      "n_obstacles": 29,
+      "path_zmax_m": 2.649970531463623,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.002173913043478261,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        7.1628875732421875,
+        5.027022361755371,
+        2.649970531463623
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "b_band_m": 1.1559577714843745,
+      "b_m": 1.768799520507812,
+      "band_rho": 0.056974881455850314,
+      "blocked": true,
+      "chord_m": 11.419474728677672,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 0.8160254037844386,
+      "flags": [],
+      "goal": [
+        7.870187282562256,
+        -6.308490753173828,
+        2.3587329387664795
+      ],
+      "grid_shape": [
+        178,
+        219,
+        58
+      ],
+      "kappa": 1.0423283195091777,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 4,
+      "n_2.0": 7,
+      "n_obstacles": 29,
+      "path_zmax_m": 4.149999999999999,
+      "rho_1.0": 0.09240088105726872,
+      "rho_2.0": 0.0788316128608061,
+      "role": "dense_recovery",
+      "seconds": 1.5,
+      "split": "dev420",
+      "start": [
+        -1.65374755859375,
+        -0.15823762118816376,
+        3.7274749279022217
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg02",
+      "theta_rad": 1.1123908742303854,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "b_band_m": 4.049999999999999,
+      "b_m": 4.048584280273436,
+      "band_rho": 0.002857142857142857,
+      "blocked": false,
+      "chord_m": 13.491589796791773,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.9499999999999993,
+      "flags": [],
+      "goal": [
+        -9.541751861572266,
+        1.5263506174087524,
+        3.175337791442871
+      ],
+      "grid_shape": [
+        214,
+        246,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 29,
+      "path_zmax_m": 3.2869718074798584,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -3.4179017543792725,
+        -10.49483871459961,
+        3.2869718074798584
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019"
+    },
+    {
+      "b_band_m": 0.94628986328125,
+      "b_m": 3.4477543066406238,
+      "band_rho": 0.04784711181770005,
+      "blocked": true,
+      "chord_m": 18.241579766380298,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.4499999999999993,
+      "flags": [],
+      "goal": [
+        9.002690315246582,
+        -8.083954811096191,
+        2.6257522106170654
+      ],
+      "grid_shape": [
+        199,
+        221,
+        58
+      ],
+      "kappa": 1.010635615250851,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 5,
+      "n_2.0": 14,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.149999999999999,
+      "rho_1.0": 0.049944448933419525,
+      "rho_2.0": 0.056527250323206206,
+      "role": "dense_recovery",
+      "seconds": 1.9,
+      "split": "dev420",
+      "start": [
+        -4.929047107696533,
+        3.6104586124420166,
+        4.0051069259643555
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg00",
+      "theta_rad": 0.39607006728525507,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "b_band_m": 2.6433598515624994,
+      "b_m": 2.644775930664062,
+      "band_rho": 0.023020833333333334,
+      "blocked": false,
+      "chord_m": 12.236772666022619,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.5499999999999996,
+      "flags": [],
+      "goal": [
+        -1.2678992748260498,
+        -10.404136657714844,
+        1.7572699785232544
+      ],
+      "grid_shape": [
+        199,
+        244,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 2,
+      "n_2.0": 3,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.30211877822876,
+      "rho_1.0": 0.02646558462458044,
+      "rho_2.0": 0.0236608579704814,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        9.58909797668457,
+        -5.365489959716797,
+        4.30211877822876
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "b_band_m": 1.2404304023437498,
+      "b_m": 2.9929204013671864,
+      "band_rho": 0.044531360112755464,
+      "blocked": false,
+      "chord_m": 17.4518718329657,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.0500000000000003,
+      "flags": [],
+      "goal": [
+        3.4820046424865723,
+        -11.837449073791504,
+        3.6078035831451416
+      ],
+      "grid_shape": [
+        164,
+        258,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "clear",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 7,
+      "n_2.0": 11,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.6078035831451416,
+      "rho_1.0": 0.04975011661224762,
+      "rho_2.0": 0.05936812820683681,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        5.657067775726318,
+        5.477624416351318,
+        3.4491817951202393
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "b_band_m": 2.805664402343749,
+      "b_m": 2.8076176992187496,
+      "band_rho": 0.009985145573380868,
+      "blocked": false,
+      "chord_m": 12.61625477088432,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.6529386365926402,
+      "flags": [],
+      "goal": [
+        7.188621997833252,
+        -0.8879560828208923,
+        3.4512412548065186
+      ],
+      "grid_shape": [
+        181,
+        258,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.4512412548065186,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        7.8250837326049805,
+        11.628800392150879,
+        2.00361967086792
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033"
+    },
+    {
+      "b_band_m": 3.748047132812499,
+      "b_m": 3.7453616767578115,
+      "band_rho": 0.0014332514332514332,
+      "blocked": false,
+      "chord_m": 3.627827518477398,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.749999999999999,
+      "flags": [],
+      "goal": [
+        -0.7214361429214478,
+        -9.523235321044922,
+        4.255008697509766
+      ],
+      "grid_shape": [
+        178,
+        251,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.255008697509766,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        1.1932533979415894,
+        -12.305120468139648,
+        2.9297873973846436
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "b_band_m": 1.445801505859375,
+      "b_m": 2.745850131835937,
+      "band_rho": 0.04221238938053097,
+      "blocked": true,
+      "chord_m": 29.977117692188916,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.7499999999999998,
+      "flags": [],
+      "goal": [
+        -6.741250991821289,
+        9.061223030090332,
+        4.475895404815674
+      ],
+      "grid_shape": [
+        266,
+        277,
+        58
+      ],
+      "kappa": 1.002497092084808,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 6,
+      "n_2.0": 9,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.475895404815674,
+      "rho_1.0": 0.057172308428589835,
+      "rho_2.0": 0.04761812726636847,
+      "role": "dense_recovery",
+      "seconds": 3.3,
+      "split": "dev420",
+      "start": [
+        13.823795318603516,
+        -12.600367546081543,
+        1.929928183555603
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg01",
+      "theta_rad": 0.14717576383518544,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "b_band_m": 0.8429695468749998,
+      "b_m": 2.656006397460937,
+      "band_rho": 0.07646901172529313,
+      "blocked": true,
+      "chord_m": 15.90465669136984,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.5686414056238644,
+      "flags": [],
+      "goal": [
+        0.4183771312236786,
+        -8.01377010345459,
+        3.358147621154785
+      ],
+      "grid_shape": [
+        192,
+        208,
+        58
+      ],
+      "kappa": 1.015566012504086,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 9,
+      "n_2.0": 14,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.358147621154785,
+      "rho_1.0": 0.12432389937106918,
+      "rho_2.0": 0.11111949685534592,
+      "role": "dense_recovery",
+      "seconds": 1.5,
+      "split": "dev420",
+      "start": [
+        8.816987991333008,
+        5.483820915222168,
+        2.871858835220337
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg02",
+      "theta_rad": 1.066712304354334,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "b_band_m": 1.2254890058593746,
+      "b_m": 3.049072735351561,
+      "band_rho": 0.03339016766126741,
+      "blocked": true,
+      "chord_m": 23.63536964448542,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.0499999999999994,
+      "flags": [],
+      "goal": [
+        -9.33056354522705,
+        10.269529342651367,
+        2.2394819259643555
+      ],
+      "grid_shape": [
+        228,
+        252,
+        58
+      ],
+      "kappa": 1.0562202959991338,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 8,
+      "n_2.0": 9,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.681058168411255,
+      "rho_1.0": 0.055334991402603784,
+      "rho_2.0": 0.042655367231638416,
+      "role": "dense_recovery",
+      "seconds": 2.5,
+      "split": "dev420",
+      "start": [
+        4.438268661499023,
+        -8.886979103088379,
+        3.681058168411255
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg03",
+      "theta_rad": 1.579453660828102,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034"
+    },
+    {
+      "b_band_m": 0.9686531308593749,
+      "b_m": 3.7565921435546867,
+      "band_rho": 0.022246418892760356,
+      "blocked": false,
+      "chord_m": 24.715392049242784,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.249999999999999,
+      "flags": [],
+      "goal": [
+        12.611353874206543,
+        9.043712615966797,
+        3.415282964706421
+      ],
+      "grid_shape": [
+        290,
+        239,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "narrow",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 5,
+      "n_2.0": 10,
+      "n_obstacles": 29,
+      "path_zmax_m": 3.8191990852355957,
+      "rho_1.0": 0.020116396761133602,
+      "rho_2.0": 0.02684663883265857,
+      "role": "dense_recovery",
+      "seconds": 1.0,
+      "split": "dev420",
+      "start": [
+        -10.425061225891113,
+        0.09882383793592453,
+        3.8191990852355957
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "b_band_m": 0.8458991992187498,
+      "b_m": 2.414551361328124,
+      "band_rho": 0.03370181405895692,
+      "blocked": true,
+      "chord_m": 15.590872512265795,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.342838827718412,
+      "flags": [],
+      "goal": [
+        -10.311173439025879,
+        3.5041604042053223,
+        2.1034655570983887
+      ],
+      "grid_shape": [
+        214,
+        234,
+        58
+      ],
+      "kappa": 1.005946074387602,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "low",
+        "w2": "high"
+      },
+      "n_1.0": 4,
+      "n_2.0": 6,
+      "n_obstacles": 29,
+      "path_zmax_m": 2.8499999999999996,
+      "rho_1.0": 0.043569131832797425,
+      "rho_2.0": 0.040260157848582286,
+      "role": "dense_recovery",
+      "seconds": 1.7,
+      "split": "dev420",
+      "start": [
+        5.077303886413574,
+        5.8954572677612305,
+        2.846278190612793
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg01",
+      "theta_rad": 0.2689920346849376,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "b_band_m": 3.644824482421874,
+      "b_m": 3.6499027089843743,
+      "band_rho": 0.0047181372549019605,
+      "blocked": false,
+      "chord_m": 2.827742424396985,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.5499999999999994,
+      "flags": [],
+      "goal": [
+        0.19862505793571472,
+        11.431551933288574,
+        4.208590507507324
+      ],
+      "grid_shape": [
+        153,
+        284,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 29,
+      "path_zmax_m": 4.208590507507324,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -1.1029473543167114,
+        13.483512878417969,
+        2.7623910903930664
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "b_band_m": 0.6741218652343748,
+      "b_m": 2.4482427617187494,
+      "band_rho": 0.033393162393162396,
+      "blocked": true,
+      "chord_m": 25.984893300615234,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.4499999999999997,
+      "flags": [],
+      "goal": [
+        -13.66555118560791,
+        -4.801397800445557,
+        1.6470636129379272
+      ],
+      "grid_shape": [
+        282,
+        235,
+        58
+      ],
+      "kappa": 1.0512771169430384,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 6,
+      "n_2.0": 11,
+      "n_obstacles": 29,
+      "path_zmax_m": 2.2499999999999996,
+      "rho_1.0": 0.047692307692307694,
+      "rho_2.0": 0.043874815088757395,
+      "role": "dense_recovery",
+      "seconds": 3.0,
+      "split": "dev420",
+      "start": [
+        8.577099800109863,
+        8.61961555480957,
+        2.243350028991699
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg03",
+      "theta_rad": 1.1630638249413496,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035"
+    },
+    {
+      "b_band_m": 3.0454101894531243,
+      "b_m": 3.049072735351561,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 7.983101632503727,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.9499999999999995,
+      "flags": [],
+      "goal": [
+        2.2104732990264893,
+        10.09717845916748,
+        2.190868854522705
+      ],
+      "grid_shape": [
+        198,
+        250,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 27,
+      "path_zmax_m": 2.371307849884033,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        -5.602744102478027,
+        11.725363731384277,
+        2.371307849884033
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "b_band_m": 1.8035161796874997,
+      "b_m": 3.947510079101561,
+      "band_rho": 0.01462236872542216,
+      "blocked": false,
+      "chord_m": 22.16326051437715,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.849999999999999,
+      "flags": [],
+      "goal": [
+        -7.402165412902832,
+        -2.1681084632873535,
+        3.278029203414917
+      ],
+      "grid_shape": [
+        259,
+        249,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "narrow",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 4,
+      "n_2.0": 5,
+      "n_obstacles": 27,
+      "path_zmax_m": 3.278029203414917,
+      "rho_1.0": 0.01822286066078391,
+      "rho_2.0": 0.02219820952185512,
+      "role": "dense_recovery",
+      "seconds": 0.9,
+      "split": "dev420",
+      "start": [
+        12.477496147155762,
+        -11.964775085449219,
+        3.0922982692718506
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "b_band_m": 1.7163092324218747,
+      "b_m": 4.048584280273436,
+      "band_rho": 0.003694581280788177,
+      "blocked": false,
+      "chord_m": 22.091135825143954,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.049999999999999,
+      "flags": [],
+      "goal": [
+        11.69070816040039,
+        2.2194199562072754,
+        3.202455759048462
+      ],
+      "grid_shape": [
+        252,
+        264,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "narrow",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 2,
+      "n_2.0": 2,
+      "n_obstacles": 27,
+      "path_zmax_m": 4.031837463378906,
+      "rho_1.0": 0.007487893943002302,
+      "rho_2.0": 0.005042867349368897,
+      "role": "dense_recovery",
+      "seconds": 1.0,
+      "split": "dev420",
+      "start": [
+        -7.488973140716553,
+        13.149663925170898,
+        4.031837463378906
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "b_band_m": 0.7538094121093748,
+      "b_m": 1.7856452207031246,
+      "band_rho": 0.04819199215266631,
+      "blocked": true,
+      "chord_m": 22.751893314592802,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 0.7115773105863908,
+      "flags": [],
+      "goal": [
+        13.41703987121582,
+        9.960190773010254,
+        3.434738874435425
+      ],
+      "grid_shape": [
+        234,
+        237,
+        58
+      ],
+      "kappa": 1.0342551835674962,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 7,
+      "n_2.0": 11,
+      "n_obstacles": 27,
+      "path_zmax_m": 4.149999999999999,
+      "rho_1.0": 0.0732947409733124,
+      "rho_2.0": 0.060026000784929354,
+      "role": "dense_recovery",
+      "seconds": 2.5,
+      "split": "dev420",
+      "start": [
+        -0.8835232853889465,
+        -7.716849327087402,
+        2.6193885803222656
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg03",
+      "theta_rad": 1.5288200009029589,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036"
+    },
+    {
+      "b_band_m": 3.8497070566406233,
+      "b_m": 3.8464358779296868,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 17.95929430987764,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.749999999999999,
+      "flags": [],
+      "goal": [
+        -11.695290565490723,
+        9.931846618652344,
+        3.1980154514312744
+      ],
+      "grid_shape": [
+        244,
+        217,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.1980154514312744,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        6.067317485809326,
+        12.574101448059082,
+        2.9870729446411133
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "b_band_m": 2.5458987929687487,
+      "b_m": 2.5493169628906243,
+      "band_rho": 0.007833800186741364,
+      "blocked": false,
+      "chord_m": 11.352017285860839,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.5499999999999996,
+      "flags": [],
+      "goal": [
+        -12.438862800598145,
+        10.577174186706543,
+        3.2242963314056396
+      ],
+      "grid_shape": [
+        251,
+        197,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.2242963314056396,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        -2.837235689163208,
+        4.707151889801025,
+        1.7343662977218628
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "b_band_m": 1.1114753935546873,
+      "b_m": 3.346680105468749,
+      "band_rho": 0.04020833333333333,
+      "blocked": true,
+      "chord_m": 21.84703541043668,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.249999999999999,
+      "flags": [],
+      "goal": [
+        1.0234177112579346,
+        -13.907302856445312,
+        2.4677045345306396
+      ],
+      "grid_shape": [
+        191,
+        277,
+        58
+      ],
+      "kappa": 1.016095933346247,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 7,
+      "n_2.0": 12,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.4401469230651855,
+      "rho_1.0": 0.047608758911683396,
+      "rho_2.0": 0.04357958678888404,
+      "role": "dense_recovery",
+      "seconds": 2.0,
+      "split": "dev420",
+      "start": [
+        0.39308464527130127,
+        7.8413777351379395,
+        4.4401469230651855
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg02",
+      "theta_rad": 1.8129626603003441,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "b_band_m": 0.4447274335937499,
+      "b_m": 3.346680105468749,
+      "band_rho": 0.0406784005468216,
+      "blocked": true,
+      "chord_m": 22.65007977355546,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.249999999999999,
+      "flags": [],
+      "goal": [
+        8.789188385009766,
+        -6.41602897644043,
+        2.484380006790161
+      ],
+      "grid_shape": [
+        213,
+        232,
+        58
+      ],
+      "kappa": 1.0014380129748763,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 4,
+      "n_2.0": 11,
+      "n_obstacles": 28,
+      "path_zmax_m": 2.696396589279175,
+      "rho_1.0": 0.020023078466787077,
+      "rho_2.0": 0.035453040337146295,
+      "role": "dense_recovery",
+      "seconds": 2.1,
+      "split": "dev420",
+      "start": [
+        -5.954190731048584,
+        10.777398109436035,
+        2.696396589279175
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg03",
+      "theta_rad": 0.1097916516384237,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022"
+    },
+    {
+      "b_band_m": 4.1458008496093735,
+      "b_m": 4.149658481445311,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 7.791366906045061,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.149999999999999,
+      "flags": [],
+      "goal": [
+        11.386534690856934,
+        11.138919830322266,
+        3.3264501094818115
+      ],
+      "grid_shape": [
+        238,
+        204,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.6867668628692627,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        10.642874717712402,
+        3.391498327255249,
+        3.6867668628692627
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "b_band_m": 2.9443361523437495,
+      "b_m": 2.9479985341796864,
+      "band_rho": 0.028221816244195782,
+      "blocked": false,
+      "chord_m": 11.172805334126531,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.9499999999999995,
+      "flags": [],
+      "goal": [
+        10.031961441040039,
+        -4.319468975067139,
+        3.0466208457946777
+      ],
+      "grid_shape": [
+        224,
+        164,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "low"
+      },
+      "n_1.0": 0,
+      "n_2.0": 1,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.0466208457946777,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.011210762331838564,
+      "role": "dense_recovery",
+      "seconds": 0.5,
+      "split": "dev420",
+      "start": [
+        6.099377155303955,
+        6.099017143249512,
+        2.1402506828308105
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "b_band_m": 4.7442383417968745,
+      "b_m": 4.7448732216796845,
+      "band_rho": 0.00076103500761035,
+      "blocked": false,
+      "chord_m": 17.888326837869148,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.749999999999999,
+      "flags": [],
+      "goal": [
+        -5.198700904846191,
+        -13.467060089111328,
+        4.280088424682617
+      ],
+      "grid_shape": [
+        218,
+        235,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "low"
+      },
+      "n_1.0": 0,
+      "n_2.0": 1,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.280088424682617,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0001671520266254606,
+      "role": "dense_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        -9.101419448852539,
+        3.9866230487823486,
+        3.9195749759674072
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "b_band_m": 0.7968758125,
+      "b_m": 3.7453616767578115,
+      "band_rho": 0.0472239665096808,
+      "blocked": true,
+      "chord_m": 20.47073923774994,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.6499999999999995,
+      "flags": [],
+      "goal": [
+        0.03990505635738373,
+        -12.724664688110352,
+        3.468895435333252
+      ],
+      "grid_shape": [
+        191,
+        260,
+        58
+      ],
+      "kappa": 1.0082226615551908,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 9,
+      "n_2.0": 14,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.468895435333252,
+      "rho_1.0": 0.08272522098927967,
+      "rho_2.0": 0.06731004325747603,
+      "role": "dense_recovery",
+      "seconds": 2.0,
+      "split": "dev420",
+      "start": [
+        -4.376829147338867,
+        7.254457473754883,
+        2.8538331985473633
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg03",
+      "theta_rad": 0.5699410991677775,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041"
+    },
+    {
+      "b_band_m": 3.041601863281249,
+      "b_m": 3.049072735351561,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 15.40928630021274,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.0499999999999994,
+      "flags": [],
+      "goal": [
+        -4.550606727600098,
+        10.356106758117676,
+        3.605811595916748
+      ],
+      "grid_shape": [
+        260,
+        199,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.605811595916748,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.8,
+      "split": "dev420",
+      "start": [
+        -13.66909408569336,
+        -1.9885900020599365,
+        2.2245967388153076
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "b_band_m": 2.540332447265624,
+      "b_m": 2.543701729492187,
+      "band_rho": 0.0673921130952381,
+      "blocked": false,
+      "chord_m": 5.649940684743123,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.4797058540778354,
+      "flags": [],
+      "goal": [
+        -1.7105118036270142,
+        4.342308521270752,
+        2.716110944747925
+      ],
+      "grid_shape": [
+        193,
+        139,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "high",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 3,
+      "n_2.0": 7,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.55595064163208,
+      "rho_1.0": 0.06982691102756892,
+      "rho_2.0": 0.11501605576441103,
+      "role": "dense_recovery",
+      "seconds": 0.4,
+      "split": "dev420",
+      "start": [
+        -7.044274806976318,
+        2.678736686706543,
+        3.55595064163208
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "b_band_m": 4.7475586894531245,
+      "b_m": 4.7448732216796845,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 8.600297517270263,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.649999999999999,
+      "flags": [],
+      "goal": [
+        6.4408745765686035,
+        12.481362342834473,
+        3.894190549850464
+      ],
+      "grid_shape": [
+        189,
+        221,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.481971263885498,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        0.31550678610801697,
+        6.473076343536377,
+        4.481971263885498
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "b_band_m": 2.349999999999999,
+      "b_m": 2.3471685605468746,
+      "band_rho": 0.016666666666666666,
+      "blocked": false,
+      "chord_m": 15.158322158090119,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.2499999999999998,
+      "flags": [],
+      "goal": [
+        2.874633550643921,
+        6.523412227630615,
+        1.5939610004425049
+      ],
+      "grid_shape": [
+        243,
+        161,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 1.5939610004425049,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.4,
+      "split": "dev420",
+      "start": [
+        -12.034480094909668,
+        3.787919044494629,
+        1.493273377418518
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042"
+    },
+    {
+      "b_band_m": 0.9468758124999999,
+      "b_m": 2.886230966796874,
+      "band_rho": 0.05890967890967891,
+      "blocked": true,
+      "chord_m": 15.604695894410005,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.9723748416156688,
+      "flags": [],
+      "goal": [
+        0.21282483637332916,
+        2.173588752746582,
+        4.279023170471191
+      ],
+      "grid_shape": [
+        189,
+        215,
+        58
+      ],
+      "kappa": 1.0177819684077876,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 5,
+      "n_2.0": 10,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.279023170471191,
+      "rho_1.0": 0.07603763440860214,
+      "rho_2.0": 0.0733268817204301,
+      "role": "dense_recovery",
+      "seconds": 1.7,
+      "split": "dev420",
+      "start": [
+        4.519819259643555,
+        -12.72431755065918,
+        2.544456720352173
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg00",
+      "theta_rad": 0.7038291853452721,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "b_band_m": 4.2476076279296855,
+      "b_m": 4.245117449218748,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 5.795351880375215,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.149999999999999,
+      "flags": [],
+      "goal": [
+        -5.423865795135498,
+        7.552222728729248,
+        3.358583688735962
+      ],
+      "grid_shape": [
+        189,
+        184,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.59868049621582,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.5,
+      "split": "dev420",
+      "start": [
+        -0.17907275259494781,
+        9.683046340942383,
+        4.59868049621582
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "b_band_m": 2.746094171875,
+      "b_m": 2.745850131835937,
+      "band_rho": 0.00022624434389140272,
+      "blocked": false,
+      "chord_m": 18.268151374055456,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.6499999999999997,
+      "flags": [],
+      "goal": [
+        10.215811729431152,
+        0.7973815202713013,
+        4.01059103012085
+      ],
+      "grid_shape": [
+        226,
+        225,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.01059103012085,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.9,
+      "split": "dev420",
+      "start": [
+        -2.495708703994751,
+        13.744368553161621,
+        1.8850017786026
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "b_band_m": 0.7293953808593749,
+      "b_m": 4.947021624023435,
+      "band_rho": 0.04861655773420479,
+      "blocked": true,
+      "chord_m": 26.60793419321312,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.8499999999999988,
+      "flags": [],
+      "goal": [
+        3.313032388687134,
+        -10.022895812988281,
+        4.093619346618652
+      ],
+      "grid_shape": [
+        243,
+        279,
+        58
+      ],
+      "kappa": 1.0170890029664474,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "high",
+        "w2": "high"
+      },
+      "n_1.0": 10,
+      "n_2.0": 15,
+      "n_obstacles": 28,
+      "path_zmax_m": 4.093619346618652,
+      "rho_1.0": 0.061104323308270675,
+      "rho_2.0": 0.07195723684210527,
+      "role": "dense_recovery",
+      "seconds": 3.1,
+      "split": "dev420",
+      "start": [
+        -11.763131141662598,
+        11.901775360107422,
+        4.077833652496338
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg03",
+      "theta_rad": 0.36720744080236406,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043"
+    },
+    {
+      "b_band_m": 3.7413087714843742,
+      "b_m": 3.7453616767578115,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 9.249074796543972,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.6499999999999995,
+      "flags": [],
+      "goal": [
+        -4.772334098815918,
+        10.68027400970459,
+        2.8894875049591064
+      ],
+      "grid_shape": [
+        265,
+        208,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.770057439804077,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.9,
+      "split": "dev420",
+      "start": [
+        -13.978732109069824,
+        10.790803909301758,
+        3.770057439804077
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "b_band_m": 0.3491219667968749,
+      "b_m": 2.5493169628906243,
+      "band_rho": 0.05841320553780618,
+      "blocked": true,
+      "chord_m": 27.303396163188193,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.5499999999999996,
+      "flags": [],
+      "goal": [
+        13.149386405944824,
+        1.1869268417358398,
+        2.0246572494506836
+      ],
+      "grid_shape": [
+        331,
+        140,
+        58
+      ],
+      "kappa": 1.0224867581480712,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "low",
+        "w2": "high"
+      },
+      "n_1.0": 9,
+      "n_2.0": 17,
+      "n_obstacles": 28,
+      "path_zmax_m": 2.0246572494506836,
+      "rho_1.0": 0.045467032967032965,
+      "rho_2.0": 0.06607142857142857,
+      "role": "dense_recovery",
+      "seconds": 2.1,
+      "split": "dev420",
+      "start": [
+        -13.905614852905273,
+        -2.4739649295806885,
+        1.7080812454223633
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg01",
+      "theta_rad": 0.8632938858417595,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "b_band_m": 3.549218828124999,
+      "b_m": 3.548828507812499,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 16.530478433282322,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.4499999999999993,
+      "flags": [],
+      "goal": [
+        8.793737411499023,
+        13.974996566772461,
+        3.0757503509521484
+      ],
+      "grid_shape": [
+        242,
+        239,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 3.0757503509521484,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.9,
+      "split": "dev420",
+      "start": [
+        11.691518783569336,
+        -2.2945058345794678,
+        2.6721763610839844
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "b_band_m": 3.549999999999999,
+      "b_m": 3.548828507812499,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 20.20018156644709,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.4499999999999993,
+      "flags": [],
+      "goal": [
+        -10.105687141418457,
+        -8.467677116394043,
+        2.6652510166168213
+      ],
+      "grid_shape": [
+        261,
+        201,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 28,
+      "path_zmax_m": 2.762153148651123,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "dense_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        10.035012245178223,
+        -10.01369571685791,
+        2.762153148651123
+      ],
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044"
+    },
+    {
+      "b_band_m": 1.7358404042968743,
+      "b_m": 2.846924333007812,
+      "band_rho": 0.04066982581967213,
+      "blocked": false,
+      "chord_m": 20.48630300874843,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.7499999999999998,
+      "flags": [],
+      "goal": [
+        6.3807549476623535,
+        -9.012197494506836,
+        1.9650782346725464
+      ],
+      "grid_shape": [
+        191,
+        257,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "high"
+      },
+      "n_1.0": 2,
+      "n_2.0": 2,
+      "n_obstacles": 8,
+      "path_zmax_m": 3.209845542907715,
+      "rho_1.0": 0.03227383863080684,
+      "rho_2.0": 0.05519559902200489,
+      "role": "support_expansion",
+      "seconds": 0.8,
+      "split": "dev420",
+      "start": [
+        0.8193252086639404,
+        10.665446281433105,
+        3.209845542907715
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "b_band_m": 2.44707058203125,
+      "b_m": 2.4482427617187494,
+      "band_rho": 0.01091005291005291,
+      "blocked": false,
+      "chord_m": 27.52951965308341,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.4499999999999997,
+      "flags": [],
+      "goal": [
+        12.920822143554688,
+        -12.93066692352295,
+        2.5656089782714844
+      ],
+      "grid_shape": [
+        297,
+        223,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 2,
+      "n_2.0": 2,
+      "n_obstacles": 8,
+      "path_zmax_m": 2.5656089782714844,
+      "rho_1.0": 0.006473035439137134,
+      "rho_2.0": 0.01752503852080123,
+      "role": "support_expansion",
+      "seconds": 1.0,
+      "split": "dev420",
+      "start": [
+        -10.785987854003906,
+        1.0313327312469482,
+        1.6042673587799072
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "b_band_m": 2.1594729707031246,
+      "b_m": 2.1674810917968745,
+      "band_rho": 0.031180428134556574,
+      "blocked": false,
+      "chord_m": 6.970096835824485,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 0.9988088481701516,
+      "flags": [],
+      "goal": [
+        -3.0432486534118652,
+        -7.930233478546143,
+        1.8516416549682617
+      ],
+      "grid_shape": [
+        191,
+        173,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 1,
+      "n_2.0": 2,
+      "n_obstacles": 8,
+      "path_zmax_m": 2.3840525150299072,
+      "rho_1.0": 0.008922273945549442,
+      "rho_2.0": 0.023615813231767528,
+      "role": "support_expansion",
+      "seconds": 0.5,
+      "split": "dev420",
+      "start": [
+        -4.661075592041016,
+        -1.171429991722107,
+        2.3840525150299072
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "b_band_m": 3.4494142695312497,
+      "b_m": 3.4477543066406238,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 13.677807391826184,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.4499999999999993,
+      "flags": [],
+      "goal": [
+        -7.405860424041748,
+        6.2592291831970215,
+        3.649625778198242
+      ],
+      "grid_shape": [
+        270,
+        180,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 8,
+      "path_zmax_m": 3.649625778198242,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "support_expansion",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        -13.856566429138184,
+        -5.757753849029541,
+        2.618642807006836
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008"
+    },
+    {
+      "b_band_m": 4.070801005859375,
+      "b_m": 4.071045213867185,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 6.684452063546548,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.8927877939124325,
+      "flags": [],
+      "goal": [
+        4.911789417266846,
+        11.869725227355957,
+        3.4786627292633057
+      ],
+      "grid_shape": [
+        150,
+        244,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 6,
+      "path_zmax_m": 4.483023166656494,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "support_expansion",
+      "seconds": 0.5,
+      "split": "dev420",
+      "start": [
+        4.296250820159912,
+        5.289886951446533,
+        4.483023166656494
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "b_band_m": 3.3461916542968737,
+      "b_m": 3.346680105468749,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 15.560604343387435,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.249999999999999,
+      "flags": [],
+      "goal": [
+        -9.550654411315918,
+        12.272340774536133,
+        3.735222101211548
+      ],
+      "grid_shape": [
+        206,
+        248,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 6,
+      "path_zmax_m": 3.735222101211548,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "support_expansion",
+      "seconds": 0.8,
+      "split": "dev420",
+      "start": [
+        -9.071660995483398,
+        -3.2289068698883057,
+        2.4646732807159424
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "b_band_m": 2.4404297304687494,
+      "b_m": 2.4482427617187494,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 27.888014024541306,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.4499999999999997,
+      "flags": [],
+      "goal": [
+        -5.9651780128479,
+        13.669060707092285,
+        1.6231142282485962
+      ],
+      "grid_shape": [
+        237,
+        331,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 6,
+      "path_zmax_m": 1.843100905418396,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "support_expansion",
+      "seconds": 1.2,
+      "split": "dev420",
+      "start": [
+        -12.645788192749023,
+        -13.4060640335083,
+        1.843100905418396
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "b_band_m": 1.9072271523437494,
+      "b_m": 3.346680105468749,
+      "band_rho": 0.028548085901027077,
+      "blocked": true,
+      "chord_m": 27.53194782648736,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.249999999999999,
+      "flags": [],
+      "goal": [
+        12.964052200317383,
+        -13.842208862304688,
+        2.4658920764923096
+      ],
+      "grid_shape": [
+        230,
+        282,
+        58
+      ],
+      "kappa": 1.0036799624025066,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 5,
+      "n_2.0": 5,
+      "n_obstacles": 6,
+      "path_zmax_m": 3.8783092498779297,
+      "rho_1.0": 0.04622526737967914,
+      "rho_2.0": 0.03639505347593583,
+      "role": "support_expansion",
+      "seconds": 3.0,
+      "split": "dev420",
+      "start": [
+        -3.2008798122406006,
+        8.39982795715332,
+        3.8783092498779297
+      ],
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg03",
+      "theta_rad": 0.35667860090704917,
+      "world": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009"
+    },
+    {
+      "b_band_m": 2.5499999999999994,
+      "b_m": 2.5493169628906243,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 4.671199927534354,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.4499999999999997,
+      "flags": [],
+      "goal": [
+        10.992388725280762,
+        2.123680591583252,
+        1.6557862758636475
+      ],
+      "grid_shape": [
+        245,
+        230,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 2,
+      "path_zmax_m": 1.7884029150009155,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "yaw_lateral_recovery",
+      "seconds": 0.8,
+      "split": "dev420",
+      "start": [
+        11.49569320678711,
+        6.7657928466796875,
+        1.7884029150009155
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "b_band_m": 4.245117378906249,
+      "b_m": 4.245117449218748,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 4.476097365039023,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.149999999999999,
+      "flags": [],
+      "goal": [
+        -2.181070566177368,
+        -8.62153148651123,
+        3.3892228603363037
+      ],
+      "grid_shape": [
+        200,
+        274,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 2,
+      "path_zmax_m": 4.530266284942627,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "yaw_lateral_recovery",
+      "seconds": 0.8,
+      "split": "dev420",
+      "start": [
+        -1.3554937839508057,
+        -12.870283126831055,
+        4.530266284942627
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "b_band_m": 1.5115240117187496,
+      "b_m": 3.049072735351561,
+      "band_rho": 0.02073293172690763,
+      "blocked": true,
+      "chord_m": 29.16295297299094,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.9499999999999995,
+      "flags": [],
+      "goal": [
+        -12.267862319946289,
+        -13.174022674560547,
+        2.164912700653076
+      ],
+      "grid_shape": [
+        253,
+        325,
+        58
+      ],
+      "kappa": 1.0062414470971812,
+      "labels": {
+        "band": "low",
+        "bottleneck": "narrow",
+        "detour": "small",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 2,
+      "n_2.0": 2,
+      "n_obstacles": 2,
+      "path_zmax_m": 2.8499999999999996,
+      "rho_1.0": 0.029459691252144083,
+      "rho_2.0": 0.025943396226415096,
+      "role": "yaw_lateral_recovery",
+      "seconds": 3.9,
+      "split": "dev420",
+      "start": [
+        -0.04384012147784233,
+        13.295205116271973,
+        2.8214852809906006
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg02",
+      "theta_rad": 0.22357105171647815,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "b_band_m": 0.36211030468749994,
+      "b_m": 2.4482427617187494,
+      "band_rho": 0.03080601092896175,
+      "blocked": true,
+      "chord_m": 26.622285436606806,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.3499999999999999,
+      "flags": [],
+      "goal": [
+        -5.667951583862305,
+        12.935626983642578,
+        1.5825875997543335
+      ],
+      "grid_shape": [
+        239,
+        274,
+        58
+      ],
+      "kappa": 1.0194311296932013,
+      "labels": {
+        "band": "high",
+        "bottleneck": "narrow",
+        "detour": "large",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 2,
+      "n_2.0": 2,
+      "n_obstacles": 2,
+      "path_zmax_m": 5.149999999999999,
+      "rho_1.0": 0.04297416509136736,
+      "rho_2.0": 0.03812224322621298,
+      "role": "yaw_lateral_recovery",
+      "seconds": 3.3,
+      "split": "dev420",
+      "start": [
+        10.872011184692383,
+        -7.73535680770874,
+        4.390815258026123
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg03",
+      "theta_rad": 0.3990115504065849,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012"
+    },
+    {
+      "b_band_m": 2.24628921484375,
+      "b_m": 2.2460943593749993,
+      "band_rho": 0.013086060606060606,
+      "blocked": false,
+      "chord_m": 23.487903986891276,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.2499999999999998,
+      "flags": [],
+      "goal": [
+        12.597603797912598,
+        -7.9245076179504395,
+        1.9162099361419678
+      ],
+      "grid_shape": [
+        246,
+        246,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "narrow",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "low"
+      },
+      "n_1.0": 0,
+      "n_2.0": 1,
+      "n_obstacles": 4,
+      "path_zmax_m": 1.9162099361419678,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.002325,
+      "role": "yaw_lateral_recovery",
+      "seconds": 1.0,
+      "split": "dev420",
+      "start": [
+        -1.7567517757415771,
+        10.659700393676758,
+        1.4050129652023315
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "b_band_m": 2.4430668808593743,
+      "b_m": 2.4482427617187494,
+      "band_rho": 0.005832410483573274,
+      "blocked": false,
+      "chord_m": 19.248414008695782,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 1.4499999999999997,
+      "flags": [],
+      "goal": [
+        5.188266277313232,
+        -8.263785362243652,
+        3.8914520740509033
+      ],
+      "grid_shape": [
+        184,
+        251,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "low",
+        "bottleneck": "middle",
+        "detour": "clear",
+        "w1": "low",
+        "w2": "low"
+      },
+      "n_1.0": 1,
+      "n_2.0": 1,
+      "n_obstacles": 4,
+      "path_zmax_m": 3.8914520740509033,
+      "rho_1.0": 0.00019633507853403142,
+      "rho_2.0": 0.008098821989528797,
+      "role": "yaw_lateral_recovery",
+      "seconds": 0.8,
+      "split": "dev420",
+      "start": [
+        6.409575939178467,
+        10.810181617736816,
+        1.6124987602233887
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg01",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "b_band_m": 3.9499999999999984,
+      "b_m": 3.947510079101561,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 17.711068843133084,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 2.849999999999999,
+      "flags": [],
+      "goal": [
+        -10.702672958374023,
+        11.644699096679688,
+        3.0569121837615967
+      ],
+      "grid_shape": [
+        226,
+        239,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 4,
+      "path_zmax_m": 3.172464609146118,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "yaw_lateral_recovery",
+      "seconds": 0.6,
+      "split": "dev420",
+      "start": [
+        -11.877219200134277,
+        -6.027002811431885,
+        3.172464609146118
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    },
+    {
+      "b_band_m": 4.341211003906249,
+      "b_m": 4.346191650390623,
+      "band_rho": 0.0,
+      "blocked": false,
+      "chord_m": 9.147326355345294,
+      "corridor_degenerate": false,
+      "endpoint_clearance_m": 3.349999999999999,
+      "flags": [],
+      "goal": [
+        9.588203430175781,
+        -10.92259407043457,
+        3.9208619594573975
+      ],
+      "grid_shape": [
+        216,
+        232,
+        58
+      ],
+      "kappa": 1.0,
+      "labels": {
+        "band": "zero",
+        "bottleneck": "wide",
+        "detour": "clear",
+        "w1": "zero",
+        "w2": "zero"
+      },
+      "n_1.0": 0,
+      "n_2.0": 0,
+      "n_obstacles": 4,
+      "path_zmax_m": 3.9208619594573975,
+      "rho_1.0": 0.0,
+      "rho_2.0": 0.0,
+      "role": "yaw_lateral_recovery",
+      "seconds": 0.7,
+      "split": "dev420",
+      "start": [
+        1.2790517807006836,
+        -7.111204624176025,
+        3.596996545791626
+      ],
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg03",
+      "theta_rad": 0.0,
+      "world": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013"
+    }
+  ]
+}

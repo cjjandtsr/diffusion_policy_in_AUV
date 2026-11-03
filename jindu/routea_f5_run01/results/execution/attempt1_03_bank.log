@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "scripts/routea_task_bank.py", line 146, in <module>
+    main()
+  File "scripts/routea_task_bank.py", line 130, in main
+    pairs = [(t['start_pos'],t['goal_pos']) for t in dev['tasks'] if t['world_id']==world]
+  File "scripts/routea_task_bank.py", line 130, in <listcomp>
+    pairs = [(t['start_pos'],t['goal_pos']) for t in dev['tasks'] if t['world_id']==world]
+KeyError: 'start_pos'

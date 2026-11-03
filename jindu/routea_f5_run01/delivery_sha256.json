@@ -1,0 +1,122 @@
+{
+  "version": "F5-20261101-v1",
+  "windows_root": "C:\\Users\\cjj\\Desktop\\IDP3\\chengxu\\Improved-3D-Diffusion-Policy",
+  "wsl_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+  "files": [
+    {
+      "relative_path": "diffusion_policy_3d/env/kinematic_uav_env.py",
+      "sha256": "b092a7aa8285f71f3d292a825c588373cca979928dc5eb823e393f1600e308f6",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/env/reward_v3.py",
+      "sha256": "a424382590aa72ec1382a27e8d1bcda2b7f9ac0182cb61f7479174b82b6a7748",
+      "change": "added"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/audit/training_audit.py",
+      "sha256": "1ec6a2edf440f7643df9f9646a01818bc69a129a9dc7b41f83cd139fa77a7d80",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/checkpointing/a2_fork.py",
+      "sha256": "2ca62d19ddc2ca26f85b686b1018d909305015bec60b81d753a9dc77ce41ba15",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/a2_support.py",
+      "sha256": "dc141c61c9270c154f069fc3e83baf72fe458ea770c84e75041ecbb17f7f7068",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/build_system.py",
+      "sha256": "4208f386d04ee4d20f4221d78a618aaf68cace7e5a421b9903a711bbd96e19d8",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/config_schema_v2.py",
+      "sha256": "9c17e698f16c94beac20922ad36438f64e0071f8cecc41a6dd61bd0ca6158f0d",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/identity.py",
+      "sha256": "595867b8ea54e2b3ff5d2757b01b5e2546217e4620758a03037c25c12ef9d59b",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/pipeline.py",
+      "sha256": "380896e16f2709721622521a28a3d6f1d72a077148135b99873482b3cce4412d",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/environments/kinematic_adapter.py",
+      "sha256": "4e810173c43f7ef9f5405788d1abf5ff7bb28e81f651e97dd60993a1383ba9bb",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/environments/task_sampler.py",
+      "sha256": "3b4fabeb9320c6bbc307e98cfac002e2589219ce77f126cbb6101f4022dbab1e",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/rewards/select.py",
+      "sha256": "e10d6fe5068001b97fc0f0e1d197ef9f36010afed25a86f3a2b7956af4e9e1bd",
+      "change": "modified"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/rewards/v3/__init__.py",
+      "sha256": "e2f644dfce2e70cdb4c84ca747e60c2d82365ca1c095a6ecc207427a5a68c033",
+      "change": "added"
+    },
+    {
+      "relative_path": "diffusion_policy_3d/rl/dppo_uav_rebuild/rewards/v3/facade.py",
+      "sha256": "f6eb320a1df91adf23fae723dec052326558f0f3d6e854a700aa3c05c80ce51c",
+      "change": "added"
+    },
+    {
+      "relative_path": "scripts/analyze_routea_f5.py",
+      "sha256": "ff3f3f3ba67d0bd23b4275f58d69d4757c446465083ff77de998a494642e3e20",
+      "change": "added"
+    },
+    {
+      "relative_path": "scripts/routea_paired_support/task_geometry_metrics.py",
+      "sha256": "e9c8a64eeb681682125f25ba1c8584abc3130f5ab5e66a32cd4562509e446198",
+      "change": "added"
+    },
+    {
+      "relative_path": "scripts/routea_task_bank.py",
+      "sha256": "d901cf2bc7bf5e84defa7e200e32298e84c324231b5513deafc6ee3819d85591",
+      "change": "added"
+    },
+    {
+      "relative_path": "scripts/run_routea_f5.py",
+      "sha256": "9ddf5678852807b0f06385406f44bae1ea7e34aa37915ded3086916f60366789",
+      "change": "added"
+    },
+    {
+      "relative_path": "tests/dppo_uav_rebuild/audit/test_training_audit.py",
+      "sha256": "aa91d13a7140bb1e151a1bb6ead113f8bb298f000a00cc7500c5918000c8d54a",
+      "change": "modified"
+    },
+    {
+      "relative_path": "tests/dppo_uav_rebuild/entrypoints/test_f5_config.py",
+      "sha256": "89dd934994abedcaf4c3f015bdfcbfa3ec638d81e306f824f6b83a6e15df795a",
+      "change": "added"
+    },
+    {
+      "relative_path": "tests/dppo_uav_rebuild/environments/test_task_bank_mixture.py",
+      "sha256": "a7373d20a233e8afc1ba71339c2c3821f74695531c55b23c451abcfd20684928",
+      "change": "added"
+    },
+    {
+      "relative_path": "tests/dppo_uav_rebuild/rewards/test_reward_v3.py",
+      "sha256": "6d9f18c1839e9f581a761b23b31086e4452b80e85f4cb59af2027a5b02a9e714",
+      "change": "added"
+    },
+    {
+      "relative_path": "tests/routea_paired/test_f5_analysis.py",
+      "sha256": "254e67b49b563256aeafc67275d770976665540a71db504b8a466e04d59700a8",
+      "change": "added"
+    }
+  ]
+}
