@@ -78,6 +78,7 @@ class OnPolicyRolloutBuffer:
         outcome="none",
         provenance_hash="",
         bootstrap_allowed=None,
+        execution_metadata=None,
     ):
         if len(self._items) >= self.capacity:
             raise RuntimeError("on-policy buffer capacity exceeded")
@@ -125,6 +126,11 @@ class OnPolicyRolloutBuffer:
             }
         )
         self._advantages = self._returns = None
+        if execution_metadata is not None:
+            required = {'task_id','episode_id','event_segment','event_fraction'}
+            if set(execution_metadata) != required:
+                raise ValueError('invalid executed-prefix metadata')
+            self._items[-1].update(execution_metadata)
 
     def finalize(self):
         if len(self._items) != self.capacity:

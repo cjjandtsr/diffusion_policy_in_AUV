@@ -22,6 +22,7 @@ from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.trainer import (
     TrainerConfig,
 )
 from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.value import TemporalValueNetwork
+from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.official_loss_components import InertMask
 from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.initialization_parity import (
     construct_r1_critic_with_parity,
 )
@@ -69,7 +70,7 @@ def build_system(config, repo_root: Path):
         expected_conv1d=E5_DENOISER_CONV1D_TARGETS,
     )
     initialization_parity = None
-    if str(config.reward_version) == "v2":
+    if str(config.reward_version) in ("v2", "v3"):
         critic, initialization_parity = construct_r1_critic_with_parity(
             int(config.critic.hidden_dim), device,
             lora_bundle.named_adapter_parameters(),
@@ -79,6 +80,14 @@ def build_system(config, repo_root: Path):
         critic = TemporalValueNetwork(
             history=3, frame_dim=192, hidden_dim=int(config.critic.hidden_dim),
         ).to(device)
+    floor = config.dppo.get('min_std_vector')
+    sampling_floor = float(config.dppo.min_sampling_std) if floor is None else list(floor)
+    logprob_floor = float(config.dppo.min_logprob_std) if floor is None else list(floor)
+    if floor is not None and sampling_floor != logprob_floor:
+        raise ValueError('sampling/logprob floor vectors must match')
+    protocol_options = {}
+    if config.dppo.get('denoised_clip_value') is not None:
+        protocol_options['denoised_clip_override'] = float(config.dppo.denoised_clip_value)
     official_runtime = adapter_module.E5PPODiffusion(
         model=policy.model,
         scheduler=policy.noise_scheduler,
@@ -90,10 +99,11 @@ def build_system(config, repo_root: Path):
         horizon_steps=16,
         action_dim=11,
         obs_dim=576,
-        min_sampling_denoising_std=float(config.dppo.min_sampling_std),
-        min_logprob_denoising_std=float(config.dppo.min_logprob_std),
+        min_sampling_denoising_std=sampling_floor,
+        min_logprob_denoising_std=logprob_floor,
         gamma_denoising=float(config.dppo.gamma_denoising),
         clip_ploss_coef=float(config.dppo.clip_ploss_coef),
+        **protocol_options
     )
     actor_parameters = [
         parameter for _, parameter in lora_bundle.named_adapter_parameters()
@@ -117,11 +127,13 @@ def build_system(config, repo_root: Path):
             value_loss_coefficient=float(config.dppo.value_loss_coefficient),
             entropy_loss_coefficient=float(config.dppo.entropy_loss_coefficient),
             reward_start=2,
-            reward_horizon=8 if str(config.reward_version) == "v2" else 4,
+            reward_horizon=8 if str(config.reward_version) in ("v2", "v3") else 4,
             max_approx_kl=float(config.gates.max_approx_kl),
             ratio_mean_min=float(config.gates.ratio_mean_min),
             ratio_mean_max=float(config.gates.ratio_mean_max),
             max_grad_norm=float(config.gates.max_grad_norm),
+            inert_mask=(InertMask(**dict(config.dppo.ppo_inert_mask))
+                        if config.dppo.get('ppo_inert_mask') is not None else None),
         ),
     )
     return BuiltSystem(

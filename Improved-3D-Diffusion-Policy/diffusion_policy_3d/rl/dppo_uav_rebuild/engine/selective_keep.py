@@ -163,7 +163,8 @@ def calibrate_keep(trainer, batches, keep, *, microbatch_pairs=128, target_ratio
                 for start in range(0,n,microbatch_pairs):
                     end = min(n,start+microbatch_pairs)
                     parts = compute_official_components(runtime, _slice_batch(batch,start,end), stats,
-                        reward_start=trainer.config.reward_start, reward_horizon=trainer.config.reward_horizon)
+                        reward_start=trainer.config.reward_start, reward_horizon=trainer.config.reward_horizon,
+                        inert_mask=trainer.config.inert_mask)
                     loss = (parts.policy.mean() + trainer.config.entropy_loss_coefficient*parts.entropy.mean())*((end-start)/n)
                     gp += gradient_vector(torch.autograd.grad(loss, parameters, allow_unused=True),parameters)
                 loss = keep.loss(runtime,device=parameters[0].device)

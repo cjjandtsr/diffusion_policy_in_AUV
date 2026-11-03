@@ -62,9 +62,12 @@ def reverse_kernel_parameters(runtime, batch, *, use_base_policy):
         batch.chains_prev, timesteps, cond=batch.condition,
         index=ddim_indices, use_base_policy=bool(use_base_policy),
     )
-    variance = torch.exp(log_variance).clamp_min(
-        float(runtime.min_logprob_denoising_std) ** 2
-    )
+    floor = runtime.min_logprob_denoising_std
+    variance = torch.exp(log_variance)
+    if isinstance(floor, torch.Tensor) and floor.numel() > 1:
+        variance = torch.maximum(variance, floor.to(variance).square())
+    else:
+        variance = variance.clamp_min(float(floor) ** 2)
     if variance.ndim != mean.ndim or variance.shape[0] != mean.shape[0]:
         raise ValueError(
             "official reverse-kernel variance must preserve the batch axis"

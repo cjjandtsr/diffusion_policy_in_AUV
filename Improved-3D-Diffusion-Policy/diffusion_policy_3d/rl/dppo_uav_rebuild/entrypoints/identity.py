@@ -164,6 +164,9 @@ def _iter_source_paths(repo_root: Path) -> Iterable[Path]:
     r1_support = repo_root / "diffusion_policy_3d" / "env" / "reward_v2_support"
     for path in sorted(r1_support.glob("*.py")) if r1_support.is_dir() else ():
         yield path.resolve(strict=True)
+    v3_source = repo_root / 'diffusion_policy_3d/env/reward_v3.py'
+    if v3_source.is_file():
+        yield v3_source.resolve(strict=True)
     credit_support = repo_root / "scripts" / "dppo_credit_support"
     credit_paths = sorted(credit_support.glob("*.py")) if credit_support.is_dir() else []
     if not credit_paths:
@@ -339,8 +342,10 @@ def build_environment_provenance(repo_root, *, reward_version="v17"):
     """Record executed-path and observation sources, without importing the env."""
 
     paths = ENVIRONMENT_SOURCE_PATHS
-    if str(reward_version) == "v2":
+    if str(reward_version) in ("v2", "v3"):
         paths += R1_EXECUTED_ENVIRONMENT_SOURCE_PATHS
+    if str(reward_version) == 'v3':
+        paths += ('diffusion_policy_3d/env/reward_v3.py',)
     sources = {
         relative: _sha256(Path(repo_root) / relative)
         for relative in paths

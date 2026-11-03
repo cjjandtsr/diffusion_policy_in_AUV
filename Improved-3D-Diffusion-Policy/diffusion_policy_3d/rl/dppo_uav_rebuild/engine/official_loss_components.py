@@ -9,6 +9,19 @@ import torch
 
 
 @dataclass(frozen=True)
+class InertMask:
+    enabled: bool = False
+    channels: tuple = (3, 4, 5, 6, 7, 8, 10)
+    scope: str = 'final_step'
+
+    def __post_init__(self):
+        if not isinstance(self.enabled, bool) or self.scope not in ('final_step', 'all_steps'):
+            raise ValueError('invalid inert mask')
+        if tuple(self.channels) != (3, 4, 5, 6, 7, 8, 10):
+            raise ValueError('inert channels must match deployment interface')
+
+
+@dataclass(frozen=True)
 class AdvantageStats:
     mean: torch.Tensor
     std: torch.Tensor
@@ -59,6 +72,7 @@ def compute_official_components(
     reward_start=2,
     reward_horizon=4,
     use_bc_loss=False,
+    inert_mask=None,
 ):
     if use_bc_loss:
         raise NotImplementedError("logical BC component is disabled for Route A v1.7")
@@ -78,6 +92,14 @@ def compute_official_components(
         raise ValueError("E5 logical loss requires A0 [2:6] or R1 [2:10]")
     if newlogprobs.shape != batch.oldlogprobs.shape:
         raise ValueError("new/old logprob tensors must pair every action index")
+    if inert_mask is not None and inert_mask.enabled:
+        channels = torch.zeros(newlogprobs.shape[-1], dtype=torch.bool, device=newlogprobs.device)
+        channels[list(inert_mask.channels)] = True
+        row = (batch.denoising_inds.to(newlogprobs.device) == runtime.ft_denoising_steps - 1
+               if inert_mask.scope == 'final_step' else
+               torch.ones_like(batch.denoising_inds, dtype=torch.bool, device=newlogprobs.device))
+        newlogprobs = torch.where(row[:, None, None] & channels[None, None, :],
+                                 batch.oldlogprobs.detach(), newlogprobs)
     new = newlogprobs.clamp(-5, 2)[:, reward_start:reward_end, :].mean(dim=(-1, -2))
     old = batch.oldlogprobs.clamp(-5, 2)[:, reward_start:reward_end, :].mean(dim=(-1, -2))
     advantages = (batch.advantages - stats.mean) / (stats.std + 1e-8)

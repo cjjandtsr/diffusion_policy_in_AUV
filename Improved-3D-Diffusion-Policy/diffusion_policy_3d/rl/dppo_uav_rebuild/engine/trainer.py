@@ -19,6 +19,7 @@ class TrainerConfig:
     ratio_mean_min: float = 0.2
     ratio_mean_max: float = 5.0
     max_grad_norm: float = 0.0
+    inert_mask: object = None
 
     def __post_init__(self):
         if (self.reward_start, self.reward_horizon) not in ((2, 4), (2, 8)):
@@ -89,6 +90,7 @@ class DDPMTrainer:
         self.config = config or TrainerConfig()
         self.counters = TrainerCounters()
         self.keep = None
+        self.inert_anchor = None
         self.actor_parameters = tuple(
             parameter for _, parameter in lora_bundle.named_adapter_parameters()
         )
@@ -112,6 +114,9 @@ class DDPMTrainer:
                 "official DPPO update requires true batch size 128",
                 reason="invalid_batch_size",
             )
+        if ((self.config.inert_mask is not None and self.config.inert_mask.enabled)
+                or (self.inert_anchor is not None and self.inert_anchor.coefficient > 0)):
+            return self.update_logical_batch(batch, microbatch_pairs=128, update_actor=update_actor)
         self.counters.attempted_updates += 1
         mutable = self.actor_parameters + self.critic_parameters
         transaction = UpdateTransaction(
@@ -253,7 +258,7 @@ class DDPMTrainer:
             critic=self.runtime.critic,
             optimizers=(self.actor_optimizer, self.critic_optimizer),
             counters=self.counters,
-            torch_generators=(() if self.keep is None else (self.keep.generator,)),
+            torch_generators=tuple(aux.generator for aux in (self.keep, self.inert_anchor) if aux is not None),
         )
         lower = float(getattr(self.runtime, "clip_advantage_lower_quantile", 0.0))
         upper = float(getattr(self.runtime, "clip_advantage_upper_quantile", 1.0))
@@ -274,6 +279,7 @@ class DDPMTrainer:
                         reward_start=self.config.reward_start,
                         reward_horizon=self.config.reward_horizon,
                         use_bc_loss=False,
+                        inert_mask=self.config.inert_mask,
                     )
                     weight = (end - start) / logical_n
                     policy_loss = parts.policy.mean()
@@ -290,7 +296,8 @@ class DDPMTrainer:
                         raise UpdateRejected("non-finite logical loss", reason="nonfinite_loss")
                     (total * weight).backward()
                     detached.append(parts)
-                if update_actor and self.keep is not None and self.keep.coefficient > 0:
+                if (update_actor and self.keep is not None and self.keep.coefficient > 0
+                        and (not hasattr(self.keep,'records') or self.keep.records)):
                     from .selective_keep import gradient_vector, gradient_relation
                     ppo_gradient = gradient_vector(
                         [p.grad for p in self.actor_parameters], self.actor_parameters)
@@ -306,6 +313,13 @@ class DDPMTrainer:
                             addition = gradient.detach() * self.keep.coefficient
                             if parameter.grad is None: parameter.grad = addition
                             else: parameter.grad.add_(addition)
+                anchor_loss_value = 0.0
+                if update_actor and self.inert_anchor is not None and self.inert_anchor.coefficient > 0:
+                    anchor_loss = self.inert_anchor.loss(self.runtime, logical_batch)
+                    if not torch.isfinite(anchor_loss):
+                        raise UpdateRejected('nonfinite inert anchor', reason='nonfinite_loss')
+                    (self.inert_anchor.coefficient * anchor_loss).backward()
+                    anchor_loss_value = self.inert_anchor.coefficient * float(anchor_loss.detach())
                 policy_values = torch.cat([part.policy.detach() for part in detached])
                 value_values = torch.cat([part.value.detach() for part in detached])
                 entropy_values = torch.cat([part.entropy.detach() for part in detached])
@@ -324,6 +338,7 @@ class DDPMTrainer:
                 )
                 if keep_diagnostics is not None:
                     total_loss_value += self.keep.coefficient * keep_diagnostics['keep_loss']
+                total_loss_value += anchor_loss_value
                 approx_kl = float(kl_values.mean())
                 ratio_mean = float(ratio_values.mean())
                 clip_fraction = float(clip_values.mean())

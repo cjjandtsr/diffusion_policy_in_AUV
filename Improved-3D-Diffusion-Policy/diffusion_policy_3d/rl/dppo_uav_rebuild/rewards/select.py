@@ -11,10 +11,14 @@ def select_reward(config, repo_root):
     version = str(getattr(config, "reward_version", "v13"))
     if version == "v13":
         return RewardV13Facade()
-    if version == "v2":
+    if version in ("v2", "v3"):
         from .v2.facade import RewardV2Facade
         protocol = config.get("task_protocol")
-        return RewardV2Facade(space_cost_budget=None if protocol is None else protocol.space_cost_budget)
+        facade = RewardV2Facade
+        if version == "v3":
+            from .v3.facade import RewardV3Facade
+            facade = RewardV3Facade
+        return facade(space_cost_budget=None if protocol is None else protocol.space_cost_budget)
     if version != "v17":
         raise ValueError("unsupported reward_version: {}".format(version))
     from .v17.facade import RewardV17Facade

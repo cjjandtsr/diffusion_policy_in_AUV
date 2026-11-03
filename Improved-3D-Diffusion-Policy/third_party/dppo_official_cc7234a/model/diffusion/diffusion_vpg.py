@@ -24,6 +24,10 @@ from model.diffusion.sampling import make_timesteps, extract
 from torch.distributions import Normal
 
 
+def _as_floor(value, reference):
+    return torch.as_tensor(value, device=reference.device, dtype=reference.dtype)
+
+
 class VPGDiffusion(DiffusionModel):
 
     def __init__(
@@ -106,7 +110,7 @@ class VPGDiffusion(DiffusionModel):
         Current configs do not apply annealing
         """
         # anneal min_sampling_denoising_std
-        if type(self.min_sampling_denoising_std) is not float:
+        if not isinstance(self.min_sampling_denoising_std, (float, torch.Tensor)):
             self.min_sampling_denoising_std.step()
 
         # anneal denoising steps
@@ -130,7 +134,7 @@ class VPGDiffusion(DiffusionModel):
             )
 
     def get_min_sampling_denoising_std(self):
-        if type(self.min_sampling_denoising_std) is float:
+        if isinstance(self.min_sampling_denoising_std, (float, torch.Tensor)):
             return self.min_sampling_denoising_std
         else:
             return self.min_sampling_denoising_std()
@@ -322,14 +326,14 @@ class VPGDiffusion(DiffusionModel):
                 if deterministic:
                     std = torch.zeros_like(std)
                 else:
-                    std = torch.clip(std, min=min_sampling_denoising_std)
+                    std = torch.maximum(std, _as_floor(min_sampling_denoising_std, std))
             else:
                 if deterministic and t == 0:
                     std = torch.zeros_like(std)
                 elif deterministic:  # still keep the original noise
                     std = torch.clip(std, min=1e-3)
                 else:  # use higher minimum noise
-                    std = torch.clip(std, min=min_sampling_denoising_std)
+                    std = torch.maximum(std, _as_floor(min_sampling_denoising_std, std))
             noise = torch.randn_like(x).clamp_(
                 -self.randn_clip_value, self.randn_clip_value
             )
@@ -425,7 +429,7 @@ class VPGDiffusion(DiffusionModel):
             use_base_policy=use_base_policy,
         )
         std = torch.exp(0.5 * logvar)
-        std = torch.clip(std, min=self.min_logprob_denoising_std)
+        std = torch.maximum(std, _as_floor(self.min_logprob_denoising_std, std))
         dist = Normal(next_mean, std)
 
         # Get logprobs with gaussian
@@ -490,7 +494,7 @@ class VPGDiffusion(DiffusionModel):
             use_base_policy=use_base_policy,
         )
         std = torch.exp(0.5 * logvar)
-        std = torch.clip(std, min=self.min_logprob_denoising_std)
+        std = torch.maximum(std, _as_floor(self.min_logprob_denoising_std, std))
         dist = Normal(next_mean, std)
 
         # Get logprobs with gaussian

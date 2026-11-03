@@ -180,14 +180,15 @@ def _actor_lr_for_update(config, update_index):
         raise ValueError("update_index must be within the configured run")
     start = float(config.optimizer.actor_lr)
     end = float(getattr(config.optimizer, "actor_lr_end", start))
+    scale = float(getattr(getattr(config,'xk',None),'actor_lr_scale',1.))
     first_joint = warmup_updates + 1
     if update_index <= first_joint:
-        return start
+        return start * scale
     intervals = updates - first_joint
     if intervals <= 0:
-        return end
+        return end * scale
     progress = (update_index - first_joint) / intervals
-    return start + progress * (end - start)
+    return (start + progress * (end - start)) * scale
 
 
 def _should_save_checkpoint(config, update_index):
@@ -280,10 +281,27 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
 
     system = build_system(config, repo_root)
     a2 = getattr(config, 'a2', None)
+    xk = config.get('xk')
+    imitation = config.dppo.get('self_imitation')
+    imitation_enabled = imitation is not None and imitation.enabled
     if a2 is not None:
         from .a2_support import make_keep
-        system.trainer.keep = make_keep(config)
+        if xk is None or imitation_enabled:
+            system.trainer.keep = make_keep(config)
     auxiliary_schedules = {} if system.trainer.keep is None else {'selective_keep':system.trainer.keep}
+    drift_config = config.dppo.get('drift_monitor')
+    drift = None
+    if drift_config is not None and drift_config.enabled:
+        from ..engine.drift_monitor import DriftMonitor
+        drift = DriftMonitor(system.official_runtime, system.bc_runtime.policy.normalizer,
+                             _resolve(repo_root,drift_config.bank_path),str(drift_config.bank_sha256))
+        auxiliary_schedules['drift_monitor'] = drift
+    anchor_config = config.dppo.get('inert_anchor')
+    if anchor_config is not None and anchor_config.enabled:
+        from ..engine.inert_anchor import InertAnchor
+        system.trainer.inert_anchor = InertAnchor(coefficient=float(anchor_config.coefficient),
+            seed=int(anchor_config.seed),batch_size=int(anchor_config.batch_size))
+        auxiliary_schedules['inert_anchor'] = system.trainer.inert_anchor
     runtime_device = torch.device(system.bc_runtime.device)
     # Import only after the verified official top-level model package is loaded.
     from diffusion_policy_3d.rl.dppo_uav_rebuild.environments.factory import (
@@ -315,12 +333,18 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         space_cost_budget=None if protocol is None else float(protocol.space_cost_budget),
     )
     task_sampler = TaskSampler(environment_factory.tasks, seed=seed + 17)
+    bank_config = config.get('task_bank')
+    if bank_config is not None and bank_config.enabled:
+        from ..environments.task_sampler import TaskBankMixtureSampler
+        task_sampler = TaskBankMixtureSampler(environment_factory.tasks,
+            _resolve(repo_root, bank_config.path), str(bank_config.sha256),
+            int(bank_config.seed), dict(bank_config.mixture))
     runtime_identity = build_runtime_identity(config, repo_root, system, manifest)
     environment_provenance = build_environment_provenance(
         repo_root, reward_version=str(config.reward_version))
     r1_probe_path = results / "r1_plan_probe.json"
     r1_probe = None
-    if str(config.reward_version) == "v2" and resume_from is not None and r1_probe_path.is_file():
+    if str(config.reward_version) in ("v2", "v3") and resume_from is not None and r1_probe_path.is_file():
         r1_probe = json.loads(r1_probe_path.read_text(encoding="utf-8"))
         if r1_probe["runtime_identity_hash"] != runtime_identity.content_hash:
             raise RuntimeError("R1 probe runtime identity mismatch on resume")
@@ -328,7 +352,8 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
     start_update = 1
     resume_quarantine = None
     resume_metrics_quarantine = None
-    a2_calibration_needed = a2 is not None and a2.arm == 'T' and resume_from is None
+    a2_calibration_needed = a2 is not None and (a2.arm == 'T' or imitation_enabled) and resume_from is None and 'f5' not in config
+    anchor_calibration_needed = system.trainer.inert_anchor is not None and resume_from is None
     if resume_from is not None:
         header = restore_checkpoint(
             resume_from,
@@ -348,7 +373,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             output, start_update, report_dir=results if results != output else None)
         if results != output:
             resume_metrics_quarantine = _prepare_resume_output(results, start_update)
-        if str(config.reward_version) == "v2" and start_update > 1 and r1_probe is None:
+        if str(config.reward_version) in ("v2", "v3") and start_update > 1 and r1_probe is None:
             raise FileNotFoundError("R1 resume requires the frozen train-domain probe")
     elif a2 is not None:
         from ..checkpointing.a2_fork import fork_parent, verified_json
@@ -433,13 +458,13 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         task_role_episode_start_counts = Counter()
         audit = TrainingAudit(term_names=getattr(system.reward, "term_names", None),
                               terminate_at_space_limits=(environment_factory.terminate_at_space_limits
-                                                         if str(config.reward_version) == "v2" else None))
+                                                         if str(config.reward_version) in ("v2", "v3") else None))
         buffer = OnPolicyRolloutBuffer(
             rollout_size,
             gamma=float(config.dppo.gamma_environment),
             gae_lambda=float(config.dppo.gae_lambda),
             outer_update_id=update_index,
-            history_scalar=str(config.reward_version) == "v2" and not finite_task,
+            history_scalar=str(config.reward_version) in ("v2", "v3") and not finite_task,
             episode_context=finite_task,
         )
         adapter = None
@@ -454,7 +479,11 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 task_role_episode_start_counts[task.role] += 1
                 adapter = environment_factory.make(task)
                 reset_seed = task.seed + system.trainer.counters.rollout_segments * 1000003
-                observation, observation_context = adapter.reset(seed=reset_seed)
+                reset_options = getattr(task_sampler, 'last_reset_options', None)
+                if reset_options is None:
+                    observation, observation_context = adapter.reset(seed=reset_seed)
+                else:
+                    observation, observation_context = adapter.reset(seed=reset_seed, options=reset_options)
             if encoded_observation is None:
                 encoded_observation = system.observation_adapter.encode(
                     observation,
@@ -464,7 +493,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 )
             system.observation_adapter.verify(encoded_observation)
             condition = encoded_observation.condition
-            if str(config.reward_version) == "v2" and r1_probe is None:
+            if str(config.reward_version) in ("v2", "v3") and r1_probe is None:
                 initial_action = sample_probe_action(
                     system.rollout_sampler, condition, seed=seed + 981731,
                     device=runtime_device)
@@ -477,7 +506,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                     "source": "first admitted train-domain observation at update 1",
                 }
                 _write_json_once(r1_probe_path, r1_probe)
-            if str(config.reward_version) == "v2":
+            if str(config.reward_version) in ("v2", "v3"):
                 from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.critic_state import with_history_scalar, with_episode_context
                 critic_condition = (with_episode_context(condition, adapter.environment) if finite_task
                                     else with_history_scalar(condition, adapter.environment._reward_history))
@@ -507,7 +536,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             )
             system.observation_adapter.verify(next_encoded_observation)
             next_condition = next_encoded_observation.condition
-            if str(config.reward_version) == "v2":
+            if str(config.reward_version) in ("v2", "v3"):
                 next_critic_condition = (with_episode_context(next_condition, adapter.environment) if finite_task
                                          else with_history_scalar(next_condition, adapter.environment._reward_history))
             else:
@@ -535,6 +564,9 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 info=info,
                 action_chunk=rollout.action.rollout_executed[0],
                 audit_context={
+                    **({'task_bank': getattr(task_sampler, 'last_metadata',
+                        {'source': 'original', 'tier': None, 'kind': 'random',
+                         'bank_task_id': None, 'world': task.world_id})} if 'f5' in config else {}),
                     "run_seed": seed,
                     "update_index": update_index,
                     "policy_state_update_index": update_index - 1,
@@ -578,6 +610,10 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 role=task.role,
                 outcome=info["transition_facts"].done_reason,
                 provenance_hash=encoded_observation.provenance.policy_input_hash,
+                execution_metadata=(dict(task_id=task.task_id,
+                    episode_id=encoded_observation.provenance.episode_identity_hash,
+                    event_segment=info.get('event_segment'),event_fraction=info.get('event_fraction'))
+                    if imitation_enabled else None),
             )
             system.trainer.counters.env_steps += 1
             observation = next_observation
@@ -594,6 +630,14 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 task = None
 
         buffer.finalize()
+        if xk is not None and xk.get('c1_gradient_output'):
+            from .xk_diagnostics import compare_c1
+            compare_c1(system,buffer,config,_resolve(repo_root,xk.c1_gradient_output))
+            return system.trainer.counters
+        imitation_metrics = (system.trainer.keep.ingest(buffer,update_index)
+                             if imitation_enabled else None)
+        if drift is not None:
+            drift.begin()
         rollout_audit = audit.finalize(buffer.audit_tensors())
         rollout_finished = time.perf_counter()
         actor_lr = _actor_lr_for_update(config, update_index)
@@ -639,14 +683,23 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 generator=torch.Generator().manual_seed(seed + update_index * 1009),
                 device=system.bc_runtime.device,
             )
-        if a2_calibration_needed:
+        if a2_calibration_needed or anchor_calibration_needed:
             import itertools
             from ..engine.selective_keep import calibrate_keep
             first_batches = list(itertools.islice(batch_iterator,4))
-            calibration = calibrate_keep(system.trainer,first_batches,system.trainer.keep,
-                                         microbatch_pairs=microbatch_pairs)
-            system.trainer.keep.coefficient = calibration['coefficient']
-            _write_json_once(results/'keep_calibration.json',calibration)
+            if a2_calibration_needed:
+                calibration = calibrate_keep(system.trainer,first_batches,system.trainer.keep,
+                                             microbatch_pairs=microbatch_pairs,
+                                             target_ratio=float(imitation.target_ratio) if imitation_enabled else .1)
+                system.trainer.keep.coefficient = calibration['coefficient']
+                _write_json_once(results/'keep_calibration.json',calibration)
+            if anchor_calibration_needed:
+                from ..engine.inert_anchor import calibrate_anchor
+                calibration = calibrate_anchor(system.trainer,first_batches,system.trainer.inert_anchor,
+                    microbatch_pairs=microbatch_pairs,target_ratio=float(anchor_config.target_ratio))
+                system.trainer.inert_anchor.coefficient = calibration['coefficient']
+                _write_json_once(results/'anchor_calibration.json',calibration)
+                anchor_calibration_needed = False
             batch_iterator = itertools.chain(first_batches,batch_iterator)
             a2_calibration_needed = False
         for batch in batch_iterator:
@@ -669,6 +722,9 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 rejection_reason_counts[evidence["reason"]] += 1
             else:
                 last_committed_batch = batch
+                committed_count = sum(item['status']=='committed' for item in update_metrics)
+                if drift is not None and committed_count % int(drift_config.every_commits) == 0:
+                    drift.measure(committed=committed_count)
         if len(update_metrics) != expected_optimizer_steps:
             raise RuntimeError(
                 "optimizer step count mismatch: expected {}, got {}".format(
@@ -713,6 +769,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             actor=system.trainer.actor_parameters,
             critic=system.trainer.critic_parameters,
         )
+        drift_metrics = drift.finish() if drift is not None else None
         hard_stop_reason = _update_outer_failure_streaks(
             system.trainer.counters,
             update_actor=update_actor,
@@ -763,7 +820,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             )
             checkpoint_path = output / "checkpoint_update_{:06d}".format(update_index)
         r1_probe_metrics = None
-        if checkpoint_path is not None and str(config.reward_version) == "v2":
+        if checkpoint_path is not None and str(config.reward_version) in ("v2", "v3"):
             probe_condition = {
                 key: torch.tensor(value, device=runtime_device, dtype=torch.float32)
                 for key, value in r1_probe["condition"].items()
@@ -788,6 +845,8 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 "environment_provenance": environment_provenance,
                 "checkpoint": str(checkpoint_path) if checkpoint_path else None,
                 "r1_plan_probe": r1_probe_metrics,
+                "drift_monitor": drift_metrics,
+                "self_imitation": imitation_metrics,
                 "checkpoint_expected_path": (
                     str(checkpoint_path) if checkpoint_path else None
                 ),
@@ -799,6 +858,8 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                     "actor_learning_rate": actor_lr,
                     "min_sampling_std": float(config.dppo.min_sampling_std),
                     "min_logprob_std": float(config.dppo.min_logprob_std),
+                    "sampling_protocol": (system.official_runtime.sampling_protocol()
+                                          if xk is not None else None),
                     "mode": "joint" if update_actor else "critic_only_warmup",
                     "optimizer_steps": len(update_metrics),
                     "pair_schedule_mode": str(pair_schedule_mode) if pair_schedule_mode else "legacy_sampled_k",

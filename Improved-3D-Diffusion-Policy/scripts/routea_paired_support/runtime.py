@@ -188,9 +188,10 @@ def make_adapter(system, c, world, role):
     env.disturb_enable = False
     env.mid_state_init_ratio = 0.
     env.terminate_at_space_limits = False
-    if (env.reward_version != "v2" or env.n_exec_steps != 4 or env.rl_action_steps != 8
+    # v3 delegates state advancement and first-event handling to v2; only reward differs.
+    if (env.reward_version not in ("v2", "v3") or env.n_exec_steps != 4 or env.rl_action_steps != 8
             or env.traj_dt != .3 or env.max_episode_steps != 60 or env.collision_thresh != .1):
-        raise ValueError("common environment is not v2/H4/8")
+        raise ValueError("common environment is not v2-or-v3/H4/8")
     return adapter
 
 
