@@ -1,0 +1,1994 @@
+scripts/routea_paired_support/runtime.py: OK
+........................                                                 [100%]
+24 passed in 0.45s
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED P8 1 420
+FIXED P8 2 420
+FIXED P8 3 420
+FIXED P8 4 420
+FIXED P8 5 420
+FIXED P8 6 420
+FIXED P8 7 420
+FIXED P8 8 420
+FIXED P8 9 420
+FIXED P8 10 420
+FIXED P8 11 420
+FIXED P8 12 420
+FIXED P8 13 420
+FIXED P8 14 420
+FIXED P8 15 420
+FIXED P8 16 420
+FIXED P8 17 420
+FIXED P8 18 420
+FIXED P8 19 420
+FIXED P8 20 420
+FIXED P8 21 420
+FIXED P8 22 420
+FIXED P8 23 420
+FIXED P8 24 420
+FIXED P8 25 420
+FIXED P8 26 420
+FIXED P8 27 420
+FIXED P8 28 420
+FIXED P8 29 420
+FIXED P8 30 420
+FIXED P8 31 420
+FIXED P8 32 420
+FIXED P8 33 420
+FIXED P8 34 420
+FIXED P8 35 420
+FIXED P8 36 420
+FIXED P8 37 420
+FIXED P8 38 420
+FIXED P8 39 420
+FIXED P8 40 420
+FIXED P8 41 420
+FIXED P8 42 420
+FIXED P8 43 420
+FIXED P8 44 420
+FIXED P8 45 420
+FIXED P8 46 420
+FIXED P8 47 420
+FIXED P8 48 420
+FIXED P8 49 420
+FIXED P8 50 420
+FIXED P8 51 420
+FIXED P8 52 420
+FIXED P8 53 420
+FIXED P8 54 420
+FIXED P8 55 420
+FIXED P8 56 420
+FIXED P8 57 420
+FIXED P8 58 420
+FIXED P8 59 420
+FIXED P8 60 420
+FIXED P8 61 420
+FIXED P8 62 420
+FIXED P8 63 420
+FIXED P8 64 420
+FIXED P8 65 420
+FIXED P8 66 420
+FIXED P8 67 420
+FIXED P8 68 420
+FIXED P8 69 420
+FIXED P8 70 420
+FIXED P8 71 420
+FIXED P8 72 420
+FIXED P8 73 420
+FIXED P8 74 420
+FIXED P8 75 420
+FIXED P8 76 420
+FIXED P8 77 420
+FIXED P8 78 420
+FIXED P8 79 420
+FIXED P8 80 420
+FIXED P8 81 420
+FIXED P8 82 420
+FIXED P8 83 420
+FIXED P8 84 420
+FIXED P8 85 420
+FIXED P8 86 420
+FIXED P8 87 420
+FIXED P8 88 420
+FIXED P8 89 420
+FIXED P8 90 420
+FIXED P8 91 420
+FIXED P8 92 420
+FIXED P8 93 420
+FIXED P8 94 420
+FIXED P8 95 420
+FIXED P8 96 420
+FIXED P8 97 420
+FIXED P8 98 420
+FIXED P8 99 420
+FIXED P8 100 420
+FIXED P8 101 420
+FIXED P8 102 420
+FIXED P8 103 420
+FIXED P8 104 420
+FIXED P8 105 420
+FIXED P8 106 420
+FIXED P8 107 420
+FIXED P8 108 420
+FIXED P8 109 420
+FIXED P8 110 420
+FIXED P8 111 420
+FIXED P8 112 420
+FIXED P8 113 420
+FIXED P8 114 420
+FIXED P8 115 420
+FIXED P8 116 420
+FIXED P8 117 420
+FIXED P8 118 420
+FIXED P8 119 420
+FIXED P8 120 420
+FIXED P8 121 420
+FIXED P8 122 420
+FIXED P8 123 420
+FIXED P8 124 420
+FIXED P8 125 420
+FIXED P8 126 420
+FIXED P8 127 420
+FIXED P8 128 420
+FIXED P8 129 420
+FIXED P8 130 420
+FIXED P8 131 420
+FIXED P8 132 420
+FIXED P8 133 420
+FIXED P8 134 420
+FIXED P8 135 420
+FIXED P8 136 420
+FIXED P8 137 420
+FIXED P8 138 420
+FIXED P8 139 420
+FIXED P8 140 420
+FIXED P8 141 420
+FIXED P8 142 420
+FIXED P8 143 420
+FIXED P8 144 420
+FIXED P8 145 420
+FIXED P8 146 420
+FIXED P8 147 420
+FIXED P8 148 420
+FIXED P8 149 420
+FIXED P8 150 420
+FIXED P8 151 420
+FIXED P8 152 420
+FIXED P8 153 420
+FIXED P8 154 420
+FIXED P8 155 420
+FIXED P8 156 420
+FIXED P8 157 420
+FIXED P8 158 420
+FIXED P8 159 420
+FIXED P8 160 420
+FIXED P8 161 420
+FIXED P8 162 420
+FIXED P8 163 420
+FIXED P8 164 420
+FIXED P8 165 420
+FIXED P8 166 420
+FIXED P8 167 420
+FIXED P8 168 420
+FIXED P8 169 420
+FIXED P8 170 420
+FIXED P8 171 420
+FIXED P8 172 420
+FIXED P8 173 420
+FIXED P8 174 420
+FIXED P8 175 420
+FIXED P8 176 420
+FIXED P8 177 420
+FIXED P8 178 420
+FIXED P8 179 420
+FIXED P8 180 420
+FIXED P8 181 420
+FIXED P8 182 420
+FIXED P8 183 420
+FIXED P8 184 420
+FIXED P8 185 420
+FIXED P8 186 420
+FIXED P8 187 420
+FIXED P8 188 420
+FIXED P8 189 420
+FIXED P8 190 420
+FIXED P8 191 420
+FIXED P8 192 420
+FIXED P8 193 420
+FIXED P8 194 420
+FIXED P8 195 420
+FIXED P8 196 420
+FIXED P8 197 420
+FIXED P8 198 420
+FIXED P8 199 420
+FIXED P8 200 420
+FIXED P8 201 420
+FIXED P8 202 420
+FIXED P8 203 420
+FIXED P8 204 420
+FIXED P8 205 420
+FIXED P8 206 420
+FIXED P8 207 420
+FIXED P8 208 420
+FIXED P8 209 420
+FIXED P8 210 420
+FIXED P8 211 420
+FIXED P8 212 420
+FIXED P8 213 420
+FIXED P8 214 420
+FIXED P8 215 420
+FIXED P8 216 420
+FIXED P8 217 420
+FIXED P8 218 420
+FIXED P8 219 420
+FIXED P8 220 420
+FIXED P8 221 420
+FIXED P8 222 420
+FIXED P8 223 420
+FIXED P8 224 420
+FIXED P8 225 420
+FIXED P8 226 420
+FIXED P8 227 420
+FIXED P8 228 420
+FIXED P8 229 420
+FIXED P8 230 420
+FIXED P8 231 420
+FIXED P8 232 420
+FIXED P8 233 420
+FIXED P8 234 420
+FIXED P8 235 420
+FIXED P8 236 420
+FIXED P8 237 420
+FIXED P8 238 420
+FIXED P8 239 420
+FIXED P8 240 420
+FIXED P8 241 420
+FIXED P8 242 420
+FIXED P8 243 420
+FIXED P8 244 420
+FIXED P8 245 420
+FIXED P8 246 420
+FIXED P8 247 420
+FIXED P8 248 420
+FIXED P8 249 420
+FIXED P8 250 420
+FIXED P8 251 420
+FIXED P8 252 420
+FIXED P8 253 420
+FIXED P8 254 420
+FIXED P8 255 420
+FIXED P8 256 420
+FIXED P8 257 420
+FIXED P8 258 420
+FIXED P8 259 420
+FIXED P8 260 420
+FIXED P8 261 420
+FIXED P8 262 420
+FIXED P8 263 420
+FIXED P8 264 420
+FIXED P8 265 420
+FIXED P8 266 420
+FIXED P8 267 420
+FIXED P8 268 420
+FIXED P8 269 420
+FIXED P8 270 420
+FIXED P8 271 420
+FIXED P8 272 420
+FIXED P8 273 420
+FIXED P8 274 420
+FIXED P8 275 420
+FIXED P8 276 420
+FIXED P8 277 420
+FIXED P8 278 420
+FIXED P8 279 420
+FIXED P8 280 420
+FIXED P8 281 420
+FIXED P8 282 420
+FIXED P8 283 420
+FIXED P8 284 420
+FIXED P8 285 420
+FIXED P8 286 420
+FIXED P8 287 420
+FIXED P8 288 420
+FIXED P8 289 420
+FIXED P8 290 420
+FIXED P8 291 420
+FIXED P8 292 420
+FIXED P8 293 420
+FIXED P8 294 420
+FIXED P8 295 420
+FIXED P8 296 420
+FIXED P8 297 420
+FIXED P8 298 420
+FIXED P8 299 420
+FIXED P8 300 420
+FIXED P8 301 420
+FIXED P8 302 420
+FIXED P8 303 420
+FIXED P8 304 420
+FIXED P8 305 420
+FIXED P8 306 420
+FIXED P8 307 420
+FIXED P8 308 420
+FIXED P8 309 420
+FIXED P8 310 420
+FIXED P8 311 420
+FIXED P8 312 420
+FIXED P8 313 420
+FIXED P8 314 420
+FIXED P8 315 420
+FIXED P8 316 420
+FIXED P8 317 420
+FIXED P8 318 420
+FIXED P8 319 420
+FIXED P8 320 420
+FIXED P8 321 420
+FIXED P8 322 420
+FIXED P8 323 420
+FIXED P8 324 420
+FIXED P8 325 420
+FIXED P8 326 420
+FIXED P8 327 420
+FIXED P8 328 420
+FIXED P8 329 420
+FIXED P8 330 420
+FIXED P8 331 420
+FIXED P8 332 420
+FIXED P8 333 420
+FIXED P8 334 420
+FIXED P8 335 420
+FIXED P8 336 420
+FIXED P8 337 420
+FIXED P8 338 420
+FIXED P8 339 420
+FIXED P8 340 420
+FIXED P8 341 420
+FIXED P8 342 420
+FIXED P8 343 420
+FIXED P8 344 420
+FIXED P8 345 420
+FIXED P8 346 420
+FIXED P8 347 420
+FIXED P8 348 420
+FIXED P8 349 420
+FIXED P8 350 420
+FIXED P8 351 420
+FIXED P8 352 420
+FIXED P8 353 420
+FIXED P8 354 420
+FIXED P8 355 420
+FIXED P8 356 420
+FIXED P8 357 420
+FIXED P8 358 420
+FIXED P8 359 420
+FIXED P8 360 420
+FIXED P8 361 420
+FIXED P8 362 420
+FIXED P8 363 420
+FIXED P8 364 420
+FIXED P8 365 420
+FIXED P8 366 420
+FIXED P8 367 420
+FIXED P8 368 420
+FIXED P8 369 420
+FIXED P8 370 420
+FIXED P8 371 420
+FIXED P8 372 420
+FIXED P8 373 420
+FIXED P8 374 420
+FIXED P8 375 420
+FIXED P8 376 420
+FIXED P8 377 420
+FIXED P8 378 420
+FIXED P8 379 420
+FIXED P8 380 420
+FIXED P8 381 420
+FIXED P8 382 420
+FIXED P8 383 420
+FIXED P8 384 420
+FIXED P8 385 420
+FIXED P8 386 420
+FIXED P8 387 420
+FIXED P8 388 420
+FIXED P8 389 420
+FIXED P8 390 420
+FIXED P8 391 420
+FIXED P8 392 420
+FIXED P8 393 420
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.9200253 3.3652706 2.4608166], yaw=-1.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.3862622  4.887488   3.6970377], yaw=-0.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1641877 3.6755786 3.3068845], yaw=-2.20); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1627239 3.678843  3.307105 ], yaw=-2.19); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.11621054 -7.830089    2.5827475 ], yaw=0.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.960629  -1.7298971  3.2266703], yaw=-1.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.98288   -1.7484719  2.821111 ], yaw=-0.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.9829828 -1.75       2.8210783], yaw=-0.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.71105725 -1.7349968   3.2567153 ], yaw=-1.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.1809245 -6.856914   3.8803828], yaw=-2.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.1611563 -6.898508   3.8569038], yaw=-2.78); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.2646863 -6.7498302  3.2150793], yaw=1.61); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[6.6497784 1.2516913 2.9894984], yaw=2.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9801695 -3.7327325  3.37416  ], yaw=2.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9727068 -3.746468   3.3798811], yaw=2.09); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.5440688 4.6503086 2.0580404], yaw=-2.56); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4198899  1.7855997  3.0702796], yaw=-1.34); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4286939  1.7758038  3.0713227], yaw=-1.32); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.2944648 -7.234004   2.6233883], yaw=1.16); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.92015225 -0.9241286   3.8860855 ], yaw=-1.67); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.9385149 -0.9290724  3.885484 ], yaw=-1.66); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.93653125 -0.94151926  3.8905613 ], yaw=-1.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4638642  0.9011729  2.443616 ], yaw=-2.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4981934  0.908457   2.444296 ], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.0720422  1.1853428  2.4953291], yaw=-3.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.0918994  1.1833267  2.494076 ], yaw=-3.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.080771   1.2924358  2.529826 ], yaw=-2.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1006825  1.2913525  2.528553 ], yaw=-2.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.481595   3.0661633  2.8141794], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.160491   -0.17517671  3.1055565 ], yaw=2.48); using max-range censoring
+  warnings.warn(
+FIXED P8 394 420
+FIXED P8 395 420
+FIXED P8 396 420
+FIXED P8 397 420
+FIXED P8 398 420
+FIXED P8 399 420
+FIXED P8 400 420
+FIXED P8 401 420
+FIXED P8 402 420
+FIXED P8 403 420
+FIXED P8 404 420
+FIXED P8 405 420
+FIXED P8 406 420
+FIXED P8 407 420
+FIXED P8 408 420
+FIXED P8 409 420
+FIXED P8 410 420
+FIXED P8 411 420
+FIXED P8 412 420
+FIXED P8 413 420
+FIXED P8 414 420
+FIXED P8 415 420
+FIXED P8 416 420
+FIXED P8 417 420
+FIXED P8 418 420
+FIXED P8 419 420
+FIXED P8 420 420
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.0954843  1.85       2.5185764], yaw=-2.28); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[6.9552455 1.0981287 3.566854 ], yaw=1.57); using max-range censoring
+  warnings.warn(
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED P9 1 420
+FIXED P9 2 420
+FIXED P9 3 420
+FIXED P9 4 420
+FIXED P9 5 420
+FIXED P9 6 420
+FIXED P9 7 420
+FIXED P9 8 420
+FIXED P9 9 420
+FIXED P9 10 420
+FIXED P9 11 420
+FIXED P9 12 420
+FIXED P9 13 420
+FIXED P9 14 420
+FIXED P9 15 420
+FIXED P9 16 420
+FIXED P9 17 420
+FIXED P9 18 420
+FIXED P9 19 420
+FIXED P9 20 420
+FIXED P9 21 420
+FIXED P9 22 420
+FIXED P9 23 420
+FIXED P9 24 420
+FIXED P9 25 420
+FIXED P9 26 420
+FIXED P9 27 420
+FIXED P9 28 420
+FIXED P9 29 420
+FIXED P9 30 420
+FIXED P9 31 420
+FIXED P9 32 420
+FIXED P9 33 420
+FIXED P9 34 420
+FIXED P9 35 420
+FIXED P9 36 420
+FIXED P9 37 420
+FIXED P9 38 420
+FIXED P9 39 420
+FIXED P9 40 420
+FIXED P9 41 420
+FIXED P9 42 420
+FIXED P9 43 420
+FIXED P9 44 420
+FIXED P9 45 420
+FIXED P9 46 420
+FIXED P9 47 420
+FIXED P9 48 420
+FIXED P9 49 420
+FIXED P9 50 420
+FIXED P9 51 420
+FIXED P9 52 420
+FIXED P9 53 420
+FIXED P9 54 420
+FIXED P9 55 420
+FIXED P9 56 420
+FIXED P9 57 420
+FIXED P9 58 420
+FIXED P9 59 420
+FIXED P9 60 420
+FIXED P9 61 420
+FIXED P9 62 420
+FIXED P9 63 420
+FIXED P9 64 420
+FIXED P9 65 420
+FIXED P9 66 420
+FIXED P9 67 420
+FIXED P9 68 420
+FIXED P9 69 420
+FIXED P9 70 420
+FIXED P9 71 420
+FIXED P9 72 420
+FIXED P9 73 420
+FIXED P9 74 420
+FIXED P9 75 420
+FIXED P9 76 420
+FIXED P9 77 420
+FIXED P9 78 420
+FIXED P9 79 420
+FIXED P9 80 420
+FIXED P9 81 420
+FIXED P9 82 420
+FIXED P9 83 420
+FIXED P9 84 420
+FIXED P9 85 420
+FIXED P9 86 420
+FIXED P9 87 420
+FIXED P9 88 420
+FIXED P9 89 420
+FIXED P9 90 420
+FIXED P9 91 420
+FIXED P9 92 420
+FIXED P9 93 420
+FIXED P9 94 420
+FIXED P9 95 420
+FIXED P9 96 420
+FIXED P9 97 420
+FIXED P9 98 420
+FIXED P9 99 420
+FIXED P9 100 420
+FIXED P9 101 420
+FIXED P9 102 420
+FIXED P9 103 420
+FIXED P9 104 420
+FIXED P9 105 420
+FIXED P9 106 420
+FIXED P9 107 420
+FIXED P9 108 420
+FIXED P9 109 420
+FIXED P9 110 420
+FIXED P9 111 420
+FIXED P9 112 420
+FIXED P9 113 420
+FIXED P9 114 420
+FIXED P9 115 420
+FIXED P9 116 420
+FIXED P9 117 420
+FIXED P9 118 420
+FIXED P9 119 420
+FIXED P9 120 420
+FIXED P9 121 420
+FIXED P9 122 420
+FIXED P9 123 420
+FIXED P9 124 420
+FIXED P9 125 420
+FIXED P9 126 420
+FIXED P9 127 420
+FIXED P9 128 420
+FIXED P9 129 420
+FIXED P9 130 420
+FIXED P9 131 420
+FIXED P9 132 420
+FIXED P9 133 420
+FIXED P9 134 420
+FIXED P9 135 420
+FIXED P9 136 420
+FIXED P9 137 420
+FIXED P9 138 420
+FIXED P9 139 420
+FIXED P9 140 420
+FIXED P9 141 420
+FIXED P9 142 420
+FIXED P9 143 420
+FIXED P9 144 420
+FIXED P9 145 420
+FIXED P9 146 420
+FIXED P9 147 420
+FIXED P9 148 420
+FIXED P9 149 420
+FIXED P9 150 420
+FIXED P9 151 420
+FIXED P9 152 420
+FIXED P9 153 420
+FIXED P9 154 420
+FIXED P9 155 420
+FIXED P9 156 420
+FIXED P9 157 420
+FIXED P9 158 420
+FIXED P9 159 420
+FIXED P9 160 420
+FIXED P9 161 420
+FIXED P9 162 420
+FIXED P9 163 420
+FIXED P9 164 420
+FIXED P9 165 420
+FIXED P9 166 420
+FIXED P9 167 420
+FIXED P9 168 420
+FIXED P9 169 420
+FIXED P9 170 420
+FIXED P9 171 420
+FIXED P9 172 420
+FIXED P9 173 420
+FIXED P9 174 420
+FIXED P9 175 420
+FIXED P9 176 420
+FIXED P9 177 420
+FIXED P9 178 420
+FIXED P9 179 420
+FIXED P9 180 420
+FIXED P9 181 420
+FIXED P9 182 420
+FIXED P9 183 420
+FIXED P9 184 420
+FIXED P9 185 420
+FIXED P9 186 420
+FIXED P9 187 420
+FIXED P9 188 420
+FIXED P9 189 420
+FIXED P9 190 420
+FIXED P9 191 420
+FIXED P9 192 420
+FIXED P9 193 420
+FIXED P9 194 420
+FIXED P9 195 420
+FIXED P9 196 420
+FIXED P9 197 420
+FIXED P9 198 420
+FIXED P9 199 420
+FIXED P9 200 420
+FIXED P9 201 420
+FIXED P9 202 420
+FIXED P9 203 420
+FIXED P9 204 420
+FIXED P9 205 420
+FIXED P9 206 420
+FIXED P9 207 420
+FIXED P9 208 420
+FIXED P9 209 420
+FIXED P9 210 420
+FIXED P9 211 420
+FIXED P9 212 420
+FIXED P9 213 420
+FIXED P9 214 420
+FIXED P9 215 420
+FIXED P9 216 420
+FIXED P9 217 420
+FIXED P9 218 420
+FIXED P9 219 420
+FIXED P9 220 420
+FIXED P9 221 420
+FIXED P9 222 420
+FIXED P9 223 420
+FIXED P9 224 420
+FIXED P9 225 420
+FIXED P9 226 420
+FIXED P9 227 420
+FIXED P9 228 420
+FIXED P9 229 420
+FIXED P9 230 420
+FIXED P9 231 420
+FIXED P9 232 420
+FIXED P9 233 420
+FIXED P9 234 420
+FIXED P9 235 420
+FIXED P9 236 420
+FIXED P9 237 420
+FIXED P9 238 420
+FIXED P9 239 420
+FIXED P9 240 420
+FIXED P9 241 420
+FIXED P9 242 420
+FIXED P9 243 420
+FIXED P9 244 420
+FIXED P9 245 420
+FIXED P9 246 420
+FIXED P9 247 420
+FIXED P9 248 420
+FIXED P9 249 420
+FIXED P9 250 420
+FIXED P9 251 420
+FIXED P9 252 420
+FIXED P9 253 420
+FIXED P9 254 420
+FIXED P9 255 420
+FIXED P9 256 420
+FIXED P9 257 420
+FIXED P9 258 420
+FIXED P9 259 420
+FIXED P9 260 420
+FIXED P9 261 420
+FIXED P9 262 420
+FIXED P9 263 420
+FIXED P9 264 420
+FIXED P9 265 420
+FIXED P9 266 420
+FIXED P9 267 420
+FIXED P9 268 420
+FIXED P9 269 420
+FIXED P9 270 420
+FIXED P9 271 420
+FIXED P9 272 420
+FIXED P9 273 420
+FIXED P9 274 420
+FIXED P9 275 420
+FIXED P9 276 420
+FIXED P9 277 420
+FIXED P9 278 420
+FIXED P9 279 420
+FIXED P9 280 420
+FIXED P9 281 420
+FIXED P9 282 420
+FIXED P9 283 420
+FIXED P9 284 420
+FIXED P9 285 420
+FIXED P9 286 420
+FIXED P9 287 420
+FIXED P9 288 420
+FIXED P9 289 420
+FIXED P9 290 420
+FIXED P9 291 420
+FIXED P9 292 420
+FIXED P9 293 420
+FIXED P9 294 420
+FIXED P9 295 420
+FIXED P9 296 420
+FIXED P9 297 420
+FIXED P9 298 420
+FIXED P9 299 420
+FIXED P9 300 420
+FIXED P9 301 420
+FIXED P9 302 420
+FIXED P9 303 420
+FIXED P9 304 420
+FIXED P9 305 420
+FIXED P9 306 420
+FIXED P9 307 420
+FIXED P9 308 420
+FIXED P9 309 420
+FIXED P9 310 420
+FIXED P9 311 420
+FIXED P9 312 420
+FIXED P9 313 420
+FIXED P9 314 420
+FIXED P9 315 420
+FIXED P9 316 420
+FIXED P9 317 420
+FIXED P9 318 420
+FIXED P9 319 420
+FIXED P9 320 420
+FIXED P9 321 420
+FIXED P9 322 420
+FIXED P9 323 420
+FIXED P9 324 420
+FIXED P9 325 420
+FIXED P9 326 420
+FIXED P9 327 420
+FIXED P9 328 420
+FIXED P9 329 420
+FIXED P9 330 420
+FIXED P9 331 420
+FIXED P9 332 420
+FIXED P9 333 420
+FIXED P9 334 420
+FIXED P9 335 420
+FIXED P9 336 420
+FIXED P9 337 420
+FIXED P9 338 420
+FIXED P9 339 420
+FIXED P9 340 420
+FIXED P9 341 420
+FIXED P9 342 420
+FIXED P9 343 420
+FIXED P9 344 420
+FIXED P9 345 420
+FIXED P9 346 420
+FIXED P9 347 420
+FIXED P9 348 420
+FIXED P9 349 420
+FIXED P9 350 420
+FIXED P9 351 420
+FIXED P9 352 420
+FIXED P9 353 420
+FIXED P9 354 420
+FIXED P9 355 420
+FIXED P9 356 420
+FIXED P9 357 420
+FIXED P9 358 420
+FIXED P9 359 420
+FIXED P9 360 420
+FIXED P9 361 420
+FIXED P9 362 420
+FIXED P9 363 420
+FIXED P9 364 420
+FIXED P9 365 420
+FIXED P9 366 420
+FIXED P9 367 420
+FIXED P9 368 420
+FIXED P9 369 420
+FIXED P9 370 420
+FIXED P9 371 420
+FIXED P9 372 420
+FIXED P9 373 420
+FIXED P9 374 420
+FIXED P9 375 420
+FIXED P9 376 420
+FIXED P9 377 420
+FIXED P9 378 420
+FIXED P9 379 420
+FIXED P9 380 420
+FIXED P9 381 420
+FIXED P9 382 420
+FIXED P9 383 420
+FIXED P9 384 420
+FIXED P9 385 420
+FIXED P9 386 420
+FIXED P9 387 420
+FIXED P9 388 420
+FIXED P9 389 420
+FIXED P9 390 420
+FIXED P9 391 420
+FIXED P9 392 420
+FIXED P9 393 420
+FIXED P9 394 420
+FIXED P9 395 420
+FIXED P9 396 420
+FIXED P9 397 420
+FIXED P9 398 420
+FIXED P9 399 420
+FIXED P9 400 420
+FIXED P9 401 420
+FIXED P9 402 420
+FIXED P9 403 420
+FIXED P9 404 420
+FIXED P9 405 420
+FIXED P9 406 420
+FIXED P9 407 420
+FIXED P9 408 420
+FIXED P9 409 420
+FIXED P9 410 420
+FIXED P9 411 420
+FIXED P9 412 420
+FIXED P9 413 420
+FIXED P9 414 420
+FIXED P9 415 420
+FIXED P9 416 420
+FIXED P9 417 420
+FIXED P9 418 420
+FIXED P9 419 420
+FIXED P9 420 420
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.6628646 -2.5791337  2.3998718], yaw=2.21); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.5826741 -2.4738808  2.3740485], yaw=2.28); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.462474   1.5181695  3.2385974], yaw=-1.40); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.78402436  1.895485    3.1960583 ], yaw=-1.67); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 4.4774604 -3.863636   3.502763 ], yaw=2.67); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.09999999 -1.6073518   3.5070372 ], yaw=-0.62); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.11272493 -1.5073256   3.5558555 ], yaw=-0.55); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.0971078 -1.4489071  3.5621498], yaw=-0.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.7247195 2.782752  3.4649906], yaw=-1.86); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.947007  -2.471967   3.0046134], yaw=2.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.913777  -2.4806633  2.9547548], yaw=1.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.3614244 -1.067536   2.9651275], yaw=2.72); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.8338355 -3.9517846  3.262601 ], yaw=2.47); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.8251954 -3.9546962  3.2653885], yaw=2.47); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.5960793  4.360277   3.6276932], yaw=0.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.608457  4.347948  3.632274], yaw=0.25); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.14252792 2.407425   1.9101876 ], yaw=-3.10); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 4.1822357 -6.880409   3.1281533], yaw=2.86); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.5487724 -7.231043   2.6440597], yaw=0.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.279174   3.0687795  2.7861736], yaw=-2.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.265719   3.073792   2.8067439], yaw=-2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.7524536 -0.5167221  3.2897854], yaw=2.35); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.7419193  -0.52882445  3.2783422 ], yaw=2.54); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[6.675876  1.15      3.2807074], yaw=2.31); using max-range censoring
+  warnings.warn(
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED P10 1 420
+FIXED P10 2 420
+FIXED P10 3 420
+FIXED P10 4 420
+FIXED P10 5 420
+FIXED P10 6 420
+FIXED P10 7 420
+FIXED P10 8 420
+FIXED P10 9 420
+FIXED P10 10 420
+FIXED P10 11 420
+FIXED P10 12 420
+FIXED P10 13 420
+FIXED P10 14 420
+FIXED P10 15 420
+FIXED P10 16 420
+FIXED P10 17 420
+FIXED P10 18 420
+FIXED P10 19 420
+FIXED P10 20 420
+FIXED P10 21 420
+FIXED P10 22 420
+FIXED P10 23 420
+FIXED P10 24 420
+FIXED P10 25 420
+FIXED P10 26 420
+FIXED P10 27 420
+FIXED P10 28 420
+FIXED P10 29 420
+FIXED P10 30 420
+FIXED P10 31 420
+FIXED P10 32 420
+FIXED P10 33 420
+FIXED P10 34 420
+FIXED P10 35 420
+FIXED P10 36 420
+FIXED P10 37 420
+FIXED P10 38 420
+FIXED P10 39 420
+FIXED P10 40 420
+FIXED P10 41 420
+FIXED P10 42 420
+FIXED P10 43 420
+FIXED P10 44 420
+FIXED P10 45 420
+FIXED P10 46 420
+FIXED P10 47 420
+FIXED P10 48 420
+FIXED P10 49 420
+FIXED P10 50 420
+FIXED P10 51 420
+FIXED P10 52 420
+FIXED P10 53 420
+FIXED P10 54 420
+FIXED P10 55 420
+FIXED P10 56 420
+FIXED P10 57 420
+FIXED P10 58 420
+FIXED P10 59 420
+FIXED P10 60 420
+FIXED P10 61 420
+FIXED P10 62 420
+FIXED P10 63 420
+FIXED P10 64 420
+FIXED P10 65 420
+FIXED P10 66 420
+FIXED P10 67 420
+FIXED P10 68 420
+FIXED P10 69 420
+FIXED P10 70 420
+FIXED P10 71 420
+FIXED P10 72 420
+FIXED P10 73 420
+FIXED P10 74 420
+FIXED P10 75 420
+FIXED P10 76 420
+FIXED P10 77 420
+FIXED P10 78 420
+FIXED P10 79 420
+FIXED P10 80 420
+FIXED P10 81 420
+FIXED P10 82 420
+FIXED P10 83 420
+FIXED P10 84 420
+FIXED P10 85 420
+FIXED P10 86 420
+FIXED P10 87 420
+FIXED P10 88 420
+FIXED P10 89 420
+FIXED P10 90 420
+FIXED P10 91 420
+FIXED P10 92 420
+FIXED P10 93 420
+FIXED P10 94 420
+FIXED P10 95 420
+FIXED P10 96 420
+FIXED P10 97 420
+FIXED P10 98 420
+FIXED P10 99 420
+FIXED P10 100 420
+FIXED P10 101 420
+FIXED P10 102 420
+FIXED P10 103 420
+FIXED P10 104 420
+FIXED P10 105 420
+FIXED P10 106 420
+FIXED P10 107 420
+FIXED P10 108 420
+FIXED P10 109 420
+FIXED P10 110 420
+FIXED P10 111 420
+FIXED P10 112 420
+FIXED P10 113 420
+FIXED P10 114 420
+FIXED P10 115 420
+FIXED P10 116 420
+FIXED P10 117 420
+FIXED P10 118 420
+FIXED P10 119 420
+FIXED P10 120 420
+FIXED P10 121 420
+FIXED P10 122 420
+FIXED P10 123 420
+FIXED P10 124 420
+FIXED P10 125 420
+FIXED P10 126 420
+FIXED P10 127 420
+FIXED P10 128 420
+FIXED P10 129 420
+FIXED P10 130 420
+FIXED P10 131 420
+FIXED P10 132 420
+FIXED P10 133 420
+FIXED P10 134 420
+FIXED P10 135 420
+FIXED P10 136 420
+FIXED P10 137 420
+FIXED P10 138 420
+FIXED P10 139 420
+FIXED P10 140 420
+FIXED P10 141 420
+FIXED P10 142 420
+FIXED P10 143 420
+FIXED P10 144 420
+FIXED P10 145 420
+FIXED P10 146 420
+FIXED P10 147 420
+FIXED P10 148 420
+FIXED P10 149 420
+FIXED P10 150 420
+FIXED P10 151 420
+FIXED P10 152 420
+FIXED P10 153 420
+FIXED P10 154 420
+FIXED P10 155 420
+FIXED P10 156 420
+FIXED P10 157 420
+FIXED P10 158 420
+FIXED P10 159 420
+FIXED P10 160 420
+FIXED P10 161 420
+FIXED P10 162 420
+FIXED P10 163 420
+FIXED P10 164 420
+FIXED P10 165 420
+FIXED P10 166 420
+FIXED P10 167 420
+FIXED P10 168 420
+FIXED P10 169 420
+FIXED P10 170 420
+FIXED P10 171 420
+FIXED P10 172 420
+FIXED P10 173 420
+FIXED P10 174 420
+FIXED P10 175 420
+FIXED P10 176 420
+FIXED P10 177 420
+FIXED P10 178 420
+FIXED P10 179 420
+FIXED P10 180 420
+FIXED P10 181 420
+FIXED P10 182 420
+FIXED P10 183 420
+FIXED P10 184 420
+FIXED P10 185 420
+FIXED P10 186 420
+FIXED P10 187 420
+FIXED P10 188 420
+FIXED P10 189 420
+FIXED P10 190 420
+FIXED P10 191 420
+FIXED P10 192 420
+FIXED P10 193 420
+FIXED P10 194 420
+FIXED P10 195 420
+FIXED P10 196 420
+FIXED P10 197 420
+FIXED P10 198 420
+FIXED P10 199 420
+FIXED P10 200 420
+FIXED P10 201 420
+FIXED P10 202 420
+FIXED P10 203 420
+FIXED P10 204 420
+FIXED P10 205 420
+FIXED P10 206 420
+FIXED P10 207 420
+FIXED P10 208 420
+FIXED P10 209 420
+FIXED P10 210 420
+FIXED P10 211 420
+FIXED P10 212 420
+FIXED P10 213 420
+FIXED P10 214 420
+FIXED P10 215 420
+FIXED P10 216 420
+FIXED P10 217 420
+FIXED P10 218 420
+FIXED P10 219 420
+FIXED P10 220 420
+FIXED P10 221 420
+FIXED P10 222 420
+FIXED P10 223 420
+FIXED P10 224 420
+FIXED P10 225 420
+FIXED P10 226 420
+FIXED P10 227 420
+FIXED P10 228 420
+FIXED P10 229 420
+FIXED P10 230 420
+FIXED P10 231 420
+FIXED P10 232 420
+FIXED P10 233 420
+FIXED P10 234 420
+FIXED P10 235 420
+FIXED P10 236 420
+FIXED P10 237 420
+FIXED P10 238 420
+FIXED P10 239 420
+FIXED P10 240 420
+FIXED P10 241 420
+FIXED P10 242 420
+FIXED P10 243 420
+FIXED P10 244 420
+FIXED P10 245 420
+FIXED P10 246 420
+FIXED P10 247 420
+FIXED P10 248 420
+FIXED P10 249 420
+FIXED P10 250 420
+FIXED P10 251 420
+FIXED P10 252 420
+FIXED P10 253 420
+FIXED P10 254 420
+FIXED P10 255 420
+FIXED P10 256 420
+FIXED P10 257 420
+FIXED P10 258 420
+FIXED P10 259 420
+FIXED P10 260 420
+FIXED P10 261 420
+FIXED P10 262 420
+FIXED P10 263 420
+FIXED P10 264 420
+FIXED P10 265 420
+FIXED P10 266 420
+FIXED P10 267 420
+FIXED P10 268 420
+FIXED P10 269 420
+FIXED P10 270 420
+FIXED P10 271 420
+FIXED P10 272 420
+FIXED P10 273 420
+FIXED P10 274 420
+FIXED P10 275 420
+FIXED P10 276 420
+FIXED P10 277 420
+FIXED P10 278 420
+FIXED P10 279 420
+FIXED P10 280 420
+FIXED P10 281 420
+FIXED P10 282 420
+FIXED P10 283 420
+FIXED P10 284 420
+FIXED P10 285 420
+FIXED P10 286 420
+FIXED P10 287 420
+FIXED P10 288 420
+FIXED P10 289 420
+FIXED P10 290 420
+FIXED P10 291 420
+FIXED P10 292 420
+FIXED P10 293 420
+FIXED P10 294 420
+FIXED P10 295 420
+FIXED P10 296 420
+FIXED P10 297 420
+FIXED P10 298 420
+FIXED P10 299 420
+FIXED P10 300 420
+FIXED P10 301 420
+FIXED P10 302 420
+FIXED P10 303 420
+FIXED P10 304 420
+FIXED P10 305 420
+FIXED P10 306 420
+FIXED P10 307 420
+FIXED P10 308 420
+FIXED P10 309 420
+FIXED P10 310 420
+FIXED P10 311 420
+FIXED P10 312 420
+FIXED P10 313 420
+FIXED P10 314 420
+FIXED P10 315 420
+FIXED P10 316 420
+FIXED P10 317 420
+FIXED P10 318 420
+FIXED P10 319 420
+FIXED P10 320 420
+FIXED P10 321 420
+FIXED P10 322 420
+FIXED P10 323 420
+FIXED P10 324 420
+FIXED P10 325 420
+FIXED P10 326 420
+FIXED P10 327 420
+FIXED P10 328 420
+FIXED P10 329 420
+FIXED P10 330 420
+FIXED P10 331 420
+FIXED P10 332 420
+FIXED P10 333 420
+FIXED P10 334 420
+FIXED P10 335 420
+FIXED P10 336 420
+FIXED P10 337 420
+FIXED P10 338 420
+FIXED P10 339 420
+FIXED P10 340 420
+FIXED P10 341 420
+FIXED P10 342 420
+FIXED P10 343 420
+FIXED P10 344 420
+FIXED P10 345 420
+FIXED P10 346 420
+FIXED P10 347 420
+FIXED P10 348 420
+FIXED P10 349 420
+FIXED P10 350 420
+FIXED P10 351 420
+FIXED P10 352 420
+FIXED P10 353 420
+FIXED P10 354 420
+FIXED P10 355 420
+FIXED P10 356 420
+FIXED P10 357 420
+FIXED P10 358 420
+FIXED P10 359 420
+FIXED P10 360 420
+FIXED P10 361 420
+FIXED P10 362 420
+FIXED P10 363 420
+FIXED P10 364 420
+FIXED P10 365 420
+FIXED P10 366 420
+FIXED P10 367 420
+FIXED P10 368 420
+FIXED P10 369 420
+FIXED P10 370 420
+FIXED P10 371 420
+FIXED P10 372 420
+FIXED P10 373 420
+FIXED P10 374 420
+FIXED P10 375 420
+FIXED P10 376 420
+FIXED P10 377 420
+FIXED P10 378 420
+FIXED P10 379 420
+FIXED P10 380 420
+FIXED P10 381 420
+FIXED P10 382 420
+FIXED P10 383 420
+FIXED P10 384 420
+FIXED P10 385 420
+FIXED P10 386 420
+FIXED P10 387 420
+FIXED P10 388 420
+FIXED P10 389 420
+FIXED P10 390 420
+FIXED P10 391 420
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1006676 3.6520655 3.4315407], yaw=-2.97); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.670308  -1.8484731  4.1681376], yaw=1.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.70776236 -1.8713948   4.1850624 ], yaw=1.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.66981506 -1.8541839   4.1839166 ], yaw=1.97); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.8834796 3.3590395 2.6058547], yaw=-1.55); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.4523664 3.765239  3.3895338], yaw=-0.92); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.4898756 3.7666771 3.3851838], yaw=-1.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.90476805  1.6208842   3.6394238 ], yaw=-1.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.61991894 4.3044286  3.288693  ], yaw=-2.93); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.123763   2.3323708  3.7912116], yaw=-0.41); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.740439  -2.1463823  3.1347604], yaw=1.31); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.00895   -3.7237399  3.3729942], yaw=2.50); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.70325637 5.0587997  3.3513985 ], yaw=-1.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.6605333 5.0448365 3.35084  ], yaw=-1.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.90489465 4.953493   3.357764  ], yaw=-1.79); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.9152577 4.953926  3.3514404], yaw=-1.81); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 4.0375066 -2.6080823  2.6340363], yaw=1.36); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.6536393 -0.9139908  3.8551583], yaw=-1.20); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.8024861 -1.0239998  3.8514555], yaw=-1.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.9725177 -0.9178712  2.5112646], yaw=-0.63); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.1465616  1.5638055  2.7329073], yaw=-2.25); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.6732316  3.3476741  2.8859212], yaw=-1.52); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9490004  -0.22809026  3.262521  ], yaw=2.76); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9598446  -0.20621179  3.2680678 ], yaw=2.59); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.6560664  -0.15904956  3.508602  ], yaw=2.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8240943 -1.2755458  1.5643992], yaw=-0.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8056134 -1.2724143  1.5646491], yaw=-0.18); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.617412  -1.8211375  1.8252743], yaw=-1.00); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.3840873 -1.7094672  1.8610603], yaw=-0.49); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.7651     1.85       2.5118215], yaw=-2.18); using max-range censoring
+  warnings.warn(
+FIXED P10 392 420
+FIXED P10 393 420
+FIXED P10 394 420
+FIXED P10 395 420
+FIXED P10 396 420
+FIXED P10 397 420
+FIXED P10 398 420
+FIXED P10 399 420
+FIXED P10 400 420
+FIXED P10 401 420
+FIXED P10 402 420
+FIXED P10 403 420
+FIXED P10 404 420
+FIXED P10 405 420
+FIXED P10 406 420
+FIXED P10 407 420
+FIXED P10 408 420
+FIXED P10 409 420
+FIXED P10 410 420
+FIXED P10 411 420
+FIXED P10 412 420
+FIXED P10 413 420
+FIXED P10 414 420
+FIXED P10 415 420
+FIXED P10 416 420
+FIXED P10 417 420
+FIXED P10 418 420
+FIXED P10 419 420
+FIXED P10 420 420
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.579816  1.85      2.514157], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.7100005  1.85       2.5039475], yaw=-2.28); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.9142957  1.85       2.5130467], yaw=-2.16); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.6634483  1.85       2.5182302], yaw=-2.28); using max-range censoring
+  warnings.warn(
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED P11 1 420
+FIXED P11 2 420
+FIXED P11 3 420
+FIXED P11 4 420
+FIXED P11 5 420
+FIXED P11 6 420
+FIXED P11 7 420
+FIXED P11 8 420
+FIXED P11 9 420
+FIXED P11 10 420
+FIXED P11 11 420
+FIXED P11 12 420
+FIXED P11 13 420
+FIXED P11 14 420
+FIXED P11 15 420
+FIXED P11 16 420
+FIXED P11 17 420
+FIXED P11 18 420
+FIXED P11 19 420
+FIXED P11 20 420
+FIXED P11 21 420
+FIXED P11 22 420
+FIXED P11 23 420
+FIXED P11 24 420
+FIXED P11 25 420
+FIXED P11 26 420
+FIXED P11 27 420
+FIXED P11 28 420
+FIXED P11 29 420
+FIXED P11 30 420
+FIXED P11 31 420
+FIXED P11 32 420
+FIXED P11 33 420
+FIXED P11 34 420
+FIXED P11 35 420
+FIXED P11 36 420
+FIXED P11 37 420
+FIXED P11 38 420
+FIXED P11 39 420
+FIXED P11 40 420
+FIXED P11 41 420
+FIXED P11 42 420
+FIXED P11 43 420
+FIXED P11 44 420
+FIXED P11 45 420
+FIXED P11 46 420
+FIXED P11 47 420
+FIXED P11 48 420
+FIXED P11 49 420
+FIXED P11 50 420
+FIXED P11 51 420
+FIXED P11 52 420
+FIXED P11 53 420
+FIXED P11 54 420
+FIXED P11 55 420
+FIXED P11 56 420
+FIXED P11 57 420
+FIXED P11 58 420
+FIXED P11 59 420
+FIXED P11 60 420
+FIXED P11 61 420
+FIXED P11 62 420
+FIXED P11 63 420
+FIXED P11 64 420
+FIXED P11 65 420
+FIXED P11 66 420
+FIXED P11 67 420
+FIXED P11 68 420
+FIXED P11 69 420
+FIXED P11 70 420
+FIXED P11 71 420
+FIXED P11 72 420
+FIXED P11 73 420
+FIXED P11 74 420
+FIXED P11 75 420
+FIXED P11 76 420
+FIXED P11 77 420
+FIXED P11 78 420
+FIXED P11 79 420
+FIXED P11 80 420
+FIXED P11 81 420
+FIXED P11 82 420
+FIXED P11 83 420
+FIXED P11 84 420
+FIXED P11 85 420
+FIXED P11 86 420
+FIXED P11 87 420
+FIXED P11 88 420
+FIXED P11 89 420
+FIXED P11 90 420
+FIXED P11 91 420
+FIXED P11 92 420
+FIXED P11 93 420
+FIXED P11 94 420
+FIXED P11 95 420
+FIXED P11 96 420
+FIXED P11 97 420
+FIXED P11 98 420
+FIXED P11 99 420
+FIXED P11 100 420
+FIXED P11 101 420
+FIXED P11 102 420
+FIXED P11 103 420
+FIXED P11 104 420
+FIXED P11 105 420
+FIXED P11 106 420
+FIXED P11 107 420
+FIXED P11 108 420
+FIXED P11 109 420
+FIXED P11 110 420
+FIXED P11 111 420
+FIXED P11 112 420
+FIXED P11 113 420
+FIXED P11 114 420
+FIXED P11 115 420
+FIXED P11 116 420
+FIXED P11 117 420
+FIXED P11 118 420
+FIXED P11 119 420
+FIXED P11 120 420
+FIXED P11 121 420
+FIXED P11 122 420
+FIXED P11 123 420
+FIXED P11 124 420
+FIXED P11 125 420
+FIXED P11 126 420
+FIXED P11 127 420
+FIXED P11 128 420
+FIXED P11 129 420
+FIXED P11 130 420
+FIXED P11 131 420
+FIXED P11 132 420
+FIXED P11 133 420
+FIXED P11 134 420
+FIXED P11 135 420
+FIXED P11 136 420
+FIXED P11 137 420
+FIXED P11 138 420
+FIXED P11 139 420
+FIXED P11 140 420
+FIXED P11 141 420
+FIXED P11 142 420
+FIXED P11 143 420
+FIXED P11 144 420
+FIXED P11 145 420
+FIXED P11 146 420
+FIXED P11 147 420
+FIXED P11 148 420
+FIXED P11 149 420
+FIXED P11 150 420
+FIXED P11 151 420
+FIXED P11 152 420
+FIXED P11 153 420
+FIXED P11 154 420
+FIXED P11 155 420
+FIXED P11 156 420
+FIXED P11 157 420
+FIXED P11 158 420
+FIXED P11 159 420
+FIXED P11 160 420
+FIXED P11 161 420
+FIXED P11 162 420
+FIXED P11 163 420
+FIXED P11 164 420
+FIXED P11 165 420
+FIXED P11 166 420
+FIXED P11 167 420
+FIXED P11 168 420
+FIXED P11 169 420
+FIXED P11 170 420
+FIXED P11 171 420
+FIXED P11 172 420
+FIXED P11 173 420
+FIXED P11 174 420
+FIXED P11 175 420
+FIXED P11 176 420
+FIXED P11 177 420
+FIXED P11 178 420
+FIXED P11 179 420
+FIXED P11 180 420
+FIXED P11 181 420
+FIXED P11 182 420
+FIXED P11 183 420
+FIXED P11 184 420
+FIXED P11 185 420
+FIXED P11 186 420
+FIXED P11 187 420
+FIXED P11 188 420
+FIXED P11 189 420
+FIXED P11 190 420
+FIXED P11 191 420
+FIXED P11 192 420
+FIXED P11 193 420
+FIXED P11 194 420
+FIXED P11 195 420
+FIXED P11 196 420
+FIXED P11 197 420
+FIXED P11 198 420
+FIXED P11 199 420
+FIXED P11 200 420
+FIXED P11 201 420
+FIXED P11 202 420
+FIXED P11 203 420
+FIXED P11 204 420
+FIXED P11 205 420
+FIXED P11 206 420
+FIXED P11 207 420
+FIXED P11 208 420
+FIXED P11 209 420
+FIXED P11 210 420
+FIXED P11 211 420
+FIXED P11 212 420
+FIXED P11 213 420
+FIXED P11 214 420
+FIXED P11 215 420
+FIXED P11 216 420
+FIXED P11 217 420
+FIXED P11 218 420
+FIXED P11 219 420
+FIXED P11 220 420
+FIXED P11 221 420
+FIXED P11 222 420
+FIXED P11 223 420
+FIXED P11 224 420
+FIXED P11 225 420
+FIXED P11 226 420
+FIXED P11 227 420
+FIXED P11 228 420
+FIXED P11 229 420
+FIXED P11 230 420
+FIXED P11 231 420
+FIXED P11 232 420
+FIXED P11 233 420
+FIXED P11 234 420
+FIXED P11 235 420
+FIXED P11 236 420
+FIXED P11 237 420
+FIXED P11 238 420
+FIXED P11 239 420
+FIXED P11 240 420
+FIXED P11 241 420
+FIXED P11 242 420
+FIXED P11 243 420
+FIXED P11 244 420
+FIXED P11 245 420
+FIXED P11 246 420
+FIXED P11 247 420
+FIXED P11 248 420
+FIXED P11 249 420
+FIXED P11 250 420
+FIXED P11 251 420
+FIXED P11 252 420
+FIXED P11 253 420
+FIXED P11 254 420
+FIXED P11 255 420
+FIXED P11 256 420
+FIXED P11 257 420
+FIXED P11 258 420
+FIXED P11 259 420
+FIXED P11 260 420
+FIXED P11 261 420
+FIXED P11 262 420
+FIXED P11 263 420
+FIXED P11 264 420
+FIXED P11 265 420
+FIXED P11 266 420
+FIXED P11 267 420
+FIXED P11 268 420
+FIXED P11 269 420
+FIXED P11 270 420
+FIXED P11 271 420
+FIXED P11 272 420
+FIXED P11 273 420
+FIXED P11 274 420
+FIXED P11 275 420
+FIXED P11 276 420
+FIXED P11 277 420
+FIXED P11 278 420
+FIXED P11 279 420
+FIXED P11 280 420
+FIXED P11 281 420
+FIXED P11 282 420
+FIXED P11 283 420
+FIXED P11 284 420
+FIXED P11 285 420
+FIXED P11 286 420
+FIXED P11 287 420
+FIXED P11 288 420
+FIXED P11 289 420
+FIXED P11 290 420
+FIXED P11 291 420
+FIXED P11 292 420
+FIXED P11 293 420
+FIXED P11 294 420
+FIXED P11 295 420
+FIXED P11 296 420
+FIXED P11 297 420
+FIXED P11 298 420
+FIXED P11 299 420
+FIXED P11 300 420
+FIXED P11 301 420
+FIXED P11 302 420
+FIXED P11 303 420
+FIXED P11 304 420
+FIXED P11 305 420
+FIXED P11 306 420
+FIXED P11 307 420
+FIXED P11 308 420
+FIXED P11 309 420
+FIXED P11 310 420
+FIXED P11 311 420
+FIXED P11 312 420
+FIXED P11 313 420
+FIXED P11 314 420
+FIXED P11 315 420
+FIXED P11 316 420
+FIXED P11 317 420
+FIXED P11 318 420
+FIXED P11 319 420
+FIXED P11 320 420
+FIXED P11 321 420
+FIXED P11 322 420
+FIXED P11 323 420
+FIXED P11 324 420
+FIXED P11 325 420
+FIXED P11 326 420
+FIXED P11 327 420
+FIXED P11 328 420
+FIXED P11 329 420
+FIXED P11 330 420
+FIXED P11 331 420
+FIXED P11 332 420
+FIXED P11 333 420
+FIXED P11 334 420
+FIXED P11 335 420
+FIXED P11 336 420
+FIXED P11 337 420
+FIXED P11 338 420
+FIXED P11 339 420
+FIXED P11 340 420
+FIXED P11 341 420
+FIXED P11 342 420
+FIXED P11 343 420
+FIXED P11 344 420
+FIXED P11 345 420
+FIXED P11 346 420
+FIXED P11 347 420
+FIXED P11 348 420
+FIXED P11 349 420
+FIXED P11 350 420
+FIXED P11 351 420
+FIXED P11 352 420
+FIXED P11 353 420
+FIXED P11 354 420
+FIXED P11 355 420
+FIXED P11 356 420
+FIXED P11 357 420
+FIXED P11 358 420
+FIXED P11 359 420
+FIXED P11 360 420
+FIXED P11 361 420
+FIXED P11 362 420
+FIXED P11 363 420
+FIXED P11 364 420
+FIXED P11 365 420
+FIXED P11 366 420
+FIXED P11 367 420
+FIXED P11 368 420
+FIXED P11 369 420
+FIXED P11 370 420
+FIXED P11 371 420
+FIXED P11 372 420
+FIXED P11 373 420
+FIXED P11 374 420
+FIXED P11 375 420
+FIXED P11 376 420
+FIXED P11 377 420
+FIXED P11 378 420
+FIXED P11 379 420
+FIXED P11 380 420
+FIXED P11 381 420
+FIXED P11 382 420
+FIXED P11 383 420
+FIXED P11 384 420
+FIXED P11 385 420
+FIXED P11 386 420
+FIXED P11 387 420
+FIXED P11 388 420
+FIXED P11 389 420
+FIXED P11 390 420
+FIXED P11 391 420
+FIXED P11 392 420
+FIXED P11 393 420
+FIXED P11 394 420
+FIXED P11 395 420
+FIXED P11 396 420
+FIXED P11 397 420
+FIXED P11 398 420
+FIXED P11 399 420
+FIXED P11 400 420
+FIXED P11 401 420
+FIXED P11 402 420
+FIXED P11 403 420
+FIXED P11 404 420
+FIXED P11 405 420
+FIXED P11 406 420
+FIXED P11 407 420
+FIXED P11 408 420
+FIXED P11 409 420
+FIXED P11 410 420
+FIXED P11 411 420
+FIXED P11 412 420
+FIXED P11 413 420
+FIXED P11 414 420
+FIXED P11 415 420
+FIXED P11 416 420
+FIXED P11 417 420
+FIXED P11 418 420
+FIXED P11 419 420
+FIXED P11 420 420
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.6672926 -3.1955035  2.2546134], yaw=-3.13); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.4768089 1.5524266 2.9213774], yaw=-0.55); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.7116062 1.8478428 3.1354644], yaw=-0.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.0992576 2.0682757 3.0954003], yaw=-0.45); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.5988225 1.7686287 3.0273561], yaw=-0.63); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9107337 -5.7996716  3.6313894], yaw=-2.52); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9198569 -5.856251   3.6021934], yaw=-2.66); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.0175276 -2.4062524  2.9572504], yaw=2.57); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.003271  -2.3076982  2.9522622], yaw=2.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.3659477 -0.6645032  2.9166114], yaw=2.81); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.3540835 -0.2976918  2.945228 ], yaw=2.56); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9799064 -3.8015728  3.2477956], yaw=2.28); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.2705213 5.6518106 2.6762476], yaw=-2.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.2582837 5.6638994 2.6746593], yaw=-2.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.4628828 4.753986  1.9782453], yaw=-2.11); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.10463573 2.5588274  2.0275798 ], yaw=-2.59); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.50691724 -0.87974817  3.7402549 ], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.5085783 -0.8812237  3.7354608], yaw=-1.71); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4738233  0.9042058  2.5229979], yaw=-2.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.5027102  0.9124977  2.5226586], yaw=-2.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.3403134  3.073288   2.6612911], yaw=-1.37); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9537498  -0.24968444  3.1558042 ], yaw=2.60); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.9084902  1.9107456  3.7986019], yaw=-1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8799651 -2.036965   1.5900028], yaw=-0.15); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.78176844 -2.4332006   2.0095901 ], yaw=0.29); using max-range censoring
+  warnings.warn(
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+Traceback (most recent call last):
+  File "scripts/run_routea_xk_evaluation.py", line 632, in <module>
+    main()
+  File "scripts/run_routea_xk_evaluation.py", line 628, in main
+    globals()[args.command.replace('-','_')](args)
+  File "scripts/run_routea_xk_evaluation.py", line 383, in worker
+    adapter=make_adapter(system,config,world,t['role'])
+  File "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/scripts/routea_paired_support/runtime.py", line 183, in make_adapter
+    if file_hash(world["obstacle_path"]) != world["obstacle_sha256"]:
+  File "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/scripts/routea_paired_support/core.py", line 25, in file_hash
+    with Path(path).open("rb") as stream:
+  File "/home/cjj/miniconda3/envs/idp3/lib/python3.8/pathlib.py", line 1222, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/cjj/miniconda3/envs/idp3/lib/python3.8/pathlib.py", line 1078, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/cjj/AUV/program/results/routea_xk_run01/val_bank/obstacles/routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051.json'

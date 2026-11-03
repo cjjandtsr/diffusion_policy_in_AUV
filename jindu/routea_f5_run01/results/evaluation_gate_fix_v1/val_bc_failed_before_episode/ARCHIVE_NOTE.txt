@@ -1,0 +1,6 @@
+archived_at=2026-11-02 06:27:46
+reason=FileNotFoundError on frozen val_bank absolute obstacle_path (deleted program/results/routea_xk_run01 tree)
+root_cause_evidence=/home/cjj/AUV/program/results/routea_f5_run01/evaluation_gate_fix_v1/val_bank_path_fix.log
+remedy=symlink program/results/routea_xk_run01/val_bank -> jindu/routea_xk_run01/val_bank (content unchanged; 20/20 obstacle sha256 match recorded obstacle_sha256)
+episodes_lost=0 (only policy_provenance.json existed)
+retry_script=fix_eval_resume_val.sh

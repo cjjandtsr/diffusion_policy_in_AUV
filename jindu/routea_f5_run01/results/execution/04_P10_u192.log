@@ -1,0 +1,782 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+{"bc_checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt", "environment_provenance": {"content_hash": "bf515cc7b2c047685775a82fe883ac4059e3106230c7a154ff92be255dc52862", "evidence_scope": "lightweight_kinematic", "schema_version": 1, "source_sha256": {"diffusion_policy_3d/env/collision_geom.py": "b097c7a59ac93f061dd246038fff27c81693d0d72a95356410ccd6a501302f7e", "diffusion_policy_3d/env/kinematic_uav_env.py": "b092a7aa8285f71f3d292a825c588373cca979928dc5eb823e393f1600e308f6", "diffusion_policy_3d/env/reward_v2_support/environment.py": "65518bf7ba4e9a5017f061b53d38a521b8f956787a15c81b66ec9dfe8abbf77b", "diffusion_policy_3d/env/reward_v2_support/first_event.py": "2f979d885d1feef5acd5f1c7818d624bfff637bb0981053192a989df90d0bc15", "diffusion_policy_3d/env/reward_v3.py": "a424382590aa72ec1382a27e8d1bcda2b7f9ac0182cb61f7479174b82b6a7748", "diffusion_policy_3d/env/traj_utils.py": "803420637841320853324661ae0736c58f4dbacd7b6601b3f57ea18a2987193c", "diffusion_policy_3d/model/common/synth_pointcloud.py": "5228eefccc644ac60721391c9dd07dc5fb51ce09ece2ca9feadb97c1b5bc20df"}}, "event": "dppo_training_start", "execution_last_update": 192, "initialization": "checkpoint_resume", "initialization_parity": {"a0_critic_parameter_sha256": "dbe03366ae62931dec0849ec87b4e762ef9fa0157752145f214bdc88ceeede3b", "actor_parameter_sha256": "d2ef5b1b3c6f5c049af231ce2a96ce612fddfb5a44c3923b9a8cf44a152ac808", "r1_critic_base_parameter_sha256": "dbe03366ae62931dec0849ec87b4e762ef9fa0157752145f214bdc88ceeede3b", "rng_state_sha256": "44e7afca5a4a96f9671875a35382018d94b87a7d0bda651e8174493fd9f3e5bb", "value_max_abs_delta": 0.0}, "output_dir": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f5_run01/P10", "planned_transitions": 262144, "result_dir": "/home/cjj/AUV/program/results/routea_f5_run01/prepared/training/P10", "resume_from": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f5_run01/P10/checkpoint_update_000129", "runtime_identity_hash": "dde05d5282c9a7aa2c1869cd82803c7c7af6efe0407c67bdbb9b33448cdd0968", "start_update": 130, "total_updates": 256}
+{"actor_delta_l2": 0.13250108921017928, "actor_learning_rate": 1.4941176470588237e-05, "committed_optimizer_steps": 20, "completed_episodes": 46, "critic_delta_l2": 2.8410414996482602, "env_steps": 133120, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 614466560, "physical_done_reason_counts": {"obstacle_collision": 27, "reached": 9, "time_limit": 10}, "post_update_approx_kl": 4.253143197274767e-05, "post_update_ratio_mean": 0.9987323880195618, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.3186211193084573, "rollout_transitions_per_second": 3.1539737590593107, "update_index": 130}
+{"actor_delta_l2": 0.10921889581069448, "actor_learning_rate": 1.4901960784313726e-05, "committed_optimizer_steps": 20, "completed_episodes": 35, "critic_delta_l2": 3.2339275270936922, "env_steps": 134144, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616315392, "physical_done_reason_counts": {"obstacle_collision": 14, "reached": 11, "time_limit": 10}, "post_update_approx_kl": 2.981056923090364e-06, "post_update_ratio_mean": 0.9998354315757751, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.5287525404272078, "rollout_transitions_per_second": 3.1519226333796624, "update_index": 131}
+{"actor_delta_l2": 0.10028988928603565, "actor_learning_rate": 1.4862745098039218e-05, "committed_optimizer_steps": 20, "completed_episodes": 36, "critic_delta_l2": 3.3772419078702343, "env_steps": 135168, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616315392, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 23, "reached": 5, "time_limit": 7}, "post_update_approx_kl": 7.115573680493981e-06, "post_update_ratio_mean": 0.9995929598808289, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.5912869371109387, "rollout_transitions_per_second": 3.109854618573416, "update_index": 132}
+{"actor_delta_l2": 0.08868814026592997, "actor_learning_rate": 1.4823529411764707e-05, "committed_optimizer_steps": 20, "completed_episodes": 32, "critic_delta_l2": 3.8673671373647864, "env_steps": 136192, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616315392, "physical_done_reason_counts": {"obstacle_collision": 16, "reached": 10, "time_limit": 6}, "post_update_approx_kl": 1.398880726810603e-06, "post_update_ratio_mean": 0.9999099969863892, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.3181566564013415, "rollout_transitions_per_second": 3.013712718399812, "update_index": 133}
+{"actor_delta_l2": 0.1023695500217414, "actor_learning_rate": 1.4784313725490196e-05, "committed_optimizer_steps": 20, "completed_episodes": 35, "critic_delta_l2": 3.13051989291479, "env_steps": 137216, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616315392, "physical_done_reason_counts": {"obstacle_collision": 18, "reached": 7, "time_limit": 10}, "post_update_approx_kl": 5.56125405637431e-06, "post_update_ratio_mean": 0.9995899200439453, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.09203188264152712, "rollout_transitions_per_second": 3.1170410934309465, "update_index": 134}
+{"actor_delta_l2": 0.10365603144180435, "actor_learning_rate": 1.4745098039215687e-05, "committed_optimizer_steps": 20, "completed_episodes": 36, "critic_delta_l2": 3.6545962462130452, "env_steps": 138240, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616315392, "physical_done_reason_counts": {"obstacle_collision": 23, "reached": 5, "time_limit": 8}, "post_update_approx_kl": 3.5560703963710694e-06, "post_update_ratio_mean": 0.9997516870498657, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.5544446042653565, "rollout_transitions_per_second": 3.090830408510812, "update_index": 135}
+{"actor_delta_l2": 0.11548168232051778, "actor_learning_rate": 1.4705882352941179e-05, "committed_optimizer_steps": 20, "completed_episodes": 39, "critic_delta_l2": 4.433951275909823, "env_steps": 139264, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616315392, "physical_done_reason_counts": {"obstacle_collision": 17, "reached": 13, "time_limit": 9}, "post_update_approx_kl": 1.8771641407511197e-05, "post_update_ratio_mean": 0.9990720748901367, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.5971698318150792, "rollout_transitions_per_second": 3.082623882104807, "update_index": 136}
+{"actor_delta_l2": 0.1235145692165475, "actor_learning_rate": 1.4666666666666668e-05, "committed_optimizer_steps": 20, "completed_episodes": 32, "critic_delta_l2": 3.199429487152059, "env_steps": 140288, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 15, "reached": 6, "time_limit": 11}, "post_update_approx_kl": 2.6267312932759523e-05, "post_update_ratio_mean": 0.9990407228469849, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.06063467998989103, "rollout_transitions_per_second": 3.121511423895854, "update_index": 137}
+{"actor_delta_l2": 0.09932289385476561, "actor_learning_rate": 1.4627450980392157e-05, "committed_optimizer_steps": 20, "completed_episodes": 37, "critic_delta_l2": 3.1902216730616995, "env_steps": 141312, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 21, "reached": 7, "time_limit": 9}, "post_update_approx_kl": 2.1247362838039408e-06, "post_update_ratio_mean": 0.9998123049736023, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.2533994006492019, "rollout_transitions_per_second": 3.1179249560567777, "update_index": 138}
+{"actor_delta_l2": 0.09764995368942143, "actor_learning_rate": 1.4588235294117648e-05, "committed_optimizer_steps": 20, "completed_episodes": 36, "critic_delta_l2": 3.9046800203154475, "env_steps": 142336, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 21, "reached": 5, "time_limit": 9}, "post_update_approx_kl": 2.386659389230772e-06, "post_update_ratio_mean": 0.9998329281806946, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.49926558310849045, "rollout_transitions_per_second": 3.108155812883494, "update_index": 139}
+{"actor_delta_l2": 0.09284353404420609, "actor_learning_rate": 1.454901960784314e-05, "committed_optimizer_steps": 20, "completed_episodes": 31, "critic_delta_l2": 4.3916465886994756, "env_steps": 143360, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 15, "reached": 4, "time_limit": 12}, "post_update_approx_kl": 1.7299670389547828e-06, "post_update_ratio_mean": 0.9999043345451355, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.2621127740772601, "rollout_transitions_per_second": 3.110471396130329, "update_index": 140}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.5883245  1.744685   2.3017828], yaw=2.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.939081   1.8836479  2.6710958], yaw=-1.80); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.4477725 0.9641256 1.4504032], yaw=0.58); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.859887  3.6       3.180981], yaw=-2.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.216368  2.9809515 3.0101936], yaw=-0.46); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.1349761  4.488926   2.7095518], yaw=-3.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.867806  -2.9        2.5234385], yaw=-2.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.9541922  0.56093055 2.7044454 ], yaw=1.32); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.95323145 -0.44489324  2.1598806 ], yaw=-0.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.61170626 4.432404   3.8487184 ], yaw=-0.37); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.5138245 -3.7995832  2.3939924], yaw=-0.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.4228506  3.413649   3.5328815], yaw=0.74); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.891287  -2.4310935  2.6045313], yaw=-0.62); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.2629671 -0.6396747  3.2936697], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.823316   2.8739605  2.4355903], yaw=1.49); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.803517  2.2003672 3.0616646], yaw=-1.62); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.311676   6.1650953  1.8193913], yaw=-2.52); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.97510713 -0.87821764  2.8851547 ], yaw=3.09); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.067745   0.9344765  1.8804024], yaw=1.34); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.5507274  1.9004443  2.612971 ], yaw=-0.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.1287022  1.0743146  1.4268885], yaw=1.36); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.4056468 -1.85       2.0304549], yaw=2.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1039617  1.1053084  1.6869731], yaw=2.84); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.5430189 1.6369357 2.1340582], yaw=1.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[5.2234597 1.85      2.5132506], yaw=-2.31); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.6615708 -0.791484   3.0101056], yaw=2.52); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.5523691 -1.0966527  2.4270809], yaw=-1.51); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.641583   0.43138757 3.701383  ], yaw=0.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.65       0.43394583 3.701457  ], yaw=0.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.110192  -1.3558532  2.782092 ], yaw=2.46); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.1030974 -1.35       2.7806065], yaw=2.46); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.09426772205388895, "actor_learning_rate": 1.4509803921568627e-05, "committed_optimizer_steps": 20, "completed_episodes": 37, "critic_delta_l2": 4.497012263694304, "env_steps": 144384, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 20, "reached": 8, "time_limit": 9}, "post_update_approx_kl": 4.292130597605137e-06, "post_update_ratio_mean": 0.999682605266571, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.10480687838264932, "rollout_transitions_per_second": 2.900525149036446, "update_index": 141}
+{"actor_delta_l2": 0.11334603166763103, "actor_learning_rate": 1.4470588235294118e-05, "committed_optimizer_steps": 20, "completed_episodes": 47, "critic_delta_l2": 4.405911208660638, "env_steps": 145408, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 31, "reached": 9, "time_limit": 7}, "post_update_approx_kl": 2.9316219297470525e-05, "post_update_ratio_mean": 0.998634934425354, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.5382089514473659, "rollout_transitions_per_second": 2.905886701839588, "update_index": 142}
+{"actor_delta_l2": 0.10137400887327157, "actor_learning_rate": 1.443137254901961e-05, "committed_optimizer_steps": 20, "completed_episodes": 32, "critic_delta_l2": 4.385810199986963, "env_steps": 146432, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 15, "reached": 7, "time_limit": 10}, "post_update_approx_kl": 3.6562639706971822e-06, "post_update_ratio_mean": 0.9997267127037048, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.03876675121411075, "rollout_transitions_per_second": 2.946617835838682, "update_index": 143}
+{"actor_delta_l2": 0.09209687988471207, "actor_learning_rate": 1.4392156862745099e-05, "committed_optimizer_steps": 20, "completed_episodes": 40, "critic_delta_l2": 4.555133225260632, "env_steps": 147456, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 24, "reached": 9, "time_limit": 7}, "post_update_approx_kl": 2.3161112494562985e-06, "post_update_ratio_mean": 0.9998151659965515, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.17642810495862302, "rollout_transitions_per_second": 3.0270338087524076, "update_index": 144}
+{"actor_delta_l2": 0.10648818114046231, "actor_learning_rate": 1.4352941176470588e-05, "committed_optimizer_steps": 20, "completed_episodes": 37, "critic_delta_l2": 3.615658670421794, "env_steps": 148480, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 21, "reached": 7, "time_limit": 9}, "post_update_approx_kl": 4.989019998902222e-06, "post_update_ratio_mean": 0.9995843768119812, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.2302535852551255, "rollout_transitions_per_second": 3.014848776730964, "update_index": 145}
+{"actor_delta_l2": 0.12967771748134954, "actor_learning_rate": 1.431372549019608e-05, "committed_optimizer_steps": 20, "completed_episodes": 32, "critic_delta_l2": 4.077031552915452, "env_steps": 149504, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 13, "reached": 7, "time_limit": 11}, "post_update_approx_kl": 7.616172752022976e-06, "post_update_ratio_mean": 0.9996405839920044, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.09210031507573531, "rollout_transitions_per_second": 3.0651428316498692, "update_index": 146}
+{"actor_delta_l2": 0.0992912955263329, "actor_learning_rate": 1.427450980392157e-05, "committed_optimizer_steps": 20, "completed_episodes": 40, "critic_delta_l2": 3.4129632980706472, "env_steps": 150528, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 29, "reached": 5, "time_limit": 6}, "post_update_approx_kl": 8.995102120934462e-07, "post_update_ratio_mean": 0.9999576807022095, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.8728471955348874, "rollout_transitions_per_second": 3.0464109545315123, "update_index": 147}
+{"actor_delta_l2": 0.08354786170245321, "actor_learning_rate": 1.4235294117647062e-05, "committed_optimizer_steps": 20, "completed_episodes": 33, "critic_delta_l2": 4.273212692497869, "env_steps": 151552, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 18, "reached": 6, "time_limit": 9}, "post_update_approx_kl": 1.1457398159109289e-06, "post_update_ratio_mean": 0.9999091029167175, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.18439471808036034, "rollout_transitions_per_second": 2.998461053249171, "update_index": 148}
+{"actor_delta_l2": 0.08709043820612965, "actor_learning_rate": 1.419607843137255e-05, "committed_optimizer_steps": 20, "completed_episodes": 35, "critic_delta_l2": 3.6981142329678214, "env_steps": 152576, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 16, "reached": 11, "time_limit": 7}, "post_update_approx_kl": 2.674569941518712e-06, "post_update_ratio_mean": 0.9998441934585571, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.34515974038630487, "rollout_transitions_per_second": 3.0359640391841554, "update_index": 149}
+{"actor_delta_l2": 0.08741008983347363, "actor_learning_rate": 1.415686274509804e-05, "committed_optimizer_steps": 20, "completed_episodes": 46, "critic_delta_l2": 3.1812728371706407, "env_steps": 153600, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 33, "reached": 5, "time_limit": 7}, "post_update_approx_kl": 2.2072297269914998e-06, "post_update_ratio_mean": 0.9998494982719421, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -1.1129873902617935, "rollout_transitions_per_second": 3.0135901429962524, "update_index": 150}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1202321 2.5671482 2.8187792], yaw=-2.25); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.5135396 2.0375698 3.4900093], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.9158175 3.0748038 2.771106 ], yaw=1.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.7152677 -2.170999   4.458232 ], yaw=-1.19); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.3720913 3.9889984 2.100496 ], yaw=-2.67); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 4.3233185 -5.966713   4.0633993], yaw=-2.78); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.5203025  2.9291127  3.688178 ], yaw=-1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.6757236 -2.9        2.5885632], yaw=-0.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.392912  1.4       1.7105774], yaw=0.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.8816413 -1.85       2.3996305], yaw=2.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3015412 -1.1906022  3.7434928], yaw=-0.74); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.582424   1.8257154  2.2502036], yaw=1.78); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.6162435  2.1        3.7930686], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.346847  3.5596232 3.7714303], yaw=3.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.6777538 -2.895403   1.9634284], yaw=1.58); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.0668635   0.68378663  1.7558185 ], yaw=-1.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.0686306 -1.85       2.1068513], yaw=0.86); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.2277966 3.481596  3.3225257], yaw=1.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.7291367 -2.756792   1.496703 ], yaw=2.76); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.9485507 1.85      4.0875506], yaw=-2.29); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.8054137 2.1954744 2.6138554], yaw=2.28); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.10927248 -3.1315331   0.6522301 ], yaw=0.37); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.6586173 -1.6        3.319632 ], yaw=0.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.2149421   0.26037213  1.5048872 ], yaw=-2.51); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.890395 -0.973538  2.525434], yaw=-2.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.729208  7.0692077 2.8596509], yaw=1.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.2286273  -0.21575387  2.8547518 ], yaw=-1.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.8865175 0.5443301 3.197679 ], yaw=2.30); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.721183  5.207854  2.2625277], yaw=3.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.74968    2.9        3.9435241], yaw=2.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.9221512  -0.22021878  2.3072739 ], yaw=1.80); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.07991327816978851, "actor_learning_rate": 1.4117647058823532e-05, "committed_optimizer_steps": 20, "completed_episodes": 36, "critic_delta_l2": 4.017038388328751, "env_steps": 154624, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 15, "reached": 11, "time_limit": 9}, "post_update_approx_kl": 2.1833359369338723e-06, "post_update_ratio_mean": 0.9997909665107727, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.4373750990107688, "rollout_transitions_per_second": 3.01688044847955, "update_index": 151}
+{"actor_delta_l2": 0.09016268830630238, "actor_learning_rate": 1.4078431372549021e-05, "committed_optimizer_steps": 20, "completed_episodes": 35, "critic_delta_l2": 3.9705830626737235, "env_steps": 155648, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 17, "reached": 7, "time_limit": 11}, "post_update_approx_kl": 3.694742190418765e-06, "post_update_ratio_mean": 0.9997192621231079, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.03940400101131636, "rollout_transitions_per_second": 2.971611200925966, "update_index": 152}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.8343663  2.050408   2.328954 ], yaw=-0.40); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.5115378  0.96705467 2.8649728 ], yaw=1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.8950703  0.71049345 3.3888159 ], yaw=-0.80); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.4123657 -2.080152   4.2321787], yaw=-0.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.6468784 -2.85       3.5449138], yaw=2.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.7146473  4.060832   1.9452345], yaw=-2.95); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.6066833  1.6604236  5.3769593], yaw=-2.49); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.730221   1.5667075  5.3746495], yaw=-2.44); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.1778474  1.329987   5.370039 ], yaw=-2.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.2624536  1.2189983  5.365278 ], yaw=-2.32); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.399904   1.084922   5.3569293], yaw=-2.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.544408    0.94610536  5.343198  ], yaw=-2.31); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.685238   0.8235995  5.330581 ], yaw=-2.30); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.759801   0.7842842  5.3193216], yaw=-2.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.82312    0.7564356  5.305825 ], yaw=-2.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.9156265  0.6913165  5.2957287], yaw=-2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.8373475   0.86735076  5.1950617 ], yaw=-2.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.889882   0.7919842  5.1780286], yaw=-2.16); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.924003   -0.57551765  5.233795  ], yaw=-2.41); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.9534535  -0.64509237  5.2238336 ], yaw=-2.37); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.969807   -0.69120795  5.210238  ], yaw=-2.35); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.0005555  -0.75529647  5.189871  ], yaw=-2.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.1759367 -2.999046   5.201221 ], yaw=-2.25); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.2085853 -2.9758587  5.193704 ], yaw=-2.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.245904  -3.0057     5.1824455], yaw=-2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.782004  -2.884008   5.2836514], yaw=-2.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7759614 -2.8902965  5.2766   ], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7672467 -2.877206   5.270893 ], yaw=-2.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.8015804 -2.9060452  5.2524157], yaw=-2.10); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.795569 -2.909236  5.243822], yaw=-2.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.837063  -2.9612207  5.2349   ], yaw=-2.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.856233  -3.0186489  5.2239285], yaw=-2.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.8727427 -3.0405862  5.2091904], yaw=-2.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.737807  -3.0071168  5.635852 ], yaw=-2.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.797054 -3.023671  5.637527], yaw=-2.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7903576 -3.0474148  5.627442 ], yaw=-2.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.81869  -3.073472  5.625999], yaw=-2.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.0433874 -3.0051572  5.847307 ], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.087683  -3.0582168  5.84711  ], yaw=-1.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.1297812 -3.1127188  5.8467746], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.1971893 -3.1468067  5.8428793], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.2285604 -3.1526852  5.8476276], yaw=-1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.242368  -3.1444745  5.8381963], yaw=-1.92); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.2544603 -3.149929   5.82717  ], yaw=-1.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.2939982 -3.2004244  5.8116846], yaw=-1.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.306039  -3.2437122  5.802543 ], yaw=-1.92); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3138366 -3.2591794  5.795799 ], yaw=-1.92); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.338536  -3.2827663  5.782689 ], yaw=-1.92); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3629527 -3.3079908  5.772659 ], yaw=-1.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3930745 -3.3300664  5.769788 ], yaw=-1.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.386965  -3.3420973  5.7674174], yaw=-1.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3559284 -3.3687694  5.7591124], yaw=-1.85); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.396756  -3.348763   5.7510915], yaw=-1.84); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.4286513 -3.3499916  5.7390127], yaw=-1.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.4081206 -3.378386   5.7269907], yaw=-1.78); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.40082   -3.3726764  5.723324 ], yaw=-1.73); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3603587 -3.3858676  5.706516 ], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.390451  -3.3899097  5.6968274], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3473415 -3.4095347  5.6875396], yaw=-1.73); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3285356 -3.4408522  5.6863565], yaw=-1.70); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.10597813033274142, "actor_learning_rate": 1.403921568627451e-05, "committed_optimizer_steps": 20, "completed_episodes": 48, "critic_delta_l2": 3.6866265156111835, "env_steps": 156672, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 31, "reached": 12, "time_limit": 5}, "post_update_approx_kl": 6.730930181220174e-06, "post_update_ratio_mean": 0.9995628595352173, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.24402619486477187, "rollout_transitions_per_second": 3.021552666999864, "update_index": 153}
+{"actor_delta_l2": 0.1064508521749236, "actor_learning_rate": 1.4000000000000001e-05, "committed_optimizer_steps": 20, "completed_episodes": 36, "critic_delta_l2": 3.4623518342739477, "env_steps": 157696, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 19, "reached": 8, "time_limit": 9}, "post_update_approx_kl": 2.4156329345714767e-06, "post_update_ratio_mean": 0.9998319745063782, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.027442158299629447, "rollout_transitions_per_second": 3.0318356331745124, "update_index": 154}
+{"actor_delta_l2": 0.08643043621622111, "actor_learning_rate": 1.3960784313725493e-05, "committed_optimizer_steps": 20, "completed_episodes": 35, "critic_delta_l2": 4.113862604667122, "env_steps": 158720, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 17, "reached": 11, "time_limit": 7}, "post_update_approx_kl": 3.2880373055377277e-06, "post_update_ratio_mean": 0.9997154474258423, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.375263414962187, "rollout_transitions_per_second": 3.0704426050049265, "update_index": 155}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3249264 -3.4771547  5.6682863], yaw=-1.71); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3478456 -3.538455   5.6548495], yaw=-1.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.285914  -3.5965137  5.6443124], yaw=-1.71); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.257791  -3.6313934  5.6307416], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.180646 -3.658854  5.620226], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.153076  -3.6765087  5.60735  ], yaw=-1.72); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.1312017 -3.6969562  5.597259 ], yaw=-1.73); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.0525784 -3.7269087  5.5923877], yaw=-1.73); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.001833  -3.7919712  5.5811667], yaw=-1.72); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.9879975 -3.8101618  5.575365 ], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.8845234 -3.8501997  5.5674486], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.8553877 -3.893877   5.554142 ], yaw=-1.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.8147235 -3.931709   5.5430517], yaw=-1.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.811473  -3.9919276  5.5263243], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7755156 -4.030469   5.5168166], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7565727 -4.0986524  5.509323 ], yaw=-1.71); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.694242  -4.1461897  5.5029216], yaw=-1.72); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7108035 -4.178352   5.4984045], yaw=-1.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.694143  -4.2459126  5.494576 ], yaw=-1.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.6935544 -4.2932734  5.481124 ], yaw=-1.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.6561065 -4.3347116  5.469731 ], yaw=-1.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.2609434  2.9325452  1.5194077], yaw=-2.58); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.54192674 -1.4540423   4.0003343 ], yaw=1.09); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.38503    -0.80394053  2.3549442 ], yaw=3.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.0546248 -3.3823223  3.238727 ], yaw=-2.46); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.9367566 -1.85       3.1539671], yaw=2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.2945685 1.5579195 3.063653 ], yaw=-0.55); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.7182393 1.1801777 2.9958332], yaw=0.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.761631   2.8701904  2.505086 ], yaw=-1.35); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.1898212 -3.6997638  4.4705324], yaw=1.05); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.0814146988283195, "actor_learning_rate": 1.3921568627450982e-05, "committed_optimizer_steps": 20, "completed_episodes": 38, "critic_delta_l2": 4.579380488169396, "env_steps": 159744, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 17, "reached": 13, "time_limit": 8}, "post_update_approx_kl": 1.1644573305602535e-06, "post_update_ratio_mean": 0.9999341368675232, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.5572089321571796, "rollout_transitions_per_second": 3.05961851366366, "update_index": 156}
+{"actor_delta_l2": 0.08915487403613992, "actor_learning_rate": 1.3882352941176471e-05, "committed_optimizer_steps": 20, "completed_episodes": 38, "critic_delta_l2": 4.8656520839541955, "env_steps": 160768, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 21, "reached": 11, "time_limit": 6}, "post_update_approx_kl": 7.2941434154927265e-06, "post_update_ratio_mean": 0.9998272061347961, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.144759335920324, "rollout_transitions_per_second": 3.084653139071705, "update_index": 157}
+{"actor_delta_l2": 0.10856041629960773, "actor_learning_rate": 1.3843137254901963e-05, "committed_optimizer_steps": 20, "completed_episodes": 42, "critic_delta_l2": 4.554390437621906, "env_steps": 161792, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 27, "reached": 7, "time_limit": 8}, "post_update_approx_kl": 9.812673852138687e-06, "post_update_ratio_mean": 0.9994221925735474, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.5403376151756012, "rollout_transitions_per_second": 3.096925582303634, "update_index": 158}
+{"actor_delta_l2": 0.1326178426223393, "actor_learning_rate": 1.3803921568627452e-05, "committed_optimizer_steps": 20, "completed_episodes": 40, "critic_delta_l2": 3.160890392831579, "env_steps": 162816, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 25, "reached": 5, "time_limit": 9}, "post_update_approx_kl": 1.0983049833157565e-05, "post_update_ratio_mean": 0.999485194683075, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.6929060704200538, "rollout_transitions_per_second": 3.099622029186888, "update_index": 159}
+{"actor_delta_l2": 0.11871537177642297, "actor_learning_rate": 1.3764705882352941e-05, "committed_optimizer_steps": 20, "completed_episodes": 42, "critic_delta_l2": 2.7033731259418627, "env_steps": 163840, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 23, "reached": 12, "time_limit": 7}, "post_update_approx_kl": 4.430241915542865e-06, "post_update_ratio_mean": 0.9997547268867493, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.15336960226143986, "rollout_transitions_per_second": 3.113642516799425, "update_index": 160}
+{"actor_delta_l2": 0.09029806209675174, "actor_learning_rate": 1.3725490196078432e-05, "committed_optimizer_steps": 20, "completed_episodes": 42, "critic_delta_l2": 3.2908014547119318, "env_steps": 164864, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 27, "reached": 9, "time_limit": 6}, "post_update_approx_kl": 2.239888772237464e-06, "post_update_ratio_mean": 0.9997968673706055, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.3413700335466521, "rollout_transitions_per_second": 3.024296945817248, "update_index": 161}
+{"actor_delta_l2": 0.0929749026767516, "actor_learning_rate": 1.3686274509803924e-05, "committed_optimizer_steps": 20, "completed_episodes": 40, "critic_delta_l2": 4.243079913962201, "env_steps": 165888, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 22, "reached": 11, "time_limit": 7}, "post_update_approx_kl": 2.1844275579496752e-06, "post_update_ratio_mean": 0.9998515248298645, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.11006476075642684, "rollout_transitions_per_second": 2.991790961302117, "update_index": 162}
+{"actor_delta_l2": 0.09886216059036634, "actor_learning_rate": 1.3647058823529413e-05, "committed_optimizer_steps": 20, "completed_episodes": 37, "critic_delta_l2": 4.636634213581513, "env_steps": 166912, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 20, "reached": 11, "time_limit": 6}, "post_update_approx_kl": 5.334552042768337e-06, "post_update_ratio_mean": 0.9996511340141296, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.21337123099287278, "rollout_transitions_per_second": 2.981640962345211, "update_index": 163}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.2302415 2.1342764 2.173313 ], yaw=2.13); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.005377  -1.8686591  1.9999048], yaw=1.41); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.4737196  1.75       3.1140914], yaw=-0.84); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.09007423 4.227488   2.9026551 ], yaw=1.56); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.41264793  1.6414032   3.8553743 ], yaw=-1.95); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.19634433 -1.2447932   2.3179493 ], yaw=2.52); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.5446784 3.1635406 4.441117 ], yaw=-2.35); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.2432485 3.237872  2.2901495], yaw=2.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.9346278  0.6292777  2.428344 ], yaw=1.56); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.00929211 -1.0943875   2.9617538 ], yaw=1.97); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.8451757  1.3925713  1.8304367], yaw=2.29); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.1519234 -2.1263444  2.5302045], yaw=1.35); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.0969205  1.5313838  3.3998885], yaw=-2.31); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.3920248 -3.0100353  3.567647 ], yaw=1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.346158 -3.895867  3.022993], yaw=2.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.6184788  1.9283785  3.9919565], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.71147126 -3.6         1.3946264 ], yaw=0.86); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.58025    1.7672064  2.3695755], yaw=2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.1922857 1.8832748 0.9253455], yaw=-1.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.795534   0.09845574 1.6406479 ], yaw=1.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.1779332  2.1648107  3.766499 ], yaw=-1.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.35      -0.5226291  3.6950254], yaw=-2.40); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.8431798  -0.42740762  2.5652456 ], yaw=2.61); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.6696248 -2.9        3.7982187], yaw=-2.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.56399447 3.2635083  2.276536  ], yaw=-0.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.5704204 3.2419176 2.2809293], yaw=-0.92); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.34703973 3.1498148  4.2625966 ], yaw=-2.93); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.9845917 -3.4011848  2.2577636], yaw=-1.61); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.0765104 -4.030234   3.070678 ], yaw=1.35); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.569743   0.10728601 2.8953164 ], yaw=-1.03); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.10296532409606507, "actor_learning_rate": 1.3607843137254902e-05, "committed_optimizer_steps": 20, "completed_episodes": 43, "critic_delta_l2": 3.7911637726447407, "env_steps": 167936, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 25, "reached": 14, "time_limit": 4}, "post_update_approx_kl": 6.506324552901788e-06, "post_update_ratio_mean": 0.999600350856781, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.26905536629987103, "rollout_transitions_per_second": 3.064254727906882, "update_index": 164}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.5096653 -2.680197   1.9853004], yaw=2.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[5.755429  3.1444921 5.239953 ], yaw=-0.72); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[5.8661327 3.0265627 5.242781 ], yaw=-0.74); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[5.999174 2.92211  5.235116], yaw=-0.76); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.9108554  0.9914761  1.7197477], yaw=-2.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 4.0012226 -4.3320374  3.1698487], yaw=1.73); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.177723  3.2649045 2.9864974], yaw=2.25); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.43489173 -1.3796198   1.0293971 ], yaw=-1.20); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.5138502  -0.19871546  3.2320297 ], yaw=0.72); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.3777156  8.468712   5.2091074], yaw=-2.70); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.5762532  8.44271    5.2026496], yaw=-2.77); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.7176776  8.371189   5.19277  ], yaw=-2.77); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.857596   8.281436   5.1894727], yaw=-2.75); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.0324683  8.176911   5.181821 ], yaw=-2.71); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.2256637  8.085971   5.1742954], yaw=-2.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.3537385  8.037673   5.17143  ], yaw=-2.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.0632067  7.2380896  5.460519 ], yaw=-2.84); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.183353   7.1982374  5.455578 ], yaw=-2.85); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.3104644  7.147392   5.4462385], yaw=-2.85); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.4146996  7.079485   5.433398 ], yaw=-2.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.5084143  7.0235763  5.426145 ], yaw=-2.81); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.579728   7.01329    5.4192004], yaw=-2.73); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.76378    6.9415407  5.4122353], yaw=-2.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.9503603  6.8861237  5.405128 ], yaw=-2.66); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.107204   6.881088   5.4028773], yaw=-2.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.267048   6.8887196  5.3941283], yaw=-2.62); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.4401903  6.8652744  5.380467 ], yaw=-2.60); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.5961957  6.838018   5.365531 ], yaw=-2.58); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7452655  6.7660336  5.3554816], yaw=-2.57); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.884358   6.746157   5.3481207], yaw=-2.56); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.08752697273320796, "actor_learning_rate": 1.3568627450980393e-05, "committed_optimizer_steps": 20, "completed_episodes": 38, "critic_delta_l2": 3.912400862949216, "env_steps": 168960, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 22, "reached": 5, "time_limit": 11}, "post_update_approx_kl": 1.956520691237529e-06, "post_update_ratio_mean": 0.9998464584350586, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.5177992109533532, "rollout_transitions_per_second": 3.1073702199155457, "update_index": 165}
+{"actor_delta_l2": 0.08456486466216596, "actor_learning_rate": 1.3529411764705883e-05, "committed_optimizer_steps": 20, "completed_episodes": 35, "critic_delta_l2": 3.662393133798659, "env_steps": 169984, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 16, "reached": 8, "time_limit": 10}, "post_update_approx_kl": 2.6829827675101114e-06, "post_update_ratio_mean": 0.9998246431350708, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.05167209896222803, "rollout_transitions_per_second": 3.085763124864587, "update_index": 166}
+{"actor_delta_l2": 0.08817613508926382, "actor_learning_rate": 1.3490196078431372e-05, "committed_optimizer_steps": 20, "completed_episodes": 32, "critic_delta_l2": 5.421444209897464, "env_steps": 171008, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 15, "reached": 10, "time_limit": 7}, "post_update_approx_kl": 1.8350601749261841e-06, "post_update_ratio_mean": 0.9998912215232849, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.3536714752715862, "rollout_transitions_per_second": 3.1448207519321283, "update_index": 167}
+{"actor_delta_l2": 0.08278352869067485, "actor_learning_rate": 1.3450980392156863e-05, "committed_optimizer_steps": 20, "completed_episodes": 37, "critic_delta_l2": 4.959171912571791, "env_steps": 172032, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 17, "reached": 12, "time_limit": 8}, "post_update_approx_kl": 2.188519147239276e-06, "post_update_ratio_mean": 0.9998842477798462, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.4795973008979003, "rollout_transitions_per_second": 3.121023615297312, "update_index": 168}
+{"actor_delta_l2": 0.09034538136317655, "actor_learning_rate": 1.3411764705882354e-05, "committed_optimizer_steps": 20, "completed_episodes": 30, "critic_delta_l2": 3.65470801240305, "env_steps": 173056, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 12, "reached": 6, "time_limit": 12}, "post_update_approx_kl": 3.0465614599961555e-06, "post_update_ratio_mean": 0.9997587203979492, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.09957285109483609, "rollout_transitions_per_second": 3.1330274457612948, "update_index": 169}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.032214   6.735428   5.3332887], yaw=-2.51); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.175648   6.6983514  5.3247647], yaw=-2.49); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.1955123 -1.0214162  2.8143506], yaw=-1.10); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.5396242 4.91832   2.8862793], yaw=2.39); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[5.9937687  0.44606635 2.340733  ], yaw=-2.16); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.0610342 -1.3907498  2.6903405], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.079277  -1.4        2.6883461], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.6629384 -6.260395   2.8232098], yaw=1.57); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.83046186 -6.094376    3.7371755 ], yaw=-0.47); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3393065  0.6893141  2.9329271], yaw=-2.01); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.3871274 1.470517  3.6523087], yaw=2.95); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[5.5253687 1.4698648 2.535648 ], yaw=2.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.323217   -0.25911772  3.8833003 ], yaw=0.51); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1477872 3.7629595 4.4440827], yaw=-2.42); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.0928397 -5.1127305  1.9409378], yaw=3.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.0960016 -5.1134233  1.9401606], yaw=3.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.687697 -1.85      2.319946], yaw=0.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.7689047  -0.01676442  3.3892972 ], yaw=3.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.2168527  0.6712799  2.2907565], yaw=2.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.1999636 -1.85       4.1374526], yaw=2.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.030272  -5.5906982  5.424929 ], yaw=-1.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.102274  -5.708427   5.4604797], yaw=-1.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.16643   -5.8090935  5.49133  ], yaw=-1.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.220828  -5.90698    5.5045533], yaw=-1.10); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 9.785638  -5.984597   5.6445136], yaw=-1.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 9.817171 -6.051285  5.640583], yaw=-1.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 9.916868  -6.0971646  5.6411242], yaw=-1.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 9.993718  -6.1305623  5.6391387], yaw=-1.08); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.420394  -6.2643895  5.253823 ], yaw=-1.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.50556   -6.3774304  5.239873 ], yaw=-1.04); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.08349907651392632, "actor_learning_rate": 1.3372549019607846e-05, "committed_optimizer_steps": 20, "completed_episodes": 41, "critic_delta_l2": 4.2304240676415334, "env_steps": 174080, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 26, "reached": 11, "time_limit": 4}, "post_update_approx_kl": 4.752927907247795e-06, "post_update_ratio_mean": 0.9997119307518005, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.09081711095311984, "rollout_transitions_per_second": 3.083269060590153, "update_index": 170}
+{"actor_delta_l2": 0.09115019993114748, "actor_learning_rate": 1.3333333333333335e-05, "committed_optimizer_steps": 20, "completed_episodes": 28, "critic_delta_l2": 3.5592941851054856, "env_steps": 175104, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 8, "reached": 8, "time_limit": 12}, "post_update_approx_kl": 4.698375960288104e-06, "post_update_ratio_mean": 0.9997326731681824, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.510954764138843, "rollout_transitions_per_second": 3.034660602971068, "update_index": 171}
+{"actor_delta_l2": 0.08470165874136713, "actor_learning_rate": 1.3294117647058824e-05, "committed_optimizer_steps": 20, "completed_episodes": 37, "critic_delta_l2": 3.428252816224645, "env_steps": 176128, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 21, "reached": 10, "time_limit": 6}, "post_update_approx_kl": 4.463507593754912e-06, "post_update_ratio_mean": 0.9996538162231445, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.043309093378295936, "rollout_transitions_per_second": 3.0277462593374986, "update_index": 172}
+{"actor_delta_l2": 0.1053859972928909, "actor_learning_rate": 1.3254901960784316e-05, "committed_optimizer_steps": 20, "completed_episodes": 42, "critic_delta_l2": 3.4768429717357807, "env_steps": 177152, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 22, "reached": 11, "time_limit": 8}, "post_update_approx_kl": 7.435124189214548e-06, "post_update_ratio_mean": 0.9994718432426453, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.05196431619139202, "rollout_transitions_per_second": 2.9886299097620332, "update_index": 173}
+{"actor_delta_l2": 0.11298316287109512, "actor_learning_rate": 1.3215686274509805e-05, "committed_optimizer_steps": 20, "completed_episodes": 40, "critic_delta_l2": 4.12008815026484, "env_steps": 178176, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 23, "reached": 12, "time_limit": 5}, "post_update_approx_kl": 1.720952059258707e-05, "post_update_ratio_mean": 0.9991310238838196, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.15525347276926343, "rollout_transitions_per_second": 3.0174655259517595, "update_index": 174}
+{"actor_delta_l2": 0.10911084552616807, "actor_learning_rate": 1.3176470588235294e-05, "committed_optimizer_steps": 20, "completed_episodes": 41, "critic_delta_l2": 2.928977277212822, "env_steps": 179200, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 26, "reached": 6, "time_limit": 9}, "post_update_approx_kl": 1.3384150406636763e-05, "post_update_ratio_mean": 0.999207615852356, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.594308679411678, "rollout_transitions_per_second": 3.066494407743552, "update_index": 175}
+{"actor_delta_l2": 0.09061199074310401, "actor_learning_rate": 1.3137254901960785e-05, "committed_optimizer_steps": 20, "completed_episodes": 40, "critic_delta_l2": 3.1898356051368495, "env_steps": 180224, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 22, "reached": 11, "time_limit": 7}, "post_update_approx_kl": 2.2729088868800318e-06, "post_update_ratio_mean": 0.999774158000946, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.0979082966166905, "rollout_transitions_per_second": 3.0615351099930814, "update_index": 176}
+{"actor_delta_l2": 0.08442435516135847, "actor_learning_rate": 1.3098039215686277e-05, "committed_optimizer_steps": 20, "completed_episodes": 42, "critic_delta_l2": 4.85083635862889, "env_steps": 181248, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 22, "reached": 13, "time_limit": 7}, "post_update_approx_kl": 2.2987896954873577e-06, "post_update_ratio_mean": 0.9998247027397156, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.3243449162401685, "rollout_transitions_per_second": 3.019264509478988, "update_index": 177}
+{"actor_delta_l2": 0.08288157611678916, "actor_learning_rate": 1.3058823529411766e-05, "committed_optimizer_steps": 20, "completed_episodes": 45, "critic_delta_l2": 4.3941283422424355, "env_steps": 182272, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 28, "reached": 12, "time_limit": 5}, "post_update_approx_kl": 2.1749649476987543e-06, "post_update_ratio_mean": 0.9998070001602173, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.0689538875165639, "rollout_transitions_per_second": 3.0245989345716513, "update_index": 178}
+{"actor_delta_l2": 0.09332747278320262, "actor_learning_rate": 1.3019607843137255e-05, "committed_optimizer_steps": 20, "completed_episodes": 38, "critic_delta_l2": 3.253644262365839, "env_steps": 183296, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 22, "reached": 8, "time_limit": 8}, "post_update_approx_kl": 2.3385020995192463e-06, "post_update_ratio_mean": 0.999867856502533, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.1891398334026441, "rollout_transitions_per_second": 2.9940480474040494, "update_index": 179}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.583882  -6.3845553  5.228208 ], yaw=-1.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[10.650634  -6.4774055  5.214584 ], yaw=-1.01); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.864042  -1.1156508  1.8014132], yaw=2.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.015793  -3.5490239  3.1541157], yaw=2.44); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.2956402 1.4714253 3.8118126], yaw=1.59); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.181514   2.1369627  1.1978339], yaw=-1.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.3430085 5.5382185 2.0043728], yaw=3.01); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1981611  -0.23451753  2.3266132 ], yaw=1.28); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.3475165 2.9717932 2.4591997], yaw=-2.81); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.2281176 -3.6088562  2.5570393], yaw=1.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.27627206 -2.1         2.589602  ], yaw=2.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.813158   1.0846043  3.0435898], yaw=-1.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.7559614 -2.90667    2.7988622], yaw=1.57); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4433101  0.8221049  2.3579767], yaw=-2.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.9242837  1.874962   3.103658 ], yaw=-2.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4500791  0.8316492  2.64567  ], yaw=-2.93); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.5312412 -0.7279082  2.3417075], yaw=-0.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.6245532 -1.0821878  3.021843 ], yaw=-0.13); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.7063975  -0.14988104  3.0397556 ], yaw=2.36); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 4.35       -0.49382102  3.7881396 ], yaw=2.47); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.821134   1.8626279  3.8423355], yaw=-2.21); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.7975235  1.85       3.840505 ], yaw=-2.21); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.9999588 2.3553765 2.6534505], yaw=0.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.00285   11.296154   5.4945264], yaw=-1.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.1084695 11.156036   5.4832134], yaw=-1.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.2033505 11.024377   5.468392 ], yaw=-1.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.311886 10.86955   5.454392], yaw=-1.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.39732  10.744255  5.435115], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.490243  10.640858   5.4207444], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.5705743 10.571761   5.410868 ], yaw=-1.96); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.08594153624799233, "actor_learning_rate": 1.2980392156862746e-05, "committed_optimizer_steps": 20, "completed_episodes": 34, "critic_delta_l2": 3.7056935889300737, "env_steps": 184320, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 16, "reached": 10, "time_limit": 8}, "post_update_approx_kl": 1.6282428987324238e-06, "post_update_ratio_mean": 0.9998455047607422, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.3109195079633773, "rollout_transitions_per_second": 3.079531040050491, "update_index": 180}
+{"actor_delta_l2": 0.07423608871928952, "actor_learning_rate": 1.2941176470588236e-05, "committed_optimizer_steps": 20, "completed_episodes": 31, "critic_delta_l2": 3.1318840445147687, "env_steps": 185344, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"ground_crash": 1, "obstacle_collision": 13, "reached": 6, "time_limit": 11}, "post_update_approx_kl": 1.0753517472039675e-06, "post_update_ratio_mean": 0.9999961853027344, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.012411254273881265, "rollout_transitions_per_second": 3.0944211751456656, "update_index": 181}
+{"actor_delta_l2": 0.08176386858359404, "actor_learning_rate": 1.2901960784313725e-05, "committed_optimizer_steps": 20, "completed_episodes": 28, "critic_delta_l2": 3.676507130917571, "env_steps": 186368, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 13, "reached": 7, "time_limit": 8}, "post_update_approx_kl": 5.064364813733846e-06, "post_update_ratio_mean": 0.9996353983879089, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.1320199519232471, "rollout_transitions_per_second": 3.11433631844591, "update_index": 182}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.6942067 10.423017   5.4043465], yaw=-1.97); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.7727995 10.321376   5.389568 ], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.861108  10.234357   5.3821974], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.9697666 10.156371   5.3654695], yaw=-2.00); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.0928907 10.076559   5.3572617], yaw=-2.00); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.2162647  9.978693   5.3448796], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.393271  9.871506  5.331449], yaw=-1.97); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.508456  9.766813  5.318137], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.6302924  9.695854   5.308829 ], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.728213   9.597321   5.2979326], yaw=-1.95); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.8488894  9.471664   5.2911735], yaw=-1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-7.955067  9.391665  5.278627], yaw=-1.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.075831  9.279748  5.260306], yaw=-1.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.15856    9.200367   5.2519917], yaw=-1.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.256364  9.11475   5.246972], yaw=-1.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.352629   9.032091   5.2368927], yaw=-1.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.50509    8.955863   5.2261934], yaw=-1.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.561374   8.870691   5.2103763], yaw=-1.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.749771   8.837271   5.2015295], yaw=-1.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-8.903094  8.749214  5.188097], yaw=-1.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-9.080088  8.682204  5.176745], yaw=-1.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.7864807 -3.31802    2.4649045], yaw=1.00); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.6495585 2.5919802 2.5481114], yaw=1.55); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.9847519 3.8490858 1.664257 ], yaw=-2.20); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.3276527  0.64342904 1.6429411 ], yaw=-2.54); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[6.35       0.59762216 3.870131  ], yaw=-2.53); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8937553 -2.45       2.2970297], yaw=2.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.380203   1.05       1.7724491], yaw=0.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3492577  2.1090872  2.285527 ], yaw=-1.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.9285374  9.010709   5.242264 ], yaw=-2.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.9844892  8.923458   5.2324023], yaw=-2.67); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.08504136431382531, "actor_learning_rate": 1.2862745098039216e-05, "committed_optimizer_steps": 20, "completed_episodes": 41, "critic_delta_l2": 3.293752100132703, "env_steps": 187392, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 24, "reached": 7, "time_limit": 10}, "post_update_approx_kl": 1.372943984279118e-06, "post_update_ratio_mean": 0.9999399185180664, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.3982304400836999, "rollout_transitions_per_second": 3.117736734351039, "update_index": 183}
+{"actor_delta_l2": 0.09356909967360381, "actor_learning_rate": 1.2823529411764707e-05, "committed_optimizer_steps": 20, "completed_episodes": 41, "critic_delta_l2": 2.442474415885476, "env_steps": 188416, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 24, "reached": 8, "time_limit": 9}, "post_update_approx_kl": 5.4202751016418915e-06, "post_update_ratio_mean": 0.9996306300163269, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.295720901640555, "rollout_transitions_per_second": 3.121748895292517, "update_index": 184}
+{"actor_delta_l2": 0.10972773033537954, "actor_learning_rate": 1.2784313725490197e-05, "committed_optimizer_steps": 20, "completed_episodes": 40, "critic_delta_l2": 2.3861820574463986, "env_steps": 189440, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 26, "reached": 3, "time_limit": 11}, "post_update_approx_kl": 1.363857609248953e-05, "post_update_ratio_mean": 0.9994805455207825, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.913284297704086, "rollout_transitions_per_second": 3.143965010297372, "update_index": 185}
+{"actor_delta_l2": 0.09770567890212498, "actor_learning_rate": 1.2745098039215686e-05, "committed_optimizer_steps": 20, "completed_episodes": 31, "critic_delta_l2": 2.8907289579883986, "env_steps": 190464, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 10, "reached": 12, "time_limit": 9}, "post_update_approx_kl": 7.6084484135208186e-06, "post_update_ratio_mean": 0.9994968771934509, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.8182715813871478, "rollout_transitions_per_second": 3.1228122148283206, "update_index": 186}
+{"actor_delta_l2": 0.09942140270369605, "actor_learning_rate": 1.2705882352941177e-05, "committed_optimizer_steps": 20, "completed_episodes": 38, "critic_delta_l2": 4.2097005164516546, "env_steps": 191488, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 21, "reached": 10, "time_limit": 7}, "post_update_approx_kl": 5.800624876428628e-06, "post_update_ratio_mean": 0.9996611475944519, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.05665787014790799, "rollout_transitions_per_second": 3.1213898568838614, "update_index": 187}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.0933473  8.827648   5.212085 ], yaw=-2.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.2089806  8.71696    5.1959147], yaw=-2.62); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.5770047  8.448982   5.4675255], yaw=-2.61); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.675479   8.374543   5.4683223], yaw=-2.59); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.7167244  8.28986    5.46259  ], yaw=-2.59); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.7884607  8.207932   5.4527717], yaw=-2.60); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.8800035  8.135091   5.4511046], yaw=-2.57); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.9782493  8.036998   5.441937 ], yaw=-2.54); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.066777   7.9519186  5.4294295], yaw=-2.49); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.1522756  7.841378   5.423955 ], yaw=-2.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.1914635  7.751115   5.41712  ], yaw=-2.47); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.2667627  7.6385975  5.4122024], yaw=-2.46); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.3317695  7.554428   5.407438 ], yaw=-2.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.4534287  7.4701676  5.3997726], yaw=-2.42); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.573311   7.3891954  5.3920794], yaw=-2.40); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.655269  7.291766  5.378082], yaw=-2.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.7042665  7.185341   5.374325 ], yaw=-2.41); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.7818995  7.111706   5.365365 ], yaw=-2.42); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.8123333 -3.5505118  2.6032298], yaw=1.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.35      0.4315721 2.0676675], yaw=2.45); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.474617   5.563702   2.3923864], yaw=2.53); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.4077866  0.01180608 2.869472  ], yaw=2.37); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.6287968  4.0450616  2.2164304], yaw=-1.98); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.6932493 0.7763803 3.770771 ], yaw=0.30); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.4372168 -3.817936   2.0070832], yaw=0.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.3743052  3.7351758  4.6660914], yaw=-1.36); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.825829  -0.6965665  4.0198197], yaw=0.96); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 2.6295905  -0.73241085  3.3479412 ], yaw=-0.33); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.983767  -4.6210804  5.1772113], yaw=3.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.92373115 -3.0754623   1.8680438 ], yaw=-3.08); using max-range censoring
+  warnings.warn(
+{"actor_delta_l2": 0.09029333884472227, "actor_learning_rate": 1.2666666666666668e-05, "committed_optimizer_steps": 20, "completed_episodes": 36, "critic_delta_l2": 4.022538701521433, "env_steps": 192512, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 19, "reached": 8, "time_limit": 9}, "post_update_approx_kl": 2.168649871236994e-06, "post_update_ratio_mean": 0.9998587965965271, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": -0.037189908215240486, "rollout_transitions_per_second": 3.1055002475859252, "update_index": 188}
+{"actor_delta_l2": 0.080290478447709, "actor_learning_rate": 1.2627450980392156e-05, "committed_optimizer_steps": 20, "completed_episodes": 32, "critic_delta_l2": 3.9283759986706457, "env_steps": 193536, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 14, "reached": 8, "time_limit": 10}, "post_update_approx_kl": 1.6058326082202257e-06, "post_update_ratio_mean": 0.9998993277549744, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.20929535844935993, "rollout_transitions_per_second": 3.0891972797967724, "update_index": 189}
+{"actor_delta_l2": 0.09969944814943797, "actor_learning_rate": 1.2588235294117647e-05, "committed_optimizer_steps": 20, "completed_episodes": 42, "critic_delta_l2": 4.634562459453895, "env_steps": 194560, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 24, "reached": 12, "time_limit": 6}, "post_update_approx_kl": 1.460685052734334e-05, "post_update_ratio_mean": 0.9993112683296204, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.11830515135134467, "rollout_transitions_per_second": 3.0980100898838763, "update_index": 190}
+{"actor_delta_l2": 0.08313576113395309, "actor_learning_rate": 1.2549019607843138e-05, "committed_optimizer_steps": 20, "completed_episodes": 33, "critic_delta_l2": 3.2829449998121025, "env_steps": 195584, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 11, "reached": 11, "time_limit": 11}, "post_update_approx_kl": 2.5685142190923216e-06, "post_update_ratio_mean": 0.9998025894165039, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.6712459631365308, "rollout_transitions_per_second": 3.1331854207221608, "update_index": 191}
+{"actor_delta_l2": 0.08580653697403422, "actor_learning_rate": 1.250980392156863e-05, "committed_optimizer_steps": 20, "completed_episodes": 38, "critic_delta_l2": 3.9570167861970327, "env_steps": 196608, "event": "dppo_outer_update_complete", "hard_stop_reason": null, "mode": "joint", "optimizer_steps": 20, "peak_cuda_memory_bytes": 616320512, "physical_done_reason_counts": {"obstacle_collision": 19, "reached": 12, "time_limit": 7}, "post_update_approx_kl": 5.761175543739228e-06, "post_update_ratio_mean": 0.9996215105056763, "rejected_optimizer_steps": 0, "rejection_reason_counts": {}, "reward_mean": 0.37060737827306817, "rollout_transitions_per_second": 3.117500975843859, "update_index": 192}
+{"checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f5_run01/P10/checkpoint_update_000192", "completed_through_update": 192, "configured_total_updates": 256, "event": "dppo_training_paused_at_checkpoint", "runtime_identity_hash": "dde05d5282c9a7aa2c1869cd82803c7c7af6efe0407c67bdbb9b33448cdd0968"}
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.39049  -3.522586  2.326935], yaw=-1.18); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.7151732  1.85       3.6140149], yaw=-2.32); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.187082  -2.4913092  3.1825726], yaw=-1.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.4039304 -1.56109    1.888725 ], yaw=0.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.03161903 -3.8427718   3.7597198 ], yaw=1.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.7556714  2.8883605  1.1460433], yaw=-1.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.70909786 -1.6529912   2.2376664 ], yaw=-1.67); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.8844833 2.0722141 1.7737913], yaw=-2.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.4006862 -1.1975244  2.6064107], yaw=-1.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.2381613  2.01391    3.7389297], yaw=-2.71); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 1.8031732 -1.2790158  4.00596  ], yaw=-2.15); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.7284029  1.75       3.5677814], yaw=-2.27); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.3442566 0.8054626 2.293652 ], yaw=2.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.315768  0.8194022 2.2944143], yaw=2.13); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.7052794  1.5259731  2.4483562], yaw=2.51); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.720513   1.5316496  2.4488425], yaw=2.51); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.600566  -2.6757889  2.703612 ], yaw=2.36); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.565457  1.4759728 1.7825843], yaw=2.59); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.597704  -2.159109   4.2111773], yaw=-0.69); using max-range censoring
+  warnings.warn(

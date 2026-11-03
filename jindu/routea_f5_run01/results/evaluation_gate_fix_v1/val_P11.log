@@ -1,0 +1,101 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED P11 1 80
+FIXED P11 2 80
+FIXED P11 3 80
+FIXED P11 4 80
+FIXED P11 5 80
+FIXED P11 6 80
+FIXED P11 7 80
+FIXED P11 8 80
+FIXED P11 9 80
+FIXED P11 10 80
+FIXED P11 11 80
+FIXED P11 12 80
+FIXED P11 13 80
+FIXED P11 14 80
+FIXED P11 15 80
+FIXED P11 16 80
+FIXED P11 17 80
+FIXED P11 18 80
+FIXED P11 19 80
+FIXED P11 20 80
+FIXED P11 21 80
+FIXED P11 22 80
+FIXED P11 23 80
+FIXED P11 24 80
+FIXED P11 25 80
+FIXED P11 26 80
+FIXED P11 27 80
+FIXED P11 28 80
+FIXED P11 29 80
+FIXED P11 30 80
+FIXED P11 31 80
+FIXED P11 32 80
+FIXED P11 33 80
+FIXED P11 34 80
+FIXED P11 35 80
+FIXED P11 36 80
+FIXED P11 37 80
+FIXED P11 38 80
+FIXED P11 39 80
+FIXED P11 40 80
+FIXED P11 41 80
+FIXED P11 42 80
+FIXED P11 43 80
+FIXED P11 44 80
+FIXED P11 45 80
+FIXED P11 46 80
+FIXED P11 47 80
+FIXED P11 48 80
+FIXED P11 49 80
+FIXED P11 50 80
+FIXED P11 51 80
+FIXED P11 52 80
+FIXED P11 53 80
+FIXED P11 54 80
+FIXED P11 55 80
+FIXED P11 56 80
+FIXED P11 57 80
+FIXED P11 58 80
+FIXED P11 59 80
+FIXED P11 60 80
+FIXED P11 61 80
+FIXED P11 62 80
+FIXED P11 63 80
+FIXED P11 64 80
+FIXED P11 65 80
+FIXED P11 66 80
+FIXED P11 67 80
+FIXED P11 68 80
+FIXED P11 69 80
+FIXED P11 70 80
+FIXED P11 71 80
+FIXED P11 72 80
+FIXED P11 73 80
+FIXED P11 74 80
+FIXED P11 75 80
+FIXED P11 76 80
+FIXED P11 77 80
+FIXED P11 78 80
+FIXED P11 79 80
+FIXED P11 80 80
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.8811195  3.3521926  2.850836 ], yaw=-1.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.0342746  2.9551952  3.909034 ], yaw=-2.71); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.1439462 2.2104213 3.0046082], yaw=-2.53); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.77536863  1.1033709   2.0320547 ], yaw=1.66); using max-range censoring
+  warnings.warn(

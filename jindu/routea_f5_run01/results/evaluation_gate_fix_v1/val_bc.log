@@ -1,0 +1,101 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+FIXED bc 1 80
+FIXED bc 2 80
+FIXED bc 3 80
+FIXED bc 4 80
+FIXED bc 5 80
+FIXED bc 6 80
+FIXED bc 7 80
+FIXED bc 8 80
+FIXED bc 9 80
+FIXED bc 10 80
+FIXED bc 11 80
+FIXED bc 12 80
+FIXED bc 13 80
+FIXED bc 14 80
+FIXED bc 15 80
+FIXED bc 16 80
+FIXED bc 17 80
+FIXED bc 18 80
+FIXED bc 19 80
+FIXED bc 20 80
+FIXED bc 21 80
+FIXED bc 22 80
+FIXED bc 23 80
+FIXED bc 24 80
+FIXED bc 25 80
+FIXED bc 26 80
+FIXED bc 27 80
+FIXED bc 28 80
+FIXED bc 29 80
+FIXED bc 30 80
+FIXED bc 31 80
+FIXED bc 32 80
+FIXED bc 33 80
+FIXED bc 34 80
+FIXED bc 35 80
+FIXED bc 36 80
+FIXED bc 37 80
+FIXED bc 38 80
+FIXED bc 39 80
+FIXED bc 40 80
+FIXED bc 41 80
+FIXED bc 42 80
+FIXED bc 43 80
+FIXED bc 44 80
+FIXED bc 45 80
+FIXED bc 46 80
+FIXED bc 47 80
+FIXED bc 48 80
+FIXED bc 49 80
+FIXED bc 50 80
+FIXED bc 51 80
+FIXED bc 52 80
+FIXED bc 53 80
+FIXED bc 54 80
+FIXED bc 55 80
+FIXED bc 56 80
+FIXED bc 57 80
+FIXED bc 58 80
+FIXED bc 59 80
+FIXED bc 60 80
+FIXED bc 61 80
+FIXED bc 62 80
+FIXED bc 63 80
+FIXED bc 64 80
+FIXED bc 65 80
+FIXED bc 66 80
+FIXED bc 67 80
+FIXED bc 68 80
+FIXED bc 69 80
+FIXED bc 70 80
+FIXED bc 71 80
+FIXED bc 72 80
+FIXED bc 73 80
+FIXED bc 74 80
+FIXED bc 75 80
+FIXED bc 76 80
+FIXED bc 77 80
+FIXED bc 78 80
+FIXED bc 79 80
+FIXED bc 80 80
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.088601   2.0939007  1.2404163], yaw=-2.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.6658988  4.1125975  3.7963068], yaw=-2.04); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.5074973 -3.920205   3.4623945], yaw=2.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.8751857  2.4724517  3.952512 ], yaw=-2.50); using max-range censoring
+  warnings.warn(

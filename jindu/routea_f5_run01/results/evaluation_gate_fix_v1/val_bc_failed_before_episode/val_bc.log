@@ -1,0 +1,29 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+Traceback (most recent call last):
+  File "scripts/run_routea_xk_evaluation.py", line 632, in <module>
+    main()
+  File "scripts/run_routea_xk_evaluation.py", line 628, in main
+    globals()[args.command.replace('-','_')](args)
+  File "scripts/run_routea_xk_evaluation.py", line 383, in worker
+    adapter=make_adapter(system,config,world,t['role'])
+  File "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/scripts/routea_paired_support/runtime.py", line 183, in make_adapter
+    if file_hash(world["obstacle_path"]) != world["obstacle_sha256"]:
+  File "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/scripts/routea_paired_support/core.py", line 25, in file_hash
+    with Path(path).open("rb") as stream:
+  File "/home/cjj/miniconda3/envs/idp3/lib/python3.8/pathlib.py", line 1222, in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+  File "/home/cjj/miniconda3/envs/idp3/lib/python3.8/pathlib.py", line 1078, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/cjj/AUV/program/results/routea_xk_run01/val_bank/obstacles/routeA_rl_v1__anticipatory__rl_val__double_gate_progressive__000051.json'

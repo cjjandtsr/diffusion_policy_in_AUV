@@ -1,0 +1,23 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+Traceback (most recent call last):
+  File "scripts/run_routea_xk_evaluation.py", line 632, in <module>
+    main()
+  File "scripts/run_routea_xk_evaluation.py", line 628, in main
+    globals()[args.command.replace('-','_')](args)
+  File "scripts/run_routea_xk_evaluation.py", line 383, in worker
+    adapter=make_adapter(system,config,world,t['role'])
+  File "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/runtime.py", line 193, in make_adapter
+    raise ValueError("common environment is not v2/H4/8")
+ValueError: common environment is not v2/H4/8

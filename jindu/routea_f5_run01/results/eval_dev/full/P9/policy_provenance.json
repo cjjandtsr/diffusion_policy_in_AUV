@@ -1,0 +1,43 @@
+{
+  "actual_use_base_policy": false,
+  "bank_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+  "checkpoint_state_sha256": "b1ee702038b1d750122826a2ba6592706700de576f29bd67938ced1bc14bfd3b",
+  "evaluation_sampling_protocol": {
+    "clip_protocol": {
+      "native": 1.0,
+      "override": 2.0
+    },
+    "min_logprob_denoising_std": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "min_sampling_denoising_std": [
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612,
+      0.10000000149011612
+    ],
+    "sampling_mode": "deterministic"
+  },
+  "evaluation_wrapper_sha256": "15bca3863d426f881236c2dcca76bcab7cc5fa6ed3d9011e27ebf8f05d3d39e7",
+  "native_source_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+  "note": "evaluation overrides applied only after strict native identity restore",
+  "policy": "P9",
+  "training_runtime_identity": "ebcf50137543e2a50c9ac8a8585ff104a294c2fde2ffb77950c6c046d4d9bb51"
+}
