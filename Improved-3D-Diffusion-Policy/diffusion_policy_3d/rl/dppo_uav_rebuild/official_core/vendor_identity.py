@@ -19,7 +19,7 @@ EXPECTED_IDP3_OVERLAY_SHA256 = {
         "cd770a61980a2bbd415725fb67eaddf17ae911905b5bf5530ad7684f26bff9db"
     ),
     "model/diffusion/diffusion_vpg.py": (
-        "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c"
+        "8f495b48d98180f1932161f188c014c40f3b408975c512794bb1d5975575aac4"
     )
 }
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")

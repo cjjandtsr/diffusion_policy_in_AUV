@@ -101,7 +101,8 @@ class TrainingAudit:
 
     def __init__(self, term_names=None, *, terminate_at_space_limits=None):
         self.term_names = tuple(term_names or REWARD_TERM_NAMES)
-        self.reward_version = ("v2" if "newbest" in self.term_names else
+        self.reward_version = ("v3" if "risk_close" in self.term_names else
+                               "v2" if "newbest" in self.term_names else
                                "v17" if "overflight" in self.term_names else "v13")
         self.terminate_at_space_limits = ("overflight" not in self.term_names
                                          if terminate_at_space_limits is None
@@ -176,6 +177,8 @@ class TrainingAudit:
             name: _finite_float(terms[name], "reward term {}".format(name))
             for name in self.term_names
         }
+        if "risk_close" in numeric_terms and not -2. <= numeric_terms["risk_close"] <= 0.:
+            raise ValueError("risk_close must be in [-2, 0]")
         context = dict(audit_context or {})
         required_context = {
             "run_seed", "update_index", "policy_state_update_index",
@@ -191,8 +194,10 @@ class TrainingAudit:
         }
         if "overflight" in self.term_names and not context:
             raise ValueError("Reward v1.7 audit requires audit_context")
-        if context and set(context) != required_context:
+        if context and set(context) - {"task_bank"} != required_context:
             raise ValueError("audit_context keys differ from schema v5")
+        if "task_bank" in context and not isinstance(context["task_bank"], Mapping):
+            raise ValueError("task_bank audit context must be a mapping")
         if context:
             for name in (
                 "episode_id", "task_identity_hash", "admission_manifest_hash",
@@ -617,6 +622,7 @@ def evaluate_transition_credit_audit(trainer, buffer, *, microbatch_pairs=128):
                     reward_start=trainer.config.reward_start,
                     reward_horizon=trainer.config.reward_horizon,
                     use_bc_loss=False,
+                    inert_mask=getattr(trainer.config,'inert_mask',None),
                 )
                 kl_record = reverse_kernel_kl_record(trainer.runtime, micro)
                 old = micro.oldlogprobs.clamp(-5, 2)[
@@ -720,6 +726,9 @@ class ParameterSnapshot:
 def evaluate_post_update(trainer, batch, *, update_actor=True):
     """Re-evaluate official DPPO metrics without changing parameters or gradients."""
 
+    mask=getattr(trainer.config,'inert_mask',None)
+    if mask is not None and mask.enabled:
+        return evaluate_post_update_logical(trainer,batch,microbatch_pairs=128,update_actor=update_actor)
     device = trainer.critic_parameters[0].device
     fork_devices = []
     if device.type == "cuda":
@@ -800,6 +809,7 @@ def evaluate_post_update_logical(trainer, batch, *, microbatch_pairs, update_act
                 trainer.runtime, micro, stats,
                 reward_start=trainer.config.reward_start,
                 reward_horizon=trainer.config.reward_horizon,
+                inert_mask=getattr(trainer.config,'inert_mask',None),
             ))
     policy = torch.cat([part.policy for part in collected]).mean()
     value = 0.5 * torch.cat([part.value for part in collected]).mean()

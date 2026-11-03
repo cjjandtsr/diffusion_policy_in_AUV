@@ -15,7 +15,7 @@ sys.path.insert(0, str(ROOT))
 
 def parser():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--checkpoint', action='append', required=True,
+    p.add_argument('--checkpoint', action='append',
                    help='compatible RL checkpoint directory; repeat for multiple models')
     p.add_argument('--reference', type=Path, help='accepted paired result directory; default is the known task bank')
     p.add_argument('--out', type=Path, help='new directory under program; default creates a timestamped run')
@@ -27,11 +27,28 @@ def parser():
                    help='accepted run03 recovery directory: exact diagonals, first-H4 crossover and goal response')
     p.add_argument('--paper', action='store_true',
                    help='approved BC/fresh u32 paper matrix: new 24 tasks plus full-remaining P3')
+    p.add_argument('--policy', choices=('learned', 'ego'), default='learned')
+    p.add_argument('--task-bank', type=Path, help='existing frozen bank.json for EGO')
+    p.add_argument('--ego-launch', type=Path, help='paper_ego_eval.launch')
+    p.add_argument('--ego-map-size', type=float, nargs=3, default=[80.,80.,16.])
+    p.add_argument('--ego-smoke', action='store_true', help='four fixed tasks, repeat 1 only')
+    p.add_argument('--ego-regression', action='store_true', help='BC/RL eight-task regression; no ROS execution')
+    p.add_argument('--compare-existing', type=Path, action='append',
+                   help='existing policy job directory containing commits; repeat for BC and RL')
     return p
 
 
 def main(argv=None):
     a = parser().parse_args(argv)
+    if a.policy == 'ego':
+        if sys.version_info[:3] != (3, 8, 20):
+            raise RuntimeError('run in the fixed idp3 Python 3.8.20 environment')
+        from scripts.routea_paired_support.ego_workflow import run_ego
+        return run_ego(ROOT, a)
+    if not a.checkpoint:
+        raise ValueError('learned evaluation requires --checkpoint')
+    if a.task_bank or a.ego_launch or a.ego_smoke or a.ego_regression or a.compare_existing:
+        raise ValueError('EGO options require --policy ego')
     if a.paper:
         if a.recovery_only:
             raise ValueError('--paper includes both approved matrices')

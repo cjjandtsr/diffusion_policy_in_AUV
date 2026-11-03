@@ -1,0 +1,75 @@
+{
+  "version": "ego_common_h4_v1",
+  "files": [
+    {
+      "root": "policy",
+      "path": "scripts/run_routea_paired_comparison.py",
+      "sha256": "2b16372ffcb2656a8f6b4b6e3a32a5b34891025ae911dae12905b22dbd513039"
+    },
+    {
+      "root": "policy",
+      "path": "scripts/routea_paired_support/episodes.py",
+      "sha256": "3899cfeb7eb1b93d6cf37062ebd8c90c275c56b5ca1f1618d4564303ef58c41b"
+    },
+    {
+      "root": "policy",
+      "path": "scripts/routea_paired_support/ego.py",
+      "sha256": "cd6c5211e5325fb48849abb841193a6a0837a21b4b6526edce189b408f005d99"
+    },
+    {
+      "root": "policy",
+      "path": "scripts/routea_paired_support/ego_workflow.py",
+      "sha256": "79daead25af205608ce4dd276290e9100083fa49fe4c380ec308719ee46ed4e5"
+    },
+    {
+      "root": "policy",
+      "path": "tests/routea_paired/test_ego.py",
+      "sha256": "189c4291372e33a499d3e8fa012401b32c6fc957d95ad24baf97a5a599e8906e"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_manage/srv/EvaluationStep.srv",
+      "sha256": "5a1439a6c20750bc0e726a23bf89241853d4d05f65c2e6a71cd929c0f47edfff"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_manage/CMakeLists.txt",
+      "sha256": "7c0921941cf5d5d14ffa7317181a2b443df874c4833f3d8b2cf626a9ca2bfe79"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_manage/include/plan_manage/ego_replan_fsm.h",
+      "sha256": "92557f0162434d48e87fd9b85c971481dc093b26d69ba4238e2ec027435cc2db"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_manage/src/ego_replan_fsm.cpp",
+      "sha256": "f68b56602967356ab663ab989672478c05d82143ba55ac217ae1ea8ed9b6b8e2"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_manage/launch/paper_ego_eval.launch",
+      "sha256": "58eeb53d43fed49843ea46b507f9a8ee2aa1ebdf6a67405af09f113e9e43c68c"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_manage/launch/advanced_param_gazebo.xml",
+      "sha256": "f4d44843c4c2bf17215942f10d03d4a0755fa0104a79aef73c5322c221d8d623"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_env/include/plan_env/grid_map.h",
+      "sha256": "228c6fbc12552af99c41a5e00ac1daea4e01ad303439f66373ea7404b4952531"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/plan_env/src/grid_map.cpp",
+      "sha256": "b725b6c4f001bedf02ff19fb4172f368ab5890e002e874f21db84809aa6a610c"
+    },
+    {
+      "root": "ros",
+      "path": "src/ego-planner-swarm/src/planner/path_searching/src/dyn_a_star.cpp",
+      "sha256": "08d76e9a1ca5305dd5ed6494f41eb7ca95fa2b3b5e6163037835f5d0e24e5586"
+    }
+  ]
+}

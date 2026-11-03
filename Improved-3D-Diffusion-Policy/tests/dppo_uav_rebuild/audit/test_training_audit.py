@@ -498,3 +498,54 @@ def test_transition_credit_audit_binds_post_update_credit_to_each_transition():
     assert all(record["ratio"] == pytest.approx(torch.exp(torch.tensor(0.2)).item()) for record in records)
     assert all(record["analytic_bc_reverse_kl_sum"] > 0.0 for record in records)
     assert all(record["observation_provenance_hash"] in {"a" * 64, "b" * 64} for record in records)
+
+
+def test_v3_audit_preserves_optional_bank_context_and_schema():
+    terms = dict(terminal=0., newbest=0., risk=0., time=0., space=0., risk_close=0.)
+    audit = TrainingAudit(term_names=tuple(terms), terminate_at_space_limits=False)
+    info = dict(reward_terms=terms, reward_metrics={}, done_reason="none",
+                transition_facts=TransitionFacts.resolve(reached=False))
+    sha = "a" * 64
+    audit.record_transition(
+        task_id="task", task_role="anticipatory", reward=0.0,
+        value=0.0, next_value=0.0, terminated=False, truncated=False,
+        collection_boundary=True, info=info, action_chunk=torch.zeros(4, 11),
+        audit_context={
+            "task_bank": {"source": "original"},
+            "run_seed": 1, "update_index": 1, "policy_state_update_index": 0,
+            "transition_id": "u1:t0", "episode_id": sha, "decision_index": 7,
+            "task_identity_hash": sha, "world_id": "world", "task_seed": 2,
+            "reset_seed": 3, "admission_manifest_hash": sha,
+            "runtime_identity_hash": sha, "source_set_hash": sha,
+            "config_hash": sha, "checkpoint_identity_hash": sha,
+            "goal_xyz": [1.0, 0.0, 1.0],
+            "position_before_xyz": [0.0, 0.0, 1.0],
+            "position_after_xyz": [0.5, 0.0, 1.0],
+            "goal_distance_before_3d": 1.0, "goal_distance_after_3d": 0.5,
+            "goal_error_xy_before": 1.0, "goal_error_z_before": 0.0,
+            "goal_error_xy_after": 0.5, "goal_error_z_after": 0.0,
+            "observation_provenance": {"policy_input_hash": sha},
+            "observation_provenance_after": {"policy_input_hash": sha},
+        },
+    )
+    payload = audit.finalize({
+        "rewards": torch.tensor([0.0]), "values": torch.tensor([0.0]),
+        "next_values": torch.tensor([0.0]), "advantages": torch.tensor([2.0]),
+        "returns": torch.tensor([2.0]),
+    })
+    record = payload["transition_records"][0]
+    assert payload["reward_schema_version"] == "v3"
+    assert record["task_bank"] == {"source": "original"}
+    assert record["advantage_raw"] == pytest.approx(2.0)
+    assert record["advantage_normalized_outer_update"] == pytest.approx(0.0)
+    assert record["return_target"] == pytest.approx(2.0)
+
+@pytest.mark.parametrize("cost", [-2.01, .01])
+def test_v3_audit_rejects_closing_cost_outside_bounds(cost):
+    terms = dict(terminal=0., newbest=0., risk=0., time=0., risk_close=cost)
+    audit = TrainingAudit(term_names=tuple(terms))
+    with pytest.raises(ValueError, match="risk_close"):
+        audit.record_transition(task_id="task", task_role="anticipatory", reward=cost,
+                                value=0., next_value=0., terminated=False, truncated=False,
+                                collection_boundary=True,
+                                info=dict(reward_terms=terms, reward_metrics={}, done_reason="none"))

@@ -11,7 +11,7 @@ class KinematicAdapter:
 
     def reset(self, *args, **kwargs):
         result = self.environment.reset(*args, **kwargs)
-        if getattr(self.reward, "version", "v13") in ("v17", "v2"):
+        if getattr(self.reward, "version", "v13") in ("v17", "v2", "v3"):
             self.reward_state = type(self.reward_state)(self.environment._reward_history)
             return result
         self.reward_state = self.reward.initial_state(self.reward_config)
@@ -28,7 +28,7 @@ class KinematicAdapter:
             action = action[0]
         obs, dense_reward, _, legacy_truncated, info = self.environment.step(action)
 
-        if getattr(self.reward, "version", "v13") in ("v17", "v2"):
+        if getattr(self.reward, "version", "v13") in ("v17", "v2", "v3"):
             facts = info["transition_facts"]
             result = self.reward.accept_transition(dense_reward, info["reward_terms"],
                                                     info["reward_metrics"], self.environment._reward_history)

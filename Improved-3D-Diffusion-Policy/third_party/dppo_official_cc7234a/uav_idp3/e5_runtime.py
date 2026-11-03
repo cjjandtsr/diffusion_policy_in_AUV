@@ -7,8 +7,12 @@ the attributes and actor signature expected by those upstream methods.
 
 from __future__ import annotations
 
-from contextlib import nullcontext
-from typing import Optional
+from contextlib import contextmanager, nullcontext
+import importlib.util
+import math
+from pathlib import Path
+from types import MethodType
+from typing import Optional, Sequence, Union
 
 import torch
 from torch import nn
@@ -18,6 +22,93 @@ from model.diffusion.diffusion_ppo import PPODiffusion
 
 class E5RuntimeError(RuntimeError):
     """Raised when E5 and upstream DPPO runtime contracts are incompatible."""
+
+
+def _std_floor(value, runtime):
+    floor = torch.as_tensor(value, device=runtime.betas.device, dtype=runtime.betas.dtype)
+    if floor.ndim not in (0, 1) or (floor.ndim == 1 and floor.shape != (runtime.action_dim,)):
+        raise E5RuntimeError("denoising std floor must be scalar or action_dim-vector")
+    if not bool(torch.isfinite(floor).all()) or bool((floor <= 0).any()):
+        raise E5RuntimeError("denoising std floor must be finite and positive")
+    return float(value) if floor.ndim == 0 else floor.detach().clone()
+
+
+def _install_floor(runtime, name, value):
+    runtime.__dict__.pop(name, None)
+    runtime._buffers.pop(name, None)
+    if isinstance(value, torch.Tensor):
+        runtime.register_buffer(name, value)
+    else:
+        setattr(runtime, name, value)
+
+
+def sampling_protocol(runtime):
+    """Serializable protocol metadata, also usable with historical E5 objects."""
+    def serial(value):
+        return value.detach().cpu().tolist() if isinstance(value, torch.Tensor) else float(value)
+
+    return {
+        "min_sampling_denoising_std": serial(runtime.min_sampling_denoising_std),
+        "min_logprob_denoising_std": serial(runtime.min_logprob_denoising_std),
+        "clip_protocol": dict(getattr(runtime, "clip_protocol", {
+            "native": runtime.denoised_clip_value, "override": None,
+        })),
+    }
+
+
+@contextmanager
+def sampling_protocol_override(runtime, *, min_std_vector=None,
+                               denoised_clip_value=None, sampling_mode=None):
+    """Apply an explicitly recorded evaluation protocol after strict identity load.
+
+    Historical source closures retain their original class.  Vector overrides
+    bind only the current floor-aware sampling/likelihood methods temporarily;
+    actor, scheduler tables, and checkpoint state are not replaced.
+    """
+    if sampling_mode not in (None, "random", "deterministic"):
+        raise E5RuntimeError("sampling_mode must be random or deterministic")
+    floor = None if min_std_vector is None else _std_floor(min_std_vector, runtime)
+    if denoised_clip_value is not None and (
+        not math.isfinite(float(denoised_clip_value)) or float(denoised_clip_value) <= 0
+    ):
+        raise E5RuntimeError("denoised clip override must be finite and positive")
+    methods = ("forward", "get_logprobs", "get_logprobs_subsample", "get_min_sampling_denoising_std")
+    names = methods + ("min_sampling_denoising_std", "min_logprob_denoising_std",
+                       "denoised_clip_value", "clip_protocol")
+    attrs = {name: runtime.__dict__[name] for name in names if name in runtime.__dict__}
+    buffers = {name: runtime._buffers[name] for name in names if name in runtime._buffers}
+    try:
+        if floor is not None:
+            # Load by file to avoid the historical closure's cached model module.
+            path = Path(__file__).resolve().parents[1] / "model/diffusion/diffusion_vpg.py"
+            spec = importlib.util.spec_from_file_location("_e5_protocol_vpg", str(path))
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            for name in methods:
+                setattr(runtime, name, MethodType(getattr(module.VPGDiffusion, name), runtime))
+            for name in ("min_sampling_denoising_std", "min_logprob_denoising_std"):
+                _install_floor(runtime, name, floor)
+        if denoised_clip_value is not None:
+            native = getattr(runtime, "clip_protocol", {}).get("native", runtime.denoised_clip_value)
+            runtime.denoised_clip_value = float(denoised_clip_value)
+            runtime.clip_protocol = {"native": native, "override": float(denoised_clip_value)}
+        if sampling_mode is not None:
+            forward = runtime.forward
+
+            def sample_with_mode(*args, **kwargs):
+                kwargs["deterministic"] = sampling_mode == "deterministic"
+                return forward(*args, **kwargs)
+
+            runtime.forward = sample_with_mode
+        protocol = sampling_protocol(runtime)
+        protocol["sampling_mode"] = sampling_mode
+        yield protocol
+    finally:
+        for name in names:
+            runtime.__dict__.pop(name, None)
+            runtime._buffers.pop(name, None)
+        runtime.__dict__.update(attrs)
+        runtime._buffers.update(buffers)
 
 
 def model_output_to_epsilon(
@@ -155,8 +246,8 @@ class E5PPODiffusion(PPODiffusion):
         horizon_steps: int = 16,
         action_dim: int = 11,
         obs_dim: int = 576,
-        min_sampling_denoising_std: float = 0.1,
-        min_logprob_denoising_std: float = 0.1,
+        min_sampling_denoising_std: Union[float, Sequence[float]] = 0.1,
+        min_logprob_denoising_std: Union[float, Sequence[float]] = 0.1,
         gamma_denoising: float = 0.8,
         clip_ploss_coef: float = 0.2,
         clip_ploss_coef_base: float = 1e-3,
@@ -166,6 +257,7 @@ class E5PPODiffusion(PPODiffusion):
         clip_advantage_upper_quantile: float = 1.0,
         norm_adv: bool = True,
         denoised_clip_value: Optional[float] = None,
+        denoised_clip_override: Optional[float] = None,
         randn_clip_value: float = 10.0,
     ) -> None:
         # Calling the upstream constructor would create a second model copy and
@@ -249,7 +341,14 @@ class E5PPODiffusion(PPODiffusion):
             raise E5RuntimeError(
                 "denoised_clip_value must match the native E5 scheduler"
             )
-        self.denoised_clip_value = native_clip_value
+        if denoised_clip_override is not None and (
+            not math.isfinite(float(denoised_clip_override)) or float(denoised_clip_override) <= 0
+        ):
+            raise E5RuntimeError("denoised clip override must be finite and positive")
+        self.denoised_clip_value = (
+            native_clip_value if denoised_clip_override is None else float(denoised_clip_override)
+        )
+        self.clip_protocol = {"native": native_clip_value, "override": denoised_clip_override}
         self.recalculate_epsilon_after_clip = False
         self.native_ddim_pow_compat = True
         self.native_ddim_cpu_scalar_compat = True
@@ -261,8 +360,8 @@ class E5PPODiffusion(PPODiffusion):
         self.ft_denoising_steps_d = 0
         self.ft_denoising_steps_t = 0
         self.ft_denoising_steps_cnt = 0
-        self.min_sampling_denoising_std = float(min_sampling_denoising_std)
-        self.min_logprob_denoising_std = float(min_logprob_denoising_std)
+        _install_floor(self, "min_sampling_denoising_std", _std_floor(min_sampling_denoising_std, self))
+        _install_floor(self, "min_logprob_denoising_std", _std_floor(min_logprob_denoising_std, self))
         self.learn_eta = False
         self.eta = _OnesEta(self.action_dim).to(self.device)
 
@@ -295,3 +394,6 @@ class E5PPODiffusion(PPODiffusion):
         self.clip_advantage_upper_quantile = float(
             clip_advantage_upper_quantile
         )
+
+    def sampling_protocol(self):
+        return sampling_protocol(self)

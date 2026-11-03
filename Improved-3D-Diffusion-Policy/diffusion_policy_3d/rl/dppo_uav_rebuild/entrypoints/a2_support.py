@@ -31,4 +31,13 @@ def make_keep(config):
         raise ValueError('not a training-origin A2 bank')
     if bank.get('parent_receipt_sha256') != a.parent_receipt_sha256:
         raise ValueError('reference parent differs')
-    return SelectiveKeep(bank,coefficient=0.,seed=int(a.keep_seed))
+    imitation = config.dppo.get('self_imitation')
+    if imitation is not None and imitation.enabled:
+        from ..engine.self_imitation import RollingSelfImitation
+        if len(bank['actions']) != 549:
+            raise ValueError('X requires the frozen 549-prefix initial A2 bank')
+        return RollingSelfImitation(bank,coefficient=0.,seed=int(imitation.seed),
+            batch_size=int(imitation.batch_size), window_updates=int(imitation.window_updates),
+            capacity=int(imitation.capacity), initial_update=128)
+    coefficient = float(config.f5.keep_coefficient) if 'f5' in config else 0.
+    return SelectiveKeep(bank,coefficient=coefficient,seed=int(a.keep_seed))

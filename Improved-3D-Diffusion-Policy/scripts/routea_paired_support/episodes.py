@@ -125,6 +125,8 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
                                               reset_callable=adapter.reset)
     if observation_hash(observation) != entry["observation_hash"]:
         raise ValueError("initial observation pairing failed: " + entry["key"])
+    if getattr(policy, 'policy_kind', None) == 'ego':
+        policy.reset_episode(task, entry, env, observation, context)
     job = Path(job)
     trace_dir = job / "traces"
     trace_dir.mkdir(parents=True, exist_ok=True)
@@ -146,6 +148,10 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
               "initial_pointcloud_metadata": metadata(context),
               "policy_identity_hash": policy.identity_hash, "reward_version": "v2"}
     header["terminate_at_space_limits"] = bool(getattr(env, "terminate_at_space_limits", True))
+    if getattr(policy, 'policy_kind', None) == 'ego':
+        header['policy_kind'] = 'ego'
+        header['execution_protocol'] = 'common_H4'
+        header['ego_parameters'] = policy.runtime_parameters
     rows, path = [], [env._drone_pos.copy()]
     seconds = 0.
     with trace.open("x", encoding="utf-8", newline="\n") as stream:
@@ -160,14 +166,18 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
                 seed = action_seed(entry["task_id"], entry["repeat"], decision)
                 meta_before = metadata(context)
                 bundle = policy.predict(observation, context, action_seed=seed)
-                arrays = action_views(bundle.full[0].detach().cpu().numpy(),
-                                      bundle.policy[0].detach().cpu().numpy(),
-                                      bundle.rollout_executed[0].detach().cpu().numpy())
+                def host_array(value):
+                    return value.detach().cpu().numpy() if hasattr(value, 'detach') else np.asarray(value)
+                arrays = action_views(host_array(bundle.full[0]),
+                                      host_array(bundle.policy[0]),
+                                      host_array(bundle.rollout_executed[0]))
                 wp = action_to_world(arrays[1], np.asarray(pre["position"], np.float32),
                                      np.asarray(pre["velocity"], np.float32), pre["yaw"])
                 candidate = np.vstack((np.asarray(pre["position"], np.float32), wp[:4, POS]))
                 provenance = asdict(policy.last_provenance)
                 observation, reward, terminated, truncated, context = adapter.step(bundle)
+                ego_update = (policy.after_step(context)
+                              if getattr(policy, 'policy_kind', None) == 'ego' else None)
                 actual = context["executed_path"]
                 row = {"type": "transition", "decision": decision, "action_seed": seed,
                        "pre_state": pre, "post_state": {"position": env._drone_pos.tolist(),
@@ -181,6 +191,8 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
                        "observation_provenance": provenance, "pointcloud_metadata_before": meta_before,
                        "pointcloud_metadata_after": metadata(context),
                        "reward": float(reward), "reward_terms": context["reward_terms"]}
+                if ego_update is not None:
+                    row['ego'] = ego_update
                 emit(row)
                 rows.append(row)
                 path.extend(np.asarray(actual)[1:])
