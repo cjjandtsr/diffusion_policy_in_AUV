@@ -1,0 +1,47 @@
+diff --git a/model/diffusion/diffusion_ppo.py b/model/diffusion/diffusion_ppo.py
+--- a/model/diffusion/diffusion_ppo.py
++++ b/model/diffusion/diffusion_ppo.py
+@@ -66,6 +66,7 @@ class PPODiffusion(VPGDiffusion):
+         oldlogprobs,
+         use_bc_loss=False,
+         reward_horizon=4,
++        reward_start=0,
+     ):
+         """
+         PPO loss
+@@ -79,7 +80,10 @@ class PPODiffusion(VPGDiffusion):
+         advantages: (B,)
+         oldlogprobs: (B, K, Ta, Da)
+         use_bc_loss: whether to add BC regularization loss
+-        reward_horizon: action horizon that backpropagates gradient
++        reward_horizon: number of action steps that backpropagate gradient
++        reward_start: first action step that backpropagates gradient. The
++            default 0 preserves upstream behavior; E5 uses 2 because its
++            executable chunk starts at n_obs_steps - 1.
+         """
+         # Get new logprobs for denoising steps from T-1 to 0 - entropy is fixed fod diffusion
+         newlogprobs, eta = self.get_logprobs_subsample(
+@@ -93,9 +97,20 @@ class PPODiffusion(VPGDiffusion):
+         newlogprobs = newlogprobs.clamp(min=-5, max=2)
+         oldlogprobs = oldlogprobs.clamp(min=-5, max=2)
+ 
+-        # only backpropagate through the earlier steps (e.g., ones actually executed in the environment)
+-        newlogprobs = newlogprobs[:, :reward_horizon, :]
+-        oldlogprobs = oldlogprobs[:, :reward_horizon, :]
++        # Only backpropagate through the steps actually executed in the
++        # environment. reward_start=0 is the original upstream behavior.
++        if not isinstance(reward_start, int) or isinstance(reward_start, bool):
++            raise TypeError("reward_start must be an int")
++        if not isinstance(reward_horizon, int) or isinstance(reward_horizon, bool):
++            raise TypeError("reward_horizon must be an int")
++        reward_end = reward_start + reward_horizon
++        if reward_start < 0 or reward_horizon <= 0 or reward_end > newlogprobs.shape[1]:
++            raise ValueError(
++                f"invalid reward slice [{reward_start}:{reward_end}] for "
++                f"action horizon {newlogprobs.shape[1]}"
++            )
++        newlogprobs = newlogprobs[:, reward_start:reward_end, :]
++        oldlogprobs = oldlogprobs[:, reward_start:reward_end, :]
+ 
+         # Get the logprobs - batch over B and denoising steps
+         newlogprobs = newlogprobs.mean(dim=(-1, -2)).view(-1)

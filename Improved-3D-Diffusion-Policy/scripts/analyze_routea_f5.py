@@ -99,13 +99,15 @@ def freeze_strata(args):
     write(args.output, result)
 
 
-def load_evaluation(root, bank):
+def load_evaluation(root, bank, names=('bc', 'P6', 'P8', 'P9', 'P10', 'P11')):
     from scripts.routea_paired_support.episodes import load_commit
     rows = []
     tasks = {t['task_id']: t for t in bank['tasks']}
-    for name in ('bc', 'P6', 'P8', 'P9', 'P10', 'P11'):
+    for name in names:
         job = Path(root) / 'full' / name
         provenance = read(job / 'policy_provenance.json')
+        if provenance.get('evaluation_only'):
+            raise ValueError('evaluation-only migration copy cannot enter reported results')
         protocol = provenance['evaluation_sampling_protocol']
         if (protocol['clip_protocol']['override'] != 2.0 or protocol['sampling_mode'] != 'deterministic'
                 or provenance['bank_hash'] != bank['content_hash']):
@@ -134,7 +136,7 @@ def load_evaluation(root, bank):
     return rows
 
 
-def table(rows, tasks):
+def table(rows, tasks, seed_pairs=(('P8', 'P9'), ('P10', 'P11'))):
     result = {}
     for dim in ('w1', 'w2', 'bottleneck', 'detour', 'band'):
         result[dim] = {}
@@ -147,7 +149,7 @@ def table(rows, tasks):
                 outcomes={n: dict(Counter(r['done_reason'] for r in selected if r['policy'] == n)) for n in names},
                 vs_P0={n: compare(selected, n, 'P0') for n in names if n != 'P0'},
                 seed_pairs={a + '_vs_' + b: compare(selected, a, b)
-                            for a, b in [('P8', 'P9'), ('P10', 'P11')]})
+                            for a, b in seed_pairs})
     return result
 
 

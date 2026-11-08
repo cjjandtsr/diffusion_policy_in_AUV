@@ -1,0 +1,1 @@
+"""Generic training-engine contracts."""
