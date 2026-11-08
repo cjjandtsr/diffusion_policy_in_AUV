@@ -1,0 +1,74 @@
+{
+  "schema": "routea_f3_u256_e2_plan_v1",
+  "repo": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+  "training_preflight": "/home/cjj/AUV/program/results/routea_f3_u256_seeds_run02/preflight.json",
+  "training_preflight_sha256": "e0111ec3a9d353e612db4c958c6d1529fd926cc68f6d7611c1141bc4d09e5e92",
+  "scripts": {
+    "scripts/run_routea_xk_evaluation.py": "15bca3863d426f881236c2dcca76bcab7cc5fa6ed3d9011e27ebf8f05d3d39e7",
+    "scripts/run_routea_goal_precision.py": "961ca252868541c613e2bbc50686bf492ac23ffb938f4c2ba0c8aeb84e4235e6",
+    "scripts/audit_routea_paper_eval.py": "401d377da0abadea1a1c27b2dcacf23785b585cb54ae758f5da4f5d98fb6fb90",
+    "third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py": "bade7d2a67fe8b4a604ff1387a294d42a176af2a458c2da450e497c61b9f4254",
+    "scripts/run_routea_f3_resume.py": "100f909f0db24840c0a2dee34e613513d09cd38790eaa4828fdbe5adc31d1be0"
+  },
+  "models": [
+    {
+      "policy": "P9",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f5_run01/P9/checkpoint_update_000256",
+      "update": 256,
+      "runtime_identity_hash": "ebcf50137543e2a50c9ac8a8585ff104a294c2fde2ffb77950c6c046d4d9bb51",
+      "header_sha256": "e542ffb1fd4b3762d44e34d94caf270529c17839e1bd750769c67446178062c3",
+      "state_sha256": "2324c879ccc44f6523fe67c729f7d9fd4d18cd63693d905cc6e8f65f3b787790"
+    },
+    {
+      "policy": "P11",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f5_run01/P11/checkpoint_update_000256",
+      "update": 256,
+      "runtime_identity_hash": "901bdc38786d10aaf9436de8045b44499d0e66177bf6f81a81759548af242d58",
+      "header_sha256": "e4cd210a4a6f14dea3b1501c5cb14fc3d57a39cad664a32a44c16a2d5d2fd227",
+      "state_sha256": "e7795b04fc83a2097798312f13a81d6e453a14a1c9fff3147f93262a6f6baa05"
+    }
+  ],
+  "banks": {
+    "dev": {
+      "paths": [
+        "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/diagnostics/routea_bc_a0_r1_paired_dev_20261010_py38fix_run02/bank/bank.json"
+      ],
+      "split": "rl_train",
+      "worlds": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/train",
+      "episodes": 420,
+      "content_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+      "file_sha256": "1a6388136ea329f680c7055227f915a25ee25417df752a2cb7d85e30e57c3783"
+    },
+    "val": {
+      "paths": [
+        "/home/cjj/AUV/program/results/routea_xk_run01/val_bank/bank.json",
+        "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/jindu/routea_xk_run01/val_bank/bank.json"
+      ],
+      "split": "rl_val",
+      "worlds": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/val",
+      "episodes": 80,
+      "content_hash": "a2b28e0cf2ca32ee8a987d0f1a03f94d2783dea57fee1bd096fdb8e5ca542017",
+      "file_sha256": "3dbe2fcb2a237eb7ecb35a4e4c93c59f2a972ce313fdf4fe43eba30c3913ad66"
+    },
+    "test": {
+      "paths": [
+        "/home/cjj/AUV/program/results/routea_test12_independent_run02/bank/bank.json"
+      ],
+      "split": "rl_test",
+      "worlds": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/test",
+      "episodes": 240,
+      "content_hash": "b3a872bbe9683ea952d6767a8da9a20cb12a1ce11d5d24ef2953c7861ec80474",
+      "file_sha256": "72c336e98d3e112f490ef8c5927580c430b73504e3cb62926133aa8a2d9d78d7"
+    },
+    "ext": {
+      "paths": [
+        "/home/cjj/AUV/program/results/routea_paper_c_freeze_run02/bank/bank.json"
+      ],
+      "split": "rl_test_ext",
+      "worlds": "/home/cjj/AUV/PX4-Autopilot/Tools/sitl_gazebo/worlds/test",
+      "episodes": 300,
+      "content_hash": "0b64e3ed8e6fe7b1cc780f1b90bfdcba5e3040c6aea246c303c45a7251ad5017",
+      "file_sha256": "e270b85219d54cdb702781ed9b9aef0d002aef7ec6ec06e84c86d59384022031"
+    }
+  }
+}

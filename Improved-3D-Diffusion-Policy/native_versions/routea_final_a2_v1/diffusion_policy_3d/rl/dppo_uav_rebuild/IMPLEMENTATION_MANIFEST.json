@@ -1,0 +1,164 @@
+{
+  "schema_version": 2,
+  "generated_date": "2026-08-27",
+  "status": "rng_restore_fix_staged_aggregate_pass_wsl_copy_required",
+  "network_used": false,
+  "staging_root": "C:\\Users\\cjj\\Desktop\\IDP3\\chengxu\\Improved-3D-Diffusion-Policy",
+  "wsl_destination_root": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+  "wsl_reference": {
+    "branch": "a-official-core-r7",
+    "head": "cc9de00df00ced6bf26658f093d98d19cc14fbfc",
+    "probe_report": "artifacts/dppo_uav_rebuild/preimplementation_probe_report.md",
+    "probe_result": "P0-P7 PASS"
+  },
+  "official_vendor": {
+    "path": "third_party/dppo_official_cc7234a",
+    "commit": "cc7234ad7ff39a8f32de3af903606723a16f0648",
+    "manifest_sha256": "5594f7d9a68d27d5b8e1bbeb4317faf8334cbe0d6202e3c8a51b103db16fee91",
+    "manifest_file_count": 401,
+    "verification": "PASS",
+    "manifest_protected_files_modified": {
+      "model/diffusion/diffusion_ppo.py": "cd770a61980a2bbd415725fb67eaddf17ae911905b5bf5530ad7684f26bff9db",
+      "model/diffusion/diffusion_vpg.py": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c"
+    },
+    "idp3_overlay_file_count": 4,
+    "patches": [
+      "uav_idp3/patches/0001-e5-reward-offset.patch",
+      "uav_idp3/patches/0002-native-ddim-clip-mode.patch"
+    ]
+  },
+  "frozen_contracts": {
+    "checkpoint_sha256": "c1fca4ac2735928b18fa7a9c069f90ad181eb84092acee379b073dc6a61bfc9a",
+    "weight_source": "model",
+    "prediction_type": "sample",
+    "observation": {
+      "environment_history": 8,
+      "policy_history": 3,
+      "feature_dim_per_frame": 192,
+      "policy_condition_dim": 576,
+      "history_order": "chronological_oldest_to_latest"
+    },
+    "action": {
+      "full_horizon": 16,
+      "action_start": 2,
+      "policy_horizon": 8,
+      "deployment_exec_horizon": 2,
+      "rollout_exec_horizon": 4,
+      "reward_start": 2,
+      "reward_horizon": 4,
+      "action_dim": 11,
+      "traj_dt": 0.3
+    },
+    "reward": "diffusion_policy_3d.env.reward_v13",
+    "eval_only_worlds": ["w4", "w8", "w11", "w12", "w18"]
+  },
+  "actor": {
+    "scope": "policy.model denoiser only",
+    "lora_linear_targets": 14,
+    "lora_conv1d_targets": 33,
+    "lora_total_targets": 47,
+    "lora_trainable_parameters": 1022568,
+    "frozen_encoder_linear_modules": 2,
+    "frozen_encoder_conv1d_modules": 10,
+    "zero_lora_max_abs_diff": 0.0,
+    "identity_hash": "4f91a995cff7da0e7bc9a35d9654f3307f373ecea874f04afb9faad7af9b504f"
+  },
+  "official_integration": {
+    "class": "uav_idp3.e5_runtime.E5PPODiffusion",
+    "inherits": "model.diffusion.diffusion_ppo.PPODiffusion",
+    "algorithm_methods_overridden": [],
+    "inherited_methods": [
+      "VPGDiffusion.forward",
+      "VPGDiffusion.p_mean_var",
+      "VPGDiffusion.get_logprobs",
+      "VPGDiffusion.get_logprobs_subsample",
+      "PPODiffusion.loss"
+    ],
+    "native_parity": {
+      "status": "PASS",
+      "max_abs_diff": 0.0,
+      "mean_abs_diff": 0.0,
+      "chain_shape": [1, 11, 16, 11],
+      "result_file": "E5_OFFICIAL_PARITY.json",
+      "result_sha256": "a80b323633b4c984a6c81e78d1f0669f7fdf055cbe9285c90ad278ebb61647a2"
+    }
+  },
+  "system_build": {
+    "status": "PASS",
+    "critic_trainable_parameters": 214721,
+    "reward_source": "diffusion_policy_3d/env/reward_v13.py",
+    "rollout_or_training_executed": true
+  },
+  "one_update_smoke": {
+    "status": "PASS",
+    "exit_code": 0,
+    "env_steps": 128,
+    "attempted_updates": 1,
+    "committed_updates": 1,
+    "rejected_updates": 0,
+    "completed_episodes": 2,
+    "rollout_segments": 3,
+    "actor_grad_norm": 0.07215230166912079,
+    "critic_grad_norm": 15.985093116760254,
+    "pre_update_approx_kl": 1.0617441148497164e-08,
+    "pre_update_ratio_mean": 1.0000030994415283,
+    "oom": false,
+    "nonfinite": false,
+    "traceback": false,
+    "audit_v1_present_during_run": false
+  },
+  "audit_v1": {
+    "status": "STAGED_TESTS_PASS_WSL_PILOT_NOT_RUN",
+    "schema_version": 1,
+    "reward_terms": ["base", "pbrs", "onset", "future_clearance", "trap", "flip", "support", "guard"],
+    "records_post_update_official_metrics": true,
+    "records_actor_critic_parameter_delta": true,
+    "cold_resume_is_read_only": true,
+    "pilot_updates": 10
+  },
+  "rng_restore_fix": {
+    "status": "STAGED_CUDA_TEST_PASS_WSL_COPY_REQUIRED",
+    "root_cause": "map_location cuda moved rng_cpu to CUDA ByteTensor",
+    "normalizes_cpu_rng_to_cpu_uint8": true,
+    "normalizes_cuda_rng_list_to_cpu_uint8": true,
+    "checkpoint_rebuild_required": false,
+    "targeted_tests": 2,
+    "targeted_failures": 0
+  },
+  "default_aggregate": {
+    "status": "PASS_WITHOUT_RL_RESUME_UNTIL_WSL_COPY",
+    "fast_contract_tests": 51,
+    "deselected_duplicate_vendor_tests": 1,
+    "ignored_duplicate_heavy_vendor_tests": 7,
+    "seconds": 10.62,
+    "real_e5_parity": "PASS",
+    "real_e5_max_abs_diff": 0.0,
+    "real_rl_checkpoint_resume": "NOT_RUN_RL_CHECKPOINT_REQUIRED"
+  },
+  "regression_suite": {
+    "status": "PASS",
+    "tests": 59,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 108.23,
+    "junit_file": "FINAL_TEST_RESULTS.xml",
+    "junit_sha256": "db459ebc278d34ae05c23e8a1823da3027be6aac477cbe25b014a02b8d37bec7"
+  },
+  "source_classification": {
+    "official_manifest_files": 401,
+    "official_files_minimally_modified": 2,
+    "new_official_directory_overlay_files": 4,
+    "reused_old_project_files": 8,
+    "new_rebuild_package_files_including_docs_and_evidence": 61,
+    "new_scripts": 10,
+    "new_test_files": 21,
+    "details": "SOURCE_PROVENANCE.md"
+  },
+  "not_claimed": [
+    "No positive RL benefit has been measured yet.",
+    "Reward v1.3 design correctness is not proven by source/unit checks alone.",
+    "Audit v1 has not yet produced a real WSL pilot artifact.",
+    "No Gazebo/PX4 capability result was produced."
+  ]
+}

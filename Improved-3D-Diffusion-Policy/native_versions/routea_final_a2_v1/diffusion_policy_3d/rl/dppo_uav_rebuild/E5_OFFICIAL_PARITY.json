@@ -1,0 +1,26 @@
+{
+  "action_dim": 11,
+  "action_slice": [
+    2,
+    10
+  ],
+  "atol": 1e-06,
+  "chain_shape": [
+    1,
+    11,
+    16,
+    11
+  ],
+  "full_shape": [
+    1,
+    16,
+    11
+  ],
+  "max_abs_diff": 0.0,
+  "mean_abs_diff": 0.0,
+  "num_inference_steps": 10,
+  "official_class": "uav_idp3.e5_runtime.E5PPODiffusion",
+  "rtol": 1e-05,
+  "seed": 20260827,
+  "status": "PASS"
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "routea_paper_c5_execution_plan_v1",
+  "scope": "C5 only: P0(bc), P2u128, P4u256, P6u256; no P5 or task D; retry after goal representation validation fix; old invalid attempt not counted",
+  "repo": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy",
+  "bank": "/home/cjj/AUV/program/results/routea_paper_c_freeze_run02/bank/bank.json",
+  "bank_file_sha256": "e270b85219d54cdb702781ed9b9aef0d002aef7ec6ec06e84c86d59384022031",
+  "bank_content_hash": "0b64e3ed8e6fe7b1cc780f1b90bfdcba5e3040c6aea246c303c45a7251ad5017",
+  "worker_sha256": "15bca3863d426f881236c2dcca76bcab7cc5fa6ed3d9011e27ebf8f05d3d39e7",
+  "protocol_override_sha256": "bade7d2a67fe8b4a604ff1387a294d42a176af2a458c2da450e497c61b9f4254",
+  "audit_sha256": "401d377da0abadea1a1c27b2dcacf23785b585cb54ae758f5da4f5d98fb6fb90",
+  "denoised_clip_value": 2.0,
+  "min_std_vector": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+  ],
+  "models": [
+    {
+      "policy": "bc",
+      "update": 256,
+      "source_root": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256",
+      "state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+      "runtime_identity_hash": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+      "basis": "G3 strict native restore provenance; future worker revalidates identity"
+    },
+    {
+      "policy": "P2",
+      "update": 128,
+      "source_root": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a1",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_common_b2560_seed202609203_v1/checkpoint_update_000128",
+      "state_sha256": "3b9eb05fe7cf016829a545bc140eebf6277860f5cfc6d8002b1f527d4c109384",
+      "runtime_identity_hash": "391a6656a0f77731456e5d816727960dc6b1075c83616727c4f823b1b812ea54",
+      "basis": "G3 strict native restore provenance; future worker revalidates identity"
+    },
+    {
+      "policy": "P4",
+      "update": 256,
+      "source_root": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/C/checkpoint_update_000256",
+      "state_sha256": "13e593be108e7fe38b56a47cd281f35bcad7cf3df9b8f0adc67002d41ac8b938",
+      "runtime_identity_hash": "910559bb5de2387cab843234f713cc6858122aaa2e2d57d8ab42cd50d0bdf9bd",
+      "basis": "G3 strict native restore provenance; future worker revalidates identity"
+    },
+    {
+      "policy": "P6",
+      "update": 256,
+      "source_root": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2",
+      "checkpoint": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256",
+      "state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+      "runtime_identity_hash": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+      "basis": "G3 strict native restore provenance; future worker revalidates identity"
+    }
+  ],
+  "compatibility_entry_sha256": "961ca252868541c613e2bbc50686bf492ac23ffb938f4c2ba0c8aeb84e4235e6"
+}

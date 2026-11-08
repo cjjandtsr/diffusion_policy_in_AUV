@@ -30,7 +30,8 @@ def task_fingerprint(world, payload):
     return canonical_hash([world, payload['start_pos'],payload['goal_pos'],payload['start_yaw']])
 
 
-def collect_reference(system, config, *, output, parent_receipt_sha256, exclude_bank, seed=20261023):
+def collect_reference(system, config, *, output, parent_receipt_sha256, exclude_bank, seed=20261023,
+                      original_tasks=None):
     from omegaconf import OmegaConf
     from scripts.evaluate_dppo_uav_formal_endpoint import _E5Policy, reset_fixed_episode
     from diffusion_policy_3d.rl.dppo_uav_rebuild.environments.factory import RouteAEnvironmentFactory
@@ -62,6 +63,25 @@ def collect_reference(system, config, *, output, parent_receipt_sha256, exclude_
             seen.add(fp)
             frozen.append(dict(task_id=fp,world_id=task.world_id,payload=payload,reset_seed=reset_seed,
                 training_task_identity=task.identity_hash,obstacle_sha256=file_hash(task.obstacle_json)))
+    if original_tasks is not None:
+        original=json.loads(Path(original_tasks).read_text(encoding='utf-8'))
+        if original['seed']!=seed or original['exclude_bank_sha256']!=file_hash(exclude_bank):
+            raise ValueError('original reference task generation inputs differ')
+        exact=original['tasks']
+        by_world={t.world_id:t for t in tasks}
+        if len(exact)!=126 or len({t['task_id'] for t in exact})!=126:
+            raise ValueError('original reference task denominator differs')
+        for item in exact:
+            task=by_world[item['world_id']]
+            if (item['task_id']!=task_fingerprint(item['world_id'],item['payload'])
+                    or item['task_id'] in forbidden
+                    or item['obstacle_sha256']!=file_hash(task.obstacle_json)
+                    or item['training_task_identity']!=task.identity_hash):
+                raise ValueError('original task is not the same admitted training input')
+        write_json(out/'task_reuse.json',dict(generated_equal=frozen==exact,
+            original_file_sha256=file_hash(original_tasks),task_list_hash=canonical_hash(exact),
+            count=126,mode='verified original list; no policy sampling before this check'))
+        frozen=exact
     write_json(out/'tasks.json',dict(schema='a2_training_tasks_v1',tasks=frozen,
         seed=seed,exclude_bank_sha256=file_hash(exclude_bank),parent_receipt_sha256=parent_receipt_sha256))
     system.official_runtime.eval(); system.bc_runtime.policy.eval()
