@@ -1,0 +1,645 @@
+{
+  "failures": [],
+  "incomplete_or_rejected_episodes": 123,
+  "interpretation": "Claude A review accepted reconstruction; user confirmed p10 rule; w=2 satisfies amended rule",
+  "nonzero_decision_fraction": 0.086181640625,
+  "quantile_rule": "signed reward p10 >= -8; F7 v1.3, user confirmed 2026-11-09",
+  "reconstruction_passed": true,
+  "rejected_decisions": 0,
+  "selected_weight": 2.0,
+  "sources": [
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000129.json",
+      "sha256": "29a7030523d3d0f960e703cc518601f3695b9639c6d42097546b770d38267ded"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013.world.obstacles.json",
+      "sha256": "bc2f1a1fe79cd38413a4becb7967a99293d4879318737f8529443fca6164cdfb"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000.world.obstacles.json",
+      "sha256": "2d6514c4f1f086713917b67c01619f2461faa245d4cf614145300413e50b0e49"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028.world.obstacles.json",
+      "sha256": "58bc978b31fb4d1cf15cb7e5d951acef992ff3fb33b4181e7b9cd650780d90e5"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009.world.obstacles.json",
+      "sha256": "ea9e1115bc9a8c1d045a2f9cd3c15c5ab922833891c8e2040c6aad30149a4d44"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025.world.obstacles.json",
+      "sha256": "8d3a08bd25903a634969f2510d39c6fe9228a1398dd5b94829e82cc9a66be638"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008.world.obstacles.json",
+      "sha256": "1c8f4bff0d8a9a2897c8b9abad9e5d0544dbf38f72b0abe797976fae5e2d1203"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012.world.obstacles.json",
+      "sha256": "514e31fbc25dde80ef3744ece2a7187b5ffd11e1bba610abc23b26c014e6bbc5"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001.world.obstacles.json",
+      "sha256": "445526546c2a384200d1d1a0562762dc89f10e25961168e902e90730fd34caff"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026.world.obstacles.json",
+      "sha256": "06b03f46b9120c73f475abfe94ecaee0da406d79728ac2b2b51fd16533033019"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043.world.obstacles.json",
+      "sha256": "5aba6e62a3cca77401d566539f6843f24f9b8193d53b57517a14d8304dfc292e"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035.world.obstacles.json",
+      "sha256": "cf3683d42fe7a3e7196aae4da13d6652ff8d038cc090abb2a4deb3fa8a3f6229"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044.world.obstacles.json",
+      "sha256": "e1d3050ae4a5117a5939f895addc2936d02b7f990bf9b5b7c05792c9eec8bd8a"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000130.json",
+      "sha256": "ce5bea25b03965824c1b26717320113094c70ef7b5582f0ecc9373ed35060e6d"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027.world.obstacles.json",
+      "sha256": "affd965226d7f1f6287d9fbea8acc5b8f029f312f39d0af11cab0a0e15807984"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019.world.obstacles.json",
+      "sha256": "aff9a310c3803b8a6b382cc77e84551ce6b15767432e2a82ac32bf50213c41d7"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034.world.obstacles.json",
+      "sha256": "a7a1655902cecaf984e80764a45c5cbb082cadcfd6a6e1e56990b7e950e2c6c6"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000131.json",
+      "sha256": "9d9acd1d3d16a4bac8baf4ce6d48e9d02220e5dfcee5dd05a69fa90ec5a19bc4"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041.world.obstacles.json",
+      "sha256": "a99f57e7cbc91986a848d613bc5f8d6e0482786a7d0fa73c40c402e43841a814"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016.world.obstacles.json",
+      "sha256": "8186c959b18dcfa970a449dd08b23bae6a336dc8eec9220154992687106f2b1f"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033.world.obstacles.json",
+      "sha256": "a35455911680918caf278d1dda18615ad68f1e2eb79f8cc5593a8d205fb7bc48"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022.world.obstacles.json",
+      "sha256": "0f649fbdd2c9727e9a5f5eebe8ec2572890cf1483e767cc8c63ae5d8037a4775"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036.world.obstacles.json",
+      "sha256": "9601a901d4c54120683a5cc8fa6cb7d33011cae9777bceee5e9ccf75d853f4f8"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000132.json",
+      "sha256": "09ca57d39ec50ccacb6fcd8b3218b361c3f50d55145dd576b256f1775a864e54"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000133.json",
+      "sha256": "7b9e1d5f04dc3ed1a0920e65fed4d5994e27ba9440f64ceb04f2df6a2be0f4d3"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000134.json",
+      "sha256": "1b205061dc59c9943fc0e3def1fcf480cdc683c6a304bc868ebd84a124265b7d"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000135.json",
+      "sha256": "8ca3fe364c884fb8e7b4c12f7bed9d4249fd15dc1eb0a6cb9fbcd4360ef22c92"
+    },
+    {
+      "path": "chengxu\\PX4-Autopilot-Tools\\sitl_gazebo\\worlds\\train\\routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042.world.obstacles.json",
+      "sha256": "d9d292d0fa86199e999f0bd7052ef2df11af8db657e8c2ede3a396b8f64a1e06"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000136.json",
+      "sha256": "3523af01437c11938c1a5b769829a1aec0246120bedf61673c39f3d37913086d"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000137.json",
+      "sha256": "65426395dcc65c654f815474e44c41bd77fa3fef489f5d57192ffe2830c749b6"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000138.json",
+      "sha256": "a734df74b217402b4f1c42783f2e70dc8f885d2771bb4e092974ca60dab8150a"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000139.json",
+      "sha256": "a1c1a99c57891832a1025ae317d8438a9539ec9cb85aaf698af54f412e535c2d"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000140.json",
+      "sha256": "80768ce92b6bfd27468c6a059b224c651ec82266367caf8601683cd544d6cc89"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000141.json",
+      "sha256": "826dbd3d02e32437577e86d2e4914c75ff48c060595cadc88f338aa6ab6cccae"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000142.json",
+      "sha256": "1c1bc851ec9e28fb20121dadc05ce78d1a5a5c0c5bff52055e7c5a47a5a669b6"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000143.json",
+      "sha256": "9c2a2b1523b3c39d5c6fa8c55cec4df946e3fb1751089deb22bab3b4475ce9a6"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000144.json",
+      "sha256": "0484e2056d40e57ad94417962897c55a54a44f6a671617dc289944e4bec33c04"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000145.json",
+      "sha256": "2b135b0b63dc980fc2f84f8075a14a11fbe52b885412b6b2b3fde28f3a7c10aa"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000146.json",
+      "sha256": "a3ecb143c6a42631bafa745915c069a4bf14c1f33cfa520342769af7f7cc148c"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000147.json",
+      "sha256": "75d31ba011600cb7f5f91cd717fafa098de63174fca1681df2416b0d56a9c28a"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000148.json",
+      "sha256": "77d23430093d8d79332a0360c739a06cc061c18c16a1bff554aaec05fbedd4fd"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000149.json",
+      "sha256": "36dc4737456454a6747141325e3ea43b9be77bf5f3ecfa2e0c610a0640453895"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000150.json",
+      "sha256": "1a81852b9c14b12b8b2933ac5a910cb3452cbb6452ee717299fc943de68b9c18"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000151.json",
+      "sha256": "ac6d4aa4143eecb0d56179518b1dbf4bbd876c919d7a0c1bdf2c98ba3aa929b0"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000152.json",
+      "sha256": "62ac0ac1f6fbc801b6c80d646bbf95ea882ead7e99c3f3deea4f54431ddb97ac"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000153.json",
+      "sha256": "70bdaa058951c0d01cfbf50b699231968761a4e835ed098772b17e8859de6375"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000154.json",
+      "sha256": "e8b5b893edc79227e98235136c34139c8bb01ffffa35c74f045763c57f8cbae6"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000155.json",
+      "sha256": "25f3a4c2319a11fc47b487d676bab9b111f5d5e85ac916848d6ce1c21cc3b990"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000156.json",
+      "sha256": "f8dab325e9910fc9e5a679078c8a2787e9c3dcdcfe9751b063d8d963d9dc0a30"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000157.json",
+      "sha256": "7f2cf321fee9699fb99c9d8ffaa29401eed8462967d6a1ba8cef45af7274144e"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000158.json",
+      "sha256": "0ad544ff6021d4ac65d302d5c666fc78958872f4f4842d067568be2568852042"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000159.json",
+      "sha256": "1558cc2678161816497e37d014e2063b373379a4943be69096d73f6f01b09008"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000160.json",
+      "sha256": "a595386c6f2694f66e057c0c95c1c658d2b57b1efd29fcede9672a3fe0760445"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000161.json",
+      "sha256": "2bbf150c199889a4e86055b2c575418acebf6e86d4e305798c655a2601cf9293"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000162.json",
+      "sha256": "9f473db72d89d77bb636e02f5227c780a6ad0a0cbf43866292765c8fc804f4f8"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000163.json",
+      "sha256": "d56790f5f85f5b6b973639f117c0851c5465701d916d48bffae09221ad9b39ae"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000164.json",
+      "sha256": "16f93461607b307d76c9c9e58224e562ab8b910a6b8aad24e5622e4338fff70b"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000165.json",
+      "sha256": "6b4dfb49579e5e38516fa8aff701766d58a6c44166a8afef74f03f951bf950e1"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000166.json",
+      "sha256": "77fb2494e4e29cc3bccf36887f28725b3a8c3ed7f4e47d50b96f799f0851cf3c"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000167.json",
+      "sha256": "5d141f9db0d802f078b4d0938b1fffc3cbf5a07d5bb2196e5e2a3d9534bf2a27"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000168.json",
+      "sha256": "a1fc812d301cf5aea4151a7d56f61693c3d9adfc47041242f9e543202ba38b52"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000169.json",
+      "sha256": "8e53512ebe2b4a64c2e095f9bb669fb24bf363977cd82e39b46bc182891cedcc"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000170.json",
+      "sha256": "b569a74642ac9225eaad3b5a93b1fe80f8e51c1759f115ea36b72572406109b2"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000171.json",
+      "sha256": "ce4a95c300df29604614c180f79c0292ddd8af78758a765cd56ba7eb74ced7ea"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000172.json",
+      "sha256": "1c2011a1b83bd2156b5ce931a9f0c815ca3bcdbb6d8372137e163068936eef9c"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000173.json",
+      "sha256": "341b1d60e351776546f5cb1295657ff1819bb01c24f2560ed567fe3a527f47cf"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000174.json",
+      "sha256": "a52c7bce77f9f27b83ecb5365e08c1827c9bea8a82ef09c78b6117b949b95a1b"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000175.json",
+      "sha256": "751d536393c60bba7a4552afa75e4df310482eac7f4dfca4bca6f9adbdb7c712"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000176.json",
+      "sha256": "d9bc399240a3d68de41063359377fc85adf3610e99ca0d29e3f4246225241fc0"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000177.json",
+      "sha256": "a68b729cbc6ea66646a36275d661ddc8d370540330203bc074048e180f875f64"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000178.json",
+      "sha256": "fd4848ddff203bdc416bb7cce573c69ba4181e46a2a5710acb38001ffebad4e2"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000179.json",
+      "sha256": "e8b04e231411b332aa763c2acb58cddb6a0fb745a8815eed316dc8e1cf7b74f5"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000180.json",
+      "sha256": "71135713d8f8ccb22f8cb43882522964c87872b836aefbb39c9fea406d5c5c90"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000181.json",
+      "sha256": "2da194cb9c0abf5a08a76fb414bc01cf5c54b0c0fda08a2186f0a84f3eb2fca9"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000182.json",
+      "sha256": "a6e89d2ce3d8e167172c07d2632987acad18b55647b83982e5e67690e5f85c57"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000183.json",
+      "sha256": "cc68d0d01d75c6375d625834592d46bea2cc1695be3226dea1f7c90a95cdaf7a"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000184.json",
+      "sha256": "71a187d7f9799adef3bdc6340116605e42582c9699c1168c5a6f7fb1d4c1fcb5"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000185.json",
+      "sha256": "e483db8d3ad9b86f6457c0dfd2017522da9c020278c407beddb61099f4ca4956"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000186.json",
+      "sha256": "b96c4d48684f5fa9656007ff5c11833ed5897dd74c37269839ace51d91fe8e92"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000187.json",
+      "sha256": "e4eb074f52b4c8286d92826679e853bc84c26b0597c5a2f070fb25987e3d3a60"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000188.json",
+      "sha256": "894b6a822147f27c4addf0db0fd57d0cee8b36e2edc21ec189d88857f00c8f11"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000189.json",
+      "sha256": "51cd178093cd986cca24f6be41279c0aaafbc549ccdf809d0cf0f9809831d872"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000190.json",
+      "sha256": "6a859a1a4d73c7778c296318154f1f4d0507c7f4e84cab85b489c3d0c928174c"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000191.json",
+      "sha256": "776e6047d5cd92d4c5aea6ddb05aaf4f73122702eac0df91da8623fbc9160b64"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000192.json",
+      "sha256": "a4cbc57a2bcc1a44861ce998cccb2da0c41007e587a4e400acfeb725c70d1a76"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000193.json",
+      "sha256": "055a663bf3899bac1c14f0db90a36a59e86def26be508a69b305390f8f5d4b8a"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000194.json",
+      "sha256": "88665a1d88124e312fffb55c664df58defd602d0538b2c23422c195c86e45edf"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000195.json",
+      "sha256": "281a83e30c7aa86d4bbffa9eb5a75038f397d29bce95a0d9d128080bce7952a5"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000196.json",
+      "sha256": "bbe708e733610d911921a3719839ac81cad542d80c7c9846241a2cddf3c6fa36"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000197.json",
+      "sha256": "2f63a2b6c499f9ebbffb665c4ea55b3ceb2c80ecc9199876545c13cb05426b9f"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000198.json",
+      "sha256": "b1b4df7048a55219159f1b3de8af59994ea12a19e659de47e2616cc03fa1ba5f"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000199.json",
+      "sha256": "03b66647eeeebd1fee1776169c975601e8e682c564d25e59b11c454846afd52d"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000200.json",
+      "sha256": "d8d866afa2aaf2d70b34d17177e7feb33180904ddbfd9ed30befff9c8e924104"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000201.json",
+      "sha256": "69ce073f8babaec8d8e9c11a614ed0176f1d00c7f5e45f93925f6fd1cd446913"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000202.json",
+      "sha256": "944ae420d767c7c64b729b29a653ae5d079290e345d636af443d4643d8282f16"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000203.json",
+      "sha256": "bc4ea2abb024fac3eaf5b13722aa4d851abeb02fcd0a7f7c76b51f4e980a0496"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000204.json",
+      "sha256": "1fc0705b495c041daed57b29925f7315e50b899f07a5157a395135fd55ccbe1b"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000205.json",
+      "sha256": "af7b096a48cab4b7f861402f0a5ef0619114d30bce569cc29337b75547a9696c"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000206.json",
+      "sha256": "fc77965124ad85b52e9b1550a3f4bba8c00664ae120b41c2e147541010972e04"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000207.json",
+      "sha256": "c159291dd6fdb8f687558884c52096341e97f464cd6f5cebc591e2ac6162ffb1"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000208.json",
+      "sha256": "01d5126b5cd9fec995a364e7bb495ba39c6950d5d6d668ff8249064c287665d1"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000209.json",
+      "sha256": "059008f96f7a9118aded9b42de3d8c02bbc02dc018280af8fce5a00399b83214"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000210.json",
+      "sha256": "52330afef8ae0a63e12bbeccf5d4dd452dba85fdfa76d9f42a67da4301f4e66e"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000211.json",
+      "sha256": "d29b1302c5f213d4c9238cca10f6f3bd45ebcec07cd747f724975384a6c18c49"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000212.json",
+      "sha256": "296f037569cf1c4da53ebab6b975f1cbacc248a8dbc7f494915a7b6757788bd9"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000213.json",
+      "sha256": "7d51af01cc9f918a56a9d449195b23db370799bcc50e09f8661f273aa98de8f9"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000214.json",
+      "sha256": "647b8c733f1b12f784a4da1b6957e4332d63ef350b0d4ec2de1b5364bf51040b"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000215.json",
+      "sha256": "805ac57c790c4ffe033eece5cbbeb44af2431a5e970d7eb8c0bf45e7e82d6320"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000216.json",
+      "sha256": "1c4cf0c8bfee94a7069b33857ced145ca95650f45295e61ded34ec2b3dd3df16"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000217.json",
+      "sha256": "4579a0eebc76d2c0573cf7708e03b99d2673949854f632a635d87719d82f9ee4"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000218.json",
+      "sha256": "44c23d8ba5945ac2762629fcd0abae242391d170e7c908db8a9d53615e16fcd0"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000219.json",
+      "sha256": "ae5ecc3936fe09a354f9744aa05796267167680c2c93b5e5ae442924a7917dab"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000220.json",
+      "sha256": "b7c04aaadbd7799106f950134d36819fe8eba61eebfb4dbcd2a7f1e822411508"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000221.json",
+      "sha256": "8040365eed27e7e429e48b62fc81c1979d24a574bfaf54fe3a0a24ff62927277"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000222.json",
+      "sha256": "dbb739010bcd2bee4a22bd753e194a000dcb384a5b92bab45b13ee1b4c51693a"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000223.json",
+      "sha256": "c691c47460472bb549d85869e97ba629bd8e8ce087987135ebc0f23324fe8092"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000224.json",
+      "sha256": "07ecd0692eda4222cc2b0ff546fe60c394763a6fe24a71fdd6e42ae6dc8bb840"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000225.json",
+      "sha256": "bc145e7e508cc9ea126ae7d4f29c5bf3b52160137df64e063f9e5f7e2740b512"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000226.json",
+      "sha256": "0e2ba7611d4bd2ec63a12d9755324c46ebbcc7772f9692e079e389ccc9f41a9c"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000227.json",
+      "sha256": "eea234c9ebb34e77bb90f6a9d9741111b1debe4b879e2eac414ba0de6a1765a5"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000228.json",
+      "sha256": "2daab3d31682ac7285b8ef6d32d1b7e0949dbae61215a22241c65e7ce8c6f1ae"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000229.json",
+      "sha256": "8b908ba5ff7a09716eb4724a445529f1d02dc5f26e321c768a76802e13ebf1d1"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000230.json",
+      "sha256": "970b2d31a2607659ad7924dcbad1d36a492af2512a07339cc67068dbc1645b2b"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000231.json",
+      "sha256": "30097bd8c92885501e97d7d688281584205e055ddda543dfe061ce02ef783e6d"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000232.json",
+      "sha256": "c169e3c916aa4ea80c2155333f871aeddfbf5ab6cce334cdcde00eaae2aa3e61"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000233.json",
+      "sha256": "c531fe142be6bf2875986969e6718ad3a0d53bf4d7c6f0aafef3787c6d6f1631"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000234.json",
+      "sha256": "2e7c3a39ebdc10d61446aec9083e29e9cb3a0891312f1b0f9f29dc63872213e9"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000235.json",
+      "sha256": "f31492718134f81e61516400e0fb706b22fb5d5bae90578a5554c4525f332fae"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000236.json",
+      "sha256": "f42059329d4d7398174161e1124897e3da7d97dc4519dd72ffa63a8774296254"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000237.json",
+      "sha256": "b4758131cc699efb74259bced45910c0fd5de6e8fb026d2977ed7313f4fe3244"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000238.json",
+      "sha256": "91dfc8c16c2fd882c6e62a3dd0cfc279c06fec7580ac798548b8b7293e1fa811"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000239.json",
+      "sha256": "b6983a91c2e7fe4fa26adfad326f40851431b20981bc43ba5f3e232ae1069f00"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000240.json",
+      "sha256": "21443190cd9c0af8332ed9c374b6c934d4216b39f52b97f56e38a99bf44a9d0b"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000241.json",
+      "sha256": "43129b610215533fa20ed04b20a145e185d0bd97b054386009b7c33c82fc1bfd"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000242.json",
+      "sha256": "5b8cfcd9a18447b83f3fef2216b24e35f71c160ac931ef68abdf205d2cc743fe"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000243.json",
+      "sha256": "67e6021a1f94810f0bcd4d7451195d39c84f2c069a10667b095ba60526e204c0"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000244.json",
+      "sha256": "c37ebc18e9dd009dce784a05edd727b10d7555fe0532965a0509c8eba50d02e9"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000245.json",
+      "sha256": "e84079679ca424b870335c10713e3ef1fc8e1a81a00b3b1bdf2de51f83f4dbda"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000246.json",
+      "sha256": "e65359acca2b1dbefedcb7230f8df081bc554bd6a58d7b2db59a709557657c5e"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000247.json",
+      "sha256": "4e9049d4ca9ddbc3e9d0c2cf82f927d76afbaf7d8c76f679f61206c58274b176"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000248.json",
+      "sha256": "1a85b1049534307a92e449aa03af990fe3e839c3fa9d7fdb45c6f80a386d9816"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000249.json",
+      "sha256": "3310c117a5dce6473b81bff6fa944c973c7a2a75fa02ebd9e88084e86befb047"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000250.json",
+      "sha256": "0d12e0036ae0b012232f77c5b739d0148c0e4befab03d9bb9250085f10345c04"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000251.json",
+      "sha256": "22b92208381aad8e62dcc68134c9dfae1c84e949cca27c66fa243b67a3d365d1"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000252.json",
+      "sha256": "1823e6da8f3bbc52dbc4de111216682008092c28ae2f03135a1eaebb42905eb0"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000253.json",
+      "sha256": "806143665f085cf85fa2317ee683bba096c7cfe79e3c60356187ce20bdc15217"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000254.json",
+      "sha256": "a6d35466d10685e068eb798b714144e61f260e829e8f6191172b9bfadea073c1"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000255.json",
+      "sha256": "d944cbb6e5c6608a9142ef7b2bb0de85e2b2b7a1e75c6bc7d4d69d6bd556bb6e"
+    },
+    {
+      "path": "wsl_snapshot\\routea_a2_selective_keep_run01\\arms\\T\\metrics_update_000256.json",
+      "sha256": "380e05fd914b0ebe11c45c61531fc6f09a6f491e73c57fdc6072f41a511a5777"
+    }
+  ],
+  "stats": {
+    "collision": {
+      "count": 944,
+      "median": -2.3718518132648727,
+      "signed_p90": -1.6412178972073628,
+      "signed_p10": -3.7414624501354203
+    },
+    "ground_crash": {
+      "count": 13,
+      "median": 0.0,
+      "signed_p90": 0.0,
+      "signed_p10": -0.8751423189719016
+    },
+    "reached": {
+      "count": 1408,
+      "median": 0.0,
+      "signed_p90": 0.0,
+      "signed_p10": -1.8467177574271072
+    },
+    "time_limit": {
+      "count": 1223,
+      "median": -0.22076871240252388,
+      "signed_p90": 0.0,
+      "signed_p10": -2.613892582935139
+    }
+  },
+  "total_decisions": 131072,
+  "parent_calibration_sha256": "669365f2b1fbf4d5e1e9ccf1a3775dfdafee26da2bd7fb0b4e0ec26c3c71b6a6",
+  "complete_episodes_sha256": "72a01005e0f45632f21a17dac08309905203d08cee59b0f70be67821cfe294c1",
+  "p10_manual_check": {
+    "zero_based_position": 140.70000000000002,
+    "lower": -1.8480669920769035,
+    "upper": -1.846139514005766,
+    "interpolated": -1.8467177574271072,
+    "method": "linear",
+    "minimum": -5.5498101231247565
+  }
+}
