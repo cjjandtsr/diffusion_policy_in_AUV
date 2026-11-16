@@ -1,0 +1,173 @@
+{
+  "config_differences": {
+    "P16-P18": [
+      {
+        "path": ".f7.adaptive_lr",
+        "treatment": true,
+        "control": false
+      },
+      {
+        "path": ".f7.run_id",
+        "treatment": "P16",
+        "control": "P18"
+      },
+      {
+        "path": ".output_dir",
+        "treatment": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f7_run01/P16",
+        "control": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f7_run01/P18"
+      },
+      {
+        "path": ".result_dir",
+        "treatment": "/home/cjj/AUV/program/results/routea_f7_run01/prepared/training/P16",
+        "control": "/home/cjj/AUV/program/results/routea_f7_run01/prepared/training/P18"
+      },
+      {
+        "path": ".reward_version",
+        "treatment": "v5",
+        "control": "v2"
+      }
+    ],
+    "P17-P19": [
+      {
+        "path": ".f7.adaptive_lr",
+        "treatment": true,
+        "control": false
+      },
+      {
+        "path": ".f7.run_id",
+        "treatment": "P17",
+        "control": "P19"
+      },
+      {
+        "path": ".output_dir",
+        "treatment": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f7_run01/P17",
+        "control": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_f7_run01/P19"
+      },
+      {
+        "path": ".result_dir",
+        "treatment": "/home/cjj/AUV/program/results/routea_f7_run01/prepared/training/P17",
+        "control": "/home/cjj/AUV/program/results/routea_f7_run01/prepared/training/P19"
+      },
+      {
+        "path": ".reward_version",
+        "treatment": "v5",
+        "control": "v2"
+      }
+    ]
+  },
+  "statuses": {
+    "P16_u257_20261109_231611.status": {
+      "RUN": "P16",
+      "STOP_AFTER_UPDATE": "257",
+      "START_EPOCH": "1794287771",
+      "END_EPOCH": "1794288182",
+      "ELAPSED_S": "411",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "2227",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P16_u257_20261109_231611.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P16_u257_20261109_231611.gpu.csv"
+    },
+    "P16_u320_20261110_103226.status": {
+      "RUN": "P16",
+      "STOP_AFTER_UPDATE": "320",
+      "START_EPOCH": "1794328346",
+      "END_EPOCH": "1794352097",
+      "ELAPSED_S": "23751",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "1850",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P16_u320_20261110_103226.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P16_u320_20261110_103226.gpu.csv"
+    },
+    "P17_u257_20261109_232959.status": {
+      "RUN": "P17",
+      "STOP_AFTER_UPDATE": "257",
+      "START_EPOCH": "1794288599",
+      "END_EPOCH": "1794289013",
+      "ELAPSED_S": "414",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "2090",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P17_u257_20261109_232959.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P17_u257_20261109_232959.gpu.csv"
+    },
+    "P17_u320_20261116_104903.status": {
+      "RUN": "P17",
+      "STOP_AFTER_UPDATE": "320",
+      "START_EPOCH": "1794797343",
+      "END_EPOCH": "1794797753",
+      "ELAPSED_S": "410",
+      "EXIT_CODE": "1",
+      "PEAK_GPU_MEM_MIB": "1799",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P17_u320_20261116_104903.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P17_u320_20261116_104903.gpu.csv"
+    },
+    "P17_u320_20261116_105753.status": {
+      "RUN": "P17",
+      "STOP_AFTER_UPDATE": "320",
+      "START_EPOCH": "1794797873",
+      "END_EPOCH": "1794813435",
+      "ELAPSED_S": "15562",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "2352",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P17_u320_20261116_105753.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P17_u320_20261116_105753.gpu.csv"
+    },
+    "P18_u257_20261109_230818.status": {
+      "RUN": "P18",
+      "STOP_AFTER_UPDATE": "257",
+      "START_EPOCH": "1794287298",
+      "END_EPOCH": "1794287716",
+      "ELAPSED_S": "418",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "2206",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P18_u257_20261109_230818.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P18_u257_20261109_230818.gpu.csv"
+    },
+    "P18_u320_20261110_034256.status": {
+      "RUN": "P18",
+      "STOP_AFTER_UPDATE": "320",
+      "START_EPOCH": "1794303776",
+      "END_EPOCH": "1794328346",
+      "ELAPSED_S": "24570",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "2329",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P18_u320_20261110_034256.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P18_u320_20261110_034256.gpu.csv"
+    },
+    "P19_u257_20261109_232303.status": {
+      "RUN": "P19",
+      "STOP_AFTER_UPDATE": "257",
+      "START_EPOCH": "1794288183",
+      "END_EPOCH": "1794288599",
+      "ELAPSED_S": "416",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "2076",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P19_u257_20261109_232303.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P19_u257_20261109_232303.gpu.csv"
+    },
+    "P19_u320_20261110_170818.status": {
+      "RUN": "P19",
+      "STOP_AFTER_UPDATE": "320",
+      "START_EPOCH": "1794352098",
+      "END_EPOCH": "1794377251",
+      "ELAPSED_S": "25153",
+      "EXIT_CODE": "0",
+      "PEAK_GPU_MEM_MIB": "2358",
+      "LOG": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P19_u320_20261110_170818.log",
+      "GPU_CSV": "/home/cjj/AUV/program/results/routea_f7_run01/logs/P19_u320_20261110_170818.gpu.csv"
+    }
+  },
+  "paper_commit": "2a7474c3b00b103d55d7e9d92a36dd6c2256aa46",
+  "receipt_keys": [
+    "actor_names",
+    "critic_names",
+    "parent_checkpoint",
+    "r1_probe",
+    "runtime_identity",
+    "runtime_identity_hash",
+    "schema",
+    "source_manifest",
+    "source_root",
+    "state_sha256",
+    "training_config"
+  ]
+}

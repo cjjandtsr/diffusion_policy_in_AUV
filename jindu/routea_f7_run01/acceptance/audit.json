@@ -1,0 +1,218 @@
+{
+  "manifest_verified": 4813,
+  "manifest_sha256": "04e85bc46cda9a75c33fc0c8ccb2efe13a120d9029f80261f411faa32acab3a0",
+  "weights_loaded": false,
+  "training": {
+    "P16": {
+      "updates": 64,
+      "commits": 1280,
+      "transitions": 65536,
+      "lr_used_range": [
+        5.0,
+        16.875
+      ],
+      "clip_mean": 0.0945452897061159,
+      "kl_mean": 0.002342661976432359,
+      "actor_delta_min": 0.5560671005735811
+    },
+    "P17": {
+      "updates": 64,
+      "commits": 1280,
+      "transitions": 65536,
+      "lr_used_range": [
+        3.9506172839506175,
+        20.0
+      ],
+      "clip_mean": 0.0958471694490072,
+      "kl_mean": 0.002489083631748899,
+      "actor_delta_min": 0.43607013503662156
+    },
+    "P18": {
+      "updates": 64,
+      "commits": 1280,
+      "transitions": 65536,
+      "lr_used_range": [
+        1.0,
+        1.0
+      ],
+      "clip_mean": 1.586914086146862e-05,
+      "kl_mean": 8.324069283131841e-07,
+      "actor_delta_min": 0.059520775802842714
+    },
+    "P19": {
+      "updates": 64,
+      "commits": 1280,
+      "transitions": 65536,
+      "lr_used_range": [
+        1.0,
+        1.0
+      ],
+      "clip_mean": 5.218505950779218e-05,
+      "kl_mean": 1.295448426987672e-06,
+      "actor_delta_min": 0.06143759597370454
+    }
+  },
+  "pairs": {
+    "P16-P18": {
+      "transitions": 1024,
+      "passed": true
+    },
+    "P17-P19": {
+      "transitions": 1024,
+      "passed": true
+    }
+  },
+  "splits": {
+    "dev": {
+      "counts": {
+        "P16": {
+          "reached": 197,
+          "time_limit": 87,
+          "collision": 136
+        },
+        "P17": {
+          "reached": 205,
+          "time_limit": 72,
+          "collision": 143
+        },
+        "P18": {
+          "reached": 266,
+          "collision": 140,
+          "time_limit": 14
+        },
+        "P19": {
+          "reached": 267,
+          "time_limit": 11,
+          "collision": 142
+        }
+      },
+      "stats": {
+        "arrival": -0.15595238095238095,
+        "collision": -0.0035714285714285713,
+        "arrival_ci": [
+          -0.22976190476190475,
+          -0.08452380952380953
+        ],
+        "worlds": 21,
+        "paired_records": 840,
+        "bootstrap": 20000,
+        "seed": 2026102601
+      },
+      "seed_deltas": [
+        -0.16428571428571428,
+        -0.14761904761904762
+      ],
+      "verdict": "本预算下不符合采纳标准",
+      "matrices": {
+        "P16-P18": {
+          "reached -> reached": 187,
+          "reached -> time_limit": 48,
+          "reached -> collision": 31,
+          "collision -> collision": 101,
+          "collision -> time_limit": 31,
+          "collision -> reached": 8,
+          "time_limit -> collision": 4,
+          "time_limit -> reached": 2,
+          "time_limit -> time_limit": 8
+        },
+        "P17-P19": {
+          "reached -> reached": 185,
+          "reached -> time_limit": 57,
+          "time_limit -> collision": 1,
+          "reached -> collision": 25,
+          "collision -> collision": 117,
+          "collision -> reached": 15,
+          "time_limit -> reached": 5,
+          "collision -> time_limit": 10,
+          "time_limit -> time_limit": 5
+        }
+      },
+      "identities": {
+        "P16": "93735e1f373158748598ff8280cfa6645d772dd9bca900be63c1ef2195c80466",
+        "P17": "d0b8bf6ddab268b0f3b18d5849e34bd30b2d97ed3008ac7e5beffed487012bd2",
+        "P18": "aa5152cdb5497e4a534cb213a5cb431efdbb3d89f72cc9069f9ad6b6cd2eb6c7",
+        "P19": "53646f62b2cc5136e5999825e111a84cb4542c8884f9b47110627dd14b4543fd"
+      },
+      "near_goal_timeouts": {
+        "P16": 39,
+        "P17": 25,
+        "P18": 14,
+        "P19": 10
+      }
+    },
+    "val": {
+      "counts": {
+        "P16": {
+          "reached": 36,
+          "time_limit": 26,
+          "collision": 18
+        },
+        "P17": {
+          "reached": 42,
+          "time_limit": 18,
+          "collision": 20
+        },
+        "P18": {
+          "reached": 58,
+          "time_limit": 7,
+          "collision": 15
+        },
+        "P19": {
+          "time_limit": 10,
+          "reached": 52,
+          "collision": 18
+        }
+      },
+      "stats": {
+        "arrival": -0.2,
+        "collision": 0.03125,
+        "arrival_ci": [
+          -0.2875,
+          -0.1125
+        ],
+        "worlds": 20,
+        "paired_records": 160,
+        "bootstrap": 20000,
+        "seed": 2026102601
+      },
+      "seed_deltas": [
+        -0.275,
+        -0.125
+      ],
+      "verdict": "仅描述",
+      "matrices": {
+        "P16-P18": {
+          "reached -> reached": 30,
+          "time_limit -> reached": 4,
+          "reached -> time_limit": 18,
+          "time_limit -> time_limit": 3,
+          "reached -> collision": 10,
+          "collision -> collision": 8,
+          "collision -> time_limit": 5,
+          "collision -> reached": 2
+        },
+        "P17-P19": {
+          "time_limit -> reached": 7,
+          "time_limit -> time_limit": 3,
+          "reached -> reached": 35,
+          "collision -> time_limit": 3,
+          "reached -> collision": 5,
+          "reached -> time_limit": 12,
+          "collision -> collision": 15
+        }
+      },
+      "identities": {
+        "P16": "93735e1f373158748598ff8280cfa6645d772dd9bca900be63c1ef2195c80466",
+        "P17": "d0b8bf6ddab268b0f3b18d5849e34bd30b2d97ed3008ac7e5beffed487012bd2",
+        "P18": "aa5152cdb5497e4a534cb213a5cb431efdbb3d89f72cc9069f9ad6b6cd2eb6c7",
+        "P19": "53646f62b2cc5136e5999825e111a84cb4542c8884f9b47110627dd14b4543fd"
+      },
+      "near_goal_timeouts": {
+        "P16": 10,
+        "P17": 9,
+        "P18": 7,
+        "P19": 10
+      }
+    }
+  }
+}
