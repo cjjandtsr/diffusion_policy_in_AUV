@@ -1,0 +1,25 @@
+group,policy,back,label,states,continuation_states,p_plan_median,p_reach_mean,p_nocol_mean,outcome_counts,direction_in_fov_states
+P0/2/all,P0,2,all,60,0,1.0,,,{},24
+P0/2/lateral,P0,2,lateral,29,0,0.984375,,,{},17
+P0/2/overflight,P0,2,overflight,31,0,1.0,,,{},7
+P0/4/all,P0,4,all,57,57,1.0,0.02850877192982456,0.11403508771929824,"{""collision"": 404, ""reached"": 13, ""time_limit"": 39}",26
+P0/4/lateral,P0,4,lateral,29,29,1.0,0.01293103448275862,0.08620689655172414,"{""collision"": 212, ""reached"": 3, ""time_limit"": 17}",20
+P0/4/overflight,P0,4,overflight,28,28,1.0,0.044642857142857144,0.14285714285714285,"{""collision"": 192, ""reached"": 10, ""time_limit"": 22}",6
+P0/6/all,P0,6,all,50,0,1.0,,,{},28
+P0/6/lateral,P0,6,lateral,23,0,1.0,,,{},14
+P0/6/overflight,P0,6,overflight,27,0,1.0,,,{},14
+P0/8/all,P0,8,all,37,0,1.0,,,{},19
+P0/8/lateral,P0,8,lateral,20,0,1.0,,,{},15
+P0/8/overflight,P0,8,overflight,17,0,1.0,,,{},4
+P6/2/all,P6,2,all,60,60,1.0,0.035416666666666666,0.035416666666666666,"{""collision"": 463, ""reached"": 17}",24
+P6/2/lateral,P6,2,lateral,29,29,1.0,0.06465517241379311,0.06465517241379311,"{""collision"": 217, ""reached"": 15}",17
+P6/2/overflight,P6,2,overflight,31,31,0.984375,0.008064516129032258,0.008064516129032258,"{""collision"": 246, ""reached"": 2}",7
+P6/4/all,P6,4,all,57,57,1.0,0.02412280701754386,0.02412280701754386,"{""collision"": 445, ""reached"": 11}",26
+P6/4/lateral,P6,4,lateral,29,29,1.0,0.04310344827586207,0.04310344827586207,"{""collision"": 222, ""reached"": 10}",20
+P6/4/overflight,P6,4,overflight,28,28,1.0,0.004464285714285714,0.004464285714285714,"{""collision"": 223, ""reached"": 1}",6
+P6/6/all,P6,6,all,50,50,1.0,0.0175,0.0175,"{""collision"": 393, ""reached"": 7}",28
+P6/6/lateral,P6,6,lateral,23,23,1.0,0.03804347826086957,0.03804347826086957,"{""collision"": 177, ""reached"": 7}",14
+P6/6/overflight,P6,6,overflight,27,27,1.0,0.0,0.0,"{""collision"": 216}",14
+P6/8/all,P6,8,all,37,37,1.0,0.02702702702702703,0.02702702702702703,"{""collision"": 288, ""reached"": 8}",19
+P6/8/lateral,P6,8,lateral,20,20,1.0,0.04375,0.04375,"{""collision"": 153, ""reached"": 7}",15
+P6/8/overflight,P6,8,overflight,17,17,1.0,0.007352941176470588,0.007352941176470588,"{""collision"": 135, ""reached"": 1}",4

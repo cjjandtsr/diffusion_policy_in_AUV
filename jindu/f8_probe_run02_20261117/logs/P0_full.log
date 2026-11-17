@@ -1,0 +1,464 @@
+CMD: /home/cjj/miniconda3/envs/idp3/bin/python /home/cjj/AUV/program/f8_probe_code_20261116_v12/scripts/run_f8_sampling_probe.py run --repo /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy --source-root /home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2 --current-root /home/cjj/AUV/program/f8_probe_code_20261116_v12 --checkpoint /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256 --bank /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/diagnostics/routea_bc_a0_r1_paired_dev_20261010_py38fix_run02/bank/bank.json --frozen /home/cjj/AUV/program/f8_probe_code_20261116_v12/inputs/frozen_geometry.json --policy P0 --phase full --timing /home/cjj/AUV/program/results/f8_sampling_probe_run02/P6_timing20/summary.json --output /home/cjj/AUV/program/results/f8_sampling_probe_run02/P0_full
+2026-11-17T00:06:17-06:00
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+F8_STATE P0 1 211 flights 8
+F8_STATE P0 2 211 flights 8
+F8_STATE P0 3 211 flights 16
+F8_STATE P0 4 211 flights 16
+F8_STATE P0 5 211 flights 16
+F8_STATE P0 6 211 flights 16
+F8_STATE P0 7 211 flights 24
+F8_STATE P0 8 211 flights 24
+F8_STATE P0 9 211 flights 24
+F8_STATE P0 10 211 flights 24
+F8_STATE P0 11 211 flights 32
+F8_STATE P0 12 211 flights 32
+F8_STATE P0 13 211 flights 32
+F8_STATE P0 14 211 flights 32
+F8_STATE P0 15 211 flights 40
+F8_STATE P0 16 211 flights 40
+F8_STATE P0 17 211 flights 40
+F8_STATE P0 18 211 flights 40
+F8_STATE P0 19 211 flights 48
+F8_STATE P0 20 211 flights 48
+F8_STATE P0 21 211 flights 48
+F8_STATE P0 22 211 flights 48
+F8_STATE P0 23 211 flights 56
+F8_STATE P0 24 211 flights 56
+F8_STATE P0 25 211 flights 56
+F8_STATE P0 26 211 flights 56
+F8_STATE P0 27 211 flights 64
+F8_STATE P0 28 211 flights 64
+F8_STATE P0 29 211 flights 64
+F8_STATE P0 30 211 flights 64
+F8_STATE P0 31 211 flights 72
+F8_STATE P0 32 211 flights 72
+F8_STATE P0 33 211 flights 72
+F8_STATE P0 34 211 flights 72
+F8_STATE P0 35 211 flights 80
+F8_STATE P0 36 211 flights 80
+F8_STATE P0 37 211 flights 80
+F8_STATE P0 38 211 flights 80
+F8_STATE P0 39 211 flights 88
+F8_STATE P0 40 211 flights 88
+F8_STATE P0 41 211 flights 88
+F8_STATE P0 42 211 flights 88
+F8_STATE P0 43 211 flights 96
+F8_STATE P0 44 211 flights 96
+F8_STATE P0 45 211 flights 96
+F8_STATE P0 46 211 flights 96
+F8_STATE P0 47 211 flights 104
+F8_STATE P0 48 211 flights 104
+F8_STATE P0 49 211 flights 104
+F8_STATE P0 50 211 flights 104
+F8_STATE P0 51 211 flights 112
+F8_STATE P0 52 211 flights 112
+F8_STATE P0 53 211 flights 112
+F8_STATE P0 54 211 flights 112
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.7651843 -2.6279676  4.2343416], yaw=1.52); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.7734855 -2.6518881  4.1140575], yaw=2.00); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.9030664 -2.6882899  4.198976 ], yaw=1.58); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.131952  -2.9788368  2.3678632], yaw=2.82); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.5374044 -2.3941116  2.3315601], yaw=2.39); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4088197 -2.2867317  2.3046587], yaw=1.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8351563 -2.6284375  2.3704817], yaw=2.40); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.9786572 -2.6890368  2.3568985], yaw=2.49); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.570058  -2.4998891  2.3352563], yaw=2.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.7324166 -2.6011803  2.3283367], yaw=2.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.9805732 -2.7014277  2.3154352], yaw=2.44); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4260718  2.3330314  3.3137538], yaw=-1.92); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4552634  2.3212132  3.3131704], yaw=-1.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4759804  2.3156943  3.3124917], yaw=-1.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.434312   2.3443716  3.2947295], yaw=-1.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4540213  2.3378663  3.2938507], yaw=-1.82); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3535184  2.3342788  3.2870362], yaw=-1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.397603   2.32056    3.2864583], yaw=-1.93); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.00825393  1.3056965   2.145529  ], yaw=-0.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3707796  2.3438146  3.3194344], yaw=-1.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3950024  2.3426466  3.3184073], yaw=-1.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.4554956  2.303828   2.7843802], yaw=-0.93); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.909178  3.3225296 2.6734314], yaw=-1.89); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.9274546 2.5233867 3.3076208], yaw=-0.97); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.901317   1.6207851  3.8386533], yaw=-1.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.5490408 -0.6904181  2.3130245], yaw=-1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.552065  -0.6440603  2.309099 ], yaw=-2.62); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.5238341 -0.6293069  2.4956849], yaw=-2.55); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.2263116 3.5825562 3.2111793], yaw=3.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.2055987 3.6208892 3.1983447], yaw=-2.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.2186385 3.5825229 3.1853983], yaw=-2.94); using max-range censoring
+  warnings.warn(
+F8_STATE P0 55 211 flights 120
+F8_STATE P0 56 211 flights 120
+F8_STATE P0 57 211 flights 120
+F8_STATE P0 58 211 flights 128
+F8_STATE P0 59 211 flights 128
+F8_STATE P0 60 211 flights 128
+F8_STATE P0 61 211 flights 136
+F8_STATE P0 62 211 flights 136
+F8_STATE P0 63 211 flights 136
+F8_STATE P0 64 211 flights 144
+F8_STATE P0 65 211 flights 144
+F8_STATE P0 66 211 flights 144
+F8_STATE P0 67 211 flights 152
+F8_STATE P0 68 211 flights 152
+F8_STATE P0 69 211 flights 152
+F8_STATE P0 70 211 flights 160
+F8_STATE P0 71 211 flights 160
+F8_STATE P0 72 211 flights 160
+F8_STATE P0 73 211 flights 168
+F8_STATE P0 74 211 flights 168
+F8_STATE P0 75 211 flights 168
+F8_STATE P0 76 211 flights 176
+F8_STATE P0 77 211 flights 176
+F8_STATE P0 78 211 flights 184
+F8_STATE P0 79 211 flights 184
+F8_STATE P0 80 211 flights 192
+F8_STATE P0 81 211 flights 192
+F8_STATE P0 82 211 flights 192
+F8_STATE P0 83 211 flights 192
+F8_STATE P0 84 211 flights 200
+F8_STATE P0 85 211 flights 200
+F8_STATE P0 86 211 flights 200
+F8_STATE P0 87 211 flights 200
+F8_STATE P0 88 211 flights 208
+F8_STATE P0 89 211 flights 208
+F8_STATE P0 90 211 flights 216
+F8_STATE P0 91 211 flights 216
+F8_STATE P0 92 211 flights 224
+F8_STATE P0 93 211 flights 224
+F8_STATE P0 94 211 flights 224
+F8_STATE P0 95 211 flights 224
+F8_STATE P0 96 211 flights 232
+F8_STATE P0 97 211 flights 232
+F8_STATE P0 98 211 flights 232
+F8_STATE P0 99 211 flights 232
+F8_STATE P0 100 211 flights 240
+F8_STATE P0 101 211 flights 240
+F8_STATE P0 102 211 flights 240
+F8_STATE P0 103 211 flights 240
+F8_STATE P0 104 211 flights 248
+F8_STATE P0 105 211 flights 248
+F8_STATE P0 106 211 flights 248
+F8_STATE P0 107 211 flights 248
+F8_STATE P0 108 211 flights 256
+F8_STATE P0 109 211 flights 256
+F8_STATE P0 110 211 flights 264
+F8_STATE P0 111 211 flights 264
+F8_STATE P0 112 211 flights 272
+F8_STATE P0 113 211 flights 272
+F8_STATE P0 114 211 flights 272
+F8_STATE P0 115 211 flights 272
+F8_STATE P0 116 211 flights 280
+F8_STATE P0 117 211 flights 280
+F8_STATE P0 118 211 flights 280
+F8_STATE P0 119 211 flights 280
+F8_STATE P0 120 211 flights 288
+F8_STATE P0 121 211 flights 288
+F8_STATE P0 122 211 flights 288
+F8_STATE P0 123 211 flights 288
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.2103347 3.6691318 3.1342542], yaw=-2.81); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1641334 3.704518  3.238992 ], yaw=-3.09); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1923985 3.6599987 3.2036026], yaw=-3.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1848689 3.6518652 3.2375891], yaw=3.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1791935 3.6972485 3.2173615], yaw=-3.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.2966577 -1.75       3.309141 ], yaw=-0.85); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3165293 -1.75       3.286922 ], yaw=-0.87); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3021894 -1.75       3.2744296], yaw=-0.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.2856987 -4.105601   2.099703 ], yaw=0.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.47889975 -5.262396    3.1988482 ], yaw=-0.76); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.1255443 -1.8967482  3.6282778], yaw=-0.34); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.7846594 2.6955307 3.3987987], yaw=-2.13); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[4.549077  2.9123807 3.4386535], yaw=-1.43); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.5726627  2.4562771  3.311258 ], yaw=-2.11); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.193521  -1.3917375  2.943173 ], yaw=1.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.3886414 -1.1407305  2.9043987], yaw=2.84); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.373973  -0.8836546  2.9104104], yaw=2.61); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.3734837 -0.7914979  2.9836898], yaw=2.78); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.7322431 -2.1311421  2.7284353], yaw=1.65); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.4163046 -2.1258514  2.5238252], yaw=1.94); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.4933116  4.1949463  3.6075583], yaw=0.44); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.9620607 2.3749168 1.9765402], yaw=-2.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.3090246 3.950645  1.9913217], yaw=2.91); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.1312604 2.3571184 1.9388862], yaw=-2.16); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.0188327 2.35      1.9029617], yaw=-2.21); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.5232977 2.3747704 1.812671 ], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.4609715 2.3617136 1.809361 ], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.536537  4.496748  1.9838549], yaw=-2.52); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.5382855 4.4530783 1.9333063], yaw=-2.56); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.391696  2.3542333 1.8027663], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.3871168 2.35      1.8025556], yaw=-2.23); using max-range censoring
+  warnings.warn(
+F8_STATE P0 124 211 flights 296
+F8_STATE P0 125 211 flights 296
+F8_STATE P0 126 211 flights 296
+F8_STATE P0 127 211 flights 296
+F8_STATE P0 128 211 flights 304
+F8_STATE P0 129 211 flights 304
+F8_STATE P0 130 211 flights 304
+F8_STATE P0 131 211 flights 304
+F8_STATE P0 132 211 flights 312
+F8_STATE P0 133 211 flights 312
+F8_STATE P0 134 211 flights 312
+F8_STATE P0 135 211 flights 312
+F8_STATE P0 136 211 flights 320
+F8_STATE P0 137 211 flights 320
+F8_STATE P0 138 211 flights 328
+F8_STATE P0 139 211 flights 328
+F8_STATE P0 140 211 flights 328
+F8_STATE P0 141 211 flights 328
+F8_STATE P0 142 211 flights 336
+F8_STATE P0 143 211 flights 336
+F8_STATE P0 144 211 flights 336
+F8_STATE P0 145 211 flights 336
+F8_STATE P0 146 211 flights 344
+F8_STATE P0 147 211 flights 344
+F8_STATE P0 148 211 flights 344
+F8_STATE P0 149 211 flights 344
+F8_STATE P0 150 211 flights 352
+F8_STATE P0 151 211 flights 352
+F8_STATE P0 152 211 flights 352
+F8_STATE P0 153 211 flights 352
+F8_STATE P0 154 211 flights 360
+F8_STATE P0 155 211 flights 360
+F8_STATE P0 156 211 flights 360
+F8_STATE P0 157 211 flights 360
+F8_STATE P0 158 211 flights 368
+F8_STATE P0 159 211 flights 368
+F8_STATE P0 160 211 flights 368
+F8_STATE P0 161 211 flights 368
+F8_STATE P0 162 211 flights 376
+F8_STATE P0 163 211 flights 376
+F8_STATE P0 164 211 flights 376
+F8_STATE P0 165 211 flights 384
+F8_STATE P0 166 211 flights 384
+F8_STATE P0 167 211 flights 384
+F8_STATE P0 168 211 flights 392
+F8_STATE P0 169 211 flights 392
+F8_STATE P0 170 211 flights 392
+F8_STATE P0 171 211 flights 400
+F8_STATE P0 172 211 flights 400
+F8_STATE P0 173 211 flights 400
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[1.4302013 2.35      1.8347318], yaw=-2.24); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.33511913 2.374718   1.8717089 ], yaw=-2.07); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.7722773 2.35      1.8097323], yaw=-2.19); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[0.5115548 2.36247   1.78302  ], yaw=-2.09); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.4417126 -5.605224   3.1567776], yaw=3.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.429062  -5.5804887  3.1677   ], yaw=3.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.9388452 -2.5475154  2.55528  ], yaw=0.48); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.5230818  -0.58094805  3.778031  ], yaw=-0.80); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.7055166 -1.0618423  2.4208763], yaw=-0.35); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.03106005 -1.1254954   1.592472  ], yaw=-1.99); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.853152   -0.93837744  1.8919322 ], yaw=-0.78); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.41975728 -1.0703338   1.6931801 ], yaw=-1.13); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.44438076 -1.0885811   1.6901168 ], yaw=-1.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.29669982 -0.8883825   1.4173907 ], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.3784568 -0.8913079  1.4170989], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.4245801  -0.89247066  1.4168595 ], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.46466997 -0.89596653  1.4173286 ], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.46752214 -0.8971674   1.4173908 ], yaw=-2.14); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.3241043 -1.0847204  2.3543065], yaw=-1.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.2330685 -1.1189799  2.3505516], yaw=-1.03); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.2435265 -0.5588813  2.1089795], yaw=-1.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.3208462  0.7084302  2.5768454], yaw=-2.88); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.66857374 -1.1291333   2.0870044 ], yaw=-1.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 0.9102492 -0.9447469  2.0130882], yaw=-0.51); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.32266825 -0.91445386  1.6740639 ], yaw=-1.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.61478    3.0105186  2.6219904], yaw=-2.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.679133   2.9925637  2.6365738], yaw=-2.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.6792908  2.9922264  2.6365232], yaw=-2.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.0806286  2.8024838  2.7812111], yaw=-1.69); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.697182   2.9902234  2.6205683], yaw=-2.11); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.7259495  2.2412295  2.8303163], yaw=-1.43); using max-range censoring
+  warnings.warn(
+F8_STATE P0 174 211 flights 408
+F8_STATE P0 175 211 flights 408
+F8_STATE P0 176 211 flights 408
+F8_STATE P0 177 211 flights 408
+F8_STATE P0 178 211 flights 416
+F8_STATE P0 179 211 flights 416
+F8_STATE P0 180 211 flights 416
+F8_STATE P0 181 211 flights 416
+F8_STATE P0 182 211 flights 424
+F8_STATE P0 183 211 flights 424
+F8_STATE P0 184 211 flights 424
+F8_STATE P0 185 211 flights 424
+F8_STATE P0 186 211 flights 432
+F8_STATE P0 187 211 flights 432
+F8_STATE P0 188 211 flights 432
+F8_STATE P0 189 211 flights 432
+F8_STATE P0 190 211 flights 440
+F8_STATE P0 191 211 flights 440
+F8_STATE P0 192 211 flights 440
+F8_STATE P0 193 211 flights 440
+F8_STATE P0 194 211 flights 448
+F8_STATE P0 195 211 flights 448
+F8_STATE P0 196 211 flights 448
+F8_STATE P0 197 211 flights 448
+F8_STATE P0 198 211 flights 456
+F8_STATE P0 199 211 flights 456
+F8_STATE P0 200 211 flights 456
+F8_STATE P0 201 211 flights 456
+F8_STATE P0 202 211 flights 464
+F8_STATE P0 203 211 flights 464
+F8_STATE P0 204 211 flights 464
+F8_STATE P0 205 211 flights 464
+F8_STATE P0 206 211 flights 472
+F8_STATE P0 207 211 flights 472
+F8_STATE P0 208 211 flights 472
+F8_STATE P0 209 211 flights 472
+F8_STATE P0 210 211 flights 480
+F8_STATE P0 211 211 flights 480
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.4394894  3.0011454  2.62849  ], yaw=-1.54); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-3.7896483  2.9731915  2.6532562], yaw=-1.95); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.8314576  1.9457772  3.9015396], yaw=-1.10); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.8308325  1.9206392  3.8775296], yaw=-0.95); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8534814 -1.3463038  1.4353071], yaw=0.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8659931 -1.3692703  1.4388831], yaw=0.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8287203 -1.3057238  1.6115694], yaw=-0.01); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.8554336 -1.3497646  1.5833992], yaw=0.11); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.4919715  1.8911314  2.357696 ], yaw=-1.73); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.2515173  1.8531296  2.412631 ], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.2581577  1.85       2.4125013], yaw=-2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.2921267  1.85       2.466993 ], yaw=-2.29); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.282418   1.8541429  2.4589899], yaw=-2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.291943   1.85       2.4587164], yaw=-2.22); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.518425   1.8503311  2.4307723], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.5187683  1.85       2.4306922], yaw=-2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.5681024  1.8721848  2.3507705], yaw=-1.74); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.45565    1.85       2.4483082], yaw=-2.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.4604053  1.85       2.4999428], yaw=-2.31); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.713631   1.8520195  2.483435 ], yaw=-2.30); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.716131   1.85       2.4833605], yaw=-2.30); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.1634364 -1.8805914  3.5346572], yaw=1.54); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.205081  -1.9029703  3.5286076], yaw=1.56); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.3005238 -1.8705331  3.657904 ], yaw=1.84); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 6.4157887 -1.8708185  3.5400167], yaw=1.31); using max-range censoring
+  warnings.warn(
+EXIT_CODE=0
+finished 2026-11-17T01:11:04-06:00

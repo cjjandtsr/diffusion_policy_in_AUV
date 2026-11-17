@@ -1,0 +1,271 @@
+{
+  "frozen_hash": "a6c2291d6d23efa57a1689b160958a3e690daac54d8ad86a5d3ec09dbdcd2285",
+  "genuine_back4_excludes_short_episodes": true,
+  "groups": {
+    "P0/2/all": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 24,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 60
+    },
+    "P0/2/lateral": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 17,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 0.984375,
+      "p_reach": null,
+      "states": 29
+    },
+    "P0/2/overflight": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 7,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 31
+    },
+    "P0/4/all": {
+      "continuation_states": 57,
+      "direction_in_fov_states": 26,
+      "outcomes": {
+        "collision": 404,
+        "reached": 13,
+        "time_limit": 39
+      },
+      "p_nocol": 0.11403508771929824,
+      "p_plan": 1.0,
+      "p_reach": 0.02850877192982456,
+      "states": 57
+    },
+    "P0/4/lateral": {
+      "continuation_states": 29,
+      "direction_in_fov_states": 20,
+      "outcomes": {
+        "collision": 212,
+        "reached": 3,
+        "time_limit": 17
+      },
+      "p_nocol": 0.08620689655172414,
+      "p_plan": 1.0,
+      "p_reach": 0.01293103448275862,
+      "states": 29
+    },
+    "P0/4/overflight": {
+      "continuation_states": 28,
+      "direction_in_fov_states": 6,
+      "outcomes": {
+        "collision": 192,
+        "reached": 10,
+        "time_limit": 22
+      },
+      "p_nocol": 0.14285714285714285,
+      "p_plan": 1.0,
+      "p_reach": 0.044642857142857144,
+      "states": 28
+    },
+    "P0/6/all": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 28,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 50
+    },
+    "P0/6/lateral": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 14,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 23
+    },
+    "P0/6/overflight": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 14,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 27
+    },
+    "P0/8/all": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 19,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 37
+    },
+    "P0/8/lateral": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 15,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 20
+    },
+    "P0/8/overflight": {
+      "continuation_states": 0,
+      "direction_in_fov_states": 4,
+      "outcomes": {},
+      "p_nocol": null,
+      "p_plan": 1.0,
+      "p_reach": null,
+      "states": 17
+    },
+    "P6/2/all": {
+      "continuation_states": 60,
+      "direction_in_fov_states": 24,
+      "outcomes": {
+        "collision": 463,
+        "reached": 17
+      },
+      "p_nocol": 0.035416666666666666,
+      "p_plan": 1.0,
+      "p_reach": 0.035416666666666666,
+      "states": 60
+    },
+    "P6/2/lateral": {
+      "continuation_states": 29,
+      "direction_in_fov_states": 17,
+      "outcomes": {
+        "collision": 217,
+        "reached": 15
+      },
+      "p_nocol": 0.06465517241379311,
+      "p_plan": 1.0,
+      "p_reach": 0.06465517241379311,
+      "states": 29
+    },
+    "P6/2/overflight": {
+      "continuation_states": 31,
+      "direction_in_fov_states": 7,
+      "outcomes": {
+        "collision": 246,
+        "reached": 2
+      },
+      "p_nocol": 0.008064516129032258,
+      "p_plan": 0.984375,
+      "p_reach": 0.008064516129032258,
+      "states": 31
+    },
+    "P6/4/all": {
+      "continuation_states": 57,
+      "direction_in_fov_states": 26,
+      "outcomes": {
+        "collision": 445,
+        "reached": 11
+      },
+      "p_nocol": 0.02412280701754386,
+      "p_plan": 1.0,
+      "p_reach": 0.02412280701754386,
+      "states": 57
+    },
+    "P6/4/lateral": {
+      "continuation_states": 29,
+      "direction_in_fov_states": 20,
+      "outcomes": {
+        "collision": 222,
+        "reached": 10
+      },
+      "p_nocol": 0.04310344827586207,
+      "p_plan": 1.0,
+      "p_reach": 0.04310344827586207,
+      "states": 29
+    },
+    "P6/4/overflight": {
+      "continuation_states": 28,
+      "direction_in_fov_states": 6,
+      "outcomes": {
+        "collision": 223,
+        "reached": 1
+      },
+      "p_nocol": 0.004464285714285714,
+      "p_plan": 1.0,
+      "p_reach": 0.004464285714285714,
+      "states": 28
+    },
+    "P6/6/all": {
+      "continuation_states": 50,
+      "direction_in_fov_states": 28,
+      "outcomes": {
+        "collision": 393,
+        "reached": 7
+      },
+      "p_nocol": 0.0175,
+      "p_plan": 1.0,
+      "p_reach": 0.0175,
+      "states": 50
+    },
+    "P6/6/lateral": {
+      "continuation_states": 23,
+      "direction_in_fov_states": 14,
+      "outcomes": {
+        "collision": 177,
+        "reached": 7
+      },
+      "p_nocol": 0.03804347826086957,
+      "p_plan": 1.0,
+      "p_reach": 0.03804347826086957,
+      "states": 23
+    },
+    "P6/6/overflight": {
+      "continuation_states": 27,
+      "direction_in_fov_states": 14,
+      "outcomes": {
+        "collision": 216
+      },
+      "p_nocol": 0.0,
+      "p_plan": 1.0,
+      "p_reach": 0.0,
+      "states": 27
+    },
+    "P6/8/all": {
+      "continuation_states": 37,
+      "direction_in_fov_states": 19,
+      "outcomes": {
+        "collision": 288,
+        "reached": 8
+      },
+      "p_nocol": 0.02702702702702703,
+      "p_plan": 1.0,
+      "p_reach": 0.02702702702702703,
+      "states": 37
+    },
+    "P6/8/lateral": {
+      "continuation_states": 20,
+      "direction_in_fov_states": 15,
+      "outcomes": {
+        "collision": 153,
+        "reached": 7
+      },
+      "p_nocol": 0.04375,
+      "p_plan": 1.0,
+      "p_reach": 0.04375,
+      "states": 20
+    },
+    "P6/8/overflight": {
+      "continuation_states": 17,
+      "direction_in_fov_states": 4,
+      "outcomes": {
+        "collision": 135,
+        "reached": 1
+      },
+      "p_nocol": 0.007352941176470588,
+      "p_plan": 1.0,
+      "p_reach": 0.007352941176470588,
+      "states": 17
+    }
+  },
+  "primary_radius_m": 1.0,
+  "scope": "conditional on selected P6 collision episodes; interpretation by researcher"
+}
