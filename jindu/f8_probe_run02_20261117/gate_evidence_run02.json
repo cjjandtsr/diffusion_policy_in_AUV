@@ -1,0 +1,83 @@
+{
+ "artifacts": {
+  "P0_gates_fix01/gates.json": "443778c60561aec648802475f2d3d94757c0de2d4b8b2d5a94ad4667f14bd31b",
+  "P0_gates_fix01/identity.json": "277db0230c0e4d118de5a774690594d4c53044543462d4f39037fa6992050f43",
+  "P6_gates/identity.json": "df93c208f3707df409f32842d386b1419b7f87dec3beafe97ec1b8bde2a39118",
+  "P6_gates_fix01/gates.json": "c4872fa5a77795d9625a59d5634ba524131c7c5a9bf07235f7e2c84fb1395a89",
+  "P6_gates_fix01/identity.json": "df93c208f3707df409f32842d386b1419b7f87dec3beafe97ec1b8bde2a39118",
+  "gate_report_run02.md": "9c6bbe871a6f96ba7cecafbd0de0d1d4bab158d1d652fee2852a453edd67588a",
+  "logs/P0_gates_fix01.log": "12b451b97e6a0c58666a3f9d38613ad128a2252397341731b2640843f3d81fc8",
+  "logs/P6_gates.log": "974a0112956acf4dbf17bdad8d608944b95ad6fae0d77e198beb215cbff352e1",
+  "logs/P6_gates_fix01.log": "d09403931f2caab03baf3369fe76a3e709618895c32a998404903666bdafe601",
+  "logs/compat_fix_note.md": "f949e016cff4f6c203b0e207620ce170f15db9b8a83a443d4fadbea7e9bb59cb"
+ },
+ "compat_fix": {
+  "file": "third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+  "note": "logs/compat_fix_note.md",
+  "package_files_modified": 0,
+  "sha256": "8f495b48d98180f1932161f188c014c40f3b408975c512794bb1d5975575aac4",
+  "source": "BASE (F7-current)"
+ },
+ "date": "2026-11-16",
+ "frozen_unchanged": {
+  "content_hash": "a6c2291d6d23efa57a1689b160958a3e690daac54d8ad86a5d3ec09dbdcd2285",
+  "file_sha256": "c46ff2d858242a7f1470023f399e5d629b04864bbafd6ab63978aa3c14bb05de"
+ },
+ "gate_result": {
+  "P0": "passed",
+  "P6": "passed",
+  "deterministic_repeat_equal": true,
+  "input_hash_match": true,
+  "missing_one_replay_rejected": true,
+  "p0_input_hash_equals_p6_input_hash": true,
+  "p0_use_base_policy": true,
+  "p6_planned_path_equals_expected": true,
+  "p6_use_base_policy": false,
+  "position_exact": true,
+  "state_ids": [
+   "01ef44a774d3d22c24da",
+   "3e0c6caaa4a7cada2458",
+   "47eb395ead644494fe70"
+  ],
+  "states": 3,
+  "velocity_exact": true,
+  "yaw_exact": true
+ },
+ "not_run": [
+  "P6 timing20",
+  "P6 full",
+  "P0 full",
+  "summarize"
+ ],
+ "package": {
+  "driver": "/home/cjj/AUV/program/f8_probe_code_20261116_v12",
+  "manifest_declared_files_verified": 122,
+  "manifest_mismatches": 0,
+  "probe_script_sha256": "46903fdb67d83f0b8167f2142e6a6547f7949f64b96f41482ad89f1ffcccdad4",
+  "zip_sha256": "966ff4049f665b1cc089d9a6184dc7ecff36d1199844c63d52c6d1d5ab0f7164"
+ },
+ "runs": [
+  {
+   "exit_code": 1,
+   "note": "pre-compat: missing vendor diffusion_vpg.py",
+   "output": "P6_gates",
+   "phase": "gates",
+   "policy": "P6"
+  },
+  {
+   "exit_code": 0,
+   "log": "logs/P6_gates_fix01.log",
+   "output": "P6_gates_fix01",
+   "phase": "gates",
+   "policy": "P6"
+  },
+  {
+   "exit_code": 0,
+   "log": "logs/P0_gates_fix01.log",
+   "output": "P0_gates_fix01",
+   "phase": "gates",
+   "policy": "P0"
+  }
+ ],
+ "schema": "f8_probe_gates_v1_2"
+}

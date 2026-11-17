@@ -1,0 +1,112 @@
+{
+  "completed_flights": 20,
+  "completed_states": 3,
+  "elapsed_s": 67.7700996370404,
+  "frozen_hash": "a6c2291d6d23efa57a1689b160958a3e690daac54d8ad86a5d3ec09dbdcd2285",
+  "phase": "timing",
+  "policy": "P6",
+  "projected_2400_s": 8132.411956444848,
+  "records": [
+    {
+      "backs": [
+        4,
+        6,
+        8
+      ],
+      "genuine_backs": [
+        4
+      ],
+      "geodesic_direction": {
+        "bearing_deg": 37.69614951951489,
+        "direction_valid": true,
+        "elevation_deg": -27.02136522542491,
+        "in_fov_approx": false,
+        "limitation": "angular proxy; no occlusion; grid bounds from selected state positions plus start/goal, +/-5m",
+        "point": [
+          -1.1295309066772443,
+          -4.5525529861450185,
+          3.2500000000000004
+        ]
+      },
+      "outcomes": [
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision"
+      ],
+      "overflight": false,
+      "p_plan": 1.0,
+      "state_id": "1d0cfe68bee7a802ae80"
+    },
+    {
+      "backs": [
+        2
+      ],
+      "genuine_backs": [
+        2
+      ],
+      "geodesic_direction": {
+        "bearing_deg": 75.60756734499064,
+        "direction_valid": true,
+        "elevation_deg": -10.242449604315565,
+        "in_fov_approx": false,
+        "limitation": "angular proxy; no occlusion; grid bounds from selected state positions plus start/goal, +/-5m",
+        "point": [
+          -2.6295309066772443,
+          -4.5525529861450185,
+          3.8500000000000005
+        ]
+      },
+      "outcomes": [
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision",
+        "collision"
+      ],
+      "overflight": false,
+      "p_plan": 1.0,
+      "state_id": "01ef44a774d3d22c24da"
+    },
+    {
+      "backs": [
+        4,
+        6,
+        8
+      ],
+      "genuine_backs": [
+        4
+      ],
+      "geodesic_direction": {
+        "bearing_deg": 37.69614951951489,
+        "direction_valid": true,
+        "elevation_deg": -27.02136522542491,
+        "in_fov_approx": false,
+        "limitation": "angular proxy; no occlusion; grid bounds from selected state positions plus start/goal, +/-5m",
+        "point": [
+          -1.1295309066772443,
+          -4.5525529861450185,
+          3.2500000000000004
+        ]
+      },
+      "outcomes": [
+        "collision",
+        "collision",
+        "collision",
+        "collision"
+      ],
+      "overflight": false,
+      "p_plan": 1.0,
+      "state_id": "89b40d1ae76a2d7eba49"
+    }
+  ],
+  "scope": "conditional diagnostic; sampled outcomes do not select a deployed action",
+  "seconds_per_flight_including_open_loop_and_replay": 3.3885049818520203
+}

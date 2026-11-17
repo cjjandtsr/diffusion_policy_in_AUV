@@ -1,0 +1,32 @@
+CMD: /home/cjj/miniconda3/envs/idp3/bin/python /home/cjj/AUV/program/f8_probe_code_20261116_v12/scripts/run_f8_sampling_probe.py run --repo /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy --source-root /home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2 --current-root /home/cjj/AUV/program/f8_probe_code_20261116_v12 --checkpoint /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256 --bank /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/diagnostics/routea_bc_a0_r1_paired_dev_20261010_py38fix_run02/bank/bank.json --frozen /home/cjj/AUV/program/f8_probe_code_20261116_v12/inputs/frozen_geometry.json --policy P6 --phase gates --output /home/cjj/AUV/program/results/f8_sampling_probe_run02/P6_gates
+2026-11-16T22:07:18-06:00
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+Traceback (most recent call last):
+  File "/home/cjj/AUV/program/f8_probe_code_20261116_v12/scripts/run_f8_sampling_probe.py", line 287, in <module>
+    execute(parser().parse_args())
+  File "/home/cjj/AUV/program/f8_probe_code_20261116_v12/scripts/run_f8_sampling_probe.py", line 281, in execute
+    run(args)
+  File "/home/cjj/AUV/program/f8_probe_code_20261116_v12/scripts/run_f8_sampling_probe.py", line 191, in run
+    with override(system.official_runtime,min_std_vector=[.1]*11,denoised_clip_value=2.,sampling_mode='deterministic'),torch.jit.optimized_execution(False):
+  File "/home/cjj/miniconda3/envs/idp3/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/cjj/AUV/program/f8_probe_code_20261116_v12/third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py", line 86, in sampling_protocol_override
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 839, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 975, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1032, in get_data
+FileNotFoundError: [Errno 2] No such file or directory: '/home/cjj/AUV/program/f8_probe_code_20261116_v12/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py'
+EXIT_CODE=1
+finished 2026-11-16T22:07:44-06:00

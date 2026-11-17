@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "policy": "P6",
+  "states": [
+    {
+      "actual": {
+        "position": [
+          -0.049472033977508545,
+          -3.875504970550537,
+          4.331984043121338
+        ],
+        "velocity": [
+          -0.01900855451822281,
+          -0.004414418712258339,
+          -0.015173516236245632
+        ],
+        "yaw": 2.0786211490631104
+      },
+      "actual_input_hash": "34d000283c5b2dc210eed43f9d5ee75b963a0f06ca081cf4872f38e5673db6fb",
+      "deterministic_repeat_equal": true,
+      "expected": {
+        "position": [
+          -0.049472033977508545,
+          -3.875504970550537,
+          4.331984043121338
+        ],
+        "velocity": [
+          -0.01900855451822281,
+          -0.004414418712258339,
+          -0.015173516236245632
+        ],
+        "yaw": 2.0786211490631104
+      },
+      "expected_input_hash": "34d000283c5b2dc210eed43f9d5ee75b963a0f06ca081cf4872f38e5673db6fb",
+      "missing_one_replay_rejected": true,
+      "state_id": "01ef44a774d3d22c24da"
+    },
+    {
+      "actual": {
+        "position": [
+          -0.11112432181835175,
+          -3.813570499420166,
+          4.326237201690674
+        ],
+        "velocity": [
+          -0.020709237083792686,
+          -0.005946924909949303,
+          -0.015971962362527847
+        ],
+        "yaw": 2.083906650543213
+      },
+      "actual_input_hash": "10be9fdd0457da92ed53b4a53564012ed9ca525a29148b513e6cca2122465be7",
+      "deterministic_repeat_equal": true,
+      "expected": {
+        "position": [
+          -0.11112432181835175,
+          -3.813570499420166,
+          4.326237201690674
+        ],
+        "velocity": [
+          -0.020709237083792686,
+          -0.005946924909949303,
+          -0.015971962362527847
+        ],
+        "yaw": 2.083906650543213
+      },
+      "expected_input_hash": "10be9fdd0457da92ed53b4a53564012ed9ca525a29148b513e6cca2122465be7",
+      "missing_one_replay_rejected": true,
+      "state_id": "3e0c6caaa4a7cada2458"
+    },
+    {
+      "actual": {
+        "position": [
+          2.901069164276123,
+          -7.34648323059082,
+          2.604154109954834
+        ],
+        "velocity": [
+          -0.009825910441577435,
+          0.0025445320643484592,
+          0.0001781202299753204
+        ],
+        "yaw": 2.469209671020508
+      },
+      "actual_input_hash": "4d3e6ba35bc41cfd7ecd22e142761b300f40381f01e74870cd5e47cc1023adbd",
+      "deterministic_repeat_equal": true,
+      "expected": {
+        "position": [
+          2.901069164276123,
+          -7.34648323059082,
+          2.604154109954834
+        ],
+        "velocity": [
+          -0.009825910441577435,
+          0.0025445320643484592,
+          0.0001781202299753204
+        ],
+        "yaw": 2.469209671020508
+      },
+      "expected_input_hash": "4d3e6ba35bc41cfd7ecd22e142761b300f40381f01e74870cd5e47cc1023adbd",
+      "missing_one_replay_rejected": true,
+      "state_id": "47eb395ead644494fe70"
+    }
+  ]
+}

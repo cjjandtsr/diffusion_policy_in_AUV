@@ -1,0 +1,26 @@
+CMD: /home/cjj/miniconda3/envs/idp3/bin/python /home/cjj/AUV/program/f8_probe_code_20261116_v12/scripts/run_f8_sampling_probe.py run --repo /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy --source-root /home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2 --current-root /home/cjj/AUV/program/f8_probe_code_20261116_v12 --checkpoint /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/dppo_uav_rebuild/routea_a2_selective_keep_run01/T/checkpoint_update_000256 --bank /home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/diagnostics/routea_bc_a0_r1_paired_dev_20261010_py38fix_run02/bank/bank.json --frozen /home/cjj/AUV/program/f8_probe_code_20261116_v12/inputs/frozen_geometry.json --policy P6 --phase timing --output /home/cjj/AUV/program/results/f8_sampling_probe_run02/P6_timing20
+2026-11-16T22:20:47-06:00
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+F8_STATE P6 1 211 flights 8
+F8_STATE P6 2 211 flights 16
+F8_STATE P6 3 211 flights 20
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.1001997 -2.0425208  4.13299  ], yaw=2.06); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.0946612 -2.0609283  4.1386456], yaw=2.17); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.1066262 -2.0523899  4.1506042], yaw=2.05); using max-range censoring
+  warnings.warn(
+EXIT_CODE=0
+finished 2026-11-16T22:22:19-06:00

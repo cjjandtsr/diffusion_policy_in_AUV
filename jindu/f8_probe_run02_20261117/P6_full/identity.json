@@ -1,0 +1,56 @@
+{
+  "actual_use_base_policy": false,
+  "bc_identity": {
+    "action_spec": {
+      "action_dim": 11,
+      "action_start": 2,
+      "deployment_exec_horizon": 2,
+      "full_horizon": 16,
+      "policy_horizon": 8,
+      "rollout_exec_horizon": 4,
+      "traj_dt": 0.3
+    },
+    "checkpoint_relpath": "data/outputs/2026.08.16/08.53.26_e5_lambda0p5/checkpoints/latest.ckpt",
+    "checkpoint_sha256": "c1fca4ac2735928b18fa7a9c069f90ad181eb84092acee379b073dc6a61bfc9a",
+    "config_sha256": "eb0699aaacbad8537ea24e411b04988bd55d4875c77da20136440487fda5f813",
+    "evidence_caveats": [
+      "historical Gazebo deployment log is unavailable; two repository code paths use state_dicts['model']"
+    ],
+    "normalizer_sha256": "1edbc81f78c66a0f67270266cf333c06071307768e1273d2369aa945320ae1ca",
+    "num_inference_steps": 10,
+    "num_train_timesteps": 50,
+    "observation_spec": {
+      "checkpoint_point_dim": 6,
+      "environment_history": 8,
+      "feature_dim_per_frame": 192,
+      "history_order": "chronological_oldest_to_latest",
+      "point_count": 4096,
+      "policy_history": 3,
+      "policy_point_dim": 3,
+      "state_dim": 9,
+      "use_pc_color": false
+    },
+    "policy_target": "diffusion_policy_3d.policy.diffusion_pointcloud_policy.DiffusionPointcloudPolicy",
+    "prediction_type": "sample",
+    "scheduler_target": "diffusers.schedulers.scheduling_ddim.DDIMScheduler",
+    "weight_source": "model",
+    "workspace_target": "diffusion_policy_3d.workspace.idp3_workspace.iDP3Workspace"
+  },
+  "evaluation_after_first": "E2 deterministic clip2 minstd0.1",
+  "evaluation_first": "training random sample",
+  "frozen_hash": "a6c2291d6d23efa57a1689b160958a3e690daac54d8ad86a5d3ec09dbdcd2285",
+  "p6_state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+  "phase": "full",
+  "policy": "P6",
+  "primary_radius_m": 1.0,
+  "probe_script_sha256": "46903fdb67d83f0b8167f2142e6a6547f7949f64b96f41482ad89f1ffcccdad4",
+  "training_protocol": {
+    "clip_protocol": {
+      "native": 1.0,
+      "override": null
+    },
+    "min_logprob_denoising_std": 0.1,
+    "min_sampling_denoising_std": 0.1,
+    "sampling_mode": "random"
+  }
+}
