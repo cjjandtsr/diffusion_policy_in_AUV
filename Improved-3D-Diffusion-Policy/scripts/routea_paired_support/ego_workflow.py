@@ -16,6 +16,20 @@ from .workflow import save
 def recorded_sources(bank, bank_path):
     if 'evaluation_sources' in bank:
         return bank['evaluation_sources']
+    if bank.get('schema') == 'routea_fixed_split_v1':
+        # Paper-186 adapter (2026-11-11): the testext freeze lineage renders under
+        # the frozen native closure (identity d987235a) and records per-file
+        # SHA256 in the native_a2 manifest beside the test12 bank. The
+        # extension-v2 freeze reused the same closure and points back to the
+        # test12 bank via its inputs_before.json['test'] entry.
+        run_dir = Path(bank_path).parents[1]
+        manifest = run_dir / 'native_a2_manifest.json'
+        if not manifest.is_file():
+            inputs = read_json(run_dir / 'inputs_before.json')
+            test_path = Path(inputs['test']['path'])
+            manifest = test_path.parents[1] / 'native_a2_manifest.json'
+        rows = read_json(manifest)['files']
+        return {row['relative_path']: row['sha256'] for row in rows}
     if bank.get('schema') != 'routea_paper_test_v1':
         raise ValueError('unknown bank source receipt layout')
     receipt = read_json(bank_path.parent/'inputs.json')
@@ -91,13 +105,16 @@ def regression(root, args, bank, bank_path, cat, out):
 
 
 def check_pair(header, summary, entry, task, bank):
+    source_hashes = {bank['content_hash']}
+    if bank.get('schema') == 'paper_186_frozen_v1':
+        source_hashes.update(origin['content_hash'] for origin in bank['origins'])
     if (header['task_id'] != entry['task_id'] or header['repeat'] != entry['repeat']
-            or header['task'] != task['payload'] or header['bank_hash'] != bank['content_hash']
+            or header['task'] != task['payload'] or header['bank_hash'] not in source_hashes
             or header['initial_hash'] != entry['initial_hash']
             or header['reset_seed'] != entry['reset_seed']
             or summary['initial_hash'] != entry['initial_hash']
             or summary['policy'] != header['policy']
-            or summary['bank_hash'] != bank['content_hash']
+            or summary['bank_hash'] != header['bank_hash']
             or header['obstacle_sha256'] != bank['worlds'][task['world_id']]['obstacle_sha256']
             or header.get('terminate_at_space_limits', True)):
         raise ValueError('EGO comparison has different task/initial state/physics')
@@ -124,26 +141,37 @@ def export_record(header, rows, summary, commit, job, task_number):
         raw_source=str((job/commit['trace']).resolve()), raw_sha256=commit['sha256'],
         planning_update_seconds_median=float(np.median(latencies)) if latencies else None,
         planning_update_seconds_p95=float(np.percentile(latencies, 95)) if latencies else None,
-        trajectory_count=max((u['trajectory_count'] for u in calls), default=0),
-        failed_plans=max((u['failed_plans'] for u in calls), default=0))
+        trajectory_count=max((u['trajectory_count'] for u in calls if 'trajectory_count' in u), default=None),
+        failed_plans=max((u['failed_plans'] for u in calls if 'failed_plans' in u), default=None))
 
 
 def run_ego(root, args):
     import torch
     from .ego import EgoPolicy
     from .analysis import tables
-    if args.task_bank is None or args.ego_launch is None or args.out is None:
+    name = args.policy
+    if args.ego_regression and name != 'ego':
+        raise ValueError('--ego-regression applies only to EGO')
+    launch = args.ego_launch if name == 'ego' else args.planner_launch
+    if args.task_bank is None or launch is None or args.out is None:
         raise ValueError('EGO requires --task-bank, --ego-launch and --out')
     if args.paper or args.recovery_only or args.recovery_bank or args.mechanism_baseline:
         raise ValueError('EGO reads an already frozen bank; do not combine with paper/recovery generation')
     bank_path = args.task_bank.resolve()
-    bank = check_bank(bank_path)
+    if read_json(bank_path).get('schema') == 'paper_186_frozen_v1':
+        from scripts.routea_testext_task_bank import bank_check, verify_arrays
+        bank = bank_check(bank_path)
+        verify_arrays(bank, bank_path.parent)
+        if (len(bank['tasks']), len(bank['episodes']), len(bank['worlds'])) != (186, 930, 40):
+            raise ValueError('published matrix differs')
+    else:
+        bank = check_bank(bank_path)
     from .reference import source_compatible
-    for name, expected in recorded_sources(bank, bank_path).items():
-        if (name.startswith('diffusion_policy_3d/env/') or
-                name == 'diffusion_policy_3d/model/common/synth_pointcloud.py'):
-            if not source_compatible(name,file_hash(root/name),expected,True):
-                raise ValueError('environment/observation source differs from bank: '+name)
+    for source_name, expected in recorded_sources(bank, bank_path).items():
+        if (source_name.startswith('diffusion_policy_3d/env/') or
+                source_name == 'diffusion_policy_3d/model/common/synth_pointcloud.py'):
+            if not source_compatible(source_name,file_hash(root/source_name),expected,True):
+                raise ValueError('environment/observation source differs from bank: '+source_name)
     out = args.out.resolve()
     out.relative_to(Path('/home/cjj/AUV/program'))
     if out == Path('/home/cjj/AUV/program'):
@@ -152,16 +180,49 @@ def run_ego(root, args):
         raise FileExistsError('use new output or --resume')
     out.mkdir(parents=True, exist_ok=True)
     cat = resolve_catalogue(root, args.checkpoint or [])
-    ego = EgoPolicy(args.ego_launch, args.ego_map_size, out/'logs/ego')
+    if name == 'fast':
+        from .fast_planner import FastPolicy
+        policy_class = FastPolicy
+    elif name == 'px4':
+        from .px4_local_planner import Px4LocalPlannerPolicy
+        policy_class = Px4LocalPlannerPolicy
+    elif name == 'super':
+        if not args.super_config:
+            raise ValueError('SUPER requires --super-config (generated sync YAML)')
+        from .super_planner_policy import SuperPolicy
+        policy_class = SuperPolicy
+    else:
+        policy_class = EgoPolicy
+    if name == 'super':
+        ego = policy_class(launch, args.ego_map_size, out/('logs/'+name),
+                           config_path=args.super_config)
+    else:
+        ego = policy_class(launch, args.ego_map_size, out/('logs/'+name))
     # Hash the deployed ROS source tree, not just a launch include name.
-    planner = args.ego_launch.resolve().parents[2]
-    if not (planner/'plan_manage').is_dir():
-        raise ValueError('launch must be inside the deployed planner/plan_manage/launch directory')
-    ros_sources = {str(p.relative_to(planner)): file_hash(p) for p in sorted(planner.rglob('*'))
-                   if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.xml','.launch','.srv','.txt')}
+    if name == 'super':
+        # The SUPER arm spans the adapter package plus the three official trees
+        # it compiles against (with their generated ROS1 build files). All of
+        # them enter the identity (guide: native sources in identity).
+        planner = launch.resolve().parents[1]
+        tree_roots = [planner,
+                      root/'third_party/super_official_2ad3419/super_planner',
+                      root/'third_party/super_official_2ad3419/rog_map',
+                      root/'third_party/super_official_2ad3419/mars_uav_sim/mars_quadrotor_msgs']
+        ros_sources = {}
+        for tree in tree_roots:
+            for p in sorted(tree.rglob('*')):
+                if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.xml','.launch',
+                                                '.srv','.txt','.yaml','.msg','.cmake'):
+                    ros_sources[str(p.relative_to(root))] = file_hash(p)
+    else:
+        planner = launch.resolve().parents[2]
+        if name == 'ego' and not (planner/'plan_manage').is_dir():
+            raise ValueError('launch must be inside the deployed planner/plan_manage/launch directory')
+        ros_sources = {str(p.relative_to(planner)): file_hash(p) for p in sorted(planner.rglob('*'))
+                       if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.xml','.launch','.srv','.txt')}
     ego.identity_hash = canonical_hash(dict(adapter=ego.identity_hash, ros_sources=ros_sources))
     binaries = {}
-    if not args.ego_regression:
+    if not args.ego_regression and name == 'ego':
         import subprocess
         import roslib.packages
         actual_package = Path(subprocess.check_output(['rospack','find','ego_planner'],text=True).strip()).resolve()
@@ -178,7 +239,37 @@ def run_ego(root, args):
                 raise FileNotFoundError('missing catkin library: '+str(path))
             binaries[str(path)] = file_hash(path)
         ego.identity_hash = canonical_hash(dict(source=ego.identity_hash,binaries=binaries))
-    protocol = dict(bank_hash=bank['content_hash'], policy='ego', identity=ego.identity_hash,
+    elif not args.ego_regression:
+        import subprocess
+        import roslib.packages
+        if name == 'fast':
+            package, executable = 'plan_manage', 'fast_planner_node'
+        elif name == 'px4':
+            package, executable = 'paper_px4_bridge', 'paper_px4_bridge_node'
+        else:
+            package, executable = 'paper_super_sync', 'paper_super_sync_node'
+        actual_package = Path(subprocess.check_output(['rospack', 'find', package], text=True).strip()).resolve()
+        if actual_package != launch.resolve().parents[1]:
+            raise ValueError('rospack resolves a different planner workspace')
+        nodes = roslib.packages.find_node(package, executable) or []
+        if len(nodes) != 1:
+            raise ValueError('expected one built '+executable)
+        node = Path(nodes[0]).resolve()
+        binaries[str(node)] = file_hash(node)
+        for library in sorted(node.parents[1].glob('*.so*')):
+            if library.is_file():
+                binaries[str(library)] = file_hash(library)
+        ego.identity_hash = canonical_hash(dict(source=ego.identity_hash, binaries=binaries))
+    if name == 'super':
+        # Close the identity gap of the 2026-11-12 three-arm round: the Python
+        # adapter layer enters the arm identity for the SUPER arm (the guide
+        # requires adapted C++/Python sources in identity).
+        adapter_files = [root/'scripts/routea_paired_support/super_planner_policy.py',
+                         root/'scripts/routea_paired_support/super_reference.py',
+                         root/'scripts/prepare_paper_super_sync_config.py']
+        python_adapter = {str(p.relative_to(root)): file_hash(p) for p in adapter_files}
+        ego.identity_hash = canonical_hash(dict(base=ego.identity_hash, python_adapter=python_adapter))
+    protocol = dict(bank_hash=bank['content_hash'], policy=name, identity=ego.identity_hash,
         catalogue_hash=cat['content_hash'],
         execution='common_H8_H4_0.3s', expected_episodes=len(bank['episodes']),
         evaluation_sources=evaluation_sources(root), ros_sources=ros_sources,
@@ -201,7 +292,7 @@ def run_ego(root, args):
     save(out/'selection.json', dict(smoke=args.ego_smoke, keys=[e['key'] for e in entries]))
     torch.backends.cudnn.benchmark = False
     torch.backends.cudnn.deterministic = True
-    job = out/'full/ego'
+    job = out/('full/'+name)
     (job/'commits').mkdir(parents=True, exist_ok=True)
     with torch.jit.optimized_execution(False):
         system, config = common_system(root, cat)
@@ -215,7 +306,7 @@ def run_ego(root, args):
             if task['world_id'] not in adapters:
                 adapters[task['world_id']] = make_adapter(system, config, world, task['role'])
             try:
-                record_episode(job, 'ego', ego, adapters[task['world_id']], task, entry, world, bank['content_hash'])
+                record_episode(job, name, ego, adapters[task['world_id']], task, entry, world, bank['content_hash'])
             finally:
                 ego.close()
             print('EGO_EPISODE',index,len(entries),entry['key'],flush=True)
@@ -226,35 +317,36 @@ def run_ego(root, args):
     jobs = [job] + [p.resolve() for p in (args.compare_existing or [])]
     policy_names = set()
     for existing in jobs:
-        name = None
+        existing_name = None
         for entry in entries:
             path = existing/'commits'/(entry['key']+'.json')
             header, rows, summary = load_commit(existing, path)
             check_pair(header, summary, entry, tasks[entry['task_id']], bank)
-            if name is not None and header['policy'] != name:
+            if existing_name is not None and header['policy'] != existing_name:
                 raise ValueError('mixed policies in one job')
-            name = header['policy']
-            if existing == job and (header.get('policy_kind') != 'ego' or
+            existing_name = header['policy']
+            if existing == job and (header.get('policy_kind') != name or
                     header['policy_identity_hash'] != ego.identity_hash):
                 raise ValueError('wrong EGO identity')
             summaries.append(summary)
             records.append(export_record(header, rows, summary, read_json(path), existing,
                                          task_numbers[entry['task_id']]))
-        if name in policy_names:
+        if existing_name in policy_names:
             raise ValueError('duplicate comparison policy')
-        policy_names.add(name)
+        policy_names.add(existing_name)
     save(out/'comparison_statistics.json', tables(summaries))
-    save(out/'b3_ego_records.json', dict(records=records,
+    save(out/('b3_'+name+'_records.json'), dict(records=records,
         metric_scope='common trace_metrics; full executed polyline',
         timing_scope='synchronous observation/FSM service CPU time, not model-only inference'))
-    ego_rows = [r for r in records if r['policy']=='ego']
-    lines = ['# EGO common H4 evaluation', '', 'Smoke: '+str(args.ego_smoke),
+    ego_rows = [r for r in records if r['policy']==name]
+    lines = ['# '+name+' common H4 evaluation', '', 'Smoke: '+str(args.ego_smoke),
              'Valid episodes: '+str(len(ego_rows)), '', '|Outcome|Count|','|---|---:|']
     from collections import Counter
     lines += ['|{}|{}|'.format(k,v) for k,v in sorted(Counter(r['outcome'] for r in ego_rows).items())]
     lines += ['', 'Historical BC/RL results were read, not rerun.',
-              'EGO uses the common H4 commitment; this is not native high-rate Gazebo execution.']
-    (out/'b3_ego.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+              'Common H4 commitment; this is not native high-rate Gazebo execution.',
+              'Raw environment outcomes above are not paper 1.5m outcomes; use export_paper_trajectory_metrics.py.']
+    (out/('b3_'+name+'.md')).write_text('\n'.join(lines)+'\n',encoding='utf-8')
     save(out/'complete.json',dict(status='smoke_complete' if args.ego_smoke else 'complete',
                                       episodes=len(ego_rows), bank_hash=bank['content_hash']))
     return 0

@@ -1,0 +1,52 @@
+<launch>
+  <!-- 2026-11-12: official-limits variant of paper_fast_eval.launch.
+
+       The only difference from paper_fast_eval.launch is max_vel / max_acc:
+       they now equal the values of the upstream reference launch
+       plan_manage/launch/kino_replan.launch (max_vel 3.0, max_acc 2.0), which is
+       the only official launch that includes kino_algorithm.xml. All other
+       parameters (sdf_map, search, optimization, bspline) come from
+       kino_algorithm.xml in both files, unchanged.
+
+       Rationale (user decision 2026-11-12): each planner compares at its own
+       official settings; the paper metrics of interest are arrival and
+       collision. The 0.5/0.25 override made the optimizer's output infeasible
+       and drove repeated NonUniformBspline::reallocateTime(), which moved the
+       published trajectory's t=0 ahead of the drone and produced the one-shot
+       reference jump documented in FAST_REFERENCE_DISCONTINUITY_20261112.md.
+
+       paper_fast_eval.launch is kept untouched so the 930-episode 0.5 m/s run
+       stays reproducible. -->
+  <arg name="map_size_x" default="40"/>
+  <arg name="map_size_y" default="40"/>
+  <arg name="map_size_z" default="10"/>
+  <param name="/fast_planner_node/evaluation_mode" value="true"/>
+  <param name="use_sim_time" value="true"/>
+  <include file="$(find plan_manage)/launch/kino_algorithm.xml">
+    <arg name="map_size_x_" value="$(arg map_size_x)"/>
+    <arg name="map_size_y_" value="$(arg map_size_y)"/>
+    <arg name="map_size_z_" value="$(arg map_size_z)"/>
+    <arg name="odometry_topic" value="/paper_fast_unused_odom"/>
+    <arg name="camera_pose_topic" value="/paper_fast_unused_pose"/>
+    <arg name="depth_topic" value="/paper_fast_unused_depth"/>
+    <arg name="cloud_topic" value="/paper_fast_unused_cloud"/>
+    <arg name="cx" value="321.04638671875"/>
+    <arg name="cy" value="243.44969177246094"/>
+    <arg name="fx" value="387.229248046875"/>
+    <arg name="fy" value="387.229248046875"/>
+    <!-- official kino_replan.launch values -->
+    <arg name="max_vel" value="3.0"/>
+    <arg name="max_acc" value="2.0"/>
+    <arg name="point_num" value="0"/>
+    <arg name="flight_type" value="1"/>
+    <arg name="point0_x" value="0"/>
+    <arg name="point0_y" value="0"/>
+    <arg name="point0_z" value="0"/>
+    <arg name="point1_x" value="0"/>
+    <arg name="point1_y" value="0"/>
+    <arg name="point1_z" value="0"/>
+    <arg name="point2_x" value="0"/>
+    <arg name="point2_y" value="0"/>
+    <arg name="point2_z" value="0"/>
+  </include>
+</launch>

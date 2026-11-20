@@ -1,0 +1,16 @@
+<launch>
+    <arg name="randomize_points" default="true"/>
+    <arg name="map_size_x" default="50.0"/>
+    <arg name="map_size_y" default="25.0"/>
+    <arg name="map_size_z" default="3.0"/>
+
+    <node pkg="custom_target_generator" name="random_target_generator" type="random_target_generator" output="screen" if="$(arg randomize_points)">
+       <param name="map_size_x" value="$(arg map_size_x)" />
+       <param name="map_size_y" value="$(arg map_size_y)" />
+       <param name="map_size_z" value="$(arg map_size_z)" />
+       <param name="min_height" value="1.2" />
+       <param name="max_height" value="2.2" />
+       <param name="safe_margin" value="3.0" />
+       <param name="frame_id" value="world" />
+    </node>
+</launch>

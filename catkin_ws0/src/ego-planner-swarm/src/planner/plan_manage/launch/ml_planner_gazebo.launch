@@ -1,0 +1,72 @@
+<launch>
+    <arg name="drone_id" default="0"/>
+    <arg name="odom_topic"       value="/mavros/local_position/odom"/>
+    <arg name="pointcloud_topic" value="/iris_D435i/realsense/depth_camera/depth/points"/>
+    <arg name="waypoint_num" value="1"/>
+    <arg name="waypoint0_x"  value="8.0"/>
+    <arg name="waypoint0_y"  value="0.0"/>
+    <arg name="waypoint0_z"  value="2.0"/>
+    <arg name="deployment_steps" default="4"/>
+    <!-- Phase ② 闭环对比: checkpoint_path 改为 arg, 可命令行覆盖 -->
+    <!-- 默认 = Phase 1a R2; 测 Phase ② 时传 ckpt:=<phase2 ckpt 路径> -->
+    <arg name="ckpt" default="$(env HOME)/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/2026.05.10/16.07.11_v8_phase1a/checkpoints/best.ckpt"/>
+
+    <!-- Phase ② z 下沉 bug: z 通道前馈模式 -->
+    <!-- full=原行为(有bug) / no_acc=清z加速度前馈(诊断) / no_ff=清z速度+加速度前馈(修复) -->
+    <!-- 命令行覆盖: roslaunch ... z_ff_mode:=no_ff -->
+    <arg name="z_ff_mode" default="full"/>
+
+    <node name="drone_$(arg drone_id)_ml_planner"
+          pkg="ego_planner" type="ml_planner_gazebo.py" output="screen">
+        <param name="drone_id"     value="$(arg drone_id)"/>
+        <param name="waypoint_num" value="$(arg waypoint_num)"/>
+        <param name="waypoint0_x"  value="$(arg waypoint0_x)"/>
+        <param name="waypoint0_y"  value="$(arg waypoint0_y)"/>
+        <param name="waypoint0_z"  value="$(arg waypoint0_z)"/>
+        <remap from="~odom"       to="$(arg odom_topic)"/>
+        <remap from="~pointcloud" to="$(arg pointcloud_topic)"/>
+        <param name="control_freq"   value="50.0"/>
+        <param name="replan_ratio"   value="0.7"/>
+        <param name="goal_tolerance" value="1.0"/>
+        <param name="default_height" value="1.5"/>
+        <param name="traj_dt"        value="0.3"/>
+        <param name="pos_gain"       value="[3.5, 3.5, 3.5]"/>
+        <param name="vel_gain"       value="[3.5, 3.5, 3.5]"/>
+        <param name="flight_mode"    value="0"/>
+        <!-- v5: odom twist 是 body frame, 部署代码内部会转为 world -->
+        <param name="odom_vel_is_world" value="false"/>
+        <param name="num_inference_steps" value="10"/>
+        <param name="use_fp16"  value="true"/>
+        <!-- ⚠️ Phase1a 必须关 compile：torch.compile + cudagraphs 与 CFG 双 forward -->
+        <!-- 不兼容，warmup 期 cond_encoder 抛 1024 vs 2048 形状不匹配。详见 -->
+        <!-- ml_gazebo.sh 报错 (FakeTensor 关联冲突 + dst.copy_ 形状错)。 -->
+        <!-- baseline checkpoint 没有 CFG，可保留 true。 -->
+        <param name="use_torch_compile" value="false"/>
+        <!-- Phase1a 闭环修复：部署侧 action chunk 截断（不影响训练 horizon=16）。 -->
+        <!-- 训练 n_action_steps=8 仍生效，但部署时只执行前 N 步即重规划，避免 -->
+        <!-- 首步 yaw 偏置（-0.12~-0.17 rad 右转）持续 2.4s 造成圆弧累积。 -->
+        <!-- N=2 → 0.21s 后重规划；N=3 → 0.42s（推理时间宽松些）。0=不截断。 -->
+        <!-- 与 E2 协议 / P6 原迹口径对齐必须为 4（见 Gazebo策略接口核查 §：执行步数 2 vs 4） -->
+        <param name="deployment_action_steps" value="$(arg deployment_steps)"/>
+        <!-- Phase ② z 下沉 bug: z 通道前馈模式 (arg z_ff_mode 在 launch 顶部声明) -->
+        <param name="z_feedforward_mode" value="$(arg z_ff_mode)"/>
+        <!-- Phase1a: zarr_path 用于加载 normalizer（仅 Phase1a checkpoint 需要）-->
+        <param name="zarr_path" value="$(env HOME)/AUV/avoidance_dataset/merged_body_12.zarr"/>
+        <!-- Phase ②: checkpoint_path 来自 ckpt arg (默认 Phase 1a R2, 可命令行覆盖) -->
+        <param name="checkpoint_path" value="$(arg ckpt)"/>
+    </node>
+
+    <node pkg="odom_visualization"
+          name="drone_$(arg drone_id)_odom_visualization"
+          type="odom_visualization" output="screen">
+        <remap from="~odom" to="$(arg odom_topic)"/>
+        <param name="color/a" value="1.0"/>
+        <param name="color/r" value="0.0"/>
+        <param name="color/g" value="0.0"/>
+        <param name="color/b" value="1.0"/>
+        <param name="covariance_scale" value="100.0"/>
+        <param name="robot_scale" value="1.0"/>
+        <param name="tf45" value="false"/>
+        <param name="drone_id" value="$(arg drone_id)"/>
+    </node>
+</launch>

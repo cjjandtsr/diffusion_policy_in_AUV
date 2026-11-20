@@ -1,0 +1,406 @@
+#!/usr/bin/env python3
+"""
+analyze_honest_baseline.py — Phase ① honest baseline 数据聚合
+
+读取 run_honest_baseline.sh 产出的 CSV 文件夹，按 Phase ① 设计文档 §4.5
+计算所有必记指标，输出 markdown 报告。
+
+用法:
+    python3 analyze_honest_baseline.py --dir ~/ml_planner_log/phase1_honest_baseline/<TS>
+    python3 analyze_honest_baseline.py --dir <DIR> --out report.md
+
+输入: 每次飞行 3 个 CSV (diffusion / pos / state) + ROS log
+输出: phase1_honest_baseline_results.md
+
+度量定义 (与设计文档 §4.5 对齐):
+  - success: dxy_final < 0.5m AND dz_final < 0.3m
+  - collision: min_clr < 0.2m at any point during flight
+              (近似: 用 inferred 推理时记录的 obstacle 信息, 或用 ros log 检测)
+  - 末段_raw_dx: |raw_action[0, dpos_x]| 当 dist_to_goal < 1m 时的均值
+  - inference_time: diffusion CSV 的 inference_ms 中位数
+  - detour: path_length / displacement, 1.0 = 直线
+  - min_clr: 飞行轨迹最近障碍物距离 (需要点云日志; 没有则 N/A)
+"""
+
+import argparse
+import csv
+import json
+import math
+import os
+import sys
+from collections import defaultdict
+from glob import glob
+
+import numpy as np
+import pandas as pd
+
+
+# 列名映射 (与 ml_planner_gazebo.py 的 CSVLogger 一致)
+POS_COLS = ['ros_time', 'cmd_id', 'source',
+            'cmd_px', 'cmd_py', 'cmd_pz',
+            'cmd_vx', 'cmd_vy', 'cmd_vz',
+            'cmd_ax', 'cmd_ay', 'cmd_az',
+            'cmd_yaw', 'cmd_yr',
+            'cur_px', 'cur_py', 'cur_pz']
+
+DPOS_W_DIM = 0  # raw_action[:, 0:3] = dpos_world
+RAW_PREFIX = 'raw'  # diffusion CSV 用 raw_<dim> 前缀
+
+
+def parse_args():
+    p = argparse.ArgumentParser()
+    p.add_argument('--dir', required=True,
+                   help='honest baseline 运行的日志目录')
+    p.add_argument('--out', default=None,
+                   help='输出 markdown 文件路径 (默认: <dir>/phase1_honest_baseline_results.md)')
+    p.add_argument('--goal-xy', type=float, default=0.5,
+                   help='success 判定 dxy 阈值 (default 0.5m)')
+    p.add_argument('--goal-z', type=float, default=0.3,
+                   help='success 判定 dz 阈值 (default 0.3m)')
+    p.add_argument('--end-dist', type=float, default=1.0,
+                   help='末段 raw_dx 统计的 dist 阈值 (default 1.0m)')
+    return p.parse_args()
+
+
+def find_flight_ids(log_dir):
+    """从目录扫描所有 flight_id (依据 *_pos.csv 命名)"""
+    pos_files = sorted(glob(os.path.join(log_dir, '*_pos.csv')))
+    ids = []
+    for f in pos_files:
+        name = os.path.basename(f).replace('_pos.csv', '')
+        ids.append(name)
+    return ids
+
+
+def read_pos_csv(path):
+    """读 pos_cmd CSV, 自动检测列名"""
+    try:
+        df = pd.read_csv(path)
+    except Exception as e:
+        print(f"  [WARN] 读 {path} 失败: {e}")
+        return None
+    # 兼容缺列名情况
+    if 'cur_px' not in df.columns:
+        # 用 POS_COLS 补全（按列序）
+        if len(df.columns) >= len(POS_COLS):
+            df.columns = POS_COLS[:len(df.columns)]
+    return df
+
+
+def read_diff_csv(path):
+    """读 diffusion CSV"""
+    try:
+        df = pd.read_csv(path)
+    except Exception as e:
+        print(f"  [WARN] 读 {path} 失败: {e}")
+        return None
+    return df
+
+
+def get_goal_from_diff(df_diff):
+    """从 diffusion CSV 提取 goal (假设全程不变)"""
+    for col in ['goal_x', 'goal_y', 'goal_z']:
+        if col not in df_diff.columns:
+            return None
+    return (float(df_diff['goal_x'].iloc[0]),
+            float(df_diff['goal_y'].iloc[0]),
+            float(df_diff['goal_z'].iloc[0]))
+
+
+def compute_flight_metrics(flight_id, log_dir, args):
+    """计算单次飞行的所有指标"""
+    pos_path  = os.path.join(log_dir, f"{flight_id}_pos.csv")
+    diff_path = os.path.join(log_dir, f"{flight_id}_diff.csv")
+    ros_path  = os.path.join(log_dir, f"{flight_id}_ros.log")
+
+    m = {
+        'flight_id': flight_id,
+        'world': flight_id.rsplit('_trial', 1)[0],
+        'trial': int(flight_id.rsplit('_trial', 1)[1]) if '_trial' in flight_id else 0,
+    }
+
+    df_pos = read_pos_csv(pos_path) if os.path.exists(pos_path) else None
+    df_diff = read_diff_csv(diff_path) if os.path.exists(diff_path) else None
+
+    if df_pos is None or len(df_pos) == 0:
+        m['status'] = 'NO_POS_CSV'
+        return m
+
+    # ---- 轨迹基础 ----
+    pos = df_pos[['cur_px', 'cur_py', 'cur_pz']].values
+    n_frames = len(pos)
+
+    # ---- Goal ----
+    goal = None
+    if df_diff is not None and len(df_diff) > 0:
+        goal = get_goal_from_diff(df_diff)
+    if goal is None:
+        # fallback: 假设默认 goal (开题报告 / launch 中的 waypoint0)
+        goal = (8.0, 0.0, 2.0)
+        m['goal_source'] = 'fallback_default'
+    else:
+        m['goal_source'] = 'diff_csv'
+    m['goal'] = goal
+
+    # ---- 终态 ----
+    final = pos[-1]
+    dxy_final = float(np.hypot(final[0] - goal[0], final[1] - goal[1]))
+    dz_final  = float(abs(final[2] - goal[2]))
+    m['final_pos'] = tuple(float(x) for x in final)
+    m['dxy_final'] = dxy_final
+    m['dz_final']  = dz_final
+    m['success'] = bool(dxy_final < args.goal_xy and dz_final < args.goal_z)
+
+    # ---- 路径长度 / detour ----
+    if n_frames > 1:
+        diffs = np.diff(pos, axis=0)
+        seg_len = np.linalg.norm(diffs, axis=1)
+        path_len = float(seg_len.sum())
+        displacement = float(np.linalg.norm(pos[-1] - pos[0]))
+        m['path_len'] = path_len
+        m['displacement'] = displacement
+        m['detour'] = path_len / max(displacement, 1e-6)
+    else:
+        m['path_len'] = m['displacement'] = m['detour'] = float('nan')
+
+    # ---- 飞行时长 ----
+    if 'ros_time' in df_pos.columns and n_frames > 1:
+        m['duration_s'] = float(df_pos['ros_time'].iloc[-1] - df_pos['ros_time'].iloc[0])
+    else:
+        m['duration_s'] = float('nan')
+
+    # ---- 推理时间 ----
+    if df_diff is not None and 'inference_ms' in df_diff.columns:
+        # 每个 plan_id 只取第一行 (推理时间是 plan-level)
+        inf_per_plan = df_diff.drop_duplicates('plan_id')['inference_ms']
+        m['inference_ms_median'] = float(inf_per_plan.median())
+        m['inference_ms_p25']    = float(inf_per_plan.quantile(0.25))
+        m['inference_ms_p75']    = float(inf_per_plan.quantile(0.75))
+        m['inference_ms_max']    = float(inf_per_plan.max())
+    else:
+        m['inference_ms_median'] = m['inference_ms_p25'] = float('nan')
+        m['inference_ms_p75'] = m['inference_ms_max'] = float('nan')
+
+    # ---- 末段 raw_dx (d_goal < end_dist 时)  ----
+    if df_diff is not None and len(df_diff) > 0:
+        # 找到 raw_<dim> 列 (dpos_x = dim 0)
+        raw_x_col = None
+        for cand in ['raw_0', f'{RAW_PREFIX}_0', 'raw_dpos_x', 'raw_dpos_world_x']:
+            if cand in df_diff.columns:
+                raw_x_col = cand
+                break
+        if raw_x_col is not None:
+            # 每条 raw_action 对应一个 plan_id, 取 step=0 那一行
+            step0 = df_diff[df_diff['step'] == 0] if 'step' in df_diff.columns else df_diff
+            # 用 cur_px/cur_py 估 dist to goal
+            if all(c in step0.columns for c in ['cur_px', 'cur_py', 'cur_pz']):
+                d_goal = np.sqrt(
+                    (step0['cur_px'] - goal[0])**2 +
+                    (step0['cur_py'] - goal[1])**2 +
+                    (step0['cur_pz'] - goal[2])**2)
+                near = step0[d_goal < args.end_dist]
+                if len(near) > 0:
+                    m['end_raw_dx_mean']    = float(near[raw_x_col].abs().mean())
+                    m['end_raw_dx_max']     = float(near[raw_x_col].abs().max())
+                    m['end_n_planpoints']   = int(len(near))
+                else:
+                    m['end_raw_dx_mean'] = m['end_raw_dx_max'] = float('nan')
+                    m['end_n_planpoints'] = 0
+            else:
+                m['end_raw_dx_mean'] = m['end_raw_dx_max'] = float('nan')
+                m['end_n_planpoints'] = 0
+        else:
+            m['end_raw_dx_mean'] = m['end_raw_dx_max'] = float('nan')
+            m['end_n_planpoints'] = 0
+    else:
+        m['end_raw_dx_mean'] = m['end_raw_dx_max'] = float('nan')
+        m['end_n_planpoints'] = 0
+
+    # ---- 碰撞检测 (从 ros log) ----
+    m['collision_detected'] = False
+    m['z_oob_count'] = 0
+    if os.path.exists(ros_path):
+        with open(ros_path, 'r', errors='ignore') as f:
+            for line in f:
+                if 'bumper' in line.lower() or 'collision' in line.lower():
+                    m['collision_detected'] = True
+                if 'Z-OOB' in line:
+                    m['z_oob_count'] += 1
+
+    # ---- 是否超时 (没看到 GOAL-REACH 也没碰撞) ----
+    m['reached_goal_logged'] = False
+    if os.path.exists(ros_path):
+        with open(ros_path, 'r', errors='ignore') as f:
+            content = f.read()
+            if 'GOAL-REACH' in content or '所有航点完成' in content:
+                m['reached_goal_logged'] = True
+
+    m['status'] = 'OK'
+    return m
+
+
+def aggregate_and_report(metrics_list, out_path, args):
+    """聚合 + 输出 markdown 报告"""
+    df = pd.DataFrame(metrics_list)
+
+    if len(df) == 0:
+        with open(out_path, 'w') as f:
+            f.write("# Phase ① Honest Baseline — 无数据\n\n未找到任何 flight CSV。\n")
+        return
+
+    # 仅统计 status==OK 的飞行
+    df_ok = df[df['status'] == 'OK'].copy() if 'status' in df.columns else df
+
+    # 聚合
+    agg = {
+        'total_flights': int(len(df)),
+        'flights_with_data': int(len(df_ok)),
+        'success_rate': float(df_ok['success'].mean()) if len(df_ok) > 0 else 0.0,
+        'collision_rate': float(df_ok['collision_detected'].mean()) if len(df_ok) > 0 else 0.0,
+        'mean_dxy_final':  float(df_ok['dxy_final'].mean()) if len(df_ok) > 0 else float('nan'),
+        'mean_dz_final':   float(df_ok['dz_final'].mean()) if len(df_ok) > 0 else float('nan'),
+        'mean_detour':     float(df_ok['detour'].mean()) if len(df_ok) > 0 else float('nan'),
+        'mean_inference_ms_median': float(df_ok['inference_ms_median'].mean()) if len(df_ok) > 0 else float('nan'),
+        'mean_end_raw_dx_mean':     float(df_ok['end_raw_dx_mean'].mean()) if len(df_ok) > 0 else float('nan'),
+        'total_end_planpoints':     int(df_ok['end_n_planpoints'].sum()) if len(df_ok) > 0 else 0,
+    }
+
+    # ---- 写报告 ----
+    with open(out_path, 'w') as f:
+        f.write(f"# Phase ① Honest Baseline 结果\n\n")
+        f.write(f"**Generated**: `{__file__}`\n")
+        f.write(f"**Source dir**: `{args.dir}`\n\n")
+
+        f.write("## 0. 关键数字 (一行 TL;DR)\n\n")
+        f.write(f"- **policy-only success rate**: `{agg['success_rate']:.1%}` "
+                f"({int(agg['success_rate'] * agg['flights_with_data'])}/{agg['flights_with_data']})\n")
+        f.write(f"- **collision rate**: `{agg['collision_rate']:.1%}`\n")
+        f.write(f"- **mean detour**: `{agg['mean_detour']:.2f}` "
+                f"(1.0 = 直线; 越接近越优)\n")
+        f.write(f"- **mean inference time (median)**: `{agg['mean_inference_ms_median']:.0f}` ms\n")
+        f.write(f"- **末段 raw_dx mean (d<{args.end_dist}m)**: "
+                f"`{agg['mean_end_raw_dx_mean']:.3f}` m "
+                f"(target < 0.15m 表示学到减速; "
+                f"common 末段窗口 ≈ {agg['total_end_planpoints']} planpoints)\n\n")
+
+        f.write("## 1. 聚合指标\n\n")
+        f.write("| 指标 | 值 |\n|---|---|\n")
+        for k, v in agg.items():
+            if isinstance(v, float):
+                f.write(f"| `{k}` | {v:.4g} |\n")
+            else:
+                f.write(f"| `{k}` | {v} |\n")
+        f.write("\n")
+
+        f.write("## 2. 逐次飞行明细\n\n")
+        cols = ['flight_id', 'success', 'dxy_final', 'dz_final', 'detour',
+                'duration_s', 'inference_ms_median', 'end_raw_dx_mean',
+                'collision_detected', 'reached_goal_logged']
+        cols = [c for c in cols if c in df.columns]
+        f.write("| " + " | ".join(cols) + " |\n")
+        f.write("|" + "|".join(['---'] * len(cols)) + "|\n")
+        for _, row in df.iterrows():
+            vals = []
+            for c in cols:
+                v = row.get(c, '')
+                if isinstance(v, float):
+                    vals.append(f"{v:.3f}" if not math.isnan(v) else "nan")
+                elif isinstance(v, bool):
+                    vals.append("✓" if v else "✗")
+                else:
+                    vals.append(str(v))
+            f.write("| " + " | ".join(vals) + " |\n")
+        f.write("\n")
+
+        f.write("## 3. 按 world 聚合\n\n")
+        if 'world' in df_ok.columns and len(df_ok) > 0:
+            f.write("| world | n_trials | success_rate | mean_dxy | mean_detour | mean_inf_ms |\n")
+            f.write("|---|---|---|---|---|---|\n")
+            for world, g in df_ok.groupby('world'):
+                f.write(f"| {world} | {len(g)} | "
+                        f"{g['success'].mean():.1%} | "
+                        f"{g['dxy_final'].mean():.3f} | "
+                        f"{g['detour'].mean():.2f} | "
+                        f"{g['inference_ms_median'].mean():.0f} |\n")
+            f.write("\n")
+
+        f.write("## 4. 与设计文档 §4.5 预测对比\n\n")
+        f.write("| 指标 | 设计文档预测 | 实测 | 偏差判断 |\n|---|---|---|---|\n")
+        pred_success = "25-40%"
+        pred_inf = "不变 (~2-4s)"
+        pred_end_dx = "≤ 0.15m"
+
+        actual_success = f"{agg['success_rate']:.0%}"
+        actual_inf = f"{agg['mean_inference_ms_median']:.0f} ms"
+        actual_end_dx = (f"{agg['mean_end_raw_dx_mean']:.3f} m"
+                         if not math.isnan(agg['mean_end_raw_dx_mean'])
+                         else "N/A")
+
+        f.write(f"| success_rate | {pred_success} | {actual_success} | "
+                f"{'✓ 符合预测' if 0.25 <= agg['success_rate'] <= 0.40 else '⚠ 超出预测范围'} |\n")
+        f.write(f"| inference_time | {pred_inf} | {actual_inf} | (人工判断) |\n")
+        f.write(f"| end_raw_dx | {pred_end_dx} | {actual_end_dx} | "
+                f"{'✓ 末段减速保留' if (not math.isnan(agg['mean_end_raw_dx_mean']) and agg['mean_end_raw_dx_mean'] < 0.15) else '⚠ 检查'} |\n\n")
+
+        f.write("## 5. 下一步决策依据\n\n")
+        sr = agg['success_rate']
+        if sr < 0.15:
+            decision = ("严重过低 (< 15%). 进入 Phase ② 时 λ_col 从大值起步 (0.5+), "
+                        "可能需要在 Phase ② 失败时启动 R-2 应急 (考虑扩数据)。")
+        elif sr < 0.40:
+            decision = ("在设计文档预测范围内 (25-40%). 进入 Phase ② 用默认 λ_col=0.1 起步即可。")
+        elif sr < 0.65:
+            decision = ("超出预期上限 (> 40%). 说明 BC 已学到大部分, Phase ② λ_col 可轻 (0.05). "
+                        "重点验证 collision rate 是否同步降低。")
+        else:
+            decision = ("意外的高基线 (> 65%). 验证是否有数据泄露 / 评估环境过简单. "
+                        "若数据真实可直接评估是否需要 Phase ②. ")
+        f.write(f"- **policy-only success = {sr:.1%}** → {decision}\n\n")
+
+        f.write("## 6. 原始 JSON 数据\n\n")
+        f.write("```json\n")
+        f.write(json.dumps(agg, indent=2, default=str))
+        f.write("\n```\n\n")
+
+        f.write("---\n\n")
+        f.write("**Note**: 本报告由 `analyze_honest_baseline.py` 自动生成。\n")
+        f.write("如需详细诊断, 检查目录中的 `*_ros.log` (包含 GOAL-DIAG / Z-OOB / 推理细节)。\n")
+
+
+def main():
+    args = parse_args()
+    log_dir = os.path.expanduser(args.dir)
+    if not os.path.isdir(log_dir):
+        print(f"[ERR] 目录不存在: {log_dir}")
+        sys.exit(1)
+
+    out_path = args.out or os.path.join(log_dir, 'phase1_honest_baseline_results.md')
+
+    flight_ids = find_flight_ids(log_dir)
+    print(f"[+] 发现 {len(flight_ids)} 次飞行")
+
+    if len(flight_ids) == 0:
+        print("[ERR] 没找到任何 *_pos.csv, 退出")
+        sys.exit(1)
+
+    metrics = []
+    for fid in flight_ids:
+        print(f"  处理 {fid}...")
+        m = compute_flight_metrics(fid, log_dir, args)
+        metrics.append(m)
+
+    aggregate_and_report(metrics, out_path, args)
+    print(f"\n[+] 报告已写入: {out_path}")
+    print(f"\n关键数字 (再说一遍):")
+    df_ok = pd.DataFrame([m for m in metrics if m.get('status') == 'OK'])
+    if len(df_ok) > 0:
+        sr = df_ok['success'].mean()
+        print(f"  policy-only success rate: {sr:.1%} ({int(sr*len(df_ok))}/{len(df_ok)})")
+        if 'collision_detected' in df_ok.columns:
+            print(f"  collision rate:           {df_ok['collision_detected'].mean():.1%}")
+        if 'end_raw_dx_mean' in df_ok.columns:
+            print(f"  末段 raw_dx mean:         {df_ok['end_raw_dx_mean'].mean():.3f} m")
+
+
+if __name__ == '__main__':
+    main()

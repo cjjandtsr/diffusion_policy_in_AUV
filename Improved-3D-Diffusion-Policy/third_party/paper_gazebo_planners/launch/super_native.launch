@@ -1,0 +1,10 @@
+<launch>
+  <!-- Official SUPER FSM node, launched the way upstream launches it, but with an
+       absolute config path: fsm_node_ros1.cpp:56 accepts `config_path` before it
+       falls back to `config_name` inside the package config dir. That lets the
+       paper config live outside the official tree (no official file is touched). -->
+  <arg name="config"/>
+  <node pkg="super_planner" name="fsm_node" type="fsm_node" output="screen" required="true">
+    <param name="config_path" value="$(arg config)" type="string"/>
+  </node>
+</launch>

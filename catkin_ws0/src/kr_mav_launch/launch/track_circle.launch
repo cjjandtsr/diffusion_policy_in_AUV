@@ -1,0 +1,53 @@
+<launch>
+  <arg name="odom_topic" default="/mavros/local_position/odom"/>
+
+  <arg name="start_nodelet_manager" default="true"/>
+  <arg name="nodelet_manager_name" default="nodelet_manager_control"/>
+  <!--
+  <arg name="color/r" default="0.0"/>
+  <arg name="color/g" default="0.0"/>
+  <arg name="color/b" default="1.0"/>
+  <arg name="color/a" default="0.7"/>
+  <arg name="mav_type" default="hummingbird"/>
+  -->
+    <!-- Track pub -->
+    <node pkg="nodelet"
+      type="nodelet"
+      name="$(arg nodelet_manager_name)"
+      args="manager"
+      output="screen"
+      if="$(arg start_nodelet_manager)"/>
+
+    <node pkg="nodelet"
+      type="nodelet"
+      name="trackers_manager"
+      args="standalone kr_trackers_manager/TrackersManager $(arg nodelet_manager_name)"
+      output="screen">
+      <rosparam file="$(find kr_mav_launch)/config/trackers.yaml"/>
+      <rosparam file="$(find kr_mav_launch)/config/tracker_params.yaml"/>
+      <remap from="~odom" to="$(arg odom_topic)"/>
+      <remap from="~cmd" to="/planning/pos_cmd"/>
+    </node>
+
+    <node pkg="kr_mav_manager"
+      type="mav_services"
+      name="mav_services"
+      output="screen">
+      <rosparam file="$(find kr_mav_launch)/config/mav_manager_params.yaml"/>
+      <remap from="odom" to="$(arg odom_topic)"/>
+    </node>
+
+<!--
+    <node pkg="kr_mesh_visualization"
+    type="kr_mesh_visualization"
+    name="mesh_visualization"
+    output="screen">
+    <param name="mesh_resource" value="package://kr_mesh_visualization/mesh/$(arg mav_type).mesh"/> 
+    <param name="color/r" value="$(arg color/r)"/>
+    <param name="color/g" value="$(arg color/g)"/>
+    <param name="color/b" value="$(arg color/b)"/>
+    <param name="color/a" value="$(arg color/a)"/>
+    <remap from="~input" to="$(arg odom_topic)"/>
+   </node>
+--> 
+</launch>

@@ -105,6 +105,10 @@ class EgoProvenance:
 class EgoPolicy:
     use_base_policy = None
     policy_kind = 'ego'
+    service_module = 'ego_planner.srv'
+    service_name = '/drone_0_ego_planner_node/evaluation_step'
+    parameter_namespace = '/drone_0_ego_planner_node'
+    reference_sampler = staticmethod(sample_reference)
 
     def __init__(self, launch, map_size, log_dir):
         self.launch = Path(launch).resolve()
@@ -117,10 +121,13 @@ class EgoPolicy:
             map_size=self.map_size, execution='common_H4', sensor='4096_body_points'))
         self.process = self.stream = self.original_generate = None
         self.last_provenance = None
+        self.invalid_references = 0
+        self.reference_invalid = False
 
     def reset_episode(self, task, entry, env, observation, context):
         import rospy
-        from ego_planner.srv import EvaluationStep
+        import importlib
+        EvaluationStep = importlib.import_module(self.service_module).EvaluationStep
         self.close()
         if not rospy.core.is_initialized():
             rospy.init_node('paper_ego_client', anonymous=True, disable_signals=True)
@@ -131,10 +138,22 @@ class EgoPolicy:
         self.process = subprocess.Popen(['roslaunch', str(self.launch)] +
             ['map_size_'+axis+':='+str(value) for axis, value in zip('xyz', self.map_size)],
             stdout=self.stream, stderr=subprocess.STDOUT, start_new_session=True)
-        service = '/drone_0_ego_planner_node/evaluation_step'
+        service = self.service_name
         rospy.wait_for_service(service, timeout=45.)
-        self.service = rospy.ServiceProxy(service, EvaluationStep)
-        self.runtime_parameters = rospy.get_param('/drone_0_ego_planner_node')
+        # 2026-11-12 transport adaptation: rospy.ServiceProxy defaults to
+        # persistent=False, so every call re-resolves the service through the ROS
+        # master (XMLRPC lookupService) and opens a new TCP connection. Measured on
+        # the live node with a request the handler rejects on its first line:
+        #   persistent=False: first 588 ms, steady 66-84 ms per call
+        #   persistent=True : first 553 ms, steady 1.5-2.5 ms per call
+        # Under evaluation load the non-persistent path accounted for ~0.80 s of the
+        # 0.80 s per-decision client wait while the EGO handler itself measured
+        # 3.8 ms (2687 recorded decisions). Reusing one connection changes no
+        # planner input, output or simulated time; it removes a master round trip
+        # per decision. A dead node now surfaces as an error instead of being
+        # silently replaced by a fresh one mid-episode.
+        self.service = rospy.ServiceProxy(service, EvaluationStep, persistent=True)
+        self.runtime_parameters = rospy.get_param(self.parameter_namespace)
         self.response = self._call(observation['point_cloud'][-1], env._drone_pos,
                                    env._drone_yaw, env._drone_vel, 0., True)
         self.original_generate = env.synth_pc.generate_with_metadata
@@ -150,7 +169,8 @@ class EgoPolicy:
         import rospy
         from std_msgs.msg import Header
         from sensor_msgs.point_cloud2 import create_cloud_xyz32
-        from ego_planner.srv import EvaluationStepRequest
+        import importlib
+        EvaluationStepRequest = importlib.import_module(self.service_module).EvaluationStepRequest
         request = EvaluationStepRequest()
         request.time_s = 1. + seconds
         request.initialize = initialize
@@ -193,15 +213,35 @@ class EgoPolicy:
         from dataclasses import asdict
         meta = asdict(context['pointcloud_meta_history'][-1])
         self.last_provenance = EgoProvenance(meta['raw_array_hash'],
-            context['episode_identity_hash'], int(context['decision_index']))
+            context['episode_identity_hash'], int(context['decision_index']), policy_kind=self.policy_kind)
+        def hold():
+            # No usable trajectory for this window: stay at the actual state
+            # while the native FSM retries; the environment still consumes
+            # physical time.
+            r = np.zeros((8, 11), np.float32)
+            r[:, :3], r[:, 9] = self.env._drone_pos, self.env._drone_yaw
+            return r
+
+        self.reference_invalid = False
         if self.response.has_trajectory:
-            reference = sample_reference(self.response.trajectory, 1.+self.elapsed,
+            reference = self.reference_sampler(self.response.trajectory, 1.+self.elapsed,
                 self.env._drone_pos, self.env._drone_yaw, self.yaw_rate)
+            # 2026-11-12: at the official Fast-Planner limits (max_vel 3.0 /
+            # max_acc 2.0) the B-spline optimiser occasionally publishes a
+            # trajectory whose coefficients are not finite, so has_trajectory is
+            # still true while the sampled reference is NaN/Inf. That is a
+            # planning failure for this window, not a reason to discard the
+            # episode: use the same hold behaviour the no-trajectory branch
+            # already defines, and record the event on the decision.
+            if not np.isfinite(reference).all():
+                self.reference_invalid = True
+                self.invalid_references += 1
+                print('NONFINITE_REFERENCE decision=%d elapsed=%.3f trajectories=%d'
+                      % (int(context['decision_index']), self.elapsed,
+                         int(self.response.trajectory_count)), flush=True)
+                reference = hold()
         else:
-            # No valid first trajectory: stay at the actual state while the
-            # native FSM retries; the environment still consumes physical time.
-            reference = np.zeros((8, 11), np.float32)
-            reference[:, :3], reference[:, 9] = self.env._drone_pos, self.env._drone_yaw
+            reference = hold()
         self.reference = reference
         self.frames.clear()
         return reference_actions(reference, self.env._drone_pos, self.env._drone_yaw)
@@ -222,7 +262,8 @@ class EgoPolicy:
         self.elapsed += duration
         self.yaw_rate = float(self.reference[len(self.frames)-1, 10])
         result = dict(action_origin='ego_bspline', full_container_padding='outside [2:10] unused',
-                      updates=list(self.calls), effective_execution='H4_committed')
+                      updates=list(self.calls), effective_execution='H4_committed',
+                      reference_invalid=bool(self.reference_invalid))
         self.calls.clear()
         return result
 

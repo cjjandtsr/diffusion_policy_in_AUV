@@ -1,0 +1,43 @@
+<launch>
+  <arg name="map_size_x" default="80" />
+  <arg name="map_size_y" default="80" />
+  <arg name="map_size_z" default="16" />
+  <include file="$(find ego_planner)/launch/advanced_param_gazebo.xml">
+    <arg name="drone_id" value="0" />
+    <arg name="map_size_x_" value="$(arg map_size_x)" />
+    <arg name="map_size_y_" value="$(arg map_size_y)" />
+    <arg name="map_size_z_" value="$(arg map_size_z)" />
+    <arg name="odometry_topic" value="unused_odom" />
+    <arg name="obj_num_set" value="0" />
+    <arg name="camera_pose_topic" value="unused_pose" />
+    <arg name="depth_topic" value="unused_depth" />
+    <arg name="cloud_topic" value="unused_cloud" />
+    <arg name="cx" value="320.5" />
+    <arg name="cy" value="240.5" />
+    <arg name="fx" value="554.254691191187" />
+    <arg name="fy" value="554.254691191187" />
+    <arg name="max_vel" value="0.5" />
+    <arg name="max_acc" value="0.25" />
+    <arg name="planning_horizon" value="7.5" />
+    <arg name="use_distinctive_trajs" value="true" />
+    <arg name="flight_type" value="1" />
+    <arg name="point_num" value="1" />
+    <arg name="point0_x" value="16" />
+    <arg name="point0_y" value="0" />
+    <arg name="point0_z" value="2" />
+    <arg name="point1_x" value="8" />
+    <arg name="point1_y" value="0" />
+    <arg name="point1_z" value="1.2" />
+    <arg name="point2_x" value="13.0" />
+    <arg name="point2_y" value="4.0" />
+    <arg name="point2_z" value="1.0" />
+    <arg name="point3_x" value="4.0" />
+    <arg name="point3_y" value="5.0" />
+    <arg name="point3_z" value="1.5" />
+    <arg name="point4_x" value="15.0" />
+    <arg name="point4_y" value="0.0" />
+    <arg name="point4_z" value="1.0" />
+    <arg name="evaluation_mode" value="true" />
+    <arg name="virtual_ceil_height" value="-1" />
+  </include>
+</launch>

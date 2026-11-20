@@ -66,6 +66,11 @@ def main():
                     timings.append([1000 * (encoding - start), 1000 * (denoising - encoding),
                                     1000 * (end - start)])
         values = np.asarray(timings)
+        actor = system.official_runtime.actor if args.policy == 'bc' else system.official_runtime.actor_ft
+        actor_parameters = list(actor.parameters())
+        # The encoder lives in the BC policy; exclude its unused original denoiser.
+        encoder_parameters = list(system.bc_runtime.policy.obs_encoder.parameters())
+        decision_parameters = {id(p): p for p in actor_parameters + encoder_parameters}
         stats = {name: dict(mean_ms=float(values[:, i].mean()), median_ms=float(np.median(values[:, i])),
                            p95_ms=float(np.percentile(values[:, i], 95)))
                  for i, name in enumerate(('encode_and_verify', 'ddim', 'end_to_end'))}
@@ -76,6 +81,11 @@ def main():
             runtime_identity=header['runtime_identity_hash'], bank_hash=bank['content_hash'],
             initial_hash=entry['initial_hash'], sampling_protocol=protocol,
             script_sha256=file_hash(__file__),
+            decision_parameters=sum(p.numel() for p in decision_parameters.values()),
+            decision_trainable_parameters=sum(p.numel() for p in decision_parameters.values() if p.requires_grad),
+            actor_parameters=sum(p.numel() for p in actor_parameters),
+            actor_trainable_parameters=sum(p.numel() for p in actor_parameters if p.requires_grad),
+            encoder_parameters=sum(p.numel() for p in encoder_parameters),
             critic_parameters=sum(p.numel() for p in system.critic.parameters()),
             critic_trainable_parameters=sum(p.numel() for p in system.critic.parameters() if p.requires_grad),
             note='Same frozen initial observation for all 200 measurements; seeds set before timing. '

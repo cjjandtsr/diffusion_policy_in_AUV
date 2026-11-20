@@ -1,0 +1,131 @@
+<launch>
+    <!--
+    ml_planner_gazebo_fm.launch — Phase1a-FM 部署 launch
+    ============================================================
+    用法:
+      roslaunch ego_planner ml_planner_gazebo_fm.launch \
+          ckpt:=<FM ckpt 绝对路径>
+
+    与 ml_planner_gazebo.launch 的差异:
+      1. 默认 ckpt 指向 FM 最新 ckpt (2026.05.22)
+      2. 显式声明 ~policy_type=phase1a_fm (不依赖启发式检测)
+      3. 暴露 FM 超参 (num_steps/sigma_min/t_scale/anchor_t_start/solver/cfg_lambda)
+      4. 强制 use_fp16=false (FM 4 步 Euler 数值已少, FP16 误差累积风险高)
+      5. deployment_action_steps=2 与 DDIM 保持一致 (避免首步 yaw 偏置)
+      6. use_torch_compile=false (FM 也有 CFG, 与 DDIM 同约束)
+    -->
+
+    <arg name="drone_id" default="0"/>
+    <arg name="odom_topic"       value="/mavros/local_position/odom"/>
+    <arg name="pointcloud_topic" value="/iris_D435i/realsense/depth_camera/depth/points"/>
+    <arg name="waypoint_num" default="1"/>
+    <arg name="waypoint0_x"  default="12.0"/>
+    <arg name="waypoint0_y"  default="0.0"/>
+    <arg name="waypoint0_z"  default="2.0"/>
+
+    <!-- FM ckpt 默认路径 (2026.05.22 latest) -->
+    <arg name="ckpt" default="/root/autodl-tmp//AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/2026.05.22/21.16.19_v8_phase1a/checkpoints/latest.ckpt"/>
+
+    <!-- z 通道前馈模式 (与 DDIM launch 同义) -->
+    <arg name="z_ff_mode" default="full"/>
+
+    <!-- ── FM 超参 (launch 可覆盖, 默认对应训练值) ── -->
+    <arg name="fm_num_steps"      default="4"/>
+    <arg name="fm_sigma_min"      default="0.005"/>
+    <arg name="fm_t_scale"        default="50"/>
+    <arg name="fm_solver"         default="euler"/>
+    <arg name="fm_anchor_t_start" default="0.95"/>
+    <!--
+      ⚠️ cfg_lambda 用户实测 ckpt 中是 None, 训练时类签名默认 1.5.
+      launch 显式传 1.5 避免任何歧义.
+    -->
+    <arg name="cfg_lambda"        default="1.5"/>
+
+    <!-- ── 层次 1 SFP: k_stab / lambda_jerk ── -->
+    <!--
+      -1 = 自动从 ckpt state_dict 检测 (新格式 ckpt)
+      ≥0 = 强制覆盖 (旧格式 ckpt 或 ablation)
+    -->
+    <arg name="k_stab"      default="-1.0"/>
+    <arg name="lambda_jerk" default="-1.0"/>
+
+    <node name="drone_$(arg drone_id)_ml_planner"
+          pkg="ego_planner" type="ml_planner_gazebo.py" output="screen">
+        <param name="drone_id"     value="$(arg drone_id)"/>
+        <param name="waypoint_num" value="$(arg waypoint_num)"/>
+        <param name="waypoint0_x"  value="$(arg waypoint0_x)"/>
+        <param name="waypoint0_y"  value="$(arg waypoint0_y)"/>
+        <param name="waypoint0_z"  value="$(arg waypoint0_z)"/>
+        <remap from="~odom"       to="$(arg odom_topic)"/>
+        <remap from="~pointcloud" to="$(arg pointcloud_topic)"/>
+        <param name="control_freq"   value="50.0"/>
+        <param name="replan_ratio"   value="0.7"/>
+        <param name="goal_tolerance" value="1.0"/>
+        <param name="default_height" value="1.5"/>
+        <param name="traj_dt"        value="0.3"/>
+        <param name="pos_gain"       value="[3.5, 3.5, 3.5]"/>
+        <param name="vel_gain"       value="[3.5, 3.5, 3.5]"/>
+        <param name="flight_mode"    value="0"/>
+        <param name="odom_vel_is_world" value="false"/>
+
+        <!--
+          num_inference_steps 仅 baseline 用 (apply_inference_patches),
+          phase1a_fm 用 fm_num_steps 控制. 此处仅占位.
+        -->
+        <param name="num_inference_steps" value="4"/>
+
+        <!--
+          ⚠️ FM 4 步 Euler ODE 步数极少, FP16 数值误差累积影响大,
+          强制关 FP16. 若 T4 显存紧, 再单独开 ablation.
+        -->
+        <param name="use_fp16" value="false"/>
+
+        <!--
+          phase1a_fm 也有 CFG (双 forward), 与 cudagraphs 不兼容,
+          必须关 compile (与 DDIM launch L40-43 同约束).
+        -->
+        <param name="use_torch_compile" value="false"/>
+
+        <!--
+          部署侧 action chunk 截断 (与 DDIM 一致, 避免首步 yaw 偏置累积).
+        -->
+        <param name="deployment_action_steps" value="4"/>
+
+        <param name="z_feedforward_mode" value="$(arg z_ff_mode)"/>
+
+        <!-- Phase1a-FM: zarr_path 用于加载 normalizer 结构 -->
+        <param name="zarr_path" value="$(env HOME)/AUV/avoidance_dataset/merged_body_12.zarr"/>
+        <param name="checkpoint_path" value="$(arg ckpt)"/>
+
+        <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+        <!-- ★ Step A 新增: 显式声明 policy_type, 不走启发式检测            -->
+        <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+        <param name="policy_type" value="phase1a_fm"/>
+
+        <!-- FM 超参 (经 _load_phase1a_policy_fm 读取) -->
+        <param name="fm_num_steps"      value="$(arg fm_num_steps)"/>
+        <param name="fm_sigma_min"      value="$(arg fm_sigma_min)"/>
+        <param name="fm_t_scale"        value="$(arg fm_t_scale)"/>
+        <param name="fm_solver"         value="$(arg fm_solver)"/>
+        <param name="fm_anchor_t_start" value="$(arg fm_anchor_t_start)"/>
+        <param name="cfg_lambda"        value="$(arg cfg_lambda)"/>
+
+        <!-- 层次 1 SFP: k_stab / lambda_jerk (自动检测 or 强制覆盖) -->
+        <param name="k_stab"      value="$(arg k_stab)"/>
+        <param name="lambda_jerk" value="$(arg lambda_jerk)"/>
+    </node>
+
+    <node pkg="odom_visualization"
+          name="drone_$(arg drone_id)_odom_visualization"
+          type="odom_visualization" output="screen">
+        <remap from="~odom" to="$(arg odom_topic)"/>
+        <param name="color/a" value="1.0"/>
+        <param name="color/r" value="0.0"/>
+        <param name="color/g" value="0.0"/>
+        <param name="color/b" value="1.0"/>
+        <param name="covariance_scale" value="100.0"/>
+        <param name="robot_scale" value="1.0"/>
+        <param name="tf45" value="false"/>
+        <param name="drone_id" value="$(arg drone_id)"/>
+    </node>
+</launch>

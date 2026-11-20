@@ -1,0 +1,170 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Name: Tool Properties
+  - Class: rviz/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    # 基础网格
+    - Alpha: 1
+      Cell Size: 1
+      Class: rviz/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.03
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 100
+      Reference Frame: world
+      Value: true
+    
+    # 无人机位姿（坐标轴）
+    - Alpha: 1
+      Class: rviz/Odometry
+      Color: 255; 255; 0
+      Covariance:
+        Value: false
+      Enabled: true
+      Name: Drone Pose
+      Position Tolerance: 0.1
+      Shape: Axes
+      Topic: /mavros/local_position/odom
+      Value: true
+    
+    # 无人机历史路径
+    - Alpha: 1
+      Buffer Length: 1000
+      Class: rviz/Path
+      Color: 0; 255; 0
+      Enabled: true
+      Head Diameter: 0.3
+      Head Length: 0.2
+      Line Style: Lines
+      Line Width: 0.05
+      Name: Flight Path
+      Topic: /drone_0_odom_visualization/path
+      Value: true
+    
+    # 障碍物地图（点云）
+    - Class: rviz/PointCloud2
+      Enabled: true
+      Name: Occupancy Map
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Style: Points
+      Topic: /drone_0_ego_planner_node/grid_map/occupancy_inflate
+      Value: true
+    
+    # 当前规划的最优轨迹
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /drone_0_ego_planner_node/optimal_list
+      Name: Optimal Trajectory
+      Namespaces: {}
+      Queue Size: 100
+      Value: true
+    
+    # B样条轨迹
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /planning/bspline
+      Name: B-spline
+      Namespaces: {}
+      Queue Size: 100
+      Value: true
+    
+    # 全局轨迹
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /ego_planner_node/global_list
+      Name: Global Path
+      Namespaces: {}
+      Queue Size: 100
+      Value: true
+    
+    # 深度相机视图（左面板）
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /iris_D435i/realsense/depth_camera/depth/image_raw
+      Name: Depth Camera
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Value: true
+    
+    # 彩色相机视图（右面板）
+    - Class: rviz/Image
+      Enabled: true
+      Image Topic: /iris_D435i/realsense/depth_camera/color/image_raw
+      Name: Color Camera
+      Normalize Range: true
+      Queue Size: 2
+      Transport Hint: raw
+      Value: true
+    
+    # 目标点
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /drone_0_ego_planner_node/goal_point
+      Name: Goal Point
+      Namespaces: {}
+      Queue Size: 100
+      Value: true
+    
+    # 规划指令（箭头）
+    - Alpha: 0.8
+      Class: rviz/Pose
+      Color: 255; 0; 0
+      Covariance:
+        Value: false
+      Enabled: true
+      Name: Position Command
+      Topic: /planning/pos_cmd
+      Value: true
+  Global Options:
+    Background Color: 48; 48; 48
+    Default Light: true
+    Fixed Frame: world
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz/Interact
+    - Class: rviz/MoveCamera
+    - Class: rviz/Select
+    - Class: rviz/FocusCamera
+    - Class: rviz/Measure
+  Value: true
+  Views:
+    Current:
+      Class: rviz/Orbit
+      Distance: 25
+      Enable Stereo Rendering:
+        Stereo Eye Separation: 0.06
+        Stereo Focal Distance: 1
+        Swap Stereo Eyes: false
+        Value: false
+      Field of View: 0.7854
+      Focal Point:
+        X: 5
+        Y: 0
+        Z: 1.5
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.5
+      Target Frame: world
+      Yaw: 0

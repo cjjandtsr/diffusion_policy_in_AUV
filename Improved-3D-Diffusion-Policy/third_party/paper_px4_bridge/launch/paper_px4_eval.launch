@@ -1,0 +1,16 @@
+<launch>
+  <arg name="map_size_x" default="60"/><arg name="map_size_y" default="60"/><arg name="map_size_z" default="12"/>
+  <arg name="horizontal_fov_deg" default="60.0000257"/><arg name="vertical_fov_deg" default="46.826469"/>
+  <param name="use_sim_time" value="true"/>
+  <node pkg="paper_px4_bridge" type="paper_px4_bridge_node" name="paper_px4_bridge" output="screen">
+    <!-- 2026-11-12: explicit, so this launch keeps its original meaning now that
+         the bridge defaults to the official setDefaultPx4Parameters() values.
+         Do not remove: the 930-episode 0.5 m/s run was produced with this. -->
+    <param name="override_px4_params" value="true"/>
+    <param name="window_vehicle_advance" value="false"/>
+    <param name="max_velocity" value="0.5"/>
+    <param name="max_acceleration" value="0.25"/>
+    <param name="horizontal_fov_deg" value="$(arg horizontal_fov_deg)"/>
+    <param name="vertical_fov_deg" value="$(arg vertical_fov_deg)"/>
+  </node>
+</launch>

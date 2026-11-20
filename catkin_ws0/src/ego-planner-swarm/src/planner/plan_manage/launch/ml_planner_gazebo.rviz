@@ -1,0 +1,97 @@
+Panels:
+  - Class: rviz/Displays
+    Name: Displays
+  - Class: rviz/Selection
+    Name: Selection
+  - Class: rviz/Tool Properties
+    Name: Tool Properties
+  - Class: rviz/Views
+    Name: Views
+  - Class: rviz/Time
+    Name: Time
+
+Visualization Manager:
+  Displays:
+    - Class: rviz/Axes
+      Name: Axes
+      Length: 2.0
+      Radius: 0.1
+    
+    - Class: rviz/Grid
+      Name: Grid
+      Cell Size: 1.0
+      Color: 160; 160; 164
+      Plane: XY
+    
+    # ML Planner 可视化组
+    - Class: rviz/Group
+      Name: ML Planner Visualization
+      Displays:
+        # 1. 目标点（红色球体）
+        - Class: rviz/Marker
+          Name: Goal Point
+          Topic: /drone_0_ml_planner_node/goal_point
+          Queue Size: 10
+        
+        # 2. 最优轨迹（蓝色线，模仿EGO Planner）
+        - Class: rviz/Marker
+          Name: Optimal Trajectory
+          Topic: /drone_0_ml_planner_node/optimal_list
+          Queue Size: 10
+        
+        # 3. 扩散轨迹细节（紫色线+点）
+        - Class: rviz/MarkerArray
+          Name: Diffusion Visualization
+          Topic: /drone_0_ml_planner_node/diffusion_visualization
+          Queue Size: 10
+        
+        # 4. 点云可视化（环境感知）
+        - Class: rviz/PointCloud2
+          Name: Full Point Cloud
+          Topic: /drone_0_ml_planner_node/point_cloud_vis
+          Style: Points
+          Size (Pixels): 2
+          Alpha: 0.3
+          Decay Time: 0
+          Color Transformer: RGB8
+    
+    # 无人机状态可视化组
+    - Class: rviz/Group
+      Name: Drone Status
+      Displays:
+        # 1. 已执行路径（蓝色路径）
+        - Class: rviz/Path
+          Name: Executed Path
+          Topic: /drone_0_odom_visualization/path
+          Color: 0; 0; 255  # 蓝色
+          Alpha: 0.8
+          Line Style: Lines
+          Line Width: 0.05
+        
+        # 2. 无人机模型
+        - Class: rviz/Marker
+          Name: Drone Model
+          Topic: /drone_0_odom_visualization/robot
+          Queue Size: 10
+        
+        # 3. 当前位姿（可选）
+        - Class: rviz/Pose
+          Name: Current Pose
+          Topic: /mavros/local_position/pose
+          Color: 0; 255; 0  # 绿色
+          Shape: Axes
+          Axes Length: 1.0
+          Axes Radius: 0.05
+
+  Global Options:
+    Background Color: 255; 255; 255
+    Fixed Frame: world
+    Frame Rate: 30
+  
+  Views:
+    Current:
+      Class: rviz/ThirdPersonFollower
+      Distance: 15.0
+      Focal Point: 0; 0; 1.5
+      Pitch: 0.5
+      Yaw: 0.0

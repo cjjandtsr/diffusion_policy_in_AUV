@@ -285,7 +285,18 @@ def native_system(args):
     if _canonical_hash(state['training_config'])!=header['runtime_identity']['config_hash']:
         raise ValueError('saved config identity differs')
     config = OmegaConf.create(state['training_config'])
-    deployment = load_deployment_policy(config,Path(args.checkpoint),Path(args.repo).resolve())
+    marker = state.get('evaluation_only')
+    if marker:
+        if (not getattr(args, 'evaluation_reproduction', False)
+                or getattr(args, 'policy', None) != marker['policy_label']
+                or marker['purpose'] != 'F6_G_A6_reproduction'):
+            raise ValueError('migration copy requires its distinct label and evaluation-reproduction mode')
+        deployment = load_deployment_policy(config,Path(args.checkpoint),Path(args.repo).resolve(),
+                                            evaluation_reproduction=True)
+    else:
+        if getattr(args, 'evaluation_reproduction', False):
+            raise ValueError('reproduction-copy mode requires a marked migration copy')
+        deployment = load_deployment_policy(config,Path(args.checkpoint),Path(args.repo).resolve())
     if deployment.checkpoint_header.update_index!=args.expected_update:
         raise ValueError('wrong checkpoint update')
     deployment.system.official_runtime.eval()
@@ -376,6 +387,8 @@ def worker(args):
             training_runtime_identity=header['runtime_identity_hash'],checkpoint_state_sha256=digest(Path(args.checkpoint)/'state.pt'),
             native_source_root=str(Path(args.source_root).resolve()),evaluation_wrapper_sha256=digest(__file__),
             bank_hash=bank['content_hash'],evaluation_sampling_protocol=protocol,
+            **(dict(evaluation_only=True, purpose='F6_G_A6_reproduction')
+               if getattr(args, 'evaluation_reproduction', False) else {}),
             note='evaluation overrides applied only after strict native identity restore'))
         tasks={t['task_id']:t for t in bank['tasks']}
         for index,e in enumerate(bank['episodes'],1):
@@ -502,6 +515,8 @@ def analyze_e1(args):
     rows=[]
     for name in names:
         job=out/'full'/name
+        if read(job/'policy_provenance.json').get('evaluation_only'):
+            raise ValueError('evaluation-only migration copy cannot enter result analysis')
         if {p.stem for p in (job/'commits').glob('*.json')}!=expected:
             raise ValueError('E1 matrix incomplete or extra: '+name)
         verified=[]
@@ -602,6 +617,7 @@ def parser():
     a.add_argument('--current-root')
     a.add_argument('--clip',type=float)
     a.add_argument('--min-std',type=float,nargs=11)
+    a.add_argument('--evaluation-reproduction',action='store_true')
     a=sub.add_parser('freeze-c2')
     for key in ('repo','dev','u128-policy','control-policy','treatment-policy','output'):
         a.add_argument('--'+key,required=True)

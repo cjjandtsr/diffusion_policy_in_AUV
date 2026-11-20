@@ -1,0 +1,45 @@
+# Paper adapter: synchronous SUPER evaluation step.
+# All fields are standard ROS types so the definition crosses the isolated
+# SUPER workspace boundary without message-MD5 coupling. The logical time of
+# the request drives every official FSM/map time query; no ROS timer runs in
+# the service node.
+float64 time_s
+bool initialize
+bool decision_boundary
+bool diagnostics
+int64 seed
+geometry_msgs/Point goal
+nav_msgs/Odometry odometry
+sensor_msgs/PointCloud2 cloud
+---
+bool has_trajectory
+string state
+int32 trajectory_flag
+time start_WT_pos
+time start_WT_yaw
+int32 order_pos
+int32 order_yaw
+float64[] time_pos
+float64[] time_yaw
+float64[] coef_pos_x
+float64[] coef_pos_y
+float64[] coef_pos_z
+float64[] coef_yaw
+geometry_msgs/Point requested_goal
+geometry_msgs/Point native_goal
+bool goal_accepted
+bool goal_adjusted
+bool traj_finish
+float64 native_yaw
+float64 native_yaw_dot
+float64 planning_seconds
+uint64 map_checksum
+int64 map_occupied
+int64 map_known_free
+int64 map_unknown
+float64[] module_seconds
+int32 replan_count
+int32 failed_plans
+int32 ret_code
+string ret_code_str
+int32 state_iterations

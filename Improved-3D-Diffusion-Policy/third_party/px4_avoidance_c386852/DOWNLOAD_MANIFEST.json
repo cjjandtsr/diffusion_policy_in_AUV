@@ -1,0 +1,972 @@
+{
+  "repository": "https://github.com/PX4/PX4-Avoidance",
+  "commit": "c386852c1b8e2084094e194d9dcd46fdd0c01646",
+  "transport": "GitHub connector text contents; UTF8 serialization",
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "git_blob_sha": "3aec0bba26e2cdfb25ca30f5a2539d4aa8f857ec",
+      "downloaded": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "git_blob_sha": "95881805944b9017c94eb25de27870abf8afdccc",
+      "downloaded": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/support-issue.md",
+      "git_blob_sha": "1d50165c47658cf653cc5fe0e082601dce2b665a",
+      "downloaded": true
+    },
+    {
+      "path": ".github/workflows/build_test.yml",
+      "git_blob_sha": "6c0ced7a229816ae0aeeb7249044dbfaa270f5d6",
+      "downloaded": true
+    },
+    {
+      "path": ".github/workflows/check_state_machine.yml",
+      "git_blob_sha": "9ec962bc747b564a56395c9cc48c06bcf59d5c0a",
+      "downloaded": true
+    },
+    {
+      "path": ".github/workflows/check_style.yml",
+      "git_blob_sha": "fc54680ca3056268ecc365cc4956b4bb85650ffe",
+      "downloaded": true
+    },
+    {
+      "path": ".github/workflows/valgrind_test.yml",
+      "git_blob_sha": "f4379a5f04a2abca3e81a5a27968c55747389dae",
+      "downloaded": true
+    },
+    {
+      "path": ".gitignore",
+      "git_blob_sha": "b53ecbc25104136424d50456f56e84037eeb3301",
+      "downloaded": true
+    },
+    {
+      "path": "Jenkinsfile",
+      "git_blob_sha": "5d59bddab1540fcd1fcc1a291e67e4e4eb608b59",
+      "downloaded": true
+    },
+    {
+      "path": "LICENSE.md",
+      "git_blob_sha": "2cb3fbcb9bccaa9b522088842e521d25f172821f",
+      "downloaded": true
+    },
+    {
+      "path": "README.md",
+      "git_blob_sha": "b54a0ae9913134896f99c4d50a7e6d6d9cb16a16",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/CMakeLists.txt",
+      "git_blob_sha": "e3c56e2b987288349de695a1cf1774ed4afa3c9a",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/include/avoidance/avoidance_node.h",
+      "git_blob_sha": "9cbb0e45e768cc02c6f0aaeaf5ea32d24dcb2a4f",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/include/avoidance/common.h",
+      "git_blob_sha": "79b0b2979cd6c81fe30b485b07139063c2390aca",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/include/avoidance/histogram.h",
+      "git_blob_sha": "03bebaf23ae05bdb836f819ca167869a475e2ae2",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/include/avoidance/rviz_world_loader.h",
+      "git_blob_sha": "51102802acd17eced060d4e2b88dfd0aa529d063",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/include/avoidance/transform_buffer.h",
+      "git_blob_sha": "77aad93e2a5cf881b9423f2e078a92ede8a9f3ea",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/include/avoidance/usm.h",
+      "git_blob_sha": "417b7dc116dc44304fbaad06fc47a0e912b5914b",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/launch/avoidance_sitl_mavros.launch",
+      "git_blob_sha": "7f91cae1d7f3804fca190bad60c16b5c3567b8f3",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/launch/avoidance_sitl_stereo.launch",
+      "git_blob_sha": "37f42a351ee46829bcdb83d041cdb8ab066e319a",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/package.xml",
+      "git_blob_sha": "5b7607b0c4602039dedb6ceca9669aa9884b6d32",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/resource/px4_config.yaml",
+      "git_blob_sha": "f319bbe5708527902d30d5705d4aec005f9fbf48",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/distance_sensor/distance_sensor.sdf",
+      "git_blob_sha": "fec41d50e6e06e22af98f8e218a65f157d9abff0",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/distance_sensor/model.config",
+      "git_blob_sha": "98257f85c883df63dabcd653c67f11898b9463e4",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/iris_realsense/iris_realsense.sdf",
+      "git_blob_sha": "a60c5cb71bc6d95967575832f1a97e893aac2e2d",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/iris_realsense/model.config",
+      "git_blob_sha": "757000edce3c35ebc13f1884553bcbf34f02e1b3",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/lamp_with_lines/lamp_with_lines.dae",
+      "git_blob_sha": "3865107049102c53092878b56ea8fb6dc68a08e2",
+      "downloaded": false
+    },
+    {
+      "path": "avoidance/sim/models/lamp_with_lines/model.config",
+      "git_blob_sha": "f8028461346d5eedfc160313ae45c83ac85da036",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/lamp_with_lines/model.sdf",
+      "git_blob_sha": "bdeea153950e7c221dd247db44f7845a5cc8ab8c",
+      "downloaded": false
+    },
+    {
+      "path": "avoidance/sim/models/line_model/line.dae",
+      "git_blob_sha": "e487339a9a01878042fd49d5a8aa1060bc9f150f",
+      "downloaded": false
+    },
+    {
+      "path": "avoidance/sim/models/line_model/model.config",
+      "git_blob_sha": "db2f0825d07617b2fa5bd6e7beee7ec1005b3804",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/line_model/model.sdf",
+      "git_blob_sha": "8ae35da910e3b74d550941577be1ef29f8ac4f53",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/powerline/model.config",
+      "git_blob_sha": "440ae1595f8f032eb7722d913522675a8f9127af",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/powerline/model.sdf",
+      "git_blob_sha": "11f2deeb14b93a061c731c6e5b066997d5aa0191",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/powerline/powerline.dae",
+      "git_blob_sha": "465e01d58fa77d3f985264754ee10b985660aaa4",
+      "downloaded": false
+    },
+    {
+      "path": "avoidance/sim/models/stereo_camera_vertical/model.config",
+      "git_blob_sha": "7740263a9c14b21f95cfce4874fcee4c8756bb62",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/models/stereo_camera_vertical/stereo_camera_vertical.sdf",
+      "git_blob_sha": "ca0589475cc0dd3a467a6fa81f991c570931f82e",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes1.world",
+      "git_blob_sha": "1d86a0beac9a6b8e7d8bbd36a308d970db33e092",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes1.yaml",
+      "git_blob_sha": "1ce03007f9e82d865f1008f84a55fcd1c119cdf2",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes2.world",
+      "git_blob_sha": "a33bc3a4b5d80841c99eb258c1905ed06c156882",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes2.yaml",
+      "git_blob_sha": "2d845b1e73e800aed44d27abf6ed9a1432e3463b",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes3.world",
+      "git_blob_sha": "d7ad0aa010584ce27e73b3f71092284b224de4eb",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes3.yaml",
+      "git_blob_sha": "f4e64497b3a22673b7223162984152dda3f9801c",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes4.world",
+      "git_blob_sha": "d3eb90d493e44a31c56306ffe090666b30fa83ac",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes4.yaml",
+      "git_blob_sha": "f5bb397b85f2465615b187136d8a6bb0c36604de",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes5.world",
+      "git_blob_sha": "e46d324b1a990c282857ae518885355e2fae5548",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes5.yaml",
+      "git_blob_sha": "984f629c92fbca9249e00e58a9612bdbe1067eb7",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes6.world",
+      "git_blob_sha": "9605773f1bc7dc561cb956b7f8e0f5f8941d4c54",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/boxes6.yaml",
+      "git_blob_sha": "29af590d261fc8f7fabe3fbaf1bbc26bf684739b",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/moving_boxes.world",
+      "git_blob_sha": "27ef4270619a3dbc60355d23f37ff9f908e337ce",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/outdoor_village.world",
+      "git_blob_sha": "52010c009ca5cffc2a55906dbcf703d2661ea595",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/outdoor_village_3.world",
+      "git_blob_sha": "3277024d81cbb9ca36693ac6e41cb91375b62b70",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/simple_obstacle.world",
+      "git_blob_sha": "8a50a9d4d203e23ecc993ca77306553f83017b47",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/simple_obstacle.yaml",
+      "git_blob_sha": "b029f400ef9d4ca695fbf7570e6fe03b412df5eb",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/test_city_2.world",
+      "git_blob_sha": "0890fbdc1ab7abb4d48f74a745f02080ba4000be",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/test_city_4.world",
+      "git_blob_sha": "af6c8bee73dbe129d574577a24c3c7bcf9764f66",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/window.world",
+      "git_blob_sha": "2b3b7046b2d6bf33b286faf5de3398e5674e8fed",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/sim/worlds/window.yaml",
+      "git_blob_sha": "fd51c83761387dce6593713dcf6f9d098c52b899",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/src/avoidance_node.cpp",
+      "git_blob_sha": "75881ecf202339a4600e0bcf706318b56eda320b",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/src/common.cpp",
+      "git_blob_sha": "9a8e21a7b0228d19b3d7c1e99057645e225c6ab1",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/src/histogram.cpp",
+      "git_blob_sha": "8a3a36bb779d09913e8a55c7a81527d67bf07a54",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/src/rviz_world_loader.cpp",
+      "git_blob_sha": "943bc820cd4afd2f71d6d83487cbbc83af2f256d",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/src/transform_buffer.cpp",
+      "git_blob_sha": "d5d91f324333171a1aae39d8301356f73fa6d76b",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/test/main.cpp",
+      "git_blob_sha": "e272ee3437f8ea7b61919de9a2190f159aa1b17e",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/test/test_common.cpp",
+      "git_blob_sha": "6dddf8505731eec47c3858f83d6dd0fd106e2f6c",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/test/test_transform_buffer.cpp",
+      "git_blob_sha": "ad20aa86960966b7f48d045c1e64801faea7ec07",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/test/test_usm.cpp",
+      "git_blob_sha": "f42c079d36250c2cd1d8bbf9823cdcbcdd35e945",
+      "downloaded": true
+    },
+    {
+      "path": "avoidance/test/test_usm.cpp.dot",
+      "git_blob_sha": "fff4e738519d5ad02957b7efa58dfbb227f82a2a",
+      "downloaded": true
+    },
+    {
+      "path": "dependencies.rosinstall",
+      "git_blob_sha": "503cfec1471b5ec4560f1e00b5715e3249d47240",
+      "downloaded": true
+    },
+    {
+      "path": "docs/lp_goal_height.png",
+      "git_blob_sha": "519201184cbf9154dcd4d157cbab5ac2fe34d0e2",
+      "downloaded": false
+    },
+    {
+      "path": "docs/lp_goal_rviz.png",
+      "git_blob_sha": "58fdcf4660b5044af5f7ae99783f09969ff2c680",
+      "downloaded": false
+    },
+    {
+      "path": "docs/simulation_screenshot.png",
+      "git_blob_sha": "082ee3b98291b79f4f7d71fe5a74a70d1bbda039",
+      "downloaded": false
+    },
+    {
+      "path": "global_planner/CMakeLists.txt",
+      "git_blob_sha": "afe8e280fbd50d79da19b33448ce7188a9c9abb3",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/cfg/GlobalPlannerNode.cfg",
+      "git_blob_sha": "4545d79481f673b8dff88f5526bd73a192172c8b",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/analysis.h",
+      "git_blob_sha": "9ce202b9b864666de042522f6d0f80a209fac413",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/bezier.h",
+      "git_blob_sha": "1333530ac25e3084847411f54b6ae5f17be07599",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/cell.h",
+      "git_blob_sha": "5eb30d38ae0e3e5b1909573152ad89e2460e0267",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/common.h",
+      "git_blob_sha": "04ebe423c6ab74a788394dc2aa070061da67e1eb",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/common_ros.h",
+      "git_blob_sha": "b72d1aee275f73d9e2f6fbb9d6d60e1f30c3a295",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/global_planner.h",
+      "git_blob_sha": "eaf464cca0660922ed7742dbab79245edf9f1d20",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/global_planner_node.h",
+      "git_blob_sha": "3f3c1d420820a9fe28ea595623c48a8689ec431e",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/node.h",
+      "git_blob_sha": "49c134fdd73de2467b286a4536edafae8be5fb3d",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/search_tools.h",
+      "git_blob_sha": "65ac372e91d5698753d65822fa341bc8cadc589a",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/include/global_planner/visitor.h",
+      "git_blob_sha": "dc386d65b2e71e955dda375ef1e7b50dc8c1fb43",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/launch/global_planner_depth-camera.launch",
+      "git_blob_sha": "c7adbeb1abb76aafa264bad022e0e5fc310f2c0b",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/launch/global_planner_octomap.launch",
+      "git_blob_sha": "4dcc2111c915c8aa240fa19549c4d00f50c11713",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/launch/global_planner_sitl_3cam.launch",
+      "git_blob_sha": "82464d3e0a3162cb8169ff550380f633c051463f",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/launch/global_planner_stereo.launch",
+      "git_blob_sha": "088bd1a5225ea9139b671df191261981433bfdb2",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/msg/PathWithRiskMsg.msg",
+      "git_blob_sha": "837aa41400d0efe7a825d5414906cd6df2e7bcff",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/package.xml",
+      "git_blob_sha": "e292ce58b975edf2923caf062d2e027ca4312838",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/resource/global_planner.rviz",
+      "git_blob_sha": "2eb0f81855e9b861716166ad5fd41b71505544eb",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/resource/parameter_file",
+      "git_blob_sha": "966d3ad442e2260fae14a538fac3ff1570950959",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/resource/px4_config.yaml",
+      "git_blob_sha": "6b7cfdb7da55c4a3d025862cd53b91ced9c4b55d",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/resource/random_goals",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/resource/sample_output_from_mock_data",
+      "git_blob_sha": "a33a6efe358b8b9ea616be35dd3ca164f54a3424",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/src/library/cell.cpp",
+      "git_blob_sha": "80aeacb0b5d8855eafe2688ebbf982dcff46e05b",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/src/library/global_planner.cpp",
+      "git_blob_sha": "d04f49f0837fb1ae8289b06b119c53fa231a3b9c",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/src/library/node.cpp",
+      "git_blob_sha": "6f631f038f102feddfa4b69b56fd93716d0e85ac",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/src/nodes/global_planner_node.cpp",
+      "git_blob_sha": "877907b08d7c5e2bc7ffc8840ddeb4a144b4b74e",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/src/nodes/global_planner_node_main.cpp",
+      "git_blob_sha": "5c892ae5db6beb55d44348e82fc8079a126306f1",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/src/nodes/mock_data_node.cpp",
+      "git_blob_sha": "ac57f3032c9f03a914674d4afc93dcca9bb1e9dc",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/src/nodes/mock_data_node.h",
+      "git_blob_sha": "c5f8885df3b441ac7385f2099e85780623fd2792",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/test/main.cpp",
+      "git_blob_sha": "4d820af774e1ccf8170a5746e411443d8ffa5454",
+      "downloaded": true
+    },
+    {
+      "path": "global_planner/test/test_example.cpp",
+      "git_blob_sha": "14bcdeabe234519af18026c0fedbfc858e7e6ef2",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/CMakeLists.txt",
+      "git_blob_sha": "89309a4ec90ac918f78324bb7438939cb4d3b7c1",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/cfg/LocalPlannerNode.cfg",
+      "git_blob_sha": "033ba6834fbf84b4b8cff3d7efdd6928c057a25e",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/cfg/vehicle.yaml",
+      "git_blob_sha": "eef20600f22d505541951fde97705178981d409b",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/avoidance_output.h",
+      "git_blob_sha": "372faa866954aef6aa983ed855dc03d4a9d35201",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/candidate_direction.h",
+      "git_blob_sha": "06e58b5927f0252b967f31569595010a0d9ae7d8",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/cost_parameters.h",
+      "git_blob_sha": "af0ab8ca1656edf764629d0555567ad02b1c42ec",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/local_planner.h",
+      "git_blob_sha": "99ae5e078a1e082269db2e18db28508e41e75a6f",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/local_planner_nodelet.h",
+      "git_blob_sha": "d34e4d471455045f09df0300a9af27ac19ee2eee",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/local_planner_visualization.h",
+      "git_blob_sha": "8c5ca944dd5cda57281d1a4d2b885b1fbae52b19",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/planner_functions.h",
+      "git_blob_sha": "d2d20b7b8a361424de007e93656ea9f6ba91f07c",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/star_planner.h",
+      "git_blob_sha": "b68f07909e8dfde08faad742dc3f8cef13c7ffcf",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/trajectory_simulator.h",
+      "git_blob_sha": "138c8118b09c4d408ec81645d6d68110e294ec04",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/tree_node.h",
+      "git_blob_sha": "c8f9c08c3d7203aa6810f3d821a2c42460875c85",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/include/local_planner/waypoint_generator.h",
+      "git_blob_sha": "15b7c0bfe974ca7785a0754c4994a664cfd71aee",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/local_planner_aero.launch",
+      "git_blob_sha": "df6ce72b7acb25588e623b4d525c084c34dc09e6",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/local_planner_aeroD415.launch",
+      "git_blob_sha": "1a6e06b88ef0d40de92ab7ec2dbe84130cf6c6a7",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/local_planner_depth-camera.launch",
+      "git_blob_sha": "9a71ee87bba9037eeb0918842e02a951e97a9510",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/local_planner_sitl_3cam.launch",
+      "git_blob_sha": "c26291182e4a1692fe85c258e7ef9a9754decbd8",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/local_planner_stereo.launch",
+      "git_blob_sha": "43c48da65901250cef9c6d8c82e744d984c3b189",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/log_replay.launch",
+      "git_blob_sha": "762b09b97d76b658f8faca022e04df92dcd3f581",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/mavros.launch",
+      "git_blob_sha": "a973c437a1f06a921bcaa03eef25d698bbea57aa",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/launch/rs_depthcloud.launch",
+      "git_blob_sha": "7e4ae9204fb221b868ca6f8438c939869d2846c1",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/nodelets.xml",
+      "git_blob_sha": "4b61ac2ea4707ad4a0b83a9cf6924d81d7e0f535",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/package.xml",
+      "git_blob_sha": "b8c4f0e064135db7c2fcb6bc01f50c40b213cb79",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/resource/custom_rosconsole.conf",
+      "git_blob_sha": "7eaa776d595194ab48e86d15928a45210a700e93",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/resource/local_planner.rviz",
+      "git_blob_sha": "e9fe52e3fd9cd600e70c886e8cb68903f5d6eade",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/resource/rqt_param_toggle.sh",
+      "git_blob_sha": "29872d2bebfb682be9d4aa88ab8c4c0e7bddb730",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/resource/stereo_calib.json",
+      "git_blob_sha": "034ad510220c283d4cf2a3f9d0a04fa2f1201956",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/local_planner.cpp",
+      "git_blob_sha": "560cd78d729b48c3b78d38e1c449a0d3ff2cda68",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/local_planner_node_main.cpp",
+      "git_blob_sha": "f55d12322ab415a025cb4b090c643a7edf44df54",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/local_planner_nodelet.cpp",
+      "git_blob_sha": "9e83709615f32c1aa1bf41b47045e6ffb6873853",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/local_planner_visualization.cpp",
+      "git_blob_sha": "553d9292f2c6172c9a0c24aea8304fbb96fce9ab",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/planner_functions.cpp",
+      "git_blob_sha": "19560c99ff5dd68743b695043177fb6c5b64d68f",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/star_planner.cpp",
+      "git_blob_sha": "15abe76c4c1ddc694f506b286315b38eb37c5e19",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/tree_node.cpp",
+      "git_blob_sha": "7afd4838f33cb8ed4112717277af03f2bdb139ac",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/waypoint_generator.cpp",
+      "git_blob_sha": "730168fa3c75698bbfce0e71c2deae7262f5a4ee",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/nodes/waypoint_generator.cpp.dot",
+      "git_blob_sha": "d3c8faf760577eefbb628568da3e0584c5382e57",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/src/utils/trajectory_simulator.cpp",
+      "git_blob_sha": "46ce756eee1bd8ae3fb10d289838a3e2580180b6",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/main.cpp",
+      "git_blob_sha": "e272ee3437f8ea7b61919de9a2190f159aa1b17e",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/test_example.cpp",
+      "git_blob_sha": "14bcdeabe234519af18026c0fedbfc858e7e6ef2",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/test_local_planner.cpp",
+      "git_blob_sha": "c526f187dfce13efb92a28c725caac02983e8f44",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/test_local_planner_nodelet.cpp",
+      "git_blob_sha": "94d123b5917555766061da1eb05d8806917654ee",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/test_planner_functions.cpp",
+      "git_blob_sha": "9f3846d4153f414ba7795cfb38f66f97824d170a",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/test_star_planner.cpp",
+      "git_blob_sha": "d4554b2a9d42a29f1b6709fb6e037d8c1c948a43",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/test_trajectory_simulator.cpp",
+      "git_blob_sha": "04e5b6cb740c96bb24a255ca639cbab0b8a85ad9",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/test_waypoint_generator.cpp",
+      "git_blob_sha": "ba99d32eb56115472bc1210d4e4232a826e91ec2",
+      "downloaded": true
+    },
+    {
+      "path": "local_planner/test/valgrind_suppressions.sup",
+      "git_blob_sha": "57bfe908a52882e35ff7f39b74a5c43fa6d0b0d2",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/CMakeLists.txt",
+      "git_blob_sha": "e0ad160bb418916874502953bce2a2f7b1e29445",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/cfg/SafeLandingPlannerNode.cfg",
+      "git_blob_sha": "98ecf82ec7cb80382b6ca4b46f1ab06a9da44ec2",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/cfg/WaypointGeneratorNode.cfg",
+      "git_blob_sha": "67c9ded94b3a9fe73799a8f2d2eebca44064d442",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/cfg/slpn.yaml",
+      "git_blob_sha": "a589316c7f88191aabfec45991314aeec15bfa06",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/cfg/wpgn.yaml",
+      "git_blob_sha": "774c011367ffd1725eadbae6547c5ecc2f2f6e0e",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/include/safe_landing_planner/grid.hpp",
+      "git_blob_sha": "10a578d95e27a98e319e1fa9629bfe4093ee5d85",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/include/safe_landing_planner/safe_landing_planner.hpp",
+      "git_blob_sha": "d450b71a49dfa6a6b17a1708a850c0d1a92f33cb",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/include/safe_landing_planner/safe_landing_planner_node.hpp",
+      "git_blob_sha": "00b7fd0a03bec4463340b9ea0fa7ddd8f8ffcf7a",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/include/safe_landing_planner/safe_landing_planner_visualization.hpp",
+      "git_blob_sha": "0b9f84044b350aad4a1ad1ba78c72a095c66f9a5",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/include/safe_landing_planner/waypoint_generator.hpp",
+      "git_blob_sha": "284e20d618d7f60efd225f3cf0eceeaa2f0c3285",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/include/safe_landing_planner/waypoint_generator_node.hpp",
+      "git_blob_sha": "2d5a2c16721f0bb210f2381c26e6c836059a762e",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/launch/safe_landing_planner.launch",
+      "git_blob_sha": "bd86e4bb2e76452fbdd761154096602738b7a6c4",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/launch/safe_landing_planner_launch.launch",
+      "git_blob_sha": "9a44aa351afa02ff5d8bfedd3f7b758b7924b022",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/launch/safe_landing_planner_rosbag.launch",
+      "git_blob_sha": "5959e302ea51981ea80aac36d635555a5fa5ded7",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/launch/safe_landing_planner_vtol.launch",
+      "git_blob_sha": "a944828bf926c2b9bb080697c5dceef51849c91f",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/msg/SLPGridMsg.msg",
+      "git_blob_sha": "45ac0fce2b4b58afa0d75bd214fa48ba8abc4fd9",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/package.xml",
+      "git_blob_sha": "6a2ac83f373e96dcc31b6ed543990cc064b30a94",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/resource/lsd_realsense.rviz",
+      "git_blob_sha": "724ee58336fee2c58591e6e5ede92a6ff3a7374b",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/resource/realsense_params.sh",
+      "git_blob_sha": "467758bb57c6d745c3b535d36e5010d7c9d71054",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/resource/rqt_param_toggle.sh",
+      "git_blob_sha": "b6efa9095cf3e8959fee27b9408c205b3d412e65",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/resource/safe_landing_planner.rviz",
+      "git_blob_sha": "7fa068d207a6112fd5ee6d022ce3135aa0db24ed",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/resource/safe_landing_planner_rosbag.rviz",
+      "git_blob_sha": "3b22addfda455834bdc9154cd30cbe56404bb70e",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/resource/stereo_calib.json",
+      "git_blob_sha": "48d40513d12293b959838fcad2fea1c3adf13a17",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/src/nodes/safe_landing_planner.cpp",
+      "git_blob_sha": "66849cfffb4710979740ea0f8654d830464ffca2",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/src/nodes/safe_landing_planner_node.cpp",
+      "git_blob_sha": "c60eeed8be8910eb8cccd738e733b79e501ffaa4",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/src/nodes/safe_landing_planner_node_main.cpp",
+      "git_blob_sha": "0e6de8cd6aafead64dbd4ec3f65818d1ff076dae",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/src/nodes/safe_landing_planner_visualization.cpp",
+      "git_blob_sha": "1d0e187fbbc2f659f26652fec83776da42f9e482",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/src/nodes/waypoint_generator.cpp",
+      "git_blob_sha": "f6dd9cf770f3481393a80c4c278209fa0a2f0eea",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/src/nodes/waypoint_generator.cpp.dot",
+      "git_blob_sha": "f0d5b59b09d8d36d19563b051e0a4e7caac919d6",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/src/nodes/waypoint_generator_node.cpp",
+      "git_blob_sha": "bf8887c983a78c899a0364993e091ed23a243860",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/test/main.cpp",
+      "git_blob_sha": "e272ee3437f8ea7b61919de9a2190f159aa1b17e",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/test/test_grid.cpp",
+      "git_blob_sha": "c67a89320a5e906a038afb90e53a8ff74cb76957",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/test/test_safe_landing_planner.cpp",
+      "git_blob_sha": "dba39dbf3f3a5d90e98e3a2412302d1894d67d14",
+      "downloaded": true
+    },
+    {
+      "path": "safe_landing_planner/test/test_waypoint_generator.cpp",
+      "git_blob_sha": "9721e7cb06de49b2da4b8af185357c6112a12f03",
+      "downloaded": true
+    },
+    {
+      "path": "tools/check_code_format.sh",
+      "git_blob_sha": "7d1fcbf3e6ac2b746b89f37fa2e7a431594893da",
+      "downloaded": true
+    },
+    {
+      "path": "tools/check_state_machine_diagrams.sh",
+      "git_blob_sha": "29cd9846453cb9de9a9e31fe804cb3ecf42a761c",
+      "downloaded": true
+    },
+    {
+      "path": "tools/fix_style.sh",
+      "git_blob_sha": "8a5de12ea35dbfb899dfd48bd6b3e4c35672332d",
+      "downloaded": true
+    },
+    {
+      "path": "tools/generate_coverage.sh",
+      "git_blob_sha": "bf2e49e7d9fd79e9300e600bfc99c7544eb4aa09",
+      "downloaded": true
+    },
+    {
+      "path": "tools/generate_coverage_html.sh",
+      "git_blob_sha": "d7a36578ab543febabcfff088150b2b7d981403d",
+      "downloaded": true
+    },
+    {
+      "path": "tools/generate_flow_diagram.py",
+      "git_blob_sha": "63402667227fd8232e684642fbe3f9343085f39d",
+      "downloaded": true
+    },
+    {
+      "path": "tools/generate_launchfile.sh.deprecated",
+      "git_blob_sha": "0b0a8ede1752732cb7cddbf7dbf70dfe25059901",
+      "downloaded": true
+    },
+    {
+      "path": "tools/set_up_commit_hooks.sh",
+      "git_blob_sha": "d91412b0623efb91c971dd868be051ec47e49d37",
+      "downloaded": true
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+<launch>
+  <arg name="map_size_x" default="40"/>
+  <arg name="map_size_y" default="40"/>
+  <arg name="map_size_z" default="10"/>
+  <param name="/fast_planner_node/evaluation_mode" value="true"/>
+  <param name="use_sim_time" value="true"/>
+  <include file="$(find plan_manage)/launch/kino_algorithm.xml">
+    <arg name="map_size_x_" value="$(arg map_size_x)"/>
+    <arg name="map_size_y_" value="$(arg map_size_y)"/>
+    <arg name="map_size_z_" value="$(arg map_size_z)"/>
+    <arg name="odometry_topic" value="/paper_fast_unused_odom"/>
+    <arg name="camera_pose_topic" value="/paper_fast_unused_pose"/>
+    <arg name="depth_topic" value="/paper_fast_unused_depth"/>
+    <arg name="cloud_topic" value="/paper_fast_unused_cloud"/>
+    <arg name="cx" value="321.04638671875"/>
+    <arg name="cy" value="243.44969177246094"/>
+    <arg name="fx" value="387.229248046875"/>
+    <arg name="fy" value="387.229248046875"/>
+    <arg name="max_vel" value="0.5"/>
+    <arg name="max_acc" value="0.25"/>
+    <arg name="point_num" value="0"/>
+    <arg name="flight_type" value="1"/>
+    <arg name="point0_x" value="0"/>
+    <arg name="point0_y" value="0"/>
+    <arg name="point0_z" value="0"/>
+    <arg name="point1_x" value="0"/>
+    <arg name="point1_y" value="0"/>
+    <arg name="point1_z" value="0"/>
+    <arg name="point2_x" value="0"/>
+    <arg name="point2_y" value="0"/>
+    <arg name="point2_z" value="0"/>
+  </include>
+</launch>
