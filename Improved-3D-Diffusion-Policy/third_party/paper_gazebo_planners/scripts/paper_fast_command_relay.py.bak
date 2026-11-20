@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+"""Fast-Planner kino entry point of the generic command bridge.
+
+Fast's traj_server publishes its own quadrotor_msgs/PositionCommand
+(md5 4712f0609ca29a79af79a35ca3e3967a), which px4ctrl cannot consume. The launch
+retargets traj_server to /paper/fast/pos_cmd and this relay forwards it.
+"""
+import sys
+
+from paper_cmd_relay import run
+
+if __name__ == '__main__':
+    sys.exit(run('/paper/fast/pos_cmd', node_name='paper_fast_command_relay'))

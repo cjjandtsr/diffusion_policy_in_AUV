@@ -1,0 +1,53 @@
+<launch>
+  <arg name="goal_x"/><arg name="goal_y"/><arg name="goal_z"/>
+  <arg name="max_vel"/><arg name="max_acc"/><arg name="robot_radius"/>
+  <arg name="map_size_x"/><arg name="map_size_y"/><arg name="map_size_z"/>
+  <arg name="virtual_ceiling"/>
+  <arg name="cloud_topic" default="/iris_D435i/realsense/depth_camera/depth/points"/>
+  <arg name="odom_topic" default="/mavros/local_position/odom"/>
+  <node pkg="paper_gazebo_planners" type="local_cloud_bridge.py" name="paper_local_cloud_bridge" output="screen" required="true">
+    <param name="cloud_topic" value="$(arg cloud_topic)"/>
+    <param name="odom_topic" value="$(arg odom_topic)"/>
+  </node>
+  <include file="$(find plan_manage)/launch/kino_algorithm.xml">
+    <arg name="map_size_x_" value="$(arg map_size_x)"/><arg name="map_size_y_" value="$(arg map_size_y)"/><arg name="map_size_z_" value="$(arg map_size_z)"/>
+    <arg name="odometry_topic" value="/paper/odom_local"/>
+    <arg name="camera_pose_topic" value="/paper/unused_pose"/><arg name="depth_topic" value="/paper/unused_depth"/>
+    <arg name="cloud_topic" value="/paper/cloud_local"/>
+    <arg name="cx" value="320.5"/><arg name="cy" value="240.5"/><arg name="fx" value="554.254691191187"/><arg name="fy" value="554.254691191187"/>
+    <arg name="max_vel" value="$(arg max_vel)"/><arg name="max_acc" value="$(arg max_acc)"/>
+    <!-- flight_type=2 (PRESET_TARGET), per the implementation guide. Code fact:
+       kino_replan_fsm.cpp:84 builds the manual target as `end_pt_ << x, y, 1.0`, i.e.
+       MANUAL_TARGET throws the goal height away and would fly to z=1; only the PRESET
+       branch uses waypoints_[wp][2] = point0_z. The goal still arrives after the
+       monitor is subscribed, because the runner opens /paper_goal_enabled then and
+       send_fast_goal.py releases it. -->
+    <arg name="flight_type" value="2"/><arg name="point_num" value="1"/>
+    <arg name="point0_x" value="$(arg goal_x)"/><arg name="point0_y" value="$(arg goal_y)"/><arg name="point0_z" value="$(arg goal_z)"/>
+    <arg name="point1_x" value="0"/><arg name="point1_y" value="0"/><arg name="point1_z" value="0"/>
+    <arg name="point2_x" value="0"/><arg name="point2_y" value="0"/><arg name="point2_z" value="0"/>
+  </include>
+  <param name="/fast_planner_node/evaluation_mode" value="false"/>
+  <param name="/fast_planner_node/sdf_map/obstacles_inflation" value="$(arg robot_radius)"/>
+  <param name="/fast_planner_node/sdf_map/virtual_ceil_height" value="$(arg virtual_ceiling)"/>
+  <node pkg="plan_manage" type="traj_server" name="paper_fast_traj_server" output="screen" required="true">
+    <!-- Fast publishes its own quadrotor_msgs/PositionCommand (md5 4712f060...);
+       it must not share /planning/pos_cmd with px4ctrl. The relay started by
+       the runner forwards it through the neutral array. -->
+    <remap from="/position_cmd" to="/paper/fast/pos_cmd"/>
+    <remap from="/odom_world" to="/paper/odom_local"/>
+    <param name="traj_server/time_forward" value="1.0"/>
+  </node>
+  <!-- gated: the runner opens /paper_goal_enabled once the monitor is subscribed,
+       so the monitor measures the flight instead of starting after it. -->
+  <node pkg="paper_gazebo_planners" type="send_fast_goal.py" name="paper_fast_goal"
+        output="screen" args="--x $(arg goal_x) --y $(arg goal_y) --z $(arg goal_z)"/>
+  <!-- Fast publishes its own quadrotor_msgs/PositionCommand (md5 4712f060...); this
+       relay, running in the Fast overlay, forwards it as the neutral 18-double wire that
+       paper_cmd_import.py turns back into px4ctrl's own message on /planning/pos_cmd. -->
+  <node pkg="paper_gazebo_planners" type="paper_fast_command_relay.py"
+        name="paper_fast_command_relay" output="screen">
+    <param name="source_topic" value="/paper/fast/pos_cmd"/>
+    <param name="neutral_topic" value="/paper/pos_cmd_neutral"/>
+  </node>
+</launch>

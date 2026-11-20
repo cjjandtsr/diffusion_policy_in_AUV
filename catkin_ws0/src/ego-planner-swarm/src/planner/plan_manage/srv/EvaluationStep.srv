@@ -1,0 +1,16 @@
+# One service call is the observation/clock barrier. Time starts at 1 second.
+float64 time_s
+nav_msgs/Odometry odometry
+sensor_msgs/PointCloud2 cloud
+bool initialize
+bool decision_boundary
+geometry_msgs/Vector3 acceleration
+geometry_msgs/Point goal
+uint32 seed
+---
+bool has_trajectory
+traj_utils/Bspline trajectory
+uint32 trajectory_count
+uint32 failed_plans
+float64 planning_seconds
+string state

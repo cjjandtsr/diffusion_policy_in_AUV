@@ -1,0 +1,25 @@
+<launch>
+  <arg name="config"/><arg name="native_launch"/>
+  <arg name="goal_x"/><arg name="goal_y"/><arg name="goal_z"/>
+  <arg name="goal_topic" default="/paper_super/goal"/>
+  <arg name="cloud_topic" default="/iris_D435i/realsense/depth_camera/depth/points"/>
+  <arg name="odom_topic" default="/mavros/local_position/odom"/>
+  <node pkg="paper_gazebo_planners" type="local_cloud_bridge.py" name="paper_local_cloud_bridge" output="screen" required="true">
+    <param name="cloud_topic" value="$(arg cloud_topic)"/><param name="odom_topic" value="$(arg odom_topic)"/>
+  </node>
+  <include file="$(arg native_launch)"><arg name="config" value="$(arg config)"/></include>
+  <!-- SUPER-side relay. roslaunch inherits NATIVE_SETUP (paper_super_ws), so
+       quadrotor_msgs here is SUPER's own md5 d008e86d... It converts the native
+       PositionCommand into the wire that scripts/paper_super_legacy_command.py
+       consumes ([stamp,p3,v3,a3,yaw,yaw_dot,native_flag], 13 doubles). The runner
+       starts that legacy end BEFORE sourcing this overlay. -->
+  <node pkg="paper_gazebo_planners" type="paper_super_command_relay.py"
+        name="paper_super_command_relay" output="screen">
+    <param name="source_topic" value="/paper_super/position_cmd"/>
+    <param name="reference_topic" value="/paper_super/reference"/>
+  </node>
+  <node pkg="paper_gazebo_planners" type="send_super_goal.py" name="paper_super_goal" output="screen">
+    <param name="goal_topic" value="$(arg goal_topic)"/>
+    <param name="goal_x" value="$(arg goal_x)"/><param name="goal_y" value="$(arg goal_y)"/><param name="goal_z" value="$(arg goal_z)"/>
+  </node>
+</launch>

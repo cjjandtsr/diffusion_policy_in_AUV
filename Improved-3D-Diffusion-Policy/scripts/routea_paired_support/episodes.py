@@ -21,7 +21,7 @@ def validate_rows(header, rows, summary):
     if not rows or len(rows) > 60 or summary["status"] != "valid":
         raise ValueError("incomplete/invalid episode")
     obstacles = [ObstacleSpec(**o) for o in header["geometry"]]
-    goal = np.asarray(header["task"]["goal_pos"], np.float64)
+    goal = np.asarray(header["task"]["goal_pos"], np.float32)
     path = [np.asarray(header["task"]["start_pos"], np.float32)]
     seconds = 0.
     last_reason = None
@@ -125,7 +125,7 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
                                               reset_callable=adapter.reset)
     if observation_hash(observation) != entry["observation_hash"]:
         raise ValueError("initial observation pairing failed: " + entry["key"])
-    if getattr(policy, 'policy_kind', None) == 'ego':
+    if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4', 'super'):
         policy.reset_episode(task, entry, env, observation, context)
     job = Path(job)
     trace_dir = job / "traces"
@@ -147,9 +147,11 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
               "action_dtype": "float32", "reset_seed": entry["reset_seed"],
               "initial_pointcloud_metadata": metadata(context),
               "policy_identity_hash": policy.identity_hash, "reward_version": "v2"}
+    if env.reward_version in ('v4', 'v5'):
+        header['reward_version'] = env.reward_version
     header["terminate_at_space_limits"] = bool(getattr(env, "terminate_at_space_limits", True))
-    if getattr(policy, 'policy_kind', None) == 'ego':
-        header['policy_kind'] = 'ego'
+    if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4', 'super'):
+        header['policy_kind'] = policy.policy_kind
         header['execution_protocol'] = 'common_H4'
         header['ego_parameters'] = policy.runtime_parameters
     rows, path = [], [env._drone_pos.copy()]
@@ -177,7 +179,7 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
                 provenance = asdict(policy.last_provenance)
                 observation, reward, terminated, truncated, context = adapter.step(bundle)
                 ego_update = (policy.after_step(context)
-                              if getattr(policy, 'policy_kind', None) == 'ego' else None)
+                              if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4', 'super') else None)
                 actual = context["executed_path"]
                 row = {"type": "transition", "decision": decision, "action_seed": seed,
                        "pre_state": pre, "post_state": {"position": env._drone_pos.tolist(),

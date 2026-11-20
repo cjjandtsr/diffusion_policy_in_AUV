@@ -1,0 +1,133 @@
+<launch>
+    <!-- ══════════════════════════════════════════════════════════════
+         本文件 = single_run_in_gazebo.launch 的副本, 改动只有三处:
+           (1) point0_x / point0_y / point0_z: value= → default=  (可命令行覆盖)
+           (2) flight_type: value="2" → default="1"              (MANUAL_TARGET)
+           (3) 地图包络放大: map_size 50×25×3 → 58×58×10, virtual_ceil 2.9 → 9.9
+         原文件未改 (2026-11-07, P0/P6/EGO 三方法 288 条件对比)。
+
+         为什么必须改 point0: 原 launch 用 value= 硬编码 16/0/2,
+         roslaunch 命令行传 point0_x:=X 会被直接忽略, EGO 永远飞 (16,0,2)。
+         只改 monitor 或只传未被读取的参数都不解决问题。
+
+         为什么 flight_type 改成 1 (实测, 2026-11-07):
+           flight_type=2 (PRESET_TARGET) 在本仓库不可用。ego_replan_fsm.cpp
+           的 init() 在 `readGivenWps()` 里调 `planNextWaypoint(wps_[0])`,
+           而当时 exec_state_ 还是 INIT(不是 WAIT_TARGET), 于是走进
+           `while (exec_state_ != EXEC_TRAJ) { spinOnce; sleep; }` 的 else 分支,
+           状态机永远停在 WAIT_TARGET, 实测 90 s 内一次规划都没触发
+           (日志只有 "[FSM]: state: WAIT_TARGET", 无 "Unable to generate
+           global trajectory")。这是 EGO 初始化期的状态竞争, 不是目标值问题。
+         flight_type=1 (MANUAL_TARGET) 走 waypointCallback → planNextWaypoint,
+           此时 exec_state_ 已是 WAIT_TARGET, 直接 GEN_NEW_TRAJ, 是 EGO
+           自己的交互式入口, 不改任何算法/参数。目标由运行时向
+           /move_base_simple/goal 发布一次 PoseStamped 给出 (见
+           run_task_flight.sh 的 ENGINE=ego 分支)。
+
+         为什么必须放大地图 (实测, 2026-11-07):
+           原 map_size 50×25×3(origin_z = ground_height = -0.01, virtual_ceil 2.9)
+           ⇒ 地图 z 只有 [-0.01, 2.99]。任务表 start_z ∈ [1.42,4.70]、
+           goal_z ∈ [1.51,4.50], 大量任务在地图外。同一 world/起点只把
+           goal_z 由 4.144 压到 2.0: EGO 立刻 success_deploy=True
+           (final_dist_xy 0.48, 8.3 s, 14 次 traj success); 不压则永远
+           "traj 1 failed. plan_success=0 refine_success=0" 卡在 GEN_NEW_TRAJ。
+           地图系原点 = spawn(odom 原点), 故须覆盖 odom 帧任务包络:
+             dx ∈ [-23.96, 26.28], dy ∈ [-25.81, 27.58]  ⇒ 半宽至少 26.3 / 27.6
+           取 58×58 (半宽 29) 留 1.4 m 余量; z 取 10.0, 虚拟天花 9.9
+           (高于最高任务 z 4.70, 不会压制飞行)。
+           这是地图"存在范围", 不改建图算法/分辨率(0.1)/膨胀(0.3)/规划参数。
+           代价: 缓冲区 580×580×100 voxel × 15 B ≈ 0.5 GB; 发布只遍历局部带
+           且 WITH_RVIZ=0 无订阅者时早退。
+
+         其余参数 (max_vel 0.5 / max_acc 0.25 / point_num 1 /
+         相机内外参 / 分辨率 0.1 / 膨胀 0.3) 与原文件逐字相同,
+         EGO 这一臂的规划算法与代价参数不变。
+         ══════════════════════════════════════════════════════════════ -->
+    <!-- number of moving objects -->
+    <arg name="obj_num" value="10" />
+    <arg name="drone_id" value="0"/>
+
+    <!-- ★ 改动 (3): 覆盖 odom 帧任务包络, 原因见文件头 -->
+    <arg name="map_size_x" value="58.0"/>
+    <arg name="map_size_y" value="58.0"/>
+    <arg name="map_size_z" value="10.0"/>
+    <arg name="virtual_ceil_height" value="9.9"/>
+    <arg name="target_x" default="12"/>
+    <arg name="target_y" default="1"/>
+    <arg name="target_z" default="1.5"/>
+    <arg name="odom_topic" value="mavros/local_position/odom"/>
+    <arg name="depth_topic" value="/iris_D435i/realsense/depth_camera/depth/image_raw"/>
+    <arg name="cmd_topic" value="planning/pos_cmd"/>
+
+    <!-- main algorithm params -->
+    <include file="$(find ego_planner)/launch/advanced_param_gazebo.xml">
+        <arg name="drone_id" value="$(arg drone_id)"/>
+        <arg name="map_size_x_" value="$(arg map_size_x)"/>
+        <arg name="map_size_y_" value="$(arg map_size_y)"/>
+        <arg name="map_size_z_" value="$(arg map_size_z)"/>
+        <arg name="virtual_ceil_height" value="$(arg virtual_ceil_height)"/>
+        <arg name="odometry_topic" value="$(arg odom_topic)"/>
+        <arg name="obj_num_set" value="$(arg obj_num)" />
+        <!-- camera pose: transform of camera frame in the world frame -->
+        <!-- depth topic: depth image, 640x480 by default -->
+        <!-- don't set cloud_topic if you already set these ones! -->
+        <arg name="camera_pose_topic" value="null"/>
+        <arg name="depth_topic" value="$(arg depth_topic)"/>
+        <!-- topic of point cloud measurement, such as from LIDAR  -->
+        <!-- don't set camera pose and depth, if you already set this one! -->
+        <arg name="cloud_topic" value="null"/>
+        <!-- intrinsic params of the depth camera -->
+        <arg name="cx" value="320.5"/>
+        <arg name="cy" value="240.5"/>
+        <arg name="fx" value="554.254691191187"/>
+        <arg name="fy" value="554.254691191187"/>
+        <!-- maximum velocity and acceleration the drone will reach -->
+        <arg name="max_vel" value="0.5" />
+        <arg name="max_acc" value="0.25" />
+        <!--always set to 1.5 times grater than sensing horizen-->
+        <arg name="planning_horizon" value="7.5" />
+        <arg name="use_distinctive_trajs" value="true" />
+        <!-- 1: use 2D Nav Goal to select goal  -->
+        <!-- 2: use global waypoints below  -->
+        <!-- ★ 改动: value=2 → default=1, 原因见文件头 -->
+        <arg name="flight_type" default="1" />
+        <!-- global waypoints -->
+        <!-- It generates a piecewise min-snap traj passing all waypoints -->
+        <arg name="point_num" value="1" />
+        <!-- ★ 唯一改动: value= → default= (逐任务目标) -->
+        <arg name="point0_x" default="16" />
+        <arg name="point0_y" default="0" />
+        <arg name="point0_z" default="2" />
+        <arg name="point1_x" value="8" />
+        <arg name="point1_y" value="0" />
+        <arg name="point1_z" value="1.2" />
+        <arg name="point2_x" value="13.0" />
+        <arg name="point2_y" value="4.0" />
+        <arg name="point2_z" value="1.0" />
+        <arg name="point3_x" value="4.0" />
+        <arg name="point3_y" value="5.0" />
+        <arg name="point3_z" value="1.5" />
+        <arg name="point4_x" value="15.0" />
+        <arg name="point4_y" value="0.0" />
+        <arg name="point4_z" value="1.0" />
+    </include>
+    <!-- trajectory server -->
+    <node pkg="ego_planner" name="drone_$(arg drone_id)_traj_server" type="traj_server" output="screen">
+        <remap from="position_cmd" to="$(arg cmd_topic)"/>
+        <remap from="~planning/bspline" to="planning/bspline"/>
+        <param name="traj_server/time_forward" value="1.0" type="double"/>
+    </node>
+
+    <node pkg="odom_visualization" name="drone_$(arg drone_id)_odom_visualization" type="odom_visualization" output="screen">
+        <remap from="~odom" to="$(arg odom_topic)"/>
+        <param name="color/a" value="1.0"/>
+        <param name="color/r" value="0.0"/>
+        <param name="color/g" value="0.0"/>
+        <param name="color/b" value="0.0"/>
+        <param name="covariance_scale" value="100.0"/>
+        <param name="robot_scale" value="1.0"/>
+        <param name="tf45" value="false"/>
+        <param name="drone_id" value="drone_id"/>
+    </node>
+
+</launch>

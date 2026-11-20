@@ -127,10 +127,7 @@ def main():
             raise ValueError('dev/training geometry mismatch: '+world)
         geometry = [asdict(o) for o in load_obstacles(str(path))]
         worlds[world] = dict(role=role,obstacle_sha256=sha,n_obstacles=len(geometry))
-        # Execution-side fix (2026-11-01): the frozen dev420 bank stores task geometry under
-        # the task 'payload' (`schema=routea_train_domain_paired_dev_v1`), not at top level.
-        pairs = [(t['payload']['start_pos'],t['payload']['goal_pos'])
-                 for t in dev['tasks'] if t['world_id']==world]
+        pairs = [(t['start_pos'],t['goal_pos']) for t in dev['tasks'] if t['world_id']==world]
         if len(pairs)!=4:
             raise ValueError('expected four dev tasks per world')
         jobs.append((world,role,geometry,pairs,args.per_world,20261031+i))

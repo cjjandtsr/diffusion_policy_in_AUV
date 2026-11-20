@@ -1,0 +1,65 @@
+<launch>
+    <arg name="drone_id" default="0"/>
+
+    <arg name="odom_topic"       value="/mavros/local_position/odom"/>
+    <arg name="pointcloud_topic" value="/iris_D435i/realsense/depth_camera/depth/points"/>
+
+    <arg name="waypoint_num" value="1"/>
+    <arg name="waypoint0_x"  value="15.0"/>
+    <arg name="waypoint0_y"  value="0.0"/>
+    <arg name="waypoint0_z"  value="2.0"/>
+
+    <node name="drone_$(arg drone_id)_ml_planner"
+          pkg="ego_planner"
+          type="ml_planner_gazebo.py"
+          output="screen">
+
+        <param name="drone_id"     value="$(arg drone_id)"/>
+        <param name="waypoint_num" value="$(arg waypoint_num)"/>
+        <param name="waypoint0_x"  value="$(arg waypoint0_x)"/>
+        <param name="waypoint0_y"  value="$(arg waypoint0_y)"/>
+        <param name="waypoint0_z"  value="$(arg waypoint0_z)"/>
+
+        <remap from="~odom"       to="$(arg odom_topic)"/>
+        <remap from="~pointcloud" to="$(arg pointcloud_topic)"/>
+
+        <param name="control_freq"   value="50.0"/>
+        <!-- 轨迹执行到70%时触发后台推理，保证obs采样到运动状态 -->
+        <param name="replan_ratio"   value="0.7"/>
+        <param name="goal_tolerance" value="0.5"/>
+        <param name="default_height" value="1.5"/>
+        <!-- traj_dt=0.3s，15步=4.5s轨迹，与训练数据时序一致 -->
+        <param name="traj_dt"        value="0.3"/>
+        <param name="pos_gain"       value="[3.5, 3.5, 3.5]"/>
+        <param name="vel_gain"       value="[3.5, 3.5, 3.5]"/>
+        <param name="flight_mode"    value="0"/>
+        <param name="odom_vel_is_world" value="true"/>
+
+        <!-- DDIM步数：5步目标<200ms。加速来源：compile+patch，不再靠减步数 -->
+        <param name="num_inference_steps" value="5"/>
+
+        <!-- FP16：暂时关闭，compile+patch已足够；确认稳定后可再开 -->
+        <param name="use_fp16"  value="false"/>
+
+        <!-- torch.compile：关键加速项，默认开启。首次启动预热约60s -->
+        <param name="use_torch_compile" value="true"/>
+
+        <param name="checkpoint_path" value="$(env HOME)/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/data/outputs/2026.03.12/09.26.26_train_diffusion_unet_hybrid_drone_trajectory_1/checkpoints/latest.ckpt"/>
+    </node>
+
+    <node pkg="odom_visualization"
+          name="drone_$(arg drone_id)_odom_visualization"
+          type="odom_visualization"
+          output="screen">
+        <remap from="~odom" to="$(arg odom_topic)"/>
+        <param name="color/a"          value="1.0"/>
+        <param name="color/r"          value="0.0"/>
+        <param name="color/g"          value="0.0"/>
+        <param name="color/b"          value="1.0"/>
+        <param name="covariance_scale" value="100.0"/>
+        <param name="robot_scale"      value="1.0"/>
+        <param name="tf45"             value="false"/>
+        <param name="drone_id"         value="$(arg drone_id)"/>
+    </node>
+
+</launch>

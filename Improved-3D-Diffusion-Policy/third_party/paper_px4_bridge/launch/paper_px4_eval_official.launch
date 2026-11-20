@@ -1,0 +1,23 @@
+<launch>
+  <!-- 2026-11-12: official-parameter variant of paper_px4_eval.launch.
+
+       override_px4_params=false means the bridge does not touch the six px4
+       parameters and the planner runs on setDefaultPx4Parameters() exactly as
+       upstream ships it (local_planner.cpp:190-202): param_mpc_xy_cruise 3.0,
+       param_mpc_acc_hor 5.0, z_vel_max_up 3.0, z_vel_max_dn 1.0,
+       acc_up_max 10.0, acc_down_max 10.0. The bridge logs the effective values
+       as `PX4_PARAMS ...` on every episode initialize.
+
+       Everything else (planner node, FOV, map size) is identical to
+       paper_px4_eval.launch, which stays at the 0.5 m/s override so the
+       2026-11-12 930-episode run remains reproducible. -->
+  <arg name="map_size_x" default="60"/><arg name="map_size_y" default="60"/><arg name="map_size_z" default="12"/>
+  <arg name="horizontal_fov_deg" default="60.0000257"/><arg name="vertical_fov_deg" default="46.826469"/>
+  <param name="use_sim_time" value="true"/>
+  <node pkg="paper_px4_bridge" type="paper_px4_bridge_node" name="paper_px4_bridge" output="screen">
+    <param name="override_px4_params" value="false"/>
+    <param name="window_vehicle_advance" value="true"/>
+    <param name="horizontal_fov_deg" value="$(arg horizontal_fov_deg)"/>
+    <param name="vertical_fov_deg" value="$(arg vertical_fov_deg)"/>
+  </node>
+</launch>

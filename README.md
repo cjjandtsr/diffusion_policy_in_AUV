@@ -47,6 +47,12 @@ experiments). The current main line is the FM policy + official-semantics DPPO r
 │   ├── third_party/                       # vendored official DPPO reference (MIT)
 │   ├── program/  zhidao/                  # internal reports and execution guides (Chinese)
 │   └── RL_REBUILD_TRACEABILITY.md         # RL rebuild traceability notes
+├── catkin_ws0/                            # ROS Noetic simulation stack (PX4 SITL + Gazebo)
+│   ├── src/                               # catkin packages: px4ctrl, kr_mav_manager, trackers,
+│   │                                      #   ego-planner-swarm (EGO-Planner + uav_simulator),
+│   │                                      #   custom_target_generator, kr_mav_launch, offboard_pkg
+│   ├── scripts/                           # SITL launch/teardown, world generation, closed-loop eval
+│   └── launch/                            # default RViz configuration
 ├── scripts/                               # upstream iDP3 wrappers (kept for reference)
 └── third_party/                           # upstream iDP3 third-party components
 ```
@@ -129,6 +135,39 @@ Other training entry points in `scripts/` (DDPM PPO, FM-SDE PPO / ARFM, ReinFlow
 - `train_dppo_uav_official.py`
 - `train_fm_sde_ppo.py`, `train_fm_sde_arfm.py`, `train_reinflow_fm.py`
 - `train_a2_10k_capability.py`
+
+## Simulation stack (`catkin_ws0/`)
+
+`catkin_ws0/` is the ROS Noetic workspace used for closed-loop simulation and data collection.
+It contains the vehicle/flight-control interface (`px4ctrl`, `kr_mav_manager`, `trackers`),
+the EGO-Planner and its UAV simulator (`ego-planner-swarm`), target/phase generation
+(`custom_target_generator`, `kr_mav_launch`), and the policy inference nodes
+(`src/ego-planner-swarm/src/planner/plan_manage/scripts/ml_planner_gazebo*.py`).
+
+The runtime also expects PX4-Autopilot plus `mavros` outside the workspace
+(`PX4-Autopilot/Tools/sitl_gazebo`). Typical entry points, run from `catkin_ws0/`:
+
+```bash
+# PX4 SITL + Gazebo + mavros for one world
+./scripts/start_sitl.sh /path/to/world.world
+./scripts/stop_sitl.sh
+
+# EGO-Planner + diffusion-policy node, closed loop in Gazebo
+./scripts/ml_gazebo_fm.sh
+
+# world generation / validation for RL evaluation splits
+python3 scripts/generate_worlds_routeA_rl_v1.py
+python3 scripts/validate_routeA_rl_worlds_v1.py
+python3 scripts/calibrate_routeA_rl_worlds_v1.py
+
+# batch closed-loop rollout and scoring
+python3 scripts/closed_loop_runner.py
+python3 scripts/rollout_gazebo_eval.py
+```
+
+Build the workspace with `catkin_make` (or `catkin build`) after sourcing `/opt/ros/noetic/setup.bash`.
+On WSL, ROS endpoints must use the primary NIC address rather than `127.0.0.1`
+(the loopback interface is unreliable there); export `ROS_IP` / `ROS_MASTER_URI` accordingly.
 
 ## Testing
 

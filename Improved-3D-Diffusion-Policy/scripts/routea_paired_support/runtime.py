@@ -135,6 +135,8 @@ def load_actor(root, system, descriptor):
     if header["lora_identity_hash"] != system.lora_bundle.identity.content_hash:
         raise ValueError("actual LoRA target identity differs")
     state = torch.load(p / "state.pt", map_location="cpu", weights_only=True)
+    if state.get('evaluation_only'):
+        raise ValueError('evaluation-only migration copy cannot enter regular actor evaluation')
     transitions, commits = 1024, 40  # Accepted legacy S2 checkpoints.
     if "training_config" in state:
         from omegaconf import OmegaConf
@@ -184,14 +186,16 @@ def make_adapter(system, c, world, role):
         raise ValueError("live obstacle bytes changed after bank freeze")
     adapter = _build_adapter(system, c, world["world_id"], Path(world["obstacle_path"]), role)
     env = adapter.environment
+    if env.reward_version == 'v5':
+        env.approach_weight = float(c.f7.approach_weight)
     env.exec_noise_scale = 0.
     env.disturb_enable = False
     env.mid_state_init_ratio = 0.
     env.terminate_at_space_limits = False
     # v3 delegates state advancement and first-event handling to v2; only reward differs.
-    if (env.reward_version not in ("v2", "v3") or env.n_exec_steps != 4 or env.rl_action_steps != 8
+    if (env.reward_version not in ("v2", "v3", "v4", "v5") or env.n_exec_steps != 4 or env.rl_action_steps != 8
             or env.traj_dt != .3 or env.max_episode_steps != 60 or env.collision_thresh != .1):
-        raise ValueError("common environment is not v2-or-v3/H4/8")
+        raise ValueError("common environment is not v2-or-v3-or-v4-or-v5/H4/8")
     return adapter
 
 

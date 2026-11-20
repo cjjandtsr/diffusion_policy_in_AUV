@@ -1,0 +1,12 @@
+float64 time_s
+bool initialize
+nav_msgs/Odometry odometry
+sensor_msgs/PointCloud2 cloud
+geometry_msgs/Point goal
+---
+geometry_msgs/Point position
+geometry_msgs/Vector3 velocity
+float64 yaw
+float64 yaw_rate
+float64 planning_seconds
+float64 native_speed

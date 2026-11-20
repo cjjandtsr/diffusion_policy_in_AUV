@@ -1,0 +1,1718 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+ML Planner v6.5 — world frame chunk-wise delta 扩散模型无人机轨迹规划
+改进：闭环状态记录（用于 OOD 诊断）
+"""
+
+import os, sys, time, traceback, types, json, contextlib
+import numpy as np
+import rospy
+from collections import deque
+from threading import Lock, Thread
+import csv
+from datetime import datetime
+
+from sensor_msgs.msg import PointCloud2
+from nav_msgs.msg import Odometry
+from geometry_msgs.msg import Point
+from quadrotor_msgs.msg import PositionCommand
+from visualization_msgs.msg import Marker, MarkerArray
+from std_msgs.msg import ColorRGBA
+import sensor_msgs.point_cloud2 as pc2
+from mavros_msgs.msg import State as MavrosState
+from mavros_msgs.srv import SetMode
+
+import torch, hydra
+import torch._dynamo
+torch._dynamo.config.suppress_errors = True
+
+DIFFUSION_POLICY_PATH = os.path.expanduser(
+    "/root/autodl-tmp/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy")
+if os.path.exists(DIFFUSION_POLICY_PATH):
+    sys.path.insert(0, DIFFUSION_POLICY_PATH)
+else:
+    print("[ML Planner] 致命: 找不到扩散模型路径"); sys.exit(1)
+
+os.environ['WANDB_SILENT'] = "True"
+os.environ['WANDB_MODE']   = "disabled"
+
+try:
+    from diffusion_policy_3d.workspace.base_workspace import BaseWorkspace
+except ImportError:
+    traceback.print_exc(); sys.exit(1)
+
+
+# ═══ v6.5 索引常量 (action 与 v5 相同) ═══
+DPOS_W   = slice(0, 3)
+VEL_W    = slice(3, 6)
+ACC_W    = slice(6, 9)
+DYAW_CW  = 9
+YAW_RATE = 10
+
+POS    = slice(0, 3)
+VEL    = slice(3, 6)
+ACC    = slice(6, 9)
+YAW    = 9
+YAW_RT = 10
+
+STATE_DIM = 9
+DIM_NAMES_RAW   = ["dx_w","dy_w","dz_w","vx_w","vy_w","vz_w",
+                   "ax_w","ay_w","az_w","dyaw_cw","yr"]
+DIM_NAMES_WORLD = ["pos_x","pos_y","pos_z","vel_x","vel_y","vel_z",
+                   "acc_x","acc_y","acc_z","yaw","yr"]
+
+R_CAM2BODY = np.array([[ 0,0,1],[-1,0,0],[0,-1,0]], dtype=np.float64)
+
+
+def yaw_to_rotmat(yaw):
+    c, s = np.cos(yaw), np.sin(yaw)
+    return np.array([[c,-s,0],[s,c,0],[0,0,1]], dtype=np.float64)
+
+def normalize_angle(a):
+    return (a + np.pi) % (2*np.pi) - np.pi
+
+
+# ---------- 推理加速补丁 ----------
+def _make_fast_conditional_sample(policy, n_steps, device):
+    scheduler = policy.noise_scheduler
+    scheduler.set_timesteps(n_steps)
+    _cached_timesteps = scheduler.timesteps.to(device)
+
+    def fast_conditional_sample(
+        self_policy,
+        condition_data, condition_mask,
+        local_cond=None, global_cond=None,
+        generator=None,
+        **kwargs
+    ):
+        trajectory = torch.randn(
+            size=condition_data.shape,
+            dtype=condition_data.dtype,
+            device=condition_data.device,
+            generator=generator)
+
+        trajectory = torch.where(
+            condition_mask,
+            condition_data.to(trajectory.dtype),
+            trajectory)
+
+        for t in _cached_timesteps:
+            model_output = self_policy.model(
+                trajectory, t, local_cond=local_cond, global_cond=global_cond)
+            trajectory = scheduler.step(
+                model_output, t, trajectory,
+                **{k: v for k, v in kwargs.items()
+                   if k in ('eta', 'use_clipped_model_output', 'variance_noise')}
+            ).prev_sample
+            trajectory = torch.where(
+                condition_mask,
+                condition_data.to(trajectory.dtype),
+                trajectory)
+
+        return trajectory
+
+    return types.MethodType(fast_conditional_sample, policy)
+
+
+def _try_compile(module, label):
+    # 改用 inductor 而非 cudagraphs。
+    # cudagraphs backend 在 PyTorch 2.x + CUDA 12.x 上有已知 bug:
+    #   1) FakeTensor 关联冲突 (RuntimeError: Creating a new Tensor subclass...)
+    #   2) SymInt 缺 _typed_storage 属性
+    #   3) cudagraphs.dst.copy_ 形状不匹配 (1024 vs 2048, CFG batch=2 触发)
+    # inductor 是 PyTorch 2.x 官方主力 backend, 编译稍慢但稳定。
+    # mode='reduce-overhead' 适合 inference, 编译时间短, 减少 launch overhead。
+    # dynamic=True 容许 batch 变化 (R3.1 CFG batch=2, 但安全网兜底)。
+    backends = [
+        ("inductor",   dict(mode='reduce-overhead', dynamic=True)),
+        ("aot_eager",  dict()),
+        ("eager",      dict()),
+    ]
+    for name, kwargs in backends:
+        try:
+            compiled = torch.compile(module, backend=name, **kwargs)
+            rospy.loginfo(f"[Speed] {label} torch.compile(backend={name}, kwargs={kwargs}) 已启用")
+            return compiled
+        except Exception as e:
+            rospy.logwarn(f"[Speed] {label} backend={name} 失败: {e}")
+    rospy.logwarn(f"[Speed] {label} 所有 compile 后端均失败，回退 eager 模式")
+    return module
+
+
+def apply_inference_patches(policy, n_steps, device, use_compile=False):
+    policy.conditional_sample = _make_fast_conditional_sample(policy, n_steps, device)
+    rospy.loginfo(f"[Speed] conditional_sample 已 patch（{n_steps}步 DDIM，预缓存 timesteps）")
+
+    if use_compile and device.type == 'cuda':
+        policy.model = _try_compile(policy.model, "UNet")
+        if hasattr(policy, 'obs_encoder'):
+            policy.obs_encoder = _try_compile(policy.obs_encoder, "obs_encoder")
+
+    if device.type == 'cuda':
+        torch.set_float32_matmul_precision('high')
+        torch.backends.cudnn.benchmark = True
+        rospy.loginfo("[Speed] TF32 matmul + cudnn.benchmark 已启用")
+
+    return policy
+
+
+def warmup_policy(policy, n_obs_steps, num_points, device, n_warmup=3):
+    rospy.loginfo(f"[Speed] 开始热身推理（{n_warmup}次）...")
+    dummy_pc  = torch.randn(1, n_obs_steps, num_points, 3, device=device)
+    dummy_pos = torch.randn(1, n_obs_steps, STATE_DIM,     device=device)
+    obs = {'point_cloud': dummy_pc, 'agent_pos': dummy_pos}
+
+    t_warmup = []
+    with torch.inference_mode():
+        for i in range(n_warmup):
+            if device.type == 'cuda':
+                torch.cuda.synchronize()
+            t0 = time.time()
+            out = policy.predict_action(obs)
+            if device.type == 'cuda':
+                torch.cuda.synchronize()
+            dt = (time.time() - t0) * 1000
+            t_warmup.append(dt)
+            rospy.loginfo(f"[Speed] 热身第{i+1}次: {dt:.0f}ms  output={out.get('action', out.get('action_pred')).shape}")
+
+    rospy.loginfo(f"[Speed] 热身完成，稳定延迟: {t_warmup[-1]:.0f}ms")
+    action_out = out.get('action', out.get('action_pred'))
+    return action_out.shape
+
+
+# CSV 日志类（原有）
+class CSVLogger:
+    def __init__(self):
+        log_dir = os.path.expanduser("~/ml_planner_log")
+        os.makedirs(log_dir, exist_ok=True)
+        self.ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+        ts = self.ts
+
+        self.diff_file = open(os.path.join(log_dir, f"diffusion_{ts}.csv"), 'w', newline='')
+        self.diff_w    = csv.writer(self.diff_file)
+        self.diff_w.writerow(
+            ["plan_id","step","ros_time","inference_ms",
+             "cur_x","cur_y","cur_z","cur_yaw",
+             "goal_x","goal_y","goal_z","goal_bx","goal_by","goal_bz"]
+            + [f"raw_{n}"   for n in DIM_NAMES_RAW]
+            + [f"world_{n}" for n in DIM_NAMES_WORLD])
+
+        self.cmd_file = open(os.path.join(log_dir, f"pos_cmd_{ts}.csv"), 'w', newline='')
+        self.cmd_w    = csv.writer(self.cmd_file)
+        self.cmd_w.writerow(
+            ["cmd_id","ros_time","source",
+             "cmd_px","cmd_py","cmd_pz","cmd_vx","cmd_vy","cmd_vz",
+             "cmd_ax","cmd_ay","cmd_az","cmd_yaw","cmd_yr",
+             "cur_px","cur_py","cur_pz","err_m"])
+
+        self.plan_count = 0
+        rospy.loginfo(f"[CSV] {self.diff_file.name}")
+        rospy.loginfo(f"[CSV] {self.cmd_file.name}")
+
+    def log_diffusion(self, raw_action, world_action, inference_ms,
+                      cur_pos, cur_yaw, goal_w, goal_b):
+        self.plan_count += 1
+        t = rospy.Time.now().to_sec()
+        for s in range(len(raw_action)):
+            self.diff_w.writerow(
+                [self.plan_count, s, f"{t:.3f}", f"{inference_ms:.0f}"]
+                + [f"{v:.4f}" for v in cur_pos] + [f"{cur_yaw:.4f}"]
+                + [f"{v:.4f}" for v in goal_w]  + [f"{v:.4f}" for v in goal_b]
+                + [f"{raw_action[s,d]:.6f}"   for d in range(raw_action.shape[1])]
+                + [f"{world_action[s,d]:.6f}" for d in range(world_action.shape[1])])
+        self.diff_file.flush()
+
+    def log_cmd(self, cmd_id, source, pos, vel, acc, yaw, yr, cur_pos):
+        err = np.linalg.norm(np.array(pos[:3]) - cur_pos)
+        self.cmd_w.writerow(
+            [cmd_id, f"{rospy.Time.now().to_sec():.3f}", source]
+            + [f"{v:.4f}" for v in pos[:3]]
+            + [f"{v:.4f}" for v in vel[:3]]
+            + [f"{v:.4f}" for v in acc[:3]]
+            + [f"{yaw:.4f}", f"{yr:.4f}"]
+            + [f"{v:.4f}" for v in cur_pos]
+            + [f"{err:.4f}"])
+        self.cmd_file.flush()
+
+    def close(self):
+        self.diff_file.close()
+        self.cmd_file.close()
+
+
+# 轨迹管理器（不变）
+class TrajectoryManager:
+    MAX_JUMP_M = 0.5
+
+    def __init__(self):
+        self.lock       = Lock()
+        self.waypoints  = None
+        self.start_time = None
+        self.traj_dt    = 0.3
+        self.duration   = 0.0
+
+    def set_trajectory(self, world_action, traj_dt, cur_pos=None):
+        with self.lock:
+            traj = world_action.copy()
+            if cur_pos is not None:
+                delta = cur_pos - traj[0, POS]
+                if np.linalg.norm(delta) > self.MAX_JUMP_M:
+                    rospy.logwarn(f"[TrajMgr] 起点偏差{np.linalg.norm(delta):.2f}m，整体平移对齐")
+                    traj[:, POS] += delta
+            self.waypoints  = traj
+            self.start_time = rospy.Time.now()
+            self.traj_dt    = traj_dt
+            self.duration   = (len(traj) - 1) * traj_dt
+
+    def sample(self, now):
+        with self.lock:
+            if self.waypoints is None:
+                return None
+            t        = max(0.0, (now - self.start_time).to_sec())
+            progress = t / self.duration if self.duration > 0 else 1.0
+            t_idx    = t / self.traj_dt
+            i, frac  = int(t_idx), t_idx - int(t_idx)
+            N        = len(self.waypoints)
+            if i >= N - 1:
+                wp = self.waypoints[-1]
+                return wp[POS].copy(), np.zeros(3), np.zeros(3), float(wp[YAW]), 0.0, progress
+            wp0, wp1 = self.waypoints[i], self.waypoints[i+1]
+            return (wp0[POS]*(1-frac) + wp1[POS]*frac,
+                    wp0[VEL]*(1-frac) + wp1[VEL]*frac,
+                    wp0[ACC]*(1-frac) + wp1[ACC]*frac,
+                    float(wp0[YAW]*(1-frac) + wp1[YAW]*frac),
+                    float(wp0[YAW_RT]*(1-frac) + wp1[YAW_RT]*frac),
+                    progress)
+
+    def clear(self):
+        with self.lock:
+            self.waypoints  = None
+            self.start_time = None
+
+    def is_valid(self):
+        with self.lock:
+            return self.waypoints is not None
+
+
+# 主节点
+class MLPlannerNode:
+
+    def __init__(self):
+        rospy.init_node('ml_planner_node', anonymous=False)
+        rospy.loginfo("[ML Planner v6.5] 初始化 (world chunk-wise delta, state 9维)")
+
+        self.load_parameters()
+
+        self.data_lock                = Lock()
+        self.current_position         = np.array([0.0, 0.0, 2.0])
+        self.current_velocity_world   = np.zeros(3)
+        self.prev_velocity_world      = np.zeros(3)
+        self.current_orientation_xyzw = np.array([0.0, 0.0, 0.0, 1.0])
+        self.current_yaw              = 0.0
+        self.current_pointcloud       = None
+        self.synth_pc                 = None
+        self.goal_position            = None
+        self.has_goal                 = False
+        self.waypoint_index           = 0
+        self.state                    = "INIT"
+        self.cmd_count                = 0
+
+        self.traj_mgr       = TrajectoryManager()
+        self.planning_lock  = Lock()
+        self.is_planning    = False
+        self._replan_logged = False
+
+        self.n_obs_steps    = None
+        self.action_horizon = None
+        self.num_points     = 4096
+        self.obs_history    = None
+
+        self._pc_pinned  = None
+        self._pos_pinned = None
+
+        self.csv_logger      = CSVLogger()
+        self.set_mode_client = rospy.ServiceProxy('/mavros/set_mode', SetMode)
+
+        # ========== 新增：闭环状态记录（用于 OOD 诊断）==========
+        log_dir = os.path.expanduser("~/ml_planner_log")
+        os.makedirs(log_dir, exist_ok=True)
+        # 与 CSVLogger 使用同一时间戳，文件名格式 state_<ts>.csv
+        # (CSVLogger 的时间戳存在 self.csv_logger.ts)
+        state_ts = self.csv_logger.ts
+        state_log_path = os.path.join(log_dir, f"state_{state_ts}.csv")
+        self.state_log_file = open(state_log_path, 'w', newline='')
+        self.state_csv_writer = csv.writer(self.state_log_file)
+        self.state_csv_writer.writerow([
+            "timestamp", "plan_id", 
+            "px", "py", "pz",           # 世界位置
+            "goal_bx", "goal_by", "goal_bz",  # 机体系目标
+            "goal_dist",                # 距离
+            "sin_yaw", "cos_yaw",       # yaw 三角函数
+            "goal_wx", "goal_wy", "goal_wz"  # 世界系目标（便于分析）
+        ])
+        self.state_log_lock = Lock()
+        rospy.loginfo(f"[StateLog] 闭环状态记录到 {state_log_path}")
+        # =====================================================
+
+        self.policy = None
+        self.device = None
+        self.load_diffusion_policy()
+        self.setup_subscribers()
+        self.setup_publishers()
+
+        rospy.Timer(rospy.Duration(1.0 / self.control_freq), self.control_loop)
+        rospy.Timer(rospy.Duration(0.2), self._vis_tick)
+        rospy.Timer(rospy.Duration(0.3), self._sample_obs)
+
+        rospy.on_shutdown(self._shutdown)
+        rospy.loginfo("[ML Planner v6.5] 就绪")
+
+    def _shutdown(self):
+        rospy.loginfo("[ML Planner] 关闭，保存状态日志")
+        self.csv_logger.close()
+        if hasattr(self, 'state_log_file') and self.state_log_file:
+            self.state_log_file.close()
+
+    # 参数加载
+    def load_parameters(self):
+        self.control_freq    = rospy.get_param("~control_freq",    50.0)
+        self.replan_ratio    = rospy.get_param("~replan_ratio",     0.7)
+        # Phase ① 修复: 拆分 goal 判定为 xy/z 分量化（防止 z 抖动导致假阳性）
+        # 旧 goal_tolerance=1.0m 3D 球判定下，dxy=0.89m + dz 一次抖动 < 0.46m 即误判到达
+        # 新方案: dxy < goal_tolerance_xy AND dz < goal_tolerance_z AND v_xy < speed_thresh, 5 帧防抖
+        # [DEPRECATED] self.goal_tolerance 仅给 deprecated GOAL-TRUNC 参考保留，由 goal_tolerance_xy/z 替代
+        #              不立即删除，避免 launch 中残留 ~goal_tolerance 配置导致 rospy.get_param 警告
+        self.goal_tolerance     = rospy.get_param("~goal_tolerance",    0.6)  # [DEPRECATED]
+        self.goal_tolerance_xy  = rospy.get_param("~goal_tolerance_xy", 0.5)
+        self.goal_tolerance_z   = rospy.get_param("~goal_tolerance_z",  0.3)
+        self.goal_reach_debounce_frames = int(rospy.get_param("~goal_reach_debounce_frames", 5))
+        # Zread R3 建议: 速度阈值防高速穿越 goal 时误判到达
+        # 1.0m/s 比末段 raw_dx 0.15m/0.3s=0.5m/s 留一倍余量, 不易误伤减速到达
+        self.goal_reach_speed_thresh = float(rospy.get_param("~goal_reach_speed_thresh", 1.0))
+        self.default_height  = rospy.get_param("~default_height",   1.5)
+        self.flight_mode     = rospy.get_param("~flight_mode",        0)
+        self.traj_dt         = rospy.get_param("~traj_dt",          0.3)
+        self.drone_id        = rospy.get_param("~drone_id",           0)
+        self.pos_gain        = self._parse_gain("~pos_gain", [3.5, 3.5, 3.5])
+        self.vel_gain        = self._parse_gain("~vel_gain", [3.5, 3.5, 3.5])
+        self.checkpoint_path = rospy.get_param("~checkpoint_path",   "")
+        # ── 2026-11-07 P6 LoRA 接入 (Route A A2 selective-keep) ──────────
+        # P0 与 P6 必须共用同一 backbone, 否则 "P6 - P0" 会混入 backbone 差异:
+        #   旧 _load_baseline_policy 取 state_dicts['ema_model'] (workspace.ema_model)
+        #   a2 RL 训练走 build_system → load_native_e5 → state_dicts['model']
+        #   → P6 carrier 的 header.json[runtime_identity.bc_identity_hash]
+        #     只与 load_native_e5(model) 算出的 identity 相符 (实测 040a3378…),
+        #     与 EMA 不符. 故 p6_lora 分支统一走 load_native_e5, 独立 P0 ckpt
+        #     仅用于确认 BC 来源 (identity 校验), 不单独再载一次.
+        # lora_enabled=False → LoRA gate 关 = P0 base 分支
+        # lora_enabled=True  → LoRA gate 开 = P6@u<update_index>
+        self.lora_ckpt    = rospy.get_param("~lora_ckpt", "")
+        _lora_raw = rospy.get_param("~lora_enabled", True)
+        if isinstance(_lora_raw, str):
+            # roslaunch 一般按 YAML 解析成 bool, 但 param 从 yaml 文件/命令行
+            # 传入时可能是字符串, "false" 非空 ⇒ bool("false")==True 的坑
+            self.lora_enabled = _lora_raw.strip().lower() in ('1', 'true', 'yes', 'on')
+        else:
+            self.lora_enabled = bool(_lora_raw)
+        self.lora_bundle  = None
+        self.num_inference_steps_deploy = rospy.get_param("~num_inference_steps", 5)
+        self.use_fp16          = rospy.get_param("~use_fp16",          False)
+        self.use_torch_compile = rospy.get_param("~use_torch_compile", True)
+        self.odom_vel_is_world = rospy.get_param("~odom_vel_is_world",  False)
+        # Phase ① 方法论修复: 策略外 obstacle projection 是否启用
+        # 默认 False (honest baseline)。设为 True 可恢复 Phase 1a R2 的 KD-Tree projection 行为
+        # 用于 ablation 对比时切换
+        self.use_obstacle_projection = rospy.get_param("~use_obstacle_projection", False)
+        # Phase ① 方法论修复: 部署侧 z clamp 是否启用
+        # 默认 False (honest baseline). True 时按旧逻辑 clip 到 [1, 3]
+        # 策略内 z clamp [1, 5] 已保留作为 safety envelope, 此处更窄的 [1, 3] 视为策略外修剪
+        self.use_deployment_z_clamp = rospy.get_param("~use_deployment_z_clamp", False)
+        # ════════════════════════════════════════════════════════════════
+        # Phase ② z 高度下沉 bug 诊断/修复: z 通道 vel/acc 前馈控制
+        # ════════════════════════════════════════════════════════════════
+        # 现象: env_014 闭环, cur_pz 从 2.08 一路掉到 1.10, 到不了目标
+        # 根因: controller.cpp:219  des_acc = des.a + Kv*(des.v-v) + Kp*(des.p-p)
+        #       des.a (= world_action[:,ACC] = 模型 raw acc_z) 直接进 des_acc.
+        #       模型预测的 raw_az_w 系统性偏负 (step1-2 达 -0.02~-0.05),
+        #       作为持续负加速度前馈把无人机平衡点拉到目标高度以下.
+        # 模式:
+        #   'full'    : z 的 vel+acc 前馈原样下发 (原行为, 有 bug)
+        #   'no_acc'  : z 的 acc 前馈清零, 保留 vel 前馈 (诊断用)
+        #   'no_ff'   : z 的 vel+acc 前馈都清零, 只靠 position 环 (推荐修复)
+        # x/y 通道不受影响 (它们工作正常).
+        self.z_feedforward_mode = rospy.get_param("~z_feedforward_mode", "full")
+        if self.z_feedforward_mode not in ('full', 'no_acc', 'no_ff'):
+            rospy.logwarn(f"[Z-FF] 未知 z_feedforward_mode='{self.z_feedforward_mode}', "
+                          f"回退到 'full'")
+            self.z_feedforward_mode = 'full'
+        rospy.loginfo(f"[Z-FF] z_feedforward_mode = {self.z_feedforward_mode}")
+        # ===== Phase1a 闭环修复：部署侧 action chunk 截断 =====
+        # 训练时 n_action_steps=8，部署时只执行前 N 步以加快重规划，让闭环 yaw 反馈
+        # 来得及纠偏首步 -0.12~-0.17 rad 的右转偏置（5/5 飞行均观察到）。
+        # 设置为 0 表示不截断（执行模型输出的全部步数）。
+        # N=2 → 轨迹时长 (2-1)*traj_dt = 0.3s，replan@progress=0.7 触发于 0.21s
+        # N=3 → 轨迹时长 (3-1)*traj_dt = 0.6s，replan 触发于 0.42s（推理预算更宽松）
+        self.deployment_action_steps = int(rospy.get_param("~deployment_action_steps", 2))
+
+        # ── Phase β 阶段 0-C: 合成点云开关 (M1 闭环验证) ──
+        self.use_synth_pc         = str(rospy.get_param("~use_synth_pc", "false")).lower() == "true"
+        self.synth_obstacles_json = rospy.get_param("~synth_obstacles_json", "")
+        self.synth_nominal_pitch_deg = float(rospy.get_param("~synth_nominal_pitch_deg", 8.0))
+        raw_offset                = rospy.get_param("~synth_spawn_offset", "0,0,0")
+        if isinstance(raw_offset, str):
+            self.synth_spawn_offset = np.array([float(x.strip()) for x in raw_offset.split(",")], dtype=np.float32)
+        else:
+            self.synth_spawn_offset = np.array(raw_offset, dtype=np.float32)
+        if self.use_synth_pc:
+            rospy.loginfo(f"[SynthPC] 合成点云已启用 "
+                          f"json='{self.synth_obstacles_json}' "
+                          f"offset={self.synth_spawn_offset}")
+            if not self.synth_obstacles_json or not os.path.exists(self.synth_obstacles_json):
+                rospy.logwarn(f"[SynthPC] obstacles_json 路径无效, 将 fallback 到真实点云")
+                self.use_synth_pc = False
+
+        self.waypoints = []
+        for i in range(rospy.get_param("~waypoint_num", 0)):
+            x = rospy.get_param(f"~waypoint{i}_x", 0.0)
+            y = rospy.get_param(f"~waypoint{i}_y", self.default_height)
+            z = rospy.get_param(f"~waypoint{i}_z", self.default_height)
+            self.waypoints.append(np.array([x, y, z]))
+            rospy.loginfo(f"  航点{i}: [{x:.1f},{y:.1f},{z:.1f}]")
+
+    def _parse_gain(self, name, default):
+        val = rospy.get_param(name, default)
+        if isinstance(val, str):
+            return [float(x.strip()) for x in val.strip('[]').split(',')]
+        return [float(x) for x in val] if isinstance(val, list) else default
+
+    # 模型加载（支持 baseline + Phase1a checkpoint）
+    def load_diffusion_policy(self):
+        rospy.loginfo("[ML Planner v6.5] 加载扩散模型...")
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        if not os.path.exists(self.checkpoint_path):
+            rospy.logerr(f"Checkpoint不存在: {self.checkpoint_path}"); sys.exit(1)
+        try:
+            import dill
+            payload   = torch.load(self.checkpoint_path, map_location='cpu',
+                                   pickle_module=dill)
+            cfg       = payload['cfg']
+            if hasattr(cfg, 'n_obs_steps'):
+                self.n_obs_steps = cfg.n_obs_steps
+                rospy.loginfo(f"[ML Planner] 从checkpoint读取 n_obs_steps = {self.n_obs_steps}")
+            else:
+                self.n_obs_steps = 3
+            if hasattr(cfg, 'n_action_steps'):
+                self.action_horizon = cfg.n_action_steps
+                rospy.loginfo(f"[ML Planner] 从checkpoint读取 action_horizon = {self.action_horizon}")
+            elif hasattr(cfg, 'horizon') and hasattr(cfg, 'n_obs_steps'):
+                self.action_horizon = cfg.horizon - cfg.n_obs_steps + 1
+            else:
+                self.action_horizon = 7
+
+            self.obs_history = deque(maxlen=self.n_obs_steps)
+
+            # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            # Step A: FM 部署改造 — 三分支 dispatcher
+            # 原代码仅区分 anchor_head 是否存在, 会把 FM ckpt 错认 DDIM.
+            # 改用 _detect_policy_type 统一调度, 优先 launch ~policy_type.
+            # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            sd_key = 'ema_model' if 'ema_model' in payload['state_dicts'] else 'model'
+            sd = payload['state_dicts'][sd_key]
+            self.policy_type = self._detect_policy_type(cfg, sd)
+
+            if self.policy_type == 'phase1a_fm':
+                rospy.loginfo("[ML Planner] 加载 Phase1a-FM checkpoint")
+                self._load_phase1a_policy_fm(cfg, sd, payload)
+            elif self.policy_type == 'phase1a':
+                rospy.loginfo("[ML Planner] 加载 Phase1a (DDIM) checkpoint")
+                self._load_phase1a_policy(cfg, sd, payload)
+            elif self.policy_type == 'p6_lora':
+                rospy.loginfo("[ML Planner] 加载 P0 backbone + P6 LoRA (A2 selective-keep)")
+                self._load_p6_lora()
+            else:
+                rospy.loginfo("[ML Planner] 加载 baseline checkpoint")
+                self._load_baseline_policy(cfg, payload)
+
+            if self.use_fp16 and self.device.type != 'cuda':
+                rospy.logwarn("[ML Planner] use_fp16 需要CUDA，已忽略")
+                self.use_fp16 = False
+
+            # Step A: baseline 用 inference_patches, phase1a / phase1a_fm 不 patch
+            # FM 与 DDIM 都用 CFG, 都不能 torch.compile (CFG 双 forward 与 cudagraphs 冲突)
+            # p6_lora 与 baseline 同为 DDIM 家族, 必须用同一套 patched 采样器,
+            # 否则 P0/P6 的差异会混入 "原 10 步循环 vs 快速 DDIM 循环" 的实现差异
+            if self.policy_type in ('baseline', 'p6_lora'):
+                self.policy = apply_inference_patches(
+                    self.policy,
+                    n_steps      = self.num_inference_steps_deploy,
+                    device       = self.device,
+                    use_compile  = self.use_torch_compile)
+            else:
+                if self.use_torch_compile:
+                    rospy.logwarn(
+                        f"[ML Planner] policy_type={self.policy_type} 启用 CFG, "
+                        f"torch.compile 与 cudagraphs 不兼容, 已强制关闭")
+                if self.device.type == 'cuda':
+                    torch.set_float32_matmul_precision('high')
+                    torch.backends.cudnn.benchmark = True
+
+            if self.device.type == 'cuda':
+                self._pc_pinned  = torch.empty(
+                    1, self.n_obs_steps, self.num_points, 3,
+                    dtype=torch.float32, pin_memory=True)
+                self._pos_pinned = torch.empty(
+                    1, self.n_obs_steps, STATE_DIM,
+                    dtype=torch.float32, pin_memory=True)
+                rospy.loginfo(f"[Speed] pinned memory 缓冲区已分配 (state_dim={STATE_DIM})")
+
+            # 热身必须跑在飞行时真正生效的同一分支上 (LoRA gate 状态一致),
+            # 否则 P6 的首次飞行前 cudnn/内存池按 base 分支选型, 首次推理会额外抖动
+            with self._lora_ctx():
+                warmup_policy(
+                    self.policy,
+                    n_obs_steps = self.n_obs_steps,
+                    num_points  = self.num_points,
+                    device      = self.device,
+                    n_warmup    = 3)
+
+            rospy.loginfo(f"[ML Planner v6.5] 模型就绪 device={self.device}")
+
+            # ── Phase β 阶段 0-C: device 就绪后实例化验证过的合成点云 ──
+            if self.use_synth_pc:
+                from diffusion_policy_3d.model.common.synth_pointcloud import SynthPointCloud
+                self.synth_pc = SynthPointCloud(
+                    self.synth_obstacles_json,
+                    device=str(self.device),
+                    noise_cfg={'depth_noise_sigma': 0.005, 'dropout_rate': 0.05},
+                )
+                rospy.loginfo(f"[SynthPC] ★合成点云模式★ obstacles={self.synth_obstacles_json} "
+                              f"pitch={self.synth_nominal_pitch_deg}° offset={self.synth_spawn_offset}")
+                # JIT warmup（首次 ~350ms，之后 ~1ms）
+                for _ in range(3):
+                    _ = self.synth_pc.synthesize(
+                        np.array([-8.0, 0.0, 2.0], dtype=np.float64), 0.0,
+                        num_points=self.num_points, add_noise=True)
+                if self.device.type == 'cuda':
+                    torch.cuda.synchronize()
+                rospy.loginfo("[SynthPC] warmup 完成")
+
+        except Exception as e:
+            rospy.logerr(f"模型加载失败: {e}"); traceback.print_exc(); sys.exit(1)
+
+    # ════════════════════════════════════════════════════════════════════
+    # 2026-11-07 新增: P6 LoRA 分支 (Route A A2 selective-keep @u256)
+    # ════════════════════════════════════════════════════════════════════
+    def _p6_device_str(self):
+        """load_native_e5 的 device 校验是字符串比较, 'cuda' != 'cuda:0', 必须带索引."""
+        if self.device.type != 'cuda':
+            return 'cpu'
+        idx = self.device.index
+        if idx is None:
+            idx = torch.cuda.current_device()
+        return f'cuda:{idx}'
+
+    def _lora_ctx(self):
+        """LoRA 门控上下文; 未装 LoRA 时退化为 nullcontext (行为完全不变)."""
+        if self.lora_bundle is None:
+            return contextlib.nullcontext()
+        return self.lora_bundle.mode(self.lora_enabled)
+
+    def _load_p6_lora(self):
+        """P0 backbone (state_dicts['model']) + P6 LoRA adapter.
+
+        与 P6 训练/评价链路逐项对齐 (scripts/routea_paired_support/runtime.py):
+          1. build_system → load_native_e5(state_dicts['model'])
+          2. install_lora(rank, alpha, expected_linear=14, expected_conv1d=33)
+          3. 校验 lora_identity_hash == header['lora_identity_hash']
+          4. 校验 adapter 键集/形状/dtype/有限性
+          5. load_adapter_state_dict(state['lora'])
+          6. 推理时 bundle.mode(True) —— gate 默认 False, 不开就等于只载了 BC 主干
+        LoRA gate 关闭时 LoRALinear/LoRAConv1d.forward 只算 base(value), 与原生
+        nn.Linear/nn.Conv1d 逐位相同, 故同一节点、同一 backbone 下
+        gate=off 即 P0, gate=on 即 P6, 两者差异只来自 adapter.
+        """
+        from diffusion_policy_3d.rl.dppo_uav_rebuild.bc_runtime.native_loader import (
+            load_native_e5)
+        from diffusion_policy_3d.rl.dppo_uav_rebuild.actor_ddpm.lora import (
+            install_lora, E5_DENOISER_LINEAR_TARGETS, E5_DENOISER_CONV1D_TARGETS)
+
+        if not self.lora_ckpt or not os.path.isdir(self.lora_ckpt):
+            rospy.logerr(f"[P6] ~lora_ckpt 不是目录: {self.lora_ckpt!r}"); sys.exit(1)
+        hdr_path   = os.path.join(self.lora_ckpt, 'header.json')
+        state_path = os.path.join(self.lora_ckpt, 'state.pt')
+        for p in (hdr_path, state_path):
+            if not os.path.isfile(p):
+                rospy.logerr(f"[P6] 缺文件: {p}"); sys.exit(1)
+        with open(hdr_path) as f:
+            header = json.load(f)
+        rospy.loginfo(f"[P6] lora_ckpt={self.lora_ckpt} "
+                      f"update_index={header.get('update_index')} "
+                      f"schema_version={header.get('schema_version')}")
+
+        # ── 1. backbone: 与 a2 RL 训练完全同一条构造路径 ──────────────
+        rt = load_native_e5(self.checkpoint_path, device=self._p6_device_str())
+        want_bc = header['runtime_identity']['bc_identity_hash']
+        if rt.identity.content_hash != want_bc:
+            rospy.logerr(f"[P6] backbone identity 不符: 实载 "
+                         f"{rt.identity.content_hash} != header {want_bc}")
+            sys.exit(1)
+        rospy.loginfo(f"[P6] ✓ backbone identity = {want_bc} (BC 来源确认)")
+        self.policy = rt.policy
+
+        # ── 2. 装 LoRA 并核对目标集身份 ────────────────────────────────
+        state = torch.load(state_path, map_location='cpu', weights_only=True)
+        tc = state['training_config']['lora']
+        bundle = install_lora(
+            self.policy.model,
+            rank=int(tc['rank']),
+            alpha=float(tc['alpha']),
+            expected_linear=E5_DENOISER_LINEAR_TARGETS,
+            expected_conv1d=E5_DENOISER_CONV1D_TARGETS)
+        if bundle.identity.content_hash != header['lora_identity_hash']:
+            rospy.logerr(f"[P6] LoRA 目标集身份不符: 实装 "
+                         f"{bundle.identity.content_hash} != header "
+                         f"{header['lora_identity_hash']}")
+            sys.exit(1)
+
+        # ── 3. adapter 权重严格校验后载入 ──────────────────────────────
+        expected = dict(bundle.named_adapter_parameters())
+        lora_sd = state['lora']
+        if set(lora_sd) != set(expected):
+            rospy.logerr(f"[P6] adapter 键集不符: 多 "
+                         f"{sorted(set(lora_sd) - set(expected))[:3]} 缺 "
+                         f"{sorted(set(expected) - set(lora_sd))[:3]}")
+            sys.exit(1)
+        for name, tensor in lora_sd.items():
+            ref = expected[name]
+            if (not torch.is_tensor(tensor) or tensor.dtype != torch.float32
+                    or tuple(tensor.shape) != tuple(ref.shape)
+                    or not bool(torch.isfinite(tensor).all())):
+                rospy.logerr(f"[P6] adapter 张量非法: {name} "
+                             f"dtype={getattr(tensor,'dtype',None)} "
+                             f"shape={tuple(tensor.shape) if torch.is_tensor(tensor) else None}")
+                sys.exit(1)
+        bundle.load_adapter_state_dict(lora_sd)
+        self.lora_bundle = bundle
+
+        n_ad = sum(p.numel() for _, p in bundle.named_adapter_parameters())
+        rospy.loginfo(
+            f"[P6] ✓ LoRA 就绪 rank={int(tc['rank'])} alpha={float(tc['alpha'])} "
+            f"adapter_params={n_ad} lora_identity={bundle.identity.content_hash[:16]}… "
+            f"gate={'ON → P6' if self.lora_enabled else 'OFF → P0(base)'}")
+
+    def _load_baseline_policy(self, cfg, payload):
+        """加载标准 baseline checkpoint（通过 workspace）"""
+        cls       = hydra.utils.get_class(cfg._target_)
+        workspace = cls(cfg)
+        # E5/baseline ckpt 无 'pickles' 键, include_keys=None 会让 base_workspace:103 抛 KeyError
+        workspace.load_payload(payload, exclude_keys=("optimizer",), include_keys=())
+        self.policy = workspace.model
+        if hasattr(workspace, 'ema_model') and workspace.ema_model is not None:
+            self.policy = workspace.ema_model
+        self.policy = self.policy.to(self.device).eval()
+
+    def _load_phase1a_policy(self, cfg, sd, payload):
+        """
+        加载 Phase1a checkpoint。
+
+        关键：必须先创建 anchor_head 模块和 anchor_bank_full buffer 结构，
+              再 load_state_dict。否则 strict=False 会让 anchor 参数全部
+              进入 unexpected 列表，部署时 anchor_head=None, anchor_bank_full=None,
+              conditional_sample 走 fallback 全量 10 步采样而非 anchor truncated 5 步。
+
+        加载顺序:
+          1. 实例化 Phase1aPolicy
+          2. 手动创建 anchor_bank_full buffer + AnchorHead 模块（关键！）
+          3. set_normalizer（创建 normalizer buffer 结构）
+          4. load_state_dict（填入训练好的权重 + normalizer 值）
+        """
+        from diffusion_policy_3d.policy.phase1a_policy import Phase1aPolicy
+        from diffusion_policy_3d.policy.anchor_head import AnchorHead
+        from diffusion_policy_3d.dataset.drone_dataset import DroneDataset
+
+        policy_cfg = cfg.policy
+        noise_scheduler = hydra.utils.instantiate(policy_cfg.noise_scheduler)
+
+        # 从 state_dict 推断 anchor 数量和形状
+        n_anchors = sd['anchor_head.net.4.weight'].shape[0]
+        anchor_bank_shape = sd['anchor_bank_full'].shape  # (K+1, n_act, 11)
+        rospy.loginfo(f"[Phase1a] n_anchors={n_anchors}, "
+                      f"anchor_bank shape={tuple(anchor_bank_shape)}")
+
+        policy = Phase1aPolicy(
+            shape_meta=cfg.task.shape_meta,
+            noise_scheduler=noise_scheduler,
+            horizon=cfg.horizon,
+            n_action_steps=cfg.n_action_steps,
+            n_obs_steps=cfg.n_obs_steps,
+            num_inference_steps=policy_cfg.get('num_inference_steps', None),
+            obs_as_global_cond=policy_cfg.get('obs_as_global_cond', True),
+            diffusion_step_embed_dim=policy_cfg.get('diffusion_step_embed_dim', 256),
+            down_dims=tuple(policy_cfg.get('down_dims', [256, 512, 1024])),
+            kernel_size=policy_cfg.get('kernel_size', 5),
+            n_groups=policy_cfg.get('n_groups', 8),
+            condition_type=policy_cfg.get('condition_type', 'film'),
+            use_down_condition=policy_cfg.get('use_down_condition', True),
+            use_mid_condition=policy_cfg.get('use_mid_condition', True),
+            use_up_condition=policy_cfg.get('use_up_condition', True),
+            use_pc_color=policy_cfg.get('use_pc_color', False),
+            pointnet_type=policy_cfg.get('pointnet_type', 'pointnet'),
+            pointcloud_encoder_cfg=policy_cfg.get('pointcloud_encoder_cfg', None),
+            # Phase ① 方法论修复: 显式从 launch 参数传入，覆盖类默认值
+            use_obstacle_projection=self.use_obstacle_projection,
+        )
+        rospy.loginfo(f"[Phase1a] use_obstacle_projection={self.use_obstacle_projection} "
+                      f"(False = honest policy-only baseline)")
+
+        # ── 关键修复: 手动创建 anchor 结构 ──
+        # 因为没传 anchor_bank_path，构造函数没创建 anchor_head/anchor_bank_full
+        policy.n_anchors = n_anchors
+
+        # 1a. 创建 anchor_bank_full buffer（占位，值会被 load_state_dict 覆盖）
+        if hasattr(policy, 'anchor_bank_full') and policy.anchor_bank_full is None:
+            # 删除 None 属性
+            del policy.anchor_bank_full
+        policy.register_buffer(
+            'anchor_bank_full',
+            torch.zeros(anchor_bank_shape, dtype=torch.float32))
+
+        # 1b. 创建 AnchorHead 模块（权重会被 load_state_dict 覆盖）
+        obs_feat_dim = policy.obs_feature_dim * cfg.n_obs_steps
+        policy.anchor_head = AnchorHead(
+            input_dim=obs_feat_dim, n_anchors=n_anchors)
+
+        rospy.loginfo(f"[Phase1a] anchor_head 已创建 ({obs_feat_dim}→{n_anchors}), "
+                      f"anchor_bank_full buffer 已创建 {tuple(anchor_bank_shape)}")
+
+        # 2. 设置 normalizer 结构
+        zarr_path = rospy.get_param("~zarr_path", "")
+        if zarr_path and os.path.exists(zarr_path):
+            dataset = DroneDataset(
+                zarr_path=zarr_path,
+                horizon=cfg.horizon,
+                pad_before=cfg.n_obs_steps - 1,
+                pad_after=cfg.n_action_steps - 1,
+                augment_pc=False)
+            normalizer = dataset.get_normalizer(mode='gaussian')
+            policy.set_normalizer(normalizer)
+            rospy.loginfo(f"[Phase1a] normalizer structure from {zarr_path}")
+        else:
+            rospy.logwarn("[Phase1a] zarr_path 未设置！normalizer 可能加载不完整")
+
+        # 3. 加载 state_dict（填入 anchor_head, anchor_bank_full, UNet, normalizer 等权重）
+        missing, unexpected = policy.load_state_dict(sd, strict=False)
+        if unexpected:
+            rospy.logwarn(f"[Phase1a] unexpected keys (>0 表示有 bug!): {unexpected}")
+        if missing:
+            non_normalizer = [k for k in missing if 'normalizer' not in k]
+            if non_normalizer:
+                rospy.logwarn(f"[Phase1a] missing keys (非 normalizer): {non_normalizer}")
+        rospy.loginfo(f"[Phase1a] ✓ weights loaded (missing={len(missing)}, unexpected={len(unexpected)})")
+
+        # 4. 验证 anchor 已正确加载
+        assert policy.anchor_head is not None, "anchor_head 加载失败！"
+        assert policy.anchor_bank_full is not None, "anchor_bank_full 加载失败！"
+        # 验证权重不全为 0（说明被 load_state_dict 覆盖了）
+        bank_norm = policy.anchor_bank_full.abs().sum().item()
+        head_norm = policy.anchor_head.net[0].weight.abs().sum().item()
+        rospy.loginfo(f"[Phase1a] ✓ anchor_bank_full sum={bank_norm:.2f} "
+                      f"(>0 表示加载成功), anchor_head w0 sum={head_norm:.2f}")
+        if bank_norm < 1e-3:
+            rospy.logerr("[Phase1a] anchor_bank_full 全为 0！加载失败！")
+        if head_norm < 1e-3:
+            rospy.logerr("[Phase1a] anchor_head 权重全为 0！加载失败！")
+
+        self.policy = policy.to(self.device).eval()
+
+    # ════════════════════════════════════════════════════════════════════
+    # Step A 新增: FM (Flow Matching) 分支支持
+    # ════════════════════════════════════════════════════════════════════
+
+    def _detect_policy_type(self, cfg, sd):
+        """
+        检测 checkpoint 的 policy 类型. 优先级:
+          1. launch 参数 ~policy_type 显式指定
+          2. 'auto' 模式: cfg.policy._target_ 含 'fm' / 'flow'
+          3. 'auto' fallback: anchor_head 在 sd 中
+          4. 都不命中: baseline
+
+        [FACT] FM 训练 (train_phase1a_fm.py L181-202) 直接 import Phase1aPolicyFM
+               实例化, 不通过 Hydra _target_. cfg.policy._target_ 大概率仍指向 DDIM.
+               → 强烈建议 launch 显式设 ~policy_type=phase1a_fm
+        Returns: 'phase1a_fm' / 'phase1a' / 'baseline'
+        """
+        explicit = rospy.get_param("~policy_type", "auto").lower().strip()
+        if explicit in ('phase1a_fm', 'fm', 'phase1a-fm'):
+            rospy.loginfo("[ML Planner] policy_type=phase1a_fm (显式指定)")
+            return 'phase1a_fm'
+        if explicit in ('phase1a', 'ddim'):
+            rospy.loginfo("[ML Planner] policy_type=phase1a (显式指定)")
+            return 'phase1a'
+        if explicit == 'baseline':
+            rospy.loginfo("[ML Planner] policy_type=baseline (显式指定)")
+            return 'baseline'
+        if explicit in ('p6_lora', 'p6', 'lora'):
+            rospy.loginfo("[ML Planner] policy_type=p6_lora (显式指定)")
+            return 'p6_lora'
+        if explicit != 'auto':
+            rospy.logwarn(
+                f"[ML Planner] 未知 ~policy_type={explicit}, 回退 auto")
+
+        target = ''
+        if hasattr(cfg, 'policy') and hasattr(cfg.policy, '_target_'):
+            target = str(cfg.policy._target_).lower()
+        if 'fm' in target or 'flow' in target:
+            rospy.loginfo(
+                f"[ML Planner] policy_type=phase1a_fm "
+                f"(auto: _target_={target})")
+            return 'phase1a_fm'
+
+        if any('anchor_head' in k for k in sd.keys()):
+            rospy.logwarn(
+                "[ML Planner] policy_type=phase1a (auto: anchor_head 检测到, "
+                "但无法区分 DDIM vs FM. 若 ckpt 是 FM 训练, 必须 launch 显式设 "
+                "~policy_type=phase1a_fm, 否则会错加载为 DDIM!)")
+            return 'phase1a'
+
+        rospy.loginfo("[ML Planner] policy_type=baseline (auto)")
+        return 'baseline'
+
+    def _load_phase1a_policy_fm(self, cfg, sd, payload):
+        """
+        加载 Phase1a FM (Flow Matching) checkpoint.
+
+        与 _load_phase1a_policy (DDIM) 的差异:
+          1. 实例化 Phase1aPolicyFM 而非 Phase1aPolicy
+          2. 显式传 FM 超参 (ckpt cfg 中缺失这些字段)
+          3. cfg_lambda 必须用 `or` fallback (ckpt 中是 None, 默认应 1.5)
+          4. anchor_bank/anchor_head 加载逻辑与 DDIM 完全相同
+
+        [INV-FM-1] num_fm_steps >= 1
+        [INV-FM-2] sigma_min ∈ (0, 1)
+        [INV-FM-3] fm_anchor_t_start ∈ [0, 1)
+        [INV-FM-4] anchor_bank_full shape (K+1, n_act, 11)
+        """
+        from diffusion_policy_3d.policy.phase1a_policy_fm import Phase1aPolicyFM
+        from diffusion_policy_3d.policy.anchor_head import AnchorHead
+        from diffusion_policy_3d.dataset.drone_dataset import DroneDataset
+
+        policy_cfg = cfg.policy
+        noise_scheduler = hydra.utils.instantiate(policy_cfg.noise_scheduler)
+
+        # ── FM 超参 (launch 可覆盖, fallback 来自训练脚本默认) ──
+        num_fm_steps      = int(rospy.get_param("~fm_num_steps",      4))
+        sigma_min         = float(rospy.get_param("~fm_sigma_min",    0.005))
+        fm_t_scale        = float(rospy.get_param("~fm_t_scale",      50))
+        solver            = str(rospy.get_param("~fm_solver",         "euler"))
+        fm_anchor_t_start = float(rospy.get_param("~fm_anchor_t_start", 0.95))
+
+        assert num_fm_steps >= 1, f"num_fm_steps must >= 1, got {num_fm_steps}"
+        assert 0.0 < sigma_min < 1.0, \
+            f"sigma_min must in (0, 1), got {sigma_min}"
+        assert 0.0 <= fm_anchor_t_start < 1.0, \
+            f"fm_anchor_t_start must in [0, 1), got {fm_anchor_t_start}"
+
+        # ── 层次 1: k_stab / lambda_jerk 自动检测 + launch 覆盖 ──
+        # 优先级: launch 显式参数 > state_dict buffer (v1.4+ ckpt) > 默认 0.0
+        _k_stab_launch = rospy.get_param("~k_stab", -1.0)    # -1 = auto
+        _ljerk_launch  = rospy.get_param("~lambda_jerk", -1.0)
+        if _k_stab_launch >= 0:
+            deploy_k_stab = float(_k_stab_launch)
+            rospy.loginfo(f"[Layer1] k_stab={deploy_k_stab:.3f} (from launch)")
+        elif 'k_stab' in sd:
+            deploy_k_stab = float(sd['k_stab'].item() if hasattr(sd['k_stab'], 'item') else sd['k_stab'])
+            rospy.loginfo(f"[Layer1] k_stab={deploy_k_stab:.3f} (auto-detected from ckpt)")
+        else:
+            deploy_k_stab = 0.0
+            rospy.loginfo("[Layer1] k_stab=0.0 (default, old ckpt without buffer)")
+        if _ljerk_launch >= 0:
+            deploy_lambda_jerk = float(_ljerk_launch)
+            rospy.loginfo(f"[Layer1] lambda_jerk={deploy_lambda_jerk:.3f} (from launch)")
+        elif 'lambda_jerk' in sd:
+            deploy_lambda_jerk = float(sd['lambda_jerk'].item() if hasattr(sd['lambda_jerk'], 'item') else sd['lambda_jerk'])
+            rospy.loginfo(f"[Layer1] lambda_jerk={deploy_lambda_jerk:.3f} (auto-detected from ckpt)")
+        else:
+            deploy_lambda_jerk = 0.0
+            rospy.loginfo("[Layer1] lambda_jerk=0.0 (default, old ckpt without buffer)")
+
+        # cfg_lambda fallback: ckpt 中是 None, 用 `or 1.5` 兜底
+        cfg_lambda_from_ckpt = policy_cfg.get('cfg_lambda', None)
+        cfg_lambda_default = 1.5
+        cfg_lambda_param = float(rospy.get_param(
+            "~cfg_lambda", cfg_lambda_from_ckpt or cfg_lambda_default))
+
+        anchor_loss_weight = float(policy_cfg.get('anchor_loss_weight', 0.5))
+        cfg_dropout_prob   = float(policy_cfg.get('cfg_dropout_prob', 0.15))
+
+        # 从 state_dict 推断 anchor 数量
+        n_anchors = sd['anchor_head.net.4.weight'].shape[0]
+        anchor_bank_shape = sd['anchor_bank_full'].shape
+        assert len(anchor_bank_shape) == 3 and anchor_bank_shape[2] == 11, \
+            f"anchor_bank_full shape error: {anchor_bank_shape}"
+
+        rospy.loginfo(f"[Phase1a-FM] n_anchors={n_anchors}, "
+                      f"anchor_bank shape={tuple(anchor_bank_shape)}")
+        rospy.loginfo(f"[Phase1a-FM] num_fm_steps={num_fm_steps}, "
+                      f"sigma_min={sigma_min}, fm_t_scale={fm_t_scale}, "
+                      f"solver={solver}, fm_anchor_t_start={fm_anchor_t_start}")
+        rospy.loginfo(f"[Phase1a-FM] cfg_lambda={cfg_lambda_param} "
+                      f"(from ckpt: {cfg_lambda_from_ckpt}, "
+                      f"fallback: {cfg_lambda_default})")
+
+        policy = Phase1aPolicyFM(
+            shape_meta=cfg.task.shape_meta,
+            noise_scheduler=noise_scheduler,
+            horizon=cfg.horizon,
+            n_action_steps=cfg.n_action_steps,
+            n_obs_steps=cfg.n_obs_steps,
+            num_inference_steps=policy_cfg.get('num_inference_steps', None),
+            obs_as_global_cond=policy_cfg.get('obs_as_global_cond', True),
+            diffusion_step_embed_dim=policy_cfg.get('diffusion_step_embed_dim', 256),
+            down_dims=tuple(policy_cfg.get('down_dims', [256, 512, 1024])),
+            kernel_size=policy_cfg.get('kernel_size', 5),
+            n_groups=policy_cfg.get('n_groups', 8),
+            condition_type=policy_cfg.get('condition_type', 'film'),
+            use_down_condition=policy_cfg.get('use_down_condition', True),
+            use_mid_condition=policy_cfg.get('use_mid_condition', True),
+            use_up_condition=policy_cfg.get('use_up_condition', True),
+            use_pc_color=policy_cfg.get('use_pc_color', False),
+            pointnet_type=policy_cfg.get('pointnet_type', 'pointnet'),
+            pointcloud_encoder_cfg=policy_cfg.get('pointcloud_encoder_cfg', None),
+            anchor_bank_path=None,
+            anchor_loss_weight=anchor_loss_weight,
+            cfg_dropout_prob=cfg_dropout_prob,
+            cfg_lambda=cfg_lambda_param,
+            # ── FM 参数 ──
+            num_fm_steps=num_fm_steps,
+            sigma_min=sigma_min,
+            fm_t_scale=fm_t_scale,
+            solver=solver,
+            fm_anchor_t_start=fm_anchor_t_start,
+            # ── 层次 1: SFP 稳定化 + jerk 正则 ──
+            k_stab=deploy_k_stab,
+            lambda_jerk=deploy_lambda_jerk,
+            use_collision_loss=False,
+            use_obstacle_projection=self.use_obstacle_projection,
+        )
+        rospy.loginfo(f"[Phase1a-FM] use_obstacle_projection="
+                      f"{self.use_obstacle_projection}")
+
+        # 手动创建 anchor 结构 (与 DDIM 同一套逻辑)
+        policy.n_anchors = n_anchors
+        if hasattr(policy, 'anchor_bank_full') and policy.anchor_bank_full is None:
+            del policy.anchor_bank_full
+        policy.register_buffer(
+            'anchor_bank_full',
+            torch.zeros(anchor_bank_shape, dtype=torch.float32))
+
+        obs_feat_dim = policy.obs_feature_dim * cfg.n_obs_steps
+        policy.anchor_head = AnchorHead(
+            input_dim=obs_feat_dim, n_anchors=n_anchors)
+
+        rospy.loginfo(f"[Phase1a-FM] anchor_head 已创建 "
+                      f"({obs_feat_dim}->{n_anchors}), "
+                      f"anchor_bank_full buffer {tuple(anchor_bank_shape)}")
+
+        # normalizer 结构
+        zarr_path = rospy.get_param("~zarr_path", "")
+        if zarr_path and os.path.exists(zarr_path):
+            dataset = DroneDataset(
+                zarr_path=zarr_path,
+                horizon=cfg.horizon,
+                pad_before=cfg.n_obs_steps - 1,
+                pad_after=cfg.n_action_steps - 1,
+                augment_pc=False)
+            normalizer = dataset.get_normalizer(mode='gaussian')
+            policy.set_normalizer(normalizer)
+            rospy.loginfo(f"[Phase1a-FM] normalizer structure from {zarr_path}")
+        else:
+            rospy.logwarn("[Phase1a-FM] zarr_path 未设置!")
+
+        # 加载 state_dict
+        missing, unexpected = policy.load_state_dict(sd, strict=False)
+        if unexpected:
+            rospy.logwarn(f"[Phase1a-FM] unexpected keys: {unexpected}")
+        if missing:
+            non_normalizer = [k for k in missing if 'normalizer' not in k]
+            if non_normalizer:
+                rospy.logwarn(f"[Phase1a-FM] missing keys (非 normalizer): "
+                              f"{non_normalizer}")
+        rospy.loginfo(f"[Phase1a-FM] weights loaded "
+                      f"(missing={len(missing)}, unexpected={len(unexpected)})")
+
+        # 验证 anchor 已正确加载
+        assert policy.anchor_head is not None, "anchor_head 加载失败!"
+        assert policy.anchor_bank_full is not None, "anchor_bank_full 加载失败!"
+        bank_norm = policy.anchor_bank_full.abs().sum().item()
+        head_norm = policy.anchor_head.net[0].weight.abs().sum().item()
+        rospy.loginfo(f"[Phase1a-FM] anchor_bank_full sum={bank_norm:.2f}, "
+                      f"anchor_head w0 sum={head_norm:.2f}")
+        if bank_norm < 1e-3:
+            rospy.logerr("[Phase1a-FM] anchor_bank_full 全为 0!")
+        if head_norm < 1e-3:
+            rospy.logerr("[Phase1a-FM] anchor_head 权重全为 0!")
+
+        self.policy = policy.to(self.device).eval()
+
+    def _call_policy(self, pc_numpy, pos_numpy):
+        if self._pc_pinned is not None:
+            self._pc_pinned[0].copy_(torch.from_numpy(pc_numpy))
+            self._pos_pinned[0].copy_(torch.from_numpy(pos_numpy))
+            pc_gpu  = self._pc_pinned.to(self.device, non_blocking=True)
+            pos_gpu = self._pos_pinned.to(self.device, non_blocking=True)
+        else:
+            pc_gpu  = torch.from_numpy(pc_numpy).unsqueeze(0).to(self.device)
+            pos_gpu = torch.from_numpy(pos_numpy).unsqueeze(0).to(self.device)
+
+        if self.use_fp16 and self.device.type == 'cuda':
+            pc_gpu  = pc_gpu.half()
+            pos_gpu = pos_gpu.half()
+
+        obs = {'point_cloud': pc_gpu, 'agent_pos': pos_gpu}
+
+        # P0/P6 由同一个节点跑, 唯一差别就是这个 LoRA 门控 (未装 LoRA 时为 no-op)
+        with self._lora_ctx(), torch.inference_mode():
+            r = self.policy.predict_action(obs)
+
+        if isinstance(r, dict):
+            r = r.get('action', r.get('action_pred', next(iter(r.values()))))
+        elif isinstance(r, tuple):
+            r = r[0]
+        return r.float().cpu().numpy()[0]
+
+    # ROS 回调
+    def setup_subscribers(self):
+        rospy.Subscriber("~odom",         Odometry,    self.odom_cb,   queue_size=1)
+        rospy.Subscriber("~pointcloud",   PointCloud2, self.pc_cb,     queue_size=1)
+        rospy.Subscriber("/mavros/state", MavrosState, self.mavros_cb, queue_size=1)
+
+    def setup_publishers(self):
+        self.cmd_pub    = rospy.Publisher("/planning/pos_cmd", PositionCommand, queue_size=10)
+        ego             = f"/drone_{self.drone_id}_ego_planner_node"
+        self.goal_pub   = rospy.Publisher(f"{ego}/goal_point",   Marker,      queue_size=10)
+        self.traj_pub   = rospy.Publisher(f"{ego}/optimal_list", Marker,      queue_size=10)
+        ml              = f"/drone_{self.drone_id}_ml_planner"
+        self.detail_pub = rospy.Publisher(f"{ml}/diffusion_detail", MarkerArray, queue_size=10)
+        rospy.sleep(0.5)
+
+    def odom_cb(self, msg):
+        with self.data_lock:
+            self.current_position = np.array([
+                msg.pose.pose.position.x,
+                msg.pose.pose.position.y,
+                msg.pose.pose.position.z])
+            vel_raw = np.array([
+                msg.twist.twist.linear.x,
+                msg.twist.twist.linear.y,
+                msg.twist.twist.linear.z])
+            self.current_orientation_xyzw = np.array([
+                msg.pose.pose.orientation.x,
+                msg.pose.pose.orientation.y,
+                msg.pose.pose.orientation.z,
+                msg.pose.pose.orientation.w])
+
+            if self.odom_vel_is_world:
+                self.current_velocity_world = vel_raw
+            else:
+                w, x, y, z = self._ros_to_wxyz(self.current_orientation_xyzw)
+                R_b2w = np.array([
+                    [1-2*(y*y+z*z), 2*(x*y-w*z),   2*(x*z+w*y)],
+                    [2*(x*y+w*z),   1-2*(x*x+z*z), 2*(y*z-w*x)],
+                    [2*(x*z-w*y),   2*(y*z+w*x),   1-2*(x*x+y*y)],
+                ], dtype=np.float64)
+                self.current_velocity_world = R_b2w @ vel_raw
+
+            self.current_yaw = self._quat_to_yaw(self.current_orientation_xyzw)
+            if self.state == "INIT":
+                self.state = "WAIT_OFFBOARD"
+
+    def mavros_cb(self, msg):
+        if self.state != "WAIT_OFFBOARD":
+            return
+        if msg.mode != "OFFBOARD":
+            try:
+                rospy.wait_for_service('/mavros/set_mode', timeout=2.0)
+                self.set_mode_client(custom_mode="OFFBOARD")
+            except Exception:
+                pass
+        if msg.mode == "OFFBOARD":
+            rospy.loginfo("[ML Planner v6.5] OFFBOARD 模式")
+            rospy.sleep(2.0)
+            if self.flight_mode == 0 and len(self.waypoints) > 0:
+                self.state = "START_MISSION"
+                rospy.Timer(rospy.Duration(2.0), self._start_mission, oneshot=True)
+
+    def _start_mission(self, event):
+        rospy.loginfo("[ML Planner v6.5] 任务开始")
+        self._set_next_waypoint()
+
+    # ── 2026-11-07 修复: 点云逐点解析长期持 GIL, 把推理拖慢 15 倍 ──────────
+    # 原实现 `list(pc2.read_points(...))` 是 Python 生成器, 每帧 4.4–5.3 万点
+    # 逐点建 tuple, 实测 42.6–48.1 ms/帧 @ ~16 Hz, 回调线程常驻约 0.9 核并全程
+    # 持 GIL; 10 步 DDIM 的 Python 循环每一步都要抢 GIL 才能提交 kernel, 于是
+    # 77 ms 的推理被拉长到 6.6 s (见 program/plan/...startpoint_v1_task_plan.md Phase 8)。
+    # 改为按 point_step 步长直接取 x/y/z 的 numpy 视图, 与 read_points 逐位等价:
+    #   - 同一线性索引顺序 (行主序, 组织化点云数据连续)
+    #   - skip_nans 只判 nan 不判 inf → 用 ~np.isnan(xyz).any(axis=1)
+    #   - 返回的点集与顺序不变 ⇒ 后续 np.random.choice(n, ...) 抽到同一组下标
+    # 实测 42.6 → 12.2 ms/帧, 推理 6595 → 425 ms, 60 s 内最小 dxy 2.81 → 0.33 m。
+    @staticmethod
+    def _pc2_to_xyz_fast(msg):
+        """向量化解析 PointCloud2 的 x/y/z。布局不受支持时返回 None 走原路径。"""
+        off = {f.name: f.offset for f in msg.fields}
+        if not all(k in off for k in ("x", "y", "z")):
+            return None
+        # 7 = PointField.FLOAT32；count != 1 或非 float32 时不做假设, 回落
+        for f in msg.fields:
+            if f.name in ("x", "y", "z") and (f.datatype != 7 or f.count != 1):
+                return None
+        if msg.is_bigendian:
+            return None
+        n = msg.width * msg.height
+        if n == 0:
+            return np.zeros((0, 3), dtype=np.float32)
+        xyz = np.empty((n, 3), dtype=np.float32)
+        for i, name in enumerate(("x", "y", "z")):
+            xyz[:, i] = np.ndarray(shape=(n,), dtype=np.float32, buffer=msg.data,
+                                   offset=off[name], strides=(msg.point_step,))
+        return xyz[~np.isnan(xyz).any(axis=1)]
+
+    def pc_cb(self, msg):
+        try:
+            pts = None
+            try:
+                pts = self._pc2_to_xyz_fast(msg)
+            except Exception as e:
+                rospy.logwarn_throttle(5, f"向量化点云解析失败, 回落 read_points: {e}")
+            if pts is None:
+                pts = np.array(
+                    list(pc2.read_points(msg, field_names=("x","y","z"), skip_nans=True)),
+                    dtype=np.float32)
+            rospy.loginfo_throttle(5, f"[PC] Received {len(pts)} points")
+            if len(pts) == 0:
+                return
+            n = len(pts)
+            if n > self.num_points:
+                pts = pts[np.random.choice(n, self.num_points, replace=False)]
+            elif n < self.num_points:
+                pts = np.tile(pts, ((self.num_points + n - 1)//n, 1))[:self.num_points]
+            pts = (R_CAM2BODY @ pts.T).T.astype(np.float32)
+            with self.data_lock:
+                self.current_pointcloud = pts
+        except Exception as e:
+            rospy.logwarn_throttle(5, f"点云错误: {e}")
+
+    def _sample_obs(self, event):
+        with self.data_lock:
+            # 合成模式不需 current_pointcloud（现算）；真实模式需要
+            if not self.use_synth_pc and self.current_pointcloud is None:
+                return
+            if not self.has_goal:
+                return
+            cur_pos     = self.current_position.copy()
+            cur_vel_w   = self.current_velocity_world.copy()
+            prev_vel_w  = self.prev_velocity_world.copy()
+            cur_ori     = self.current_orientation_xyzw.copy()
+            goal_w      = self.goal_position.copy()
+            # Phase β 阶段 0-C: 合成点云替换 (M1 闭环验证)
+            if self.use_synth_pc:
+                drone_pos_world = cur_pos + self.synth_spawn_offset
+                pc = self.synth_pc.synthesize(
+                    drone_pos_world.astype(np.float64), self.current_yaw,
+                    num_points=self.num_points,
+                    add_noise=True,
+                    drone_pitch=None,
+                )
+            else:
+                pc = self.current_pointcloud.copy()
+            self.prev_velocity_world = cur_vel_w.copy()
+
+        agent_pos, goal_body = self._build_state_v65(cur_pos, cur_ori, goal_w)
+        self.obs_history.append({'point_cloud': pc, 'agent_pos': agent_pos})
+
+        rospy.logdebug(
+            f"[OBS] speed={np.linalg.norm(cur_vel_w):.2f}m/s "
+            f"dist={np.linalg.norm(goal_w - cur_pos):.1f}m "
+            f"buf={len(self.obs_history)}/{self.n_obs_steps}")
+
+    def _build_state_v65(self, drone_pos_w, orient_xyzw, goal_w):
+        yaw = self._quat_to_yaw(orient_xyzw)
+        dx = goal_w[0] - drone_pos_w[0]
+        dy = goal_w[1] - drone_pos_w[1]
+        dz = goal_w[2] - drone_pos_w[2]
+
+        c = np.cos(yaw)
+        s = np.sin(yaw)
+        goal_body_x =  c * dx + s * dy
+        goal_body_y = -s * dx + c * dy
+        goal_body_z =  dz
+
+        goal_dist = float(np.sqrt(dx*dx + dy*dy + dz*dz))
+
+        state_9 = np.array([
+            drone_pos_w[0], drone_pos_w[1], drone_pos_w[2],
+            goal_body_x,    goal_body_y,    goal_body_z,
+            goal_dist,
+            np.sin(yaw),    np.cos(yaw),
+        ], dtype=np.float32)
+
+        goal_body = np.array([goal_body_x, goal_body_y, goal_body_z], dtype=np.float32)
+        return state_9, goal_body
+
+    def _action_to_world(self, raw_action, pos_w, vel_world, yaw):
+        N = len(raw_action)
+        positions = np.zeros((N, 3))
+        yaws = np.zeros(N)
+
+        cur_pos, cur_yaw = pos_w.copy(), yaw
+        for k in range(N):
+            cur_pos = cur_pos + raw_action[k, DPOS_W]
+            cur_yaw = normalize_angle(cur_yaw + float(raw_action[k, DYAW_CW]))
+            positions[k] = cur_pos
+            yaws[k] = cur_yaw
+
+        # Phase ① 方法论修复: 部署侧 z clamp 改为 warning-only
+        # 旧: 强制 clip 到 [1.0, 3.0]，重写了策略输出的 z 轨迹（属于策略外修剪，违反 MC-1）
+        # 新: 策略内 _project_trajectory 的 z clamp [1.0, 5.0] 是单一约束源（safety envelope）
+        #     部署侧只记录越界事件供诊断, 不修改路径
+        # 通过 launch 参数 use_deployment_z_clamp 控制（默认 False=warning-only）
+        Z_MIN_WARN, Z_MAX_WARN = 1.0, 3.0
+        z_oob = (positions[:, 2] < Z_MIN_WARN) | (positions[:, 2] > Z_MAX_WARN)
+        if np.any(z_oob):
+            rospy.logwarn_throttle(
+                2.0,
+                f"[Z-OOB] {z_oob.sum()}/{len(positions)} steps out of warn-range "
+                f"[{Z_MIN_WARN},{Z_MAX_WARN}], actual z=[{positions[:,2].min():.2f},"
+                f"{positions[:,2].max():.2f}], policy-only path preserved")
+        if self.use_deployment_z_clamp:
+            # 兼容模式: 若 launch 显式开启则按旧逻辑 clip（ablation 用，不是默认行为）
+            positions[:, 2] = np.clip(positions[:, 2], Z_MIN_WARN, Z_MAX_WARN)
+            rospy.logwarn_throttle(2.0, "[Z-CLAMP] deployment z-clamp ENABLED (ablation mode)")
+
+        world_action = np.zeros_like(raw_action)
+        world_action[:, POS]    = positions
+        world_action[:, VEL]    = raw_action[:, VEL_W]
+        world_action[:, ACC]    = raw_action[:, ACC_W]
+        world_action[:, YAW]    = yaws
+        world_action[:, YAW_RT] = raw_action[:, YAW_RATE]
+
+        # ════════════════════════════════════════════════════════════════
+        # Phase ② z 下沉 bug 修复: 按 z_feedforward_mode 处理 z 通道前馈
+        # ════════════════════════════════════════════════════════════════
+        # controller.cpp:219 des_acc = des.a + Kv*(des.v-v) + Kp*(des.p-p)
+        # des.a.z / des.v.z 偏负 → 持续向下前馈. 清零 z 前馈让 z 只靠 position 环.
+        # POS 的 z 分量始终保留 (那是真正的高度指令).
+        if self.z_feedforward_mode == 'no_acc':
+            world_action[:, 8] = 0.0          # acc z (index 8) 清零
+            rospy.loginfo_throttle(5.0, "[Z-FF] mode=no_acc: z 加速度前馈已清零")
+        elif self.z_feedforward_mode == 'no_ff':
+            world_action[:, 5] = 0.0          # vel z (index 5) 清零
+            world_action[:, 8] = 0.0          # acc z (index 8) 清零
+            rospy.loginfo_throttle(5.0, "[Z-FF] mode=no_ff: z 速度+加速度前馈已清零")
+        # mode=='full': 不动, 原行为
+
+        return world_action
+
+    def control_loop(self, event):
+        if self.state in ("WAIT_OFFBOARD", "START_MISSION", "INIT"):
+            return
+        if not self.has_goal:
+            return
+
+        with self.data_lock:
+            pos  = self.current_position.copy()
+            goal = self.goal_position.copy()
+            vel_w = self.current_velocity_world.copy()
+        # Phase ① 修复 Bug 1: 分量化 goal 判定 + 防抖 + 速度阈值
+        # 旧逻辑: np.linalg.norm(pos - goal) < goal_tolerance(1.0m), 3D 球判定
+        # 问题: dxy=0.89m + dz 抖一次 < 0.46m 即触发假"到达", odom 噪声敏感
+        # 新逻辑:
+        #   1. dxy < goal_tolerance_xy(0.5m) AND dz < goal_tolerance_z(0.3m)
+        #   2. 水平速度 < goal_reach_speed_thresh (防高速穿越 — Zread R3 建议)
+        #   3. 连续 N 帧 (debounce) 才触发
+        diff = pos - goal
+        dxy = float(np.linalg.norm(diff[:2]))
+        dz  = float(abs(diff[2]))
+        v_xy = float(np.linalg.norm(vel_w[:2]))
+        in_box   = (dxy < self.goal_tolerance_xy and dz < self.goal_tolerance_z)
+        slow_enough = (v_xy < self.goal_reach_speed_thresh)
+        if in_box and slow_enough:
+            self._goal_reach_consec = getattr(self, '_goal_reach_consec', 0) + 1
+            if self._goal_reach_consec >= self.goal_reach_debounce_frames:
+                rospy.loginfo(f"[GOAL-REACH] dxy={dxy:.3f}m, dz={dz:.3f}m, "
+                              f"v_xy={v_xy:.2f}m/s, after {self._goal_reach_consec} "
+                              f"consec frames")
+                self._goal_reach_consec = 0
+                self._on_goal_reached()
+                return
+        else:
+            # 诊断: 在 box 内但速度太高时单独 log（区分两类 fail mode）
+            if in_box and not slow_enough:
+                rospy.loginfo_throttle(
+                    1.0,
+                    f"[GOAL-CHECK] in_box but v_xy={v_xy:.2f} > "
+                    f"thresh={self.goal_reach_speed_thresh:.2f}m/s, not arrived")
+            self._goal_reach_consec = 0
+
+        if self.traj_mgr.is_valid():
+            r = self.traj_mgr.sample(rospy.Time.now())
+            if r is not None:
+                pos_cmd, vel_cmd, acc_cmd, yaw_cmd, yr_cmd, progress = r
+
+                if progress >= self.replan_ratio:
+                    if not self._replan_logged:
+                        rospy.loginfo(f"[ML Planner] 并行推理触发 progress={progress:.2f}")
+                        self._replan_logged = True
+                    self._try_start_planning()
+                else:
+                    self._replan_logged = False
+
+                if progress < 1.0:
+                    self._publish_cmd(pos_cmd, vel_cmd, acc_cmd, yaw_cmd, yr_cmd, "traj")
+                else:
+                    self._publish_cmd(pos_cmd, np.zeros(3), np.zeros(3), yaw_cmd, 0.0, "traj_hold")
+                return
+            else:
+                self.traj_mgr.clear()
+
+        self._replan_logged = False
+        self._try_start_planning()
+        self._publish_hold_cmd()
+
+    def _try_start_planning(self):
+        with self.planning_lock:
+            if self.is_planning:
+                return
+            self.is_planning = True
+        Thread(target=self._planning_worker, daemon=True).start()
+
+    def _planning_worker(self):
+        try:
+            self._do_plan()
+        except Exception as e:
+            rospy.logerr(f"规划异常: {e}"); traceback.print_exc()
+        finally:
+            with self.planning_lock:
+                self.is_planning = False
+
+    def _do_plan(self):
+        if len(self.obs_history) < self.n_obs_steps:
+            rospy.loginfo_throttle(1, f"积累观测: {len(self.obs_history)}/{self.n_obs_steps}")
+            return
+
+        recent_obs = list(self.obs_history)[-self.n_obs_steps:]
+        pc_s  = np.stack([o["point_cloud"] for o in recent_obs])
+        ag_s  = np.stack([o["agent_pos"]   for o in recent_obs])   # (n_obs, 9)
+
+        with self.data_lock:
+            goal_w = self.goal_position.copy()
+            cur_pos_now = self.current_position.copy()
+            cur_yaw_now = self.current_yaw
+
+        # ========== 新增：记录当前状态（用于 OOD 诊断）==========
+        latest_state = ag_s[-1]   # 最新一帧 9维状态
+        # 分解状态
+        px, py, pz = latest_state[0], latest_state[1], latest_state[2]
+        goal_bx, goal_by, goal_bz = latest_state[3], latest_state[4], latest_state[5]
+        goal_dist = latest_state[6]
+        sin_yaw = latest_state[7]
+        cos_yaw = latest_state[8]
+        timestamp = rospy.Time.now().to_sec()
+        with self.state_log_lock:
+            self.state_csv_writer.writerow([
+                f"{timestamp:.6f}", self.csv_logger.plan_count + 1,
+                f"{px:.6f}", f"{py:.6f}", f"{pz:.6f}",
+                f"{goal_bx:.6f}", f"{goal_by:.6f}", f"{goal_bz:.6f}",
+                f"{goal_dist:.6f}",
+                f"{sin_yaw:.6f}", f"{cos_yaw:.6f}",
+                f"{goal_w[0]:.6f}", f"{goal_w[1]:.6f}", f"{goal_w[2]:.6f}"
+            ])
+            self.state_log_file.flush()
+        # =======================================================
+
+        if self.device.type == 'cuda':
+            torch.cuda.synchronize()
+        t0 = time.time()
+
+        # deploy dump: plan_id 1-8 (early path) + 15-30 (mid/late path)
+        if not hasattr(self, '_dump_count'):
+            self._dump_count = 0
+            self._dump_dir = os.path.expanduser('~/ml_planner_log/deploy_pc_dumps')
+            os.makedirs(self._dump_dir, exist_ok=True)
+
+        plan_id = self.csv_logger.plan_count + 1  # current plan_id (not incremented yet)
+        dump_plan_ids = list(range(1, 9)) + list(range(15, 31))  # 1-8 + 15-30
+        if plan_id in dump_plan_ids:
+            pc_latest = pc_s[-1]
+            state_latest = ag_s[-1]
+            pc_history = pc_s
+            state_history = ag_s
+            fname = f'{self._dump_dir}/deploy_{self._dump_count:03d}_plan{plan_id:02d}_x{cur_pos_now[0]:.1f}.npz'
+            np.savez(fname,
+                     pc_latest=pc_latest,
+                     state_latest=state_latest,
+                     pc_history=pc_history,
+                     state_history=state_history,
+                     drone_pos=cur_pos_now,
+                     drone_yaw=cur_yaw_now)
+            self._dump_count += 1
+            rospy.loginfo(f'[DUMP] #{self._dump_count} plan={plan_id} x={cur_pos_now[0]:.2f}')
+
+        raw_action = self._call_policy(pc_s, ag_s)
+
+        if self.device.type == 'cuda':
+            torch.cuda.synchronize()
+        dt_ms = (time.time() - t0) * 1000
+
+        if dt_ms > 500:
+            rospy.logwarn(f"[ML Planner] 推理{dt_ms:.0f}ms>500ms")
+        else:
+            rospy.loginfo(f"[ML Planner] 推理{dt_ms:.0f}ms ✓")
+
+        with self.data_lock:
+            cur_pos_now = self.current_position.copy()
+            cur_vel_now = self.current_velocity_world.copy()
+            cur_yaw_now = self.current_yaw
+
+        goal_rel_b = ag_s[-1][3:6]
+
+        world_action = self._action_to_world(raw_action, cur_pos_now, cur_vel_now, cur_yaw_now)
+
+        self._log_diffusion_output(raw_action, world_action, dt_ms, cur_pos_now, goal_w, goal_rel_b)
+        self.csv_logger.log_diffusion(raw_action, world_action, dt_ms,
+                                      cur_pos_now, cur_yaw_now, goal_w, goal_rel_b)
+        # ===== Phase1a 闭环修复：仅截断执行路径，保留全 horizon 用于 markers/log =====
+        # 训练 n_action_steps=8，部署只执行前 N 步以加快重规划。详见 load_parameters。
+        N = self.deployment_action_steps
+        if N > 0 and N < len(world_action):
+            world_action_exec = world_action[:N]
+            if not getattr(self, '_truncate_logged', False):
+                rospy.loginfo(
+                    f"[ML Planner] 部署侧执行截断: {len(world_action)} -> {N} 步, "
+                    f"轨迹时长 {(N-1)*self.traj_dt:.2f}s, "
+                    f"replan@{self.replan_ratio:.0%} 触发于 {(N-1)*self.traj_dt*self.replan_ratio:.2f}s")
+                self._truncate_logged = True
+        else:
+            world_action_exec = world_action
+
+        # ============================================================
+        # Phase ① 方法论修复: GOAL-TRUNC 整段禁用
+        # ============================================================
+        # 原作用: 当 world_action_exec 任一步距 goal < goal_tolerance(1.0m) 时,
+        #         把后续步全部 hold 在 goal 位置(pos=goal, vel=acc=yaw_rate=0)
+        # 方法论问题:
+        #   - 这是策略外的轨迹形状重写(违反 MC-1: 策略输出即执行轨迹)
+        #   - 其他 planner (EGO/RRT/A*) 一样能套用相同处理 → 不能算 diffusion 策略的能力
+        #   - 让"到达 goal"由 deployment hold 实现而非 policy 学到,
+        #     在论文中无法 claim policy 学到了减速到达行为
+        # 现策略: 完全禁用; 让 policy 自身的减速行为决定末段
+        # 保留代码为 ablation reference (Phase ④ DPPO 后期可对比开/关性能)
+        #
+        # if len(close_steps) > 0:
+        #     k = close_steps[0] + 1
+        #     if k < len(world_action_exec):
+        #         world_action_exec[k:, :3] = goal_w
+        #         world_action_exec[k:, 3:9] = 0.0
+        #         world_action_exec[k:, 10] = 0.0
+        #         rospy.loginfo_throttle(2.0,
+        #             f"[GOAL-TRUNC] step {k}/{len(world_action_exec)} "
+        #             f"d={d_to_goal[close_steps[0]]:.2f}m < tol={self.goal_tolerance:.1f}m, hold")
+        # else:
+        #     min_d = d_to_goal.min()
+        #     if min_d < self.goal_tolerance * 2:
+        #         rospy.loginfo_throttle(5.0,
+        #             f"[GOAL-TRUNC] closest={min_d:.2f}m > tol={self.goal_tolerance:.1f}m, no trunc")
+        #
+        # 替代: 仅记录策略输出离 goal 的最近距离，用于诊断（不修改轨迹）
+        d_to_goal = np.linalg.norm(world_action_exec[:, :3] - goal_w, axis=1)
+        min_d = float(d_to_goal.min())
+        rospy.loginfo_throttle(
+            3.0,
+            f"[GOAL-DIAG] policy-only path closest step to goal: d={min_d:.2f}m "
+            f"(no trunc, Phase ① honest baseline)")
+        self.traj_mgr.set_trajectory(world_action_exec, self.traj_dt, cur_pos=cur_pos_now)
+        # markers 仍发布完整预测，便于 rviz 中观察模型完整意图
+        self._publish_traj_marker(world_action)
+        self._publish_detail_markers(world_action, raw_action)
+
+    def _publish_cmd(self, pos, vel, acc, yaw, yr, source="traj"):
+        cmd = PositionCommand()
+        cmd.header.stamp    = rospy.Time.now()
+        cmd.header.frame_id = "world"
+        cmd.position.x, cmd.position.y, cmd.position.z             = float(pos[0]), float(pos[1]), float(pos[2])
+        cmd.velocity.x, cmd.velocity.y, cmd.velocity.z             = float(vel[0]), float(vel[1]), float(vel[2])
+        cmd.acceleration.x, cmd.acceleration.y, cmd.acceleration.z = float(acc[0]), float(acc[1]), float(acc[2])
+        cmd.yaw, cmd.yaw_dot    = float(yaw), float(yr)
+        cmd.trajectory_flag     = PositionCommand.TRAJECTORY_STATUS_READY
+        cmd.trajectory_id       = self.cmd_count % 100 + 1
+        cmd.kx, cmd.kv          = self.pos_gain, self.vel_gain
+        self.cmd_pub.publish(cmd)
+        self.cmd_count += 1
+
+        with self.data_lock:
+            cur = self.current_position.copy()
+        self.csv_logger.log_cmd(self.cmd_count, source, pos, vel, acc, yaw, yr, cur)
+
+        if self.cmd_count % 50 == 0:
+            err = np.linalg.norm(np.array(pos[:3]) - cur)
+            rospy.loginfo(
+                f"[CMD#{self.cmd_count}] {source:>9} | "
+                f"pos[{pos[0]:.2f},{pos[1]:.2f},{pos[2]:.2f}] "
+                f"vel[{vel[0]:.2f},{vel[1]:.2f},{vel[2]:.2f}] "
+                f"yaw={yaw:.2f} | "
+                f"实际[{cur[0]:.2f},{cur[1]:.2f},{cur[2]:.2f}] err={err:.2f}m")
+
+    def _publish_hold_cmd(self):
+        with self.data_lock:
+            hp = self.current_position.copy()
+            hy = self.current_yaw
+        self._publish_cmd(hp, np.zeros(3), np.zeros(3), hy, 0.0, "hold")
+
+    # 可视化（不变）
+    def _vis_tick(self, event):
+        self._publish_goal_marker()
+
+    def _publish_goal_marker(self):
+        if self.goal_position is None:
+            return
+        m = Marker()
+        m.header.stamp = rospy.Time.now(); m.header.frame_id = "world"
+        m.ns = "goal_point"; m.id = 0; m.type = Marker.SPHERE; m.action = Marker.ADD
+        m.pose.position.x, m.pose.position.y, m.pose.position.z = \
+            self.goal_position[0], self.goal_position[1], self.goal_position[2]
+        m.pose.orientation.w = 1.0
+        m.scale.x = m.scale.y = m.scale.z = 0.5
+        m.color = ColorRGBA(1.0, 0.0, 0.0, 0.8)
+        self.goal_pub.publish(m)
+
+    def _publish_traj_marker(self, world_action):
+        m = Marker()
+        m.header.stamp = rospy.Time.now(); m.header.frame_id = "world"
+        m.ns = "optimal_trajectory"; m.id = 0
+        m.type = Marker.LINE_STRIP; m.action = Marker.ADD
+        m.scale.x = 0.08; m.color = ColorRGBA(0.1, 0.5, 1.0, 0.9)
+        m.pose.orientation.w = 1.0
+        for i in range(len(world_action)):
+            m.points.append(Point(x=float(world_action[i,0]),
+                                  y=float(world_action[i,1]),
+                                  z=float(world_action[i,2])))
+        self.traj_pub.publish(m)
+
+    def _publish_detail_markers(self, world_action, raw_action):
+        ma  = MarkerArray()
+        now = rospy.Time.now()
+        clr = Marker(); clr.action = Marker.DELETEALL
+        ma.markers.append(clr)
+        for i in range(len(world_action)):
+            ratio = i / max(1, len(world_action)-1)
+            s = Marker()
+            s.header.stamp = now; s.header.frame_id = "world"
+            s.ns = "dp"; s.id = i; s.type = Marker.SPHERE; s.action = Marker.ADD
+            s.pose.position.x = float(world_action[i,0])
+            s.pose.position.y = float(world_action[i,1])
+            s.pose.position.z = float(world_action[i,2])
+            s.pose.orientation.w = 1.0
+            s.scale.x = s.scale.y = s.scale.z = 0.12
+            s.color = ColorRGBA(ratio, 1-ratio, 0.2, 0.8)
+            ma.markers.append(s)
+            if i % 3 == 0:
+                v = world_action[i, VEL]
+                if np.linalg.norm(v) > 0.01:
+                    a = Marker()
+                    a.header.stamp = now; a.header.frame_id = "world"
+                    a.ns = "dv"; a.id = 100+i; a.type = Marker.ARROW; a.action = Marker.ADD
+                    a.points = [
+                        Point(x=float(world_action[i,0]),   y=float(world_action[i,1]),   z=float(world_action[i,2])),
+                        Point(x=float(world_action[i,0]+v[0]*0.5),
+                              y=float(world_action[i,1]+v[1]*0.5),
+                              z=float(world_action[i,2]+v[2]*0.5))]
+                    a.scale.x = 0.03; a.scale.y = 0.06
+                    a.color = ColorRGBA(1.0, 1.0, 0.0, 0.7)
+                    ma.markers.append(a)
+            if i == 0 or i == len(world_action)-1 or i % 5 == 0:
+                t = Marker()
+                t.header.stamp = now; t.header.frame_id = "world"
+                t.ns = "dt"; t.id = 200+i; t.type = Marker.TEXT_VIEW_FACING; t.action = Marker.ADD
+                t.pose.position.x = float(world_action[i,0])
+                t.pose.position.y = float(world_action[i,1])
+                t.pose.position.z = float(world_action[i,2]) + 0.2
+                t.scale.z = 0.15; t.color = ColorRGBA(1,1,1,0.9)
+                t.text = f"t{i} Δw={np.linalg.norm(raw_action[i,DPOS_W]):.2f}"
+                ma.markers.append(t)
+        self.detail_pub.publish(ma)
+
+    def _log_diffusion_output(self, raw_action, world_action, dt_ms,
+                              cur_pos, goal_w, goal_rel_b):
+        sep = "=" * 105
+        rospy.loginfo(sep)
+        rospy.loginfo(
+            f"[DIFFUSION v6.5] {dt_ms:.0f}ms | "
+            f"pos[{cur_pos[0]:.2f},{cur_pos[1]:.2f},{cur_pos[2]:.2f}] "
+            f"goal[{goal_w[0]:.2f},{goal_w[1]:.2f},{goal_w[2]:.2f}] "
+            f"dist={np.linalg.norm(goal_rel_b):.2f}m")
+        rospy.loginfo("-" * 105)
+        h = f"{'t':>3}" + "".join(f" {n:>8}" for n in DIM_NAMES_RAW[:6]) + f"  {'|Δw|':>6}"
+        rospy.loginfo(h)
+        for i in range(min(5, len(raw_action))):
+            row = f" {i:>2}" + "".join(f" {raw_action[i,d]:>8.4f}" for d in range(6))
+            row += f"  {np.linalg.norm(raw_action[i,DPOS_W]):>6.4f}"
+            rospy.loginfo(row)
+        if len(raw_action) > 5:
+            rospy.loginfo(f"  ... ({len(raw_action)} 步)")
+        rospy.loginfo("-" * 105)
+        h = f"{'t':>3}" + "".join(f" {n:>8}" for n in DIM_NAMES_WORLD[:6]) + \
+            f"  {'d_cur':>7} {'d_goal':>7}"
+        rospy.loginfo(h)
+        for i in range(len(world_action)):
+            row = f" {i:>2}" + "".join(f" {world_action[i,d]:>8.3f}" for d in range(6))
+            row += f"  {np.linalg.norm(world_action[i,POS]-cur_pos):>6.2f}m"
+            row += f" {np.linalg.norm(world_action[i,POS]-goal_w):>6.2f}m"
+            rospy.loginfo(row)
+        total = sum(np.linalg.norm(world_action[i+1,POS]-world_action[i,POS])
+                    for i in range(len(world_action)-1))
+        rospy.loginfo(
+            f"  轨迹长{total:.2f}m | 终点距目标{np.linalg.norm(world_action[-1,POS]-goal_w):.2f}m")
+        rospy.loginfo(sep)
+
+    def _on_goal_reached(self):
+        rospy.loginfo("[ML Planner v6.5] 到达目标")
+        if self.flight_mode == 0:
+            self._set_next_waypoint()
+        else:
+            self.has_goal = False
+
+    def _set_next_waypoint(self):
+        if self.waypoint_index >= len(self.waypoints):
+            rospy.loginfo("[ML Planner v6.5] 所有航点完成")
+            self.has_goal = False
+            return
+        self.goal_position  = self.waypoints[self.waypoint_index].copy()
+        self.has_goal       = True
+        self.obs_history.clear()
+        self.state          = "EXECUTING"
+        rospy.loginfo(f"[ML Planner v6.5] 航点{self.waypoint_index}: {self.goal_position}")
+        self._publish_goal_marker()
+        self.waypoint_index += 1
+
+    @staticmethod
+    def _ros_to_wxyz(quat_xyzw):
+        return np.array([quat_xyzw[3], quat_xyzw[0], quat_xyzw[1], quat_xyzw[2]])
+
+    @staticmethod
+    def _quat_to_yaw(q_xyzw):
+        x, y, z, w = q_xyzw
+        return np.arctan2(2*(w*z + x*y), 1 - 2*(y*y + z*z))
+
+
+def main():
+    try:
+        MLPlannerNode()
+        rospy.spin()
+    except rospy.ROSInterruptException:
+        pass
+    except Exception as e:
+        rospy.logerr(f"异常: {e}"); traceback.print_exc()
+
+
+if __name__ == '__main__':
+    main()
