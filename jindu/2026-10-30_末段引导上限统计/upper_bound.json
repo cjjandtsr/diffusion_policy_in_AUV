@@ -1,0 +1,696 @@
+{
+ "P0": {
+  "v_cap_m_per_decision": 0.3638666130337601,
+  "p95_dxy": 1.0098749267421383,
+  "p95_dz": 0.07309968471527098,
+  "outcomes": {
+   "other_timeout": 140,
+   "collision": 131,
+   "reached": 116,
+   "below_goal_timeout": 33
+  },
+  "radii": {
+   "thresh0.1_r1.0": {
+    "cells": {
+     "other_timeout|not_entered": 137,
+     "collision|not_entered": 123,
+     "reached|entered": 116,
+     "below_goal_timeout|entered": 33,
+     "collision|entered": 8,
+     "other_timeout|entered": 3
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 33,
+     "collision": 8,
+     "other_timeout": 3
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 25,
+     "collision": 8,
+     "other_timeout": 3
+    },
+    "system_upper_main": 160,
+    "system_upper_axis": 152,
+    "rescuable_worlds": 10
+   },
+   "thresh0.1_r1.5": {
+    "cells": {
+     "other_timeout|not_entered": 124,
+     "collision|not_entered": 122,
+     "reached|entered": 116,
+     "below_goal_timeout|entered": 33,
+     "other_timeout|entered": 16,
+     "collision|entered": 9
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 33,
+     "other_timeout": 14,
+     "collision": 9
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 27,
+     "other_timeout": 13,
+     "collision": 9
+    },
+    "system_upper_main": 172,
+    "system_upper_axis": 165,
+    "rescuable_worlds": 11,
+    "spot_check": {
+     "rescuable": [
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02",
+       2
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02",
+       4
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02",
+       4
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02",
+       3
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02",
+       2
+      ]
+     ]
+    }
+   },
+   "thresh0.1_r2.0": {
+    "cells": {
+     "other_timeout|not_entered": 91,
+     "collision|not_entered": 115,
+     "reached|entered": 116,
+     "below_goal_timeout|entered": 33,
+     "other_timeout|entered": 49,
+     "collision|entered": 16
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 33,
+     "other_timeout": 45,
+     "collision": 16
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 28,
+     "other_timeout": 48,
+     "collision": 16
+    },
+    "system_upper_main": 210,
+    "system_upper_axis": 208,
+    "rescuable_worlds": 17
+   },
+   "thresh0.3_r1.0": {
+    "cells": {
+     "other_timeout|not_entered": 137,
+     "collision|not_entered": 123,
+     "reached|entered": 116,
+     "below_goal_timeout|entered": 33,
+     "collision|entered": 8,
+     "other_timeout|entered": 3
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 33,
+     "collision": 8,
+     "other_timeout": 3
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 25,
+     "collision": 8,
+     "other_timeout": 3
+    },
+    "system_upper_main": 160,
+    "system_upper_axis": 152,
+    "rescuable_worlds": 10
+   },
+   "thresh0.3_r1.5": {
+    "cells": {
+     "other_timeout|not_entered": 124,
+     "collision|not_entered": 122,
+     "reached|entered": 116,
+     "below_goal_timeout|entered": 33,
+     "other_timeout|entered": 16,
+     "collision|entered": 9
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 33,
+     "other_timeout": 14,
+     "collision": 9
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 27,
+     "other_timeout": 13,
+     "collision": 9
+    },
+    "system_upper_main": 172,
+    "system_upper_axis": 165,
+    "rescuable_worlds": 11
+   },
+   "thresh0.3_r2.0": {
+    "cells": {
+     "other_timeout|not_entered": 91,
+     "collision|not_entered": 115,
+     "reached|entered": 116,
+     "below_goal_timeout|entered": 33,
+     "other_timeout|entered": 49,
+     "collision|entered": 16
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 33,
+     "other_timeout": 45,
+     "collision": 16
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 28,
+     "other_timeout": 48,
+     "collision": 16
+    },
+    "system_upper_main": 210,
+    "system_upper_axis": 208,
+    "rescuable_worlds": 17
+   }
+  }
+ },
+ "P2": {
+  "v_cap_m_per_decision": 0.7305078134255152,
+  "p95_dxy": 1.141236350518006,
+  "p95_dz": 0.10015196800231928,
+  "outcomes": {
+   "reached": 160,
+   "collision": 150,
+   "below_goal_timeout": 73,
+   "other_timeout": 37
+  },
+  "radii": {
+   "thresh0.1_r1.0": {
+    "cells": {
+     "reached|entered": 160,
+     "collision|not_entered": 146,
+     "below_goal_timeout|entered": 73,
+     "other_timeout|not_entered": 25,
+     "other_timeout|entered": 12,
+     "collision|entered": 4
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 73,
+     "other_timeout": 11,
+     "collision": 4
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 71,
+     "other_timeout": 11,
+     "collision": 4
+    },
+    "system_upper_main": 248,
+    "system_upper_axis": 246,
+    "rescuable_worlds": 15
+   },
+   "thresh0.1_r1.5": {
+    "cells": {
+     "reached|entered": 160,
+     "collision|not_entered": 140,
+     "below_goal_timeout|entered": 73,
+     "other_timeout|not_entered": 7,
+     "other_timeout|entered": 30,
+     "collision|entered": 10
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 73,
+     "other_timeout": 30,
+     "collision": 10
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 73,
+     "other_timeout": 30,
+     "collision": 10
+    },
+    "system_upper_main": 273,
+    "system_upper_axis": 273,
+    "rescuable_worlds": 18,
+    "spot_check": {
+     "rescuable": [
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02",
+       4
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01",
+       4
+      ],
+      [
+       "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03",
+       1
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02",
+       1
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02",
+       3
+      ]
+     ]
+    }
+   },
+   "thresh0.1_r2.0": {
+    "cells": {
+     "reached|entered": 160,
+     "collision|not_entered": 138,
+     "below_goal_timeout|entered": 73,
+     "other_timeout|entered": 37,
+     "collision|entered": 12
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 73,
+     "other_timeout": 37,
+     "collision": 12
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 73,
+     "other_timeout": 36,
+     "collision": 12
+    },
+    "system_upper_main": 282,
+    "system_upper_axis": 281,
+    "rescuable_worlds": 19
+   },
+   "thresh0.3_r1.0": {
+    "cells": {
+     "reached|entered": 160,
+     "collision|not_entered": 146,
+     "below_goal_timeout|entered": 73,
+     "other_timeout|not_entered": 25,
+     "other_timeout|entered": 12,
+     "collision|entered": 4
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 73,
+     "other_timeout": 11,
+     "collision": 4
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 71,
+     "other_timeout": 11,
+     "collision": 4
+    },
+    "system_upper_main": 248,
+    "system_upper_axis": 246,
+    "rescuable_worlds": 15
+   },
+   "thresh0.3_r1.5": {
+    "cells": {
+     "reached|entered": 160,
+     "collision|not_entered": 140,
+     "below_goal_timeout|entered": 73,
+     "other_timeout|not_entered": 7,
+     "other_timeout|entered": 30,
+     "collision|entered": 10
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 73,
+     "other_timeout": 30,
+     "collision": 10
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 73,
+     "other_timeout": 30,
+     "collision": 10
+    },
+    "system_upper_main": 273,
+    "system_upper_axis": 273,
+    "rescuable_worlds": 18
+   },
+   "thresh0.3_r2.0": {
+    "cells": {
+     "reached|entered": 160,
+     "collision|not_entered": 138,
+     "below_goal_timeout|entered": 73,
+     "other_timeout|entered": 37,
+     "collision|entered": 12
+    },
+    "rescuable_main": {
+     "below_goal_timeout": 73,
+     "other_timeout": 37,
+     "collision": 12
+    },
+    "rescuable_axis": {
+     "below_goal_timeout": 73,
+     "other_timeout": 36,
+     "collision": 12
+    },
+    "system_upper_main": 282,
+    "system_upper_axis": 281,
+    "rescuable_worlds": 19
+   }
+  }
+ },
+ "P4": {
+  "v_cap_m_per_decision": 0.7754909451060007,
+  "p95_dxy": 1.2158396762598427,
+  "p95_dz": 0.09910533428192132,
+  "outcomes": {
+   "other_timeout": 62,
+   "collision": 157,
+   "reached": 182,
+   "below_goal_timeout": 19
+  },
+  "radii": {
+   "thresh0.1_r1.0": {
+    "cells": {
+     "other_timeout|not_entered": 34,
+     "collision|not_entered": 148,
+     "reached|entered": 182,
+     "other_timeout|entered": 28,
+     "collision|entered": 9,
+     "below_goal_timeout|entered": 19
+    },
+    "rescuable_main": {
+     "other_timeout": 28,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "rescuable_axis": {
+     "other_timeout": 28,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "system_upper_main": 238,
+    "system_upper_axis": 238,
+    "rescuable_worlds": 14
+   },
+   "thresh0.1_r1.5": {
+    "cells": {
+     "other_timeout|not_entered": 31,
+     "collision|not_entered": 148,
+     "reached|entered": 182,
+     "other_timeout|entered": 31,
+     "collision|entered": 9,
+     "below_goal_timeout|entered": 19
+    },
+    "rescuable_main": {
+     "other_timeout": 31,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "rescuable_axis": {
+     "other_timeout": 31,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "system_upper_main": 241,
+    "system_upper_axis": 241,
+    "rescuable_worlds": 14,
+    "spot_check": {
+     "rescuable": [
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01",
+       2
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00",
+       1
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02",
+       3
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02",
+       2
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02",
+       4
+      ]
+     ]
+    }
+   },
+   "thresh0.1_r2.0": {
+    "cells": {
+     "other_timeout|not_entered": 30,
+     "collision|not_entered": 148,
+     "reached|entered": 182,
+     "other_timeout|entered": 32,
+     "collision|entered": 9,
+     "below_goal_timeout|entered": 19
+    },
+    "rescuable_main": {
+     "other_timeout": 32,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "rescuable_axis": {
+     "other_timeout": 32,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "system_upper_main": 242,
+    "system_upper_axis": 242,
+    "rescuable_worlds": 14
+   },
+   "thresh0.3_r1.0": {
+    "cells": {
+     "other_timeout|not_entered": 34,
+     "collision|not_entered": 148,
+     "reached|entered": 182,
+     "other_timeout|entered": 28,
+     "collision|entered": 9,
+     "below_goal_timeout|entered": 19
+    },
+    "rescuable_main": {
+     "other_timeout": 28,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "rescuable_axis": {
+     "other_timeout": 28,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "system_upper_main": 238,
+    "system_upper_axis": 238,
+    "rescuable_worlds": 14
+   },
+   "thresh0.3_r1.5": {
+    "cells": {
+     "other_timeout|not_entered": 31,
+     "collision|not_entered": 148,
+     "reached|entered": 182,
+     "other_timeout|entered": 31,
+     "collision|entered": 9,
+     "below_goal_timeout|entered": 19
+    },
+    "rescuable_main": {
+     "other_timeout": 31,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "rescuable_axis": {
+     "other_timeout": 31,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "system_upper_main": 241,
+    "system_upper_axis": 241,
+    "rescuable_worlds": 14
+   },
+   "thresh0.3_r2.0": {
+    "cells": {
+     "other_timeout|not_entered": 30,
+     "collision|not_entered": 148,
+     "reached|entered": 182,
+     "other_timeout|entered": 32,
+     "collision|entered": 9,
+     "below_goal_timeout|entered": 19
+    },
+    "rescuable_main": {
+     "other_timeout": 32,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "rescuable_axis": {
+     "other_timeout": 32,
+     "collision": 9,
+     "below_goal_timeout": 19
+    },
+    "system_upper_main": 242,
+    "system_upper_axis": 242,
+    "rescuable_worlds": 14
+   }
+  }
+ },
+ "P6": {
+  "v_cap_m_per_decision": 0.7278908982967871,
+  "p95_dxy": 1.0392040082662968,
+  "p95_dz": 0.08190002441406247,
+  "outcomes": {
+   "other_timeout": 40,
+   "collision": 145,
+   "reached": 172,
+   "below_goal_timeout": 63
+  },
+  "radii": {
+   "thresh0.1_r1.0": {
+    "cells": {
+     "other_timeout|entered": 35,
+     "collision|not_entered": 139,
+     "reached|entered": 172,
+     "below_goal_timeout|entered": 63,
+     "collision|entered": 6,
+     "other_timeout|not_entered": 5
+    },
+    "rescuable_main": {
+     "other_timeout": 35,
+     "below_goal_timeout": 63,
+     "collision": 6
+    },
+    "rescuable_axis": {
+     "other_timeout": 35,
+     "below_goal_timeout": 63,
+     "collision": 6
+    },
+    "system_upper_main": 276,
+    "system_upper_axis": 276,
+    "rescuable_worlds": 15
+   },
+   "thresh0.1_r1.5": {
+    "cells": {
+     "other_timeout|entered": 40,
+     "collision|not_entered": 137,
+     "reached|entered": 172,
+     "below_goal_timeout|entered": 63,
+     "collision|entered": 8
+    },
+    "rescuable_main": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "rescuable_axis": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "system_upper_main": 283,
+    "system_upper_axis": 283,
+    "rescuable_worlds": 16,
+    "spot_check": {
+     "rescuable": [
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01",
+       1
+      ],
+      [
+       "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02",
+       2
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02",
+       4
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00",
+       3
+      ],
+      [
+       "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02",
+       2
+      ]
+     ]
+    }
+   },
+   "thresh0.1_r2.0": {
+    "cells": {
+     "other_timeout|entered": 40,
+     "collision|not_entered": 137,
+     "reached|entered": 172,
+     "below_goal_timeout|entered": 63,
+     "collision|entered": 8
+    },
+    "rescuable_main": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "rescuable_axis": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "system_upper_main": 283,
+    "system_upper_axis": 283,
+    "rescuable_worlds": 16
+   },
+   "thresh0.3_r1.0": {
+    "cells": {
+     "other_timeout|entered": 35,
+     "collision|not_entered": 139,
+     "reached|entered": 172,
+     "below_goal_timeout|entered": 63,
+     "collision|entered": 6,
+     "other_timeout|not_entered": 5
+    },
+    "rescuable_main": {
+     "other_timeout": 35,
+     "below_goal_timeout": 63,
+     "collision": 6
+    },
+    "rescuable_axis": {
+     "other_timeout": 35,
+     "below_goal_timeout": 63,
+     "collision": 6
+    },
+    "system_upper_main": 276,
+    "system_upper_axis": 276,
+    "rescuable_worlds": 15
+   },
+   "thresh0.3_r1.5": {
+    "cells": {
+     "other_timeout|entered": 40,
+     "collision|not_entered": 137,
+     "reached|entered": 172,
+     "below_goal_timeout|entered": 63,
+     "collision|entered": 8
+    },
+    "rescuable_main": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "rescuable_axis": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "system_upper_main": 283,
+    "system_upper_axis": 283,
+    "rescuable_worlds": 16
+   },
+   "thresh0.3_r2.0": {
+    "cells": {
+     "other_timeout|entered": 40,
+     "collision|not_entered": 137,
+     "reached|entered": 172,
+     "below_goal_timeout|entered": 63,
+     "collision|entered": 8
+    },
+    "rescuable_main": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "rescuable_axis": {
+     "other_timeout": 40,
+     "below_goal_timeout": 63,
+     "collision": 8
+    },
+    "system_upper_main": 283,
+    "system_upper_axis": 283,
+    "rescuable_worlds": 16
+   }
+  }
+ }
+}
