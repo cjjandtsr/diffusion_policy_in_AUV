@@ -1,0 +1,854 @@
+{
+ "rho_1.0": {
+  "rule": "zero_bin_plus_median",
+  "zero_fraction": 0.6287878787878788,
+  "edges": [
+   0.0,
+   0.04622526737967914
+  ],
+  "labels": [
+   "无障碍",
+   "低",
+   "高"
+  ]
+ },
+ "rho_2.0": {
+  "rule": "zero_bin_plus_median",
+  "zero_fraction": 0.5454545454545454,
+  "edges": [
+   0.0,
+   0.03918953800513019
+  ],
+  "labels": [
+   "无障碍",
+   "低",
+   "高"
+  ]
+ },
+ "b_band_m": {
+  "rule": "tertiles_reachable_in_band",
+  "edges": [
+   2.303418521484374,
+   3.143554964843749
+  ],
+  "labels": [
+   "窄",
+   "中",
+   "宽"
+  ]
+ },
+ "kappa": {
+  "rule": "one_bin_plus_median_of_kappa_gt_1",
+  "median": 1.0186065490504945,
+  "labels": [
+   "无需绕行",
+   "小绕行",
+   "大绕行"
+  ]
+ },
+ "unreachable_b_band": 2,
+ "unreachable_kappa": 0,
+ "n_tasks": 132,
+ "validation": {
+  "blocked_with_kappa_le_1": [],
+  "spearman_rho1_vs_b_band": -0.7726033561493153,
+  "spearman_rho1_vs_kappa": 0.857891024506074,
+  "spearman_b_band_vs_kappa": -0.7389136189925738,
+  "flags": {},
+  "degenerate_corridors": []
+ },
+ "labels": {
+  "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg03": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg03": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg02": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg00": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg02": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg00": {
+   "density_1": "低",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg01": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg03": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg00": {
+   "density_1": "低",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg00": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg01": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg00": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg02": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg00": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg01": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg02": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg01": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg02": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg03": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg00": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg01": {
+   "density_1": "低",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg03": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg03": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg02": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg03": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg03": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg01": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg00": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg03": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg01": {
+   "density_1": "低",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg00": {
+   "density_1": "低",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg01": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg02": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg03": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg01": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg02": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg03": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg01": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg03": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "00401b423993bfb58b91640f191d5ef429b23647998935a209295a0fb47b49ff": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "04042ce8fd8a468075e2b06c4af276908e2c070c6cd5940cbfff43a5273417d3": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "06cf7f94fdc7933b12c6642e0a8589fc89af006c0e4d2862d1553fe29501c566": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "078661f3deb1295b6f4b974120d93d064b177bd0bba0f6b61ac839cb1634b077": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "087afa02b3fee7d3331bc5c6bf2c1769d48b697bcb4682936cc1b2ff8bb07ef6": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "0991c69822a525f7bf3a211c8eee12fc14a395526ebb8f5f004692676c2f81d1": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "1302d0bc3575dfb182bb0582f61a09096289c6eebdcf9830bf3de2ae07036b8b": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "218969b0970b6669635d551b7556546fb7ee1bc09eac4013219b3f6437fb6c8b": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "2cd8d532202d927f9cc354c769a0e54e6370ec47900d78a4cd663bc097129c53": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "47c7e15c280e487b50c2ef3301371f550f4b636b84c59a4aa1b05f040518011b": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "50de0441edbe36ad2a42e6733cdc983cc09c60bf079d2e0bd2cc7ef75f0ac1c7": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "57de6836d4addb0f8f4e7998f6a5f4bdb4546d3bdb971dc23ff33aa5512233ac": {
+   "density_1": "低",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "5cd604f6f990e48690440a66fc0445f6c5936aa79e21672cde3f2bfb9770ba65": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "5f077ceb066dc785844f8daa9bee516e1259c561597be09b073f645060e50191": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "5f5fc04acda39a9ac6f26dad4addff17670eaca5259456228009f75bcadca465": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "60090a465863acf68d7172fe73ee295a905243b22d1102de080992df185758ba": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "681494f1836e7730df55b712e8706c8503764c73318170dc49eca04b3d75cf52": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "6ae93452e01efbbfc87c197930deeff5cb39eccfe53e3700399a8159278813b1": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "6be577d42cd3751ac28893300cda3b9f54476f6fcc96e0f455236a7f984fd432": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "6dba7c869208b81b686d4afd37b67bffb817395c8ed31e029d557e4df04d69f6": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "709edf57c214887250723b9248f4208629c3df2003a47210cabd234b7dbab014": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "73bf4614ac93b60db7c61a457329fb87dd06e774a16c828b27ac3c80eef71250": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "73dce07eaf3c055b8e1914f83a6c50082bfe1d2c86cf7670d9a3171ffa3ef376": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "74665e1a811e760e1edc0750fad7dc2acdb082947ad6c7516c561712ef1076f5": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "带内不可达",
+   "detour": "大绕行"
+  },
+  "765ca9a8e8279e99aaf3dbb6e5c6f274c1f1f5a201886089379677b880580964": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "7ae354d2f26cfbd19b7e12a4c43cf5272d74d408dd8544c9a2d63636082d56a0": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "8068494ceac59a9919b9a7e9a6817a93ec6f0dfe083a7f8ff7abca17f081fdd6": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "8f4dae60db5eda87e1a3e8829eff0dca01fcd4ff0793b8bf6dcb939f1c037f58": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "8f65546b15575e81fedc33f9179a8e66165b343ec992072c27db7f3297b76e85": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "9d419210235d04a05681f9c8ae976adfbebe5f88a081d191b78684678467eeb1": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "9f895ef5cba39cefbf832be67a6e715afea88764d49a46639e1d92f704ee65ee": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "a380a18244cec63b08d9d4da0e2c161916b500cd963814e876ca0b62075c2f7a": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "ad0117a8f522eda191ccb590cd830148f746138d45ad57142a56b5d404f4cae5": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "ad02434944740f33d7311829629c818161d8bafab6958e696a0133cb4655e888": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "ae9e1cebd44729998c7544422429c3da16011d7e0b98b69301346c3b12491f72": {
+   "density_1": "无障碍",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "baf8fcd27ce3dcf79a67f697bf1c7a96c6cabf404d402817eee300f6039f6a29": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "大绕行"
+  },
+  "bb0f4f2d1b0bef7640f5be0d0402bbe97e12bc725ab17b748e88e2cfbfbbe61a": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "bd02ee42b8045ffc3bd6b3a4ed36c68d00ae612da5324e5621b8bf244a5d5fa4": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "bd8601bfaeca3c31c355ce9ffc608b695ee22b6b1b40dec8b66e5fc624572abb": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "带内不可达",
+   "detour": "大绕行"
+  },
+  "c7e375e72b7302a854821b08328a2aef1869ec8a3821448f029f3909193505cf": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  },
+  "cab8dc87a6aac23c6627e2c1f6ad2998a2b1b0be5930a24c8e325f99dba908c0": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "cc7c4bfab003610e50b9ab3e688b7415f592af315859c67c2f6ae0d8d5e07368": {
+   "density_1": "低",
+   "density_2": "低",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "cecb0d96dff4e2ea50b8a7af668064421cb8de687c5400ef967ba72d54dcc91a": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "窄",
+   "detour": "无需绕行"
+  },
+  "dad5b5adda856b1b46f82f6ab97ba196384e11d5baab6bf68066a79e6d7ed041": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "e98e583317ea061469a51e9f611bc9f1004060253ede05028f9fc9d1672d6654": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "ebd591a135eae0ffafa1584198199bb03e1b50f50db8eb0cda9eac5b032b4f24": {
+   "density_1": "高",
+   "density_2": "高",
+   "bottleneck": "窄",
+   "detour": "小绕行"
+  },
+  "f13e1e33cf709d86e5d07db9098861d5cbb66b8db3164be3fb81c143e03d292e": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "中",
+   "detour": "无需绕行"
+  },
+  "f930fbcf6a9cd324248d0a4286e62b0ce1e73e81fa915ec75bc1e151bbdc442e": {
+   "density_1": "无障碍",
+   "density_2": "无障碍",
+   "bottleneck": "宽",
+   "detour": "无需绕行"
+  }
+ }
+}
