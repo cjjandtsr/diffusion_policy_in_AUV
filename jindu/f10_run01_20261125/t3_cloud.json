@@ -1,0 +1,16 @@
+{
+ "source_field": "observation.point_cloud[-1]",
+ "frame": "body -> world by body_to_world(cloud, drone_pos, yaw)",
+ "z_filter": "z >= 0.1 (world)",
+ "decisions": 718,
+ "decisions_with_points": 182,
+ "points": {
+  "n": 182,
+  "median": 1063.5,
+  "p95": 2293.2999999999984,
+  "mean": 1113.3186813186812,
+  "min": 16.0,
+  "max": 2622.0
+ },
+ "note": "cost only reads self.cloud built in Guidance.begin from the current observation; no world geometry, obstacle or task data is read"
+}

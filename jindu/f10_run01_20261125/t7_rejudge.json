@@ -1,0 +1,2998 @@
+{
+  "report": {
+    "collision_before_1m": 118,
+    "collision_before_1m_examples": [
+      {
+        "min_goal_distance_m": 14.841496290620649,
+        "outcome_1m": "collision",
+        "raw_outcome": "collision",
+        "repeat": 1,
+        "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+      },
+      {
+        "min_goal_distance_m": 15.266780909883096,
+        "outcome_1m": "collision",
+        "raw_outcome": "collision",
+        "repeat": 2,
+        "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+      },
+      {
+        "min_goal_distance_m": 14.97485160489922,
+        "outcome_1m": "collision",
+        "raw_outcome": "collision",
+        "repeat": 3,
+        "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+      }
+    ],
+    "conditions": 420,
+    "entered_1m_then_collided": [
+      {
+        "min_goal_distance_m": 0.7713985515260973,
+        "outcome_1m": "reached",
+        "raw_outcome": "collision",
+        "repeat": 1,
+        "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01"
+      },
+      {
+        "min_goal_distance_m": 0.5312597188763479,
+        "outcome_1m": "reached",
+        "raw_outcome": "collision",
+        "repeat": 4,
+        "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01"
+      },
+      {
+        "min_goal_distance_m": 0.7867659767457589,
+        "outcome_1m": "reached",
+        "raw_outcome": "collision",
+        "repeat": 3,
+        "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01"
+      }
+    ],
+    "job": "/home/cjj/AUV/program/results/routea_probe_e3g_run01_delivery/routea_probe_e3g_run01/runs/G0_dev",
+    "raw_reached_outside_1m": [],
+    "reached_1m": 300,
+    "reached_raw": 216
+  },
+  "rows": [
+    {
+      "min_goal_distance_m": 0.49999992233323914,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000742864985,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000499232986,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000071855197,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000211106221,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.553739439197019,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000003029472643,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.499999722785597,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.500000139071757,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001037894924,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.7700255726772324,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.7171723609982,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.7544783343312293,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.7769408762043682,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.7641266091501804,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999998772087926,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000003657843107,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000723009866,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000001662927226,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999954464535407,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__double_gate_progressive__000001__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5374012450324754,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5458397567806678,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5272617407132267,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5561356916228326,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5126012953499686,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.500000264773676,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999992036173857,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999999814787227,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000498992538,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000373806855,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999998056557238,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000002889996455,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999962911156104,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000670266287,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000968807304,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999997528612933,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999987424625497,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999603826366,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000155953896,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000002106603585,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__anticipatory__rl_train__front_offset_obstacle__000000__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.585416985974606,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5936736182752851,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.594960582733974,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5969973453877027,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5938661536128844,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999969227078134,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000887030672,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.500000110316295,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000002245114452,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.499999822295845,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.8460611311614632,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999981028279405,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000002258344894,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000484024104,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.7391574447437403,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 14.841496290620649,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.266780909883096,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 14.97485160489922,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 14.945828211516687,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.216470848692174,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 7.424951055681447,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 5.602438335477722,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 5.653769924454217,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 5.633521648991443,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 5.8603541660401595,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999984267700637,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.499999680237761,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000002967305307,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999998585394656,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001574111438,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 6.913108500200418,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 6.256802749729122,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 6.896711079515199,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 7.398515273570916,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 6.853841371105154,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999991250756837,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000960592296,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000003742153204,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000001866592008,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999997645877571,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000025__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 10.576912880745295,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.88600738964747,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.910011514343143,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.856878932299114,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.87866034517086,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999991815479244,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000002617004949,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999984923326796,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001277744396,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999997847223872,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999992841753227,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.500000127886819,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.636694440875619,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999999525839462,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5693524563777693,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 8.41705084289264,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 6.17562460055382,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 8.367968056825609,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000001005466086,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 8.62788302738981,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000026__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 14.300411478196564,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 14.42312112073288,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 14.820628165983747,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 13.507645327890643,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 14.428710477262602,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000259017263,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999999910761517,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999999139977757,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999997126030591,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.500000048766933,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999997095301213,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999997310703735,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.500000352797393,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.500000033282858,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999980799403554,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999999942256749,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000309585165,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999995008491065,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000003303925428,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999994991512487,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000027__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999998967746144,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.120918282163231,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 9.908737913683494,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 9.996927512381617,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 9.92516688930223,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 18.56736307633898,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 18.090080430604804,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 18.127027071128946,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 17.961926899855424,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 17.811443727740826,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999987019490977,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999999759207293,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999993139368354,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000001199162367,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.499999885075611,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000989066438,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999997423445326,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999479688428,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000847363778,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999250211517,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000028__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000435623074,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000003107407196,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000004532585869,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999990289859875,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000004229320952,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.499999935904721,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999997950767614,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000746208515,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001154833607,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001093940676,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 8.527589547231235,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 8.686036217124562,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 8.474906875396545,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 8.522652360108717,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 9.075521347987284,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999995781352521,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000001362525764,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999997049718825,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999997703083251,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999998971823524,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000019__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 10.574113891044426,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.621078236698608,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.699828947095554,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.633259897728262,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 10.645088693935122,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000002015466711,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 5.7171531175852035,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 1.1188463195379426,
+      "outcome_1m": "time_limit",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 7.383223564826359,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 7.391181091872752,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 11.187279467292713,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 14.001970146238328,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 14.074397960027586,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 13.983569893077272,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 10.52028383589864,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999999143313081,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999694091483,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999887492804,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000430850394,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999688030553,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000033__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5798134980514908,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5862663390173154,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.6101084847161203,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.7804758035534557,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.6258531362965614,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 16.02167395999267,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 15.903652543691674,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 16.093445269670763,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 16.047015523238986,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 15.980787404659841,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 2.0865893592030447,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 2.0797312957855967,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 11.503115198882579,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 2.5635119842788714,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 2.0770475827800534,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 18.063625292420816,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 18.03347727965878,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 18.002318088985145,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 18.04139960192934,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 18.017476557959757,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000034__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.8373030727960703,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.7889639719317024,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.614338846297653,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.8478907349456756,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.6948586413982643,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.4999999865769949,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 11.836059383392959,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999998565419695,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5377982946711798,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 11.836977276438622,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.8928974444388337,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.8285963315627126,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.8950465101692449,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.9032315933351434,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.8533522665549246,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 19.617687067617126,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 19.617487954953145,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 19.59060119118046,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 19.61621193606449,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.590491104004528,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000035__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999815802877,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000166738797,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000001018557224,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000256079595,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.4999999759225483,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.7713985515260973,
+      "outcome_1m": "reached",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5689671751768911,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5562984864368334,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5312597188763479,
+      "outcome_1m": "reached",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5427077938007362,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.887255746867774,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000587771148,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999962051603386,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999973695138256,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999999444729011,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 15.683926811390368,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.645520531030385,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.679998859391866,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 16.190443684892898,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.701115247646483,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5283941667868172,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000003101039459,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5267877336346191,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5450092013313851,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5607002405503254,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.7759518005427467,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.9111568584080613,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.7542878763239592,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.7487287137160712,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.7665176757245893,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 13.165920064751731,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 13.188820733223999,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 13.164822545148093,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 13.155892696881569,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 13.12301210671425,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 10.040991289236631,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999996747014358,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 10.06795649698752,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 10.054464215498617,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 9.748958780305918,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000022__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999752699858,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.4999994177230198,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999982563005374,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000002188480243,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999968378405363,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000887559884,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000002851266,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999997423001805,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999990545830103,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000572827583,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.6034264045256063,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.6104327595827486,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.6519488244508119,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.6181098556089004,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.6376788239527014,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 16.22540429856439,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.279967363437473,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 16.11447687740356,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.259451624836325,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.927895160796508,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000041__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5237677203396589,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000001925529516,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5196452415756665,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5530167449182604,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999968884175683,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999990666355226,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000815023857,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999999630633298,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999997087604614,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001301294049,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001403225073,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999997078089026,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000301598098,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999996720657586,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999998888799714,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999999757090586,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000001303662857,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000752716091,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999998524235063,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000785949448,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000042__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 3.1534299087303066,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 3.6844552591564654,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 3.160694172138212,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 3.5664790385423966,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 3.7283207534701446,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000001450064037,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999982927803827,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.7867659767457589,
+      "outcome_1m": "reached",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999999209480785,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.7882360861558537,
+      "outcome_1m": "reached",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.6776804194670661,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.7478271085026474,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.6440669799597538,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.664480158285822,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.6046531234905886,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 12.640778007773248,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 12.819258337670494,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 14.674439637131968,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 12.369014351074778,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 12.360433474208394,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.6704303602696458,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.6044007959228744,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.725590478978792,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.6242529861504514,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.6942709763379891,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.500000074933547,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 14.902409614348803,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999998651424842,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000651297782,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999997001946202,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999980863324,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000002136894294,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000001311514494,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999984593572333,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.500000406896168,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.50000019064938,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000936907353,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999998429626635,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5306957492567187,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999959001962924,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000044__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999970816388395,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999972040898655,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.4999997285140667,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000676763062,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.4999997836617596,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 18.991991848792864,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000004966293352,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999998204468416,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001259777332,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000003771800435,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999997782777049,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000002422894435,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000002010247919,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999997808183369,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000001755923027,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.8885471942810277,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.8469048907540476,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.8319601370803433,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.804293129120082,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.8705819813636618,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__mixed_3d_low_density_route__000008__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000000759059673,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000802804088,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000135219691,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000002370438785,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.499999889294701,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5143892531664026,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.528957741453647,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5888708436794126,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5716997082647521,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5697061835213154,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000299526723,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999998492406718,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000001540487251,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999979137882544,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 1.0265881275838984,
+      "outcome_1m": "time_limit",
+      "raw_outcome": "time_limit",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999987960471487,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.500000023086215,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999999554898389,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999998612316097,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999994115318824,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__support_expansion__rl_train__xy_z_combined_bypass__000009__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.500000065289494,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.499999748273361,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999989989311605,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.4999999573713562,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000001975026046,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000267466469,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000002717847963,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000942641858,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000368259081,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.49999996529669366,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 16.1175091593957,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000002126007078,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 16.008812036952065,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 15.935134698412513,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 16.055817892996302,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 15.81144657950799,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 19.54802925521491,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 19.36677092341893,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 19.373145497434603,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 15.690405720089789,
+      "outcome_1m": "collision",
+      "raw_outcome": "collision",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__initial_yaw_offset_corridor__000012__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999997624448302,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999993586323954,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.49999988137949475,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000000130150963,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000002299664925,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg00"
+    },
+    {
+      "min_goal_distance_m": 0.5000001871012719,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5100941885129057,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000001279216072,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5098493829597908,
+      "outcome_1m": "reached",
+      "raw_outcome": "time_limit",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.5000000672246142,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg01"
+    },
+    {
+      "min_goal_distance_m": 0.4999997858014463,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000452037037,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.4999996954603812,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.499999856673221,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.5000000861382358,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg02"
+    },
+    {
+      "min_goal_distance_m": 0.49999964796085233,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 1,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999988351923785,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 2,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.4999998023690928,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 3,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.5000001255493614,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 4,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg03"
+    },
+    {
+      "min_goal_distance_m": 0.49999981070251176,
+      "outcome_1m": "reached",
+      "raw_outcome": "reached",
+      "repeat": 5,
+      "task_id": "routeA_rl_v1__yaw_lateral_recovery__rl_train__mid_impulse_recovery__000013__dev20261009__cfg03"
+    }
+  ]
+}
