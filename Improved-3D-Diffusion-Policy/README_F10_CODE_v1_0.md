@@ -10,6 +10,7 @@
 | `scripts/run_routea_f10_eval.py` | F10 评价入口：`--policy {P6,BC}` × `--guidance {none,g1,G0}` | `f54adbbe91da771b5ea0e236016b2aa7b75af2fa5d968f710f9420fa683f908b` |
 | `scripts/f10_chain_probe.py` | T2：同一条件下 guidance off/on 的两条 DDIM 链逐步比较 | `b525f33a17e74cf4ca833c1900608376cbfb19d9b08df652ce89f41244fe6d39` |
 | `scripts/f10_compare.py` | T1/T4/T5：两个 job 的逐决策输出逐位比较 | `fb3e7e66f85e533aced9ce0925d54745f0baeffe921c46d6d0927dabbef28a19` |
+| `scripts/f10_report.py` | 第 3 步汇总：逐臂完整性、1 m/raw 结局、引导与计时统计 | 见提交后的 `sha256sum` |
 | `README_F10_CODE_v1_0.md` | 本文件 | — |
 
 ## 2. 入口
@@ -86,3 +87,13 @@ python scripts/run_routea_f10_eval.py rejudge --job <G0_dev> --bank <dev420 bank
    T6 只比较同一臂内 `guided=True/False` 决策的去噪耗时。
 4. `prepare` 用 `routea_f8_diag_run03/weights_verified.json` 的 P6 回执；重跑前必须换新
    `--output`（`write_json` 拒绝覆盖）。
+
+## 7. 汇总（第 3 步）
+
+```
+python scripts/f10_report.py --output RUN --write RUN/report.json
+```
+
+只读 `runs/<arm>/{identity.json,conditions.csv}` 与 `execution/S[14]_*.rc`，输出 `report.json`
+（每臂条件数/唯一数/重复、1 m 与 raw 结局、引导决策数、`delta_exec`、去噪计时、身份字段）。
+不重算结局、不读原迹以外的任何东西。
