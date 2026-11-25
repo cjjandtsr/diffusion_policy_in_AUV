@@ -1,0 +1,91 @@
+{
+  "curves": {
+    "P2_P3": {
+      "path": "/home/cjj/AUV/program/results/routea_training/routea_common_b2560_seed202609203_v1",
+      "first": 1,
+      "last": 256
+    },
+    "P4": {
+      "path": "/home/cjj/AUV/program/results/routea_a2_selective_keep_run01/arms/C",
+      "first": 129,
+      "last": 256
+    },
+    "P6": {
+      "path": "/home/cjj/AUV/program/results/routea_a2_selective_keep_run01/arms/T",
+      "first": 129,
+      "last": 256
+    },
+    "P14": {
+      "path": "/home/cjj/AUV/program/results/routea_stage1_seed2_run02/training",
+      "first": 1,
+      "last": 128
+    },
+    "P15": {
+      "path": "/home/cjj/AUV/program/results/routea_final_stage2_run03/training",
+      "first": 129,
+      "last": 256
+    }
+  },
+  "clearance_jobs": [
+    {
+      "policy": "P0",
+      "job": "/home/cjj/AUV/program/results/routea_test12_independent_run02/full/bc",
+      "bank": "/home/cjj/AUV/program/results/routea_test12_independent_run02/bank/bank.json"
+    },
+    {
+      "policy": "P0",
+      "job": "/home/cjj/AUV/program/results/routea_paper_c5_run02/full/bc",
+      "bank": "/home/cjj/AUV/program/results/routea_paper_c_freeze_run02/bank/bank.json"
+    },
+    {
+      "policy": "P0",
+      "job": "/home/cjj/AUV/program/results/routea_final_existing_e2_run01/full/added/bc",
+      "bank": "/home/cjj/AUV/program/results/routea_final_freeze_run01/incremental/bank.json"
+    },
+    {
+      "policy": "P2",
+      "job": "/home/cjj/AUV/program/results/routea_test12_independent_run02/full/u128",
+      "bank": "/home/cjj/AUV/program/results/routea_test12_independent_run02/bank/bank.json"
+    },
+    {
+      "policy": "P2",
+      "job": "/home/cjj/AUV/program/results/routea_paper_c5_run02/full/P2",
+      "bank": "/home/cjj/AUV/program/results/routea_paper_c_freeze_run02/bank/bank.json"
+    },
+    {
+      "policy": "P2",
+      "job": "/home/cjj/AUV/program/results/routea_final_existing_e2_run01/full/added/P2",
+      "bank": "/home/cjj/AUV/program/results/routea_final_freeze_run01/incremental/bank.json"
+    },
+    {
+      "policy": "P4",
+      "job": "/home/cjj/AUV/program/results/routea_test12_independent_run02/full/C",
+      "bank": "/home/cjj/AUV/program/results/routea_test12_independent_run02/bank/bank.json"
+    },
+    {
+      "policy": "P4",
+      "job": "/home/cjj/AUV/program/results/routea_paper_c5_run02/full/P4",
+      "bank": "/home/cjj/AUV/program/results/routea_paper_c_freeze_run02/bank/bank.json"
+    },
+    {
+      "policy": "P4",
+      "job": "/home/cjj/AUV/program/results/routea_final_existing_e2_run01/full/added/P4",
+      "bank": "/home/cjj/AUV/program/results/routea_final_freeze_run01/incremental/bank.json"
+    },
+    {
+      "policy": "P6",
+      "job": "/home/cjj/AUV/program/results/routea_test12_independent_run02/full/T",
+      "bank": "/home/cjj/AUV/program/results/routea_test12_independent_run02/bank/bank.json"
+    },
+    {
+      "policy": "P6",
+      "job": "/home/cjj/AUV/program/results/routea_paper_c5_run02/full/P6",
+      "bank": "/home/cjj/AUV/program/results/routea_paper_c_freeze_run02/bank/bank.json"
+    },
+    {
+      "policy": "P6",
+      "job": "/home/cjj/AUV/program/results/routea_final_existing_e2_run01/full/added/P6",
+      "bank": "/home/cjj/AUV/program/results/routea_final_freeze_run01/incremental/bank.json"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+"""Fast-Planner native position/yaw B-spline sampling (no EGO yaw rule)."""
+import numpy as np
+
+
+def sample_reference(message, now, position=None, yaw=None, yaw_rate=0.):
+    """Match upstream traj_server's native spline and terminal hover semantics."""
+    from scipy.interpolate import BSpline
+    degree = int(message.order)
+    knots = np.asarray(message.knots, dtype=np.float64)
+    points = np.array([[p.x, p.y, p.z] for p in message.pos_pts])
+    position = BSpline(knots, points, degree, extrapolate=False)
+    velocity, acceleration = position.derivative(), position.derivative(2)
+    # NonUniformBspline initializes uniform knots as (i - degree)*interval.
+    yaw_points = np.asarray(message.yaw_pts, dtype=np.float64)
+    yaw_knots = (np.arange(len(yaw_points) + degree + 1) - degree)*message.yaw_dt
+    yaw = BSpline(yaw_knots, yaw_points, degree, extrapolate=False)
+    yaw_rate = yaw.derivative()
+    begin, end = knots[degree], knots[-degree-1]
+    elapsed = now-message.start_time.to_sec()
+    rows = []
+    for step in range(1, 9):
+        t = elapsed+step*.3
+        local = min(end, begin+t)
+        if t < 0:
+            raise ValueError('Fast-Planner trajectory starts in the future')
+        terminal = begin+t >= end
+        rows.append(np.r_[position(local), np.zeros(3) if terminal else velocity(local),
+                          np.zeros(3) if terminal else acceleration(local),
+                          yaw(local-begin), yaw_rate(local-begin)])
+    return np.asarray(rows, dtype=np.float32)
+
+
+from .ego import EgoPolicy
+
+
+class FastPolicy(EgoPolicy):
+    policy_kind = 'fast'
+    service_module = 'plan_manage.srv'
+    service_name = '/fast_planner_node/evaluation_step'
+    parameter_namespace = '/fast_planner_node'
+    reference_sampler = staticmethod(sample_reference)
+
+    def after_step(self, context):
+        result = super().after_step(context)
+        result['action_origin'] = 'fast_native_position_yaw_bspline'
+        return result

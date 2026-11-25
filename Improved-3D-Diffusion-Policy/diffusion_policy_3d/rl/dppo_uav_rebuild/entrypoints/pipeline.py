@@ -1,0 +1,1095 @@
+"""Single canonical training loop for the E5 DDPM official-DPPO branch."""
+
+from __future__ import annotations
+
+import argparse
+from collections import Counter
+from dataclasses import asdict
+import json
+import os
+from pathlib import Path
+import random
+import re
+import time
+import uuid
+
+import numpy as np
+from omegaconf import OmegaConf
+import torch
+
+from diffusion_policy_3d.rl.dppo_uav_rebuild.audit.training_audit import (
+    ParameterSnapshot,
+    TrainingAudit,
+    _scalar_stats,
+    evaluate_post_update,
+    evaluate_post_update_logical,
+    evaluate_transition_credit_audit,
+    run_audited_update,
+)
+from diffusion_policy_3d.rl.dppo_uav_rebuild.checkpointing.restore import (
+    restore_checkpoint,
+)
+from diffusion_policy_3d.rl.dppo_uav_rebuild.checkpointing.save import save_checkpoint
+from diffusion_policy_3d.rl.dppo_uav_rebuild.checkpointing.schema import (
+    CheckpointHeader,
+    SCHEMA_VERSION,
+)
+from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.rollout_buffer import (
+    OnPolicyRolloutBuffer,
+)
+from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.pair_schedule import (
+    iter_pair_passes,
+)
+from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.plan_probe import (
+    compare_probe_actions, sample_probe_action,
+)
+from diffusion_policy_3d.rl.dppo_uav_rebuild.entrypoints.config_schema_v2 import validate_v2_config
+from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.update_transaction import (
+    UpdateRejected,
+)
+from diffusion_policy_3d.rl.dppo_uav_rebuild.environments.task_sampler import TaskSampler
+from .build_system import build_system
+from .identity import build_environment_provenance, build_runtime_identity
+from .io_safety import RunLock
+
+
+def _resolve(repo_root, value):
+    path = Path(value)
+    return path.resolve() if path.is_absolute() else (repo_root / path).resolve()
+
+
+def _bootstrap_allowed(terminated, truncated, *, finite_task):
+    # `truncated` here is the environment's actual deadline, not the collector cut.
+    return not (terminated or (finite_task and truncated))
+
+
+def _write_json_once(path, payload):
+    if path.exists():
+        raise FileExistsError("refusing to overwrite artifact: {}".format(path))
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(payload, indent=2, sort_keys=True, allow_nan=False) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+
+
+_UPDATE_ARTIFACT_PATTERNS = (
+    re.compile(r"^metrics_update_(\d{6})\.json$"),
+    re.compile(r"^checkpoint_update_(\d{6})$"),
+    re.compile(r"^monitor_through_u(\d{6})\.json$"),
+    re.compile(r"^f7_monitor_(\d{6})\.json$"),
+    re.compile(r"^f9_collect_(\d{6})\.json$"),
+    re.compile(r"^f9_update_(\d{6})\.json$"),
+)
+
+
+def _prepare_resume_output(output, start_update, report_dir=None):
+    """Preserve stale post-checkpoint artifacts before deterministic replay."""
+
+    output = Path(output).resolve()
+    start_update = int(start_update)
+    stale = []
+    for artifact in output.iterdir():
+        artifact_update = None
+        for pattern in _UPDATE_ARTIFACT_PATTERNS:
+            match = pattern.fullmatch(artifact.name)
+            if match:
+                artifact_update = int(match.group(1))
+                break
+        if artifact_update is not None and artifact_update >= start_update:
+            stale.append(artifact)
+    if not stale:
+        return None
+
+    restored_through = start_update - 1
+    attempt = 1
+    while True:
+        quarantine = output / "resume_quarantine_after_{:06d}_{:03d}".format(
+            restored_through, attempt
+        )
+        if not quarantine.exists():
+            break
+        attempt += 1
+    quarantine.mkdir()
+    moved = []
+    for artifact in sorted(stale, key=lambda path: path.name):
+        artifact.replace(quarantine / artifact.name)
+        moved.append(artifact.name)
+    _write_json_once(
+        (quarantine / "resume_quarantine.json" if report_dir is None else
+         Path(report_dir) / (quarantine.name + "_weights.json")),
+        {
+            "moved_artifacts": moved,
+            "reason": "artifact update is newer than the restored checkpoint",
+            "restored_through_update": restored_through,
+            "resume_start_update": start_update,
+        },
+    )
+    return quarantine
+
+
+def _validate_run_config(config):
+    """Reject run shapes that would make the formal-training budget ambiguous."""
+
+    updates = int(config.run.updates)
+    rollout_size = int(config.run.rollout_transitions)
+    dppo_section = getattr(config, "dppo", None)
+    v2_schedule = dppo_section is not None and "denoising_schedule" in dppo_section
+    if v2_schedule:
+        validate_v2_config(config)
+    schedule_mode = (
+        str(config.dppo.denoising_schedule) if v2_schedule
+        else getattr(config.run, "pair_schedule_mode", None)
+    )
+    if schedule_mode is None:
+        minibatch_size = int(getattr(config.run, "minibatch_size", 128))
+        update_epochs = int(config.run.update_epochs)
+    else:
+        if "minibatch_size" in config.run:
+            raise ValueError("minibatch_size is illegal with pair_schedule_mode")
+        minibatch_size = 128
+        update_epochs = int(config.dppo.pair_passes if v2_schedule else config.run.pair_passes)
+    warmup_updates = int(getattr(config.run, "critic_warmup_updates", 0))
+    checkpoint_every = int(getattr(config.run, "checkpoint_every_updates", 1))
+    if updates <= 0 or rollout_size <= 0 or update_epochs <= 0:
+        raise ValueError("updates, rollout_transitions, and update_epochs must be positive")
+    if minibatch_size != 128:
+        raise ValueError("official DPPO minibatch_size must remain 128")
+    if rollout_size % minibatch_size != 0:
+        raise ValueError("rollout_transitions must be divisible by minibatch_size")
+    if warmup_updates < 0 or warmup_updates >= updates:
+        raise ValueError("critic_warmup_updates must be non-negative and smaller than updates")
+    if checkpoint_every <= 0:
+        raise ValueError("checkpoint_every_updates must be positive")
+    actor_lr = float(config.optimizer.actor_lr)
+    actor_lr_end = float(getattr(config.optimizer, "actor_lr_end", actor_lr))
+    if actor_lr <= 0 or actor_lr_end <= 0:
+        raise ValueError("actor learning-rate endpoints must be positive")
+
+
+def _actor_lr_for_update(config, update_index):
+    """Linear actor LR over joint actor-critic outer updates.
+
+    The critic-only warmup update does not consume actor LR decay.  The first
+    joint update receives actor_lr and the final outer update receives
+    actor_lr_end exactly, which also makes resume deterministic from the outer
+    update index without adding scheduler state to the checkpoint schema.
+    """
+
+    updates = int(config.run.updates)
+    warmup_updates = int(getattr(config.run, "critic_warmup_updates", 0))
+    update_index = int(update_index)
+    if not 1 <= update_index <= updates:
+        raise ValueError("update_index must be within the configured run")
+    start = float(config.optimizer.actor_lr)
+    end = float(getattr(config.optimizer, "actor_lr_end", start))
+    scale = float(getattr(getattr(config,'xk',None),'actor_lr_scale',1.))
+    first_joint = warmup_updates + 1
+    if update_index <= first_joint:
+        return start * scale
+    intervals = updates - first_joint
+    if intervals <= 0:
+        return end * scale
+    progress = (update_index - first_joint) / intervals
+    return (start + progress * (end - start)) * scale
+
+
+def _should_save_checkpoint(config, update_index):
+    update_index = int(update_index)
+    return (
+        update_index % int(getattr(config.run, "checkpoint_every_updates", 1)) == 0
+        or update_index in tuple(int(i) for i in getattr(config.run, "checkpoint_updates", ()))
+        or update_index == int(config.run.updates)
+    )
+
+
+def _execution_last_update(config, start_update, stop_after_update):
+    """Bound one process at a committed checkpoint without changing run identity."""
+
+    total_updates = int(config.run.updates)
+    if stop_after_update is None:
+        return total_updates
+    if (isinstance(stop_after_update, bool)
+            or int(stop_after_update) != stop_after_update):
+        raise ValueError("stop_after_update must be an integer")
+    stop = int(stop_after_update)
+    if stop < int(start_update):
+        raise ValueError("stop_after_update is before the resume start_update")
+    if stop > total_updates:
+        raise ValueError("stop_after_update exceeds configured updates")
+    if not _should_save_checkpoint(config, stop):
+        raise ValueError("stop_after_update must coincide with a checkpoint")
+    return stop
+
+
+def _run_optimizer_attempt(
+    trainer,
+    batch,
+    *,
+    update_actor,
+    allow_recoverable_rejection=True,
+):
+    logical_microbatch_pairs = getattr(batch, "microbatch_pairs", None)
+    try:
+        evidence = run_audited_update(
+            trainer,
+            batch,
+            update_actor=update_actor,
+            evaluate_after=False,
+            capture_parameter_delta=False,
+            logical_microbatch_pairs=logical_microbatch_pairs,
+        )
+    except UpdateRejected as error:
+        if not error.recoverable or not allow_recoverable_rejection:
+            raise
+        return {
+            "status": "rejected",
+            "reason": error.reason,
+            "message": str(error),
+            "pre_update": None,
+            "post_update": None,
+            "parameter_delta": None,
+        }
+    evidence["status"] = "committed"
+    return evidence
+
+
+def _update_outer_failure_streaks(counters, *, update_actor, actor_delta, committed):
+    if committed:
+        counters.consecutive_all_rejected_outer_updates = 0
+    else:
+        counters.consecutive_all_rejected_outer_updates += 1
+    if update_actor and actor_delta == 0.0:
+        counters.consecutive_zero_actor_delta_outer_updates += 1
+    elif update_actor:
+        counters.consecutive_zero_actor_delta_outer_updates = 0
+    if counters.consecutive_all_rejected_outer_updates >= 5:
+        return "five_consecutive_all_rejected_outer_updates"
+    if counters.consecutive_zero_actor_delta_outer_updates >= 5:
+        return "five_consecutive_zero_actor_delta_outer_updates"
+    return None
+
+
+def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=None):
+    _validate_run_config(config)
+    protocol = getattr(config, "task_protocol", None)
+    finite_task = protocol is not None
+    _execution_last_update(config, 1, stop_after_update)
+    seed = int(config.run.seed)
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+    system = build_system(config, repo_root)
+    a2 = getattr(config, 'a2', None)
+    xk = config.get('xk')
+    imitation = config.dppo.get('self_imitation')
+    imitation_enabled = imitation is not None and imitation.enabled
+    if a2 is not None:
+        from .a2_support import make_keep
+        if xk is None or imitation_enabled:
+            system.trainer.keep = make_keep(config)
+    auxiliary_schedules = {} if system.trainer.keep is None else {'selective_keep':system.trainer.keep}
+    if 'f8' in config and config.f8.bank_path:
+        from .a2_support import make_f8_keep
+        system.trainer.f8_keep = make_f8_keep(config)
+        auxiliary_schedules['f8_keep'] = system.trainer.f8_keep
+    f7_schedule = None
+    if 'f7' in config:
+        from .f7_support import F7Schedule
+        f7_schedule = F7Schedule(config.f7.adaptive_lr)
+        system.trainer.record_f7 = True
+        auxiliary_schedules['f7_actor_lr'] = f7_schedule
+    drift_config = config.dppo.get('drift_monitor')
+    drift = None
+    if drift_config is not None and drift_config.enabled:
+        from ..engine.drift_monitor import DriftMonitor
+        drift = DriftMonitor(system.official_runtime, system.bc_runtime.policy.normalizer,
+                             _resolve(repo_root,drift_config.bank_path),str(drift_config.bank_sha256))
+        auxiliary_schedules['drift_monitor'] = drift
+    anchor_config = config.dppo.get('inert_anchor')
+    if anchor_config is not None and anchor_config.enabled:
+        from ..engine.inert_anchor import InertAnchor
+        system.trainer.inert_anchor = InertAnchor(coefficient=float(anchor_config.coefficient),
+            seed=int(anchor_config.seed),batch_size=int(anchor_config.batch_size))
+        auxiliary_schedules['inert_anchor'] = system.trainer.inert_anchor
+    runtime_device = torch.device(system.bc_runtime.device)
+    # Import only after the verified official top-level model package is loaded.
+    from diffusion_policy_3d.rl.dppo_uav_rebuild.environments.factory import (
+        RouteAEnvironmentFactory,
+    )
+
+    manifest = _resolve(repo_root, config.admission_manifest)
+    worlds = _resolve(repo_root, config.worlds_train)
+    output = _resolve(repo_root, config.output_dir)
+    output.mkdir(parents=True, exist_ok=True)
+    results = _resolve(repo_root, getattr(config, "result_dir", config.output_dir))
+    results.mkdir(parents=True, exist_ok=True)
+    environment_factory = RouteAEnvironmentFactory(
+        manifest_path=manifest,
+        worlds_train_dir=worlds,
+        reward=system.reward,
+        device=str(system.bc_runtime.device),
+        base_seed=seed,
+        max_episode_steps=int(config.environment.max_episode_steps),
+        disturb_enable=bool(config.environment.disturb_enable),
+        disturb_prob=float(config.environment.disturb_prob),
+        disturb_pos_scale=float(config.environment.disturb_pos_scale),
+        exec_noise_scale=float(config.environment.exec_noise_scale),
+        mid_state_init_ratio=float(config.environment.mid_state_init_ratio),
+        mid_state_pos_scale=float(config.environment.mid_state_pos_scale),
+        max_reset_attempts=int(config.environment.max_reset_attempts),
+        reward_config=OmegaConf.to_container(config.reward, resolve=True),
+        terminate_at_space_limits=not finite_task,
+        space_cost_budget=None if protocol is None else float(protocol.space_cost_budget),
+    )
+    task_sampler = TaskSampler(environment_factory.tasks, seed=seed + 17)
+    bank_config = config.get('task_bank')
+    if bank_config is not None and bank_config.enabled:
+        from ..environments.task_sampler import TaskBankMixtureSampler
+        task_sampler = TaskBankMixtureSampler(environment_factory.tasks,
+            _resolve(repo_root, bank_config.path), str(bank_config.sha256),
+            int(bank_config.seed), dict(bank_config.mixture))
+    runtime_identity = build_runtime_identity(config, repo_root, system, manifest)
+    environment_provenance = build_environment_provenance(
+        repo_root, reward_version=str(config.reward_version))
+    r1_probe_path = results / "r1_plan_probe.json"
+    r1_probe = None
+    if str(config.reward_version) in ("v2", "v3", "v4", "v5") and resume_from is not None and r1_probe_path.is_file():
+        r1_probe = json.loads(r1_probe_path.read_text(encoding="utf-8"))
+        if r1_probe["runtime_identity_hash"] != runtime_identity.content_hash:
+            raise RuntimeError("R1 probe runtime identity mismatch on resume")
+
+    start_update = 1
+    resume_quarantine = None
+    resume_metrics_quarantine = None
+    f9_session = None
+    if config.get('f9') is not None and config.f9.enabled:
+        from .f9_support import F9Session
+        f9_session = F9Session(system, config, environment_factory, results)
+        system.trainer.f8_keep = f9_session.keep
+        system.trainer.record_f9 = True
+        auxiliary_schedules['f9_session'] = f9_session
+    a2_calibration_needed = a2 is not None and (a2.arm == 'T' or imitation_enabled) and resume_from is None and 'f5' not in config and 'f6' not in config and 'f7' not in config and 'f8' not in config
+    f8_calibration_needed = f9_session is None and system.trainer.f8_keep is not None and resume_from is None
+    anchor_calibration_needed = system.trainer.inert_anchor is not None and resume_from is None
+    if resume_from is not None:
+        header = restore_checkpoint(
+            resume_from,
+            runtime_identity=runtime_identity,
+            lora_identity=system.lora_bundle.identity,
+            lora_bundle=system.lora_bundle,
+            critic=system.critic,
+            actor_optimizer=system.actor_optimizer,
+            critic_optimizer=system.critic_optimizer,
+            counters=system.trainer.counters,
+            schedules=auxiliary_schedules,
+            task_sampler=task_sampler,
+            map_location=system.bc_runtime.device,
+        )
+        start_update = header.update_index + 1
+        resume_quarantine = _prepare_resume_output(
+            output, start_update, report_dir=results if results != output else None)
+        if results != output:
+            resume_metrics_quarantine = _prepare_resume_output(results, start_update)
+        if str(config.reward_version) in ("v2", "v3", "v4", "v5") and start_update > 1 and r1_probe is None:
+            raise FileNotFoundError("R1 resume requires the frozen train-domain probe")
+    elif a2 is not None:
+        from ..checkpointing.a2_fork import fork_parent, verified_json
+        header, lineage = fork_parent(config, repo_root, system, task_sampler, runtime_identity)
+        start_update = header.update_index + 1
+        _write_json_once(results/'fork_lineage.json',lineage)
+        receipt = verified_json(a2.parent_receipt,a2.parent_receipt_sha256)
+        r1_probe = dict(receipt['r1_probe'])
+        r1_probe['parent_runtime_identity_hash'] = r1_probe['runtime_identity_hash']
+        r1_probe['runtime_identity_hash'] = runtime_identity.content_hash
+        _write_json_once(r1_probe_path,r1_probe)
+    elif 0 in tuple(int(value) for value in getattr(config.run, "checkpoint_updates", ())):
+        initial_header = CheckpointHeader(
+            schema_version=SCHEMA_VERSION,
+            runtime_identity=asdict(runtime_identity),
+            runtime_identity_hash=runtime_identity.content_hash,
+            lora_identity_hash=system.lora_bundle.identity.content_hash,
+            update_index=0,
+        )
+        save_checkpoint(
+            output / "checkpoint_update_000000",
+            training_config=OmegaConf.to_container(config, resolve=True) if finite_task else None,
+            header=initial_header,
+            lora_bundle=system.lora_bundle,
+            critic=system.critic,
+            actor_optimizer=system.actor_optimizer,
+            critic_optimizer=system.critic_optimizer,
+            counters=system.trainer.counters,
+            task_sampler=task_sampler,
+        )
+
+    execution_last_update = _execution_last_update(
+        config, start_update, stop_after_update)
+
+    rollout_size = int(config.run.rollout_transitions)
+    v2_schedule = "denoising_schedule" in config.dppo
+    pair_schedule_mode = (
+        str(config.dppo.denoising_schedule) if v2_schedule
+        else getattr(config.run, "pair_schedule_mode", None)
+    )
+    minibatch_size = int(getattr(config.run, "minibatch_size", 128))
+    pair_passes = int(
+        config.dppo.pair_passes if v2_schedule else
+        getattr(config.run, "pair_passes", getattr(config.run, "update_epochs", 1))
+    )
+    logical_batch_pairs = int(
+        config.dppo.logical_batch_pairs if v2_schedule else
+        getattr(config.run, "logical_batch_pairs", 128)
+    )
+    microbatch_pairs = int(
+        config.dppo.microbatch_pairs if v2_schedule else
+        getattr(config.run, "microbatch_pairs", 128)
+    )
+    warmup_updates = int(getattr(config.run, "critic_warmup_updates", 0))
+    total_updates = int(config.run.updates)
+    print(
+        json.dumps(
+            {
+                "event": "dppo_training_start",
+                "initialization": "checkpoint_resume" if resume_from else ("explicit_P6_u256_fork" if 'f7' in config or 'f8' in config else "explicit_A1_u128_fork" if a2 is not None else "fresh_bc"),
+                "bc_checkpoint": str(_resolve(repo_root, config.checkpoint)),
+                "resume_from": str(resume_from) if resume_from else None,
+                "output_dir": str(output),
+                "result_dir": str(results),
+                "start_update": start_update,
+                "total_updates": total_updates,
+                "execution_last_update": execution_last_update,
+                "planned_transitions": total_updates * rollout_size,
+                "runtime_identity_hash": runtime_identity.content_hash,
+                "initialization_parity": system.initialization_parity,
+                "environment_provenance": environment_provenance,
+            },
+            sort_keys=True,
+            allow_nan=False,
+        ),
+        flush=True,
+    )
+    if config.get('f9') is not None:
+        if config.f9.stage == 'A' and execution_last_update > 264:
+            raise ValueError('F9 stage A stops at u264')
+        if config.f9.enabled and execution_last_update > 264:
+            if resume_from is None or start_update < 265:
+                raise ValueError('F9 full continuation must resume at or after its u264 checkpoint')
+            gate = json.loads(Path(config.f9.gate_path).read_text(encoding='utf-8'))
+            import hashlib
+            gate_checkpoint = Path(config.output_dir)/'checkpoint_update_000264/state.pt'
+            if gate['decision'] != 'pass' or gate['T_state_sha256'] != hashlib.sha256(gate_checkpoint.read_bytes()).hexdigest():
+                raise ValueError('F9 behavioral gate does not authorize this checkpoint')
+    if f9_session is not None and resume_from is None:
+        _write_json_once(results/'f9_prefill.json', f9_session.collect(prefill=True))
+    f9_calibration_needed = f9_session is not None and f9_session.keep.coefficient == 0.
+    for update_index in range(start_update, execution_last_update + 1):
+        update_started = time.perf_counter()
+        if f9_session is not None:
+            f9_session.begin_update()
+        if runtime_device.type == "cuda":
+            torch.cuda.reset_peak_memory_stats(runtime_device)
+        task_role_episode_start_counts = Counter()
+        audit = TrainingAudit(term_names=getattr(system.reward, "term_names", None),
+                              terminate_at_space_limits=(environment_factory.terminate_at_space_limits
+                                                         if str(config.reward_version) in ("v2", "v3", "v4", "v5") else None))
+        buffer = OnPolicyRolloutBuffer(
+            rollout_size,
+            gamma=float(config.dppo.gamma_environment),
+            gae_lambda=float(config.dppo.gae_lambda),
+            outer_update_id=update_index,
+            history_scalar=str(config.reward_version) in ("v2", "v3", "v4", "v5") and not finite_task,
+            episode_context=finite_task,
+        )
+        adapter = None
+        observation = None
+        observation_context = None
+        encoded_observation = None
+        task = None
+        reset_seed = None
+        while len(buffer) < rollout_size:
+            if adapter is None:
+                task = task_sampler.sample()
+                task_role_episode_start_counts[task.role] += 1
+                adapter = environment_factory.make(task)
+                reset_seed = task.seed + system.trainer.counters.rollout_segments * 1000003
+                reset_options = getattr(task_sampler, 'last_reset_options', None)
+                if reset_options is None:
+                    observation, observation_context = adapter.reset(seed=reset_seed)
+                else:
+                    observation, observation_context = adapter.reset(seed=reset_seed, options=reset_options)
+            if encoded_observation is None:
+                encoded_observation = system.observation_adapter.encode(
+                    observation,
+                    observation_context["pointcloud_meta_history"],
+                    episode_identity_hash=observation_context["episode_identity_hash"],
+                    decision_index=observation_context["decision_index"],
+                )
+            system.observation_adapter.verify(encoded_observation)
+            condition = encoded_observation.condition
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5") and r1_probe is None:
+                initial_action = sample_probe_action(
+                    system.rollout_sampler, condition, seed=seed + 981731,
+                    device=runtime_device)
+                r1_probe = {
+                    "runtime_identity_hash": runtime_identity.content_hash,
+                    "probe_seed": seed + 981731,
+                    "condition": {key: value.detach().cpu().tolist()
+                                  for key, value in condition.items()},
+                    "initial_action": initial_action.tolist(),
+                    "source": "first admitted train-domain observation at update 1",
+                }
+                _write_json_once(r1_probe_path, r1_probe)
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5"):
+                from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.critic_state import with_history_scalar, with_episode_context
+                critic_condition = (with_episode_context(condition, adapter.environment) if finite_task
+                                    else with_history_scalar(condition, adapter.environment._reward_history))
+            else:
+                critic_condition = condition
+            position_before = np.asarray(adapter.environment._drone_pos, dtype=np.float64).copy()
+            goal_xyz = np.asarray(adapter.environment.goal_w, dtype=np.float64).copy()
+            goal_distance_before = float(np.linalg.norm(position_before - goal_xyz))
+            with torch.no_grad():
+                value = float(system.critic(critic_condition).reshape(-1)[0].item())
+                system.observation_adapter.verify(encoded_observation)
+                rollout = system.rollout_sampler.sample(condition, deterministic=False)
+            next_observation, reward, terminated, truncated, info = adapter.step(
+                rollout.action
+            )
+            if 'f7' in config and info['done_reason'] != 'invalid_state':
+                from .f7_support import collection_details
+                info['f7_audit'] = collection_details(info, adapter.environment,
+                    rollout.action, position_before, float(config.f7.approach_weight))
+            if info.get("reward_metrics", {}).get("training_usable") is False:
+                raise FloatingPointError("invalid_state before buffer/critic update: {}".format(
+                    info.get("reward_metrics")))
+            collection_boundary = len(buffer) + 1 == rollout_size
+            effective_truncated = bool(truncated or (collection_boundary and not terminated))
+            bootstrap_allowed = _bootstrap_allowed(terminated, truncated, finite_task=finite_task)
+            next_encoded_observation = system.observation_adapter.encode(
+                next_observation,
+                info["pointcloud_meta_history"],
+                episode_identity_hash=info["episode_identity_hash"],
+                decision_index=info["decision_index"],
+            )
+            system.observation_adapter.verify(next_encoded_observation)
+            next_condition = next_encoded_observation.condition
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5"):
+                next_critic_condition = (with_episode_context(next_condition, adapter.environment) if finite_task
+                                         else with_history_scalar(next_condition, adapter.environment._reward_history))
+            else:
+                next_critic_condition = next_condition
+            with torch.no_grad():
+                next_value = (
+                    0.0
+                    if not bootstrap_allowed
+                    else float(system.critic(next_critic_condition).reshape(-1)[0].item())
+                )
+            audit.record_transition(
+                task_id=task.task_id,
+                task_role=task.role,
+                reward=reward,
+                value=value,
+                next_value=next_value,
+                terminated=terminated,
+                truncated=truncated,
+                collection_boundary=collection_boundary,
+                bootstrap_allowed=bootstrap_allowed,
+                critic_context=(critic_condition["episode_context"][0].detach().cpu().tolist()
+                                if finite_task else None),
+                next_critic_context=(next_critic_condition["episode_context"][0].detach().cpu().tolist()
+                                     if finite_task else None),
+                info=info,
+                action_chunk=rollout.action.rollout_executed[0],
+                audit_context={
+                    **({'task_bank': getattr(task_sampler, 'last_metadata',
+                        {'source': 'original', 'tier': None, 'kind': 'random',
+                         'bank_task_id': None, 'world': task.world_id})} if 'f5' in config or 'f6' in config or 'f7' in config or 'f8' in config else {}),
+                    "run_seed": seed,
+                    "update_index": update_index,
+                    "policy_state_update_index": update_index - 1,
+                    "transition_id": "u{}:t{}".format(update_index, len(buffer)),
+                    "episode_id": encoded_observation.provenance.episode_identity_hash,
+                    "decision_index": encoded_observation.provenance.decision_index,
+                    "task_identity_hash": task.identity_hash,
+                    "world_id": task.world_id,
+                    "task_seed": task.seed,
+                    "reset_seed": reset_seed,
+                    "admission_manifest_hash": runtime_identity.task_manifest_hash,
+                    "runtime_identity_hash": runtime_identity.content_hash,
+                    "source_set_hash": runtime_identity.source_set_hash,
+                    "config_hash": runtime_identity.config_hash,
+                    "checkpoint_identity_hash": runtime_identity.bc_identity_hash,
+                    "goal_xyz": goal_xyz.tolist(),
+                    "position_before_xyz": position_before.tolist(),
+                    "position_after_xyz": np.asarray(adapter.environment._drone_pos, dtype=np.float64).tolist(),
+                    "goal_distance_before_3d": goal_distance_before,
+                    "goal_distance_after_3d": float(np.linalg.norm(np.asarray(adapter.environment._drone_pos, dtype=np.float64) - goal_xyz)),
+                    "goal_error_xy_before": float(np.linalg.norm(position_before[:2] - goal_xyz[:2])),
+                    "goal_error_z_before": float(abs(position_before[2] - goal_xyz[2])),
+                    "goal_error_xy_after": float(np.linalg.norm(np.asarray(adapter.environment._drone_pos, dtype=np.float64)[:2] - goal_xyz[:2])),
+                    "goal_error_z_after": float(abs(np.asarray(adapter.environment._drone_pos, dtype=np.float64)[2] - goal_xyz[2])),
+                    "observation_provenance": asdict(encoded_observation.provenance),
+                    "observation_provenance_after": asdict(next_encoded_observation.provenance),
+                },
+            )
+            system.observation_adapter.verify(encoded_observation)
+            buffer.add(
+                condition={key: value_[0] for key, value_ in critic_condition.items()},
+                chain=rollout.normalized_chain[0],
+                old_logprobs=rollout.old_logprobs[0],
+                reward=reward,
+                value=value,
+                next_value=next_value,
+                terminated=terminated,
+                truncated=effective_truncated,
+                bootstrap_allowed=bootstrap_allowed,
+                transition_id="u{}:t{}".format(update_index, len(buffer)),
+                role=task.role,
+                outcome=info["transition_facts"].done_reason,
+                provenance_hash=encoded_observation.provenance.policy_input_hash,
+                execution_metadata=(dict(task_id=task.task_id,
+                    episode_id=encoded_observation.provenance.episode_identity_hash,
+                    event_segment=info.get('event_segment'),event_fraction=info.get('event_fraction'))
+                    if imitation_enabled else None),
+            )
+            system.trainer.counters.env_steps += 1
+            observation = next_observation
+            observation_context = info
+            encoded_observation = next_encoded_observation
+            if terminated or truncated or collection_boundary:
+                system.trainer.counters.rollout_segments += 1
+                if terminated or truncated:
+                    system.trainer.counters.completed_episodes += 1
+                adapter = None
+                observation = None
+                observation_context = None
+                encoded_observation = None
+                task = None
+
+        buffer.finalize()
+        if xk is not None and xk.get('c1_gradient_output'):
+            from .xk_diagnostics import compare_c1
+            compare_c1(system,buffer,config,_resolve(repo_root,xk.c1_gradient_output))
+            return system.trainer.counters
+        imitation_metrics = (system.trainer.keep.ingest(buffer,update_index)
+                             if imitation_enabled else None)
+        if drift is not None:
+            drift.begin()
+        rollout_audit = audit.finalize(buffer.audit_tensors())
+        rollout_finished = time.perf_counter()
+        f9_collection = None
+        f9_optimizer_started = rollout_finished
+        actor_lr = _actor_lr_for_update(config, update_index)
+        if f7_schedule is not None:
+            actor_lr = 1e-5 * f7_schedule.next_multiplier
+        for group in system.actor_optimizer.param_groups:
+            group["lr"] = actor_lr
+        update_actor = update_index > warmup_updates
+        update_metrics = []
+        rejection_reason_counts = Counter()
+        outer_snapshot = ParameterSnapshot.capture(
+            actor=system.trainer.actor_parameters,
+            critic=system.trainer.critic_parameters,
+        )
+        last_committed_batch = None
+        schedule_audits = []
+        pair_evaluations = 0
+        microbatch_evaluations = 0
+        if pair_schedule_mode is None:
+            expected_optimizer_steps = pair_passes * rollout_size // minibatch_size
+            batch_iterator = (
+                batch
+                for epoch in range(pair_passes)
+                for batch in buffer.batches(
+                    minibatch_size,
+                    generator=torch.Generator().manual_seed(
+                        seed + update_index * 1009 + epoch
+                    ),
+                    device=system.bc_runtime.device,
+                )
+            )
+        else:
+            total_pairs_per_pass = (
+                rollout_size if pair_schedule_mode == "sampled_k" else rollout_size * 10
+            )
+            expected_optimizer_steps = (
+                pair_passes * total_pairs_per_pass // logical_batch_pairs
+            )
+            batch_iterator = iter_pair_passes(
+                buffer,
+                mode=str(pair_schedule_mode),
+                pair_passes=pair_passes,
+                logical_batch_pairs=logical_batch_pairs,
+                microbatch_pairs=microbatch_pairs,
+                generator=torch.Generator().manual_seed(seed + update_index * 1009),
+                device=system.bc_runtime.device,
+            )
+        if a2_calibration_needed or anchor_calibration_needed or f8_calibration_needed or f9_calibration_needed:
+            import itertools
+            from ..engine.selective_keep import calibrate_keep
+            first_batches = list(itertools.islice(batch_iterator,4))
+            if a2_calibration_needed:
+                calibration = calibrate_keep(system.trainer,first_batches,system.trainer.keep,
+                                             microbatch_pairs=microbatch_pairs,
+                                             target_ratio=float(imitation.target_ratio) if imitation_enabled else .1)
+                system.trainer.keep.coefficient = calibration['coefficient']
+                _write_json_once(results/'keep_calibration.json',calibration)
+            if f8_calibration_needed:
+                calibration = calibrate_keep(system.trainer,first_batches,system.trainer.f8_keep,
+                                             microbatch_pairs=microbatch_pairs,target_ratio=.1)
+                system.trainer.f8_keep.coefficient = calibration['coefficient']
+                _write_json_once(results/'f8_keep_calibration.json',calibration)
+                f8_calibration_needed = False
+            if f9_calibration_needed:
+                calibration = calibrate_keep(system.trainer, first_batches, f9_session.keep,
+                    microbatch_pairs=microbatch_pairs, target_ratio=1.)
+                f9_session.keep.coefficient = calibration['coefficient']
+                _write_json_once(results/'f9_calibration.json', calibration)
+                f9_calibration_needed = False
+            if anchor_calibration_needed:
+                from ..engine.inert_anchor import calibrate_anchor
+                calibration = calibrate_anchor(system.trainer,first_batches,system.trainer.inert_anchor,
+                    microbatch_pairs=microbatch_pairs,target_ratio=float(anchor_config.target_ratio))
+                system.trainer.inert_anchor.coefficient = calibration['coefficient']
+                _write_json_once(results/'anchor_calibration.json',calibration)
+                anchor_calibration_needed = False
+            batch_iterator = itertools.chain(first_batches,batch_iterator)
+            a2_calibration_needed = False
+        if f9_session is not None:
+            # u257 calibration above uses ONLY the frozen prefill buffer.
+            # The current actor then refreshes teacher data before any PPO update.
+            f9_collection = f9_session.collect(update=update_index)
+            _write_json_once(results/('f9_collect_%06d.json' % update_index), f9_collection)
+            f9_optimizer_started = time.perf_counter()
+        for batch in batch_iterator:
+            if hasattr(batch, "pair_count"):
+                pair_evaluations += batch.pair_count
+                microbatch_evaluations += batch.microbatch_count
+                if not schedule_audits or schedule_audits[-1]["pass_id"] != batch.pass_id:
+                    schedule_audits.append(batch.schedule_audit)
+            else:
+                pair_evaluations += int(batch.chains_prev.shape[0])
+                microbatch_evaluations += 1
+            evidence = _run_optimizer_attempt(
+                system.trainer,
+                batch,
+                update_actor=update_actor,
+                allow_recoverable_rejection=update_actor,
+            )
+            update_metrics.append(evidence)
+            if evidence["status"] == "rejected":
+                rejection_reason_counts[evidence["reason"]] += 1
+            else:
+                last_committed_batch = batch
+                committed_count = sum(item['status']=='committed' for item in update_metrics)
+                if drift is not None and committed_count % int(drift_config.every_commits) == 0:
+                    drift.measure(committed=committed_count)
+        if len(update_metrics) != expected_optimizer_steps:
+            raise RuntimeError(
+                "optimizer step count mismatch: expected {}, got {}".format(
+                    expected_optimizer_steps, len(update_metrics)
+                )
+            )
+        committed_metrics = [
+            item for item in update_metrics if item["status"] == "committed"
+        ]
+        registered_commits = getattr(config.run, "expected_optimizer_commits_per_outer_update", None)
+        if registered_commits is not None and len(committed_metrics) != int(registered_commits):
+            raise RuntimeError("committed optimizer count differs from the pre-registered v2 contract")
+        optimizer_metric_summary = {
+            name: _scalar_stats(
+                [item["pre_update"][name] for item in committed_metrics]
+            )
+            for name in (
+                "policy_loss",
+                "value_loss",
+                "entropy_loss",
+                "total_loss",
+                "approx_kl",
+                "ratio_mean",
+                "clip_fraction",
+                "actor_grad_norm",
+                "critic_grad_norm",
+            )
+        }
+        if last_committed_batch is not None:
+            if hasattr(last_committed_batch, "microbatch_pairs"):
+                post_update = evaluate_post_update_logical(
+                    system.trainer, last_committed_batch,
+                    microbatch_pairs=last_committed_batch.microbatch_pairs,
+                    update_actor=update_actor,
+                )
+            else:
+                post_update = evaluate_post_update(
+                    system.trainer, last_committed_batch, update_actor=update_actor,
+                )
+            committed_metrics[-1]["post_update"] = post_update
+        if f7_schedule is not None:
+            f7_schedule.finish(optimizer_metric_summary['clip_fraction']['mean'])
+        outer_parameter_delta = outer_snapshot.measure(
+            actor=system.trainer.actor_parameters,
+            critic=system.trainer.critic_parameters,
+        )
+        drift_metrics = drift.finish() if drift is not None else None
+        hard_stop_reason = _update_outer_failure_streaks(
+            system.trainer.counters,
+            update_actor=update_actor,
+            actor_delta=outer_parameter_delta["actor"]["l2_norm"],
+            committed=bool(committed_metrics),
+        )
+        optimizer_finished = time.perf_counter()
+        credit_audit_started = time.perf_counter()
+        transition_credit_records = evaluate_transition_credit_audit(
+            system.trainer,
+            buffer,
+            microbatch_pairs=min(128, int(logical_batch_pairs or minibatch_size)),
+        )
+        transition_credit_by_id = {
+            record["transition_id"]: dict(record)
+            for record in transition_credit_records
+        }
+        rollout_transition_ids = {
+            record["transition_id"]
+            for record in rollout_audit["transition_records"]
+        }
+        if set(transition_credit_by_id) != rollout_transition_ids:
+            raise RuntimeError("transition credit audit identity coverage mismatch")
+        gradient_diagnostics = {
+            "scope": "outer_update",
+            "actor_grad_norm": optimizer_metric_summary["actor_grad_norm"],
+            "critic_grad_norm": optimizer_metric_summary["critic_grad_norm"],
+            "outer_parameter_delta": outer_parameter_delta,
+            "committed_optimizer_steps": len(committed_metrics),
+            "rejected_optimizer_steps": len(update_metrics) - len(committed_metrics),
+        }
+        for transition_record in rollout_audit["transition_records"]:
+            transition_record["dppo_credit"] = transition_credit_by_id[
+                transition_record["transition_id"]
+            ]
+            transition_record["gradient_diagnostics"] = gradient_diagnostics
+        credit_audit_seconds = time.perf_counter() - credit_audit_started
+
+        checkpoint_path = None
+        checkpoint_header = None
+        if _should_save_checkpoint(config, update_index):
+            checkpoint_header = CheckpointHeader(
+                schema_version=SCHEMA_VERSION,
+                runtime_identity=asdict(runtime_identity),
+                runtime_identity_hash=runtime_identity.content_hash,
+                lora_identity_hash=system.lora_bundle.identity.content_hash,
+                update_index=update_index,
+            )
+            checkpoint_path = output / "checkpoint_update_{:06d}".format(update_index)
+        r1_probe_metrics = None
+        if checkpoint_path is not None and str(config.reward_version) in ("v2", "v3", "v4", "v5"):
+            probe_condition = {
+                key: torch.tensor(value, device=runtime_device, dtype=torch.float32)
+                for key, value in r1_probe["condition"].items()
+            }
+            current_action = sample_probe_action(
+                system.rollout_sampler, probe_condition,
+                seed=r1_probe["probe_seed"], device=runtime_device)
+            r1_probe_metrics = compare_probe_actions(
+                r1_probe["initial_action"], current_action)
+        rollout_seconds = rollout_finished - update_started
+        optimizer_seconds = optimizer_finished - f9_optimizer_started
+        if f9_session is not None:
+            _write_json_once(results/('f9_update_%06d.json' % update_index), dict(
+                ppo_collection_seconds=rollout_finished-update_started,
+                teacher=f9_collection, optimizer_seconds=optimizer_seconds,
+                lora_update_by_parameter=f9_session.parameter_changes(),
+                buffer=len(f9_session.keep.records), heldout=len(f9_session.keep.heldout)))
+        total_seconds = time.perf_counter() - update_started
+        peak_cuda_memory_bytes = (
+            int(torch.cuda.max_memory_allocated(runtime_device))
+            if runtime_device.type == "cuda"
+            else 0
+        )
+        _write_json_once(
+            results / "metrics_update_{:06d}.json".format(update_index),
+            {
+                "audit_schema_version": 5,
+                "environment_provenance": environment_provenance,
+                "checkpoint": str(checkpoint_path) if checkpoint_path else None,
+                "r1_plan_probe": r1_probe_metrics,
+                "drift_monitor": drift_metrics,
+                "self_imitation": imitation_metrics,
+                "checkpoint_expected_path": (
+                    str(checkpoint_path) if checkpoint_path else None
+                ),
+                "checkpoint_publish_state_at_metrics_write": (
+                    "pending" if checkpoint_path else "not_scheduled"
+                ),
+                "counters": vars(system.trainer.counters),
+                "formal_training": {
+                    **({'f7_actor_lr': f7_schedule.state_dict()} if f7_schedule is not None else {}),
+                    "actor_learning_rate": actor_lr,
+                    "min_sampling_std": float(config.dppo.min_sampling_std),
+                    "min_logprob_std": float(config.dppo.min_logprob_std),
+                    "sampling_protocol": (system.official_runtime.sampling_protocol()
+                                          if xk is not None else None),
+                    "mode": "joint" if update_actor else "critic_only_warmup",
+                    "optimizer_steps": len(update_metrics),
+                    "pair_schedule_mode": str(pair_schedule_mode) if pair_schedule_mode else "legacy_sampled_k",
+                    "pair_evaluations": pair_evaluations,
+                    "microbatch_evaluations": microbatch_evaluations,
+                    "logical_commits_attempted": len(update_metrics),
+                    "pair_schedule_audits": schedule_audits,
+                    "committed_optimizer_steps": len(committed_metrics),
+                    "rejected_optimizer_steps": (
+                        len(update_metrics) - len(committed_metrics)
+                    ),
+                    "rejection_reason_counts": dict(
+                        sorted(rejection_reason_counts.items())
+                    ),
+                    "hard_stop_reason": hard_stop_reason,
+                    "outer_parameter_delta": outer_parameter_delta,
+                    "optimizer_metric_summary": optimizer_metric_summary,
+                    "peak_cuda_memory_bytes": peak_cuda_memory_bytes,
+                    "rollout_seconds": rollout_seconds,
+                    "rollout_transitions_per_second": rollout_size / rollout_seconds,
+                    "resume_quarantine": (
+                        str(resume_quarantine) if resume_quarantine else None
+                    ),
+                    "resume_metrics_quarantine": (
+                        str(resume_metrics_quarantine) if resume_metrics_quarantine else None
+                    ),
+                    "task_role_episode_start_counts": dict(
+                        sorted(task_role_episode_start_counts.items())
+                    ),
+                    "task_role_transition_counts": rollout_audit["episodes"][
+                        "role_transition_counts"
+                    ],
+                    "total_seconds": total_seconds,
+                    "update_seconds": optimizer_seconds,
+                    "transition_credit_audit_seconds": credit_audit_seconds,
+                    "transition_credit_audit_count": len(
+                        transition_credit_records
+                    ),
+                },
+                "rollout_audit": rollout_audit,
+                "runtime_identity_hash": runtime_identity.content_hash,
+                "updates": update_metrics,
+            },
+        )
+        if f9_session is not None:
+            f9_session.snapshot(update_index)
+        if checkpoint_path is not None:
+            save_checkpoint(
+                checkpoint_path,
+                training_config=OmegaConf.to_container(config, resolve=True) if finite_task else None,
+                header=checkpoint_header,
+                lora_bundle=system.lora_bundle,
+                critic=system.critic,
+                actor_optimizer=system.actor_optimizer,
+                critic_optimizer=system.critic_optimizer,
+                counters=system.trainer.counters,
+                rollout_buffer=buffer,
+                schedules=auxiliary_schedules,
+                task_sampler=task_sampler,
+            )
+        if config.get('f9') is not None and config.f9.trial_id == 'P29' and update_index == 257:
+            from scripts.run_routea_f9 import g0
+            from types import SimpleNamespace
+            f9_plan = json.loads((Path(config.f9.experiment_root)/'plan.json').read_text(encoding='utf-8'))
+            g0(SimpleNamespace(run=config.f9.experiment_root,p22_checkpoint=f9_plan['g0_checkpoint']['path']))
+        if f9_session is not None and update_index == 257:
+            from scripts.run_routea_f9 import isolation
+            from types import SimpleNamespace
+            control = {202611081:'P29',202611082:'P30',202611213:'P27'}[int(config.run.seed)]
+            isolation(SimpleNamespace(run=config.f9.experiment_root,policy=config.f9.trial_id,control=control))
+        if 'f6' in config and update_index % 8 == 0:
+            from argparse import Namespace
+            from scripts.analyze_routea_f6 import monitor
+            monitor(Namespace(metrics=str(results),
+                output=str(results / "monitor_through_u{:06d}.json".format(update_index))))
+        if 'f7' in config:
+            from scripts.f7_analysis import monitor_training
+            monitor_training(results, update_index)
+        latest_update = committed_metrics[-1] if committed_metrics else None
+        latest_post_update = latest_update["post_update"] if latest_update else None
+        print(
+            json.dumps(
+                {
+                    "event": "dppo_outer_update_complete",
+                    "update_index": update_index,
+                    "mode": "joint" if update_actor else "critic_only_warmup",
+                    "env_steps": system.trainer.counters.env_steps,
+                    "actor_learning_rate": actor_lr,
+                    "optimizer_steps": len(update_metrics),
+                    "committed_optimizer_steps": len(committed_metrics),
+                    "rejected_optimizer_steps": (
+                        len(update_metrics) - len(committed_metrics)
+                    ),
+                    "rejection_reason_counts": dict(
+                        sorted(rejection_reason_counts.items())
+                    ),
+                    "hard_stop_reason": hard_stop_reason,
+                    "rollout_transitions_per_second": rollout_size / rollout_seconds,
+                    "peak_cuda_memory_bytes": peak_cuda_memory_bytes,
+                    "reward_mean": rollout_audit["reward"]["total"]["mean"],
+                    "completed_episodes": rollout_audit["episodes"]["completed"],
+                    "physical_done_reason_counts": rollout_audit["episodes"][
+                        "physical_done_reason_counts"
+                    ],
+                    "actor_delta_l2": outer_parameter_delta["actor"]["l2_norm"],
+                    "critic_delta_l2": outer_parameter_delta["critic"]["l2_norm"],
+                    "post_update_approx_kl": (
+                        latest_post_update["approx_kl"]
+                        if latest_post_update
+                        else None
+                    ),
+                    "post_update_ratio_mean": (
+                        latest_post_update["ratio_mean"]
+                        if latest_post_update
+                        else None
+                    ),
+                },
+                sort_keys=True,
+                allow_nan=False,
+            ),
+            flush=True,
+        )
+        if hard_stop_reason is not None:
+            raise RuntimeError("formal training hard stop: {}".format(hard_stop_reason))
+    if execution_last_update < total_updates:
+        print(json.dumps({
+            "event": "dppo_training_paused_at_checkpoint",
+            "completed_through_update": execution_last_update,
+            "configured_total_updates": total_updates,
+            "checkpoint": str(output / "checkpoint_update_{:06d}".format(
+                execution_last_update)),
+            "runtime_identity_hash": runtime_identity.content_hash,
+        }, sort_keys=True, allow_nan=False), flush=True)
+    return system.trainer.counters
+
+
+def run(config, repo_root: Path, resume_from=None, stop_after_update=None):
+    """Hold one exclusive writer lock for the complete run transaction."""
+
+    results = _resolve(Path(repo_root), getattr(config, "result_dir", config.output_dir))
+    owner_token = "pid{}-{}".format(os.getpid(), uuid.uuid4().hex)
+    lock = RunLock.acquire(results, owner_token)
+    try:
+        return _run_unlocked(config, repo_root, resume_from=resume_from,
+                             stop_after_update=stop_after_update)
+    finally:
+        lock.release()
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--config", required=True, type=Path)
+    parser.add_argument("--resume-from", type=Path)
+    parser.add_argument("--stop-after-update", type=int)
+    args = parser.parse_args(argv)
+    repo_root = Path(__file__).resolve().parents[4]
+    config = OmegaConf.load(args.config)
+    run(config, repo_root, resume_from=args.resume_from,
+        stop_after_update=args.stop_after_update)
+    return 0
