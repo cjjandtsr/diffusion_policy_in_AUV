@@ -1,0 +1,86 @@
+{
+ "S0 P6 #E2 dev420": {
+  "conditions": 420,
+  "source": "routea_p6_u256_e2_dev420_run01_restored/full/P6 (repo main: jindu/routea_p6_u256_e2_dev420_run01/full/P6)",
+  "outcome_1m": {
+   "reached": 281,
+   "collision": 138,
+   "time_limit": 1
+  },
+  "raw_done_reason": {
+   "reached": 203,
+   "collision": 143,
+   "time_limit": 74
+  }
+ },
+ "S0 P6 #E2 val20": {
+  "conditions": 80,
+  "source": "routea_p6_u256_e2_val20_run01/full/P6 (repo main: jindu/routea_f5_run01/results/eval_val/full/P6)",
+  "outcome_1m": {
+   "reached": 61,
+   "collision": 14,
+   "time_limit": 5
+  },
+  "raw_done_reason": {
+   "reached": 42,
+   "collision": 14,
+   "time_limit": 24
+  }
+ },
+ "S2 P6 G0 dev420": {
+  "conditions": 420,
+  "source": "routea_probe_e3g_run01_delivery/routea_probe_e3g_run01/runs/G0_dev",
+  "outcome_1m": {
+   "reached": 300,
+   "collision": 118,
+   "time_limit": 2
+  },
+  "raw_done_reason": {
+   "reached": 216,
+   "collision": 122,
+   "time_limit": 82
+  }
+ },
+ "S2 P6 G0 val20": {
+  "conditions": 80,
+  "source": "routea_probe_e3g_run01_delivery/routea_probe_e3g_run01/runs/G0_val",
+  "outcome_1m": {
+   "reached": 59,
+   "collision": 14,
+   "time_limit": 7
+  },
+  "raw_done_reason": {
+   "reached": 41,
+   "collision": 14,
+   "time_limit": 25
+  }
+ },
+ "S3 BC #E2 dev420": {
+  "conditions": 420,
+  "source": "routea_f5_run01/eval_dev/full/bc (repo main: jindu/routea_f5_run01/results/eval_dev/full/bc)",
+  "outcome_1m": {
+   "reached": 156,
+   "collision": 141,
+   "time_limit": 123
+  },
+  "raw_done_reason": {
+   "reached": 110,
+   "collision": 150,
+   "time_limit": 160
+  }
+ },
+ "S3 BC #E2 val20": {
+  "conditions": 80,
+  "source": "routea_f5_run01/eval_val/full/bc (repo main: jindu/routea_f5_run01/results/eval_val/full/bc)",
+  "outcome_1m": {
+   "reached": 39,
+   "collision": 16,
+   "time_limit": 25
+  },
+  "raw_done_reason": {
+   "reached": 29,
+   "collision": 16,
+   "time_limit": 35
+  }
+ }
+}

@@ -1,0 +1,277 @@
+{
+  "arms": {
+    "BC_g1_dev": {
+      "bank_sha256": "1a6388136ea329f680c7055227f915a25ee25417df752a2cb7d85e30e57c3783",
+      "conditions": 420,
+      "conditions_with_any_guidance": 212,
+      "decisions": 17119,
+      "delta_exec_max": 1.41131471659813,
+      "delta_exec_sum": 777.3829677353165,
+      "denoise_median_ms_across_conditions": {
+        "median": 168.29562349994376,
+        "p05": 153.4128538756704,
+        "p95": 203.0656674502097
+      },
+      "duplicate_conditions": [],
+      "guidance": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guidance_identity": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guided_decisions": 1807,
+      "guided_fraction": 0.10555523102984987,
+      "job": "/home/cjj/AUV/program/results/routea_f10_run01/runs/BC_g1_dev",
+      "outcome_1m": {
+        "collision": 108,
+        "reached": 170,
+        "time_limit": 142
+      },
+      "policy": "BC",
+      "raw_done_reason": {
+        "collision": 111,
+        "reached": 122,
+        "time_limit": 187
+      },
+      "rc": "0",
+      "runtime_identity": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+      "setting": {
+        "M": 4,
+        "consistency": 0,
+        "d_safe": 0.6,
+        "eta": 0.4
+      },
+      "split": "dev",
+      "state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+      "unique_conditions": 420
+    },
+    "BC_g1_val": {
+      "bank_sha256": "3dbe2fcb2a237eb7ecb35a4e4c93c59f2a972ce313fdf4fe43eba30c3913ad66",
+      "conditions": 80,
+      "conditions_with_any_guidance": 31,
+      "decisions": 3282,
+      "delta_exec_max": 1.2124813551609928,
+      "delta_exec_sum": 96.39167325960466,
+      "denoise_median_ms_across_conditions": {
+        "median": 161.26624800017453,
+        "p05": 150.9246698004972,
+        "p95": 192.308435824134
+      },
+      "duplicate_conditions": [],
+      "guidance": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guidance_identity": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guided_decisions": 212,
+      "guided_fraction": 0.06459475929311395,
+      "job": "/home/cjj/AUV/program/results/routea_f10_run01/runs/BC_g1_val",
+      "outcome_1m": {
+        "collision": 12,
+        "reached": 42,
+        "time_limit": 26
+      },
+      "policy": "BC",
+      "raw_done_reason": {
+        "collision": 12,
+        "reached": 31,
+        "time_limit": 37
+      },
+      "rc": "0",
+      "runtime_identity": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+      "setting": {
+        "M": 4,
+        "consistency": 0,
+        "d_safe": 0.6,
+        "eta": 0.4
+      },
+      "split": "val",
+      "state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+      "unique_conditions": 80
+    },
+    "P6_g1_dev": {
+      "bank_sha256": "1a6388136ea329f680c7055227f915a25ee25417df752a2cb7d85e30e57c3783",
+      "conditions": 420,
+      "conditions_with_any_guidance": 204,
+      "decisions": 12280,
+      "delta_exec_max": 1.2038100744999352,
+      "delta_exec_sum": 742.2617038138326,
+      "denoise_median_ms_across_conditions": {
+        "median": 223.8045985000099,
+        "p05": 203.69968974987387,
+        "p95": 256.98261787531465
+      },
+      "duplicate_conditions": [],
+      "guidance": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guidance_identity": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guided_decisions": 1698,
+      "guided_fraction": 0.13827361563517915,
+      "job": "/home/cjj/AUV/program/results/routea_f10_run01/runs/P6_g1_dev",
+      "outcome_1m": {
+        "collision": 114,
+        "reached": 304,
+        "time_limit": 2
+      },
+      "policy": "P6",
+      "raw_done_reason": {
+        "collision": 114,
+        "reached": 221,
+        "time_limit": 85
+      },
+      "rc": "0",
+      "runtime_identity": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+      "setting": {
+        "M": 4,
+        "consistency": 0,
+        "d_safe": 0.6,
+        "eta": 0.4
+      },
+      "split": "dev",
+      "state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+      "unique_conditions": 420
+    },
+    "P6_g1_val": {
+      "bank_sha256": "3dbe2fcb2a237eb7ecb35a4e4c93c59f2a972ce313fdf4fe43eba30c3913ad66",
+      "conditions": 80,
+      "conditions_with_any_guidance": 27,
+      "decisions": 2684,
+      "delta_exec_max": 1.0117581614184348,
+      "delta_exec_sum": 66.20001244538007,
+      "denoise_median_ms_across_conditions": {
+        "median": 227.22288199975083,
+        "p05": 197.73839619865612,
+        "p95": 273.52800489966285
+      },
+      "duplicate_conditions": [],
+      "guidance": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guidance_identity": {
+        "eps_clip_value": null,
+        "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py",
+        "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29",
+        "module": "uav_idp3.e5_runtime",
+        "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9",
+        "recalculate_epsilon_after_clip": false,
+        "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c",
+        "type": "E5PPODiffusion",
+        "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347"
+      },
+      "guided_decisions": 163,
+      "guided_fraction": 0.06073025335320417,
+      "job": "/home/cjj/AUV/program/results/routea_f10_run01/runs/P6_g1_val",
+      "outcome_1m": {
+        "collision": 11,
+        "reached": 62,
+        "time_limit": 7
+      },
+      "policy": "P6",
+      "raw_done_reason": {
+        "collision": 12,
+        "reached": 41,
+        "time_limit": 27
+      },
+      "rc": "0",
+      "runtime_identity": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f",
+      "setting": {
+        "M": 4,
+        "consistency": 0,
+        "d_safe": 0.6,
+        "eta": 0.4
+      },
+      "split": "val",
+      "state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+      "unique_conditions": 80
+    }
+  },
+  "integrity": {
+    "all_rc_zero": true,
+    "arms": {
+      "BC_g1_dev": {
+        "conditions": 420,
+        "duplicates": 0,
+        "rc": "0",
+        "unique": 420
+      },
+      "BC_g1_val": {
+        "conditions": 80,
+        "duplicates": 0,
+        "rc": "0",
+        "unique": 80
+      },
+      "P6_g1_dev": {
+        "conditions": 420,
+        "duplicates": 0,
+        "rc": "0",
+        "unique": 420
+      },
+      "P6_g1_val": {
+        "conditions": 80,
+        "duplicates": 0,
+        "rc": "0",
+        "unique": 80
+      }
+    }
+  }
+}
