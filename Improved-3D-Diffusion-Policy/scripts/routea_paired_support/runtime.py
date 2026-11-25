@@ -179,12 +179,13 @@ def preflight(root, cat):
             "load_scope": "actor-only evaluation; no training restore"}
 
 
-def make_adapter(system, c, world, role):
+def make_adapter(system, c, world, role, evaluation_protocol="E2"):
     # Every selected policy uses the same evaluation event rule.
     from scripts.evaluate_dppo_uav_formal_endpoint import _build_adapter
     if file_hash(world["obstacle_path"]) != world["obstacle_sha256"]:
         raise ValueError("live obstacle bytes changed after bank freeze")
-    adapter = _build_adapter(system, c, world["world_id"], Path(world["obstacle_path"]), role)
+    adapter = _build_adapter(system, c, world["world_id"], Path(world["obstacle_path"]), role,
+                             evaluation_protocol=evaluation_protocol)
     env = adapter.environment
     if env.reward_version == 'v5':
         env.approach_weight = float(c.f7.approach_weight)
@@ -193,8 +194,9 @@ def make_adapter(system, c, world, role):
     env.mid_state_init_ratio = 0.
     env.terminate_at_space_limits = False
     # v3 delegates state advancement and first-event handling to v2; only reward differs.
-    if (env.reward_version not in ("v2", "v3", "v4", "v5") or env.n_exec_steps != 4 or env.rl_action_steps != 8
-            or env.traj_dt != .3 or env.max_episode_steps != 60 or env.collision_thresh != .1):
+    n_exec, deadline = (2, 120) if evaluation_protocol == "E3" else (4, 60)
+    if (env.reward_version not in ("v2", "v3", "v4", "v5") or env.n_exec_steps != n_exec or env.rl_action_steps != 8
+            or env.traj_dt != .3 or env.max_episode_steps != deadline or env.collision_thresh != .1):
         raise ValueError("common environment is not v2-or-v3-or-v4-or-v5/H4/8")
     return adapter
 

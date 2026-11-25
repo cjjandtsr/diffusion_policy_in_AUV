@@ -18,7 +18,16 @@ def validate_rows(header, rows, summary):
     from diffusion_policy_3d.env.collision_geom import ObstacleSpec
     from diffusion_policy_3d.env.reward_v2_support.first_event import locate_first_event
     from diffusion_policy_3d.env.traj_utils import action_to_world, POS
-    if not rows or len(rows) > 60 or summary["status"] != "valid":
+    e3 = header.get("evaluation_protocol") == "E3"
+    n_exec, deadline = (2, 120) if e3 else (4, 60)
+    action_key = "executed_action_2x11" if e3 else "executed_action_4x11"
+    path_key = "candidate_h2_path" if e3 else "candidate_h4_path"
+    if e3:
+        for value in [header] + rows:
+            if (value.get('evaluation_protocol'), value.get('n_exec_steps'),
+                value.get('decision_period_s'), value.get('timeout_decision_index')) != ('E3', 2, .6, 119):
+                raise ValueError('E3 execution metadata differs')
+    if not rows or len(rows) > deadline or summary["status"] != "valid":
         raise ValueError("incomplete/invalid episode")
     obstacles = [ObstacleSpec(**o) for o in header["geometry"]]
     goal = np.asarray(header["task"]["goal_pos"], np.float32)
@@ -29,24 +38,24 @@ def validate_rows(header, rows, summary):
         if row["decision"] != index:
             raise ValueError("decision order changed")
         full, policy, executed = action_views(row["full_action_16x11"],
-                                              row["policy_action_8x11"], row["executed_action_4x11"])
+                                              row["policy_action_8x11"], row[action_key], n_exec)
         pre = row["pre_state"]
         before = np.asarray(pre["position"], np.float32)
         if not np.allclose(before, path[-1], atol=1e-6, rtol=0.):
             raise ValueError("executed path discontinuity")
         wp = action_to_world(policy, before, np.asarray(pre["velocity"], np.float32), pre["yaw"])
-        candidate = np.vstack((before, wp[:4, POS]))
-        if not np.allclose(candidate, row["candidate_h4_path"], atol=1e-6, rtol=0.):
+        candidate = np.vstack((before, wp[:n_exec, POS]))
+        if not np.allclose(candidate, row[path_key], atol=1e-6, rtol=0.):
             raise ValueError("saved H4 candidate disagrees with actual action")
         event = locate_first_event(
             candidate, goal, obstacles, .1, header["task"]["z_range"][1],
             terminate_at_space_limits=header.get("terminate_at_space_limits", True))
         if event is None:
             expected = candidate
-            expected_time = 1.2
+            expected_time = .6 if e3 else 1.2
             if row["done_reason"] not in ("none", "time_limit"):
                 raise ValueError("terminal label without physical event")
-            if row["done_reason"] == "time_limit" and index != 59:
+            if row["done_reason"] == "time_limit" and index != deadline - 1:
                 raise ValueError("early timeout")
             if row["event_segment"] is not None or row["event_fraction"] is not None:
                 raise ValueError("event fields on non-event transition")
@@ -108,7 +117,8 @@ def ambiguous_events(header, rows):
         index = row["event_segment"]
         if index is None or row["done_reason"] == "reached":
             continue
-        path = np.asarray(row["candidate_h4_path"], np.float64)
+        path = np.asarray(row["candidate_h2_path"] if header.get("evaluation_protocol") == "E3"
+                          else row["candidate_h4_path"], np.float64)
         goal_fraction = _ball_entry(path[index],path[index+1],goal,.5)
         if goal_fraction is not None and abs(goal_fraction-row["event_fraction"]) <= 1e-6:
             result.append({"decision":row["decision"],"failure":row["done_reason"],
@@ -121,12 +131,16 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
     from scripts.evaluate_dppo_uav_formal_endpoint import reset_fixed_episode
     from diffusion_policy_3d.env.traj_utils import action_to_world, POS
     env = adapter.environment
+    e3 = getattr(env, "evaluation_protocol", "E2") == "E3"
+    n_exec, deadline = (2, 120) if e3 else (4, 60)
     observation, context = reset_fixed_episode(env, task["payload"], seed=entry["reset_seed"],
                                               reset_callable=adapter.reset)
     if observation_hash(observation) != entry["observation_hash"]:
         raise ValueError("initial observation pairing failed: " + entry["key"])
-    if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4', 'super'):
+    if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4'):
         policy.reset_episode(task, entry, env, observation, context)
+    if hasattr(policy, 'begin_episode'):
+        policy.begin_episode()
     job = Path(job)
     trace_dir = job / "traces"
     trace_dir.mkdir(parents=True, exist_ok=True)
@@ -150,7 +164,10 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
     if env.reward_version in ('v4', 'v5'):
         header['reward_version'] = env.reward_version
     header["terminate_at_space_limits"] = bool(getattr(env, "terminate_at_space_limits", True))
-    if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4', 'super'):
+    if e3:
+        header.update(evaluation_protocol="E3", n_exec_steps=2, decision_period_s=.6,
+                      timeout_decision_index=119)
+    if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4'):
         header['policy_kind'] = policy.policy_kind
         header['execution_protocol'] = 'common_H4'
         header['ego_parameters'] = policy.runtime_parameters
@@ -162,7 +179,7 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
             stream.flush()
         emit(header)
         try:
-            for decision in range(60):
+            for decision in range(deadline):
                 pre = {"position": env._drone_pos.tolist(), "velocity": env._drone_vel.tolist(),
                        "yaw": float(env._drone_yaw)}
                 seed = action_seed(entry["task_id"], entry["repeat"], decision)
@@ -172,14 +189,15 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
                     return value.detach().cpu().numpy() if hasattr(value, 'detach') else np.asarray(value)
                 arrays = action_views(host_array(bundle.full[0]),
                                       host_array(bundle.policy[0]),
-                                      host_array(bundle.rollout_executed[0]))
+                                      host_array(bundle.full[0])[2:4] if e3 else
+                                      host_array(bundle.rollout_executed[0]), n_exec)
                 wp = action_to_world(arrays[1], np.asarray(pre["position"], np.float32),
                                      np.asarray(pre["velocity"], np.float32), pre["yaw"])
-                candidate = np.vstack((np.asarray(pre["position"], np.float32), wp[:4, POS]))
+                candidate = np.vstack((np.asarray(pre["position"], np.float32), wp[:n_exec, POS]))
                 provenance = asdict(policy.last_provenance)
                 observation, reward, terminated, truncated, context = adapter.step(bundle)
                 ego_update = (policy.after_step(context)
-                              if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4', 'super') else None)
+                              if getattr(policy, 'policy_kind', None) in ('ego', 'fast', 'px4') else None)
                 actual = context["executed_path"]
                 row = {"type": "transition", "decision": decision, "action_seed": seed,
                        "pre_state": pre, "post_state": {"position": env._drone_pos.tolist(),
@@ -195,6 +213,13 @@ def record_episode(job, policy_name, policy, adapter, task, entry, world, bank_h
                        "reward": float(reward), "reward_terms": context["reward_terms"]}
                 if ego_update is not None:
                     row['ego'] = ego_update
+                if e3:
+                    row['executed_action_2x11'] = row.pop('executed_action_4x11')
+                    row['candidate_h2_path'] = row.pop('candidate_h4_path')
+                    row.update(evaluation_protocol='E3', n_exec_steps=2, decision_period_s=.6,
+                               timeout_decision_index=119)
+                if hasattr(policy, 'last_probe_metrics'):
+                    row['probe_metrics'] = policy.last_probe_metrics
                 emit(row)
                 rows.append(row)
                 path.extend(np.asarray(actual)[1:])

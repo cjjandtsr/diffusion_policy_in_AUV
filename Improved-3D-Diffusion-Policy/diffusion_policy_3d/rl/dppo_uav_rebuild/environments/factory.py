@@ -161,6 +161,7 @@ class RouteAEnvironmentFactory:
         reward_config=None,
         terminate_at_space_limits=True,
         space_cost_budget=None,
+        synth_pc_class=SynthPointCloud,
     ):
         self.manifest_path = Path(manifest_path).resolve()
         self.worlds_train_dir = Path(worlds_train_dir).resolve()
@@ -178,6 +179,7 @@ class RouteAEnvironmentFactory:
         self.reward_config = reward_config or {}
         self.terminate_at_space_limits = bool(terminate_at_space_limits)
         self.space_cost_budget = space_cost_budget
+        self.synth_pc_class = synth_pc_class
         self.tasks = self._build_tasks()
         self._environments = {}
 
@@ -205,7 +207,7 @@ class RouteAEnvironmentFactory:
             environment = KinematicUAVEnv(
                 world_id=4,
                 world_pool=[(task.world_id, task.obstacle_json)],
-                synth_pc_factory=lambda path: SynthPointCloud(path, device=self.device),
+                synth_pc_factory=lambda path: self.synth_pc_class(path, device=self.device),
                 rl_action_steps=8,
                 n_exec_steps=4,
                 max_episode_steps=self.max_episode_steps,
@@ -229,5 +231,7 @@ class RouteAEnvironmentFactory:
             )
             self._environments[task.task_id] = environment
         environment = self._environments[task.task_id]
+        if getattr(self.reward, 'version', None) == 'v5':
+            environment.approach_weight = self.reward.approach_weight
         state = self.reward.initial_state(self.reward_config)
         return KinematicAdapter(environment, self.reward, state, self.reward_config)

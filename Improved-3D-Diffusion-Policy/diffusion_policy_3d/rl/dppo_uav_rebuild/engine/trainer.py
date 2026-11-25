@@ -58,6 +58,7 @@ class UpdateMetrics:
     critic_grad_clipped: bool = False
     slice_diagnostics: dict = None
     keep_diagnostics: dict = None
+    f8_keep_diagnostics: dict = None
 
 
 def _grad_norm(parameters):
@@ -90,6 +91,7 @@ class DDPMTrainer:
         self.config = config or TrainerConfig()
         self.counters = TrainerCounters()
         self.keep = None
+        self.f8_keep = None
         self.inert_anchor = None
         self.actor_parameters = tuple(
             parameter for _, parameter in lora_bundle.named_adapter_parameters()
@@ -258,13 +260,14 @@ class DDPMTrainer:
             critic=self.runtime.critic,
             optimizers=(self.actor_optimizer, self.critic_optimizer),
             counters=self.counters,
-            torch_generators=tuple(aux.generator for aux in (self.keep, self.inert_anchor) if aux is not None),
+            torch_generators=tuple(aux.generator for aux in (self.keep, self.f8_keep, self.inert_anchor) if aux is not None),
         )
         lower = float(getattr(self.runtime, "clip_advantage_lower_quantile", 0.0))
         upper = float(getattr(self.runtime, "clip_advantage_upper_quantile", 1.0))
         stats = AdvantageStats.from_tensor(logical_batch.advantages, lower, upper)
         detached = []
         keep_diagnostics = None
+        f8_keep_diagnostics = None
         try:
             with transaction:
                 self.actor_optimizer.zero_grad(set_to_none=True)
@@ -313,6 +316,22 @@ class DDPMTrainer:
                             addition = gradient.detach() * self.keep.coefficient
                             if parameter.grad is None: parameter.grad = addition
                             else: parameter.grad.add_(addition)
+                if update_actor and self.f8_keep is not None and self.f8_keep.coefficient > 0:
+                    from .selective_keep import gradient_vector, gradient_relation
+                    guided_loss = self.f8_keep.loss(self.runtime, device=self.actor_parameters[0].device)
+                    if not torch.isfinite(guided_loss):
+                        raise UpdateRejected('nonfinite F8 keep loss', reason='nonfinite_loss')
+                    guided_gradients = torch.autograd.grad(guided_loss, self.actor_parameters, allow_unused=True)
+                    guided_gradient = gradient_vector(guided_gradients, self.actor_parameters)
+                    f8_keep_diagnostics = gradient_relation(ppo_gradient, guided_gradient, self.f8_keep.coefficient)
+                    f8_keep_diagnostics.update(coefficient=self.f8_keep.coefficient, keep_loss=float(guided_loss.detach()))
+                    if getattr(self, 'record_f9', False):
+                        f8_keep_diagnostics['layers_cosine'] = gradient_relation(keep_gradient, guided_gradient, 1.)['cosine']
+                    for parameter, gradient in zip(self.actor_parameters, guided_gradients):
+                        if gradient is not None:
+                            addition = gradient.detach() * self.f8_keep.coefficient
+                            if parameter.grad is None: parameter.grad = addition
+                            else: parameter.grad.add_(addition)
                 anchor_loss_value = 0.0
                 if update_actor and self.inert_anchor is not None and self.inert_anchor.coefficient > 0:
                     anchor_loss = self.inert_anchor.loss(self.runtime, logical_batch)
@@ -338,6 +357,8 @@ class DDPMTrainer:
                 )
                 if keep_diagnostics is not None:
                     total_loss_value += self.keep.coefficient * keep_diagnostics['keep_loss']
+                if f8_keep_diagnostics is not None:
+                    total_loss_value += self.f8_keep.coefficient * f8_keep_diagnostics['keep_loss']
                 total_loss_value += anchor_loss_value
                 approx_kl = float(kl_values.mean())
                 ratio_mean = float(ratio_values.mean())
@@ -354,6 +375,15 @@ class DDPMTrainer:
                             "logprob_drift": float(torch.cat([e["logprob_drift"] for e in entries]).mean()),
                             "action_variance": float(torch.stack([e["action_variance"] for e in entries]).mean()),
                         }
+                if getattr(self, 'record_f7', False):
+                    k=int(logical_batch.denoising_inds[0])
+                    t=k/(self.runtime.ft_denoising_steps-1)
+                    threshold=self.runtime.clip_ploss_coef_base+(self.runtime.clip_ploss_coef-self.runtime.clip_ploss_coef_base)*(math.exp(self.runtime.clip_ploss_coef_rate*t)-1)/(math.exp(self.runtime.clip_ploss_coef_rate)-1)
+                    slice_diagnostics['full'].update(ratio_min=float(ratio_values.min()),
+                        ratio_max=float(ratio_values.max()),f7_example=dict(denoising_index=k,
+                        mean_clipped_logprob_difference=float(detached[0].logratio[0]),
+                        ratio=float(ratio_values[0]),approx_kl=float(kl_values[0]),
+                        clip_threshold=threshold,clipped=bool(clip_values[0])))
                 if approx_kl > self.config.max_approx_kl:
                     raise UpdateRejected(
                         "official approximate KL exceeded logical gate",
@@ -379,12 +409,18 @@ class DDPMTrainer:
                         recoverable=math.isfinite(critic_norm),
                     )
                 actor_grad_clipped = critic_grad_clipped = False
+                if getattr(self, 'record_f9', False):
+                    f8_keep_diagnostics['total_gradient_before_clip'] = actor_norm
                 if self.config.max_grad_norm > 0:
                     if update_actor:
                         torch.nn.utils.clip_grad_norm_(self.actor_parameters, self.config.max_grad_norm)
                         actor_grad_clipped = actor_norm > self.config.max_grad_norm
                     torch.nn.utils.clip_grad_norm_(self.critic_parameters, self.config.max_grad_norm)
                     critic_grad_clipped = critic_norm > self.config.max_grad_norm
+                if getattr(self, 'record_f9', False):
+                    after_norm = _grad_norm(list(self.actor_parameters))
+                    f8_keep_diagnostics.update(total_gradient_after_clip=after_norm,
+                        clip_multiplier=after_norm / actor_norm if actor_norm else 0.)
                 if update_actor:
                     self.actor_optimizer.step()
                 self.critic_optimizer.step()
@@ -404,6 +440,7 @@ class DDPMTrainer:
                 critic_grad_clipped=critic_grad_clipped,
                 slice_diagnostics=slice_diagnostics,
                 keep_diagnostics=keep_diagnostics,
+                f8_keep_diagnostics=f8_keep_diagnostics,
             )
         except Exception:
             self.counters.rejected_updates += 1

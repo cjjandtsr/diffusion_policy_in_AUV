@@ -46,7 +46,7 @@ class DeploymentPolicy:
         return ActionBundle.from_full(full)
 
 
-def load_deployment_policy(config, checkpoint_path, repo_root: Path):
+def load_deployment_policy(config, checkpoint_path, repo_root: Path, *, evaluation_reproduction=False):
     system = build_system(config, repo_root)
     manifest = Path(config.admission_manifest)
     if not manifest.is_absolute():
@@ -62,5 +62,6 @@ def load_deployment_policy(config, checkpoint_path, repo_root: Path):
         critic_optimizer=system.critic_optimizer,
         counters=system.trainer.counters,
         map_location=system.bc_runtime.device,
+        allow_evaluation_reproduction=evaluation_reproduction,
     )
     return DeploymentPolicy(system=system, checkpoint_header=header)

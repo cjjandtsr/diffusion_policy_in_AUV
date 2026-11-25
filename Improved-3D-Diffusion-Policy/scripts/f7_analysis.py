@@ -120,7 +120,7 @@ def outcome_1m(rows, goal, raw_outcome, radius=1.):
     path=np.concatenate([np.asarray(r['executed_path'],float) for r in rows])
     nearest=float(np.linalg.norm(closest_path_point(path,goal)-goal))
     if raw_outcome=='reached' or nearest<radius:return 'reached'
-    return 'collision' if raw_outcome in ('collision','ground_crash') else 'time_limit'
+    return 'collision' if raw_outcome in ('collision','ground_crash','crash_ground') else 'time_limit'
 
 
 def first_strict_entry(path, goal):

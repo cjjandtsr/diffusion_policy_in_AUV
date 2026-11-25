@@ -101,7 +101,8 @@ class TrainingAudit:
 
     def __init__(self, term_names=None, *, terminate_at_space_limits=None):
         self.term_names = tuple(term_names or REWARD_TERM_NAMES)
-        self.reward_version = ("v3" if "risk_close" in self.term_names else
+        self.reward_version = ("v4" if "goal_potential" in self.term_names else
+                               "v3" if "risk_close" in self.term_names else
                                "v2" if "newbest" in self.term_names else
                                "v17" if "overflight" in self.term_names else "v13")
         self.terminate_at_space_limits = ("overflight" not in self.term_names
@@ -242,6 +243,9 @@ class TrainingAudit:
                 "critic_episode_context": critic_context,
                 "next_critic_episode_context": next_critic_context,
                 "terminal_facts": asdict(facts) if hasattr(facts, "__dataclass_fields__") else None,
+                **({"executed_path": np.asarray(info["executed_path"], dtype=np.float64).tolist()}
+                   if self.reward_version in ("v4", "v5") or 'f7_audit' in info else {}),
+                **({'f7_audit': info['f7_audit']} if 'f7_audit' in info else {}),
                 "reward_terms": numeric_terms,
                 "reward_metrics": {
                     str(key): metric for key, metric in info.get("reward_metrics", {}).items()

@@ -404,7 +404,7 @@ class _E5Policy:
         return ActionBundle.from_full(full)
 
 
-def _build_adapter(system, config, world_id, obstacle_path, role):
+def _build_adapter(system, config, world_id, obstacle_path, role, evaluation_protocol="E2"):
     from omegaconf import OmegaConf
     from diffusion_policy_3d.env.kinematic_uav_env import KinematicUAVEnv
     from diffusion_policy_3d.model.common.synth_pointcloud import SynthPointCloud
@@ -420,8 +420,9 @@ def _build_adapter(system, config, world_id, obstacle_path, role):
             path, device=str(system.bc_runtime.device)
         ),
         rl_action_steps=8,
-        n_exec_steps=4,
-        max_episode_steps=int(config.environment.max_episode_steps),
+        n_exec_steps=2 if evaluation_protocol == "E3" else 4,
+        max_episode_steps=120 if evaluation_protocol == "E3" else int(config.environment.max_episode_steps),
+        evaluation_protocol=evaluation_protocol,
         disturb_enable=False,
         mid_state_init_ratio=0.0,
         curriculum_stage="C2",

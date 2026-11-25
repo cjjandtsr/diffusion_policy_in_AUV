@@ -8,6 +8,14 @@ import torch
 from .official_loss_components import AdvantageStats, compute_official_components
 
 
+def prefix_x0_loss(runtime, x0, cond, weights, timestep, alpha, noise):
+    """Per-prefix loss shared by stochastic training and fixed-grid diagnostics."""
+    alpha = alpha.reshape(-1,1,1).to(x0)
+    xt = alpha.sqrt()*x0 + (1-alpha).sqrt()*noise
+    pred = runtime.actor_ft(xt, timestep, {'state':cond, 'global_cond':cond})
+    return ((pred-x0).square()*weights).sum((1,2))/16.
+
+
 def executed_weights(reason, segment=None, fraction=None):
     weights = torch.zeros(16, 11, dtype=torch.float32)
     if reason == 'none':
@@ -85,8 +93,10 @@ class SelectiveKeep:
             raise ValueError('reference metadata count differs')
         self.tasks = {}
         for i, (task, source, category) in enumerate(zip(bank['task_ids'], bank['sources'], bank['categories'])):
-            if source not in ('bc','u128') or category not in ('both_success','bc_only','rl_only'):
+            if source not in ('bc','u128','guided') or category not in ('both_success','bc_only','rl_only','guided'):
                 raise ValueError('invalid reference source/category')
+            if (source == 'guided') != (category == 'guided'):
+                raise ValueError('guided reference category mismatch')
             if (category == 'bc_only' and source != 'bc') or (category == 'rl_only' and source != 'u128'):
                 raise ValueError('reference source disagrees with paired category')
             self.tasks.setdefault(str(task), {}).setdefault(source, []).append(i)
@@ -117,9 +127,7 @@ class SelectiveKeep:
         noise = torch.randn(x0.shape, generator=self.generator, dtype=x0.dtype).to(device)
         # E5 exposes DDIM-position coefficients, paired with the same time table.
         alpha = runtime.ddim_alphas[-runtime.ft_denoising_steps:].to(device)[positions.to(device)].to(x0.dtype).reshape(-1,1,1)
-        xt = alpha.sqrt()*x0 + (1-alpha).sqrt()*noise
-        pred = runtime.actor_ft(xt, t, {'state':cond, 'global_cond':cond})
-        return (((pred-x0).square()*w).sum((1,2))/16.).mean()
+        return prefix_x0_loss(runtime,x0,cond,w,t,alpha,noise).mean()
 
     def state_dict(self):
         return dict(coefficient=self.coefficient, rng=self.generator.get_state().clone())

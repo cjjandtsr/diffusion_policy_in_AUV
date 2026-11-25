@@ -47,6 +47,7 @@ def restore_checkpoint(
     rollout_buffer=None,
     task_sampler=None,
     map_location="cpu",
+    allow_evaluation_reproduction=False,
 ):
     raw_root = Path(path)
     if raw_root.is_symlink():
@@ -73,6 +74,10 @@ def restore_checkpoint(
 
     with secure_open_under(root, "state.pt", max_bytes=64 * 1024 * 1024) as stream:
         state = torch.load(stream, map_location=map_location, weights_only=True)
+    if state.get('evaluation_only') and not allow_evaluation_reproduction:
+        raise ValueError('evaluation-only migration copy cannot be restored for training or deployment')
+    if allow_evaluation_reproduction and state.get('evaluation_only', {}).get('purpose') != 'F6_G_A6_reproduction':
+        raise ValueError('evaluation reproduction requires a marked migration copy')
     lora_bundle.load_adapter_state_dict(state["lora"])
     critic.load_state_dict(state["critic"], strict=True)
     actor_optimizer.load_state_dict(state["actor_optimizer"])
