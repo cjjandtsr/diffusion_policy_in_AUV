@@ -133,3 +133,26 @@ S0 两行与 Claude 的独立复算（dev 281/138/1、val 61/14/5）逐项一致
 
 第 3 步按新口径只剩 dev420（S1、S4）+ val20（S1、S4），预计约 4.2 h（dev420 两臂约 3.5 h、val20 两臂约 0.7 h）。
 收到“放行”后开始，逐臂落 `runs/<label>_<split>/` 并用同一 `collect()` 生成 `conditions.csv`/`summary.json`。
+
+## 7. 附：论文 177/186 任务口径的运动学结果来自哪里（顺带查，只报位置）
+
+第 0 步说“P6/BC 在 186 银行上没有回合”，指的是**论文规划器 186 任务银行**（`paper_186_v1_0_run01/input/bank.json`，
+`d34c10d6…`）。论文正文的“186 任务”运动学表是另一个池子，由三份银行拼成，**P6/BC 在其中是有回合的**：
+
+| 组件 | 任务数 × 重复 = 回合 | 运行（P6/BC 原迹） | 银行 content_hash |
+|---|---|---|---|
+| test12 | 48 × 5 = 240 | `program/results/routea_paper_g3_e2_run01/eval_test/{bc,P2,P4,P6}`（另有 `routea_test12_independent_run02`） | `b3a872bb…` |
+| retained_run02 | 60 × 5 = 300 | `program/results/routea_paper_c5_run02/full/{bc,P2,P4,P6}` | `0b64e3ed…` |
+| added（ext_v2） | 91 × 5 = 455 | `program/results/routea_final_existing_e2_run01/full/added/{bc,P2,P3,P4,P6}`（`…run04` 是 bc 的重跑，`…run05` 是 bc 的 33 任务部分批） | `d65382bf…`（extension_v2 `b45d6cf7…`） |
+
+- 三者合计 **199 任务 / 995 回合**（Claude 在 `routea_final_Oprime_review/routea_final_Oprime_Claude_review.json` 复核过
+  `component_counts = {test12:240, retained_run02:300, added:455}`、分类 59/70/70、隔离违规 0）。
+- 论文侧聚合脚本：`program/paper_186_geometry_20261110_v1_0/paper_snapshot/研究报告/analysis_20261108/kin_task_level.py`
+  （输入 `codex_details/tasks_199.csv` + 一份 `rows.json`），输出 `oprime_task/main.csv`（**186 任务**：56/64/57→57/67/62）与
+  `main_05m.csv`。
+- 199 → 186 的 13 个去除任务写在同目录 `oprime/exclusions.json`（9 个 cul_de_sac 双失败 + 4 个 yaw 场景几何与训练重合）。
+  **177** 是更早一版口径（F3 配图卡：56/64/57），对应 199 去掉 22 个任务；本地没有单独的 177 运行，
+  它是同一批回合的不同去除规则聚合出来的，不是另一次评价。
+
+因此“论文 177 任务上的被挡结果（BC 35、P6 55）”的底层原迹就是上表三处，聚合中间产物在
+`program/paper_186_geometry_20261110_v1_0/paper_snapshot/研究报告/analysis_20261108/oprime_task/`。
