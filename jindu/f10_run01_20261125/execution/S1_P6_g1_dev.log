@@ -1,0 +1,471 @@
+[iDP3Encoder] point cloud shape: [4096, 6]
+[iDP3Encoder] state shape: [9]
+[DP3Encoder] output dim: 192
+[DiffusionPointcloudPolicy] use_pc_color: False
+[DiffusionPointcloudPolicy] pointnet_type: multi_stage_pointnet
+----------------------------------
+Class name: DiffusionPointcloudPolicy
+  Number of parameters: 71.5233M
+   _dummy_variable: 0.0000M (0.00%)
+   obs_encoder: 0.2686M (0.38%)
+   model: 71.2547M (99.62%)
+   mask_generator: 0.0000M (0.00%)
+----------------------------------
+F10_RUNTIME {"type": "E5PPODiffusion", "module": "uav_idp3.e5_runtime", "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py", "source_sha256": "8bd5dd3ca629755f2e586b81556b284e603b2ed74f4d94d5c83a791976fc0910", "actual_use_base_policy": false, "state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43", "native_runtime_identity": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f", "overlays": {"diffusion_policy_3d.env.reward_v2_support.environment": {"file": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/env/reward_v2_support/environment.py", "sha256": "58f078612798cc189aa48afd07f224d57f9a73c70e6eb00d3d85a957cd7ab789"}, "diffusion_policy_3d.env.kinematic_uav_env": {"file": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/diffusion_policy_3d/env/kinematic_uav_env.py", "sha256": "7290901e0314c98bef4b9bf4b5b4c9ab5b3f671452a843b4542a49b241a8d3b7"}, "scripts.evaluate_dppo_uav_formal_endpoint": {"file": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/evaluate_dppo_uav_formal_endpoint.py", "sha256": "9a7f2edf1a00145a70a86b8b230a1171f53450ace7d27e9c19cae6b4e675cbd6"}, "scripts.routea_paired_support.core": {"file": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/core.py", "sha256": "af72cee2d58d5d2171d45d4f78ff68cb7f7aadcf569ec1c1d0282a6bef65ff5c"}, "scripts.routea_paired_support.runtime": {"file": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/runtime.py", "sha256": "96170a2da4c65ab8aa2d292917d7e5740468e933ed2458325649352b43234e0f"}, "scripts.routea_paired_support.episodes": {"file": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/scripts/routea_paired_support/episodes.py", "sha256": "7653151d79f949d423424edb0a320f0e0947930c5a97a1aa1b17f7bf1bb9565e"}}, "bank_sha256": "1a6388136ea329f680c7055227f915a25ee25417df752a2cb7d85e30e57c3783", "label": "P6_g1", "policy": "P6", "guidance": {"type": "E5PPODiffusion", "module": "uav_idp3.e5_runtime", "file": "/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py", "source_sha256": "7ab594d7c3f22a2127219b1b62c665449427d552bedb92f3b3b4378e0dc8d70c", "original_function_sha256": "ef62e5dacd010636db609da083bf5f831890d9e9fa13147f51e0cb053e0d21f9", "injected_function_sha256": "c3d8bcb0e26218c43cf9ebb1aa67d39781a7b6250782be7920aed30ed9dc6e29", "wrapper_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347", "recalculate_epsilon_after_clip": false, "eps_clip_value": null}, "setting": {"d_safe": 0.6, "eta": 0.4, "M": 4, "consistency": 0}, "split": "dev", "limit": null, "evaluation_sources": {"diffusion_policy_3d/env/reward_v2_support/environment.py": "58f078612798cc189aa48afd07f224d57f9a73c70e6eb00d3d85a957cd7ab789", "diffusion_policy_3d/env/kinematic_uav_env.py": "7290901e0314c98bef4b9bf4b5b4c9ab5b3f671452a843b4542a49b241a8d3b7", "scripts/evaluate_dppo_uav_formal_endpoint.py": "9a7f2edf1a00145a70a86b8b230a1171f53450ace7d27e9c19cae6b4e675cbd6", "scripts/routea_paired_support/core.py": "af72cee2d58d5d2171d45d4f78ff68cb7f7aadcf569ec1c1d0282a6bef65ff5c", "scripts/routea_paired_support/runtime.py": "96170a2da4c65ab8aa2d292917d7e5740468e933ed2458325649352b43234e0f", "scripts/routea_paired_support/episodes.py": "7653151d79f949d423424edb0a320f0e0947930c5a97a1aa1b17f7bf1bb9565e", "scripts/run_routea_f10_eval.py": "f54adbbe91da771b5ea0e236016b2aa7b75af2fa5d968f710f9420fa683f908b", "scripts/routea_denoising_guidance.py": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347", "scripts/run_routea_xk_evaluation.py": "b44c16b886481feece68aa8d9ae3806582cadc582e74ff1d7f090b18e8a23f2b", "scripts/f7_analysis.py": "61f8cbcc6fc03143b1889d71f86e3bd65526ab8905ab8da4ecdb9a9b7801b017", "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/contracts.py": "6c1a8bd4047aed439a203d9944cdf98f23732f4b3d0defdfcf3e03c0e5c5d3ea", "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/f9_online.py": "4ac2eb3799173bd487227390ab68820cdb0b3c31b4772b2853850d6b86deaca2", "diffusion_policy_3d/env/traj_utils.py": "803420637841320853324661ae0736c58f4dbacd7b6601b3f57ea18a2987193c", "diffusion_policy_3d/env/reward_v2_support/first_event.py": "2f979d885d1feef5acd5f1c7818d624bfff637bb0981053192a989df90d0bc15", "third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py": "bade7d2a67fe8b4a604ff1387a294d42a176af2a458c2da450e497c61b9f4254", "third_party/dppo_official_cc7234a/model/diffusion/diffusion_vpg.py": "8f495b48d98180f1932161f188c014c40f3b408975c512794bb1d5975575aac4"}, "sampling_protocol": {"min_sampling_denoising_std": [0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612], "min_logprob_denoising_std": [0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612, 0.10000000149011612], "clip_protocol": {"native": 1.0, "override": 2.0}, "sampling_mode": "deterministic"}, "bound_forward": {"file": "/home/cjj/AUV/Improved-3D-Diffusion-Policy-main/Improved-3D-Diffusion-Policy/third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py", "sha256": "bade7d2a67fe8b4a604ff1387a294d42a176af2a458c2da450e497c61b9f4254"}}
+F10_EPISODE P6_g1_dev 1
+F10_EPISODE P6_g1_dev 2
+F10_EPISODE P6_g1_dev 3
+F10_EPISODE P6_g1_dev 4
+F10_EPISODE P6_g1_dev 5
+F10_EPISODE P6_g1_dev 6
+F10_EPISODE P6_g1_dev 7
+F10_EPISODE P6_g1_dev 8
+F10_EPISODE P6_g1_dev 9
+F10_EPISODE P6_g1_dev 10
+F10_EPISODE P6_g1_dev 11
+F10_EPISODE P6_g1_dev 12
+F10_EPISODE P6_g1_dev 13
+F10_EPISODE P6_g1_dev 14
+F10_EPISODE P6_g1_dev 15
+F10_EPISODE P6_g1_dev 16
+F10_EPISODE P6_g1_dev 17
+F10_EPISODE P6_g1_dev 18
+F10_EPISODE P6_g1_dev 19
+F10_EPISODE P6_g1_dev 20
+F10_EPISODE P6_g1_dev 21
+F10_EPISODE P6_g1_dev 22
+F10_EPISODE P6_g1_dev 23
+F10_EPISODE P6_g1_dev 24
+F10_EPISODE P6_g1_dev 25
+F10_EPISODE P6_g1_dev 26
+F10_EPISODE P6_g1_dev 27
+F10_EPISODE P6_g1_dev 28
+F10_EPISODE P6_g1_dev 29
+F10_EPISODE P6_g1_dev 30
+F10_EPISODE P6_g1_dev 31
+F10_EPISODE P6_g1_dev 32
+F10_EPISODE P6_g1_dev 33
+F10_EPISODE P6_g1_dev 34
+F10_EPISODE P6_g1_dev 35
+F10_EPISODE P6_g1_dev 36
+F10_EPISODE P6_g1_dev 37
+F10_EPISODE P6_g1_dev 38
+F10_EPISODE P6_g1_dev 39
+F10_EPISODE P6_g1_dev 40
+F10_EPISODE P6_g1_dev 41
+F10_EPISODE P6_g1_dev 42
+F10_EPISODE P6_g1_dev 43
+F10_EPISODE P6_g1_dev 44
+F10_EPISODE P6_g1_dev 45
+F10_EPISODE P6_g1_dev 46
+F10_EPISODE P6_g1_dev 47
+F10_EPISODE P6_g1_dev 48
+F10_EPISODE P6_g1_dev 49
+F10_EPISODE P6_g1_dev 50
+F10_EPISODE P6_g1_dev 51
+F10_EPISODE P6_g1_dev 52
+F10_EPISODE P6_g1_dev 53
+F10_EPISODE P6_g1_dev 54
+F10_EPISODE P6_g1_dev 55
+F10_EPISODE P6_g1_dev 56
+F10_EPISODE P6_g1_dev 57
+F10_EPISODE P6_g1_dev 58
+F10_EPISODE P6_g1_dev 59
+F10_EPISODE P6_g1_dev 60
+F10_EPISODE P6_g1_dev 61
+F10_EPISODE P6_g1_dev 62
+F10_EPISODE P6_g1_dev 63
+F10_EPISODE P6_g1_dev 64
+F10_EPISODE P6_g1_dev 65
+F10_EPISODE P6_g1_dev 66
+F10_EPISODE P6_g1_dev 67
+F10_EPISODE P6_g1_dev 68
+F10_EPISODE P6_g1_dev 69
+F10_EPISODE P6_g1_dev 70
+F10_EPISODE P6_g1_dev 71
+F10_EPISODE P6_g1_dev 72
+F10_EPISODE P6_g1_dev 73
+F10_EPISODE P6_g1_dev 74
+F10_EPISODE P6_g1_dev 75
+F10_EPISODE P6_g1_dev 76
+F10_EPISODE P6_g1_dev 77
+F10_EPISODE P6_g1_dev 78
+F10_EPISODE P6_g1_dev 79
+F10_EPISODE P6_g1_dev 80
+F10_EPISODE P6_g1_dev 81
+F10_EPISODE P6_g1_dev 82
+F10_EPISODE P6_g1_dev 83
+F10_EPISODE P6_g1_dev 84
+F10_EPISODE P6_g1_dev 85
+F10_EPISODE P6_g1_dev 86
+F10_EPISODE P6_g1_dev 87
+F10_EPISODE P6_g1_dev 88
+F10_EPISODE P6_g1_dev 89
+F10_EPISODE P6_g1_dev 90
+F10_EPISODE P6_g1_dev 91
+F10_EPISODE P6_g1_dev 92
+F10_EPISODE P6_g1_dev 93
+F10_EPISODE P6_g1_dev 94
+F10_EPISODE P6_g1_dev 95
+F10_EPISODE P6_g1_dev 96
+F10_EPISODE P6_g1_dev 97
+F10_EPISODE P6_g1_dev 98
+F10_EPISODE P6_g1_dev 99
+F10_EPISODE P6_g1_dev 100
+F10_EPISODE P6_g1_dev 101
+F10_EPISODE P6_g1_dev 102
+F10_EPISODE P6_g1_dev 103
+F10_EPISODE P6_g1_dev 104
+F10_EPISODE P6_g1_dev 105
+F10_EPISODE P6_g1_dev 106
+F10_EPISODE P6_g1_dev 107
+F10_EPISODE P6_g1_dev 108
+F10_EPISODE P6_g1_dev 109
+F10_EPISODE P6_g1_dev 110
+F10_EPISODE P6_g1_dev 111
+F10_EPISODE P6_g1_dev 112
+F10_EPISODE P6_g1_dev 113
+F10_EPISODE P6_g1_dev 114
+F10_EPISODE P6_g1_dev 115
+F10_EPISODE P6_g1_dev 116
+F10_EPISODE P6_g1_dev 117
+F10_EPISODE P6_g1_dev 118
+F10_EPISODE P6_g1_dev 119
+F10_EPISODE P6_g1_dev 120
+F10_EPISODE P6_g1_dev 121
+F10_EPISODE P6_g1_dev 122
+F10_EPISODE P6_g1_dev 123
+F10_EPISODE P6_g1_dev 124
+F10_EPISODE P6_g1_dev 125
+F10_EPISODE P6_g1_dev 126
+F10_EPISODE P6_g1_dev 127
+F10_EPISODE P6_g1_dev 128
+F10_EPISODE P6_g1_dev 129
+F10_EPISODE P6_g1_dev 130
+F10_EPISODE P6_g1_dev 131
+F10_EPISODE P6_g1_dev 132
+F10_EPISODE P6_g1_dev 133
+F10_EPISODE P6_g1_dev 134
+F10_EPISODE P6_g1_dev 135
+F10_EPISODE P6_g1_dev 136
+F10_EPISODE P6_g1_dev 137
+F10_EPISODE P6_g1_dev 138
+F10_EPISODE P6_g1_dev 139
+F10_EPISODE P6_g1_dev 140
+F10_EPISODE P6_g1_dev 141
+F10_EPISODE P6_g1_dev 142
+F10_EPISODE P6_g1_dev 143
+F10_EPISODE P6_g1_dev 144
+F10_EPISODE P6_g1_dev 145
+F10_EPISODE P6_g1_dev 146
+F10_EPISODE P6_g1_dev 147
+F10_EPISODE P6_g1_dev 148
+F10_EPISODE P6_g1_dev 149
+F10_EPISODE P6_g1_dev 150
+F10_EPISODE P6_g1_dev 151
+F10_EPISODE P6_g1_dev 152
+F10_EPISODE P6_g1_dev 153
+F10_EPISODE P6_g1_dev 154
+F10_EPISODE P6_g1_dev 155
+F10_EPISODE P6_g1_dev 156
+F10_EPISODE P6_g1_dev 157
+F10_EPISODE P6_g1_dev 158
+F10_EPISODE P6_g1_dev 159
+F10_EPISODE P6_g1_dev 160
+F10_EPISODE P6_g1_dev 161
+F10_EPISODE P6_g1_dev 162
+F10_EPISODE P6_g1_dev 163
+F10_EPISODE P6_g1_dev 164
+F10_EPISODE P6_g1_dev 165
+F10_EPISODE P6_g1_dev 166
+F10_EPISODE P6_g1_dev 167
+F10_EPISODE P6_g1_dev 168
+F10_EPISODE P6_g1_dev 169
+F10_EPISODE P6_g1_dev 170
+F10_EPISODE P6_g1_dev 171
+F10_EPISODE P6_g1_dev 172
+F10_EPISODE P6_g1_dev 173
+F10_EPISODE P6_g1_dev 174
+F10_EPISODE P6_g1_dev 175
+F10_EPISODE P6_g1_dev 176
+F10_EPISODE P6_g1_dev 177
+F10_EPISODE P6_g1_dev 178
+F10_EPISODE P6_g1_dev 179
+F10_EPISODE P6_g1_dev 180
+F10_EPISODE P6_g1_dev 181
+F10_EPISODE P6_g1_dev 182
+F10_EPISODE P6_g1_dev 183
+F10_EPISODE P6_g1_dev 184
+F10_EPISODE P6_g1_dev 185
+F10_EPISODE P6_g1_dev 186
+F10_EPISODE P6_g1_dev 187
+F10_EPISODE P6_g1_dev 188
+F10_EPISODE P6_g1_dev 189
+F10_EPISODE P6_g1_dev 190
+F10_EPISODE P6_g1_dev 191
+F10_EPISODE P6_g1_dev 192
+F10_EPISODE P6_g1_dev 193
+F10_EPISODE P6_g1_dev 194
+F10_EPISODE P6_g1_dev 195
+F10_EPISODE P6_g1_dev 196
+F10_EPISODE P6_g1_dev 197
+F10_EPISODE P6_g1_dev 198
+F10_EPISODE P6_g1_dev 199
+F10_EPISODE P6_g1_dev 200
+F10_EPISODE P6_g1_dev 201
+F10_EPISODE P6_g1_dev 202
+F10_EPISODE P6_g1_dev 203
+F10_EPISODE P6_g1_dev 204
+F10_EPISODE P6_g1_dev 205
+F10_EPISODE P6_g1_dev 206
+F10_EPISODE P6_g1_dev 207
+F10_EPISODE P6_g1_dev 208
+F10_EPISODE P6_g1_dev 209
+F10_EPISODE P6_g1_dev 210
+F10_EPISODE P6_g1_dev 211
+F10_EPISODE P6_g1_dev 212
+F10_EPISODE P6_g1_dev 213
+F10_EPISODE P6_g1_dev 214
+F10_EPISODE P6_g1_dev 215
+F10_EPISODE P6_g1_dev 216
+F10_EPISODE P6_g1_dev 217
+F10_EPISODE P6_g1_dev 218
+F10_EPISODE P6_g1_dev 219
+F10_EPISODE P6_g1_dev 220
+F10_EPISODE P6_g1_dev 221
+F10_EPISODE P6_g1_dev 222
+F10_EPISODE P6_g1_dev 223
+F10_EPISODE P6_g1_dev 224
+F10_EPISODE P6_g1_dev 225
+F10_EPISODE P6_g1_dev 226
+F10_EPISODE P6_g1_dev 227
+F10_EPISODE P6_g1_dev 228
+F10_EPISODE P6_g1_dev 229
+F10_EPISODE P6_g1_dev 230
+F10_EPISODE P6_g1_dev 231
+F10_EPISODE P6_g1_dev 232
+F10_EPISODE P6_g1_dev 233
+F10_EPISODE P6_g1_dev 234
+F10_EPISODE P6_g1_dev 235
+F10_EPISODE P6_g1_dev 236
+F10_EPISODE P6_g1_dev 237
+F10_EPISODE P6_g1_dev 238
+F10_EPISODE P6_g1_dev 239
+F10_EPISODE P6_g1_dev 240
+F10_EPISODE P6_g1_dev 241
+F10_EPISODE P6_g1_dev 242
+F10_EPISODE P6_g1_dev 243
+F10_EPISODE P6_g1_dev 244
+F10_EPISODE P6_g1_dev 245
+F10_EPISODE P6_g1_dev 246
+F10_EPISODE P6_g1_dev 247
+F10_EPISODE P6_g1_dev 248
+F10_EPISODE P6_g1_dev 249
+F10_EPISODE P6_g1_dev 250
+F10_EPISODE P6_g1_dev 251
+F10_EPISODE P6_g1_dev 252
+F10_EPISODE P6_g1_dev 253
+F10_EPISODE P6_g1_dev 254
+F10_EPISODE P6_g1_dev 255
+F10_EPISODE P6_g1_dev 256
+F10_EPISODE P6_g1_dev 257
+F10_EPISODE P6_g1_dev 258
+F10_EPISODE P6_g1_dev 259
+F10_EPISODE P6_g1_dev 260
+F10_EPISODE P6_g1_dev 261
+F10_EPISODE P6_g1_dev 262
+F10_EPISODE P6_g1_dev 263
+F10_EPISODE P6_g1_dev 264
+F10_EPISODE P6_g1_dev 265
+F10_EPISODE P6_g1_dev 266
+F10_EPISODE P6_g1_dev 267
+F10_EPISODE P6_g1_dev 268
+F10_EPISODE P6_g1_dev 269
+F10_EPISODE P6_g1_dev 270
+F10_EPISODE P6_g1_dev 271
+F10_EPISODE P6_g1_dev 272
+F10_EPISODE P6_g1_dev 273
+F10_EPISODE P6_g1_dev 274
+F10_EPISODE P6_g1_dev 275
+F10_EPISODE P6_g1_dev 276
+F10_EPISODE P6_g1_dev 277
+F10_EPISODE P6_g1_dev 278
+F10_EPISODE P6_g1_dev 279
+F10_EPISODE P6_g1_dev 280
+F10_EPISODE P6_g1_dev 281
+F10_EPISODE P6_g1_dev 282
+F10_EPISODE P6_g1_dev 283
+F10_EPISODE P6_g1_dev 284
+F10_EPISODE P6_g1_dev 285
+F10_EPISODE P6_g1_dev 286
+F10_EPISODE P6_g1_dev 287
+F10_EPISODE P6_g1_dev 288
+F10_EPISODE P6_g1_dev 289
+F10_EPISODE P6_g1_dev 290
+F10_EPISODE P6_g1_dev 291
+F10_EPISODE P6_g1_dev 292
+F10_EPISODE P6_g1_dev 293
+F10_EPISODE P6_g1_dev 294
+F10_EPISODE P6_g1_dev 295
+F10_EPISODE P6_g1_dev 296
+F10_EPISODE P6_g1_dev 297
+F10_EPISODE P6_g1_dev 298
+F10_EPISODE P6_g1_dev 299
+F10_EPISODE P6_g1_dev 300
+F10_EPISODE P6_g1_dev 301
+F10_EPISODE P6_g1_dev 302
+F10_EPISODE P6_g1_dev 303
+F10_EPISODE P6_g1_dev 304
+F10_EPISODE P6_g1_dev 305
+F10_EPISODE P6_g1_dev 306
+F10_EPISODE P6_g1_dev 307
+F10_EPISODE P6_g1_dev 308
+F10_EPISODE P6_g1_dev 309
+F10_EPISODE P6_g1_dev 310
+F10_EPISODE P6_g1_dev 311
+F10_EPISODE P6_g1_dev 312
+F10_EPISODE P6_g1_dev 313
+F10_EPISODE P6_g1_dev 314
+F10_EPISODE P6_g1_dev 315
+F10_EPISODE P6_g1_dev 316
+F10_EPISODE P6_g1_dev 317
+F10_EPISODE P6_g1_dev 318
+F10_EPISODE P6_g1_dev 319
+F10_EPISODE P6_g1_dev 320
+F10_EPISODE P6_g1_dev 321
+F10_EPISODE P6_g1_dev 322
+F10_EPISODE P6_g1_dev 323
+F10_EPISODE P6_g1_dev 324
+F10_EPISODE P6_g1_dev 325
+F10_EPISODE P6_g1_dev 326
+F10_EPISODE P6_g1_dev 327
+F10_EPISODE P6_g1_dev 328
+F10_EPISODE P6_g1_dev 329
+F10_EPISODE P6_g1_dev 330
+F10_EPISODE P6_g1_dev 331
+F10_EPISODE P6_g1_dev 332
+F10_EPISODE P6_g1_dev 333
+F10_EPISODE P6_g1_dev 334
+F10_EPISODE P6_g1_dev 335
+F10_EPISODE P6_g1_dev 336
+F10_EPISODE P6_g1_dev 337
+F10_EPISODE P6_g1_dev 338
+F10_EPISODE P6_g1_dev 339
+F10_EPISODE P6_g1_dev 340
+F10_EPISODE P6_g1_dev 341
+F10_EPISODE P6_g1_dev 342
+F10_EPISODE P6_g1_dev 343
+F10_EPISODE P6_g1_dev 344
+F10_EPISODE P6_g1_dev 345
+F10_EPISODE P6_g1_dev 346
+F10_EPISODE P6_g1_dev 347
+F10_EPISODE P6_g1_dev 348
+F10_EPISODE P6_g1_dev 349
+F10_EPISODE P6_g1_dev 350
+F10_EPISODE P6_g1_dev 351
+F10_EPISODE P6_g1_dev 352
+F10_EPISODE P6_g1_dev 353
+F10_EPISODE P6_g1_dev 354
+F10_EPISODE P6_g1_dev 355
+F10_EPISODE P6_g1_dev 356
+F10_EPISODE P6_g1_dev 357
+F10_EPISODE P6_g1_dev 358
+F10_EPISODE P6_g1_dev 359
+F10_EPISODE P6_g1_dev 360
+F10_EPISODE P6_g1_dev 361
+F10_EPISODE P6_g1_dev 362
+F10_EPISODE P6_g1_dev 363
+F10_EPISODE P6_g1_dev 364
+F10_EPISODE P6_g1_dev 365
+F10_EPISODE P6_g1_dev 366
+F10_EPISODE P6_g1_dev 367
+F10_EPISODE P6_g1_dev 368
+F10_EPISODE P6_g1_dev 369
+F10_EPISODE P6_g1_dev 370
+F10_EPISODE P6_g1_dev 371
+F10_EPISODE P6_g1_dev 372
+F10_EPISODE P6_g1_dev 373
+F10_EPISODE P6_g1_dev 374
+F10_EPISODE P6_g1_dev 375
+F10_EPISODE P6_g1_dev 376
+F10_EPISODE P6_g1_dev 377
+F10_EPISODE P6_g1_dev 378
+F10_EPISODE P6_g1_dev 379
+F10_EPISODE P6_g1_dev 380
+F10_EPISODE P6_g1_dev 381
+F10_EPISODE P6_g1_dev 382
+F10_EPISODE P6_g1_dev 383
+F10_EPISODE P6_g1_dev 384
+F10_EPISODE P6_g1_dev 385
+F10_EPISODE P6_g1_dev 386
+F10_EPISODE P6_g1_dev 387
+F10_EPISODE P6_g1_dev 388
+F10_EPISODE P6_g1_dev 389
+F10_EPISODE P6_g1_dev 390
+F10_EPISODE P6_g1_dev 391
+F10_EPISODE P6_g1_dev 392
+F10_EPISODE P6_g1_dev 393
+F10_EPISODE P6_g1_dev 394
+F10_EPISODE P6_g1_dev 395
+F10_EPISODE P6_g1_dev 396
+F10_EPISODE P6_g1_dev 397
+F10_EPISODE P6_g1_dev 398
+F10_EPISODE P6_g1_dev 399
+F10_EPISODE P6_g1_dev 400
+F10_EPISODE P6_g1_dev 401
+F10_EPISODE P6_g1_dev 402
+F10_EPISODE P6_g1_dev 403
+F10_EPISODE P6_g1_dev 404
+F10_EPISODE P6_g1_dev 405
+F10_EPISODE P6_g1_dev 406
+F10_EPISODE P6_g1_dev 407
+F10_EPISODE P6_g1_dev 408
+F10_EPISODE P6_g1_dev 409
+F10_EPISODE P6_g1_dev 410
+F10_EPISODE P6_g1_dev 411
+F10_EPISODE P6_g1_dev 412
+F10_EPISODE P6_g1_dev 413
+F10_EPISODE P6_g1_dev 414
+F10_EPISODE P6_g1_dev 415
+F10_EPISODE P6_g1_dev 416
+F10_EPISODE P6_g1_dev 417
+F10_EPISODE P6_g1_dev 418
+F10_EPISODE P6_g1_dev 419
+F10_EPISODE P6_g1_dev 420
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.2202897 -2.2037575  4.0814466], yaw=2.01); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.04926658 -4.0376086   2.4411726 ], yaw=2.02); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.807566   1.8679024  3.280047 ], yaw=-1.26); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[3.3615902e-03 1.0823100e+00 3.4373636e+00], yaw=-0.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[2.9540730e-03 1.0000952e+00 3.4351063e+00], yaw=-0.68); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-2.0383728  2.4872506  3.6708486], yaw=-1.05); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.0157359 -1.8596454  3.2255557], yaw=2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.0132318 -1.85       3.2256486], yaw=2.23); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 5.015924  -1.866722   3.0693276], yaw=2.11); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[ 3.24946   -1.6        2.7588992], yaw=0.90); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-0.8262422 -1.0086892  3.92575  ], yaw=-1.28); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.3865266  3.0849857  2.8690743], yaw=-2.00); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-1.9638281 -1.7667403  1.6780779], yaw=0.40); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-6.3431196  1.8675628  2.6245515], yaw=-2.12); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.383615   1.1109084  1.6079292], yaw=1.80); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.5614605  1.1032745  1.6069269], yaw=1.81); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-4.9143867  1.117358   1.6052049], yaw=1.83); using max-range censoring
+  warnings.warn(
+/home/cjj/AUV/program/results/routea_test12_independent_run02/native_a2/diffusion_policy_3d/model/common/synth_pointcloud.py:496: RuntimeWarning: synth: no ray hit (pos=[-5.32055    1.1284919  1.9470102], yaw=1.87); using max-range censoring
+  warnings.warn(
+F10_SUMMARY {"conditions": 420, "outcome_1m": {"reached": 304, "collision": 114, "time_limit": 2}, "raw_done_reason": {"reached": 221, "time_limit": 85, "collision": 114}}
