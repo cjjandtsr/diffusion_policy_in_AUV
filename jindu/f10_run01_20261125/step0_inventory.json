@@ -1,0 +1,343 @@
+{
+ "schema": "f10_step0_inventory_v1",
+ "date": "2026-11-25",
+ "guide": "F10 去噪内碰撞引导系统评价 WSL 执行指引 v1_0",
+ "verdict": "inventory_only_no_verdict",
+ "stop_conditions_triggered": false,
+ "code_base": {
+  "branch": "f9-code-a2-20261124",
+  "commit": "9801780514ac7cf7f798c464bb0df6e776ee35a2",
+  "guidance_sha256": "8fa3b263c6d6ae830405af702c8dbda2448ad4979af55487b999a75937b31347",
+  "probe_entry_sha256": "c5a22b98bc621d1ae524916e2f5443bc20edd23f7947dfc5e4a008d7f758938b",
+  "xk_wrapper_sha256": "b44c16b886481feece68aa8d9ae3806582cadc582e74ff1d7f090b18e8a23f2b",
+  "checkpoint_state_sha256": "a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43",
+  "native_source_root": "program/results/routea_test12_independent_run02/native_a2",
+  "runtime_identity_hash": "d987235a0cbb5ad395bbd6e7979bdb8d7e0cff1303b0611cb462c7d554bbd61f"
+ },
+ "g0_probe": {
+  "run": "program/results/routea_probe_e3g_run01{,_delivery}/routea_probe_e3g_run01",
+  "entry": "scripts/run_routea_e3g_probe.py",
+  "entry_sha256": "c5a22b98bc621d1ae524916e2f5443bc20edd23f7947dfc5e4a008d7f758938b",
+  "guidance": "scripts/routea_denoising_guidance.py",
+  "guidance_sha256": "41c3d47cb9d69daaed715ecf9ff50f124ca8a69ffb13f658070ac1e81b4071b8",
+  "identical_to_f9_branch": {
+   "entry": true,
+   "guidance": false
+  },
+  "guidance_diff": "only parameterisation of d_safe (default .6) and updates (default 2); probe constants unchanged",
+  "regression_pass": {
+   "conditions": 2,
+   "comparison": "whole JSONL SHA256",
+   "passed": true
+  },
+  "settings": {
+   "G0": {
+    "d_safe": 0.6,
+    "eta": 0.2,
+    "M": 2,
+    "consistency": 0
+   }
+  }
+ },
+ "settings": {
+  "g1": {
+   "d_safe": 0.6,
+   "eta": 0.4,
+   "M": 4,
+   "consistency": 0,
+   "source": [
+    "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/f9_online.py:138",
+    "program/results/routea_f9_run01/selection.json"
+   ]
+  },
+  "none": "#E2"
+ },
+ "banks": {
+  "dev420": {
+   "path": "program/results/routea_p6_u256_e2_dev420_run01_restored/bank.json",
+   "sha256": "1a6388136ea329f680c7055227f915a25ee25417df752a2cb7d85e30e57c3783",
+   "content_hash": "863bf1fb2a41c991b73cc92493aa7d8732c711b4e48c6a8d063bd2dd8c59996a",
+   "tasks": 84,
+   "worlds": 21,
+   "episodes": 420,
+   "schema": "routea_train_domain_paired_dev_v1"
+  },
+  "val20": {
+   "path": "program/results/routea_p6_u256_e2_val20_run01/bank.json",
+   "sha256": "3dbe2fcb2a237eb7ecb35a4e4c93c59f2a972ce313fdf4fe43eba30c3913ad66",
+   "content_hash": "a2b28e0cf2ca32ee8a987d0f1a03f94d2783dea57fee1bd096fdb8e5ca542017",
+   "tasks": 80,
+   "worlds": 20,
+   "episodes": 80,
+   "schema": "routea_fixed_split_v1",
+   "repeats": 1
+  },
+  "paper186": {
+   "path": "paper_186_v1_0_run01/input/bank.json (inside program/results/paper_186_v1_0_run01.tar.zst)",
+   "sha256": "90611f88987c6859b9aed0eacc942f34e68ba4b77335d32d22a941b2c62f1a62",
+   "content_hash": "d34c10d660c47fe609ebd83ce271a18e41f2d76918187ced049a583e5aa4742b",
+   "tasks": 186,
+   "worlds": 40,
+   "episodes": 930,
+   "schema": "paper_186_frozen_v1"
+  },
+  "test12": {
+   "path": "program/results/routea_test12_independent_run02/bank/bank.json",
+   "sha256": "72c336e98d3e112f490ef8c5927580c430b73504e3cb62926133aa8a2d9d78d7",
+   "content_hash": "b3a872bbe9683ea952d6767a8da9a20cb12a1ce11d5d24ef2953c7861ec80474",
+   "tasks": 48,
+   "worlds": 12,
+   "episodes": 240,
+   "schema": "routea_fixed_split_v1",
+   "repeats": 5,
+   "run": false
+  }
+ },
+ "relations": {
+  "paper186_vs_dev420": {
+   "tasks": 0,
+   "worlds": 0,
+   "initial_hash": 0
+  },
+  "paper186_vs_val20": {
+   "tasks": 0,
+   "worlds": 0,
+   "initial_hash": 0
+  },
+  "paper186_vs_test12": {
+   "tasks": 43,
+   "test12_tasks": 48,
+   "worlds": 11,
+   "test12_worlds": 12,
+   "initial_hash": 215,
+   "test12_initial_hash": 240
+  },
+  "dev420_vs_val20": {
+   "tasks": 0,
+   "worlds": 0,
+   "initial_hash": 0
+  },
+  "selection_use": {
+   "f9_step0": "f8_diag_run03 bank 425 = 85 tasks x 5 (paper186 not used)",
+   "g0_grid": "dev420+val20+f8_diag train 425 (paper186 not used)",
+   "paper186": "planner arms ego/fast/px4/super only"
+  }
+ },
+ "cells": {
+  "S0": {
+   "policy": "P6@u256",
+   "protocol": "#E2",
+   "dev420": {
+    "have": true,
+    "conditions": 420,
+    "outcomes": {
+     "reached": 203,
+     "collision": 143,
+     "time_limit": 74
+    },
+    "path": "program/results/routea_p6_u256_e2_dev420_run01_restored/full/P6",
+    "repo_path": "jindu/routea_p6_u256_e2_dev420_run01/full/P6; jindu/routea_f5_run01/results/eval_dev/full/P6"
+   },
+   "val20": {
+    "have": true,
+    "conditions": 80,
+    "outcomes": {
+     "reached": 42,
+     "collision": 14,
+     "time_limit": 24
+    },
+    "path": "program/results/routea_p6_u256_e2_val20_run01/full/P6",
+    "repo_path": "jindu/routea_f5_run01/results/eval_val/full/P6"
+   },
+   "paper186": {
+    "have": false
+   },
+   "test12": {
+    "run": false
+   }
+  },
+  "S1": {
+   "policy": "P6@u256",
+   "protocol": "#E4 (g1)",
+   "dev420": {
+    "have": false
+   },
+   "val20": {
+    "have": false
+   },
+   "paper186": {
+    "have": false
+   },
+   "test12": {
+    "run": false
+   }
+  },
+  "S2": {
+   "policy": "P6@u256",
+   "protocol": "#E4b (G0)",
+   "dev420": {
+    "have": true,
+    "conditions": 420,
+    "outcomes": {
+     "reached": 300,
+     "collision": 118,
+     "time_limit": 2
+    },
+    "path": "program/results/routea_probe_e3g_run01{,_delivery}/routea_probe_e3g_run01/runs/G0_dev"
+   },
+   "val20": {
+    "have": true,
+    "conditions": 80,
+    "outcomes": {
+     "reached": 59,
+     "collision": 14,
+     "time_limit": 7
+    },
+    "path": ".../runs/G0_val"
+   },
+   "paper186": {
+    "have": false
+   },
+   "test12": {
+    "run": false
+   }
+  },
+  "S3": {
+   "policy": "BC",
+   "protocol": "#E2",
+   "dev420": {
+    "have": true,
+    "conditions": 420,
+    "outcomes": {
+     "reached": 110,
+     "collision": 150,
+     "time_limit": 160
+    },
+    "repo_path": "jindu/routea_f5_run01/results/eval_dev/full/bc"
+   },
+   "val20": {
+    "have": true,
+    "conditions": 80,
+    "outcomes": {
+     "reached": 29,
+     "collision": 16,
+     "time_limit": 35
+    },
+    "repo_path": "jindu/routea_f5_run01/results/eval_val/full/bc"
+   },
+   "paper186": {
+    "have": false
+   },
+   "test12": {
+    "run": false
+   }
+  },
+  "S4": {
+   "policy": "BC",
+   "protocol": "#E4 (g1)",
+   "dev420": {
+    "have": false
+   },
+   "val20": {
+    "have": false
+   },
+   "paper186": {
+    "have": false
+   },
+   "test12": {
+    "run": false
+   }
+  },
+  "S5": {
+   "policy": "EGO",
+   "protocol": "planner",
+   "dev420": {
+    "have": false,
+    "action": "not run per step0 item 3"
+   },
+   "val20": {
+    "have": false,
+    "action": "not run"
+   },
+   "paper186": {
+    "have": true,
+    "conditions": 930,
+    "paper_outcomes": {
+     "reached": 726,
+     "collision": 32,
+     "time_limit": 172
+    },
+    "path": "paper_186_v1_0_run01/ego/full/ego (inside tar.zst)",
+    "identity": "8965396b1bfbc758a2079f9de83ab96ed1be1aae5f6f590b4b524da578e7f8ee"
+   },
+   "test12": {
+    "run": false
+   }
+  }
+ },
+ "existing_source_identity": {
+  "S0_S3_dev_val": {
+   "script": "scripts/run_routea_xk_evaluation.py",
+   "sha256": "15bca3863d426f881236c2dcca76bcab7cc5fa6ed3d9011e27ebf8f05d3d39e7",
+   "commit": "15ad24e2",
+   "diff_vs_current": "evaluation_reproduction (F6 migration copy) branch only"
+  },
+  "S2_dev_val": {
+   "entry": "c5a22b98",
+   "guidance": "41c3d47c",
+   "wrapper": "b44c16b8"
+  }
+ },
+ "protocol_params": {
+  "E2": {
+   "sampling": "DDIM 10 deterministic",
+   "clip_override": 2.0,
+   "min_std": 0.1,
+   "n_exec": 4,
+   "policy_steps": 8,
+   "traj_dt": 0.3,
+   "deadline_decisions": 60,
+   "collision_thresh": 0.1,
+   "exec_noise_scale": 0.0,
+   "disturb": false
+  },
+  "E4b": {
+   "same_as_E2": true,
+   "guidance": {
+    "d_safe": 0.6,
+    "eta": 0.2,
+    "M": 2,
+    "consistency": 0
+   },
+   "first_guided_denoise_index": 7
+  },
+  "E4": {
+   "same_as_E2": true,
+   "guidance": {
+    "d_safe": 0.6,
+    "eta": 0.4,
+    "M": 4,
+    "consistency": 0
+   },
+   "first_guided_denoise_index": 7
+  }
+ },
+ "cost_estimates": {
+  "f5_dev420_seconds_per_episode": 7.4,
+  "g0_dev_seconds_per_episode": 14.9,
+  "g0_val_seconds_per_episode": 18.7,
+  "new_runs": {
+   "dev420_S1_S4_hours": 3.5,
+   "val20_S1_S2_hours": 0.7,
+   "paper186_5arms_hours": 19.0
+  }
+ },
+ "notes_for_review": [
+  "paper186 bank shares 215/240 initial states (43/48 tasks, 11/12 worlds) with test12; 0 with dev420/val20",
+  "P6 and BC were never evaluated on the 186 bank (only latency timings exist); S0/S3 on 186 need new runs",
+  "g1 consistency=0 per f9_online.py:138 and F9 selection.json; G1 in the G0 probe is a different setting (consistency=1, eta=0.1)",
+  "BC guidance must be installed on system.bc_runtime (probe installs on official_runtime only); implementation detail for step 1",
+  "paper186 action-seed rule to follow dev420 canonical_hash(['policy-sample-v1',task_id,repeat,decision])",
+  "S5 1 m re-judgement must be recomputed from official_paper_episodes.jsonl / traces by Claude"
+ ]
+}
