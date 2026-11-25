@@ -1,0 +1,54 @@
+{
+ "job": "/home/cjj/AUV/program/results/routea_probe_e3g_run01_delivery/routea_probe_e3g_run01/runs/G0_dev",
+ "conditions": 420,
+ "reached_1m": 300,
+ "reached_raw": 216,
+ "raw_reached_outside_1m": [],
+ "entered_1m_then_collided": [
+  {
+   "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01",
+   "repeat": 1,
+   "outcome_1m": "reached",
+   "raw_outcome": "collision",
+   "min_goal_distance_m": 0.7713985515260973
+  },
+  {
+   "task_id": "routeA_rl_v1__dense_recovery__rl_train__cul_de_sac_trap__000036__dev20261009__cfg01",
+   "repeat": 4,
+   "outcome_1m": "reached",
+   "raw_outcome": "collision",
+   "min_goal_distance_m": 0.5312597188763479
+  },
+  {
+   "task_id": "routeA_rl_v1__dense_recovery__rl_train__s_turn_multi_obstacle__000043__dev20261009__cfg01",
+   "repeat": 3,
+   "outcome_1m": "reached",
+   "raw_outcome": "collision",
+   "min_goal_distance_m": 0.7867659767457589
+  }
+ ],
+ "collision_before_1m_examples": [
+  {
+   "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03",
+   "repeat": 1,
+   "outcome_1m": "collision",
+   "raw_outcome": "collision",
+   "min_goal_distance_m": 14.841496290620649
+  },
+  {
+   "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03",
+   "repeat": 2,
+   "outcome_1m": "collision",
+   "raw_outcome": "collision",
+   "min_goal_distance_m": 15.266780909883096
+  },
+  {
+   "task_id": "routeA_rl_v1__dense_recovery__rl_train__bottleneck_corridor__000016__dev20261009__cfg03",
+   "repeat": 3,
+   "outcome_1m": "collision",
+   "raw_outcome": "collision",
+   "min_goal_distance_m": 14.97485160489922
+  }
+ ],
+ "collision_before_1m": 118
+}
