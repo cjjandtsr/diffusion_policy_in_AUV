@@ -70,7 +70,7 @@ def build_system(config, repo_root: Path):
         expected_conv1d=E5_DENOISER_CONV1D_TARGETS,
     )
     initialization_parity = None
-    if str(config.reward_version) in ("v2", "v3"):
+    if str(config.reward_version) in ("v2", "v3", "v4", "v5"):
         critic, initialization_parity = construct_r1_critic_with_parity(
             int(config.critic.hidden_dim), device,
             lora_bundle.named_adapter_parameters(),
@@ -127,7 +127,7 @@ def build_system(config, repo_root: Path):
             value_loss_coefficient=float(config.dppo.value_loss_coefficient),
             entropy_loss_coefficient=float(config.dppo.entropy_loss_coefficient),
             reward_start=2,
-            reward_horizon=8 if str(config.reward_version) in ("v2", "v3") else 4,
+            reward_horizon=8 if str(config.reward_version) in ("v2", "v3", "v4", "v5") else 4,
             max_approx_kl=float(config.gates.max_approx_kl),
             ratio_mean_min=float(config.gates.ratio_mean_min),
             ratio_mean_max=float(config.gates.ratio_mean_max),

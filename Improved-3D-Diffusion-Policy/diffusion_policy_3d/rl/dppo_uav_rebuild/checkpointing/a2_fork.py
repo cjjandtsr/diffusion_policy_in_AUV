@@ -14,6 +14,28 @@ from .schema import CheckpointHeader
 
 def validate_child_config(parent, child):
     left, right = copy.deepcopy(parent), copy.deepcopy(child)
+    if 'f7' in right or 'f8' in right:
+        from ..entrypoints.config_schema_v2 import validate_v2_config
+        validate_v2_config(OmegaConf.create(right))
+        right.pop('f7' if 'f7' in right else 'f8')
+        right.pop('f9', None)
+        right['reward_version'] = left['reward_version']
+        for value in (left, right):
+            for key in ('seed','updates','checkpoint_updates','checkpoint_every_updates'):
+                value['run'].pop(key, None)
+            for key in ('actor_lr','actor_lr_end'):
+                value['optimizer'].pop(key, None)
+    if 'f6' in right:
+        from ..entrypoints.config_schema_v2 import validate_v2_config
+        validate_v2_config(OmegaConf.create(right))
+        right.pop('f6')
+        right.pop('task_bank', None)
+        if left.get('reward_version') != 'v2':
+            raise ValueError('F6 parent must use reward v2')
+        right['reward_version'] = 'v2'
+        for value in (left, right):
+            for key in ('seed', 'checkpoint_every_updates'):
+                value.get('run', {}).pop(key, None)
     if 'f5' in right:
         from ..entrypoints.config_schema_v2 import validate_v2_config
         validate_v2_config(OmegaConf.create(right))
@@ -55,7 +77,8 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
     receipt = verified_json(spec.parent_receipt, spec.parent_receipt_sha256)
     root = Path(spec.parent_checkpoint)
     header = CheckpointHeader.from_json((root/'header.json').read_text(encoding='utf-8'))
-    if header.update_index != 128 or header.runtime_identity_hash != receipt['runtime_identity_hash']:
+    parent_update = 256 if config.get('f7') is not None or config.get('f8') is not None else 128
+    if header.update_index != parent_update or header.runtime_identity_hash != receipt['runtime_identity_hash']:
         raise ValueError('A2 must fork verified B2560 u128')
     parent_payload = dict(header.runtime_identity)
     parent_payload['caveats'] = tuple(parent_payload.get('caveats',()))
@@ -85,19 +108,51 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
     allowed = {prefix+p for p in ('engine/trainer.py','engine/selective_keep.py',
         'entrypoints/pipeline.py','entrypoints/config_schema_v2.py','entrypoints/a2_support.py',
         'checkpointing/a2_fork.py')}
-    if config.get('xk') is not None or config.get('f5') is not None:
+    if any(config.get(k) is not None for k in ('xk','f5','f6','f7','f8')):
         allowed.update(prefix+p for p in ('engine/official_loss_components.py',
             'engine/drift_monitor.py', 'engine/self_imitation.py', 'engine/inert_anchor.py',
             'engine/rollout_buffer.py', 'audit/training_audit.py', 'official_core/vendor_identity.py',
             'entrypoints/build_system.py', 'entrypoints/xk_diagnostics.py'))
         allowed.add('third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py')
         allowed.add('scripts/dppo_credit_support/credit_probe.py')
-    if config.get('f5') is not None:
+    if any(config.get(k) is not None for k in ('f5','f6','f7','f8')):
         allowed.update(prefix+p for p in ('entrypoints/identity.py',
             'environments/task_sampler.py', 'environments/kinematic_adapter.py',
             'rewards/select.py', 'rewards/v3/__init__.py', 'rewards/v3/facade.py'))
         allowed.update(('diffusion_policy_3d/env/kinematic_uav_env.py',
                         'diffusion_policy_3d/env/reward_v3.py'))
+    if config.get('f6') is not None or config.get('f5') is not None:
+        allowed.update(prefix+p for p in ('entrypoints/identity.py',
+            'environments/kinematic_adapter.py', 'rewards/select.py',
+            'rewards/v4/__init__.py', 'rewards/v4/facade.py'))
+        allowed.update(('diffusion_policy_3d/env/kinematic_uav_env.py',
+                        'diffusion_policy_3d/env/reward_v4.py'))
+    if config.get('f6') is not None or config.get('f5') is not None:
+        allowed.update(('scripts/run_routea_f6.py', 'scripts/routea_f6_support.py',
+            'scripts/f6_u129_matched_rollout.py',
+            'scripts/analyze_routea_f6.py', 'scripts/analyze_routea_f5.py',
+            'scripts/run_routea_a2.py', 'scripts/run_routea_xk_evaluation.py'))
+        allowed.update(prefix+p for p in ('checkpointing/restore.py', 'deployment/loader.py'))
+    if config.get('f7') is not None or config.get('f8') is not None:
+        from scripts.routea_f6_support import F6_MIGRATION_SOURCE_ALLOWLIST
+        allowed.update(F6_MIGRATION_SOURCE_ALLOWLIST)
+        allowed.update(prefix+p for p in ('entrypoints/f7_support.py', 'environments/factory.py',
+            'rewards/v5/__init__.py','rewards/v5/facade.py'))
+        allowed.update(('diffusion_policy_3d/env/reward_v5.py','scripts/run_routea_f7.py',
+                        'scripts/f7_analysis.py','scripts/f7_reconstruct.py'))
+    if config.get('f8') is not None:
+        allowed.update(prefix+p for p in ('entrypoints/f8_support.py',))
+        allowed.update(('scripts/run_routea_f8.py','scripts/routea_paired_support/f8_guidance.py'))
+    if config.get('f9') is not None:
+        allowed.update(prefix+p for p in ('entrypoints/f9_support.py', 'engine/f9_online.py',
+                                          'entrypoints/f9_blocked_sampler.py'))
+        allowed.update(('scripts/run_routea_f9.py', 'scripts/routea_denoising_guidance.py',
+                        'scripts/routea_paired_support/core.py',
+                        # F9 compat patch 2026-11-22: the delivered closure carries the
+                        # E3G-eval evaluator (expected_source_files 9a7f2edf); this path was
+                        # missing from the allowlist, so fork_parent rejected it.
+                        'scripts/evaluate_dppo_uav_formal_endpoint.py',
+                        'diffusion_policy_3d/env/reward_v2_support/environment.py'))
     if changed-allowed:
         raise ValueError('unapproved A2 source differences: '+repr(sorted(changed-allowed)))
     a,b = dict(closure['inputs']),dict(current['inputs'])
@@ -106,6 +161,17 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
         raise ValueError('A2 changes parent behavior inputs')
     mutable_identity = {'source_set_hash', 'config_hash'}
     if config.get('f5') is not None and str(config.reward_version) == 'v3':
+        mutable_identity.add('reward_identity_hash')
+    if config.get('f6') is not None and str(config.reward_version) == 'v4':
+        mutable_identity.add('reward_identity_hash')
+    if config.get('f7') is not None and str(config.reward_version) == 'v5':
+        mutable_identity.add('reward_identity_hash')
+    if config.get('f9') is not None:
+        # F9 compat patch 2026-11-22: F9 instruments the v2 reward bundle
+        # (env/reward_v2_support/environment.py additionally stores the actually
+        # perturbed teacher candidate under an explicit flag), so that bundle's
+        # identity legitimately changes. PPO reward terms and totals are unchanged;
+        # the same exemption pattern is used by f5/f6/f7 for their reward versions.
         mutable_identity.add('reward_identity_hash')
     for key in header.runtime_identity:
         if key not in mutable_identity and _canonical_hash(getattr(child_identity,key)) != _canonical_hash(getattr(parent,key)):
@@ -117,9 +183,9 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
         raise ValueError('fork optimizer parameter ordering differs')
     consumed_buffer=OnPolicyRolloutBuffer(int(config.run.rollout_transitions),
         gamma=float(config.dppo.gamma_environment),gae_lambda=float(config.dppo.gae_lambda),
-        outer_update_id=128,episode_context=True)
+        outer_update_id=parent_update,episode_context=True)
     parent_sampler = task_sampler
-    if config.get('f5') is not None and task_sampler is not None:
+    if any(config.get(k) is not None for k in ('f5','f7','f8')) and task_sampler is not None:
         from ..environments.task_sampler import TaskSampler
         parent_sampler = TaskSampler(task_sampler.tasks, int(receipt['training_config']['run']['seed'])+17)
     restored = restore_checkpoint(root, runtime_identity=parent,
@@ -127,7 +193,7 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
         critic=system.critic, actor_optimizer=system.actor_optimizer,
         critic_optimizer=system.critic_optimizer, counters=system.trainer.counters,
         task_sampler=parent_sampler, rollout_buffer=consumed_buffer, map_location=system.bc_runtime.device)
-    if config.get('xk') is not None or config.get('f5') is not None:
+    if any(config.get(k) is not None for k in ('xk','f5','f6','f7','f8')):
         import random
         import numpy as np
         import torch
@@ -140,8 +206,8 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
     return restored, dict(parent_runtime_identity_hash=parent.content_hash,
         parent_checkpoint=str(root), child_runtime_identity_hash=child_identity.content_hash,
         parent_receipt_sha256=spec.parent_receipt_sha256,
-        changed_sources=sorted(changed), initialization='explicit_A1_u128_fork',
+        changed_sources=sorted(changed), initialization=('explicit_P6_u256_fork' if config.get('f7') is not None or config.get('f8') is not None else 'explicit_A1_u128_fork'),
         child_seed=int(config.run.seed), rng_policy=('new_seed_preserve_parent_optimizer_and_counters'
-            if config.get('xk') is not None or config.get('f5') is not None else 'parent_exact_resume'),
+            if any(config.get(k) is not None for k in ('xk','f5','f6','f7','f8')) else 'parent_exact_resume'),
         restored_consumed_buffer_size=len(consumed_buffer),
-        consumed_buffer_disposition='u128 already optimized; u129 collects fresh on-policy data, as A1 resume does')
+        consumed_buffer_disposition=('u%d already optimized; u%d collects fresh on-policy data, as A1 resume does' % (parent_update,parent_update+1)))

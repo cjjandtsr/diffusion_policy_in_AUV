@@ -36,6 +36,12 @@ _R1_REWARD = {
 
 
 def validate_v2_config(config):
+    from .f7_support import validate_f7
+    validate_f7(config)
+    if 'f8' in config:
+        from .f8_support import validate_f8
+        validate_f8(config)
+    _validate_optional_f6(config)
     _validate_optional_f5(config)
     _validate_optional_xk(config)
     if 'a2' in config:
@@ -43,7 +49,10 @@ def validate_v2_config(config):
         validate_a2_config(config)
     if "minibatch_size" in config.run:
         raise ValueError("minibatch_size is forbidden by the v2 pair schedule schema")
-    unknown_top = set(config.keys()) - (_TOP_LEVEL | {'f5', 'task_bank'})
+    if 'f9' in config:
+        from .f9_support import validate_f9
+        validate_f9(config)
+    unknown_top = set(config.keys()) - (_TOP_LEVEL | {'f5', 'f6', 'f7', 'f8', 'f9', 'task_bank'})
     unknown_run = set(config.run.keys()) - _RUN_KEYS
     unknown_dppo = set(config.dppo.keys()) - _DPPO_KEYS
     unknown_environment = set(config.environment.keys()) - _ENVIRONMENT_KEYS
@@ -56,19 +65,19 @@ def validate_v2_config(config):
     protocol = config.get("task_protocol")
     if protocol is not None:
         if (set(protocol) != {"name", "space_cost_budget"} or
-                protocol.name != "open_space_finite_v1" or reward_version not in ("v2", "v3")):
+                protocol.name != "open_space_finite_v1" or reward_version not in ("v2", "v3", "v4", "v5")):
             raise ValueError("unknown common task protocol")
         budget = float(protocol.space_cost_budget)
         if not math.isfinite(budget) or budget < 0.:
             raise ValueError("space_cost_budget must be finite and non-negative; zero is ablation only")
         if int(config.environment.max_episode_steps) != 60:
             raise ValueError("common finite task requires 60 decisions / 72 seconds")
-        if str(run.phase) != "formal" or int(run.updates) != 256:
+        if str(run.phase) != "formal" or int(run.updates) != (320 if 'f7' in config or 'f8' in config else 256):
             raise ValueError("common protocol comparison requires the planned 256 updates")
     if reward_version == "v17":
         if int(config.reward.H_e) != 4:
             raise ValueError("v2 A0 training requires Reward v1.7 with H_e=4")
-    elif reward_version in ("v2", "v3"):
+    elif reward_version in ("v2", "v3", "v4", "v5"):
         if set(config.reward.keys()) != set(_R1_REWARD) or any(
             float(config.reward[key]) != expected for key, expected in _R1_REWARD.items()
         ):
@@ -80,7 +89,7 @@ def validate_v2_config(config):
             raise ValueError("R1 must not load v1.7 reward calibration artifacts")
     else:
         raise ValueError("v2 training requires explicit A0 v17 or R1 v2 reward")
-    if float(config.optimizer.actor_lr) != 2.0e-5 or float(config.optimizer.actor_lr_end) != 1.0e-5:
+    if float(config.optimizer.actor_lr) != (1e-5 if 'f7' in config or 'f8' in config else 2e-5) or float(config.optimizer.actor_lr_end) != 1.0e-5:
         raise ValueError("v2 actor learning-rate identity mismatch")
     if float(config.dppo.clip_ploss_coef) not in ((.1,.05) if 'xk' in config else (.1,)):
         raise ValueError("v2 clip_ploss_coef identity mismatch")
@@ -129,7 +138,7 @@ def validate_v2_config(config):
         if tuple(int(value) for value in run.checkpoint_updates) != (0, 8, 16, 24, 32):
             raise ValueError("pilot checkpoint updates must be 0,8,16,24,32")
     elif str(run.phase) == "formal":
-        if reward_version == "v2" and 'f5' not in config and int(run.seed) not in ((202610261,) if 'xk' in config else (202609201, 202609202, 202609203)):
+        if reward_version == "v2" and 'f5' not in config and 'f7' not in config and 'f8' not in config and int(run.seed) not in ((202610261,) if 'xk' in config else (202609201, 202609202, 202609203)):
             raise ValueError("R1 formal seed must match one of the three A0 seeds")
         updates = int(run.updates)
         if updates < 256 or updates % 8 or int(run.rollout_transitions) != 1024:
@@ -137,11 +146,35 @@ def validate_v2_config(config):
         checkpoints = (0, 1) + tuple(range(8, updates + 1, 8)) if protocol is not None else tuple(range(0, updates + 1, 8))
         if 'a2' in config:
             checkpoints = tuple(sorted(set(checkpoints) | {129}))
+        if 'f7' in config or 'f8' in config:
+            checkpoints = tuple(sorted(set(checkpoints) | {257}))
         if tuple(int(value) for value in run.checkpoint_updates) != checkpoints:
             raise ValueError("formal checkpoint updates must be 0..updates at interval 8 (plus 1 for common protocol)")
     else:
         raise ValueError("run.phase must be pilot or formal")
     return contract
+
+
+def _validate_optional_f6(config):
+    if 'f6' not in config:
+        if str(config.get('reward_version')) == 'v4':
+            raise ValueError('reward v4 requires registered F6')
+        return
+    spec = config.f6
+    registered = {'P12': 202610311, 'P13': 202610312}
+    if set(spec) != {'run_id', 'keep_coefficient', 'potential'} or spec.run_id not in registered:
+        raise ValueError('invalid F6 registration')
+    extra = set(config.dppo) & {'ppo_inert_mask', 'self_imitation', 'inert_anchor',
+        'min_std_vector', 'denoised_clip_value', 'drift_monitor', 'drift_gate'}
+    bank = config.get('task_bank')
+    if (int(config.run.seed) != registered[spec.run_id] or str(config.reward_version) != 'v4'
+            or float(spec.keep_coefficient) != .01061006 or dict(spec.potential) != {'K': 10., 'R': 2.}
+            or 'f5' in config or 'xk' in config or extra or 'a2' not in config
+            or config.a2.arm != 'T' or int(config.a2.keep_seed) != 2026102301
+            or (bank is not None and dict(bank) != {'enabled': False})
+            or 'task_protocol' not in config or float(config.task_protocol.space_cost_budget) != 1.
+            or float(config.dppo.gamma_environment) != .99):
+        raise ValueError('F6 differs from registered single-factor experiment')
 
 
 def _validate_optional_f5(config):

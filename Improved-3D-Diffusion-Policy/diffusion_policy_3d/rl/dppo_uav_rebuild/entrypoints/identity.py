@@ -55,6 +55,13 @@ CLI_SOURCE_PATHS = (
     "scripts/build_routea_v17_formal_plan.py",
     "scripts/evaluate_dppo_uav_formal_endpoint.py",
     "scripts/formal_endpoint_eval_core.py",
+    "scripts/run_routea_f6.py",
+    "scripts/f6_u129_matched_rollout.py",
+    "scripts/routea_f6_support.py",
+    "scripts/analyze_routea_f6.py",
+    "scripts/analyze_routea_f5.py",
+    "scripts/run_routea_a2.py",
+    "scripts/run_routea_xk_evaluation.py",
 )
 
 
@@ -152,6 +159,12 @@ def _iter_source_paths(repo_root: Path) -> Iterable[Path]:
         path = repo_root / relative
         if path.is_file():
             yield path.resolve(strict=True)
+    # F9's teacher and shadow calculations are behavior-bearing code.
+    for relative in ('scripts/run_routea_f9.py', 'scripts/routea_denoising_guidance.py',
+                     'scripts/routea_paired_support/core.py'):
+        path = repo_root / relative
+        if path.is_file():
+            yield path.resolve(strict=True)
     reward_support = repo_root / "diffusion_policy_3d" / "env" / "reward_v17_support"
     reward_paths = sorted(reward_support.glob("*.py")) if reward_support.is_dir() else []
     if not reward_paths:
@@ -167,6 +180,14 @@ def _iter_source_paths(repo_root: Path) -> Iterable[Path]:
     v3_source = repo_root / 'diffusion_policy_3d/env/reward_v3.py'
     if v3_source.is_file():
         yield v3_source.resolve(strict=True)
+    v4_source = repo_root / 'diffusion_policy_3d/env/reward_v4.py'
+    if v4_source.is_file():
+        yield v4_source.resolve(strict=True)
+    v5_source = repo_root / 'diffusion_policy_3d/env/reward_v5.py'
+    if v5_source.is_file():
+        yield v5_source.resolve(strict=True)
+        for name in ('run_routea_f7.py','f7_analysis.py','f7_reconstruct.py'):
+            yield (repo_root/'scripts'/name).resolve(strict=True)
     credit_support = repo_root / "scripts" / "dppo_credit_support"
     credit_paths = sorted(credit_support.glob("*.py")) if credit_support.is_dir() else []
     if not credit_paths:
@@ -342,8 +363,12 @@ def build_environment_provenance(repo_root, *, reward_version="v17"):
     """Record executed-path and observation sources, without importing the env."""
 
     paths = ENVIRONMENT_SOURCE_PATHS
-    if str(reward_version) in ("v2", "v3"):
+    if str(reward_version) in ("v2", "v3", "v4", "v5"):
         paths += R1_EXECUTED_ENVIRONMENT_SOURCE_PATHS
+    if str(reward_version) == 'v4':
+        paths += ('diffusion_policy_3d/env/reward_v4.py',)
+    if str(reward_version) == 'v5':
+        paths += ('diffusion_policy_3d/env/reward_v5.py',)
     if str(reward_version) == 'v3':
         paths += ('diffusion_policy_3d/env/reward_v3.py',)
     sources = {

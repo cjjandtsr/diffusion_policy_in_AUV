@@ -77,6 +77,10 @@ def _write_json_once(path, payload):
 _UPDATE_ARTIFACT_PATTERNS = (
     re.compile(r"^metrics_update_(\d{6})\.json$"),
     re.compile(r"^checkpoint_update_(\d{6})$"),
+    re.compile(r"^monitor_through_u(\d{6})\.json$"),
+    re.compile(r"^f7_monitor_(\d{6})\.json$"),
+    re.compile(r"^f9_collect_(\d{6})\.json$"),
+    re.compile(r"^f9_update_(\d{6})\.json$"),
 )
 
 
@@ -289,6 +293,16 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         if xk is None or imitation_enabled:
             system.trainer.keep = make_keep(config)
     auxiliary_schedules = {} if system.trainer.keep is None else {'selective_keep':system.trainer.keep}
+    if 'f8' in config and config.f8.bank_path:
+        from .a2_support import make_f8_keep
+        system.trainer.f8_keep = make_f8_keep(config)
+        auxiliary_schedules['f8_keep'] = system.trainer.f8_keep
+    f7_schedule = None
+    if 'f7' in config:
+        from .f7_support import F7Schedule
+        f7_schedule = F7Schedule(config.f7.adaptive_lr)
+        system.trainer.record_f7 = True
+        auxiliary_schedules['f7_actor_lr'] = f7_schedule
     drift_config = config.dppo.get('drift_monitor')
     drift = None
     if drift_config is not None and drift_config.enabled:
@@ -344,7 +358,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         repo_root, reward_version=str(config.reward_version))
     r1_probe_path = results / "r1_plan_probe.json"
     r1_probe = None
-    if str(config.reward_version) in ("v2", "v3") and resume_from is not None and r1_probe_path.is_file():
+    if str(config.reward_version) in ("v2", "v3", "v4", "v5") and resume_from is not None and r1_probe_path.is_file():
         r1_probe = json.loads(r1_probe_path.read_text(encoding="utf-8"))
         if r1_probe["runtime_identity_hash"] != runtime_identity.content_hash:
             raise RuntimeError("R1 probe runtime identity mismatch on resume")
@@ -352,7 +366,15 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
     start_update = 1
     resume_quarantine = None
     resume_metrics_quarantine = None
-    a2_calibration_needed = a2 is not None and (a2.arm == 'T' or imitation_enabled) and resume_from is None and 'f5' not in config
+    f9_session = None
+    if config.get('f9') is not None and config.f9.enabled:
+        from .f9_support import F9Session
+        f9_session = F9Session(system, config, environment_factory, results)
+        system.trainer.f8_keep = f9_session.keep
+        system.trainer.record_f9 = True
+        auxiliary_schedules['f9_session'] = f9_session
+    a2_calibration_needed = a2 is not None and (a2.arm == 'T' or imitation_enabled) and resume_from is None and 'f5' not in config and 'f6' not in config and 'f7' not in config and 'f8' not in config
+    f8_calibration_needed = f9_session is None and system.trainer.f8_keep is not None and resume_from is None
     anchor_calibration_needed = system.trainer.inert_anchor is not None and resume_from is None
     if resume_from is not None:
         header = restore_checkpoint(
@@ -373,7 +395,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             output, start_update, report_dir=results if results != output else None)
         if results != output:
             resume_metrics_quarantine = _prepare_resume_output(results, start_update)
-        if str(config.reward_version) in ("v2", "v3") and start_update > 1 and r1_probe is None:
+        if str(config.reward_version) in ("v2", "v3", "v4", "v5") and start_update > 1 and r1_probe is None:
             raise FileNotFoundError("R1 resume requires the frozen train-domain probe")
     elif a2 is not None:
         from ..checkpointing.a2_fork import fork_parent, verified_json
@@ -433,7 +455,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         json.dumps(
             {
                 "event": "dppo_training_start",
-                "initialization": "checkpoint_resume" if resume_from else ("explicit_A1_u128_fork" if a2 is not None else "fresh_bc"),
+                "initialization": "checkpoint_resume" if resume_from else ("explicit_P6_u256_fork" if 'f7' in config or 'f8' in config else "explicit_A1_u128_fork" if a2 is not None else "fresh_bc"),
                 "bc_checkpoint": str(_resolve(repo_root, config.checkpoint)),
                 "resume_from": str(resume_from) if resume_from else None,
                 "output_dir": str(output),
@@ -451,20 +473,36 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         ),
         flush=True,
     )
+    if config.get('f9') is not None:
+        if config.f9.stage == 'A' and execution_last_update > 264:
+            raise ValueError('F9 stage A stops at u264')
+        if config.f9.enabled and execution_last_update > 264:
+            if resume_from is None or start_update < 265:
+                raise ValueError('F9 full continuation must resume at or after its u264 checkpoint')
+            gate = json.loads(Path(config.f9.gate_path).read_text(encoding='utf-8'))
+            import hashlib
+            gate_checkpoint = Path(config.output_dir)/'checkpoint_update_000264/state.pt'
+            if gate['decision'] != 'pass' or gate['T_state_sha256'] != hashlib.sha256(gate_checkpoint.read_bytes()).hexdigest():
+                raise ValueError('F9 behavioral gate does not authorize this checkpoint')
+    if f9_session is not None and resume_from is None:
+        _write_json_once(results/'f9_prefill.json', f9_session.collect(prefill=True))
+    f9_calibration_needed = f9_session is not None and f9_session.keep.coefficient == 0.
     for update_index in range(start_update, execution_last_update + 1):
         update_started = time.perf_counter()
+        if f9_session is not None:
+            f9_session.begin_update()
         if runtime_device.type == "cuda":
             torch.cuda.reset_peak_memory_stats(runtime_device)
         task_role_episode_start_counts = Counter()
         audit = TrainingAudit(term_names=getattr(system.reward, "term_names", None),
                               terminate_at_space_limits=(environment_factory.terminate_at_space_limits
-                                                         if str(config.reward_version) in ("v2", "v3") else None))
+                                                         if str(config.reward_version) in ("v2", "v3", "v4", "v5") else None))
         buffer = OnPolicyRolloutBuffer(
             rollout_size,
             gamma=float(config.dppo.gamma_environment),
             gae_lambda=float(config.dppo.gae_lambda),
             outer_update_id=update_index,
-            history_scalar=str(config.reward_version) in ("v2", "v3") and not finite_task,
+            history_scalar=str(config.reward_version) in ("v2", "v3", "v4", "v5") and not finite_task,
             episode_context=finite_task,
         )
         adapter = None
@@ -493,7 +531,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 )
             system.observation_adapter.verify(encoded_observation)
             condition = encoded_observation.condition
-            if str(config.reward_version) in ("v2", "v3") and r1_probe is None:
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5") and r1_probe is None:
                 initial_action = sample_probe_action(
                     system.rollout_sampler, condition, seed=seed + 981731,
                     device=runtime_device)
@@ -506,7 +544,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                     "source": "first admitted train-domain observation at update 1",
                 }
                 _write_json_once(r1_probe_path, r1_probe)
-            if str(config.reward_version) in ("v2", "v3"):
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5"):
                 from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.critic_state import with_history_scalar, with_episode_context
                 critic_condition = (with_episode_context(condition, adapter.environment) if finite_task
                                     else with_history_scalar(condition, adapter.environment._reward_history))
@@ -522,6 +560,10 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             next_observation, reward, terminated, truncated, info = adapter.step(
                 rollout.action
             )
+            if 'f7' in config and info['done_reason'] != 'invalid_state':
+                from .f7_support import collection_details
+                info['f7_audit'] = collection_details(info, adapter.environment,
+                    rollout.action, position_before, float(config.f7.approach_weight))
             if info.get("reward_metrics", {}).get("training_usable") is False:
                 raise FloatingPointError("invalid_state before buffer/critic update: {}".format(
                     info.get("reward_metrics")))
@@ -536,7 +578,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             )
             system.observation_adapter.verify(next_encoded_observation)
             next_condition = next_encoded_observation.condition
-            if str(config.reward_version) in ("v2", "v3"):
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5"):
                 next_critic_condition = (with_episode_context(next_condition, adapter.environment) if finite_task
                                          else with_history_scalar(next_condition, adapter.environment._reward_history))
             else:
@@ -566,7 +608,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 audit_context={
                     **({'task_bank': getattr(task_sampler, 'last_metadata',
                         {'source': 'original', 'tier': None, 'kind': 'random',
-                         'bank_task_id': None, 'world': task.world_id})} if 'f5' in config else {}),
+                         'bank_task_id': None, 'world': task.world_id})} if 'f5' in config or 'f6' in config or 'f7' in config or 'f8' in config else {}),
                     "run_seed": seed,
                     "update_index": update_index,
                     "policy_state_update_index": update_index - 1,
@@ -640,7 +682,11 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             drift.begin()
         rollout_audit = audit.finalize(buffer.audit_tensors())
         rollout_finished = time.perf_counter()
+        f9_collection = None
+        f9_optimizer_started = rollout_finished
         actor_lr = _actor_lr_for_update(config, update_index)
+        if f7_schedule is not None:
+            actor_lr = 1e-5 * f7_schedule.next_multiplier
         for group in system.actor_optimizer.param_groups:
             group["lr"] = actor_lr
         update_actor = update_index > warmup_updates
@@ -683,7 +729,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 generator=torch.Generator().manual_seed(seed + update_index * 1009),
                 device=system.bc_runtime.device,
             )
-        if a2_calibration_needed or anchor_calibration_needed:
+        if a2_calibration_needed or anchor_calibration_needed or f8_calibration_needed or f9_calibration_needed:
             import itertools
             from ..engine.selective_keep import calibrate_keep
             first_batches = list(itertools.islice(batch_iterator,4))
@@ -693,6 +739,18 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                                              target_ratio=float(imitation.target_ratio) if imitation_enabled else .1)
                 system.trainer.keep.coefficient = calibration['coefficient']
                 _write_json_once(results/'keep_calibration.json',calibration)
+            if f8_calibration_needed:
+                calibration = calibrate_keep(system.trainer,first_batches,system.trainer.f8_keep,
+                                             microbatch_pairs=microbatch_pairs,target_ratio=.1)
+                system.trainer.f8_keep.coefficient = calibration['coefficient']
+                _write_json_once(results/'f8_keep_calibration.json',calibration)
+                f8_calibration_needed = False
+            if f9_calibration_needed:
+                calibration = calibrate_keep(system.trainer, first_batches, f9_session.keep,
+                    microbatch_pairs=microbatch_pairs, target_ratio=1.)
+                f9_session.keep.coefficient = calibration['coefficient']
+                _write_json_once(results/'f9_calibration.json', calibration)
+                f9_calibration_needed = False
             if anchor_calibration_needed:
                 from ..engine.inert_anchor import calibrate_anchor
                 calibration = calibrate_anchor(system.trainer,first_batches,system.trainer.inert_anchor,
@@ -702,6 +760,12 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 anchor_calibration_needed = False
             batch_iterator = itertools.chain(first_batches,batch_iterator)
             a2_calibration_needed = False
+        if f9_session is not None:
+            # u257 calibration above uses ONLY the frozen prefill buffer.
+            # The current actor then refreshes teacher data before any PPO update.
+            f9_collection = f9_session.collect(update=update_index)
+            _write_json_once(results/('f9_collect_%06d.json' % update_index), f9_collection)
+            f9_optimizer_started = time.perf_counter()
         for batch in batch_iterator:
             if hasattr(batch, "pair_count"):
                 pair_evaluations += batch.pair_count
@@ -765,6 +829,8 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                     system.trainer, last_committed_batch, update_actor=update_actor,
                 )
             committed_metrics[-1]["post_update"] = post_update
+        if f7_schedule is not None:
+            f7_schedule.finish(optimizer_metric_summary['clip_fraction']['mean'])
         outer_parameter_delta = outer_snapshot.measure(
             actor=system.trainer.actor_parameters,
             critic=system.trainer.critic_parameters,
@@ -820,7 +886,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             )
             checkpoint_path = output / "checkpoint_update_{:06d}".format(update_index)
         r1_probe_metrics = None
-        if checkpoint_path is not None and str(config.reward_version) in ("v2", "v3"):
+        if checkpoint_path is not None and str(config.reward_version) in ("v2", "v3", "v4", "v5"):
             probe_condition = {
                 key: torch.tensor(value, device=runtime_device, dtype=torch.float32)
                 for key, value in r1_probe["condition"].items()
@@ -831,7 +897,13 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             r1_probe_metrics = compare_probe_actions(
                 r1_probe["initial_action"], current_action)
         rollout_seconds = rollout_finished - update_started
-        optimizer_seconds = optimizer_finished - rollout_finished
+        optimizer_seconds = optimizer_finished - f9_optimizer_started
+        if f9_session is not None:
+            _write_json_once(results/('f9_update_%06d.json' % update_index), dict(
+                ppo_collection_seconds=rollout_finished-update_started,
+                teacher=f9_collection, optimizer_seconds=optimizer_seconds,
+                lora_update_by_parameter=f9_session.parameter_changes(),
+                buffer=len(f9_session.keep.records), heldout=len(f9_session.keep.heldout)))
         total_seconds = time.perf_counter() - update_started
         peak_cuda_memory_bytes = (
             int(torch.cuda.max_memory_allocated(runtime_device))
@@ -855,6 +927,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 ),
                 "counters": vars(system.trainer.counters),
                 "formal_training": {
+                    **({'f7_actor_lr': f7_schedule.state_dict()} if f7_schedule is not None else {}),
                     "actor_learning_rate": actor_lr,
                     "min_sampling_std": float(config.dppo.min_sampling_std),
                     "min_logprob_std": float(config.dppo.min_logprob_std),
@@ -904,6 +977,8 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 "updates": update_metrics,
             },
         )
+        if f9_session is not None:
+            f9_session.snapshot(update_index)
         if checkpoint_path is not None:
             save_checkpoint(
                 checkpoint_path,
@@ -918,6 +993,24 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 schedules=auxiliary_schedules,
                 task_sampler=task_sampler,
             )
+        if config.get('f9') is not None and config.f9.trial_id == 'P29' and update_index == 257:
+            from scripts.run_routea_f9 import g0
+            from types import SimpleNamespace
+            f9_plan = json.loads((Path(config.f9.experiment_root)/'plan.json').read_text(encoding='utf-8'))
+            g0(SimpleNamespace(run=config.f9.experiment_root,p22_checkpoint=f9_plan['g0_checkpoint']['path']))
+        if f9_session is not None and update_index == 257:
+            from scripts.run_routea_f9 import isolation
+            from types import SimpleNamespace
+            control = {202611081:'P29',202611082:'P30',202611213:'P27'}[int(config.run.seed)]
+            isolation(SimpleNamespace(run=config.f9.experiment_root,policy=config.f9.trial_id,control=control))
+        if 'f6' in config and update_index % 8 == 0:
+            from argparse import Namespace
+            from scripts.analyze_routea_f6 import monitor
+            monitor(Namespace(metrics=str(results),
+                output=str(results / "monitor_through_u{:06d}.json".format(update_index))))
+        if 'f7' in config:
+            from scripts.f7_analysis import monitor_training
+            monitor_training(results, update_index)
         latest_update = committed_metrics[-1] if committed_metrics else None
         latest_post_update = latest_update["post_update"] if latest_update else None
         print(

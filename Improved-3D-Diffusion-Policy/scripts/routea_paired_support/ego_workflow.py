@@ -16,20 +16,6 @@ from .workflow import save
 def recorded_sources(bank, bank_path):
     if 'evaluation_sources' in bank:
         return bank['evaluation_sources']
-    if bank.get('schema') == 'routea_fixed_split_v1':
-        # Paper-186 adapter (2026-11-11): the testext freeze lineage renders under
-        # the frozen native closure (identity d987235a) and records per-file
-        # SHA256 in the native_a2 manifest beside the test12 bank. The
-        # extension-v2 freeze reused the same closure and points back to the
-        # test12 bank via its inputs_before.json['test'] entry.
-        run_dir = Path(bank_path).parents[1]
-        manifest = run_dir / 'native_a2_manifest.json'
-        if not manifest.is_file():
-            inputs = read_json(run_dir / 'inputs_before.json')
-            test_path = Path(inputs['test']['path'])
-            manifest = test_path.parents[1] / 'native_a2_manifest.json'
-        rows = read_json(manifest)['files']
-        return {row['relative_path']: row['sha256'] for row in rows}
     if bank.get('schema') != 'routea_paper_test_v1':
         raise ValueError('unknown bank source receipt layout')
     receipt = read_json(bank_path.parent/'inputs.json')
@@ -186,40 +172,15 @@ def run_ego(root, args):
     elif name == 'px4':
         from .px4_local_planner import Px4LocalPlannerPolicy
         policy_class = Px4LocalPlannerPolicy
-    elif name == 'super':
-        if not args.super_config:
-            raise ValueError('SUPER requires --super-config (generated sync YAML)')
-        from .super_planner_policy import SuperPolicy
-        policy_class = SuperPolicy
     else:
         policy_class = EgoPolicy
-    if name == 'super':
-        ego = policy_class(launch, args.ego_map_size, out/('logs/'+name),
-                           config_path=args.super_config)
-    else:
-        ego = policy_class(launch, args.ego_map_size, out/('logs/'+name))
+    ego = policy_class(launch, args.ego_map_size, out/('logs/'+name))
     # Hash the deployed ROS source tree, not just a launch include name.
-    if name == 'super':
-        # The SUPER arm spans the adapter package plus the three official trees
-        # it compiles against (with their generated ROS1 build files). All of
-        # them enter the identity (guide: native sources in identity).
-        planner = launch.resolve().parents[1]
-        tree_roots = [planner,
-                      root/'third_party/super_official_2ad3419/super_planner',
-                      root/'third_party/super_official_2ad3419/rog_map',
-                      root/'third_party/super_official_2ad3419/mars_uav_sim/mars_quadrotor_msgs']
-        ros_sources = {}
-        for tree in tree_roots:
-            for p in sorted(tree.rglob('*')):
-                if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.xml','.launch',
-                                                '.srv','.txt','.yaml','.msg','.cmake'):
-                    ros_sources[str(p.relative_to(root))] = file_hash(p)
-    else:
-        planner = launch.resolve().parents[2]
-        if name == 'ego' and not (planner/'plan_manage').is_dir():
-            raise ValueError('launch must be inside the deployed planner/plan_manage/launch directory')
-        ros_sources = {str(p.relative_to(planner)): file_hash(p) for p in sorted(planner.rglob('*'))
-                       if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.xml','.launch','.srv','.txt')}
+    planner = launch.resolve().parents[2]
+    if name == 'ego' and not (planner/'plan_manage').is_dir():
+        raise ValueError('launch must be inside the deployed planner/plan_manage/launch directory')
+    ros_sources = {str(p.relative_to(planner)): file_hash(p) for p in sorted(planner.rglob('*'))
+                   if p.is_file() and p.suffix in ('.cpp','.h','.hpp','.xml','.launch','.srv','.txt')}
     ego.identity_hash = canonical_hash(dict(adapter=ego.identity_hash, ros_sources=ros_sources))
     binaries = {}
     if not args.ego_regression and name == 'ego':
@@ -242,12 +203,8 @@ def run_ego(root, args):
     elif not args.ego_regression:
         import subprocess
         import roslib.packages
-        if name == 'fast':
-            package, executable = 'plan_manage', 'fast_planner_node'
-        elif name == 'px4':
-            package, executable = 'paper_px4_bridge', 'paper_px4_bridge_node'
-        else:
-            package, executable = 'paper_super_sync', 'paper_super_sync_node'
+        package, executable = (('plan_manage', 'fast_planner_node') if name == 'fast'
+                               else ('paper_px4_bridge', 'paper_px4_bridge_node'))
         actual_package = Path(subprocess.check_output(['rospack', 'find', package], text=True).strip()).resolve()
         if actual_package != launch.resolve().parents[1]:
             raise ValueError('rospack resolves a different planner workspace')
@@ -260,15 +217,6 @@ def run_ego(root, args):
             if library.is_file():
                 binaries[str(library)] = file_hash(library)
         ego.identity_hash = canonical_hash(dict(source=ego.identity_hash, binaries=binaries))
-    if name == 'super':
-        # Close the identity gap of the 2026-11-12 three-arm round: the Python
-        # adapter layer enters the arm identity for the SUPER arm (the guide
-        # requires adapted C++/Python sources in identity).
-        adapter_files = [root/'scripts/routea_paired_support/super_planner_policy.py',
-                         root/'scripts/routea_paired_support/super_reference.py',
-                         root/'scripts/prepare_paper_super_sync_config.py']
-        python_adapter = {str(p.relative_to(root)): file_hash(p) for p in adapter_files}
-        ego.identity_hash = canonical_hash(dict(base=ego.identity_hash, python_adapter=python_adapter))
     protocol = dict(bank_hash=bank['content_hash'], policy=name, identity=ego.identity_hash,
         catalogue_hash=cat['content_hash'],
         execution='common_H8_H4_0.3s', expected_episodes=len(bank['episodes']),

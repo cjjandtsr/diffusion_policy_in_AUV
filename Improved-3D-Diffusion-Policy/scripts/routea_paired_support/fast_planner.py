@@ -2,20 +2,6 @@
 import numpy as np
 
 
-def clamp_eval(spline, value):
-    """Evaluate inside the spline's own valid range.
-
-    Upstream `NonUniformBspline::evaluateDeBoor` clamps every query into that
-    spline's range, `ub = min(max(u_(p_), u), u_(m_ - p_))`, and `traj_server`
-    relies on it: position, velocity, acceleration, yaw and yaw-rate each have
-    their own knots. scipy returns NaN outside a spline's range instead, so the
-    clamp has to be explicit. The yaw spline's range end `seg_num * (duration /
-    seg_num)` can sit 1 ulp below the position duration, which is enough to turn
-    every terminal sample into a NaN yaw without this.
-    """
-    return spline(min(float(spline.t[-spline.k-1]), max(float(spline.t[spline.k]), value)))
-
-
 def sample_reference(message, now, position=None, yaw=None, yaw_rate=0.):
     """Match upstream traj_server's native spline and terminal hover semantics."""
     from scipy.interpolate import BSpline
@@ -38,10 +24,9 @@ def sample_reference(message, now, position=None, yaw=None, yaw_rate=0.):
         if t < 0:
             raise ValueError('Fast-Planner trajectory starts in the future')
         terminal = begin+t >= end
-        rows.append(np.r_[clamp_eval(position, local),
-                          np.zeros(3) if terminal else clamp_eval(velocity, local),
-                          np.zeros(3) if terminal else clamp_eval(acceleration, local),
-                          clamp_eval(yaw, local-begin), clamp_eval(yaw_rate, local-begin)])
+        rows.append(np.r_[position(local), np.zeros(3) if terminal else velocity(local),
+                          np.zeros(3) if terminal else acceleration(local),
+                          yaw(local-begin), yaw_rate(local-begin)])
     return np.asarray(rows, dtype=np.float32)
 
 

@@ -71,8 +71,13 @@ def _publish_generated(path, writer):
         os.fsync(stream.fileno())
     # Same-directory hard link is atomic and refuses an existing destination.
     # Interrupted partial files remain evidence; successful scratch is removed.
-    os.link(partial, path)
-    partial.unlink()
+    if os.name == 'nt':
+        # Windows denies hard-link creation here; rename is atomic and refuses
+        # an existing destination on Windows. Keep the Linux publication path.
+        os.rename(partial, path)
+    else:
+        os.link(partial, path)
+        partial.unlink()
 
 
 def write_json(path, value):
@@ -130,14 +135,14 @@ def observation_hash(observation):
     return h.hexdigest()
 
 
-def action_views(full, policy, executed):
+def action_views(full, policy, executed, n_exec=4):
     arrays = [np.asarray(x, dtype=np.float32) for x in (full, policy, executed)]
-    if [x.shape for x in arrays] != [(16, 11), (8, 11), (4, 11)]:
+    if [x.shape for x in arrays] != [(16, 11), (8, 11), (n_exec, 11)]:
         raise ValueError("16/8/4 action shape violation")
     if not all(np.isfinite(x).all() for x in arrays):
         raise ValueError("nonfinite action")
     if not (np.array_equal(arrays[0][2:10], arrays[1])
-            and np.array_equal(arrays[0][2:6], arrays[2])):
+            and np.array_equal(arrays[0][2:2+n_exec], arrays[2])):
         raise ValueError("action views disagree")
     return arrays
 

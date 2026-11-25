@@ -61,13 +61,14 @@ def step_v2(env, action):
             wp = action_to_world(a, pre, pre_vel, pre_yaw)
             planned = np.vstack((pre, wp[:, POS]))
             # Search H1-H3 before drawing noise used only when H4 is reached.
-            path = np.vstack((pre, wp[:3, POS]))
+            n_exec = 2 if getattr(env, "evaluation_protocol", "E2") == "E3" else 4
+            path = np.vstack((pre, wp[:n_exec - 1, POS]))
             event = locate_first_event(path, env.goal_w, env.obstacles,
                                        env.collision_thresh, env.z_max,
                                        terminate_at_space_limits=getattr(
                                            env, "terminate_at_space_limits", True))
             if event is None:
-                end = wp[3, POS].copy()
+                end = wp[n_exec - 1, POS].copy()
                 if env.exec_noise_scale > 0:
                     end += env._rng.normal(0, env.exec_noise_scale, 3).astype(np.float32)
                 if env.disturb_enable and env._rng.random() < env.disturb_prob:
@@ -79,8 +80,8 @@ def step_v2(env, action):
                                                env, "terminate_at_space_limits", True))
             if event is None:
                 actual = path
-                pos, yaw, vel = path[-1].copy(), float(wp[3, YAW]), wp[3, VEL].copy()
-                frame_count = 4
+                pos, yaw, vel = path[-1].copy(), float(wp[n_exec - 1, YAW]), wp[n_exec - 1, VEL].copy()
+                frame_count = n_exec
             else:
                 index, fraction = event.segment_index, event.fraction
                 actual = np.vstack((path[:index + 1], event.position.astype(np.float32)))
@@ -153,9 +154,11 @@ def step_v2(env, action):
                 executed_path=actual.copy(),
                 event_fraction=None if event is None else event.fraction,
                 event_segment=None if event is None else event.segment_index,
-                executed_time_s=((3. + 1.) if event is None else
+                executed_time_s=(float(n_exec) if event is None else
                                  (event.segment_index + event.fraction)) * env.traj_dt,
                 pointcloud_meta_history=tuple(env._pc_meta_history),
                 episode_identity_hash=env._episode_identity_hash,
                 decision_index=env._observation_frame_index)
+    if getattr(env, 'record_execution_candidate', False):
+        info['execution_candidate_path'] = path.copy()
     return obs, total, facts.terminated, facts.truncated, info
