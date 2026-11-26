@@ -236,14 +236,14 @@ S0 两行与 Claude 的独立复算（dev 281/138/1、val 61/14/5）逐项一致
 | `t3_cloud.json`、`t6_timing.json`、`t7_rejudge.json` | 代价取点、计时、1 m 重判 |
 | `reuse_outcomes.json` | 复用三组的 1 m / 0.5 m 双口径 |
 | `runs/<arm>/{identity.json,summary.json,conditions.csv}` | 每臂身份、结局汇总、逐条件表（明文） |
-| `packs/<arm>_traces.tar.zst` | 每臂 `commits/` + `traces/` 全量原迹（2000 个文件，压后 92 MB） |
+| `packs/<arm>_traces.tar.zst` | 每臂 `commits/` + `traces/` 全量原迹（2000 个文件，压后 92 MB）；本地 546 MB 未压缩副本在逐文件核验后已删除，只留 tar |
 | `traces_manifest.sha256` | 上述 2000 个原迹文件的逐文件 SHA256（与 tar 内一致） |
 | `report.json` | 每臂完整性、结局、引导与计时统计 |
 | `execution/` | 所有命令 argv、日志、rc、起止时间 |
 | `SHA256SUMS.txt` | 本目录（不含 `runs/*/traces`、`runs/*/commits`，它们在 tar 里）逐文件 SHA256 |
 
 校验方式：`sha256sum -c SHA256SUMS.txt`；解包 `packs/<arm>_traces.tar.zst` 后 `sha256sum -c traces_manifest.sha256`
-（manifest 里的路径是 `runs/<arm>/…`，需在 `runs/` 目录下执行或先 `cd runs`）。
+（manifest 里的路径是 `<arm>/…`，需先 `cd runs`，例如 `cd runs && sha256sum -c ../traces_manifest.sha256`）。
 
 ## 12. 未做
 
