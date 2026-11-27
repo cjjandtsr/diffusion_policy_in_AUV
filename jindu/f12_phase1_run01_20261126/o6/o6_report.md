@@ -66,11 +66,11 @@ E5_FROZEN_ENCODER_CONV1D_MODULES = 10
 - `engine/trainer.py:302-332` 把 keep 梯度按系数加入 PPO 梯度；没有时间调度（不是 warmup/anneal）。
 - P6 的 `a2.keep_seed=2026102301` 只用于参考样本，不是系数调度。
 
-## 7. P6 训练任务中被挡任务比例
-**结论：按 P6 训练 bank（`routea_f8_diag_run03/bank.json`），85 个任务中 80 个被挡（94.1%）；425 个条件中 400 个被挡（94.1%）。**
-- 定义：起点—目标直线按 0.05 m 采样，最小几何净空 < 0.3 m。
-- 分角色：dense_recovery 57、yaw_lateral_recovery 8、anticipatory 8、support_expansion 7。
-- 注意：这是条件/任务比例，不是转移比例；O1 报告按转移统计被挡约 20%，两者口径不同。
+## 7. 被挡任务比例（口径冲突说明）
+**结论：`routea_f8_diag_run03/bank.json` 是 F8 诊断 bank，不是 P6 训练实际使用的任务集合。该诊断 bank 的 85 个 ticket 中 80 个被挡（94.1%），425 个条件中 400 个被挡（94.1%）。P6 训练实际使用 admission manifest 的 53 个 admitted 世界（8/33/8/4），由 `build_episode_tasks()` 构造 53 个任务，每个回合由环境按角色重新抽 start/goal；O1 按训练回合统计的被挡为 1036/3763（27.5%）。**
+- 定义：起点—目标直线按 0.05 m 采样，最小几何净空 < 0.3 m；两处定义相同。
+- 差异来源：诊断 bank 故意覆盖了较多被挡 ticket；P6 训练按 53 个世界、角色平衡、随机 start/goal。
+- 因此 O6 原句“P6 训练 bank 80/85”应改为上述两句；89/94% 不应用于 P6 训练分布。
 
 ## 8. 评论家输入
 **结论：评论家读 576 维全局条件 + episode 标量上下文，不读点云原始点。**

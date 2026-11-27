@@ -16,6 +16,8 @@
 > 探针 2 在完整 4389 状态上出现 **0.01037 m** 的跨进程 GPU float32 差异；按 `probes.json` 的 `tolerance_m=2e-2` 记为通过，并在 `implementation_checklist.md` 标注。其余探针为 0 误差/精确值。
 
 ## 2. 目录
+- 原始逐行数据另推 GitHub 分支 `f12-pack/phase1-run01`（commit `b4f950bd`），目录 `jindu/f12_phase1_run01_20261126/`。
+
 - `s0/`：`s0_task_pool.json`、`s0_episodes.csv`、`s0_states.csv`、`s0_states.npz`、`traces/*.jsonl.gz`、`s0_selection_rules.json`
 - `o2/`：`o2_candidates.csv`、`o2_candidate_arrays.npz`、`o2_rollout_plan.csv`、`o2_rollouts.csv`、`o2_states.csv`、`o2_selection.json`
 - `o3/`：`o3_features.npz`、`o3_features.json`
