@@ -158,6 +158,20 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
                         # missing from the allowlist, so fork_parent rejected it.
                         'scripts/evaluate_dppo_uav_formal_endpoint.py',
                         'diffusion_policy_3d/env/reward_v2_support/environment.py'))
+    if config.get('f12') is not None:
+        # F12 phase 2 (Claude 2026-11-26, guide v1_2): the working tree carries the F8/F9
+        # closures (executed only when their own config blocks are present; F12 configs have
+        # none, validate_f12 rejects them) and the F12 files.  Same pattern as the F9 patch.
+        allowed.update(prefix+p for p in ('entrypoints/f8_support.py', 'entrypoints/f9_support.py',
+            'engine/f9_online.py', 'entrypoints/f9_blocked_sampler.py',
+            'entrypoints/f12_support.py', 'engine/f12_rx_math.py',
+            'rewards/v6/__init__.py', 'rewards/v6/facade.py'))
+        allowed.update(('scripts/run_routea_f8.py', 'scripts/routea_paired_support/f8_guidance.py',
+            'scripts/run_routea_f9.py', 'scripts/routea_denoising_guidance.py',
+            'scripts/routea_paired_support/core.py', 'scripts/evaluate_dppo_uav_formal_endpoint.py',
+            'diffusion_policy_3d/env/reward_v2_support/environment.py',
+            'diffusion_policy_3d/env/reward_v6.py', 'scripts/run_routea_f12.py',
+            'scripts/f12_phase2/probes.py'))
     if changed-allowed:
         raise ValueError('unapproved A2 source differences: '+repr(sorted(changed-allowed)))
     a,b = dict(closure['inputs']),dict(current['inputs'])
@@ -177,6 +191,10 @@ def fork_parent(config, repo_root, system, task_sampler, child_identity):
         # perturbed teacher candidate under an explicit flag), so that bundle's
         # identity legitimately changes. PPO reward terms and totals are unchanged;
         # the same exemption pattern is used by f5/f6/f7 for their reward versions.
+        mutable_identity.add('reward_identity_hash')
+    if config.get('f12') is not None:
+        # v2 bundle carries the F9 execution-candidate flag (PPO terms unchanged; C0 vs R
+        # u257 matched check recomputes every term); v6 is a new reward by design.
         mutable_identity.add('reward_identity_hash')
     for key in header.runtime_identity:
         if key not in mutable_identity and _canonical_hash(getattr(child_identity,key)) != _canonical_hash(getattr(parent,key)):
