@@ -122,10 +122,16 @@ class RXSession:
                 else with_history_scalar(condition, env._reward_history))
 
     def _encode_raw(self, agent_pos, point_cloud):
+        # 2026-11-27 fix（P42 u257 rx collect 报 ConditioningError）：
+        # 环境观测是 environment_history=8 帧，E5 编码器要 policy_history=3 帧；
+        # 原实现直接 [None] 送上 8 帧，必被 conditioning 拒。改走正常编码路径同一条
+        # ObservationBridge（取最新 3 帧 + 点云截到 policy_point_dim），保证旋转/镜像
+        # 条件与真实条件逐位可比。
         from ..actor_ddpm.conditioning import encode_e5_condition_with_normalized
-        dev = self.system.bc_runtime.device
-        po = {'agent_pos': torch.as_tensor(np.asarray(agent_pos, np.float32)[None], device=dev),
-              'point_cloud': torch.as_tensor(np.asarray(point_cloud, np.float32)[None], device=dev)}
+        po = self.system.observation_adapter.bridge.to_policy_observation(
+            {'agent_pos': np.asarray(agent_pos, np.float32),
+             'point_cloud': np.asarray(point_cloud, np.float32)},
+            self.system.bc_runtime.device)
         cond, _ = encode_e5_condition_with_normalized(self.system.bc_runtime.policy, po,
                                                       self.system.observation_adapter.spec)
         return cond
