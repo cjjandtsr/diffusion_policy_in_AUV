@@ -1,0 +1,36 @@
+{
+ "conditions": {
+  "away30_k5": {
+   "collision": 443,
+   "n": 800,
+   "reached_1m": 356
+  },
+  "feas30_k1": {
+   "collision": 479,
+   "n": 800,
+   "reached_1m": 328
+  },
+  "feas30_k3": {
+   "collision": 436,
+   "n": 800,
+   "reached_1m": 358
+  },
+  "feas30_k5": {
+   "collision": 402,
+   "n": 800,
+   "reached_1m": 392
+  },
+  "feas60_k3": {
+   "collision": 392,
+   "n": 800,
+   "reached_1m": 406
+  },
+  "orig": {
+   "collision": 477,
+   "n": 800,
+   "reached_1m": 331
+  }
+ },
+ "protocol": "P6 #E2 deterministic, clip 2.0; goal dims 3,4 of 3 frames rotated for decisions < k; feasible side from O2 geodesic first step (left +1)",
+ "schema": "f12_o2b_v1"
+}

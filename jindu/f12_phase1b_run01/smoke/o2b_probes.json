@@ -1,0 +1,61 @@
+{
+ "probe1_pass": true,
+ "probe2_pass": true,
+ "repeat_identical": [
+  {
+   "identical": true,
+   "state_rank": 1
+  },
+  {
+   "identical": true,
+   "state_rank": 2
+  }
+ ],
+ "rewrite_only_first_k": [
+  {
+   "rows": [
+    {
+     "decision": 2,
+     "identical_to_true": false,
+     "rewritten": true
+    },
+    {
+     "decision": 3,
+     "identical_to_true": true,
+     "rewritten": false
+    }
+   ],
+   "state_rank": 1
+  },
+  {
+   "rows": [
+    {
+     "decision": 2,
+     "identical_to_true": false,
+     "rewritten": true
+    },
+    {
+     "decision": 3,
+     "identical_to_true": true,
+     "rewritten": false
+    }
+   ],
+   "state_rank": 2
+  },
+  {
+   "rows": [
+    {
+     "decision": 2,
+     "identical_to_true": false,
+     "rewritten": true
+    },
+    {
+     "decision": 3,
+     "identical_to_true": true,
+     "rewritten": false
+    }
+   ],
+   "state_rank": 3
+  }
+ ]
+}
