@@ -1,0 +1,20 @@
+{
+ "schema": "f12_o6_facts_v1",
+ "commit": "d54879fb",
+ "items": {
+  "1_cfg": {"verdict": "no", "evidence": ["third_party/dppo_official_cc7234a/uav_idp3/e5_runtime.py:185", "scripts/evaluate_dppo_uav_formal_endpoint.py:384-390", "diffusion_policy_3d/rl/ppo_trainer.py:187-249 (old, unused)"]},
+  "2_projection": {"verdict": "no step projection", "evidence": ["diffusion_policy_3d/env/kinematic_uav_env.py:735 reset-only clip", "diffusion_policy_3d/env/kinematic_uav_env.py:775-789", "diffusion_policy_3d/env/kinematic_uav_env.py:1080,1166 altitude terminal only"]},
+  "3_noise_floors": {"sampling": 0.1, "logprob": 0.1, "evidence": ["diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/build_system.py:84-85", "scripts/run_routea_f10_eval.py:335-337"]},
+  "4_ft_steps": {"value": 10, "evidence": ["diffusion_policy_3d/rl/dppo_uav_rebuild/entrypoints/build_system.py:98"]},
+  "5_lora": {"linear": 14, "conv1d": 33, "rank": 8, "alpha": 8.0, "evidence": ["diffusion_policy_3d/rl/dppo_uav_rebuild/actor_ddpm/lora.py:20-24"]},
+  "6_keep": {"coefficient": 0.01061006086489362, "schedule": "constant", "evidence": ["scripts/run_routea_f9.py:264", "diffusion_policy_3d/rl/dppo_uav_rebuild/engine/trainer.py:302-332"]},
+  "7_blocked_fraction": {"tasks": "80/85", "conditions": "400/425", "definition": "straight min clearance < 0.3 m", "evidence": ["program/results/routea_f8_diag_run03/bank.json"]},
+  "8_critic_input": {"actor_cond_dim": 576, "context_dim": 7, "evidence": ["diffusion_policy_3d/rl/dppo_uav_rebuild/engine/critic_state.py"]},
+  "9_time_limit": {"decisions": 60, "seconds": 72.0, "evidence": ["P6 environment.max_episode_steps=60", "scripts/routea_paired_support/episodes.py:51"]},
+  "10_bc": {"history": 3, "horizon": 16, "n_action_steps": 8, "d_safe": 0.75, "lambda_col": 0.5, "end_weight": 3.0, "end_dist_threshold": 2.0, "normalizer": "gaussian action; identity point_cloud/agent_pos", "dpos_mean": [0.027713216765241525, 0.0025376216545704277, 0.0005403336695109763], "dpos_std": [0.23398790158973912, 0.20849010031391713, 0.036755671257119156]},
+  "11_pointcloud_frame": {"frame": "body +x forward +y left +z up, yaw-only rotation", "origin": "body center (camera offset 0.12,0,0.015 m)"},
+  "12_bc_wall_time": {"value_hours": 9.87, "evidence": "data/outputs/2026.08.16/08.53.26_e5_lambda0p5 mtimes"},
+  "13_rl_update_time": {"value_minutes": "14.6-15.3", "evidence": "routea_f9_run01/training/P35,P36 metrics mtimes"},
+  "14_inference_time": {"denoise_median_ms": 212.1, "denoise_p95_ms": 271.6, "full_median_ms": 227.1, "evidence": "routea_f10_run01/t6_timing.json"}
+ }
+}

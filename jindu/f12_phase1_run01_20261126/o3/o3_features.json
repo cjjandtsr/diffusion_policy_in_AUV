@@ -1,0 +1,16 @@
+{
+ "feature_dim": 576,
+ "labels": [
+  "blocked",
+  "free_front",
+  "free_left45",
+  "free_right45",
+  "future_clear_2",
+  "future_clear_4",
+  "goal_azimuth"
+ ],
+ "n": 4389,
+ "note": "P6 and BC condition features are identical because the observation encoder/normalizer are shared and frozen",
+ "schema": "f12_o3_features_v1",
+ "source": "/home/cjj/AUV/program/results/routea_f12_phase1_run01/s0/s0_states.npz"
+}
