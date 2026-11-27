@@ -363,12 +363,14 @@ def build_environment_provenance(repo_root, *, reward_version="v17"):
     """Record executed-path and observation sources, without importing the env."""
 
     paths = ENVIRONMENT_SOURCE_PATHS
-    if str(reward_version) in ("v2", "v3", "v4", "v5"):
+    if str(reward_version) in ("v2", "v3", "v4", "v5", "v6"):
         paths += R1_EXECUTED_ENVIRONMENT_SOURCE_PATHS
     if str(reward_version) == 'v4':
         paths += ('diffusion_policy_3d/env/reward_v4.py',)
     if str(reward_version) == 'v5':
         paths += ('diffusion_policy_3d/env/reward_v5.py',)
+    if str(reward_version) == 'v6':
+        paths += ('diffusion_policy_3d/env/reward_v6.py',)
     if str(reward_version) == 'v3':
         paths += ('diffusion_policy_3d/env/reward_v3.py',)
     sources = {

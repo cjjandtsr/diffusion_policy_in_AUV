@@ -151,7 +151,7 @@ class KinematicUAVEnv(gym.Env):
         self.terminate_at_space_limits = bool(terminate_at_space_limits)
         self.space_cost_budget = space_cost_budget
         if space_cost_budget is not None and (
-                reward_version not in ("v2", "v3", "v4", "v5") or not np.isfinite(space_cost_budget) or space_cost_budget < 0.):
+                reward_version not in ("v2", "v3", "v4", "v5", "v6") or not np.isfinite(space_cost_budget) or space_cost_budget < 0.):
             raise ValueError("space cost requires v2 and a finite non-negative budget")
         self.n_obs_steps = 8   # ★n8: 必须 8, global_cond=192×8=1536
 
@@ -202,7 +202,7 @@ class KinematicUAVEnv(gym.Env):
         # reward v1.3
         self.reward_version = reward_version
         self.reward_v13_cfg = {**REWARD_V13_DEFAULTS, **(reward_v13_cfg or {})}
-        if reward_version in ("v2", "v3", "v4", "v5") and (
+        if reward_version in ("v2", "v3", "v4", "v5", "v6") and (
             (self.n_exec_steps, self.max_episode_steps) != (
                 (2, 120) if evaluation_protocol == "E3" and reward_version == "v2" else (4, 60))
             or self.rl_action_steps != 8 or collision_thresh != .10
@@ -218,7 +218,7 @@ class KinematicUAVEnv(gym.Env):
                     or self.gamma != self.reward_v17_cfg["gamma_pbrs"]):
                 raise ValueError("v17 environment horizon/gamma mismatch")
         # P0-1: 自动加载 offline density（若未显式传入）
-        if offline_density is None and reward_version in ("v2", "v3", "v4", "v5"):
+        if offline_density is None and reward_version in ("v2", "v3", "v4", "v5", "v6"):
             self.offline_density = None
         elif offline_density is None:
             self.offline_density = load_offline_density()
@@ -352,7 +352,7 @@ class KinematicUAVEnv(gym.Env):
         obs = self._get_obs_frame()
         for frame_index in range(self.n_obs_steps):
             meta = None
-            if self.reward_version in ("v17", "v2", "v3", "v4", "v5"):
+            if self.reward_version in ("v17", "v2", "v3", "v4", "v5", "v6"):
                 meta = replace(self._last_pc_meta, decision_index=frame_index)
             self._push_obs(obs, pointcloud_meta=meta)
         self._observation_frame_index = self.n_obs_steps - 1
@@ -368,7 +368,7 @@ class KinematicUAVEnv(gym.Env):
         if self.reward_version == "v17":
             from .reward_v17_support.environment import reset_reward
             reset_reward(self)
-        elif self.reward_version in ("v2", "v3", "v4", "v5"):
+        elif self.reward_version in ("v2", "v3", "v4", "v5", "v6"):
             from .reward_v2_support.environment import reset_reward_v2
             reset_reward_v2(self)
         return self._get_obs_dict(), {
@@ -469,7 +469,7 @@ class KinematicUAVEnv(gym.Env):
             if not (x_min <= point[0] <= x_max and y_min <= point[1] <= y_max
                     and z_low <= point[2] <= z_high):
                 reasons.append('bounds_' + label)
-        if self.reward_version in ("v2", "v3", "v4", "v5") and float(np.linalg.norm(
+        if self.reward_version in ("v2", "v3", "v4", "v5", "v6") and float(np.linalg.norm(
                 start.astype(np.float64) - goal.astype(np.float64))) <= 0.5:
             reasons.append('goal_sphere_start')
         _, _, start_cl, goal_cl = self._get_role_params(role)
@@ -745,6 +745,9 @@ class KinematicUAVEnv(gym.Env):
         if self.reward_version == "v17":
             from .reward_v17_support.environment import step_v17
             return step_v17(self, action)
+        if self.reward_version == "v6":
+            from .reward_v6 import step_v6
+            return step_v6(self, action)
         if self.reward_version == "v5":
             from .reward_v5 import step_v5
             return step_v5(self, action)
@@ -883,7 +886,7 @@ class KinematicUAVEnv(gym.Env):
         synth_pos[2] = max(synth_pos[2], 0.05)  # 不低于地面 5cm
         # P0-2: episode-local RNG for reproducible point cloud
         _obs_seed = self._episode_rng_seed if hasattr(self, '_episode_rng_seed') else None
-        if self.reward_version in ("v17", "v2", "v3", "v4", "v5"):
+        if self.reward_version in ("v17", "v2", "v3", "v4", "v5", "v6"):
             pc, self._last_pc_meta = self.synth_pc.generate_with_metadata(
                 synth_pos,
                 self._drone_yaw,

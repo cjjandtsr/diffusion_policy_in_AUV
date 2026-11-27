@@ -233,5 +233,8 @@ class RouteAEnvironmentFactory:
         environment = self._environments[task.task_id]
         if getattr(self.reward, 'version', None) == 'v5':
             environment.approach_weight = self.reward.approach_weight
+        if getattr(self.reward, 'version', None) == 'v6':
+            for key, value in self.reward.params.items():
+                setattr(environment, 'f12_' + key, value)
         state = self.reward.initial_state(self.reward_config)
         return KinematicAdapter(environment, self.reward, state, self.reward_config)
