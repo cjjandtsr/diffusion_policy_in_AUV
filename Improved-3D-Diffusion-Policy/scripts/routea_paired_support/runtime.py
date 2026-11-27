@@ -195,7 +195,7 @@ def make_adapter(system, c, world, role, evaluation_protocol="E2"):
     env.terminate_at_space_limits = False
     # v3 delegates state advancement and first-event handling to v2; only reward differs.
     n_exec, deadline = (2, 120) if evaluation_protocol == "E3" else (4, 60)
-    if (env.reward_version not in ("v2", "v3", "v4", "v5") or env.n_exec_steps != n_exec or env.rl_action_steps != 8
+    if (env.reward_version not in ("v2", "v3", "v4", "v5", "v6") or env.n_exec_steps != n_exec or env.rl_action_steps != 8
             or env.traj_dt != .3 or env.max_episode_steps != deadline or env.collision_thresh != .1):
         raise ValueError("common environment is not v2-or-v3-or-v4-or-v5/H4/8")
     return adapter

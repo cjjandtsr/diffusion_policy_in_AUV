@@ -19,6 +19,11 @@ def validate_child_config(parent, child):
         validate_v2_config(OmegaConf.create(right))
         right.pop('f7' if 'f7' in right else 'f8')
         right.pop('f9', None)
+        if right.pop('f12', None) is not None:
+            # F12 RN changes only the registered sampling/likelihood floor (0.1 -> 0.2),
+            # already checked by validate_f12 above.
+            for key in ('min_sampling_std', 'min_logprob_std'):
+                left['dppo'].pop(key, None); right['dppo'].pop(key, None)
         right['reward_version'] = left['reward_version']
         for value in (left, right):
             for key in ('seed','updates','checkpoint_updates','checkpoint_every_updates'):

@@ -11,6 +11,13 @@ def select_reward(config, repo_root):
     version = str(getattr(config, "reward_version", "v13"))
     if version == "v13":
         return RewardV13Facade()
+    if version == "v6":
+        from .v6.facade import RewardV6Facade
+        protocol = config.get("task_protocol")
+        if 'f12' not in config:
+            raise ValueError('v6 requires a registered F12 run')
+        return RewardV6Facade(space_cost_budget=None if protocol is None else protocol.space_cost_budget,
+                              **dict(config.f12.reward))
     if version in ("v2", "v3", "v4", "v5"):
         from .v2.facade import RewardV2Facade
         protocol = config.get("task_protocol")

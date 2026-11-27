@@ -52,7 +52,7 @@ def validate_v2_config(config):
     if 'f9' in config:
         from .f9_support import validate_f9
         validate_f9(config)
-    unknown_top = set(config.keys()) - (_TOP_LEVEL | {'f5', 'f6', 'f7', 'f8', 'f9', 'task_bank'})
+    unknown_top = set(config.keys()) - (_TOP_LEVEL | {'f5', 'f6', 'f7', 'f8', 'f9', 'f12', 'task_bank'})
     unknown_run = set(config.run.keys()) - _RUN_KEYS
     unknown_dppo = set(config.dppo.keys()) - _DPPO_KEYS
     unknown_environment = set(config.environment.keys()) - _ENVIRONMENT_KEYS
@@ -65,7 +65,7 @@ def validate_v2_config(config):
     protocol = config.get("task_protocol")
     if protocol is not None:
         if (set(protocol) != {"name", "space_cost_budget"} or
-                protocol.name != "open_space_finite_v1" or reward_version not in ("v2", "v3", "v4", "v5")):
+                protocol.name != "open_space_finite_v1" or reward_version not in ("v2", "v3", "v4", "v5", "v6")):
             raise ValueError("unknown common task protocol")
         budget = float(protocol.space_cost_budget)
         if not math.isfinite(budget) or budget < 0.:
@@ -77,7 +77,7 @@ def validate_v2_config(config):
     if reward_version == "v17":
         if int(config.reward.H_e) != 4:
             raise ValueError("v2 A0 training requires Reward v1.7 with H_e=4")
-    elif reward_version in ("v2", "v3", "v4", "v5"):
+    elif reward_version in ("v2", "v3", "v4", "v5", "v6"):
         if set(config.reward.keys()) != set(_R1_REWARD) or any(
             float(config.reward[key]) != expected for key, expected in _R1_REWARD.items()
         ):
