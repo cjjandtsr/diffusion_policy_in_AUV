@@ -45,6 +45,9 @@ class F7Schedule:
 
 
 def validate_f7(config):
+    if 'f12' in config:
+        from .f12_support import validate_f12
+        return validate_f12(config)
     if 'f7' not in config:
         if str(config.get('reward_version')) == 'v5':
             raise ValueError('v5 requires registered F7')

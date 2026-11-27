@@ -358,7 +358,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         repo_root, reward_version=str(config.reward_version))
     r1_probe_path = results / "r1_plan_probe.json"
     r1_probe = None
-    if str(config.reward_version) in ("v2", "v3", "v4", "v5") and resume_from is not None and r1_probe_path.is_file():
+    if str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6") and resume_from is not None and r1_probe_path.is_file():
         r1_probe = json.loads(r1_probe_path.read_text(encoding="utf-8"))
         if r1_probe["runtime_identity_hash"] != runtime_identity.content_hash:
             raise RuntimeError("R1 probe runtime identity mismatch on resume")
@@ -373,8 +373,14 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         system.trainer.f8_keep = f9_session.keep
         system.trainer.record_f9 = True
         auxiliary_schedules['f9_session'] = f9_session
+    rx_session = None
+    if config.get('f12') is not None and bool(config.f12.rx.enabled):
+        from .f12_support import RXSession
+        rx_session = RXSession(system, config, environment_factory, results)
+        system.trainer.f8_keep = rx_session
+        auxiliary_schedules['f12_rx'] = rx_session
     a2_calibration_needed = a2 is not None and (a2.arm == 'T' or imitation_enabled) and resume_from is None and 'f5' not in config and 'f6' not in config and 'f7' not in config and 'f8' not in config
-    f8_calibration_needed = f9_session is None and system.trainer.f8_keep is not None and resume_from is None
+    f8_calibration_needed = f9_session is None and rx_session is None and system.trainer.f8_keep is not None and resume_from is None
     anchor_calibration_needed = system.trainer.inert_anchor is not None and resume_from is None
     if resume_from is not None:
         header = restore_checkpoint(
@@ -395,7 +401,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             output, start_update, report_dir=results if results != output else None)
         if results != output:
             resume_metrics_quarantine = _prepare_resume_output(results, start_update)
-        if str(config.reward_version) in ("v2", "v3", "v4", "v5") and start_update > 1 and r1_probe is None:
+        if str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6") and start_update > 1 and r1_probe is None:
             raise FileNotFoundError("R1 resume requires the frozen train-domain probe")
     elif a2 is not None:
         from ..checkpointing.a2_fork import fork_parent, verified_json
@@ -496,13 +502,13 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
         task_role_episode_start_counts = Counter()
         audit = TrainingAudit(term_names=getattr(system.reward, "term_names", None),
                               terminate_at_space_limits=(environment_factory.terminate_at_space_limits
-                                                         if str(config.reward_version) in ("v2", "v3", "v4", "v5") else None))
+                                                         if str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6") else None))
         buffer = OnPolicyRolloutBuffer(
             rollout_size,
             gamma=float(config.dppo.gamma_environment),
             gae_lambda=float(config.dppo.gae_lambda),
             outer_update_id=update_index,
-            history_scalar=str(config.reward_version) in ("v2", "v3", "v4", "v5") and not finite_task,
+            history_scalar=str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6") and not finite_task,
             episode_context=finite_task,
         )
         adapter = None
@@ -531,7 +537,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                 )
             system.observation_adapter.verify(encoded_observation)
             condition = encoded_observation.condition
-            if str(config.reward_version) in ("v2", "v3", "v4", "v5") and r1_probe is None:
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6") and r1_probe is None:
                 initial_action = sample_probe_action(
                     system.rollout_sampler, condition, seed=seed + 981731,
                     device=runtime_device)
@@ -544,7 +550,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
                     "source": "first admitted train-domain observation at update 1",
                 }
                 _write_json_once(r1_probe_path, r1_probe)
-            if str(config.reward_version) in ("v2", "v3", "v4", "v5"):
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6"):
                 from diffusion_policy_3d.rl.dppo_uav_rebuild.engine.critic_state import with_history_scalar, with_episode_context
                 critic_condition = (with_episode_context(condition, adapter.environment) if finite_task
                                     else with_history_scalar(condition, adapter.environment._reward_history))
@@ -578,7 +584,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             )
             system.observation_adapter.verify(next_encoded_observation)
             next_condition = next_encoded_observation.condition
-            if str(config.reward_version) in ("v2", "v3", "v4", "v5"):
+            if str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6"):
                 next_critic_condition = (with_episode_context(next_condition, adapter.environment) if finite_task
                                          else with_history_scalar(next_condition, adapter.environment._reward_history))
             else:
@@ -766,6 +772,15 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             f9_collection = f9_session.collect(update=update_index)
             _write_json_once(results/('f9_collect_%06d.json' % update_index), f9_collection)
             f9_optimizer_started = time.perf_counter()
+        if rx_session is not None:
+            # Sidecar groups use the pre-update actor, i.e. the PPO behaviour policy of this update.
+            rx_collection = rx_session.collect(update_index)
+            rx_path = results / ('f12_rx_collect_%06d.json' % update_index)
+            attempt = 1
+            while rx_path.exists():
+                attempt += 1
+                rx_path = results / ('f12_rx_collect_%06d_attempt%02d.json' % (update_index, attempt))
+            _write_json_once(rx_path, rx_collection)
         for batch in batch_iterator:
             if hasattr(batch, "pair_count"):
                 pair_evaluations += batch.pair_count
@@ -886,7 +901,7 @@ def _run_unlocked(config, repo_root: Path, resume_from=None, stop_after_update=N
             )
             checkpoint_path = output / "checkpoint_update_{:06d}".format(update_index)
         r1_probe_metrics = None
-        if checkpoint_path is not None and str(config.reward_version) in ("v2", "v3", "v4", "v5"):
+        if checkpoint_path is not None and str(config.reward_version) in ("v2", "v3", "v4", "v5", "v6"):
             probe_condition = {
                 key: torch.tensor(value, device=runtime_device, dtype=torch.float32)
                 for key, value in r1_probe["condition"].items()

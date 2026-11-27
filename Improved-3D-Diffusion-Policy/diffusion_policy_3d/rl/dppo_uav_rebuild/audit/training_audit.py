@@ -103,6 +103,7 @@ class TrainingAudit:
         self.term_names = tuple(term_names or REWARD_TERM_NAMES)
         self.reward_version = ("v4" if "goal_potential" in self.term_names else
                                "v3" if "risk_close" in self.term_names else
+                               "v6" if "stall" in self.term_names else
                                "v2" if "newbest" in self.term_names else
                                "v17" if "overflight" in self.term_names else "v13")
         self.terminate_at_space_limits = ("overflight" not in self.term_names
