@@ -26,7 +26,11 @@ from .f7_support import KEEP, REFERENCE_SHA
 
 SEEDS = (202611261, 202611262)
 RUNS = {'P39': ('C0', SEEDS[0]), 'P40': ('R', SEEDS[0]), 'P41': ('RN', SEEDS[0]), 'P42': ('RX', SEEDS[0]),
-        'P43': ('C0', SEEDS[1]), 'P44': ('R', SEEDS[1]), 'P45': ('RN', SEEDS[1]), 'P46': ('RX', SEEDS[1])}
+        'P43': ('C0', SEEDS[1]), 'P44': ('R', SEEDS[1]), 'P45': ('RN', SEEDS[1]), 'P46': ('RX', SEEDS[1]),
+        # Patch 2 (2026-11-27): RX with the full lateral mirror. P42 (u257 only) and P46 (never run)
+        # used the position-only mirror and are retired; IDs are not reused.
+        'P47': ('RX', SEEDS[0]), 'P48': ('RX', SEEDS[1])}
+RETIRED = {'P42': 'position-only mirror (patch 2)', 'P46': 'position-only mirror (patch 2)'}
 FLOOR = {'C0': .1, 'R': .1, 'RN': .2, 'RX': .1}
 RX_DEFAULTS = dict(groups_per_update=16, transition_cap=1024, states_per_episode=2, min_spacing=3,
                    free_min=3.0, free_max=6.0, goal_margin=0.5,
@@ -41,6 +45,8 @@ def reward_params():
 
 def validate_f12(config):
     f, f7 = config.f12, config.get('f7')
+    if str(f.run_id) in RETIRED:
+        raise ValueError('F12 run retired: ' + RETIRED[str(f.run_id)])
     arm, seed = RUNS[str(f.run_id)]
     if set(f) != {'run_id', 'arm', 'reward', 'rx'} or str(f.arm) != arm:
         raise ValueError('F12 block differs from registry')

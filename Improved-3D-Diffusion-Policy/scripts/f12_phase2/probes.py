@@ -116,6 +116,14 @@ def cpu(args):
     v[:, 1] = .5
     mv = rx.mirror_full(v, 0.)
     check('A6f_mirror_lateral', np.allclose(mv[:, 0], 1.) and np.allclose(mv[:, 1], -.5), 'x 1, y -0.5', mv[0, :2])
+    v2 = np.zeros((16, 11), np.float32); v2[:, 3], v2[:, 4], v2[:, 6], v2[:, 7] = 2., .3, .1, -.4
+    m2 = rx.mirror_full(v2, 0.)
+    check('A6f2_mirror_vel_acc', np.allclose(m2[:, 3:5], [2., -.3]) and np.allclose(m2[:, 6:8], [.1, .4]),
+          'vel (2,-0.3) acc (0.1,0.4)', (m2[0, 3:5], m2[0, 6:8]))
+    v3 = np.zeros((16, 11), np.float32); v3[:, 0] = 1.   # yaw 90 deg: world +x is body right (-y)
+    m3 = rx.mirror_full(v3, math.pi / 2)
+    check('A6f3_mirror_yaw90', np.allclose(m3[:, 0], -1., atol=1e-6) and np.allclose(m3[:, 1], 0., atol=1e-6),
+          'world (1,0) -> (-1,0) at yaw 90', m3[0, :2])
     ap = np.zeros((3, 9), np.float32); ap[:, 3] = 4.; ap[:, 4] = 0.
     rot = rx.rotate_goal(ap, math.radians(30))
     check('A6g_rotate_goal', np.allclose(rot[:, 3], 4 * math.cos(math.radians(30))) and np.allclose(rot[:, 4], 2.),
