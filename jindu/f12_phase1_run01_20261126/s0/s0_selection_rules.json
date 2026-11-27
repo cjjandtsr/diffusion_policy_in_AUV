@@ -1,0 +1,26 @@
+{
+ "counts": {
+  "A": 1579,
+  "B": 610,
+  "C": 2200,
+  "episodes": 1200,
+  "total": 4389
+ },
+ "outcome_counts": {
+  "collision": 394,
+  "reached": 487,
+  "time_limit": 319
+ },
+ "pool": "/home/cjj/AUV/program/results/routea_f12_phase1_run01/s0/s0_task_pool.json",
+ "rules": {
+  "A": "blocked task; 3 m <= geometric free distance along goal azimuth at current height < 6 m; max 4 per episode, latest decisions only",
+  "B": "blocked collision episode; 0-based decisions max(0,n-5)..max(0,n-4), i.e. 3rd-5th before terminal",
+  "C": "passable task; per-decision deterministic random draw p=0.2, capped at 2200 uniformly"
+ },
+ "schema": "f12_s0_selection_v1",
+ "state_kind_counts": {
+  "A": 1579,
+  "B": 610,
+  "C": 2200
+ }
+}

@@ -1,0 +1,162 @@
+{
+ "o2": {
+  "G-orig": {
+   "candidates": 6400,
+   "collision_rate": 0.0321875,
+   "end_free_median": 2.15,
+   "end_lateral_std": 0.5818659283260231,
+   "jaggedness_median": 0.041580181922267256,
+   "safe_and_clear6": 0.246875
+  },
+  "G-rot30": {
+   "candidates": 6400,
+   "collision_rate": 0.06765625,
+   "end_free_median": 4.3,
+   "end_lateral_std": 1.304594210028262,
+   "jaggedness_median": 0.043348392357590484,
+   "safe_and_clear6": 0.44953125
+  },
+  "G-rot60": {
+   "candidates": 6400,
+   "collision_rate": 0.0565625,
+   "end_free_median": 10.0,
+   "end_lateral_std": 1.5723638601154535,
+   "jaggedness_median": 0.04424139684220743,
+   "safe_and_clear6": 0.51734375
+  },
+  "G-mirror": {
+   "candidates": 6400,
+   "collision_rate": 0.0246875,
+   "end_free_median": 2.15,
+   "end_lateral_std": 0.7901278131504895,
+   "jaggedness_median": 0.041780583519927236,
+   "safe_and_clear6": 0.233125
+  },
+  "G-sigma0.2": {
+   "candidates": 6400,
+   "collision_rate": 0.03234375,
+   "end_free_median": 2.15,
+   "end_lateral_std": 0.6042460202886178,
+   "jaggedness_median": 0.079303458399794,
+   "safe_and_clear6": 0.27015625
+  },
+  "G-sigma0.3": {
+   "candidates": 6400,
+   "collision_rate": 0.04375,
+   "end_free_median": 2.2,
+   "end_lateral_std": 0.6315819620624705,
+   "jaggedness_median": 0.1189199920580149,
+   "safe_and_clear6": 0.2834375
+  },
+  "G-early": {
+   "candidates": 6400,
+   "collision_rate": 0.03171875,
+   "end_free_median": 2.1,
+   "end_lateral_std": 0.5817646511751792,
+   "jaggedness_median": 0.04153667652926063,
+   "safe_and_clear6": 0.25140625
+  }
+ },
+ "o2_rollouts": {
+  "rows": 10464,
+  "reached_1m": 5905,
+  "by_group": {
+   "G-early": 1486,
+   "G-mirror": 1507,
+   "G-orig": 1503,
+   "G-rot30": 1494,
+   "G-rot60": 1506,
+   "G-sigma0.2": 1492,
+   "G-sigma0.3": 1476
+  }
+ },
+ "o5": {
+  "no_obstacle": {
+   "n": 150,
+   "median_abs_lateral_change_m": 0.15251938998699188,
+   "p90": 0.5022951446473598
+  },
+  "goal_left2": {
+   "n": 150,
+   "median_abs_lateral_change_m": 0.32817262411117554,
+   "p90": 0.6802407175302505
+  },
+  "both": {
+   "n": 150,
+   "median_abs_lateral_change_m": 0.41506677120923996,
+   "p90": 0.9516414105892179
+  }
+ },
+ "o2_sideway_state_spread": {
+  "G-early": {
+   "candidates": 6400,
+   "no_collision_clear6": 0.25140625,
+   "sideway_abs_lat_ge_0p5": 0.13328125,
+   "sideway_left": 231,
+   "sideway_right": 622,
+   "wihin_state_std_median": 0.08299101626607248,
+   "within_state_std_p90": 0.09868098066556678,
+   "pooled_std": 0.5817646511751792
+  },
+  "G-mirror": {
+   "candidates": 6400,
+   "no_collision_clear6": 0.233125,
+   "sideway_abs_lat_ge_0p5": 0.1590625,
+   "sideway_left": 554,
+   "sideway_right": 464,
+   "wihin_state_std_median": 0.08274877799099908,
+   "within_state_std_p90": 0.10064288273863031,
+   "pooled_std": 0.7901278131504895
+  },
+  "G-orig": {
+   "candidates": 6400,
+   "no_collision_clear6": 0.246875,
+   "sideway_abs_lat_ge_0p5": 0.1359375,
+   "sideway_left": 237,
+   "sideway_right": 633,
+   "wihin_state_std_median": 0.08467063236457686,
+   "within_state_std_p90": 0.10231850727919038,
+   "pooled_std": 0.5818659283260231
+  },
+  "G-rot30": {
+   "candidates": 6400,
+   "no_collision_clear6": 0.44953125,
+   "sideway_abs_lat_ge_0p5": 0.4090625,
+   "sideway_left": 1163,
+   "sideway_right": 1455,
+   "wihin_state_std_median": 0.9784538058044456,
+   "within_state_std_p90": 1.7720715935494398,
+   "pooled_std": 1.3045942100282621
+  },
+  "G-rot60": {
+   "candidates": 6400,
+   "no_collision_clear6": 0.51734375,
+   "sideway_abs_lat_ge_0p5": 0.48578125,
+   "sideway_left": 1081,
+   "sideway_right": 2028,
+   "wihin_state_std_median": 1.249094256805712,
+   "within_state_std_p90": 1.919343202222389,
+   "pooled_std": 1.5723638601154535
+  },
+  "G-sigma0.2": {
+   "candidates": 6400,
+   "no_collision_clear6": 0.27015625,
+   "sideway_abs_lat_ge_0p5": 0.1396875,
+   "sideway_left": 252,
+   "sideway_right": 642,
+   "wihin_state_std_median": 0.16768688588593106,
+   "within_state_std_p90": 0.19198426861434256,
+   "pooled_std": 0.6042460202886178
+  },
+  "G-sigma0.3": {
+   "candidates": 6400,
+   "no_collision_clear6": 0.2834375,
+   "sideway_abs_lat_ge_0p5": 0.14734375,
+   "sideway_left": 297,
+   "sideway_right": 646,
+   "wihin_state_std_median": 0.24402383747605236,
+   "within_state_std_p90": 0.28945324054522853,
+   "pooled_std": 0.6315819620624704
+  }
+ }
+}

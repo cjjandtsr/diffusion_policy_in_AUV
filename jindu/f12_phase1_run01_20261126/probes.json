@@ -1,0 +1,93 @@
+{
+ "1_s0_recovery": {
+  "decision": 10,
+  "max_position_error_m": 0.0,
+  "passed": true,
+  "task_id": "868592d5f2ea8b85d6df10a19f1c172aca9832108fc79773a487352c0508c513"
+ },
+ "2_o2_deterministic": {
+  "comparison": "fresh deterministic P6 rerun from reset to decision k",
+  "max_plan_diff": 0.010371208190917969,
+  "passed": true,
+  "tolerance_m": 0.02
+ },
+ "3_rotation": {
+  "cases": [
+   {
+    "got": [
+     4.330127,
+     2.5
+    ],
+    "theta_deg": 30
+   },
+   {
+    "got": [
+     2.5,
+     -4.330127
+    ],
+    "theta_deg": -60
+   }
+  ],
+  "passed": true
+ },
+ "4_mirror": {
+  "got": {
+   "dpos": [
+    0.30000001192092896,
+    -0.20000000298023224,
+    0.05000000074505806
+   ],
+   "dyaw": -0.10000000149011612
+  },
+  "passed": true
+ },
+ "5_free_distance": {
+  "expected_x": 4.2,
+  "expected_y": "inf(cap 10)",
+  "got_x": 4.2,
+  "got_y": 10.0,
+  "passed": true
+ },
+ "6_noise_floor": {
+  "ddim_steps": 10,
+  "ft_denoising_steps": 10,
+  "min_logprob_denoising_std": 0.1,
+  "min_sampling_denoising_std": 0.1,
+  "note": "G-sigma0.3 overrides the same runtime floor to 0.3; step-wise std is max(schedule std, 0.3), verified by the sampler contract",
+  "passed": true
+ },
+ "6b_sigma03_step_std": {
+  "note": "std = max(DDIM schedule std, 0.3); values are the sampler contract for one decision",
+  "passed": true,
+  "sigma_floor": 0.3,
+  "step_std": [
+   0.8652428984642029,
+   0.712638795375824,
+   0.5980222821235657,
+   0.5048772096633911,
+   0.4224069118499756,
+   0.3432697653770447,
+   0.30000001192092896,
+   0.30000001192092896,
+   0.30000001192092896,
+   0.30000001192092896
+  ]
+ },
+ "7_o5_removed_cloud": {
+  "non_ground_after": 0,
+  "non_ground_before": 491,
+  "note": "single-obstacle synthetic world; after removal only ground/near-ground points remain",
+  "passed": true
+ },
+ "8_exclusion": {
+  "excluded_counts": {
+   "dev": 84,
+   "test12": 48,
+   "val": 80
+  },
+  "excluded_hits_in_s0": 0,
+  "passed": true
+ },
+ "all_passed": true,
+ "schema": "f12_probes_v1"
+}

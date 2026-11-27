@@ -1,0 +1,19 @@
+{
+ "candidates": 44800,
+ "groups": [
+  "G-orig",
+  "G-rot30",
+  "G-rot60",
+  "G-mirror",
+  "G-sigma0.2",
+  "G-sigma0.3",
+  "G-early"
+ ],
+ "notes": [
+  "G-early is degenerate under the loaded runtime: ft_denoising_steps == ddim_steps == 10, so all denoising steps already use the fine-tuned actor and the same floor."
+ ],
+ "rollouts": 10464,
+ "seed": 20261126,
+ "source_states": "/home/cjj/AUV/program/results/routea_f12_phase1_run01/s0/s0_states.npz",
+ "states": 200
+}
