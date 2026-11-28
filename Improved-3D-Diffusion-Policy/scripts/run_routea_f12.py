@@ -16,7 +16,8 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from scripts.run_routea_a2 import read, write, digest, verify_saved_source
 
-BATCH = {1: ('P39', 'P40', 'P41', 'P42'), 2: ('P43', 'P44', 'P45', 'P46')}
+# batch 1 keeps P42 only for the record (retired by patch 2, u257 artefact); RX of seed 1 is batch 3.
+BATCH = {1: ('P39', 'P40', 'P41', 'P42'), 2: ('P43', 'P44', 'P45', 'P48'), 3: ('P47',)}
 P6_STATE_SHA = 'a91c9f428c5749b8ca507168ea83f17eeb88cce4b4a03c6aeaea197b214bdd43'
 
 
@@ -70,6 +71,9 @@ def prepare(args):
     out.mkdir(parents=True, exist_ok=False)
     configs = {}
     for name in BATCH[args.batch]:
+        from diffusion_policy_3d.rl.dppo_uav_rebuild.entrypoints.f12_support import RETIRED
+        if name in RETIRED:
+            continue
         c = make_config(r, args.receipt, args.reference, Path(args.output), args.weights, name)
         validate_child_config(r['training_config'], c)
         p = out / (name + '.yaml')
@@ -146,6 +150,8 @@ def matched(args):
     from scripts.f6_u129_matched_rollout import IDENT, _identical
     from diffusion_policy_3d.env.collision_geom import load_obstacles
     prepared = read(Path(args.prepared) / 'prepared.json')
+    if prepared['batch'] == 3:
+        raise SystemExit('batch 3 (P47 alone) has no matched pair; R-vs-RX identity was checked on P40/P42 u257')
     c0, r, rn, rx = BATCH[prepared['batch']]
     cc0, A = _records(prepared, c0)
     cr, B = _records(prepared, r)
@@ -228,7 +234,7 @@ def main():
     a = s.add_parser('prepare')
     for k in ('repo', 'receipt', 'reference', 'output', 'weights'):
         a.add_argument('--' + k, required=True)
-    a.add_argument('--batch', type=int, choices=(1, 2), required=True)
+    a.add_argument('--batch', type=int, choices=(1, 2, 3), required=True)
     a = s.add_parser('run')
     for k in ('repo', 'prepared', 'run-id'):
         a.add_argument('--' + k, required=True)

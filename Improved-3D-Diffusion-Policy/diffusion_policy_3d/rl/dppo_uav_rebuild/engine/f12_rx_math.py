@@ -14,12 +14,17 @@ def rotate_goal(agent_pos, theta):
 
 
 def mirror_full(full, yaw):
-    """Lateral mirror in the body frame (same as phase-1 O2 mirror_action). full: (...,16,11)."""
+    """Lateral mirror in the body frame. full: (...,16,11) world-frame [dpos, dvel, acc, dyaw, yaw_rate].
+
+    Patch 2 (2026-11-27): position, velocity and acceleration xy are all mirrored (O2's
+    mirror_action mirrored position and yaw only, leaving velocity/acceleration unmirrored,
+    which makes the mirrored chunk internally inconsistent as an RX training sample)."""
     a = np.asarray(full, np.float32).copy()
     c, s = math.cos(yaw), math.sin(yaw)
-    x, y = a[..., 0].copy(), a[..., 1].copy()
-    bx, by = c * x + s * y, -(-s * x + c * y)
-    a[..., 0], a[..., 1] = c * bx - s * by, s * bx + c * by
+    for i, j in ((0, 1), (3, 4), (6, 7)):
+        x, y = a[..., i].copy(), a[..., j].copy()
+        bx, by = c * x + s * y, -(-s * x + c * y)
+        a[..., i], a[..., j] = c * bx - s * by, s * bx + c * by
     a[..., 9], a[..., 10] = -a[..., 9], -a[..., 10]
     return a
 
